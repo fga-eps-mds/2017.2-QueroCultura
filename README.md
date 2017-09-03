@@ -7,11 +7,13 @@ O Quero Cultura tem como objetivos, a visualização dos dados de eventos, proje
 
 O Quero Cultura utiliza o Docker para automatizaço de ambiente. Para contribuir com o projeto siga os passos a seguir:
 
-1. Instale o docker, caso não possua, seguindo as instruções no link:
-  >https://docs.docker.com/engine/installation/
-2. Instale o docker compose:
-  >https://docs.docker.com/compose/install/
+1. Instale o [docker](https://docs.docker.com/engine/installation/)
+2. Instale o [docker compose](https://docs.docker.com/compose/install/)
 1. Clone o repositório usando o comando:
-  >`git clone https://github.com/fga-gpp-mds/2017.2-QueroCultura`
-2. Crie e inicie o container:
-  >`docker-compose up`
+  ```
+  git clone https://github.com/fga-gpp-mds/2017.2-QueroCultura
+  ```
+2. Crie e inicie os containers para o serviço:
+  ```
+  docker-compose up
+  ```
