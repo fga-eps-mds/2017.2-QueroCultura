@@ -1,4 +1,4 @@
-https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master
+[![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
 
 >## O Projeto Quero Cultura
 
