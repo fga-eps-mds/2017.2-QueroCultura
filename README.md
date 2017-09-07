@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
 
->## O Projeto Quero Cultura
+>## O Projeto Quero Cultura [![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
 
 O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura por meio do [Mapas Culturais](http://mapas.cultura.gov.br/). O Mapas Culturais é um software livre para mapeamento colaborativo e gestão da cultura.
 O Quero Cultura tem como objetivos, a visualização dos dados de eventos, projetos e espaços culturais e o relacionamento dos mesmos por meio de indicadores.
