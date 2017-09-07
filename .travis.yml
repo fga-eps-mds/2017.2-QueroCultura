@@ -1,8 +1,6 @@
 language: python
 python: 
    - "3.6.2"
-env:
-  - DJANGO_VERSION=1.11.5
-install:
-   - pip install -q Django==$DJANGO_VERSION
-   - python setup.py -q install
+notifications:
+  email: false
+  slack: unb-jarbas:0mbq2yedH96vS4dyKSP6Xx4S
