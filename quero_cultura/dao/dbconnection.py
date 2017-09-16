@@ -18,14 +18,23 @@ class DbConnection:
         response = requests.get(url,parameters)
         return response
 
-#pprint.pprint(collection.find_one({"name": "WELLINGTON FRANCISCO DA SILVA"}))
+    def check_connection(self,response):
 
-if(response.status_code == 200):
-    data = json.loads(response.text)
-    peeps = collection.find()
-    collection.insert(data)
-#    for agent in peeps:
-#    	print(agent)
+        verify_connection = True
+
+        if(response.status_code == 200):
+
+            verify_connection = True
+            data = json.loads(response.text)
+            peeps = collection.find()
+            collection.insert(data)
+
+        else:
+
+            verify_connection = False
+
+        return verify_connection
+
 
 for agents in peeps:
     pprint.pprint(agents)
