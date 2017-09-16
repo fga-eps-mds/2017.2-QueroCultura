@@ -4,32 +4,26 @@ import requests
 import pprint
 from pymongo import MongoClient
 
-client = MongoClient('localhost',27017)
-db = client.test_database
+class DbConnection:
 
-collection = db["trainning"]
+    __mongo_connection = MongoClient('localhost',27017)
+    # mongo_connection will recebe the database
+    __db = mongo_connection['quero_cultura_db']
+    __url = 'http://mapas.cultura.gov.br/api/agent/find/'
 
-#########################################################
-#connect('training_DB', username='root', password='root')
+    def __init__():
 
-#class Training(Document):
-#    _id = IntField(required=True)
-#    name = StringField(max_length=100)
-#########################################################
-
-url = 'http://mapas.cultura.gov.br/api/agent/find/'
-
-parameters = {'@select': 'id,name','id': 'BET(111683,111684)'}
-
-response = requests.get(url,parameters)
+    def get_agents(self,name,id,inicial_valory_id,final_valory_id):
+        parameters = {'@select': id,name,'id': BET(inicial_valory_id,final_valory_id)}
+        response = requests.get(url,parameters)
+        return response
 
 #pprint.pprint(collection.find_one({"name": "WELLINGTON FRANCISCO DA SILVA"}))
 
 if(response.status_code == 200):
     data = json.loads(response.text)
     peeps = collection.find()
-
-collection.insert(data)
+    collection.insert(data)
 #    for agent in peeps:
 #    	print(agent)
 
