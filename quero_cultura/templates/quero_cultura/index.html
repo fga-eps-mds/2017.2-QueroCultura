@@ -23,4 +23,20 @@
 integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
 crossorigin=""></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
+
+{%for map in mapPoints%}
+
+	<script>
+		
+
+		var latitude = "{{map.latitudePoint}}";
+		var longitude = "{{map.longitudePoint}}";
+
+
+		make_marker(latitude,longitude);
+
+	</script>
+
+{% endfor %}
+
 </html>
