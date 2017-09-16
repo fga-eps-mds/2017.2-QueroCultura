@@ -65,3 +65,6 @@ class DbConnection(object):
     def delete_point_map(self, map_point_id):
             result = list(self.__db.find({"_id": map_point_id}))
             self.__db.delete_one({"_id": map_point_id})
+
+    def delete_all_point_map(self):
+            self.__db.delete_many({})
