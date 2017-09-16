@@ -39,7 +39,7 @@ class DbConnection(object):
         else:
             print("deu ruim")
 
-    #Only to check the databse's working
+    #Only to check the database's working
     def show_results(self):
         peeps = self.__db.find()
         for agents in peeps:
@@ -48,13 +48,5 @@ class DbConnection(object):
 
 
     def insert_point_map(self, map_point):
-            data = json.loads(map_point.text)
-            self.__db.insert(data)
-
-
-
-#TEST:
-qualquer = DbConnection()
-teste = qualquer.get_agents('BET(111683,111684)')
-qualquer.insert_agent(teste)
-qualquer.show_results()
+            lista = [{'_id' : map_point.idPoint, 'name' : map_point.namePoint}]
+            self.__db.insert(lista)

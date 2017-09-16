@@ -1,10 +1,9 @@
-from django.db import models
+from mongoengine import *
 
-class MapPoint(models.Model):
-    typePoint = models.CharField(max_length=30)
-    idPoint = models.IntegerField()
-    namePoint = models.CharField(max_length=100)
-    latitudePoint = models.CharField(max_length=50)
-    longitudePoint = models.CharField(max_length=50)
-    shortDescription = models.TextField()
-
+class MapPoint(Document):
+    typePoint = StringField(max_length=30)
+    idPoint = IntField(required = True)
+    namePoint = StringField(max_length=100)
+    latitudePoint = StringField(max_length=50)
+    longitudePoint = StringField(max_length=50)
+    shortDescription = StringField()
