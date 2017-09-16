@@ -4,43 +4,50 @@ import requests
 import pprint
 from pymongo import MongoClient
 
-class DbConnection:
 
-    __mongo_connection = MongoClient('localhost',27017)
+class DbConnection(object):
+
+    __mongo_connection = None
     # mongo_connection will recebe the database
-    __db = mongo_connection['quero_cultura_db']
-    __url = 'http://mapas.cultura.gov.br/api/agent/find/'
+    __db = None
+    #__url = 'http://mapas.cultura.gov.br/api/agent/find/'
 
-    def __init__():
+    def __init__(self):
+        self.__mongo_connection = MongoClient('localhost',27017)
+        self.__mongo_connection = self.__mongo_connection.test_database
+        self.__db = self.__mongo_connection['quero_cultura_db']
 
-    def get_agents(self,name,id,inicial_valory_id,final_valory_id):
-        parameters = {'@select': id,name,'id': BET(inicial_valory_id,final_valory_id)}
-        response = requests.get(url,parameters)
+    def get_agents(self,id):
+        parameters = {'@select': 'id,name','id' : id}
+        response = requests.get('http://mapas.cultura.gov.br/api/agent/find/',parameters)
         return response
 
     def check_connection(self,response):
-
         verify_connection = True
 
         if(response.status_code == 200):
-
             verify_connection = True
-            data = json.loads(response.text)
-            peeps = collection.find()
-            collection.insert(data)
-
         else:
-
             verify_connection = False
 
         return verify_connection
 
+    def insert_agent(self,response):
+        if(self.check_connection(response) == True):
+            data = json.loads(response.text)
+            self.__db.insert(data)
+            print("deu bom")
+        else:
+            print("deu ruim")
 
-for agents in peeps:
-    pprint.pprint(agents)
+    def show_results(self):
+        peeps = self.__db.find()
+        for agents in peeps:
+            pprint.pprint(agents)
+        #self.__db.close()
 
-x = collection.count()
-print(x)
-#client.drop_database("trainning")
-#collection.delete_many({"name": "WELLINGTON FRANCISCO DA SILVA"})
-#collection.delete_many({"name": "FRANCIVALDO ARAUJO DE ALMEIDA"})
+#TEST:
+#qualquer = DbConnection()
+#teste = qualquer.get_agents('BET(111683,111684)')
+#qualquer.insert_agent(teste)
+#qualquer.show_results()
