@@ -41,9 +41,9 @@ class DbConnection(object):
 
     #Only to check the database's working
     def show_results(self):
-        peeps = self.__db.find()
-        for agents in peeps:
-            pprint.pprint(agents)
+        results = self.__db.find()
+        for element in results:
+            pprint.pprint(element)
         #self.__db.close()
 
 
@@ -56,3 +56,8 @@ class DbConnection(object):
                      'description' : map_point.shortDescription
                       }]
             self.__db.insert(data)
+
+    def select_point_map(self, map_point_id):
+            result = list(self.__db.find({"_id": map_point_id}))
+            pprint.pprint(result)
+            #print(result)
