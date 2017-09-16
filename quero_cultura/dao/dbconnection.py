@@ -10,7 +10,7 @@ class DbConnection(object):
     __mongo_connection = None
     # mongo_connection will recebe the database
     __db = None
-    #__url = 'http://mapas.cultura.gov.br/api/agent/find/'
+    __url = 'http://mapas.cultura.gov.br/api/agent/find/'
 
     def __init__(self):
         self.__mongo_connection = MongoClient('localhost',27017)
@@ -19,7 +19,7 @@ class DbConnection(object):
 
     def get_agents(self,id):
         parameters = {'@select': 'id,name','id' : id}
-        response = requests.get('http://mapas.cultura.gov.br/api/agent/find/',parameters)
+        response = requests.get(self.__url, parameters)
         return response
 
     def check_connection(self,response):
