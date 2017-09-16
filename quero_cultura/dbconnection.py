@@ -48,5 +48,11 @@ class DbConnection(object):
 
 
     def insert_point_map(self, map_point):
-            lista = [{'_id' : map_point.idPoint, 'name' : map_point.namePoint}]
-            self.__db.insert(lista)
+            data = [{'_id' : map_point.idPoint,
+                     'type' : map_point.typePoint,
+                     'name' : map_point.namePoint,
+                     'latitude' : map_point.latitudePoint,
+                     'longitude' : map_point.longitudePoint,
+                     'description' : map_point.shortDescription
+                      }]
+            self.__db.insert(data)
