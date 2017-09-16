@@ -1,3 +1,5 @@
+sudo: required
+
 services:
   - docker
   
@@ -11,7 +13,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   
 script:
-  - docker-compose build
+  - docker-compose up -d
+  - docker-compose exec web ./manage.py test
   
 notifications:
   email: false
