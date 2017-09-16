@@ -12,4 +12,6 @@ mapa = MapPoint(typePoint = "Cookie",
 
 #database.insert_point_map(mapa)
 #database.show_results()
-database.select_point_map(12345678)
+#database.select_point_map(12345678)
+database.delete_point_map(2345678)
+database.show_results()
