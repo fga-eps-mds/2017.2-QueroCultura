@@ -13,7 +13,7 @@
 
 <body>
 	<header></header>
-	
+
 	<input type="checkbox" id="check">
 	<label id="icone-menu" for="check"><img src="../static/images/icone.png"></label>
 
@@ -44,13 +44,14 @@ crossorigin=""></script>
 {%for map in mapPoints%}
 
 	<script>
-		
+
 
 		var latitude = "{{map.latitudePoint}}";
 		var longitude = "{{map.longitudePoint}}";
+		var typePoint = "{{map.typePoint}}";
 
 
-		make_marker(latitude,longitude);
+		make_marker(latitude, longitude, typePoint);
 
 	</script>
 
