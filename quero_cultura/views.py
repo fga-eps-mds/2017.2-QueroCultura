@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import MapPoint	
 
 def index(request):
+ 
 
-	
 
 	typePoint  = 'evento'
 	idPoint = 1
@@ -12,7 +12,7 @@ def index(request):
 	longitudePoint = '-48.085224'
 
 	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint)
-	mapPoint2 = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = '-30', longitudePoint = '-24.002')
+	mapPoint2 = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = '-17', longitudePoint = '-54.002')
 	mapPoints = []
 	mapPoints.append(mapPoint)
 	mapPoints.append(mapPoint2)

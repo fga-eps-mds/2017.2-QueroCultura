@@ -1,7 +1,4 @@
-var mymap = L.map('mapid').setView([-15.573, -54.1], 4.5);
-
-
-
+var mymap = L.map('mapid').setView([-15.2222, -50.1222], 3.5);
 
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2pqY2FzdHJvIiwiYSI6ImNqN21vYXpiMDFib3UzMnQ2OG1uM205NWEifQ.8sFAUtZu22lf_o3kmEVlMg', {
@@ -11,13 +8,9 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
     accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);
 
-    console.log("asdf");
-
-
 
 function make_marker(latitude, longitude) {
 	
-	console.log(longitude,latitude);
-	var marker = L.marker([latitude, longitude]).addTo(mymap);
+		var marker = L.marker([latitude, longitude]).addTo(mymap);
 
 }

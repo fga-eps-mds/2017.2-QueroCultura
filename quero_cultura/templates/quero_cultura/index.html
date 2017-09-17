@@ -10,13 +10,30 @@
 	<title></title>
 	<link rel="stylesheet" href="">
 </head>
-<body>
-	<h1>Quero cultura</h1>
 
-	{{mapPoint.typePoint}}
+<body>
+	<header></header>
+	
+	<input type="checkbox" id="check">
+	<label id="icone-menu" for="check"><img src="../static/images/icone.png"></label>
+
+	<div class="bg"></div>
+
+	<div class="bar-nav">
+		<nav>
+			<a href="#"><div class="link">Projetos</div></a>
+			<a href="#"><div class="link">Eventos</div></a>
+			<a href="#"><div class="link">Museus</div></a>
+			<a href="#"><div class="link">Bibliotecas</div></a>
+			<a href="#"><div class="link">Cabaré</div></a>
+		</nav>
+	</div>
+
+
 	<div class="map-container">
 		<div id="mapid"></div>
 	</div>
+
 </body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
