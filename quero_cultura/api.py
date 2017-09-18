@@ -4,9 +4,9 @@ from datetime import timedelta
 
 class MapPointsApi(object):
     def __init__(self):
-        self._get_time = datetime.now() - timedelta(hours=18)
-        self._url = 'http://mapas.cultura.gov.br/api/agent/find/'
-        self._filters = {'@select' : 'id, name, location, createTimestamp', 'createTimestamp' : "GT("+self._get_time.__str__()+")"}
+        self._get_time = datetime.now() - timedelta(hours=23)
+        self._url = 'http://mapas.cultura.gov.br/api/event/find/'
+        self._filters = {'@select' : 'id, name, location, shortDescription', '@or' : 1, 'createTimestamp' : "GT("+self._get_time.__str__()+")", 'updateTimestamp' : "GT("+self._get_time.__str__()+")"}
         self._response = requests.get(self._url, self._filters)
         self._data = json.loads(self._response.text)
 
@@ -29,5 +29,6 @@ if pontos.response.status_code == 200:
     print(len(pontos.data))
 
     for i in pontos.data:
-        print(i["id"], i["name"], i["createTimestamp"]['date'])
+        print(i["id"], i["name"], "\n")
+        print(i["shortDescription"], "\n")
 '''
