@@ -12,7 +12,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 function make_marker(latitude, longitude, typePoint) {
 
-		var marker = L.marker([latitude, longitude]).addTo(mymap);
+	var marker = L.marker([latitude, longitude]).addTo(mymap);
     marker.bindPopup(typePoint).openPopup();
 
 }
