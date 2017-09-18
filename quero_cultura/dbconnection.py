@@ -2,6 +2,8 @@ import json
 import requests
 import pprint
 from pymongo import MongoClient
+from api import MapPointsApi
+from models import MapPoint
 
 
 class DbConnection(object):
@@ -47,15 +49,21 @@ class DbConnection(object):
         #self.__db.close()
 
 
-    def insert_point_map(self, map_point):
-            data = [{'_id' : map_point.idPoint,
-                     'type' : map_point.typePoint,
-                     'name' : map_point.namePoint,
-                     'latitude' : map_point.latitudePoint,
-                     'longitude' : map_point.longitudePoint,
-                     'description' : map_point.shortDescription
-                      }]
-            self.__db.insert(data)
+    def insert_point_map(self):
+            points = []
+            #i = iterator
+            for i in MapPointsApi().data:
+                map_point = MapPoint("Space", int(i["id"]), str(i["name"]),str(i["location"]["latitude"]),str(i["location"]["longitude"]),str(i["shortDescription"]))
+                point = {'_id' : map_point.idPoint,
+                         'type' : map_point.typePoint,
+                         'name' : map_point.namePoint,
+                         'latitude' : map_point.latitudePoint,
+                         'longitude' : map_point.longitudePoint,
+                         'description' : map_point.shortDescription
+                          }
+                points.append(point)
+
+            self.__db.insert(points)
 
     def select_point_map(self, map_point_id):
             pprint.pprint(result)
