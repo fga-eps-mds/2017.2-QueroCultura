@@ -2,11 +2,10 @@ import requests, json
 from datetime import datetime
 from datetime import timedelta
 
-get_time_python = datetime.now() - timedelta(days=3)
-get_time_js = "GT(" + get_time_python.date().__str__() + "T" + get_time_python.time().__str__() + ")"
+get_time = datetime.now() - timedelta(days=2)
 
 url = 'http://mapas.cultura.gov.br/api/agent/find/'
-filters = {'@select' : 'id, name, location, createTimestamp','createTimestamp' : get_time_js}
+filters = {'@select' : 'id, name, location, createTimestamp', 'createTimestamp' : "GT("+get_time.__str__()+")"}
 
 response = requests.get(url, filters)
 
