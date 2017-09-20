@@ -11,6 +11,7 @@ def index(request):
 	latitudePoint = '-16.021958'
 	longitudePoint = '-48.064078'
 
+
 	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint)
 	mapPoint2 = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = '-17', longitudePoint = '-54.002')
 	mapPoints = []
