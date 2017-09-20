@@ -1,60 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-	   crossorigin=""/>
-	<link rel="stylesheet" href="static/css/map.css"/>
-	<title></title>
-	<link rel="stylesheet" href="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widht, initial-scale=1">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" href="static/css/map.css"/>
+
+    <title>Material Design Lite Google</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
-
 <body>
-	<header></header>
-
-	<input type="checkbox" id="check">
-	<label id="icone-menu" for="check"><img src="../static/images/icone.png"></label>
-
-	<div class="bg"></div>
-
-	<div class="bar-nav">
-		<nav>
-			<a href="#"><div class="link">Projetos</div></a>
-			<a href="#"><div class="link">Eventos</div></a>
-			<a href="#"><div class="link">Museus</div></a>
-			<a href="#"><div class="link">Bibliotecas</div></a>
-			<a href="#"><div class="link">Agentes</div></a>
-		</nav>
-	</div>
 
 
-	<div class="map-container">
-		<div id="mapid"></div>
-	</div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Quero Cultura</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a href="#" class="mdl-navigation__link">link</a>
+                    <!-- Multiline Tooltip -->
+                    <div id="tt4" class="icon material-icons">share</div>
+                    <div class="mdl-tooltip" for="tt4">
+                    Share your content<br>via social media
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Quero Cultura</span>
+            <nav class="mdl-navigation">
+                <a href="#" class="mdl-navigation__link">Projetos</a>
+                <a href="#" class="mdl-navigation__link">Eventos</a>
+                <a href="#" class="mdl-navigation__link">Agentes</a>
+                <a href="#" class="mdl-navigation__link">Museus</a>
+                <a href="#" class="mdl-navigation__link">Agentes</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+
+                    <div id="mapid"></div>
+                    <script type = "text/javascript" src="static/js/map.js"></script>
+
+                    {%for map in mapPoints%}
+
+                    	<script>
+                    		var latitude = "{{map.latitudePoint}}";
+                    		var longitude = "{{map.longitudePoint}}";
+                    		var typePoint = "{{map.typePoint}}";
+
+                    		make_marker(latitude, longitude, typePoint);
+
+                    	</script>
+                    {% endfor %}
+
+        </main>
+    </div>
 
 </body>
-<!-- Make sure you put this AFTER Leaflet's CSS -->
-<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-crossorigin=""></script>
-<script type = "text/javascript" src="static/js/map.js"></script>
-
-{%for map in mapPoints%}
-
-	<script>
-
-
-		var latitude = "{{map.latitudePoint}}";
-		var longitude = "{{map.longitudePoint}}";
-		var typePoint = "{{map.typePoint}}";
-
-
-		make_marker(latitude, longitude, typePoint);
-
-	</script>
-
-{% endfor %}
-
 </html>
