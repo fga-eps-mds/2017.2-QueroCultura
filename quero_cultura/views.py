@@ -10,10 +10,11 @@ def index(request):
 	namePoint = 'Festa'
 	latitudePoint = '-16.021958'
 	longitudePoint = '-48.064078'
+	shortDescription = 'Um evento bem legal.'
 
 
-	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint)
-	mapPoint2 = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = '-17', longitudePoint = '-54.002')
+	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint,shortDescription = shortDescription)
+	mapPoint2 = MapPoint(typePoint = 'Agente', idPoint = idPoint, namePoint = namePoint, latitudePoint = '-17', longitudePoint = '-54.002')
 	mapPoints = []
 	mapPoints.append(mapPoint)
 	mapPoints.append(mapPoint2)

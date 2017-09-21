@@ -13,18 +13,47 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 function make_marker(latitude, longitude, typePoint,namePoint,shortDescription) {
 
 
-    var customPopup = '<b style = "font-size:15px">Nome: </b>'+namePoint+'<br><b style = "font-size:15px">Tipo: </b><br>'+typePoint+'<br><b style = "font-size:15px">Descrição: </b>'+shortDescription
+  var customPopup = '<b style = "font-size:15px">Nome: </b>'+namePoint+'<br><b style = "font-size:15px">Tipo: </b><br>'+typePoint+'<br><b style = "font-size:15px">Descrição: </b>'+shortDescription
 
-    var customOptions =
+  var customOptions =
     {
       'maxWidth' : '1200px',
       'maxWeight' : '1200px',
       'className' : 'customPopup'
-
     }
 
+  var greenMarker = L.icon({
+    iconUrl: 'static/images/marker1.png',
+    iconSize: [50,50],
+  });
 
-	var marker = L.marker([latitude, longitude]).addTo(mymap);
-    marker.bindPopup(customPopup, customOptions).openPopup();
+  var redMarker = L.icon({
+    iconUrl: 'static/images/marker3.png',
+    iconSize: [50,50],
+  });
+
+  var purpleMarker = L.icon({
+    iconUrl: 'static/images/marker2.png',
+    iconSize: [50,50],
+  });
+
+  var yellowMarker = L.icon({
+    iconUrl: 'static/images/marker1.png',
+    iconSize: [50,50],
+  });
+
+  if (typePoint === 'evento' || typePoint === 'Evento') {
+      var marker = L.marker([latitude, longitude], {icon: greenMarker}).bindPopup(customPopup, customOptions).addTo(mymap);
+  }else if ( typePoint === 'Agente' || typePoint === 'Agente') {
+      var marker = L.marker([latitude, longitude], {icon: purpleMarker}).bindPopup(customPopup, customOptions).addTo(mymap);
+  }else if (typePoint === 'museu' || typePoint === 'Museu') {
+    var marker = L.marker([latitude, longitude], {icon: redMarker}).bindPopup(customPopup, customOptions).addTo(mymap);
+
+  }else if(typePoint === 'outro'){
+    var marker = L.marker([latitude, longitude], {icon: yellowMarker}).bindPopup(customPopup, customOptions).addTo(mymap);
+  }else {
+    var marker = L.marker([latitude, longitude]).bindPopup(customPopup, customOptions).addTo(mymap);
+  }
+
 
 }

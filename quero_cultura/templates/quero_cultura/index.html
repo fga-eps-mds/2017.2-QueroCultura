@@ -23,7 +23,6 @@
       .customPopup .leaflet-popup-tip,
       .customPopup .leaflet-popup-content-wrapper {
 
-
         opacity: 0.75;
       }
 
@@ -63,6 +62,7 @@
         <main class="mdl-layout__content">
 
                     <div id="mapid"></div>
+
                     <script type = "text/javascript" src="static/js/map.js"></script>
 
                     {%for map in mapPoints%}
@@ -70,15 +70,15 @@
                     	<script>
                     		var latitude = "{{map.latitudePoint}}";
                     		var longitude = "{{map.longitudePoint}}";
+                        var namePoint = "{{map.namePoint}}";
                     		var typePoint = "{{map.typePoint}}";
+                        var shortDescription = "{{map.shortDescription}}";
 
-                    		make_marker(latitude, longitude, typePoint);
+                    		make_marker(latitude, longitude, typePoint,namePoint,shortDescription);
 
                     	</script>
                     {% endfor %}
-
         </main>
     </div>
-
 </body>
 </html>
