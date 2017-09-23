@@ -39,7 +39,7 @@ function getSpace(){
 	      },);
 
 	    promise.then(function(data) {
-        
+
             console.log(data);
             for(var i=0; i < data.length; i++){
 
@@ -47,12 +47,12 @@ function getSpace(){
 	        	
             }
             printPoints();
-	        
+
 	    });
-}	    
+}
 
 function printPoints(){
-	map.addLayer(markers);	
+	map.addLayer(markers);
 }
 
 function apaga(){
