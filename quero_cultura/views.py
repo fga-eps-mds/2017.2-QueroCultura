@@ -1,10 +1,7 @@
 from django.shortcuts import render
-from .models import MapPoint	
+#from .models import PercentTypeEventsForState
 
 def index(request):
-
-	
-
 	typePoint  = 'evento'
 	idPoint = 1
 	namePoint = 'Festa'
@@ -13,5 +10,4 @@ def index(request):
 
 	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint)
 
-	
 	return render(request, 'quero_cultura/index.html', {'mapPoint' : mapPoint})
