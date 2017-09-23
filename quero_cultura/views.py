@@ -1,22 +1,23 @@
 from django.shortcuts import render
 from .models import MapPoint
+from .api import MapPointsApi
+
 
 def index(request):
 
-
-
-	typePoint  = 'evento'
-	idPoint = 1
-	namePoint = 'Festa'
-	latitudePoint = '-16.021958'
-	longitudePoint = '-48.064078'
-
-	mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint)
-	mapPoint2 = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = '-17', longitudePoint = '-54.002')
 	mapPoints = []
-	mapPoints.append(mapPoint)
-	mapPoints.append(mapPoint2)
+	
+	for i in MapPointsApi().data:
 
+		typePoint  = "space"
+		idPoint = i["id"]
+		namePoint = i["name"]
+		latitudePoint = i["location"]["latitude"]
+		longitudePoint = i["location"]["longitude"]
+		shortDescription = i["shortDescription"]
 
+		mapPoint = MapPoint(typePoint = typePoint, idPoint = idPoint, namePoint = namePoint, latitudePoint = latitudePoint, longitudePoint = longitudePoint, shortDescription = shortDescription)
+		mapPoints.append(mapPoint)
 
 	return render(request, 'quero_cultura/index.html', {'mapPoints' : mapPoints})
+	
