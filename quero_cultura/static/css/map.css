@@ -7,12 +7,7 @@
   position: fixed;
 }
 
- #map {
-   height: 885px;
-   width: 1825px;
-   padding: 2px;
- }
- h1 {
+h1 {
    color: green;
    height: 500px;
    width: 1500px;
@@ -23,7 +18,7 @@
   }
   
  .map-container{
- 	
+  	
  }
  
  header{
