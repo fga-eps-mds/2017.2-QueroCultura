@@ -12,7 +12,7 @@ var map = L.map('map')
 
 var markers = new L.FeatureGroup();
 
-function getSpace(){	
+function getSpace(){
 
 	var getTimeNow = new Date();
 	    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes()-1);
@@ -32,19 +32,19 @@ function getSpace(){
 	      },);
 
 	    promise.then(function(data) {
-        
+
             console.log(data);
             for(var i=0; i < data.length; i++){
             	var marker = L.marker([data[i]["location"]["latitude"], data[i]["location"]["longitude"]]).addTo(markers);
-	        	
+
             }
             printPoints();
-	        
+
 	    });
-}	    
+}
 
 function printPoints(){
-	map.addLayer(markers);	
+	map.addLayer(markers);
 }
 
 function apaga(){
