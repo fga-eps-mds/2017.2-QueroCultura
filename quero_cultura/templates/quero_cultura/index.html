@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	
+	
 </head>
 
 <body>
@@ -22,20 +23,9 @@
 
 	<div class="bg"></div>
 
-	<div class="bar-nav">
-		<nav>
-			<a href="#"><div class="link">Projetos</div></a>
-			<a href="#"><div class="link">Eventos</div></a>
-			<a href="#"><div class="link">Museus</div></a>
-			<a href="#"><div class="link">Bibliotecas</div></a>
-			<a href="#"><div class="link">Agentes</div></a>
-		</nav>
-	</div>
-
-
-	<div class="map-container">
-		<div id="mapid"></div>
-	</div>
+    <div  class = "map-container" >
+  		<div  id = "map"></div >
+  	</div>
 
 </body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -44,14 +34,10 @@ integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO
 crossorigin=""></script>
 
 <script type = "text/javascript" src="static/js/map.js"></script>
-<script type="text/javascript" src="static/js/teste.js"></script>
-
+<script type ="text/javascript" src="static/js/teste.js"></script>
+	
 	<script>
-
-		var lt= "0";
-		var lg= "0";
-		var ty= "0";
-		
+	
 		var id2 = setInterval(function(){getSpace()}, 6000);
 		
 	</script>
