@@ -20,5 +20,4 @@ def index(request):
 	mapPoints.append(mapPoint2)
 
 
-
 	return render(request, 'quero_cultura/index.html', {'mapPoints' : mapPoints})
