@@ -165,3 +165,25 @@ class PercentPublicOrPrivateLibraryPerState(Document):
     @totalLibraryPerState.setter
     def totalLibraryPerState(self, number):
         self._totalLibraryPerState = number
+
+
+class QuantityOfRegisteredLibrarys:
+    _totalLibrarysRegisteredPerMouth = MapField(required=True)
+    _totalLibrarysRegisteredPerYear = MapField(required=True)
+    _totalLibrarys = IntField(required=True)
+
+    @property
+    def totalLibrarysRegisteredPerMouth(self):
+        return self._totalLibrarysRegisteredPerMouth
+
+    @totalLibrarysRegisteredPerMouth.setter
+    def totalLibrarysRegisteredPerMouth(self, number):
+        self._totalLibrarysRegisteredPerMouth = number
+
+    @property
+    def totalLibrarysRegisteredPerYear(self):
+        return self._totalLibrarysRegisteredPerYear
+
+    @totalLibrarysRegisteredPerYear.setter
+    def totalLibrarysRegisteredPerYear(self, number):
+        self._totalLibrarysRegisteredPerYear = number
