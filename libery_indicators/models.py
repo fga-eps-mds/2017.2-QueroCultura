@@ -2,166 +2,166 @@ from django.db import models
 from mongoengine import *
 
 
-class PercentLiberyForState(Document):
-    _totalLiberyForState = MapField(required=True)
-    _totalLibery = IntField(required=True)
+class PercentLibraryForState(Document):
+    _totalLibraryForState = MapField(required=True)
+    _totalLibrary = IntField(required=True)
 
     @property
-    def totalLiberyForState(self):
-        return self._totalLiberyForState
+    def totalLibraryForState(self):
+        return self._totalLibraryForState
 
-    @totalLiberyForState.setter
-    def totalLiberyForState(self, number):
-        self._totalLiberyForState = number
-
-    @property
-    def totalLibery(self):
-        return self._totalLibery
-
-    @totalLibery.setter
-    def totalLibery(self, number):
-        self._totalLibery = number
-
-
-class PercentLiberyPerAreaOfActivityPerState(Document):
-    _totalLiberyPerAreaOfActivityPerState = MapField(required=True)
-    _totalLiberyPerState = MapField(required=True)
+    @totalLibraryForState.setter
+    def totalLibraryForState(self, number):
+        self._totalLibraryForState = number
 
     @property
-    def totalLiberyPerAreaOfActivityPerState(self):
-        return self._totalLiberyPerAreaOfActivityPerState
+    def totalLibrary(self):
+        return self._totalLibrary
 
-    @totalLiberyPerAreaOfActivityPerState.setter
-    def totalLiberyPerAreaOfActivityPerState(self, number):
-        self._totalLiberyPerAreaOfActivityPerState = number
-
-    @property
-    def totalLiberyPerState(self):
-        return self._totalLiberyPerState
-
-    @totalLiberyPerState.setter
-    def totalLiberyPerState(self, number):
-        self._totalLiberyPerState = number
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
 
 
-class PercentLiberyPerAreaOfActivity(Document):
-    _totalLiberyPerAreaOfActivity = MapField(required=True)
-    _totalLibery = IntField(required=True)
+class PercentLibraryPerAreaOfActivityPerState(Document):
+    _totalLibraryPerAreaOfActivityPerState = MapField(required=True)
+    _totalLibraryPerState = MapField(required=True)
 
     @property
-    def totalLiberyPerAreaOfActivity(self):
-        return self._totalLiberyPerAreaOfActivity
+    def totalLibraryPerAreaOfActivityPerState(self):
+        return self._totalLibraryPerAreaOfActivityPerState
 
-    @totalLiberyPerAreaOfActivity.setter
-    def totalLiberyPerAreaOfActivity(self, number):
-        self._totalLiberyPerAreaOfActivity = number
-
-    @property
-    def totalLibery(self):
-        return self._totalLibery
-
-    @totalLibery.setter
-    def totalLibery(self, number):
-        self._totalLibery = number
-
-
-class PercentLiberyPerSpherePerState(Document):
-    _totalLiberyPerSpherePerState = MapField(required=True)
-    _totalLiberyPerState = MapField(required=True)
+    @totalLibraryPerAreaOfActivityPerState.setter
+    def totalLibraryPerAreaOfActivityPerState(self, number):
+        self._totalLibraryPerAreaOfActivityPerState = number
 
     @property
-    def totalLiberyPerSpherePerState(self):
-        return self._totalLiberyPerSpherePerState
+    def totalLibraryPerState(self):
+        return self._totalLibraryPerState
 
-    @totalLiberyPerSpherePerState.setter
-    def totalLiberyPerSpherePerState(self, number):
-        self._totalLiberyPerSpherePerState = number
-
-    @property
-    def totalLiberyPerState(self):
-        return self._totalLibery
-
-    @totalLiberyPerState.setter
-    def totalLiberyPerState(self, number):
-        self._totalLiberyPerState = number
+    @totalLibraryPerState.setter
+    def totalLibraryPerState(self, number):
+        self._totalLibraryPerState = number
 
 
-class PercentLiberyPerSphere(Document):
-    _totalLiberyPerSphere = MapField(required=True)
-    _totalLibery = MapField(required=True)
+class PercentLibraryPerAreaOfActivity(Document):
+    _totalLibraryPerAreaOfActivity = MapField(required=True)
+    _totalLibrary = IntField(required=True)
 
     @property
-    def totalLiberyPerSphere(self):
-        return self._totalLiberyPerSphere
+    def totalLibraryPerAreaOfActivity(self):
+        return self._totalLibraryPerAreaOfActivity
 
-    @totalLiberyPerSphere.setter
-    def totalLiberyPerSphere(self, number):
-        self._totalLiberyPerSphere = number
-
-    @property
-    def totalLibery(self):
-        return self._totalLibery
-
-    @totalLibery.setter
-    def totalLibery(self, number):
-        self._totalLibery = number
-
-
-class PercentPublicOrPrivateLibery(Document):
-    _totalPublicLibery = IntField(required=True)
-    _totalPrivateLibery = IntField(required=True)
-    _totalLibery = IntField(required=True)
+    @totalLibraryPerAreaOfActivity.setter
+    def totalLibraryPerAreaOfActivity(self, number):
+        self._totalLibraryPerAreaOfActivity = number
 
     @property
-    def totalPublicLibery(self):
-        return self._totalPublicLibery
+    def totalLibrary(self):
+        return self._totalLibrary
 
-    @totalPublicLibery.setter
-    def totalPublicLibery(self, number):
-        self._totalPublicLibery = number
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
 
-    @property
-    def totalPrivateLibery(self):
-        return self._totalPrivateLibery
 
-    @totalPrivateLibery.setter
-    def totalPrivateLibery(self, number):
-        self._totalPrivateLibery = number
+class PercentLibraryPerSpherePerState(Document):
+    _totalLibraryPerSpherePerState = MapField(required=True)
+    _totalLibraryPerState = MapField(required=True)
 
     @property
-    def totalLibery(self):
-        return self._totalLibery
+    def totalLibraryPerSpherePerState(self):
+        return self._totalLibraryPerSpherePerState
 
-    @totalLibery.setter
-    def totalLibery(self, number):
-        self._totalLibery = number
-
-
-class PercentPublicOrPrivateLiberyPerState(Document):
-    _totalPublicLiberyPerState = MapField(required=True)
-    _totalPrivateLiberyPerState = MapField(required=True)
-    _totalLiberyPerState = MapField(required=True)
+    @totalLibraryPerSpherePerState.setter
+    def totalLibraryPerSpherePerState(self, number):
+        self._totalLibraryPerSpherePerState = number
 
     @property
-    def totalPublicLiberyPerState(self):
-        return self._totalPublicLiberyPerState
+    def totalLibraryPerState(self):
+        return self._totalLibrary
 
-    @totalPublicLiberyPerState.setter
-    def totalPublicLiberyPerState(self, number):
-        self._totalPublicLiberyPerState = number
+    @totalLibraryPerState.setter
+    def totalLibraryPerState(self, number):
+        self._totalLibraryPerState = number
 
-    @property
-    def totalPrivateLiberyPerState(self):
-        return self._totalPrivateLiberyPerState
 
-    @totalPrivateLiberyPerState.setter
-    def totalPrivateLiberyPerState(self, number):
-        self._totalPrivateLiberyPerState = number
+class PercentLibraryPerSphere(Document):
+    _totalLibraryPerSphere = MapField(required=True)
+    _totalLibrary = MapField(required=True)
 
     @property
-    def totalLiberyPerState(self):
-        return self._totalLiberyPerState
+    def totalLibraryPerSphere(self):
+        return self._totalLibraryPerSphere
 
-    @totalLiberyPerState.setter
-    def totalLiberyPerState(self, number):
-        self._totalLiberyPerState = number
+    @totalLibraryPerSphere.setter
+    def totalLibraryPerSphere(self, number):
+        self._totalLibraryPerSphere = number
+
+    @property
+    def totalLibrary(self):
+        return self._totalLibrary
+
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
+
+
+class PercentPublicOrPrivateLibrary(Document):
+    _totalPublicLibrary = IntField(required=True)
+    _totalPrivateLibrary = IntField(required=True)
+    _totalLibrary = IntField(required=True)
+
+    @property
+    def totalPublicLibrary(self):
+        return self._totalPublicLibrary
+
+    @totalPublicLibrary.setter
+    def totalPublicLibrary(self, number):
+        self._totalPublicLibrary = number
+
+    @property
+    def totalPrivateLibrary(self):
+        return self._totalPrivateLibrary
+
+    @totalPrivateLibrary.setter
+    def totalPrivateLibrary(self, number):
+        self._totalPrivateLibrary = number
+
+    @property
+    def totalLibrary(self):
+        return self._totalLibrary
+
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
+
+
+class PercentPublicOrPrivateLibraryPerState(Document):
+    _totalPublicLibraryPerState = MapField(required=True)
+    _totalPrivateLibraryPerState = MapField(required=True)
+    _totalLibraryPerState = MapField(required=True)
+
+    @property
+    def totalPublicLibraryPerState(self):
+        return self._totalPublicLibraryPerState
+
+    @totalPublicLibraryPerState.setter
+    def totalPublicLibraryPerState(self, number):
+        self._totalPublicLibraryPerState = number
+
+    @property
+    def totalPrivateLibraryPerState(self):
+        return self._totalPrivateLibraryPerState
+
+    @totalPrivateLibraryPerState.setter
+    def totalPrivateLibraryPerState(self, number):
+        self._totalPrivateLibraryPerState = number
+
+    @property
+    def totalLibraryPerState(self):
+        return self._totalLibraryPerState
+
+    @totalLibraryPerState.setter
+    def totalLibraryPerState(self, number):
+        self._totalLibraryPerState = number
