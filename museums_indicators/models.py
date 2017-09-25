@@ -1,10 +1,13 @@
-from django.db import models
-from mongoengine import *
+# from django.db import models
+from mongoengine import Document
+from mongoengine import MapField
+from mongoengine import IntField
+from mongoengine import StringField
 
 # -------------------- state indicators --------------------------------
 
 
-class PercentThematicsMuseumsForState:
+class PercentThematicsMuseumsForState(Document):
     __thematicsMuseumsForState = MapField(required=True)
     __totalMuseumsForState = MapField(required=True)
     _createDate = StringField(required=True)
@@ -34,7 +37,7 @@ class PercentThematicsMuseumsForState:
         self._createDate = number
 
 
-class PercentTypeMuseumsForState:
+class PercentTypeMuseumsForState(Document):
     __typeMuseumsForState = MapField(required=True)
     __totalMuseumsForState = MapField(required=True)
     _createDate = StringField(required=True)
@@ -64,7 +67,7 @@ class PercentTypeMuseumsForState:
         self._createDate = number
 
 
-class PercentPublicOrPrivateMuseumsForState:
+class PercentPublicOrPrivateMuseumsForState(Document):
     _totalPublicMuseumsForState = MapField(required=True)
     _totalPrivateMuseumsForState = MapField(required=True)
     _totalMuseumsForState = MapField(required=True)
@@ -103,8 +106,9 @@ class PercentPublicOrPrivateMuseumsForState:
         self._createDate = number
 
 
-class PercentMuseumsHistoricalArchivePublicAccessForState:
-    _totalMuseumsHistoricalArchivePublicAccessForState = MapField(required=True)
+class PercentMuseumsHistoricalArchivePublicAccessForState(Document):
+    _totalMuseumsHistoricalArchivePublicAccessForState = \
+                                                        MapField(required=True)
     _totalMuseumsForState = MapField(required=True)
     _createDate = StringField(required=True)
 
@@ -133,7 +137,7 @@ class PercentMuseumsHistoricalArchivePublicAccessForState:
         self._createDate = number
 
 
-class PercentMuseumsPromoteGuidedTourForState:
+class PercentMuseumsPromoteGuidedTourForState(Document):
     _totalMuseumsPromoteGuidedTourForState = MapField(required=True)
     _totalMuseumsForState = MapField(required=True)
     _createDate = StringField(required=True)
@@ -164,7 +168,7 @@ class PercentMuseumsPromoteGuidedTourForState:
 
 
 # --------------------- national indicators ----------------------------------
-class PercentThematicsMuseums:
+class PercentThematicsMuseums(Document):
     __thematicsMuseums = IntField(required=True)
     __totalMuseums = IntField(required=True)
     _createDate = StringField(required=True)
@@ -194,7 +198,7 @@ class PercentThematicsMuseums:
         self._createDate = number
 
 
-class PercentTypeMuseums:
+class PercentTypeMuseums(Document):
     __typeMuseums = IntField(required=True)
     __totalMuseums = IntField(required=True)
     _createDate = StringField(required=True)
@@ -224,7 +228,7 @@ class PercentTypeMuseums:
         self._createDate = number
 
 
-class PercentPublicOrPrivateMuseums:
+class PercentPublicOrPrivateMuseums(Document):
     _totalPublicMuseums = IntField(required=True)
     _totalPrivateMuseums = IntField(required=True)
     _totalMuseums = IntField(required=True)
@@ -263,7 +267,7 @@ class PercentPublicOrPrivateMuseums:
         self._createDate = number
 
 
-class PercentMuseumsHistoricalArchivePublicAccess:
+class PercentMuseumsHistoricalArchivePublicAccess(Document):
     _totalMuseumsHistoricalArchivePublicAccess = IntField(required=True)
     _totalMuseums = IntField(required=True)
     _createDate = StringField(required=True)
@@ -293,7 +297,7 @@ class PercentMuseumsHistoricalArchivePublicAccess:
         self._createDate = number
 
 
-class PercentMuseumsPromoteGuidedTour:
+class PercentMuseumsPromoteGuidedTour(Document):
     _totalMuseumsPromoteGuidedTour = IntField(required=True)
     _totalMuseums = IntField(required=True)
     _createDate = StringField(required=True)
@@ -323,8 +327,8 @@ class PercentMuseumsPromoteGuidedTour:
         self._createDate = number
 
 
-# Amount of Museums registered per year on the platform throughout its existence
-class AmountMuseumsRegisteredYear:
+# Amount of Museums registered on year on the platform throughout its existence
+class AmountMuseumsRegisteredYear(Document):
     _totalMuseumsRegisteredYear = MapField(required=True)
     _createDate = StringField(required=True)
 
@@ -345,8 +349,8 @@ class AmountMuseumsRegisteredYear:
         self._createDate = number
 
 
-# Amount of Museums registered per month on the platform throughout its existence
-class AmountMuseumsRegisteredMonth:
+# Amount of Museums registered monthly on the platform throughout its existence
+class AmountMuseumsRegisteredMonth(Document):
     _totalMuseumsRegisteredMonth = MapField(required=True)
     _createDate = StringField(required=True)
 
@@ -368,7 +372,7 @@ class AmountMuseumsRegisteredMonth:
 
 
 # Percentage of museums by states
-class PercentMuseumsForState:
+class PercentMuseumsForState(Document):
     _totalMuseumsForState = MapField(required=True)
     _totalMuseums = IntField(required=True)
     _createDate = StringField(required=True)

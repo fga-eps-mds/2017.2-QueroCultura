@@ -1,5 +1,6 @@
-from django.db import models
-from mongoengine import *
+# from django.db import models
+from mongoengine import Document
+from mongoengine import MapField
 
 
 class PercentTypeEventsForState(Document):
@@ -19,26 +20,5 @@ class PercentTypeEventsForState(Document):
         return self._totalStateEvents
 
     @totalStateEvents.setter
-    def totalStateEvents(self, number):
-        self._totalStateEvents = number
-
-
-class PercentEventsForSpace(Document):
-    _typeSpaceEvents = MapField(required=True)
-    _totalSpaceEvents = MapField(required=True)
-
-    @property
-    def typeSpaceEvents(self):
-        return self._typeStateEvents
-
-    @typeSpaceEvents.setter
-    def typeStateEvents(self, number):
-        self._typeStateEvents = number
-
-    @property
-    def totalSpaceEvents(self):
-        return self._totalStateEvents
-
-    @totalSpaceEvents.setter
     def totalStateEvents(self, number):
         self._totalStateEvents = number
