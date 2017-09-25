@@ -1,66 +1,7 @@
 from django.db import models
 from mongoengine import *
 
-
-class PercentLibraryForState(Document):
-    _totalLibraryForState = MapField(required=True)
-    _totalLibrary = IntField(required=True)
-    _createDate = StringField(required=True)
-
-    @property
-    def totalLibraryForState(self):
-        return self._totalLibraryForState
-
-    @totalLibraryForState.setter
-    def totalLibraryForState(self, number):
-        self._totalLibraryForState = number
-
-    @property
-    def totalLibrary(self):
-        return self._totalLibrary
-
-    @totalLibrary.setter
-    def totalLibrary(self, number):
-        self._totalLibrary = number
-
-    @property
-    def createDate(self):
-        return self._createDate
-
-    @createDate.setter
-    def createDate(self, number):
-        self._createDate = number
-
-
-class PercentLibraryPerAreaOfActivityPerState(Document):
-    _totalLibraryPerAreaOfActivityPerState = MapField(required=True)
-    _totalLibraryPerState = MapField(required=True)
-    _createDate = StringField(required=True)
-
-    @property
-    def totalLibraryPerAreaOfActivityPerState(self):
-        return self._totalLibraryPerAreaOfActivityPerState
-
-    @totalLibraryPerAreaOfActivityPerState.setter
-    def totalLibraryPerAreaOfActivityPerState(self, number):
-        self._totalLibraryPerAreaOfActivityPerState = number
-
-    @property
-    def totalLibraryPerState(self):
-        return self._totalLibraryPerState
-
-    @totalLibraryPerState.setter
-    def totalLibraryPerState(self, number):
-        self._totalLibraryPerState = number
-
-
-    @property
-    def createDate(self):
-        return self._createDate
-
-    @createDate.setter
-    def createDate(self, number):
-        self._createDate = number
+# --------------------- national indicators ----------------------------------
 
 
 class PercentLibraryPerAreaOfActivity(Document):
@@ -132,35 +73,18 @@ class PercentPublicOrPrivateLibrary(Document):
         self._createDate = number
 
 
-class PercentPublicOrPrivateLibraryPerState(Document):
-    _totalPublicLibraryPerState = MapField(required=True)
-    _totalPrivateLibraryPerState = MapField(required=True)
-    _totalLibraryPerState = MapField(required=True)
+# Percentage of libraries by type of sphere
+class PercentLibrariesTypeSphere:
+    _totalLibrariesTypeSphere = MapField(required=True)
     _createDate = StringField(required=True)
 
     @property
-    def totalPublicLibraryPerState(self):
-        return self._totalPublicLibraryPerState
+    def _totalLibrariesTypeSphere(self):
+        return self._totalLibrariesTypeSphere
 
-    @totalPublicLibraryPerState.setter
-    def totalPublicLibraryPerState(self, number):
-        self._totalPublicLibraryPerState = number
-
-    @property
-    def totalPrivateLibraryPerState(self):
-        return self._totalPrivateLibraryPerState
-
-    @totalPrivateLibraryPerState.setter
-    def totalPrivateLibraryPerState(self, number):
-        self._totalPrivateLibraryPerState = number
-
-    @property
-    def totalLibraryPerState(self):
-        return self._totalLibraryPerState
-
-    @totalLibraryPerState.setter
-    def totalLibraryPerState(self, number):
-        self._totalLibraryPerState = number
+    @_totalLibrariesTypeSphere.setter
+    def _totalLibrariesTypeSphere(self, number):
+        self._totalLibrariesTypeSphere = number
 
     @property
     def createDate(self):
@@ -200,6 +124,129 @@ class QuantityOfRegisteredLibrarys(Document):
     @totalLibrary.setter
     def totalLibrary(self, number):
         self._totalLibrary = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+# -------------------- state indicators --------------------------------------
+
+class PercentLibraryForState(Document):
+    _totalLibraryForState = MapField(required=True)
+    _totalLibrary = IntField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def totalLibraryForState(self):
+        return self._totalLibraryForState
+
+    @totalLibraryForState.setter
+    def totalLibraryForState(self, number):
+        self._totalLibraryForState = number
+
+    @property
+    def totalLibrary(self):
+        return self._totalLibrary
+
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+class PercentLibraryPerAreaOfActivityPerState(Document):
+    _totalLibraryPerAreaOfActivityPerState = MapField(required=True)
+    _totalLibraryPerState = MapField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def totalLibraryPerAreaOfActivityPerState(self):
+        return self._totalLibraryPerAreaOfActivityPerState
+
+    @totalLibraryPerAreaOfActivityPerState.setter
+    def totalLibraryPerAreaOfActivityPerState(self, number):
+        self._totalLibraryPerAreaOfActivityPerState = number
+
+    @property
+    def totalLibraryPerState(self):
+        return self._totalLibraryPerState
+
+    @totalLibraryPerState.setter
+    def totalLibraryPerState(self, number):
+        self._totalLibraryPerState = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+class PercentPublicOrPrivateLibraryPerState(Document):
+    _totalPublicLibraryPerState = MapField(required=True)
+    _totalPrivateLibraryPerState = MapField(required=True)
+    _totalLibraryPerState = MapField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def totalPublicLibraryPerState(self):
+        return self._totalPublicLibraryPerState
+
+    @totalPublicLibraryPerState.setter
+    def totalPublicLibraryPerState(self, number):
+        self._totalPublicLibraryPerState = number
+
+    @property
+    def totalPrivateLibraryPerState(self):
+        return self._totalPrivateLibraryPerState
+
+    @totalPrivateLibraryPerState.setter
+    def totalPrivateLibraryPerState(self, number):
+        self._totalPrivateLibraryPerState = number
+
+    @property
+    def totalLibraryPerState(self):
+        return self._totalLibraryPerState
+
+    @totalLibraryPerState.setter
+    def totalLibraryPerState(self, number):
+        self._totalLibraryPerState = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+# Percentage of libraries by type of sphere per state
+class PercentLibrariesTypeSpherePerState:
+    _totalLibrariesTypeSpherePerState = MapField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def _totalLibrariesTypeSpherePerState(self):
+        return self._totalLibrariesTypeSpherePerState
+
+    @_totalLibrariesTypeSpherePerState.setter
+    def _totalLibrariesTypeSpherePerState(self, number):
+        self._totalLibrariesTypeSpherePerState = number
 
     @property
     def createDate(self):
