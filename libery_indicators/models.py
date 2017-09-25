@@ -63,3 +63,24 @@ class PercentLiberyPerAreaOfActivity(Document):
     @totalLibery.setter
     def totalLibery(self, number):
         self._totalLibery = number
+
+
+class PercentLiberyPerSpherePerState(Document):
+    _totalLiberyPerSpherePerState = MapField(required=True)
+    _totalLiberyPerState = MapField(required=True)
+
+    @property
+    def totalLiberyPerSpherePerState(self):
+        return self._totalLiberyPerSpherePerState
+
+    @totalLiberyPerSpherePerState.setter
+    def totalLiberyPerSpherePerState(self, number):
+        self._totalLiberyPerSpherePerState = number
+
+    @property
+    def totalLiberyPerState(self):
+        return self._totalLibery
+
+    @totalLiberyPerState.setter
+    def totalLiberyPerState(self, number):
+        self._totalLiberyPerState = number
