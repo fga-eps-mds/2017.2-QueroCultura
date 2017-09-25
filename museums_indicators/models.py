@@ -46,3 +46,28 @@ class PercentPublicOrPrivateMuseums:
     _totalPublicMuseums = IntField(required = True)
     _totalPrivateMuseums = IntField(required = True)
     _totalMuseums = IntField(required = True)
+
+    @property
+    def totalPublicMuseums(self):
+        return self._totalPublicMuseums
+
+    @totalPublicMuseums.setter
+    def totalPublicMuseums(self,number):
+        self._totalPublicMuseums = number
+
+    @property
+    def totalPrivateMuseums(self):
+        return self._totalPrivateMuseums
+
+    @totalPrivateMuseums.setter
+    def totalPrivateMuseums(self,number):
+        self._totalPrivateMuseums = number
+
+    @property
+    def totalMuseums(self):
+        return self._totalMuseums
+
+    @totalMuseums.setter
+    def totalMuseums(self, number):
+        return self._totalMuseums = number
+    
