@@ -105,3 +105,63 @@ class PercentLiberyPerSphere(Document):
     @totalLibery.setter
     def totalLibery(self, number):
         self._totalLibery = number
+
+
+class PercentPublicOrPrivateLibery(Document):
+    _totalPublicLibery = IntField(required=True)
+    _totalPrivateLibery = IntField(required=True)
+    _totalLibery = IntField(required=True)
+
+    @property
+    def totalPublicLibery(self):
+        return self._totalPublicLibery
+
+    @totalPublicLibery.setter
+    def totalPublicLibery(self, number):
+        self._totalPublicLibery = number
+
+    @property
+    def totalPrivateLibery(self):
+        return self._totalPrivateLibery
+
+    @totalPrivateLibery.setter
+    def totalPrivateLibery(self, number):
+        self._totalPrivateLibery = number
+
+    @property
+    def totalLibery(self):
+        return self._totalLibery
+
+    @totalLibery.setter
+    def totalLibery(self, number):
+        self._totalLibery = number
+
+
+class PercentPublicOrPrivateLiberyPerState(Document):
+    _totalPublicLiberyPerState = MapField(required=True)
+    _totalPrivateLiberyPerState = MapField(required=True)
+    _totalLiberyPerState = MapField(required=True)
+
+    @property
+    def totalPublicLiberyPerState(self):
+        return self._totalPublicLiberyPerState
+
+    @totalPublicLiberyPerState.setter
+    def totalPublicLiberyPerState(self, number):
+        self._totalPublicLiberyPerState = number
+
+    @property
+    def totalPrivateLiberyPerState(self):
+        return self._totalPrivateLiberyPerState
+
+    @totalPrivateLiberyPerState.setter
+    def totalPrivateLiberyPerState(self, number):
+        self._totalPrivateLiberyPerState = number
+
+    @property
+    def totalLiberyPerState(self):
+        return self._totalLiberyPerState
+
+    @totalLiberyPerState.setter
+    def totalLiberyPerState(self, number):
+        self._totalLiberyPerState = number
