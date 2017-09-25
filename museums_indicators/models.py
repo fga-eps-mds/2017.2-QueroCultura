@@ -1,7 +1,7 @@
 from django.db import models
 from mongoengine import *
 
-class PercentThematicsMuseumsForState:
+class PercentThematicsMuseumsForState(Document):
     _thematicsMuseumsForState = MapField(required = True)
     _totalMuseumsForState = MapField(requiered = True)
 
@@ -10,7 +10,7 @@ class PercentThematicsMuseumsForState:
         return self._thematicsMuseumsForState
 
     @thmeaticsMuseumsForState.setter
-    def thmeaticsMuseumsForState(self,number):
+    def thmeaticsMuseumsForState(self, number):
         self._thematicsMuseumsForState = number
 
     @property
@@ -18,10 +18,11 @@ class PercentThematicsMuseumsForState:
         return self._totalMuseumsForState
 
     @totalMuseumsForState.setter
-    def totalMuseumsForState(self,number):
+    def totalMuseumsForState(self, number):
         self._totalMuseumsForState = number
 
-class PercentTypeMuseumsForState:
+
+class PercentTypeMuseumsForState(Document):
     _typeMuseumsForState = MapField(required = True)
     _totalMuseumsForState = MapField(required = True)
 
@@ -30,7 +31,7 @@ class PercentTypeMuseumsForState:
         return self._typeMuseumsForState
 
     @typeMuseumsForState.setter
-    def typeMuseumsForState(self,number):
+    def typeMuseumsForState(self, number):
         self._typeMuseumsForState = number
 
     @property
@@ -38,11 +39,11 @@ class PercentTypeMuseumsForState:
         return self._totalMuseumsForState
 
     @totalMuseumsForState.setter
-    def totalMuseumsForState(self,number):
+    def totalMuseumsForState(self, number):
         self._totalMuseumsForState = number
 
 
-class PercentPublicOrPrivateMuseums:
+class PercentPublicOrPrivateMuseums(Document):
     _totalPublicMuseums = IntField(required = True)
     _totalPrivateMuseums = IntField(required = True)
     _totalMuseums = IntField(required = True)
@@ -52,7 +53,7 @@ class PercentPublicOrPrivateMuseums:
         return self._totalPublicMuseums
 
     @totalPublicMuseums.setter
-    def totalPublicMuseums(self,number):
+    def totalPublicMuseums(self, number):
         self._totalPublicMuseums = number
 
     @property
@@ -60,7 +61,7 @@ class PercentPublicOrPrivateMuseums:
         return self._totalPrivateMuseums
 
     @totalPrivateMuseums.setter
-    def totalPrivateMuseums(self,number):
+    def totalPrivateMuseums(self, number):
         self._totalPrivateMuseums = number
 
     @property
@@ -69,5 +70,25 @@ class PercentPublicOrPrivateMuseums:
 
     @totalMuseums.setter
     def totalMuseums(self, number):
-        return self._totalMuseums = number
-    
+        self._totalMuseums = number
+
+
+class PercentMuseumsForState(Document):
+    _totalMuseumsForState = MapField(required = True)
+    _totalMuseums = IntField(required = True)
+
+    @property
+    def totalMuseumsForState(self):
+        return self._totalMuseumsForState
+
+    @totalMuseumsForState.setter
+    def totalMuseumsForState(self, number):
+        self._totalMuseumsForState = number
+
+    @property
+    def totalMuseums(self):
+        return self._totalMuseums
+
+    @totalMuseums.setter
+    def totalMuseums(self, number):
+        self._totalMuseums = number
