@@ -16,32 +16,41 @@
   <link href="static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="static/css/sb-admin.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/introjs.css"/>
+
+
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-light sidenav-toggled" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Quero Cultura</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Web site Tour">
+          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
+            <i class="fa fa-fw fa-map-signs"></i>
+            <span class="nav-link-text">Web site Tour</span>
+          </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-fw fa-file-text-o"></i>
             <span class="nav-link-text">Projetos</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Espaços">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-area-chart"></i>
+            <i class="fa fa-fw fa-building-o"></i>
             <span class="nav-link-text">Espaços</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-table"></i>
+            <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Agentes</span>
           </a>
         </li>
@@ -50,7 +59,7 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Eventos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
+            <i class="fa fa-fw fa-calendar-o"></i>
             <span class="nav-link-text">Eventos</span>
           </a>
         </li>
@@ -98,7 +107,38 @@
     <!-- Custom scripts for this page-->
     <script src="static/js/sb-admin-datatables.min.js"></script>
     <script src="static/js/sb-admin-charts.min.js"></script>
+    <script type = "text/javascript" src="static/intro.js"></script>
+
+
+    <script>
+  	var intro = introJs();
+  		 intro.setOptions({
+  			 steps: [
+
+  				 {
+  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados, vamos começar o tour !"
+  				 },
+
+  				 {
+
+  							intro: "<h2>Mapa</h2>Aqui no mapa você pode ver as últimas atualizações no site Mapas Culturais "
+  					},
+
+  					{
+
+  						 intro: '<h2>Indicadores</h2> Aqui você pode ver os indicadores clicando no botão: <img src="static/images/indicadoresButton.png"  height="35" width="35"  />',
+  					},
+
+
+  			]
+  		})
+
+
+  </script>
+
+
   </div>
+
 </body>
 
 </html>
