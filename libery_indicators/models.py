@@ -5,6 +5,7 @@ from mongoengine import *
 class PercentLibraryForState(Document):
     _totalLibraryForState = MapField(required=True)
     _totalLibrary = IntField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalLibraryForState(self):
@@ -22,10 +23,19 @@ class PercentLibraryForState(Document):
     def totalLibrary(self, number):
         self._totalLibrary = number
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 
 class PercentLibraryPerAreaOfActivityPerState(Document):
     _totalLibraryPerAreaOfActivityPerState = MapField(required=True)
     _totalLibraryPerState = MapField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalLibraryPerAreaOfActivityPerState(self):
@@ -44,9 +54,19 @@ class PercentLibraryPerAreaOfActivityPerState(Document):
         self._totalLibraryPerState = number
 
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
 class PercentLibraryPerAreaOfActivity(Document):
     _totalLibraryPerAreaOfActivity = MapField(required=True)
     _totalLibrary = IntField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalLibraryPerAreaOfActivity(self):
@@ -64,10 +84,19 @@ class PercentLibraryPerAreaOfActivity(Document):
     def totalLibrary(self, number):
         self._totalLibrary = number
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 
 class PercentLibraryPerSpherePerState(Document):
     _totalLibraryPerSpherePerState = MapField(required=True)
     _totalLibraryPerState = MapField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalLibraryPerSpherePerState(self):
@@ -85,10 +114,19 @@ class PercentLibraryPerSpherePerState(Document):
     def totalLibraryPerState(self, number):
         self._totalLibraryPerState = number
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 
 class PercentLibraryPerSphere(Document):
     _totalLibraryPerSphere = MapField(required=True)
     _totalLibrary = MapField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalLibraryPerSphere(self):
@@ -106,11 +144,20 @@ class PercentLibraryPerSphere(Document):
     def totalLibrary(self, number):
         self._totalLibrary = number
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 
 class PercentPublicOrPrivateLibrary(Document):
     _totalPublicLibrary = IntField(required=True)
     _totalPrivateLibrary = IntField(required=True)
     _totalLibrary = IntField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalPublicLibrary(self):
@@ -136,11 +183,20 @@ class PercentPublicOrPrivateLibrary(Document):
     def totalLibrary(self, number):
         self._totalLibrary = number
 
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 
 class PercentPublicOrPrivateLibraryPerState(Document):
     _totalPublicLibraryPerState = MapField(required=True)
     _totalPrivateLibraryPerState = MapField(required=True)
     _totalLibraryPerState = MapField(required=True)
+    _createDate = StringField(required=True)
 
     @property
     def totalPublicLibraryPerState(self):
@@ -166,19 +222,28 @@ class PercentPublicOrPrivateLibraryPerState(Document):
     def totalLibraryPerState(self, number):
         self._totalLibraryPerState = number
 
+    @property
+    def createDate(self):
+        return self._createDate
 
-class QuantityOfRegisteredLibrarys:
-    _totalLibrarysRegisteredPerMouth = MapField(required=True)
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+class QuantityOfRegisteredLibrarys(Document):
+    _totalLibrarysRegisteredPerMounthPerYear = MapField(required=True)
     _totalLibrarysRegisteredPerYear = MapField(required=True)
     _totalLibrarys = IntField(required=True)
+    _createDate = StringField(required=True)
 
     @property
-    def totalLibrarysRegisteredPerMouth(self):
-        return self._totalLibrarysRegisteredPerMouth
+    def totalLibrarysRegisteredPerMounthPerYear(self):
+        return self._totalLibrarysRegisteredPerMounthPerYear
 
-    @totalLibrarysRegisteredPerMouth.setter
-    def totalLibrarysRegisteredPerMouth(self, number):
-        self._totalLibrarysRegisteredPerMouth = number
+    @totalLibrarysRegisteredPerMounthPerYear.setter
+    def totalLibrarysRegisteredPerMounthPerYear(self, number):
+        self._totalLibrarysRegisteredPerMounthPerYear = number
 
     @property
     def totalLibrarysRegisteredPerYear(self):
@@ -187,3 +252,19 @@ class QuantityOfRegisteredLibrarys:
     @totalLibrarysRegisteredPerYear.setter
     def totalLibrarysRegisteredPerYear(self, number):
         self._totalLibrarysRegisteredPerYear = number
+
+    @property
+    def totalLibrary(self):
+        return self._totalLibrary
+
+    @totalLibrary.setter
+    def totalLibrary(self, number):
+        self._totalLibrary = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
