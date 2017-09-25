@@ -66,6 +66,68 @@ class PercentProjectThatAcceptOnlineTransitions(Document):
     def createDate(self, number):
         self._createDate = number
 
+# -------------------- state indicators --------------------------------------
+
+
+class PercentProjectPerTypePerState(Document):
+    _totalProjectPerState = MapField(required=True)
+    _totaProjectPerTypePerState = MapField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def totalProjectPerState(self):
+        return self._totalProjectPerState
+
+    @totalProjectPerState.setter
+    def totalProjectPerState(self, number):
+        self._totalProjectPerState = number
+
+    @property
+    def totalProjectPerTypePerState(self):
+        return self._totalProjectPerTypePerState
+
+    @totalProjectPerTypePerState.setter
+    def totalProjectPerTypePerState(self, number):
+        self._totalProjectPerTypePerState = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
+
+class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
+    _totalProjectThatAcceptOnlineTransitionsPerState = MapField(required=True)
+    _totalProjectPerState = MapField(required=True)
+    _createDate = StringField(required=True)
+
+    @property
+    def totalProjectPerState(self):
+        return self._totalProjectPerState
+
+    @totalProjectPerState.setter
+    def totalProjectPerState(self, number):
+        self._totalProjecPerStatet = number
+
+    @property
+    def totalProjectThatAcceptOnlineTransitionsPerState(self):
+        return self._totalProjectThatAcceptOnlineTransitionsPerState
+
+    @totalProjectThatAcceptOnlineTransitionsPerState.setter
+    def totalProjectThatAcceptOnlineTransitionsPerState(self, number):
+        self._totalProjectThatAcceptOnlineTransitionsPerState = number
+
+    @property
+    def createDate(self):
+        return self._createDate
+
+    @createDate.setter
+    def createDate(self, number):
+        self._createDate = number
+
 # -------------------- Project Registered -------------------------------------
 
 
