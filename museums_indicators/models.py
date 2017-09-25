@@ -1,9 +1,10 @@
 from django.db import models
 from mongoengine import *
 
+
 class PercentThematicsMuseumsForState(Document):
-    _thematicsMuseumsForState = MapField(required = True)
-    _totalMuseumsForState = MapField(requiered = True)
+    _thematicsMuseumsForState = MapField(required=True)
+    _totalMuseumsForState = MapField(requiered=True)
 
     @property
     def thmeaticsMuseumsForState(self):
@@ -23,8 +24,8 @@ class PercentThematicsMuseumsForState(Document):
 
 
 class PercentTypeMuseumsForState(Document):
-    _typeMuseumsForState = MapField(required = True)
-    _totalMuseumsForState = MapField(required = True)
+    _typeMuseumsForState = MapField(required=True)
+    _totalMuseumsForState = MapField(required=True)
 
     @property
     def typeMuseumsForState(self):
@@ -44,9 +45,9 @@ class PercentTypeMuseumsForState(Document):
 
 
 class PercentPublicOrPrivateMuseums(Document):
-    _totalPublicMuseums = IntField(required = True)
-    _totalPrivateMuseums = IntField(required = True)
-    _totalMuseums = IntField(required = True)
+    _totalPublicMuseums = IntField(required=True)
+    _totalPrivateMuseums = IntField(required=True)
+    _totalMuseums = IntField(required=True)
 
     @property
     def totalPublicMuseums(self):
@@ -74,8 +75,8 @@ class PercentPublicOrPrivateMuseums(Document):
 
 
 class PercentMuseumsForState(Document):
-    _totalMuseumsForState = MapField(required = True)
-    _totalMuseums = IntField(required = True)
+    _totalMuseumsForState = MapField(required=True)
+    _totalMuseums = IntField(required=True)
 
     @property
     def totalMuseumsForState(self):

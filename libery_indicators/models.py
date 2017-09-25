@@ -1,9 +1,10 @@
 from django.db import models
 from mongoengine import *
 
+
 class PercentLiberyForState(Document):
-    _totalLiberyForState = MapField(required = True)
-    _totalLibery = IntField(required = True)
+    _totalLiberyForState = MapField(required=True)
+    _totalLibery = IntField(required=True)
 
     @property
     def totalLiberyForState(self):
@@ -23,8 +24,8 @@ class PercentLiberyForState(Document):
 
 
 class PercentLiberyPerAreaOfActivityPerState(Document):
-    _totalLiberyPerAreaOfActivityPerState = MapField(required = True)
-    _totalLiberyPerState = MapField(required = True)
+    _totalLiberyPerAreaOfActivityPerState = MapField(required=True)
+    _totalLiberyPerState = MapField(required=True)
 
     @property
     def totalLiberyPerAreaOfActivityPerState(self):
@@ -44,8 +45,8 @@ class PercentLiberyPerAreaOfActivityPerState(Document):
 
 
 class PercentLiberyPerAreaOfActivity(Document):
-    _totalLiberyPerAreaOfActivity = MapField(required = True)
-    _totalLibery = IntField(required = True)
+    _totalLiberyPerAreaOfActivity = MapField(required=True)
+    _totalLibery = IntField(required=True)
 
     @property
     def totalLiberyPerAreaOfActivity(self):
