@@ -17,6 +17,15 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
+
+function initTime(){
+	var getTimeNow = new Date();
+	    getTimeNow.setHours(getTimeNow.getHours() - 1, getTimeNow.getMinutes()-1);
+	    getTimeNow = getTimeNow.toJSON();
+
+	    return getTimeNow;
+}
+
 function getPoints(){
 	getSpace();
 	getEvent();
@@ -25,14 +34,15 @@ function getPoints(){
 }
 
 function getSpace(){	
+		
 
-	var getTimeNow = new Date();
-	    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes()-1);
-	    getTimeNow = getTimeNow.toJSON();
+		var getTimeNow = initTime();
+
+		console.log(getTimeNow);
 
 	    markersSpace.clearLayers();;
 
-	    var greenMarker = L.icon({
+	    var redMarker = L.icon({
 	    	iconUrl: "static/images/markerSpace.gif",
 	    	iconSize: [20,20],
 	    });
@@ -41,7 +51,7 @@ function getSpace(){
 	      'http://mapas.cultura.gov.br/api/space/find',
 
 	      {
-	        '@select' : 'id, name, location',
+	        '@select' : 'name, location',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -53,7 +63,7 @@ function getSpace(){
             	if((data[i]["location"]).length != 0){
 	            	var marker = L.marker([data[i]["location"]["latitude"], 
 	            							data[i]["location"]["longitude"]], 
-	            							{icon: greenMarker}).addTo(markersEvent);
+	            							{icon: redMarker}).addTo(markersSpace);
             	}
 	        	
             }
@@ -64,13 +74,11 @@ function getSpace(){
 
 function getAgent(){	
 
-	var getTimeNow = new Date();
-	    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes()-1);
-	    getTimeNow = getTimeNow.toJSON();
+		var getTimeNow = initTime();
 
 	    markersAgent.clearLayers();;
 
-	    var greenMarker = L.icon({
+	    var blueMarker = L.icon({
 	    	iconUrl: "static/images/markerAgent.gif",
 	    	iconSize: [20,20],
 	    });
@@ -79,7 +87,7 @@ function getAgent(){
 	      'http://mapas.cultura.gov.br/api/agent/find',
 
 	      {
-	        '@select' : 'id, name, location',
+	        '@select' : 'name, location',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -91,7 +99,7 @@ function getAgent(){
             	if((data[i]["location"]).length != 0){
 	            	var marker = L.marker([data[i]["location"]["latitude"], 
 	            							data[i]["location"]["longitude"]], 
-	            							{icon: greenMarker}).addTo(markersAgent);
+	            							{icon: blueMarker}).addTo(markersAgent);
             	}
 	        	
             }
@@ -102,9 +110,7 @@ function getAgent(){
 
 function getEvent(){	
 
-	var getTimeNow = new Date();
-	    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes()-1);
-	    getTimeNow = getTimeNow.toJSON();
+		var getTimeNow = initTime();
 
 	    markersEvent.clearLayers();
 		
@@ -117,7 +123,7 @@ function getEvent(){
 	      'http://mapas.cultura.gov.br/api/event/find',
 
 	      {
-	        '@select' : 'id, name, occurrences.{space.{location}}',
+	        '@select' : 'name, occurrences.{space.{location}}',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -141,14 +147,12 @@ function getEvent(){
 
 function getProject(){	
 
-	var getTimeNow = new Date();
-	    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes()-1);
-	    getTimeNow = getTimeNow.toJSON();
+		var getTimeNow = initTime();
 
 	    markersProject.clearLayers();
 		
 	    var greenMarker = L.icon({
-	    	iconUrl: "static/images/markerAgent.gif",
+	    	iconUrl: "static/images/markerProject.gif",
 	    	iconSize: [20,20],
 	    });
 
@@ -156,7 +160,7 @@ function getProject(){
 	      'http://mapas.cultura.gov.br/api/project/find',
 
 	      {
-	        '@select' : 'id, name, occurrences.{space.{location}}',
+	        '@select' : 'id, name, owner.location',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -164,19 +168,18 @@ function getProject(){
 
 	    promise.then(function(data) {
 
-            console.log(data);
-/*
+            
             for(var i=0; i < data.length; i++){
-            	if((data[i]["occurrences"]).length != 0){
-	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"], 
-	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]], 
+            	if(data[i]["owner"] != null){
+	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"], 
+	            							data[i]["owner"]["location"]["longitude"]], 
 	            							{icon: greenMarker}).addTo(markersProject);
             	}
 	        		
             }
             
             
-*/
+
 			map.addLayer(markersProject);
           
 	    });
