@@ -185,12 +185,12 @@ class QuantityOfRegisteredSpace(Document):
         self._totalSpaceRegisteredPerYear = number
 
     @property
-    def totalLibrary(self):
-        return self._totalLibrary
+    def totalSpace(self):
+        return self._totalSpace
 
-    @totalLibrary.setter
-    def totalLibrary(self, number):
-        self._totalLibrary = number
+    @totalSpace.setter
+    def totalSpace(self, number):
+        self._totalSpace = number
 
     @property
     def createDate(self):

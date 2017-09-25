@@ -184,12 +184,12 @@ class QuantityOfRegisteredEvents(Document):
         self._totalEventsRegisteredPerYear = number
 
     @property
-    def totalLibrary(self):
-        return self._totalLibrary
+    def totalEvents(self):
+        return self._totalEvents
 
-    @totalLibrary.setter
-    def totalLibrary(self, number):
-        self._totalLibrary = number
+    @totalEvents.setter
+    def totalEvents(self, number):
+        self._totalEvents = number
 
     @property
     def createDate(self):
