@@ -6,14 +6,14 @@
 [![Test Coverage](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/coverage.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/coverage)
 [![AUR](https://img.shields.io/aur/license/yaourt.svg?colorB=ff69b4)](https://github.com/fga-gpp-mds/2017.2-QueroCultura/blob/devel/LICENSE)
 
-O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura (MinC) por meio do [Mapas Culturais](http://mapas.cultura.gov.br/). O Mapas Culturais é um software livre para mapeamento colaborativo e gestão da cultura.
-O Quero Cultura tem como objetivos, a visualização dos dados de eventos, projetos e espaços culturais e o relacionamento dos mesmos por meio de indicadores.
+O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura (MinC) por meio do [_Mapas Culturais_](http://mapas.cultura.gov.br/). O _Mapas Culturais_ é um software livre para mapeamento colaborativo e gestão da cultura.
+O Quero Cultura tem como objetivos a visualização dos dados de eventos, projetos e espaços culturais e o relacionamento dos mesmos por meio de indicadores.
 
-O repositório é mantido e gerenciado por alunos de Engenharia de Software da Universidade de Brasília no campus Gama (UnB/FGA). A equipe de alunos é reponsável pela ordem do repositório e compromente-se a ajudar e orientar a todos que desejam contribuir. Caso possua interesse, consulte nossas [políticas do repositório](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Pol%C3%ADticas-de-Reposit%C3%B3rio). Dúvidas ou sugestões devem ser encaminhada aos [gestores do projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Contatos).
+O repositório é mantido e gerenciado por alunos de Engenharia de Software da Universidade de Brasília no campus Gama (UnB/FGA). A equipe de alunos é reponsável pela ordem do repositório e compromente-se a ajudar e orientar a todos que desejam contribuir. Caso possua interesse, consulte nossas [políticas](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Pol%C3%ADticas-de-Reposit%C3%B3rio). Dúvidas ou sugestões devem ser encaminhada aos [gestores do projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Contatos).
 
 >## Ambiente de Desenvolvimento
 
-O Quero Cultura utiliza o Docker para configuração e automatização do ambiente de desenvolvimento. Os passos a seguir podem ser seguidos para executar a aplicação:
+O Quero Cultura utiliza a plataforma [Docker](https://www.docker.com/what-docker) para isolamento, criação e automação do ambiente de desenvolvimento para evitar problemas de compatibilidade. Os passos abaixo podem ser seguidos para executar a aplicação usando a plataforma:
 
 1. Instale o [docker](https://docs.docker.com/engine/installation/)
 2. Instale o [docker compose](https://docs.docker.com/compose/install/)
@@ -27,8 +27,8 @@ O Quero Cultura utiliza o Docker para configuração e automatização do ambien
   ```
   
 >## Mais informações
-Mais informações podem ser obtidas consultando os links abaixo.
-* [Visão geral](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki)
+Informações adicionais podem ser obtidas consultando os links abaixo.
+* [Visão Geral do Projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki)
 * [Termo de Abertura](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Termo-de-Abertura-do-Projeto)
 * [Plano de Gerenciamento do Projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Plano-de-Gerenciamento-do-Projeto)
   
