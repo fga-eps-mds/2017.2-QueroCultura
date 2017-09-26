@@ -151,17 +151,17 @@ class PercentAgentsForState(Document):
 
 
 class PercentAgentsPerAreaOperationForState(Document):
-    _totalAgentsPerAreaOrerationForState = MapField(required=True)
+    _totalAgentsPerAreaOperationForState = MapField(required=True)
     _totalAgentsForState = MapField(required=True)
     _createDate = StringField(required=True)
 
     @property
-    def total_agents_per_area_oreration_for_State(self):
-        return self._totalAgentsPerAreaOrerationForState
+    def total_agents_per_area_operation_for_state(self):
+        return self._totalAgentsPerAreaOperationForState
 
-    @total_agents_per_area_oreration_for_state.setter
-    def total_agents_per_area_oreration_for_state(self, number):
-        self._totalAgentsPerAreaOrerationForState = number
+    @total_agents_per_area_operation_for_state.setter
+    def total_agents_per_area_operation_for_state(self, number):
+        self._totalAgentsPerAreaOperationForState = number
 
     @property
     def total_agents_for_state(self):
