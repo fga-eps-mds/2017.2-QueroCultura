@@ -13,27 +13,27 @@ class PercentEventsPerLanguage(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalEvents(self):
+    def total_events(self):
         return self._totalEvents
 
-    @totalEvents.setter
-    def totalEvents(self, number):
+    @total_events.setter
+    def total_events(self, number):
         self._totalEvents = number
 
     @property
-    def totalEventsPerLanguage(self):
+    def total_events_per_language(self):
         return self._totalEventsPerLanguage
 
-    @totalEventsPerLanguage.setter
-    def totalEventsPerLanguage(self, number):
+    @total_events_per_language.setter
+    def total_events_per_language(self, number):
         self._totalEventsPerLanguage = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -43,27 +43,27 @@ class PercentEventsPerAgeRange(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalEvents(self):
+    def total_events(self):
         return self._totalEvents
 
-    @totalEvents.setter
+    @total_events.setter
     def totalEvents(self, number):
         self._totalEvents = number
 
     @property
-    def totalEventsPerAgeRange(self):
+    def total_events_per_age_range(self):
         return self._totalEventsPerAgeRange
 
-    @totalEventsPerAgeRange.setter
-    def totalEventsPerAgeRange(self, number):
+    @total_events_per_age_range.setter
+    def total_events_per_age_range(self, number):
         self._totalEventsPerAgeRange = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 # -------------------- state indicators --------------------------------------
@@ -75,27 +75,27 @@ class PercentTypeEventsForState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def typeStateEvents(self):
+    def type_state_events(self):
         return self._typeStateEvents
 
-    @typeStateEvents.setter
-    def typeStateEvents(self, number):
+    @type_state_events.setter
+    def type_state_events(self, number):
         self._typeStateEvents = number
 
     @property
-    def totalStateEvents(self):
+    def total_state_events(self):
         return self._totalStateEvents
 
-    @totalStateEvents.setter
-    def totalStateEvents(self, number):
+    @total_state_events.setter
+    def total_state_events(self, number):
         self._totalStateEvents = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -105,27 +105,27 @@ class PercentEventsPerLanguagePerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalEventsPerState(self):
+    def total_events_per_state(self):
         return self._totalEventsPerState
 
-    @totalEventsPerState.setter
-    def totalEventsPerState(self, number):
+    @total_events_per_state.setter
+    def total_events_per_state(self, number):
         self._totalEvents = number
 
     @property
-    def totalEventsPerLanguagePerState(self):
+    def total_events_per_language_per_state(self):
         return self._totalEventsPerLanguage
 
-    @totalEventsPerLanguagePerState.setter
-    def totalEventsPerLanguagePerState(self, number):
+    @total_events_per_language_per_state.setter
+    def total_events_per_language_per_state(self, number):
         self._totalEventsPerLanguage = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -135,27 +135,27 @@ class PercentEventsPerAgeRangePerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalEventsPerState(self):
+    def total_events_per_state(self):
         return self._totalEventsPerState
 
-    @totalEventsPerState.setter
-    def totalEventsPerState(self, number):
+    @total_events_per_state.setter
+    def total_events_per_state(self, number):
         self._totalEventsPerState = number
 
     @property
-    def totalEventsPerAgeRangePerState(self):
+    def total_events_per_age_range_per_state(self):
         return self._totalEventsPerAgeRangePerState
 
-    @totalEventsPerAgeRangePerState.setter
-    def totalEventsPerAgeRange(self, number):
+    @total_events_per_age_range_per_state.setter
+    def total_events_per_age_range(self, number):
         self._totalEventsPerAgeRangePerState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 # -------------------- Events Registered --------------------------------------
@@ -168,33 +168,33 @@ class QuantityOfRegisteredEvents(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalEventsRegisteredPerMounthPerYear(self):
+    def total_events_registered_per_mounth_per_year(self):
         return self._totalEventsRegisteredPerMounthPerYear
 
-    @totalEventsRegisteredPerMounthPerYear.setter
-    def totalEventsRegisteredPerMounthPerYear(self, number):
+    @total_events_registered_per_mounth_per_year.setter
+    def total_events_registered_per_mounth_per_year(self, number):
         self._totalEventsRegisteredPerMounthPerYear = number
 
     @property
-    def totalEventsRegisteredPerYear(self):
+    def total_events_registered_per_year(self):
         return self._totalEventsRegisteredPerYear
 
-    @totalEventsRegisteredPerYear.setter
-    def totalEventsRegisteredPerYear(self, number):
+    @total_events_registered_per_year.setter
+    def total_events_registered_per_year(self, number):
         self._totalEventsRegisteredPerYear = number
 
     @property
-    def totalEvents(self):
+    def total_events(self):
         return self._totalEvents
 
-    @totalEvents.setter
-    def totalEvents(self, number):
+    @total_events.setter
+    def total_events(self, number):
         self._totalEvents = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
