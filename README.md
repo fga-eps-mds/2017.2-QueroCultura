@@ -1,15 +1,19 @@
 
 >## O Projeto Quero Cultura
-[![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura) 
-[![Coverage Status](https://coveralls.io/repos/github/fga-gpp-mds/2017.2-QueroCultura/badge.svg?branch=master)](https://coveralls.io/github/fga-gpp-mds/2017.2-QueroCultura?branch=master)
-[![AUR](https://img.shields.io/aur/license/yaourt.svg?colorB=ff69b4)]()
+[![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
+[![Code Health](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master/landscape.svg?style=flat)](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master)
+[![Code Climate](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/gpa.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura)
+[![Test Coverage](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/coverage.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/coverage)
+[![AUR](https://img.shields.io/aur/license/yaourt.svg?colorB=ff69b4)](https://github.com/fga-gpp-mds/2017.2-QueroCultura/blob/devel/LICENSE)
 
-O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura por meio do [Mapas Culturais](http://mapas.cultura.gov.br/). O Mapas Culturais é um software livre para mapeamento colaborativo e gestão da cultura.
+O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura (MinC) por meio do [Mapas Culturais](http://mapas.cultura.gov.br/). O Mapas Culturais é um software livre para mapeamento colaborativo e gestão da cultura.
 O Quero Cultura tem como objetivos, a visualização dos dados de eventos, projetos e espaços culturais e o relacionamento dos mesmos por meio de indicadores.
+
+O repositório é mantido e gerenciado por alunos de Engenharia de Software da Universidade de Brasília no campus Gama (UnB/FGA). A equipe de alunos é reponsável pela ordem do repositório e compromente-se a ajudar e orientar a todos que desejam contribuir. Caso possua interesse, consulte nossas [políticas do repositório](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Pol%C3%ADticas-de-Reposit%C3%B3rio). Dúvidas ou sugestões devem ser encaminhada aos [gestores do projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Contatos).
 
 >## Ambiente de Desenvolvimento
 
-O Quero Cultura utiliza o Docker para automatizaço de ambiente. Para contribuir com o projeto siga os passos a seguir:
+O Quero Cultura utiliza o Docker para configuração e automatização do ambiente de desenvolvimento. Os passos a seguir podem ser seguidos para executar a aplicação:
 
 1. Instale o [docker](https://docs.docker.com/engine/installation/)
 2. Instale o [docker compose](https://docs.docker.com/compose/install/)
@@ -17,29 +21,17 @@ O Quero Cultura utiliza o Docker para automatizaço de ambiente. Para contribuir
   ```
   git clone https://github.com/fga-gpp-mds/2017.2-QueroCultura
   ```
-4. Crie e inicie os containers para o serviço:
+4. Crie e inicie os containers para os serviços:
   ```
   docker-compose up
   ```
+  
+>## Mais informações
+Mais informações podem ser obtidas consultando os links abaixo.
+* [Visão geral](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki)
+* [Termo de Abertura](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Termo-de-Abertura-do-Projeto)
+* [Plano de Gerenciamento do Projeto](https://github.com/fga-gpp-mds/2017.2-QueroCultura/wiki/Plano-de-Gerenciamento-do-Projeto)
+  
+>## Licença
 
->## Desenvolvendo com Docker e Docker Compose
-Para os desenvolvedores que não possuem experiência com o desenvolvimento usado o docker e o docker compose, são apresentados alguns comandos abaixo que podem auxiliar aos contribuintes do repositório.
-Mas antes, conheçamos os objetos do docker:
-
->* Imagens: Modelos somente leitura com instruções para criar um container.
->* Containers: Instância executável de uma imagem.
->* Serviços: Permite a escala de vários containers, de forma que trabalhem juntos.
-
-Comandos do Docker:
-- `docker ps` : Lista os containers em execução. Com uso da flag `-a`, lista todos os containers.
-- `docker images` : Lista imagens.
-- `docker rm my-conatainer` : Remove o container `my-container`.
-- `docker rmi my-image` : Remove a imagem `my-image`.
-
-Comandos do Docker Compose:
-- `docker-compose up` : Constrói as imagens, (re)cria, inicia e anexa containers a um serviço. A flag `-d` executa os cantainers em segundo plano.
-- `docker-compose down` : Termina a execução dos containers, os remove e remove networks, volumes e imagens criados por `up`.
-- `docker-compose stop` : Termina a execução dos containers sem removê-los.
-- `docker-compose start` : Inicia containers existentes para um serviço.
-- `docker-compose logs` : Exibe saída de log dos serviços, a flag `-f` segue a saída de log.
-- `docker-compose exec web bash` : Executa o comado `bash` no serviço `web`.
+[GNU General Public License v3.0](https://github.com/fga-gpp-mds/2017.2-QueroCultura/blob/master/LICENSE)
