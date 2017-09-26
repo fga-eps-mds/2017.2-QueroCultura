@@ -11,12 +11,11 @@ python-targets:
   - 3
 pep8:
   full: true
-  
 pep257:
   disable:
-	-D101
-	-D100
-	-D102
+  - D101
+  - D100
+  - D102
 pylint:
   options:
     docstring-min-length: 10
