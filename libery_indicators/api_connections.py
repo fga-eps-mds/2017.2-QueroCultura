@@ -1,6 +1,5 @@
 import requests
 import json
-# from datetime import datetime, timedelta
 
 
 class RequestLibraryRawData(object):
@@ -24,12 +23,3 @@ class RequestLibraryRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
-
-'''
-#Código para testar o funcionamento da classe.
-get_time = datetime.now() - timedelta(days=50)
-museu = RequestLibraryRawData(get_time.__str__())
-print(museu.data[1])
-print(museu.data_length)
-'''
