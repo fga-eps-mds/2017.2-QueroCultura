@@ -1,4 +1,4 @@
-#from django.db import models
+# from django.db import models
 from mongoengine import Document
 from mongoengine import MapField
 from mongoengine import IntField
@@ -67,7 +67,7 @@ class AmountAgentsRegisteredPerYear(Document):
         self._createDate = number
 
 
-# Number of agents registered per month on the platform throughout its existence
+# Number of agents registered monthly on the platform throughout its existence
 class AmountAgentsRegisteredPerMonth(Document):
     _totalAgentsRegisteredPerMonth = MapField(required=True)
     _createDate = StringField(required=True)
