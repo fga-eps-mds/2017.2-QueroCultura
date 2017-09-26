@@ -17,29 +17,31 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
+// function returns hour now with 5 minutes delay
 
-function initTime(){
+function InitTime(){
+
 	var getTimeNow = new Date();
-	    getTimeNow.setHours(getTimeNow.getHours() - 1, getTimeNow.getMinutes()-1);
-	    getTimeNow = getTimeNow.toJSON();
+    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes() - 5);
+    getTimeNow = getTimeNow.toJSON();
 
-	    return getTimeNow;
+	return getTimeNow;
 }
 
-function getPoints(){
-	getSpace();
-	getEvent();
-	getAgent();
-	getProject();
+function MarkersPoints(){
+	
+	SpaceMarkers();
+	EventMarkers();
+	AgentMarkers();
+	ProjectMarkers();
+
 }
 
-function getSpace(){	
-		
+// creating space markers
 
-		var getTimeNow = initTime();
+function SpaceMarkers(){			
 
-		console.log(getTimeNow);
-
+		var getTimeNow = InitTime();
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
@@ -60,21 +62,23 @@ function getSpace(){
 	    promise.then(function(data) {
 
             for(var i=0; i < data.length; i++){
-            	if((data[i]["location"]).length != 0){
+            	if(data[i]["location"] != null){
 	            	var marker = L.marker([data[i]["location"]["latitude"], 
 	            							data[i]["location"]["longitude"]], 
 	            							{icon: redMarker}).addTo(markersSpace);
+	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
             	}
-	        	
             }
 
             map.addLayer(markersSpace);
 	    });
 }
 
-function getAgent(){	
+// creating Agents markers
 
-		var getTimeNow = initTime();
+function AgentMarkers(){	
+
+		var getTimeNow = InitTime();
 
 	    markersAgent.clearLayers();;
 
@@ -96,25 +100,26 @@ function getAgent(){
 	    promise.then(function(data) {
 
             for(var i=0; i < data.length; i++){
-            	if((data[i]["location"]).length != 0){
+            	if(data[i]["location"] != null){
 	            	var marker = L.marker([data[i]["location"]["latitude"], 
 	            							data[i]["location"]["longitude"]], 
 	            							{icon: blueMarker}).addTo(markersAgent);
+	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
             	}
-	        	
             }
 
             map.addLayer(markersAgent);
 	    });
 }
 
-function getEvent(){	
+// creating events markers
 
-		var getTimeNow = initTime();
+function EventMarkers(){	
 
+		var getTimeNow = InitTime();
 	    markersEvent.clearLayers();
 		
-	    var greenMarker = L.icon({
+	    var yellowMarker = L.icon({
 	    	iconUrl: "static/images/markerEvent.gif",
 	    	iconSize: [20,20],
 	    });
@@ -135,9 +140,9 @@ function getEvent(){
             	if((data[i]["occurrences"]).length != 0){
 	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"], 
 	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]], 
-	            							{icon: greenMarker}).addTo(markersEvent);
-            	}
-	        	
+	            							{icon: yellowMarker}).addTo(markersEvent);
+	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
+            	} 	
             }
             
             map.addLayer(markersEvent);
@@ -145,10 +150,11 @@ function getEvent(){
 	    });
 }
 
-function getProject(){	
+// creating projects markers
 
-		var getTimeNow = initTime();
+function ProjectMarkers(){	
 
+		var getTimeNow = InitTime();
 	    markersProject.clearLayers();
 		
 	    var greenMarker = L.icon({
@@ -160,7 +166,7 @@ function getProject(){
 	      'http://mapas.cultura.gov.br/api/project/find',
 
 	      {
-	        '@select' : 'id, name, owner.location',
+	        '@select' : 'name, owner.location',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -174,14 +180,11 @@ function getProject(){
 	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"], 
 	            							data[i]["owner"]["location"]["longitude"]], 
 	            							{icon: greenMarker}).addTo(markersProject);
-            	}
-	        		
+	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
+            	}     		
             }
-            
-            
 
 			map.addLayer(markersProject);
           
 	    });
-
 }
