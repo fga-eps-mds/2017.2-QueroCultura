@@ -29,7 +29,7 @@ function InitTime(){
 }
 
 function MarkersPoints(){
-	
+
 	SpaceMarkers();
 	EventMarkers();
 	AgentMarkers();
@@ -39,7 +39,7 @@ function MarkersPoints(){
 
 // creating space markers
 
-function SpaceMarkers(){			
+function SpaceMarkers(){
 
 		var getTimeNow = InitTime();
 	    markersSpace.clearLayers();;
@@ -53,7 +53,7 @@ function SpaceMarkers(){
 	      'http://mapas.cultura.gov.br/api/space/find',
 
 	      {
-	        '@select' : 'name, location',
+	        '@select' : 'name, location, singleUrl',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -63,10 +63,10 @@ function SpaceMarkers(){
 
             for(var i=0; i < data.length; i++){
             	if(data[i]["location"] != null){
-	            	var marker = L.marker([data[i]["location"]["latitude"], 
-	            							data[i]["location"]["longitude"]], 
+	            	var marker = L.marker([data[i]["location"]["latitude"],
+	            							data[i]["location"]["longitude"]],
 	            							{icon: redMarker}).addTo(markersSpace);
-	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
 
@@ -76,7 +76,7 @@ function SpaceMarkers(){
 
 // creating Agents markers
 
-function AgentMarkers(){	
+function AgentMarkers(){
 
 		var getTimeNow = InitTime();
 
@@ -91,7 +91,7 @@ function AgentMarkers(){
 	      'http://mapas.cultura.gov.br/api/agent/find',
 
 	      {
-	        '@select' : 'name, location',
+	        '@select' : 'name, location, singleUrl ',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -101,10 +101,10 @@ function AgentMarkers(){
 
             for(var i=0; i < data.length; i++){
             	if(data[i]["location"] != null){
-	            	var marker = L.marker([data[i]["location"]["latitude"], 
-	            							data[i]["location"]["longitude"]], 
+	            	var marker = L.marker([data[i]["location"]["latitude"],
+	            							data[i]["location"]["longitude"]],
 	            							{icon: blueMarker}).addTo(markersAgent);
-	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
 
@@ -114,11 +114,11 @@ function AgentMarkers(){
 
 // creating events markers
 
-function EventMarkers(){	
+function EventMarkers(){
 
 		var getTimeNow = InitTime();
 	    markersEvent.clearLayers();
-		
+
 	    var yellowMarker = L.icon({
 	    	iconUrl: "static/images/markerEvent.gif",
 	    	iconSize: [20,20],
@@ -128,7 +128,7 @@ function EventMarkers(){
 	      'http://mapas.cultura.gov.br/api/event/find',
 
 	      {
-	        '@select' : 'name, occurrences.{space.{location}}',
+	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -138,13 +138,13 @@ function EventMarkers(){
 
             for(var i=0; i < data.length; i++){
             	if((data[i]["occurrences"]).length != 0){
-	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"], 
-	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]], 
+	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
 	            							{icon: yellowMarker}).addTo(markersEvent);
-	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
-            	} 	
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
             }
-            
+
             map.addLayer(markersEvent);
 
 	    });
@@ -152,11 +152,11 @@ function EventMarkers(){
 
 // creating projects markers
 
-function ProjectMarkers(){	
+function ProjectMarkers(){
 
 		var getTimeNow = InitTime();
 	    markersProject.clearLayers();
-		
+
 	    var greenMarker = L.icon({
 	    	iconUrl: "static/images/markerProject.gif",
 	    	iconSize: [20,20],
@@ -166,7 +166,7 @@ function ProjectMarkers(){
 	      'http://mapas.cultura.gov.br/api/project/find',
 
 	      {
-	        '@select' : 'name, owner.location',
+	        '@select' : 'name, owner.location, singleUrl ',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -174,17 +174,17 @@ function ProjectMarkers(){
 
 	    promise.then(function(data) {
 
-            
+
             for(var i=0; i < data.length; i++){
             	if(data[i]["owner"] != null){
-	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"], 
-	            							data[i]["owner"]["location"]["longitude"]], 
+	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
+	            							data[i]["owner"]["location"]["longitude"]],
 	            							{icon: greenMarker}).addTo(markersProject);
-	            	marker.bindPopup("<h6><b>"+data[i]["name"]+"</b></h6>");
-            	}     		
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
             }
 
 			map.addLayer(markersProject);
-          
+
 	    });
 }
