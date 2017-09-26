@@ -1,6 +1,5 @@
 import json
 import requests
-# from datetime import datetime, timedelta
 
 
 class RequestEventsRawData(object):
@@ -25,12 +24,3 @@ class RequestEventsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
-
-'''
-# Código para testar o funcionamento da classe.
-get_time = datetime.now() - timedelta(days=5)
-museu = RequestEventsRawData(get_time.__str__())
-print(museu.data[3])
-print(museu.data_length)
-'''
