@@ -1,3 +1,4 @@
+
 #from django.db import models
 from mongoengine import Document
 from mongoengine import MapField
@@ -13,35 +14,35 @@ class PercentIndividualAndCollectiveAgent(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalIndividualAgent(self):
+    def total_individual_agent(self):
         return self._totalIndividualAgent
 
-    @totalIndividualAgent.setter
-    def totalIndividualAgent(self, number):
+    @total_individual_agent.setter
+    def total_individual_agent(self, number):
         self._totalIndividualAgent = number
 
     @property
-    def totalCollectiveAgent(self):
+    def total_collective_agent(self):
         return self._totalCollectiveAgent
 
-    @totalCollectiveAgent.setter
-    def totalCollectiveAgent(self, number):
+    @total_collective_agent.setter
+    def total_collective_agent(self, number):
         self._totalCollectiveAgent = number
 
     @property
-    def totalAgents(self):
+    def total_agents(self):
         return self._totalAgents
 
-    @totalAgents.setter
-    def totalAgents(self, number):
+    @total_agents.setter
+    def total_agents(self, number):
         self._totalAgents = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -51,19 +52,19 @@ class AmountAgentsRegisteredPerYear(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalAgentsRegisteredPerYear(self):
+    def total_agents_registered_per_year(self):
         return self._totalAgentsRegisteredPerYear
 
-    @totalAgentsRegisteredPerYear.setter
-    def totalAgentsRegisteredPerYear(self, number):
+    @total_agents_registered_per_year.setter
+    def total_agents_registered_per_year(self, number):
         self._totalAgentsRegisteredPerYear = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -73,19 +74,19 @@ class AmountAgentsRegisteredPerMonth(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalAgentsRegisteredPerMonth(self):
+    def total_agents_registered_per_month(self):
         return self._totalAgentsRegisteredPerMonth
 
-    @totalAgentsRegisteredPerMonth.setter
-    def totalAgentsRegisteredPerMonth(self, number):
+    @total_agents_registered_per_month.setter
+    def total_agents_registered_per_month(self, number):
         self._totalAgentsRegisteredPerMonth = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -95,27 +96,27 @@ class PercentAgentsPerAreaOperation(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalAgentsPerAreaOreration(self):
+    def total_agents_per_area_oreration(self):
         return self._totalAgentsPerAreaOreration
 
-    @totalAgentsPerAreaOreration.setter
-    def totalAgentsPerAreaOreration(self, number):
+    @total_agents_per_area_oreration.setter
+    def total_agents_per_area_oreration(self, number):
         self._totalAgentsPerAreaOreration = number
 
     @property
-    def totalAgents(self):
+    def total_agents(self):
         return self._totalAgents
 
-    @totalAgents.setter
-    def totalAgents(self, number):
+    @total_agents.setter
+    def total_agents(self, number):
         self._totalAgents = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -126,27 +127,27 @@ class PercentAgentsForState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalAgentsForStates(self):
+    def total_agents_for_states(self):
         return self._totalAgentsForStates
 
-    @totalAgentsForStates.setter
-    def totalAgentsForStates(self, number):
+    @total_agents_for_states.setter
+    def total_agents_for_states(self, number):
         self._totalAgentsForStates = number
 
     @property
-    def totalAgents(self):
+    def total_agents(self):
         return self._totalAgents
 
-    @totalAgents.setter
-    def totalAgents(self, number):
+    @total_agents.setter
+    def total_agents(self, number):
         self._totalAgents = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -156,27 +157,27 @@ class PercentAgentsPerAreaOperationForState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalAgentsPerAreaOrerationForState(self):
+    def total_agents_per_area_oreration_for_State(self):
         return self._totalAgentsPerAreaOrerationForState
 
-    @totalAgentsPerAreaOrerationForState.setter
-    def totalAgentsPerAreaOrerationForState(self, number):
+    @total_agents_per_area_oreration_for_state.setter
+    def total_agents_per_area_oreration_for_state(self, number):
         self._totalAgentsPerAreaOrerationForState = number
 
     @property
-    def totalAgentsForState(self):
+    def total_agents_for_state(self):
         return self._totalAgentsForState
 
-    @totalAgentsForState.setter
-    def totalAgentsForState(self, number):
+    @total_agents_for_state.setter
+    def total_agents_for_state(self, number):
         self._totalAgentsForState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -187,33 +188,33 @@ class PercentIndividualAndCollectiveAgentForState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalIndividualAgentForState(self):
+    def total_individual_agent_for_state(self):
         return self._totalIndividualAgentForState
 
-    @totalIndividualAgentForState.setter
-    def totalIndividualAgentForState(self, number):
+    @total_individual_agent_for_state.setter
+    def total_individual_agent_for_state(self, number):
         self._totalIndividualAgentForState = number
 
     @property
-    def totalCollectiveAgentForState(self):
+    def total_collective_agent_for_state(self):
         return self._totalCollectiveAgentForState
 
-    @totalCollectiveAgentForState.setter
-    def totalCollectiveAgentForState(self, number):
+    @total_collective_agent_for_state.setter
+    def total_collective_agent_for_state(self, number):
         self._totalCollectiveAgentForState = number
 
     @property
-    def totalAgentsForState(self):
+    def total_agents_for_state(self):
         return self._totalAgentsForState
 
-    @totalAgentsForState.setter
-    def totalAgentsForState(self, number):
+    @total_agents_for_state.setter
+    def total_agents_for_state(self, number):
         self._totalAgentsForState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
