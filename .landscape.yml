@@ -16,8 +16,11 @@ pep257:
   - D101
   - D100
   - D102
+  - D103
 pylint:
   options:
     docstring-min-length: 10
+  disable:
+  - c0111
 mccabe:
   run: true

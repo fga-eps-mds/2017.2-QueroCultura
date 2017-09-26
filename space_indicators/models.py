@@ -13,27 +13,27 @@ class PercentSpacePerType(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpace(self):
+    def total_space(self):
         return self._totalSpace
 
-    @totalSpace.setter
-    def totalSpace(self, number):
+    @total_space.setter
+    def total_space(self, number):
         self._totalSpace = number
 
     @property
-    def totalSpacePerType(self):
+    def total_space_per_type(self):
         return self._totalSpacePerType
 
-    @totalSpacePerType.setter
-    def totalSpacePerType(self, number):
+    @total_space_per_type.setter
+    def total_space_per_type(self, number):
         self._totalSpacePerType = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -43,27 +43,27 @@ class PercentSpacePerOccupationArea(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpace(self):
+    def total_space(self):
         return self._totalSpace
 
-    @totalSpace.setter
-    def totalSpace(self, number):
+    @total_space.setter
+    def total_space(self, number):
         self._totalSpace = number
 
     @property
-    def totalSpacePerOccupationArea(self):
+    def total_space_per_occupation_area(self):
         return self._totalSpacePerOccupationArea
 
-    @totalSpacePerOccupationArea.setter
-    def totalSpacePerOccupationArea(self, number):
+    @total_space_per_occupation_area.setter
+    def total_space_per_occupation_area(self, number):
         self._totalSpacePerOccupationArea = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 # -------------------- state indicators --------------------------------------
@@ -75,27 +75,27 @@ class PercentSpacePerTypePerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpacePerState(self):
+    def total_space_per_state(self):
         return self._totalSpacePerState
 
-    @totalSpacePerState.setter
-    def totalSpacePerState(self, number):
+    @total_space_per_state.setter
+    def total_space_per_state(self, number):
         self._totalSpacPerStatee = number
 
     @property
-    def totalSpacePerTypePerState(self):
+    def total_space_per_type_per_state(self):
         return self._totalSpacePerTypePerState
 
-    @totalSpacePerTypePerState.setter
-    def totalSpacePerTypePerState(self, number):
+    @total_space_per_type_per_state.setter
+    def total_space_per_type_per_state(self, number):
         self._totalSpacePerTypePerState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -105,27 +105,27 @@ class PercentSpacePerOccupationAreaPerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpacePerState(self):
+    def total_space_per_state(self):
         return self._totalSpacePerState
 
-    @totalSpacePerState.setter
-    def totalSpacePerState(self, number):
+    @total_space_per_state.setter
+    def total_space_per_state(self, number):
         self._totalSpacePerState = number
 
     @property
-    def totalSpacePerOccupationAreaPerState(self):
+    def total_space_per_occupation_area_per_state(self):
         return self._totalSpacePerOccupationAreaPerState
 
-    @totalSpacePerOccupationAreaPerState.setter
-    def totalSpacePerOccupationAreaPerState(self, number):
+    @total_space_per_occupation_area_per_state.setter
+    def total_space_per_occupation_area_per_state(self, number):
         self._totalSpacePerOccupationArea = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -135,27 +135,27 @@ class PercentSpaceForState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpaces(self):
+    def total_spaces(self):
         return self._totalSpaces
 
-    @totalSpaces.setter
-    def totalSpaces(self, number):
+    @total_spaces.setter
+    def total_spaces(self, number):
         self._totalSpaces = number
 
     @property
-    def totalSpacePerState(self):
+    def total_space_per_state(self):
         return self._totalSpacePerState
 
-    @totalSpacePerState.setter
-    def totalSpacePerState(self, number):
+    @total_space_per_state.setter
+    def total_space_per_state(self, number):
         self._totalSpacePerState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -169,33 +169,33 @@ class QuantityOfRegisteredSpace(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalSpaceRegisteredPerMounthPerYear(self):
+    def total_space_registered_per_mounth_per_year(self):
         return self._totalSpaceRegisteredPerMounthPerYear
 
-    @totalSpaceRegisteredPerMounthPerYear.setter
-    def totalSpaceRegisteredPerMounthPerYear(self, number):
+    @total_space_registered_per_mounth_per_year.setter
+    def total_space_registered_per_mounth_per_year(self, number):
         self._totalSpaceRegisteredPerMounthPerYear = number
 
     @property
-    def totalSpaceRegisteredPerYear(self):
+    def total_space_registered_per_year(self):
         return self._totalSpaceRegisteredPerYear
 
-    @totalSpaceRegisteredPerYear.setter
-    def totalSpaceRegisteredPerYear(self, number):
+    @total_space_registered_per_year.setter
+    def total_space_registered_per_year(self, number):
         self._totalSpaceRegisteredPerYear = number
 
     @property
-    def totalSpace(self):
+    def total_space(self):
         return self._totalSpace
 
-    @totalSpace.setter
-    def totalSpace(self, number):
+    @total_space.setter
+    def total_space(self, number):
         self._totalSpace = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
