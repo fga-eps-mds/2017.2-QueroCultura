@@ -12,8 +12,8 @@ def test_success_request():
 
 def test_data_content():
     current_time = datetime.now().__str__()
-    request_museum_raw_data = RequestLibraryRawData(current_time)
-    library_raw_data = request_museum_raw_data.data
+    request_library_raw_data = RequestLibraryRawData(current_time)
+    library_raw_data = request_library_raw_data.data
     type_library_raw_data = type(library_raw_data)
     empty_list = []
     assert type_library_raw_data == type(empty_list)
