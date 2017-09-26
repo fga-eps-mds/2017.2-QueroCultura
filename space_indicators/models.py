@@ -9,7 +9,7 @@ from mongoengine import StringField
 
 class PercentSpacePerType(Document):
     _totalSpace = IntField(required=True)
-    _totaSpacePerType = MapField(required=True)
+    _totalSpacePerType = MapField(required=True)
     _createDate = StringField(required=True)
 
     @property
