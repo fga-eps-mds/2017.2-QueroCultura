@@ -13,27 +13,27 @@ class PercentProjectPerType(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalProject(self):
+    def total_project(self):
         return self._totalProject
 
-    @totalProject.setter
-    def totalProject(self, number):
+    @total_project.setter
+    def total_project(self, number):
         self._totalProject = number
 
     @property
-    def totalProjectPerType(self):
+    def total_project_per_type(self):
         return self._totalProjectPerType
 
-    @totalProjectPerType.setter
-    def totalProjectPerType(self, number):
+    @total_project_per_type.setter
+    def total_project_per_type(self, number):
         self._totalProjectPerType = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -43,27 +43,27 @@ class PercentProjectThatAcceptOnlineTransitions(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalProject(self):
+    def total_project(self):
         return self._totalProject
 
-    @totalProject.setter
-    def totalProject(self, number):
+    @total_project.setter
+    def total_project(self, number):
         self._totalProject = number
 
     @property
-    def totalProjectThatAcceptOnlineTransitions(self):
+    def total_project_that_accept_online_transitions(self):
         return self._totalProjectThatAcceptOnlineTransitions
 
-    @totalProjectThatAcceptOnlineTransitions.setter
-    def totalProjectThatAcceptOnlineTransitions(self, number):
+    @total_project_that_accept_online_transitions.setter
+    def total_project_that_accept_online_transitions(self, number):
         self._totalProjectThatAcceptOnlineTransitions = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 # -------------------- state indicators --------------------------------------
@@ -75,27 +75,27 @@ class PercentProjectPerTypePerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalProjectPerState(self):
+    def total_project_per_state(self):
         return self._totalProjectPerState
 
-    @totalProjectPerState.setter
-    def totalProjectPerState(self, number):
+    @total_project_per_state.setter
+    def total_project_per_state(self, number):
         self._totalProjectPerState = number
 
     @property
-    def totalProjectPerTypePerState(self):
+    def total_project_per_type_per_state(self):
         return self._totalProjectPerTypePerState
 
-    @totalProjectPerTypePerState.setter
-    def totalProjectPerTypePerState(self, number):
+    @total_project_per_type_per_state.setter
+    def total_project_per_type_per_state(self, number):
         self._totalProjectPerTypePerState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 
@@ -105,27 +105,27 @@ class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalProjectPerState(self):
+    def total_project_per_state(self):
         return self._totalProjectPerState
 
-    @totalProjectPerState.setter
-    def totalProjectPerState(self, number):
+    @total_project_per_state.setter
+    def total_project_per_state(self, number):
         self._totalProjecPerStatet = number
 
     @property
-    def totalProjectThatAcceptOnlineTransitionsPerState(self):
+    def total_project_that_accept_online_transitions_per_state(self):
         return self._totalProjectThatAcceptOnlineTransitionsPerState
 
-    @totalProjectThatAcceptOnlineTransitionsPerState.setter
-    def totalProjectThatAcceptOnlineTransitionsPerState(self, number):
+    @total_project_that_accept_online_transitions_per_state.setter
+    def total_project_that_accept_online_transitions_per_state(self, number):
         self._totalProjectThatAcceptOnlineTransitionsPerState = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
 
 # -------------------- Project Registered -------------------------------------
@@ -138,33 +138,33 @@ class QuantityOfRegisteredProject(Document):
     _createDate = StringField(required=True)
 
     @property
-    def totalProjectRegisteredPerMounthPerYear(self):
+    def total_project_registered_per_mounth_per_year(self):
         return self._totalProjectRegisteredPerMounthPerYear
 
-    @totalProjectRegisteredPerMounthPerYear.setter
-    def totalProjectRegisteredPerMounthPerYear(self, number):
+    @total_project_registered_per_mounth_per_year.setter
+    def total_project_registered_per_mounth_per_year(self, number):
         self._totalProjectRegisteredPerMounthPerYear = number
 
     @property
-    def totalProjectRegisteredPerYear(self):
+    def total_project_registered_per_year(self):
         return self._totalProjectRegisteredPerYear
 
-    @totalProjectRegisteredPerYear.setter
+    @total_project_registered_per_year.setter
     def totalProjectRegisteredPerYear(self, number):
         self._totalProjectRegisteredPerYear = number
 
     @property
-    def totalProject(self):
+    def total_project(self):
         return self._totalProject
 
-    @totalProject.setter
-    def totalProject(self, number):
+    @total_project.setter
+    def total_project(self, number):
         self._totalProject = number
 
     @property
-    def createDate(self):
+    def create_date(self):
         return self._createDate
 
-    @createDate.setter
-    def createDate(self, number):
+    @create_date.setter
+    def create_date(self, number):
         self._createDate = number
