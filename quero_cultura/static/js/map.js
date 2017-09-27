@@ -42,6 +42,8 @@ function MarkersPoints(){
 function SpaceMarkers(){
 
 		var getTimeNow = InitTime();
+		console.log(getTimeNow);
+
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
