@@ -8,8 +8,8 @@ from mongoengine import DateTimeField
 
 
 class PercentEventsPerLanguage(Document):
+    _totalEventsPerLanguage = DictField(required=True)
     _totalEvents = IntField(required=True)
-    _totaEventsPerLanguage = DictField(required=True)
     _createDate = DateTimeField(required=True)
 
     @property
@@ -69,26 +69,26 @@ class PercentEventsPerAgeRange(Document):
 # -------------------- state indicators --------------------------------------
 
 
-class PercentTypeEventsForState(Document):
-    _typeStateEvents = DictField(required=True)
-    _totalStateEvents = DictField(required=True)
+class PercentEventsForState(Document):
+    _forStateEvents = DictField(required=True)
+    _totalEvents = IntField(required=True)
     _createDate = DateTimeField(required=True)
 
     @property
-    def type_state_events(self):
-        return self._typeStateEvents
+    def for_state_events(self):
+        return self._forStateEvents
 
-    @type_state_events.setter
-    def type_state_events(self, number):
-        self._typeStateEvents = number
+    @for_state_events.setter
+    def state_events(self, number):
+        self._forStateEvents = number
 
     @property
-    def total_state_events(self):
-        return self._totalStateEvents
+    def total_events(self):
+        return self._totalEvents
 
-    @total_state_events.setter
+    @total_events.setter
     def total_state_events(self, number):
-        self._totalStateEvents = number
+        self._totalEvents = number
 
     @property
     def create_date(self):
@@ -131,7 +131,7 @@ class PercentEventsPerLanguagePerState(Document):
 
 class PercentEventsPerAgeRangePerState(Document):
     _totalEventsPerAgeRangePerState = DictField(required=True)
-    _totalEventsPerState = IntField(required=True)
+    _totalEventsPerState = DictField(required=True)
     _createDate = DateTimeField(required=True)
 
     @property
