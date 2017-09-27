@@ -1,0 +1,26 @@
+doc-warnings: true
+test-warnings: true
+strictness: high
+max-line-length: 120
+uses:
+  - django
+autodetect: true
+requirements:
+  - requirements.txt
+python-targets:
+  - 3
+pep8:
+  full: true
+pep257:
+  disable:
+  - D101
+  - D100
+  - D102
+  - D103
+pylint:
+  options:
+    docstring-min-length: 10
+  disable:
+  - c0111
+mccabe:
+  run: true

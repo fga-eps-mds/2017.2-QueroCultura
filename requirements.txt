@@ -1,2 +1,8 @@
 Django>=1.8,<2.0
 mongoengine
+requests
+pytest
+pytest-django
+pytest-cov
+PyYAML
+coveralls
