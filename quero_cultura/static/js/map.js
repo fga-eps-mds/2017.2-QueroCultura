@@ -22,7 +22,7 @@ var markersSpace = new L.FeatureGroup();
 function InitTime(){
 
 	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes() - 5);
+    getTimeNow.setHours(getTimeNow.getHours() - 3 , getTimeNow.getMinutes() - 5);
     getTimeNow = getTimeNow.toJSON();
 
 	return getTimeNow;
@@ -42,6 +42,8 @@ function MarkersPoints(){
 function SpaceMarkers(){			
 
 		var getTimeNow = InitTime();
+		console.log(getTimeNow);
+
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
@@ -166,7 +168,7 @@ function ProjectMarkers(){
 	      'http://mapas.cultura.gov.br/api/project/find',
 
 	      {
-	        '@select' : 'name, owner.location',
+	        '@select' : 'name, owner.location, singleUrl',
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+getTimeNow+")",
 	        'updateTimestamp' : "GT("+getTimeNow+")"
@@ -174,6 +176,7 @@ function ProjectMarkers(){
 
 	    promise.then(function(data) {
 
+	    	console.log(data);
             
             for(var i=0; i < data.length; i++){
             	if(data[i]["owner"] != null){
