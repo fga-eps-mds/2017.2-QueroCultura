@@ -109,6 +109,15 @@ class TestPercentLibraryForState(object):
         querry = PercentLibraryForState.objects.first()
         assert querry._totalLibraryForState == totalLibraries
 
+    def test_total_librarys(self):
+        PercentLibraryForState.drop_collection()
+        totalLibraries = 20
+        library_indicator = PercentLibraryForState({"DF": 20}, totalLibraries, datetime.now())
+        library_indicator.save()
+        querry = PercentLibraryForState.objects.first()
+        assert querry._totalLibrary == totalLibraries
+
+
 
 def test_success_request():
     current_time = datetime.now().__str__()
