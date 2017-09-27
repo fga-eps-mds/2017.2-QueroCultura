@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from .models import MapPoint
-from .api import MapPointsApi
 
 
 def index(request):
