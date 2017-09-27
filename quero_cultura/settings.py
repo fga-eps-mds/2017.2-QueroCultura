@@ -57,7 +57,7 @@ ROOT_URLCONF = 'quero_cultura.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['quero_cultura/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
