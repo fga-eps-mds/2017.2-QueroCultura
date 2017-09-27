@@ -5,6 +5,9 @@ from .models import PercentPublicOrPrivateLibrary
 from .models import PercentLibrariesTypeSphere
 from .models import QuantityOfRegisteredLibrarys
 from .models import PercentLibraryForState
+from .models import PercentLibraryPerAreaOfActivityPerState
+from .models import PercentPublicOrPrivateLibraryPerState
+from .models import PercentLibrariesTypeSpherePerState
 
 
 class TestPercentLibraryPerAreaOfActivity(object):
@@ -116,6 +119,71 @@ class TestPercentLibraryForState(object):
         library_indicator.save()
         querry = PercentLibraryForState.objects.first()
         assert querry._totalLibrary == totalLibraries
+
+
+class TestPercentLibraryPerAreaOfActivityPerState(object):
+
+    def test_total_library_per_area_of_activity_per_state(self):
+        PercentLibraryPerAreaOfActivityPerState.drop_collection()
+        totalLibraryPerAreaOfActivity = {'activity area': 20}
+        libery_indicator = PercentLibraryPerAreaOfActivityPerState(totalLibraryPerAreaOfActivity, {'df': 20}, datetime.now())
+        libery_indicator.save()
+        querry = PercentLibraryPerAreaOfActivityPerState.objects.first()
+        assert querry._totalLibraryPerAreaOfActivityPerState == totalLibraryPerAreaOfActivity
+
+    def test_total_library(self):
+        PercentLibraryPerAreaOfActivityPerState.drop_collection()
+        totalLibrary = {'df': 20}
+        libery_indicator = PercentLibraryPerAreaOfActivityPerState({'activity area': 20}, totalLibrary, datetime.now())
+        libery_indicator.save()
+        querry = PercentLibraryPerAreaOfActivityPerState.objects.first()
+        assert querry._totalLibraryPerState == totalLibrary
+
+
+class TestPercentPublicOrPrivateLibraryPerState(object):
+
+    def test_total_public_library_per_state(self):
+        PercentPublicOrPrivateLibraryPerState.drop_collection()
+        totalPublicLibrary = {"df": 20}
+        libery_indicator = PercentPublicOrPrivateLibraryPerState(totalPublicLibrary,{"df": 20}, {"df": 20}, datetime.now())
+        libery_indicator.save()
+        querry = PercentPublicOrPrivateLibraryPerState.objects.first()
+        assert querry._totalPublicLibraryPerState == totalPublicLibrary
+
+    def test_total_private_library_per_state(self):
+        PercentPublicOrPrivateLibraryPerState.drop_collection()
+        totalPrivateLibrary = {"df": 20}
+        libery_indicator = PercentPublicOrPrivateLibraryPerState({"df": 20}, totalPrivateLibrary,{"df": 20}, datetime.now())
+        libery_indicator.save()
+        querry = PercentPublicOrPrivateLibraryPerState.objects.first()
+        assert querry._totalPrivateLibraryPerState == totalPrivateLibrary
+
+    def test_total_library_per_state(self):
+        PercentPublicOrPrivateLibraryPerState.drop_collection()
+        totalLibrary = {"df": 20}
+        libery_indicator = PercentPublicOrPrivateLibraryPerState({"df": 20}, {"df": 20}, totalLibrary, datetime.now())
+        libery_indicator.save()
+        querry = PercentPublicOrPrivateLibraryPerState.objects.first()
+        assert querry._totalLibraryPerState == totalLibrary
+
+
+class TestPercentLibrariesTypeSpherePerState(object):
+
+    def test_total_libraries_type_sphere_per_state(self):
+        PercentLibrariesTypeSpherePerState.drop_collection()
+        totalLibrariesTypeSphere = {"tipo esfera": 50}
+        library_indicator = PercentLibrariesTypeSpherePerState(totalLibrariesTypeSphere, {"DF": 50}, datetime.now())
+        library_indicator.save()
+        querry = PercentLibrariesTypeSpherePerState.objects.first()
+        assert querry._totalLibrariesTypeSpherePerState == totalLibrariesTypeSphere
+
+    def test_total_library_per_state(self):
+        PercentLibrariesTypeSpherePerState.drop_collection()
+        totalLibraries = {"DF": 50}
+        library_indicator = PercentLibrariesTypeSpherePerState({"df": 20}, totalLibraries, datetime.now())
+        library_indicator.save()
+        querry = PercentLibrariesTypeSpherePerState.objects.first()
+        assert querry._totalLibraryPerState == totalLibraries
 
 
 
