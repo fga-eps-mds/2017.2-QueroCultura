@@ -22,7 +22,7 @@ var markersSpace = new L.FeatureGroup();
 function InitTime(){
 
 	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes() - 5);
+    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - 5);
     getTimeNow = getTimeNow.toJSON();
 
 	return getTimeNow;
