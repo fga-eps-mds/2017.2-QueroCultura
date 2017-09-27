@@ -79,6 +79,7 @@ class PercentPublicOrPrivateLibrary(Document):
 # Percentage of libraries by type of sphere
 class PercentLibrariesTypeSphere:
     _totalLibrariesTypeSphere = DictField(required=True)
+    _totalLibrary = IntField(required=True)
     _createDate = DateTimeField(required=True)
 
     @property
@@ -88,6 +89,14 @@ class PercentLibrariesTypeSphere:
     @_total_libraries_type_sphere.setter
     def _total_libraries_type_sphere(self, number):
         self._totalLibrariesTypeSphere = number
+
+    @property
+    def total_library(self):
+        return self._totalLibrary
+
+    @total_library.setter
+    def total_library(self, number):
+        self._totalLibrary = number
 
     @property
     def create_date(self):

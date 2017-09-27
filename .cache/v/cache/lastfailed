@@ -1,4 +1,5 @@
 {
+  "libery_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_create_date": true,
   "libery_indicators/tests.py::Teste::()::teste": true,
   "libery_indicators/tests.py::teste": true
 }
