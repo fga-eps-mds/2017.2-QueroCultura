@@ -1,7 +1,7 @@
 
 >## O Projeto Quero Cultura
 [![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
-[![Code Health](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master/landscape.svg?style=flat)](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master)
+[![Code Health](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/devel/landscape.svg?style=flat)](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/devel)
 [![Code Climate](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/gpa.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura)
 [![Coverage Status](https://coveralls.io/repos/github/fga-gpp-mds/2017.2-QueroCultura/badge.svg?branch=HEAD)](https://coveralls.io/github/fga-gpp-mds/2017.2-QueroCultura?branch=HEAD)
 [![AUR](https://img.shields.io/aur/license/yaourt.svg?colorB=ff69b4)](https://github.com/fga-gpp-mds/2017.2-QueroCultura/blob/devel/LICENSE)
@@ -25,6 +25,7 @@ O Quero Cultura utiliza a plataforma [Docker](https://www.docker.com/what-docker
   ```
   docker-compose up
   ```
+5. Acesse a aplicação na porta `8000` do seu `localhost`: [http://localhost:8000](http://localhost:8000)
   
 >## Mais informações
 Informações adicionais podem ser obtidas consultando os links abaixo.
