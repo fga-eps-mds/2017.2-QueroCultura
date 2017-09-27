@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-QueroCultura)
 [![Code Health](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master/landscape.svg?style=flat)](https://landscape.io/github/fga-gpp-mds/2017.2-QueroCultura/master)
 [![Code Climate](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/gpa.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura)
-[![Test Coverage](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/badges/coverage.svg)](https://codeclimate.com/github/fga-gpp-mds/2017.2-QueroCultura/coverage)
+[![Coverage Status](https://coveralls.io/repos/github/fga-gpp-mds/2017.2-QueroCultura/badge.svg?branch=HEAD)](https://coveralls.io/github/fga-gpp-mds/2017.2-QueroCultura?branch=HEAD)
 [![AUR](https://img.shields.io/aur/license/yaourt.svg?colorB=ff69b4)](https://github.com/fga-gpp-mds/2017.2-QueroCultura/blob/devel/LICENSE)
 
 O projeto Quero Cultura surgiu de uma demanda por visualização de dados do Ministério da Cultura (MinC) por meio do [_Mapas Culturais_](http://mapas.cultura.gov.br/). O _Mapas Culturais_ é um software livre para mapeamento colaborativo e gestão da cultura.

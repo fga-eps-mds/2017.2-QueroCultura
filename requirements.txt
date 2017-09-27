@@ -3,3 +3,6 @@ mongoengine
 requests
 pytest
 pytest-django
+pytest-cov
+PyYAML
+coveralls
