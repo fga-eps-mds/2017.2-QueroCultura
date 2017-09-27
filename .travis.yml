@@ -14,7 +14,7 @@ before_install:
   
 script:
   - docker-compose up -d
-  - docker-compose exec web ./manage.py test
+  - docker-compose exec web pytest
   
 notifications:
   email: false
