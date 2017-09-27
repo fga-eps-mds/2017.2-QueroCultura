@@ -1,8 +1,8 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 
 # Percentage of individual and collective agents
@@ -10,7 +10,7 @@ class PercentIndividualAndCollectiveAgent(Document):
     _totalIndividualAgent = IntField(required=True)
     _totalCollectiveAgent = IntField(required=True)
     _totalAgents = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_individual_agent(self):
@@ -47,8 +47,8 @@ class PercentIndividualAndCollectiveAgent(Document):
 
 # Amount of agents registered per year on the platform throughout its existence
 class AmountAgentsRegisteredPerYear(Document):
-    _totalAgentsRegisteredPerYear = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalAgentsRegisteredPerYear = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_agents_registered_per_year(self):
@@ -69,8 +69,8 @@ class AmountAgentsRegisteredPerYear(Document):
 
 # Number of agents registered monthly on the platform throughout its existence
 class AmountAgentsRegisteredPerMonth(Document):
-    _totalAgentsRegisteredPerMonth = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalAgentsRegisteredPerMonth = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_agents_registered_per_month(self):
@@ -90,9 +90,9 @@ class AmountAgentsRegisteredPerMonth(Document):
 
 
 class PercentAgentsPerAreaOperation(Document):
-    _totalAgentsPerAreaOreration = MapField(required=True)
+    _totalAgentsPerAreaOreration = DictField(required=True)
     _totalAgents = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_agents_per_area_oreration(self):
@@ -121,9 +121,9 @@ class PercentAgentsPerAreaOperation(Document):
 
 # -------------------- state indicators --------------------------------
 class PercentAgentsForState(Document):
-    _totalAgentsForStates = MapField(required=True)
+    _totalAgentsForStates = DictField(required=True)
     _totalAgents = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_agents_for_states(self):
@@ -151,9 +151,9 @@ class PercentAgentsForState(Document):
 
 
 class PercentAgentsPerAreaOperationForState(Document):
-    _totalAgentsPerAreaOperationForState = MapField(required=True)
-    _totalAgentsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalAgentsPerAreaOperationForState = DictField(required=True)
+    _totalAgentsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_agents_per_area_operation_for_state(self):
@@ -181,10 +181,10 @@ class PercentAgentsPerAreaOperationForState(Document):
 
 
 class PercentIndividualAndCollectiveAgentForState(Document):
-    _totalIndividualAgentForState = MapField(required=True)
-    _totalCollectiveAgentForState = MapField(required=True)
-    _totalAgentsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalIndividualAgentForState = DictField(required=True)
+    _totalCollectiveAgentForState = DictField(required=True)
+    _totalAgentsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_individual_agent_for_state(self):

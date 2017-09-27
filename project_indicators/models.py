@@ -1,16 +1,16 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
 
 class PercentProjectPerType(Document):
     _totalProject = IntField(required=True)
-    _totaProjectPerType = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totaProjectPerType = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_project(self):
@@ -40,7 +40,7 @@ class PercentProjectPerType(Document):
 class PercentProjectThatAcceptOnlineTransitions(Document):
     _totalProjectThatAcceptOnlineTransitions = IntField(required=True)
     _totalProject = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_project(self):
@@ -70,9 +70,9 @@ class PercentProjectThatAcceptOnlineTransitions(Document):
 
 
 class PercentProjectPerTypePerState(Document):
-    _totalProjectPerState = MapField(required=True)
-    _totaProjectPerTypePerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalProjectPerState = DictField(required=True)
+    _totaProjectPerTypePerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_project_per_state(self):
@@ -100,9 +100,9 @@ class PercentProjectPerTypePerState(Document):
 
 
 class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
-    _totalProjectThatAcceptOnlineTransitionsPerState = MapField(required=True)
-    _totalProjectPerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalProjectThatAcceptOnlineTransitionsPerState = DictField(required=True)
+    _totalProjectPerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_project_per_state(self):
@@ -132,10 +132,10 @@ class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
 
 
 class QuantityOfRegisteredProject(Document):
-    _totalProjectRegisteredPerMounthPerYear = MapField(required=True)
-    _totalProjectRegisteredPerYear = MapField(required=True)
+    _totalProjectRegisteredPerMounthPerYear = DictField(required=True)
+    _totalProjectRegisteredPerYear = DictField(required=True)
     _totalProject = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_project_registered_per_mounth_per_year(self):

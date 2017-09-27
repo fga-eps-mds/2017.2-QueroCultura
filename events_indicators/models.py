@@ -1,16 +1,16 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
 
 class PercentEventsPerLanguage(Document):
     _totalEvents = IntField(required=True)
-    _totaEventsPerLanguage = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totaEventsPerLanguage = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events(self):
@@ -38,9 +38,9 @@ class PercentEventsPerLanguage(Document):
 
 
 class PercentEventsPerAgeRange(Document):
-    _totalEventsPerAgeRange = MapField(required=True)
+    _totalEventsPerAgeRange = DictField(required=True)
     _totalEvents = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events(self):
@@ -70,9 +70,9 @@ class PercentEventsPerAgeRange(Document):
 
 
 class PercentTypeEventsForState(Document):
-    _typeStateEvents = MapField(required=True)
-    _totalStateEvents = MapField(required=True)
-    _createDate = StringField(required=True)
+    _typeStateEvents = DictField(required=True)
+    _totalStateEvents = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def type_state_events(self):
@@ -100,9 +100,9 @@ class PercentTypeEventsForState(Document):
 
 
 class PercentEventsPerLanguagePerState(Document):
-    _totalEventsPerState = MapField(required=True)
-    _totaEventsPerLanguagePerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalEventsPerState = DictField(required=True)
+    _totaEventsPerLanguagePerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events_per_state(self):
@@ -130,9 +130,9 @@ class PercentEventsPerLanguagePerState(Document):
 
 
 class PercentEventsPerAgeRangePerState(Document):
-    _totalEventsPerAgeRangePerState = MapField(required=True)
+    _totalEventsPerAgeRangePerState = DictField(required=True)
     _totalEventsPerState = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events_per_state(self):
@@ -162,10 +162,10 @@ class PercentEventsPerAgeRangePerState(Document):
 
 
 class QuantityOfRegisteredEvents(Document):
-    _totalEventsRegisteredPerMounthPerYear = MapField(required=True)
-    _totalEventsRegisteredPerYear = MapField(required=True)
+    _totalEventsRegisteredPerMounthPerYear = DictField(required=True)
+    _totalEventsRegisteredPerYear = DictField(required=True)
     _totalEvents = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events_registered_per_mounth_per_year(self):

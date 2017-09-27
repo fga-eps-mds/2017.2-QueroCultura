@@ -1,16 +1,16 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
 
 class PercentEventsInAccessibleSpaces(Document):
     _totalEvents = IntField(required=True)
-    _totalEventsInAccessibleSpaces = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalEventsInAccessibleSpaces = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events(self):
@@ -39,8 +39,8 @@ class PercentEventsInAccessibleSpaces(Document):
 
 class PercentEventsInMoreThenOneSpace(Document):
     _totalEvents = IntField(required=True)
-    _totalEventsInMoreThenOneSpace = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalEventsInMoreThenOneSpace = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events(self):
@@ -70,9 +70,9 @@ class PercentEventsInMoreThenOneSpace(Document):
 
 
 class PercentEventsInAccessibleSpacesPerState(Document):
-    _totalEventsPerState = MapField(required=True)
-    _totalEventsInAccessibleSpacesPerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalEventsPerState = DictField(required=True)
+    _totalEventsInAccessibleSpacesPerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events_per_state(self):
@@ -100,9 +100,9 @@ class PercentEventsInAccessibleSpacesPerState(Document):
 
 
 class PercentEventsInMoreThenOneSpacePerState(Document):
-    _totalEventsPerState = MapField(required=True)
-    _totalEventsInMoreThenOneSpacePerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalEventsPerState = DictField(required=True)
+    _totalEventsInMoreThenOneSpacePerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_events_per_state(self):

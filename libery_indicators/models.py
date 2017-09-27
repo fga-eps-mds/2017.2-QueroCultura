@@ -1,16 +1,16 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
 
 class PercentLibraryPerAreaOfActivity(Document):
-    _totalLibraryPerAreaOfActivity = MapField(required=True)
+    _totalLibraryPerAreaOfActivity = DictField(required=True)
     _totalLibrary = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_library_per_area_of_activity(self):
@@ -41,7 +41,7 @@ class PercentPublicOrPrivateLibrary(Document):
     _totalPublicLibrary = IntField(required=True)
     _totalPrivateLibrary = IntField(required=True)
     _totalLibrary = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_public_library(self):
@@ -78,8 +78,8 @@ class PercentPublicOrPrivateLibrary(Document):
 
 # Percentage of libraries by type of sphere
 class PercentLibrariesTypeSphere:
-    _totalLibrariesTypeSphere = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalLibrariesTypeSphere = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def _total_libraries_type_sphere(self):
@@ -99,10 +99,10 @@ class PercentLibrariesTypeSphere:
 
 
 class QuantityOfRegisteredLibrarys(Document):
-    _totalLibrarysRegisteredPerMounthPerYear = MapField(required=True)
-    _totalLibrarysRegisteredPerYear = MapField(required=True)
+    _totalLibrarysRegisteredPerMounthPerYear = DictField(required=True)
+    _totalLibrarysRegisteredPerYear = DictField(required=True)
     _totalLibrarys = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_librarys_registered_per_mounth_per_year(self):
@@ -140,9 +140,9 @@ class QuantityOfRegisteredLibrarys(Document):
 # -------------------- state indicators --------------------------------------
 
 class PercentLibraryForState(Document):
-    _totalLibraryForState = MapField(required=True)
+    _totalLibraryForState = DictField(required=True)
     _totalLibrary = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_library_for_state(self):
@@ -170,9 +170,9 @@ class PercentLibraryForState(Document):
 
 
 class PercentLibraryPerAreaOfActivityPerState(Document):
-    _totalLibraryPerAreaOfActivityPerState = MapField(required=True)
-    _totalLibraryPerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalLibraryPerAreaOfActivityPerState = DictField(required=True)
+    _totalLibraryPerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_library_per_area_of_activity_per_state(self):
@@ -200,10 +200,10 @@ class PercentLibraryPerAreaOfActivityPerState(Document):
 
 
 class PercentPublicOrPrivateLibraryPerState(Document):
-    _totalPublicLibraryPerState = MapField(required=True)
-    _totalPrivateLibraryPerState = MapField(required=True)
-    _totalLibraryPerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalPublicLibraryPerState = DictField(required=True)
+    _totalPrivateLibraryPerState = DictField(required=True)
+    _totalLibraryPerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_public_library_per_state(self):
@@ -240,8 +240,8 @@ class PercentPublicOrPrivateLibraryPerState(Document):
 
 # Percentage of libraries by type of sphere per state
 class PercentLibrariesTypeSpherePerState:
-    _totalLibrariesTypeSpherePerState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalLibrariesTypeSpherePerState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_libraries_type_sphere_per_state(self):

@@ -1,16 +1,16 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import MapField
+from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import StringField
+from mongoengine import DateTimeField
 
 # -------------------- state indicators --------------------------------
 
 
 class PercentThematicsMuseumsForState(Document):
-    __thematicsMuseumsForState = MapField(required=True)
-    __totalMuseumsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    __thematicsMuseumsForState = DictField(required=True)
+    __totalMuseumsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def thmeatics_museums_for_state(self):
@@ -38,9 +38,9 @@ class PercentThematicsMuseumsForState(Document):
 
 
 class PercentTypeMuseumsForState(Document):
-    __typeMuseumsForState = MapField(required=True)
-    __totalMuseumsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    __typeMuseumsForState = DictField(required=True)
+    __totalMuseumsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def type_museums_for_state(self):
@@ -68,10 +68,10 @@ class PercentTypeMuseumsForState(Document):
 
 
 class PercentPublicOrPrivateMuseumsForState(Document):
-    _totalPublicMuseumsForState = MapField(required=True)
-    _totalPrivateMuseumsForState = MapField(required=True)
-    _totalMuseumsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalPublicMuseumsForState = DictField(required=True)
+    _totalPrivateMuseumsForState = DictField(required=True)
+    _totalMuseumsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_public_museums_for_state(self):
@@ -108,9 +108,9 @@ class PercentPublicOrPrivateMuseumsForState(Document):
 
 class PercentMuseumsHistoricalArchivePublicAccessForState(Document):
     _totalMuseumsHistoricalArchivePublicAccessForState = \
-                                                        MapField(required=True)
-    _totalMuseumsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+                                                        DictField(required=True)
+    _totalMuseumsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_historical_archive_public_access_for_state(self):
@@ -138,9 +138,9 @@ class PercentMuseumsHistoricalArchivePublicAccessForState(Document):
 
 
 class PercentMuseumsPromoteGuidedTourForState(Document):
-    _totalMuseumsPromoteGuidedTourForState = MapField(required=True)
-    _totalMuseumsForState = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalMuseumsPromoteGuidedTourForState = DictField(required=True)
+    _totalMuseumsForState = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_promote_guided_tour_for_state(self):
@@ -171,7 +171,7 @@ class PercentMuseumsPromoteGuidedTourForState(Document):
 class PercentThematicsMuseums(Document):
     __thematicsMuseums = IntField(required=True)
     __totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def thmeatics_museums(self):
@@ -201,7 +201,7 @@ class PercentThematicsMuseums(Document):
 class PercentTypeMuseums(Document):
     __typeMuseums = IntField(required=True)
     __totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def type_museums(self):
@@ -232,7 +232,7 @@ class PercentPublicOrPrivateMuseums(Document):
     _totalPublicMuseums = IntField(required=True)
     _totalPrivateMuseums = IntField(required=True)
     _totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_public_museums(self):
@@ -270,7 +270,7 @@ class PercentPublicOrPrivateMuseums(Document):
 class PercentMuseumsHistoricalArchivePublicAccess(Document):
     _totalMuseumsHistoricalArchivePublicAccess = IntField(required=True)
     _totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_historical_archive_public_access(self):
@@ -300,7 +300,7 @@ class PercentMuseumsHistoricalArchivePublicAccess(Document):
 class PercentMuseumsPromoteGuidedTour(Document):
     _totalMuseumsPromoteGuidedTour = IntField(required=True)
     _totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_promote_guided_tour(self):
@@ -329,8 +329,8 @@ class PercentMuseumsPromoteGuidedTour(Document):
 
 # Amount of Museums registered on year on the platform throughout its existence
 class AmountMuseumsRegisteredYear(Document):
-    _totalMuseumsRegisteredYear = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalMuseumsRegisteredYear = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_registered_year(self):
@@ -351,8 +351,8 @@ class AmountMuseumsRegisteredYear(Document):
 
 # Amount of Museums registered monthly on the platform throughout its existence
 class AmountMuseumsRegisteredMonth(Document):
-    _totalMuseumsRegisteredMonth = MapField(required=True)
-    _createDate = StringField(required=True)
+    _totalMuseumsRegisteredMonth = DictField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_registered_month(self):
@@ -373,9 +373,9 @@ class AmountMuseumsRegisteredMonth(Document):
 
 # Percentage of museums by states
 class PercentMuseumsForState(Document):
-    _totalMuseumsForState = MapField(required=True)
+    _totalMuseumsForState = DictField(required=True)
     _totalMuseums = IntField(required=True)
-    _createDate = StringField(required=True)
+    _createDate = DateTimeField(required=True)
 
     @property
     def total_museums_for_state(self):
