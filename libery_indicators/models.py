@@ -77,7 +77,7 @@ class PercentPublicOrPrivateLibrary(Document):
 
 
 # Percentage of libraries by type of sphere
-class PercentLibrariesTypeSphere:
+class PercentLibrariesTypeSphere(Document):
     _totalLibrariesTypeSphere = DictField(required=True)
     _totalLibrary = IntField(required=True)
     _createDate = DateTimeField(required=True)
