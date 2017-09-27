@@ -17,41 +17,44 @@
   <!-- Custom styles for this template-->
   <link href="static/css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="static/introjs.css"/>
+  <link rel="stylesheet" href="static/css/map.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-light sidenav-toggled" id="page-top">
+<body class="fixed-nav sticky-footer bg-light" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Quero Cultura</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark " id="mainNav" >
+    <a class="navbar-brand" href="" id="idQuero" align="center">Quero Cultura</a>
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Web site Tour">
           <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
-            <i class="fa fa-fw fa-map-signs"></i>
-            <span class="nav-link-text">Web site Tour</span>
+            <i class="fa fa-fw fa-map-signs text-light"></i>
+            <span class="nav-link-text text-light">Web site Tour</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-file-text-o"></i>
-            <span class="nav-link-text">Projetos</span>
+            <i class="fa fa-fw fa-file-text-o text-success"></i>
+            <span class="nav-link-text text-light">Projetos</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Espaços">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-building-o"></i>
-            <span class="nav-link-text">Espaços</span>
+            <i class="fa fa-fw fa-building-o text-danger"></i>
+            <span class="nav-link-text text-light">Espaços</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-user"></i>
-            <span class="nav-link-text">Agentes</span>
+            <i class="fa fa-fw fa-user text-info"></i>
+            <span class="nav-link-text text-light">Agentes</span>
           </a>
         </li>
 
@@ -59,8 +62,8 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Eventos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-calendar-o"></i>
-            <span class="nav-link-text">Eventos</span>
+            <i class="fa fa-fw fa-calendar-o text-warning"></i>
+            <span class="nav-link-text text-light">Eventos</span>
           </a>
         </li>
       </ul>
@@ -80,10 +83,11 @@
 
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Quero Cultura 2017</small>
+    <footer class="sticky-footer" style= "background-color:transparent">
+      <div class="container" >
+        <div class="text-right">
+          <small style="color:white">Copyright © Quero Cultura 2017</small>
+          <img src="static/images/logo.png" height="60" width="59" alt="">
         </div>
       </div>
     </footer>
@@ -111,7 +115,10 @@
 
 
     <script>
-  	var intro = introJs();
+
+    //Create web site tour
+
+    var intro = introJs();
   		 intro.setOptions({
   			 steps: [
 
@@ -141,12 +148,12 @@
 
             {
 
-  						 intro: '<h2>Evento</h2> Os marcadores de eventoss são identificados pela cor amarela, como na imagem: <img src="static/images/marker_6.png" height="35" width="35" /> ',
+  						 intro: '<h2>Evento</h2> Os marcadores de eventos são identificados pela cor amarela, como na imagem: <img src="static/images/marker_6.png" height="35" width="35" /> ',
   					},
 
             {
 
-  						 intro: '<h2>Projetos</h2> Os marcadores de agentes são identificados pela cor verde, como na imagem: <img src="static/images/marker_7.png" height="35" width="35" /> ',
+  						 intro: '<h2>Projetos</h2> Os marcadores de projetos são identificados pela cor verde, como na imagem: <img src="static/images/marker_7.png" height="35" width="35" /> ',
   					},
 
             {
