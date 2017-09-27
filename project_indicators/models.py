@@ -9,7 +9,7 @@ from mongoengine import DateTimeField
 
 class PercentProjectPerType(Document):
     _totalProject = IntField(required=True)
-    _totaProjectPerType = DictField(required=True)
+    _totalProjectPerType = DictField(required=True)
     _createDate = DateTimeField(required=True)
 
     @property
