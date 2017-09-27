@@ -1,15 +1,53 @@
-<!DOCTYPE html>
-<html>
+{% extends 'quero_cultura/base.html' %}
+
+<!-- <!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+	   crossorigin=""/>
+	<link rel="stylesheet" href="static/css/map.css"/>
 	<title></title>
 	<link rel="stylesheet" href="">
-</head>
-<body>
-	<h1>Quero cultura</h1>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-	{{mapPoint.typePoint}}
+
+</head>
+
+<body>
+	<header></header> -->
+	{% block content %}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+	   crossorigin=""/>
+	<link rel="stylesheet" href="static/css/map.css"/>
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <div  class = "map-container" >
+  		<div  id = "map"></div >
+  	</div>
 
 </body>
-</html>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+crossorigin=""></script>
+
+<script type = "text/javascript" src="static/js/map.js"></script>
+
+	<script>
+
+		MarkersPoints();
+		//setInterval(function(){MarkersPoints()}, 10000);
+		
+	</script>
+
+	{% endblock %}
+
+<!--</html>-->
