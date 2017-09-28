@@ -2,11 +2,14 @@ var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 20,
     minZoom: 3,
+    noWrap: true,
     id: 'mapbox.dark',
     accessToken: 'your.mapbox.access.token'
 });
 
-var map = L.map('map')
+var bounds = L.latLngBounds([-15.2222, -50.1222], [-15.2222, -50.1222]);
+
+var map = L.map('map', {maxBounds: bounds})
     .addLayer(mapboxTiles)
     .setView([-15.2222, -50.1222], 4);
 
@@ -42,8 +45,7 @@ function MarkersPoints(){
 function SpaceMarkers(){
 
 		var getTimeNow = InitTime();
-		console.log(getTimeNow);
-
+	
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
