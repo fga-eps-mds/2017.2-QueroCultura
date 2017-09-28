@@ -6,10 +6,8 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
       - javascript
       - python
-      - php
   eslint:
     enabled: true
   fixme:
@@ -26,4 +24,5 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
-exclude_paths: []
+exclude_paths: 
+  - /quero_cultura/static/*
