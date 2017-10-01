@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 
 *.sqlite3
+
+\.cache/v/cache/
