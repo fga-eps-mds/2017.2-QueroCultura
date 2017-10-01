@@ -8,7 +8,7 @@ from mongoengine import DateTimeField
 
 
 class PercentLibraryPerAreaOfActivity(Document):
-    _totalLibraryPerAreaOfActivity = DictField(required=True)
+    _libraries_per_activity = DictField(required=True)
     _totalLibrary = IntField(required=True)
     _createDate = DateTimeField(required=True)
 

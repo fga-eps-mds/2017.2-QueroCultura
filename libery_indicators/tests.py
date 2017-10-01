@@ -22,7 +22,7 @@ class TestPercentLibraryPerAreaOfActivity(object):
             {'activity area': 20}, total_libraries, datetime.now())
         library_indicator.save()
         querry = PercentLibraryPerAreaOfActivity.objects.first()
-        assert querry.totalLibrary == total_libraries
+        assert querry.total_library == total_libraries
 
 
 class TestPercentPublicOrPrivateLibrary(object):
@@ -34,7 +34,7 @@ class TestPercentPublicOrPrivateLibrary(object):
             total_public_library, 20, 100, datetime.now())
         library_indicator.save()
         querry = PercentPublicOrPrivateLibrary.objects.first()
-        assert querry.totalPublicLibrary == total_public_library
+        assert querry.total_public_library == total_public_library
 
     def test_total_private_library(self):
         PercentPublicOrPrivateLibrary.drop_collection()
@@ -43,7 +43,7 @@ class TestPercentPublicOrPrivateLibrary(object):
             20, total_private_libraries, 100, datetime.now())
         library_indicator.save()
         querry = PercentPublicOrPrivateLibrary.objects.first()
-        assert querry.totalPrivateLibrary == total_private_libraries
+        assert querry.total_private_library == total_private_libraries
 
     def test_total_library(self):
         PercentPublicOrPrivateLibrary.drop_collection()
@@ -52,7 +52,7 @@ class TestPercentPublicOrPrivateLibrary(object):
             20, 20, total_libraries, datetime.now())
         libery_indicator.save()
         querry = PercentPublicOrPrivateLibrary.objects.first()
-        assert querry.totalLibrary == total_libraries
+        assert querry.total_library == total_libraries
 
 
 def test_success_request():
