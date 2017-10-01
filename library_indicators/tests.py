@@ -6,7 +6,8 @@ from .models import PercentPublicOrPrivateLibrary
 
 class TestPercentLibraryPerAreaOfActivity(object):
 
-    def test_libraries_per_activity(self):
+    @staticmethod
+    def test_libraries_per_activity():
         PercentLibraryPerAreaOfActivity.drop_collection()
         libraries_per_activity = {'activity area': 20}
         library_indicator = PercentLibraryPerAreaOfActivity(
@@ -15,7 +16,8 @@ class TestPercentLibraryPerAreaOfActivity(object):
         querry = PercentLibraryPerAreaOfActivity.objects.first()
         assert querry.total_libraries_per_activity == libraries_per_activity
 
-    def test_total_library(self):
+    @staticmethod
+    def test_total_library():
         PercentLibraryPerAreaOfActivity.drop_collection()
         total_libraries = 50
         library_indicator = PercentLibraryPerAreaOfActivity(
@@ -27,7 +29,8 @@ class TestPercentLibraryPerAreaOfActivity(object):
 
 class TestPercentPublicOrPrivateLibrary(object):
 
-    def test_total_public_library(self):
+    @staticmethod
+    def test_total_public_library():
         PercentPublicOrPrivateLibrary.drop_collection()
         total_public_library = 50
         library_indicator = PercentPublicOrPrivateLibrary(
@@ -36,7 +39,8 @@ class TestPercentPublicOrPrivateLibrary(object):
         querry = PercentPublicOrPrivateLibrary.objects.first()
         assert querry.total_public_library == total_public_library
 
-    def test_total_private_library(self):
+    @staticmethod
+    def test_total_private_library():
         PercentPublicOrPrivateLibrary.drop_collection()
         total_private_libraries = 50
         library_indicator = PercentPublicOrPrivateLibrary(
@@ -45,7 +49,8 @@ class TestPercentPublicOrPrivateLibrary(object):
         querry = PercentPublicOrPrivateLibrary.objects.first()
         assert querry.total_private_library == total_private_libraries
 
-    def test_total_library(self):
+    @staticmethod
+    def test_total_library():
         PercentPublicOrPrivateLibrary.drop_collection()
         total_libraries = 50
         library_indicator = PercentPublicOrPrivateLibrary(
