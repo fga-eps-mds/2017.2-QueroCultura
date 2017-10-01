@@ -13,12 +13,12 @@ class PercentLibraryPerAreaOfActivity(Document):
     _createDate = DateTimeField(required=True)
 
     @property
-    def total_library_per_area_of_activity(self):
-        return self._totalLibraryPerAreaOfActivity
+    def total_libraries_per_activity(self):
+        return self._libraries_per_activity
 
-    @total_library_per_area_of_activity.setter
-    def total_library_per_area_of_activity(self, number):
-        self._totalLibraryPerAreaOfActivity = number
+    @total_libraries_per_activity.setter
+    def total_libraries_per_activity(self, number):
+        self._libraries_per_activity = number
 
     @property
     def total_library(self):
