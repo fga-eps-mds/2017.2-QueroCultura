@@ -48,9 +48,9 @@ class TestPercentPublicOrPrivateLibrary(object):
     def test_total_library(self):
         PercentPublicOrPrivateLibrary.drop_collection()
         total_libraries = 50
-        libery_indicator = PercentPublicOrPrivateLibrary(
+        library_indicator = PercentPublicOrPrivateLibrary(
             20, 20, total_libraries, datetime.now())
-        libery_indicator.save()
+        library_indicator.save()
         querry = PercentPublicOrPrivateLibrary.objects.first()
         assert querry.total_library == total_libraries
 
