@@ -64,7 +64,7 @@ class PercentPublicOrPrivateLibrary(Document):
         return self._total_libraries
 
     @total_libraries.setter
-    def total_library(self, number):
+    def total_libraries(self, number):
         self._total_libraries = number
 
     @property
@@ -91,11 +91,11 @@ class PercentLibrariesTypeSphere(object):
         self._total_libraries_type_sphere = number
 
     @property
-    def total_library(self):
+    def total_libraries(self):
         return self._total_libraries
 
-    @total_library.setter
-    def total_library(self, number):
+    @total_libraries.setter
+    def total_libraries(self, number):
         self._total_libraries = number
 
     @property
@@ -135,7 +135,7 @@ class QuantityOfRegisteredlibraries(Document):
         return self._total_libraries
 
     @total_libraries.setter
-    def total_library(self, number):
+    def total_libraries(self, number):
         self._total_libraries = number
 
     @property
@@ -150,121 +150,121 @@ class QuantityOfRegisteredlibraries(Document):
 # -------------------- state indicators --------------------------------------
 
 class PercentLibraryForState(Document):
-    _totalLibraryForState = DictField(required=True)
-    _totalLibrary = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_libraries_in_state = DictField(required=True)
+    _total_libraries = IntField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
-    def total_library_for_state(self):
-        return self._totalLibraryForState
+    def total_libraries_in_state(self):
+        return self._total_libraries_in_state
 
-    @total_library_for_state.setter
-    def total_library_for_state(self, number):
-        self._totalLibraryForState = number
+    @total_libraries_in_state.setter
+    def total_libraries_in_state(self, number):
+        self._total_libraries_in_state = number
 
     @property
-    def total_library(self):
-        return self._totalLibrary
+    def total_libraries(self):
+        return self._total_libraries
 
-    @total_library.setter
-    def total_library(self, number):
-        self._totalLibrary = number
+    @total_libraries.setter
+    def total_libraries(self, number):
+        self._total_libraries = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 class PercentLibraryPerAreaOfActivityPerState(Document):
-    _totalLibraryPerAreaOfActivityPerState = DictField(required=True)
-    _totalLibraryPerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _libraries_per_area_per_state = DictField(required=True)
+    _libraries_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
-    def total_library_per_area_of_activity_per_state(self):
-        return self._totalLibraryPerAreaOfActivityPerState
+    def libraries_per_area_per_state(self):
+        return self._libraries_per_area_per_state
 
-    @total_library_per_area_of_activity_per_state.setter
-    def total_library_per_area_of_activity_per_state(self, number):
-        self._totalLibraryPerAreaOfActivityPerState = number
+    @libraries_per_area_per_state.setter
+    def libraries_per_area_per_state(self, number):
+        self._libraries_per_area_per_state = number
 
     @property
-    def total_library_per_state(self):
-        return self._totalLibraryPerState
+    def libraries_per_state(self):
+        return self._libraries_per_state
 
-    @total_library_per_state.setter
-    def total_library_per_state(self, number):
-        self._totalLibraryPerState = number
+    @libraries_per_state.setter
+    def libraries_per_state(self, number):
+        self._libraries_per_state = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 class PercentPublicOrPrivateLibraryPerState(Document):
-    _totalPublicLibraryPerState = DictField(required=True)
-    _totalPrivateLibraryPerState = DictField(required=True)
-    _totalLibraryPerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _public_libraries_per_state = DictField(required=True)
+    _private_libraries_per_state = DictField(required=True)
+    _libraries_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
-    def total_public_library_per_state(self):
-        return self._totalPublicLibraryPerState
+    def public_libraries_per_state(self):
+        return self._public_libraries_per_state
 
-    @total_public_library_per_state.setter
-    def total_public_library_per_state(self, number):
-        self._totalPublicLibraryPerState = number
+    @public_libraries_per_state.setter
+    def public_libraries_per_state(self, number):
+        self._public_libraries_per_state = number
 
     @property
     def total_private_library_per_state(self):
-        return self._totalPrivateLibraryPerState
+        return self._private_libraries_per_state
 
     @total_private_library_per_state.setter
-    def totalPrivateLibraryPerState(self, number):
-        self._totalPrivateLibraryPerState = number
+    def private_libraries_per_state(self, number):
+        self._private_libraries_per_state = number
 
     @property
-    def total_library_per_state(self):
-        return self._totalLibraryPerState
+    def libraries_per_state(self):
+        return self._libraries_per_state
 
-    @total_library_per_state.setter
-    def total_library_per_state(self, number):
-        self._totalLibraryPerState = number
+    @libraries_per_state.setter
+    def libraries_per_state(self, number):
+        self._libraries_per_state = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 # Percentage of libraries by type of sphere per state
 class PercentLibrariesTypeSpherePerState(object):
-    _totalLibrariesTypeSpherePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _library_type_sphere_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
-    def total_libraries_type_sphere_per_state(self):
-        return self._totalLibrariesTypeSpherePerState
+    def library_type_sphere_per_state(self):
+        return self._library_type_sphere_per_state
 
-    @total_libraries_type_sphere_per_state.setter
-    def total_libraries_type_sphere_per_state(self, number):
-        self._totalLibrariesTypeSpherePerState = number
+    @library_type_sphere_per_state.setter
+    def library_type_sphere_per_state(self, number):
+        self._library_type_sphere_per_state = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
