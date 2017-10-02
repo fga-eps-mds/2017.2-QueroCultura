@@ -24,5 +24,5 @@ def test_data_lenght():
     request_projects_raw_data = RequestProjectsRawData(current_time)
     projects_raw_data = request_projects_raw_data.data_length
     type_projects_raw_data = type(projects_raw_data)
-    intenger = 1
-    assert type_projects_raw_data == type(intenger)
+    integer = 1
+    assert type_projects_raw_data == type(integer)
