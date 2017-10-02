@@ -24,5 +24,5 @@ def test_data_lenght():
     request_museum_raw_data = RequestMuseumRawData(current_time)
     museum_raw_data = request_museum_raw_data.data_length
     type_museum_raw_data = type(museum_raw_data)
-    intenger = 1
-    assert type_museum_raw_data == type(intenger)
+    integer = 1
+    assert type_museum_raw_data == type(integer)
