@@ -8,7 +8,7 @@ class RequestMixedIndicatorsRawData(object):
         self._get_time = last_update_time
         self._url = 'http://mapas.cultura.gov.br/api/event/find/'
         self._filters = {'@select': 'occurrences.{space.{acessibilidade,'
-                         + ' En_Estado}}',
+                                    + ' En_Estado}}',
                          'createTimestamp': "GT("+self._get_time+")"}
         self._response = requests.get(self._url, self._filters)
         self._data = json.loads(self._response.text)
