@@ -24,5 +24,5 @@ def test_data_lenght():
     request_events_raw_data = RequestEventsRawData(current_time)
     events_raw_data = request_events_raw_data.data_length
     type_events_raw_data = type(events_raw_data)
-    intenger = 1
-    assert type_events_raw_data == type(intenger)
+    integer = 1
+    assert type_events_raw_data == type(integer)

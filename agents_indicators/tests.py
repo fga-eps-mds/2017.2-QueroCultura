@@ -24,5 +24,5 @@ def test_data_lenght():
     request_agents_raw_data = RequestAgentsRawData(current_time)
     agents_raw_data = request_agents_raw_data.data_length
     type_agents_raw_data = type(agents_raw_data)
-    intenger = 1
-    assert type_agents_raw_data == type(intenger)
+    integer = 1
+    assert type_agents_raw_data == type(integer)

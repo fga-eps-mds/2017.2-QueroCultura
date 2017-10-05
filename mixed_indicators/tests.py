@@ -24,5 +24,5 @@ def test_data_lenght():
     request_mixed_raw_data = RequestMixedIndicatorsRawData(current_time)
     mixed_raw_data = request_mixed_raw_data.data_length
     type_mixed_raw_data = type(mixed_raw_data)
-    intenger = 1
-    assert type_mixed_raw_data == type(intenger)
+    integer = 1
+    assert type_mixed_raw_data == type(integer)
