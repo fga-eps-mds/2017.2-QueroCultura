@@ -1,4 +1,3 @@
-# from django.db import models
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
@@ -6,27 +5,12 @@ from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
+class PercentEvent(Document):
+    class Meta:
+        abstract = True
 
-class PercentEventsPerLanguage(Document):
     _total_events = IntField(required=True)
-    _total_events_per_language = DictField(required=True)
     _create_date = DateTimeField(required=True)
-
-    @property
-    def total_events(self):
-        return self._total_events
-
-    @total_events.setter
-    def total_events(self, number):
-        self._total_events = number
-
-    @property
-    def total_events_per_language(self):
-        return self._tota_events_per_language
-
-    @total_events_per_language.setter
-    def total_events_per_language(self, number):
-        self._total_events_per_language = number
 
     @property
     def create_date(self):
@@ -37,34 +21,39 @@ class PercentEventsPerLanguage(Document):
         self._create_date = number
 
 
-class PercentEventsPerAgeRange(Document):
-    _totalEventsPerAgeRange = DictField(required=True)
-    _totalEvents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
     @property
     def total_events(self):
-        return self._totalEvents
+        return self._total_events
 
     @total_events.setter
-    def totalEvents(self, number):
-        self._totalEvents = number
+    def total_events(self, number):
+        self._total_events = number
+
+class PercentEventsPerLanguage(PercentEvent):
+    _total_events_per_language = DictField(required=True)
+
+
+    @property
+    def total_events_per_language(self):
+        return self._tota_events_per_language
+
+    @total_events_per_language.setter
+    def total_events_per_language(self, number):
+        self._total_events_per_language = number
+
+
+class PercentEventsPerAgeRange(PercentEvent):
+    _total_events_per_age_range = DictField(required=True)
 
     @property
     def total_events_per_age_range(self):
-        return self._totalEventsPerAgeRange
+        return self._total_events_per_age_range
 
     @total_events_per_age_range.setter
     def total_events_per_age_range(self, number):
-        self._totalEventsPerAgeRange = number
+        self._total_events_per_age_range = number
 
-    @property
-    def create_date(self):
-        return self._createDate
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 # -------------------- state indicators --------------------------------------
 

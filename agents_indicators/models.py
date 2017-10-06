@@ -31,7 +31,7 @@ class PercentAgents(Document):
 class PercentAgentsState(Document):
     class Meta:
         abstract = True
-        
+
     _total_agents_for_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
 
