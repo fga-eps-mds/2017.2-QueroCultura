@@ -110,34 +110,16 @@ class PercentAgentsPerAreaOperation(PercentAgents):
 
 
 # -------------------- state indicators --------------------------------
-class PercentAgentsForState(Document):
-    _totalAgentsForStates = DictField(required=True)
-    _totalAgents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentAgentsForState(PercentAgents):
+    _total_agents_for_states = DictField(required=True)
 
     @property
     def total_agents_for_states(self):
-        return self._totalAgentsForStates
+        return self._total_agents_for_states
 
     @total_agents_for_states.setter
     def total_agents_for_states(self, number):
-        self._totalAgentsForStates = number
-
-    @property
-    def total_agents(self):
-        return self._totalAgents
-
-    @total_agents.setter
-    def total_agents(self, number):
-        self._totalAgents = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+        self._total_agents_for_states = number
 
 
 class PercentAgentsPerAreaOperationForState(Document):
