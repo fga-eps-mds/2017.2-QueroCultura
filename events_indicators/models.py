@@ -9,32 +9,32 @@ from mongoengine import DateTimeField
 
 class PercentEventsPerLanguage(Document):
     _total_events = IntField(required=True)
-    _totaEventsPerLanguage = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_events_per_language = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_events(self):
-        return self._totalEvents
+        return self._total_events
 
     @total_events.setter
     def total_events(self, number):
-        self._totalEvents = number
+        self._total_events = number
 
     @property
     def total_events_per_language(self):
-        return self._totalEventsPerLanguage
+        return self._tota_events_per_language
 
     @total_events_per_language.setter
     def total_events_per_language(self, number):
-        self._totalEventsPerLanguage = number
+        self._total_events_per_language = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 class PercentEventsPerAgeRange(Document):

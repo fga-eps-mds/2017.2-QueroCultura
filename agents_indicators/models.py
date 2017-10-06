@@ -5,6 +5,10 @@ from mongoengine import IntField
 from mongoengine import DateTimeField
 
 
+class PercentAgents(Document):
+    _totalAgents = IntField(required=True)
+    _createDate = DateTimeField(required=True)
+
 # Percentage of individual and collective agents
 class PercentIndividualAndCollectiveAgent(Document):
     _totalIndividualAgent = IntField(required=True)
@@ -62,8 +66,6 @@ class AmountAgentsRegisteredPerYear(Document):
     @property
     def create_date(self):
         return self._createDate
-
-
 
 
     @create_date.setter
