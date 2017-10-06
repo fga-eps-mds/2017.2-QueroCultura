@@ -12,6 +12,7 @@ class PercentIndividualAndCollectiveAgent(Document):
     _totalAgents = IntField(required=True)
     _createDate = DateTimeField(required=True)
 
+
     @property
     def total_individual_agent(self):
         return self._totalIndividualAgent
@@ -61,6 +62,9 @@ class AmountAgentsRegisteredPerYear(Document):
     @property
     def create_date(self):
         return self._createDate
+
+
+
 
     @create_date.setter
     def create_date(self, number):

@@ -8,7 +8,7 @@ from mongoengine import DateTimeField
 
 
 class PercentEventsPerLanguage(Document):
-    _totalEvents = IntField(required=True)
+    total_events = IntField(required=True)
     _totaEventsPerLanguage = DictField(required=True)
     _createDate = DateTimeField(required=True)
 
