@@ -27,26 +27,27 @@ class PercentAgents(Document):
     def total_agents(self, number):
         self._total_agents = number
 
+
 # Percentage of individual and collective agents
 class PercentIndividualAndCollectiveAgent(PercentAgents):
-    _totalIndividualAgent = IntField(required=True)
-    _totalCollectiveAgent = IntField(required=True)
+    _total_individual_agent = IntField(required=True)
+    _total_collective_agent = IntField(required=True)
 
     @property
     def total_individual_agent(self):
-        return self._totalIndividualAgent
+        return self._total_individual_agent
 
     @total_individual_agent.setter
     def total_individual_agent(self, number):
-        self._totalIndividualAgent = number
+        self._total_individual_agent = number
 
     @property
     def total_collective_agent(self):
-        return self._totalCollectiveAgent
+        return self._total_collective_agent
 
     @total_collective_agent.setter
     def total_collective_agent(self, number):
-        self._totalCollectiveAgent = number
+        self._total_collective_agent = number
 
 
 
