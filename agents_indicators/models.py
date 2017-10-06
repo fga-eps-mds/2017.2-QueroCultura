@@ -96,34 +96,17 @@ class AmountAgentsRegisteredPerMonth(Document):
         self._createDate = number
 
 
-class PercentAgentsPerAreaOperation(Document):
-    _totalAgentsPerAreaOreration = DictField(required=True)
-    _totalAgents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentAgentsPerAreaOperation(PercentAgents):
+    _total_agents_area_oreration = DictField(required=True)
 
     @property
-    def total_agents_per_area_oreration(self):
-        return self._totalAgentsPerAreaOreration
+    def total_agents_area_oreration(self):
+        return self._total_agents_area_oreration
 
-    @total_agents_per_area_oreration.setter
+    @total_agents_area_oreration.setter
     def total_agents_per_area_oreration(self, number):
-        self._totalAgentsPerAreaOreration = number
+        self._total_agents_area_oreration = number
 
-    @property
-    def total_agents(self):
-        return self._totalAgents
-
-    @total_agents.setter
-    def total_agents(self, number):
-        self._totalAgents = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 
 # -------------------- state indicators --------------------------------
