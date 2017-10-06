@@ -5,17 +5,32 @@ from mongoengine import IntField
 from mongoengine import DateTimeField
 
 
+
 class PercentAgents(Document):
-    _totalAgents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_agents = IntField(required=True)
+    _create_date = DateTimeField(required=True)
+
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, number):
+        self._create_date = number
+
+
+    @property
+    def total_agents(self):
+        return self._total_agents
+
+    @total_agents.setter
+    def total_agents(self, number):
+        self._total_agents = number
 
 # Percentage of individual and collective agents
-class PercentIndividualAndCollectiveAgent(Document):
+class PercentIndividualAndCollectiveAgent(PercentAgents):
     _totalIndividualAgent = IntField(required=True)
     _totalCollectiveAgent = IntField(required=True)
-    _totalAgents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
 
     @property
     def total_individual_agent(self):
@@ -33,21 +48,6 @@ class PercentIndividualAndCollectiveAgent(Document):
     def total_collective_agent(self, number):
         self._totalCollectiveAgent = number
 
-    @property
-    def total_agents(self):
-        return self._totalAgents
-
-    @total_agents.setter
-    def total_agents(self, number):
-        self._totalAgents = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 
 # Amount of agents registered per year on the platform throughout its existence
