@@ -20,10 +20,9 @@
   <link rel="stylesheet" href="static/css/map.css"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
-
 </head>
 
-<body class="fixed-nav sticky-footer bg-light" id="page-top">
+<body class="fixed-nav sticky-footer bg-light" id="page-top" onload="checkCookieIntro()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark " id="mainNav" >
     <a class="navbar-brand" href="" id="idQuero" align="center">Quero Cultura</a>
@@ -170,6 +169,18 @@
   			]
   		})
 
+
+  </script>
+
+  <script type="text/javascript">
+    function checkCookieIntro(){
+       var cookie=getCookie("mySite");
+
+       if (cookie==null || cookie=="") {
+          setCookie("mySite", "1",90);
+          intro.start();  //change this to whatever function you need to call to run the intro
+          }
+    }
 
   </script>
 
