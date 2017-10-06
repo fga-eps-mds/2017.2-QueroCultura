@@ -171,19 +171,3 @@ class PercentIndividualAndCollectiveAgentForState(PercentAgentsState):
     @total_collective_agent_state.setter
     def total_collective_agent_state(self, number):
         self._total_collective_agent_state = number
-
-    @property
-    def total_agents_for_state(self):
-        return self._totalAgentsForState
-
-    @total_agents_for_state.setter
-    def total_agents_for_state(self, number):
-        self._totalAgentsForState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
