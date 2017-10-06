@@ -29,6 +29,29 @@ class PercentEvent(Document):
     def total_events(self, number):
         self._total_events = number
 
+class PercentEventState(Document):
+    class Meta:
+        abstract = True
+    _total_state_events = DictField(required=True)
+    _create_date = DateTimeField(required=True)
+
+    @property
+    def total_state_events(self):
+        return self._total_state_events
+
+    @total_state_events.setter
+    def total_state_events(self, number):
+        self._total_state_events = number
+
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, number):
+        self._create_date = number
+
+
 class PercentEventsPerLanguage(PercentEvent):
     _total_events_per_language = DictField(required=True)
 
@@ -58,34 +81,19 @@ class PercentEventsPerAgeRange(PercentEvent):
 # -------------------- state indicators --------------------------------------
 
 
-class PercentTypeEventsForState(Document):
-    _typeStateEvents = DictField(required=True)
-    _totalStateEvents = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentTypeEventsForState(PercentEvent):
+    _type_state_events = DictField(required=True)
+
 
     @property
     def type_state_events(self):
-        return self._typeStateEvents
+        return self._type_state_events
 
     @type_state_events.setter
     def type_state_events(self, number):
-        self._typeStateEvents = number
+        self._type_state_events = number
 
-    @property
-    def total_state_events(self):
-        return self._totalStateEvents
 
-    @total_state_events.setter
-    def total_state_events(self, number):
-        self._totalStateEvents = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 
 class PercentEventsPerLanguagePerState(Document):
