@@ -71,16 +71,8 @@ class PercentIndividualAndCollectiveAgent(PercentAgents):
 
 # Amount of agents registered per year on the platform throughout its existence
 class AmountAgentsRegisteredPerYear(Document):
-    _totalAgentsRegisteredPerYear = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_agents_registered_per_year(self):
-        return self._totalAgentsRegisteredPerYear
-
-    @total_agents_registered_per_year.setter
-    def total_agents_registered_per_year(self, number):
-        self._totalAgentsRegisteredPerYear = number
+    _total_agents_registered_year = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def create_date(self):
@@ -89,29 +81,36 @@ class AmountAgentsRegisteredPerYear(Document):
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
+    @property
+    def total_agents_registered_year(self):
+        return self._total_agents_registered_year
+
+    @total_agents_registered_year.setter
+    def total_agents_registered_year(self, text):
+        self._total_agents_registered_year = text
 
 # Number of agents registered monthly on the platform throughout its existence
 class AmountAgentsRegisteredPerMonth(Document):
-    _totalAgentsRegisteredPerMonth = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_agents_registered_month = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
-    def total_agents_registered_per_month(self):
-        return self._totalAgentsRegisteredPerMonth
+    def total_agents_registered_month(self):
+        return self._total_agents_registered_month
 
-    @total_agents_registered_per_month.setter
-    def total_agents_registered_per_month(self, number):
-        self._totalAgentsRegisteredPerMonth = number
+    @total_agents_registered_month.setter
+    def total_agents_registered_month(self, number):
+        self._total_agents_registered_month = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 class PercentAgentsPerAreaOperation(PercentAgents):
