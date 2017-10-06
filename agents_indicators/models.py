@@ -1,14 +1,16 @@
-# from django.db import models
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
 
-
 class PercentAgents(Document):
+    class Meta:
+        abstract = True
+
     _total_agents = IntField(required=True)
     _create_date = DateTimeField(required=True)
+
 
     @property
     def create_date(self):
@@ -27,6 +29,9 @@ class PercentAgents(Document):
         self._total_agents = number
 
 class PercentAgentsState(Document):
+    class Meta:
+        abstract = True
+        
     _total_agents_for_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -66,7 +71,6 @@ class PercentIndividualAndCollectiveAgent(PercentAgents):
     @total_collective_agent.setter
     def total_collective_agent(self, number):
         self._total_collective_agent = number
-
 
 
 # Amount of agents registered per year on the platform throughout its existence
