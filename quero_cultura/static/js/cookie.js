@@ -1,8 +1,8 @@
 function writeCookie(name, value, days) {
-    //por default, não existe expiração, ou seja o cookie é temporário
+    //by default, there is no expiration, the cookie is temporary
     var expires = "";
 
-    //especifica o número de dias para guardar o cookie
+    //Specifie the number of days to save the cookie
     if(days){
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 1000));
@@ -10,13 +10,13 @@ function writeCookie(name, value, days) {
     }
 
     if(value != "" && value != null && value != "null") {
-        //define o cookie com o nome, valor e data de expiração
+        //sets the cookie with the name, value, and expiration date
         document.cookie = name + "=" + value + expires + "; path=/";
     }
 }
 
 function readCookie (name) {
-    //encontra o cookie especificado e retorna o seu valor
+    //finds the specified cookie and returns its value
     var searchName = name + "=";
     var cookies = document.cookie.split(';');
     for(var i=0; i < cookies.length; i++){
@@ -30,6 +30,6 @@ function readCookie (name) {
 }
 
 function eraseCookie(name) {
-    //exclui o cookie
+    //delete the cookie
     writeCookie(name, "", -1);
 }
