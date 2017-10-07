@@ -6,19 +6,30 @@ from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
-
-class PercentSpacePerType(Document):
-    _totalSpace = IntField(required=True)
-    _totalSpacePerType = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentSpace(Document):
+    class Meta:
+        abstract = True
+    _total_space = IntField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_space(self):
-        return self._totalSpace
+        return self._total_space
 
     @total_space.setter
     def total_space(self, number):
-        self._totalSpace = number
+        self._total_space = number
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, number):
+        self._create_date = number
+
+class PercentSpacePerType(Document):
+    _totalSpacePerType = DictField(required=True)
+
 
     @property
     def total_space_per_type(self):
@@ -28,13 +39,7 @@ class PercentSpacePerType(Document):
     def total_space_per_type(self, number):
         self._totalSpacePerType = number
 
-    @property
-    def create_date(self):
-        return self._createDate
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 
 class PercentSpacePerOccupationArea(Document):
