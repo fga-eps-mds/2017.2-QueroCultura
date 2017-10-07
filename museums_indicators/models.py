@@ -150,175 +150,103 @@ class PercentTypeMuseums(PercentMuseums):
 
 
 
-class PercentPublicOrPrivateMuseums(Document):
-    _totalPublicMuseums = IntField(required=True)
-    _totalPrivateMuseums = IntField(required=True)
-    _totalMuseums = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentPublicOrPrivateMuseums(PercentMuseums):
+    _total_public_museums = IntField(required=True)
+    _total_private_museums = IntField(required=True)
 
     @property
     def total_public_museums(self):
-        return self._totalPublicMuseums
+        return self._total_public_museums
 
     @total_public_museums.setter
     def total_public_museums(self, number):
-        self._totalPublicMuseums = number
+        self._total_public_museums = number
 
     @property
     def total_private_museums(self):
-        return self._totalPrivateMuseums
+        return self._total_private_museums
 
-    @total_private_museums.setter
+    @total_private_museums.sette
     def total_private_museums(self, number):
-        self._totalPrivateMuseums = number
+        self._total_private_museums = number
+
+class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
+    _total_museums_historical = IntField(required=True)
 
     @property
-    def total_museums(self):
-        return self._totalMuseums
+    def total_museums_historical(self):
+        return self._total_museums_historical
 
-    @total_museums.setter
-    def total_museums(self, number):
-        self._totalMuseums = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    @total_museums_historical.setter
+    def total_museums_historical(self, number):
+        self._total_museums_historical = number
 
 
-class PercentMuseumsHistoricalArchivePublicAccess(Document):
-    _totalMuseumsHistoricalArchivePublicAccess = IntField(required=True)
-    _totalMuseums = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentMuseumsPromoteGuidedTour(PercentMuseums):
+    _total_museums_promote_guide = IntField(required=True)
 
     @property
-    def total_museums_historical_archive_public_access(self):
-        return self._totalMuseumsHistoricalArchivePublicAccess
+    def total_museums_promote_guide(self):
+        return self._total_museums_promote_guide
 
-    @total_museums_historical_archive_public_access.setter
-    def total_museums_historical_archive_public_access(self, number):
-        self._totalMuseumsHistoricalArchivePublicAccess = number
+    @total_museums_promote_guide.setter
+    def total_museums_promote_guide(self, number):
+        self._total_museums_promote_guide = number
 
-    @property
-    def total_museums(self):
-        return self._totalMuseums
-
-    @total_museums.setter
-    def total_museums(self, number):
-        self._totalMuseums = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentMuseumsPromoteGuidedTour(Document):
-    _totalMuseumsPromoteGuidedTour = IntField(required=True)
-    _totalMuseums = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_museums_promote_guided_tour(self):
-        return self._totalMuseumsPromoteGuidedTour
-
-    @total_museums_promote_guided_tour.setter
-    def total_museums_promote_guided_tour(self, number):
-        self._totalMuseumsPromoteGuidedTour = number
-
-    @property
-    def total_museums(self):
-        return self._totalMuseums
-
-    @total_museums.setter
-    def total_museums(self, number):
-        self._totalMuseums = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 
 # Amount of Museums registered on year on the platform throughout its existence
 class AmountMuseumsRegisteredYear(Document):
-    _totalMuseumsRegisteredYear = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_museums_registered_year = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_museums_registered_year(self):
-        return self._totalMuseumsRegisteredYear
+        return self._total_museums_registered_year
 
     @total_museums_registered_year.setter
     def total_museums_registered_year(self, number):
-        self._totalMuseumsRegisteredYear = number
+        self._total_museums_registered_year = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 # Amount of Museums registered monthly on the platform throughout its existence
 class AmountMuseumsRegisteredMonth(Document):
-    _totalMuseumsRegisteredMonth = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_museums_registered_month = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_museums_registered_month(self):
-        return self._totalMuseumsRegisteredMonth
+        return self._total_museums_registered_month
 
     @total_museums_registered_month.setter
     def total_museums_registered_month(self, number):
-        self._totalMuseumsRegisteredMonth = number
+        self._total_museums_registered_month = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
-# Percentage of museums by states
-class PercentMuseumsForState(Document):
-    _totalMuseumsForState = DictField(required=True)
-    _totalMuseums = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+# Percentage of museumms by states
+class PercentMuseumsForState(PercentMuseums):
+    _total_museums_for_state = DictField(required=True)
 
     @property
     def total_museums_for_state(self):
-        return self._totalMuseumsForState
+        return self._total_museums_for_state
 
     @total_museums_for_state.setter
     def total_museums_for_state(self, number):
-        self._totalMuseumsForState = number
-
-    @property
-    def total_museums(self):
-        return self._totalMuseums
-
-    @total_museums.setter
-    def total_museums(self, number):
-        self._totalMuseums = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+        self._total_museums_for_state = number
