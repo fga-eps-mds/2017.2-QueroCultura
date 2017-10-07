@@ -5,36 +5,40 @@ from mongoengine import IntField
 from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
-
-
-class PercentProjectPerType(Document):
-    _totalProject = IntField(required=True)
-    _totaProjectPerType = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_project(self):
-        return self._totalProject
-
-    @total_project.setter
-    def total_project(self, number):
-        self._totalProject = number
-
-    @property
-    def total_project_per_type(self):
-        return self._totalProjectPerType
-
-    @total_project_per_type.setter
-    def total_project_per_type(self, number):
-        self._totalProjectPerType = number
-
+class PercentProjects(Document):
+    class Meta:
+        abstract = True
+    _total_project = IntField(required=True)
+    _create_date = DateTimeField(required=True)
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
+
+    @property
+    def total_project(self):
+        return self._total_project
+
+    @total_project.setter
+    def total_project(self, number):
+        self._total_project = number
+
+class PercentProjectPerType(PercentProjects):
+
+    _total_project_per_type = DictField(required=True)
+
+    @property
+    def total_project_per_type(self):
+        return self._total_project_per_type
+
+    @total_project_per_type.setter
+    def total_project_per_type(self, number):
+        self._total_project_per_type = number
+
+
 
 
 class PercentProjectThatAcceptOnlineTransitions(Document):
