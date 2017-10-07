@@ -41,134 +41,102 @@ class PercentProjectPerType(PercentProjects):
 
 
 
-class PercentProjectThatAcceptOnlineTransitions(Document):
-    _totalProjectThatAcceptOnlineTransitions = IntField(required=True)
-    _totalProject = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
+    _total_project_that_accept_online_transitions = IntField(required=True)
 
-    @property
-    def total_project(self):
-        return self._totalProject
-
-    @total_project.setter
-    def total_project(self, number):
-        self._totalProject = number
 
     @property
     def total_project_that_accept_online_transitions(self):
-        return self._totalProjectThatAcceptOnlineTransitions
+        return self._total_project_that_accept_online_transitions
 
     @total_project_that_accept_online_transitions.setter
     def total_project_that_accept_online_transitions(self, number):
-        self._totalProjectThatAcceptOnlineTransitions = number
+        self._total_project_that_accept_online_transitions = number
 
-    @property
-    def create_date(self):
-        return self._createDate
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
 
 # -------------------- state indicators --------------------------------------
 
 
 class PercentProjectPerTypePerState(Document):
-    _totalProjectPerState = DictField(required=True)
-    _totaProjectPerTypePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_project_per_state = DictField(required=True)
+    _total_project_per_type_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_project_per_state(self):
-        return self._totalProjectPerState
+        return self._total_project_per_state
 
     @total_project_per_state.setter
     def total_project_per_state(self, number):
-        self._totalProjectPerState = number
+        self._total_project_per_state = number
 
     @property
     def total_project_per_type_per_state(self):
-        return self._totalProjectPerTypePerState
+        return self._total_project_per_type_per_state
 
     @total_project_per_type_per_state.setter
     def total_project_per_type_per_state(self, number):
-        self._totalProjectPerTypePerState = number
+        self._total_project_per_type_per_state = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 
 class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
-    _totalProjectThatAcceptOnlineTransitionsPerState = DictField(required=True)
-    _totalProjectPerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    _total_project_online_transitions = DictField(required=True)
+    _total_project_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_project_per_state(self):
-        return self._totalProjectPerState
+        return self._total_project_per_state
 
     @total_project_per_state.setter
     def total_project_per_state(self, number):
-        self._totalProjecPerStatet = number
+        self._total_project_per_state = number
 
     @property
     def total_project_that_accept_online_transitions_per_state(self):
-        return self._totalProjectThatAcceptOnlineTransitionsPerState
+        return self._total_project_online_transitions
 
     @total_project_that_accept_online_transitions_per_state.setter
     def total_project_that_accept_online_transitions_per_state(self, number):
-        self._totalProjectThatAcceptOnlineTransitionsPerState = number
+        self.__total_project_online_transitions = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
 
 # -------------------- Project Registered -------------------------------------
 
 
-class QuantityOfRegisteredProject(Document):
-    _totalProjectRegisteredPerMounthPerYear = DictField(required=True)
-    _totalProjectRegisteredPerYear = DictField(required=True)
-    _totalProject = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class QuantityOfRegisteredProject(PercentProjects):
+    _total_project_registered_per_mounth_per_year = DictField(required=True)
+    _total_project_registered_per_year = DictField(required=True)
+
 
     @property
     def total_project_registered_per_mounth_per_year(self):
-        return self._totalProjectRegisteredPerMounthPerYear
+        return self._total_project_registered_per_mounth_per_year
 
     @total_project_registered_per_mounth_per_year.setter
     def total_project_registered_per_mounth_per_year(self, number):
-        self._totalProjectRegisteredPerMounthPerYear = number
+        self._total_project_registered_per_mounth_per_year = number
 
     @property
     def total_project_registered_per_year(self):
-        return self._totalProjectRegisteredPerYear
+        return self._total_project_registered_per_year
 
     @total_project_registered_per_year.setter
     def totalProjectRegisteredPerYear(self, number):
-        self._totalProjectRegisteredPerYear = number
-
-    @property
-    def total_project(self):
-        return self._totalProject
-
-    @total_project.setter
-    def total_project(self, number):
-        self._totalProject = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+        self._total_project_registered_per_year = number
