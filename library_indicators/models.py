@@ -5,6 +5,8 @@ from mongoengine import DateTimeField
 
 # --------------------- national indicators ----------------------------------
 
+
+
 class PercentLibraries(Document):
     class Meta:
         abstract = True

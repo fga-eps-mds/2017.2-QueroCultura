@@ -81,7 +81,9 @@ class PercentEventsInMoreThenOneSpace(PercentEventMixIndicator):
 
 class PercentEventsInAccessibleSpacesPerState(PercentEventMixIndicatorState):
 
+
     _totalEventsInAccessibleSpacesPerState = DictField(required=True)
+
 
     @property
     def total_events_in_accessible_spaces(self):

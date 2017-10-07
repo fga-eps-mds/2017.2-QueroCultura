@@ -6,35 +6,38 @@ from mongoengine import DateTimeField
 
 # -------------------- state indicators --------------------------------
 
-
-class PercentThematicsMuseumsForState(Document):
-    __thematicsMuseumsForState = DictField(required=True)
-    __totalMuseumsForState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def thmeatics_museums_for_state(self):
-        return self._thematicsMuseumsForState
-
-    @thmeatics_museums_for_state.setter
-    def thmeatics_museums_for_state(self, number):
-        self._thematicsMuseumsForState = number
+class PercentMuseums(Document):
+    _total_museums_for_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def total_museums_for_state(self):
-        return self._totalMuseumsForState
+        return self._total_museums_for_state
 
     @total_museums_for_state.setter
     def total_museums_for_state(self, number):
-        self._totalMuseumsForState = number
+        self._total_museums_for_state = number
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
     def create_date(self, number):
-        self._createDate = number
+        self._create_date = number
+
+class PercentThematicsMuseumsForState(PercentMuseums):
+    _thematics_museums_for_state = DictField(required=True)
+
+    @property
+    def thmeatics_museums_for_state(self):
+        return self._thematics_museums_for_state
+
+    @thmeatics_museums_for_state.setter
+    def thmeatics_museums_for_state(self, number):
+        self._thematics_museums_for_state = number
+
+
 
 
 class PercentTypeMuseumsForState(Document):
