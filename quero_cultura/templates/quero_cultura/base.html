@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-light" id="page-top" onload="checkCookieIntro()">
+<body class="fixed-nav sticky-footer bg-light" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark " id="mainNav" >
     <a class="navbar-brand" href="" id="idQuero" align="center">Quero Cultura</a>
@@ -111,6 +111,7 @@
     <script src="static/js/sb-admin-datatables.min.js"></script>
     <script src="static/js/sb-admin-charts.min.js"></script>
     <script type = "text/javascript" src="static/intro.js"></script>
+    <script type="text/javascript" src="static/js/cookie.js"></script>
 
 
     <script>
@@ -172,15 +173,14 @@
 
   </script>
 
-  <script type="text/javascript">
-    function checkCookieIntro(){
-       var cookie=getCookie("mySite");
 
-       if (cookie==null || cookie=="") {
-          setCookie("mySite", "1",90);
-          intro.start();  //change this to whatever function you need to call to run the intro
-          }
-    }
+  <script type="text/javascript">
+
+        var nome = readCookie("nome");
+        if(nome == null){
+            writeCookie("nome", "nome", 1);
+            intro.start();
+        }
 
   </script>
 
