@@ -55,7 +55,6 @@ class PercentEventState(Document):
 class PercentEventsPerLanguage(PercentEvent):
     _total_events_per_language = DictField(required=True)
 
-
     @property
     def total_events_per_language(self):
         return self._tota_events_per_language
@@ -81,7 +80,7 @@ class PercentEventsPerAgeRange(PercentEvent):
 # -------------------- state indicators --------------------------------------
 
 
-class PercentTypeEventsForState(PercentEvent):
+class PercentTypeEventsForState(PercentEventState):
     _type_state_events = DictField(required=True)
 
 
@@ -96,102 +95,51 @@ class PercentTypeEventsForState(PercentEvent):
 
 
 
-class PercentEventsPerLanguagePerState(Document):
-    _totalEventsPerState = DictField(required=True)
-    _totaEventsPerLanguagePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+class PercentEventsPerLanguagePerState(PercentEventState):
+    _total_events_language_state = DictField(required=True)
+
 
     @property
-    def total_events_per_state(self):
-        return self._totalEventsPerState
+    def total_events_language_state(self):
+        return self._total_events_language_state
 
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEvents = number
+    @total_events_language_state.setter
+    def total_events_language_state(self, number):
+        self._total_events_language_state = number
+
+
+
+class PercentEventsPerAgeRangePerState(PercentEventState):
+    _total_events_age_range_state = DictField(required=True)
+
 
     @property
-    def total_events_per_language_per_state(self):
-        return self._totalEventsPerLanguage
+    def total_events_age_range_state(self):
+        return self._total_events_age_range_state
 
-    @total_events_per_language_per_state.setter
-    def total_events_per_language_per_state(self, number):
-        self._totalEventsPerLanguage = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentEventsPerAgeRangePerState(Document):
-    _totalEventsPerAgeRangePerState = DictField(required=True)
-    _totalEventsPerState = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_events_per_state(self):
-        return self._totalEventsPerState
-
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEventsPerState = number
-
-    @property
-    def total_events_per_age_range_per_state(self):
-        return self._totalEventsPerAgeRangePerState
-
-    @total_events_per_age_range_per_state.setter
-    def total_events_per_age_range(self, number):
-        self._totalEventsPerAgeRangePerState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    @total_events_age_range_state.setter
+    def total_events_age_range_state(self, number):
+        self._total_events_age_range_state = number
 
 # -------------------- Events Registered --------------------------------------
 
 
-class QuantityOfRegisteredEvents(Document):
-    _totalEventsRegisteredPerMounthPerYear = DictField(required=True)
-    _totalEventsRegisteredPerYear = DictField(required=True)
-    _totalEvents = IntField(required=True)
-    _createDate = DateTimeField(required=True)
+class QuantityOfRegisteredEvents(PercentEvent):
+    _total_events_registered_per_mounth_per_year = DictField(required=True)
+    _total_events_registered_per_year = DictField(required=True)
 
     @property
     def total_events_registered_per_mounth_per_year(self):
-        return self._totalEventsRegisteredPerMounthPerYear
+        return self._total_events_registered_per_mounth_per_year
 
     @total_events_registered_per_mounth_per_year.setter
     def total_events_registered_per_mounth_per_year(self, number):
-        self._totalEventsRegisteredPerMounthPerYear = number
+        self._total_events_registered_per_mounth_per_year = number
 
     @property
     def total_events_registered_per_year(self):
-        return self._totalEventsRegisteredPerYear
+        return self._total_events_registered_per_year
 
     @total_events_registered_per_year.setter
     def total_events_registered_per_year(self, number):
-        self._totalEventsRegisteredPerYear = number
-
-    @property
-    def total_events(self):
-        return self._totalEvents
-
-    @total_events.setter
-    def total_events(self, number):
-        self._totalEvents = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+        self._total_events_registered_per_year = number
