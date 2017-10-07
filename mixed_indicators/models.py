@@ -30,10 +30,27 @@ class PercentEventMixIndicator(Document):
 class PercentEventMixIndicatorState(Document):
     class Meta:
         abstract = True
+    _total_events_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, number):
+        self._create_date = number
+
+    @property
+    def total_events_per_state(self):
+        return self._total_events_per_state
+
+    @total_events_per_state.setter
+    def total_events_per_state(self, number):
+        self._total_events_per_state = number
+
 class PercentEventsInAccessibleSpaces(PercentEventMixIndicator):
 
     _total_events_in_accessible_spaces = DictField(required=True)
-
 
     @property
     def total_events_in_accessible_spaces(self):
@@ -42,7 +59,6 @@ class PercentEventsInAccessibleSpaces(PercentEventMixIndicator):
     @total_events_in_accessible_spaces.setter
     def total_events_in_accessible_spaces(self, number):
         self._total_events_in_accessible_spaces = number
-
 
 
 
@@ -63,18 +79,9 @@ class PercentEventsInMoreThenOneSpace(PercentEventMixIndicator):
 # -------------------- state indicators --------------------------------------
 
 
-class PercentEventsInAccessibleSpacesPerState(Document):
-    _totalEventsPerState = DictField(required=True)
+class PercentEventsInAccessibleSpacesPerState(PercentEventMixIndicatorState):
+
     _totalEventsInAccessibleSpacesPerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_events_per_state(self):
-        return self._totalEventsPerState
-
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEventsPerState = number
 
     @property
     def total_events_in_accessible_spaces(self):
@@ -84,40 +91,14 @@ class PercentEventsInAccessibleSpacesPerState(Document):
     def total_events_in_accessible_spaces(self, number):
         self._totalEventsInAccessibleSpacesPerState = number
 
-    @property
-    def create_date(self):
-        return self._createDate
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentEventsInMoreThenOneSpacePerState(Document):
-    _totalEventsPerState = DictField(required=True)
-    _totalEventsInMoreThenOneSpacePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_events_per_state(self):
-        return self._totalSpace
-
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEventsPerState = number
+class PercentEventsInMoreThenOneSpacePerState(PercentEventMixIndicatorState):
+    _total_events_in_more_then_one_space_per_state = DictField(required=True)
 
     @property
     def total_events_in_more_then_one_space(self):
-        return self._totalEventsInMoreThenOneSpacePerState
+        return self._total_events_in_more_then_one_space_per_state
 
     @total_events_in_more_then_one_space.setter
     def total_events_in_more_then_one_space(self, number):
-        self._totalEventsInMoreThenOneSpacePerState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+        self._total_events_in_more_then_one_space_per_state = number
