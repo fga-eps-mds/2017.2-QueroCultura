@@ -1,4 +1,3 @@
-# from django.db import models
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
@@ -7,18 +6,13 @@ from mongoengine import DateTimeField
 # --------------------- national indicators ----------------------------------
 
 
-class PercentLibraryPerAreaOfActivity(Document):
-    _libraries_per_activity = DictField(required=True)
+
+class PercentLibraries(Document):
+    class Meta:
+        abstract = True
+    meta = {'allow_inheritance': True}
     _total_libraries = IntField(required=True)
     _create_date = DateTimeField(required=True)
-
-    @property
-    def total_libraries_per_activity(self):
-        return self._libraries_per_activity
-
-    @total_libraries_per_activity.setter
-    def total_libraries_per_activity(self, number):
-        self._libraries_per_activity = number
 
     @property
     def total_libraries(self):
@@ -36,12 +30,47 @@ class PercentLibraryPerAreaOfActivity(Document):
     def create_date(self, number):
         self._create_date = number
 
+class PercentLibrariesState(Document):
+    class Meta:
+        abstract = True
+    meta = {'allow_inheritance': True}
+    _libraries_per_state = DictField(required=True)
+    _create_date = DateTimeField(required=True)
+    @property
+    def libraries_per_state(self):
+        return self._libraries_per_state
 
-class PercentPublicOrPrivateLibrary(Document):
+    @libraries_per_state.setter
+    def libraries_per_state(self, number):
+        self._libraries_per_state = number
+
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, number):
+        self._create_date = number
+
+class PercentLibraryPerAreaOfActivity(PercentLibraries):
+    _libraries_per_activity = DictField(required=True)
+
+
+    @property
+    def total_libraries_per_activity(self):
+        return self._libraries_per_activity
+
+    @total_libraries_per_activity.setter
+    def total_libraries_per_activity(self, number):
+        self._libraries_per_activity = number
+
+
+
+
+class PercentPublicOrPrivateLibrary(PercentLibraries):
     _total_public_libraries = IntField(required=True)
     _total_private_libraries = IntField(required=True)
-    _total_libraries = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+
 
     @property
     def total_public_libraries(self):
@@ -59,28 +88,11 @@ class PercentPublicOrPrivateLibrary(Document):
     def total_private_library(self, number):
         self._total_private_libraries = number
 
-    @property
-    def total_libraries(self):
-        return self._total_libraries
-
-    @total_libraries.setter
-    def total_libraries(self, number):
-        self._total_libraries = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 
 # Percentage of libraries by type of sphere
-class PercentLibrariesTypeSphere(object):
+class PercentLibrariesTypeSphere(PercentLibraries):
     _total_libraries_type_sphere = DictField(required=True)
-    _total_libraries = IntField(required=True)
-    _create_date = DateTimeField(required=True)
 
     @property
     def total_libraries_type_sphere(self):
@@ -90,29 +102,12 @@ class PercentLibrariesTypeSphere(object):
     def total_libraries_type_sphere(self, number):
         self._total_libraries_type_sphere = number
 
-    @property
-    def total_libraries(self):
-        return self._total_libraries
 
-    @total_libraries.setter
-    def total_libraries(self, number):
-        self._total_libraries = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-
-class QuantityOfRegisteredlibraries(Document):
+class QuantityOfRegisteredlibraries(PercentLibraries):
     # registered per Month and per Year
     _libraries_registered_monthly = DictField(required=True)
     _libraries_registered_yearly = DictField(required=True)
-    _total_libraries = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+
 
     @property
     def libraries_registered_monthly(self):
@@ -130,29 +125,13 @@ class QuantityOfRegisteredlibraries(Document):
     def libraries_registered_yearly(self, number):
         self._libraries_registered_yearly = number
 
-    @property
-    def total_libraries(self):
-        return self._total_libraries
-
-    @total_libraries.setter
-    def total_libraries(self, number):
-        self._total_libraries = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 
 # -------------------- state indicators --------------------------------------
 
-class PercentLibraryForState(Document):
+class PercentLibraryForState(PercentLibraries):
     _total_libraries_in_state = DictField(required=True)
-    _total_libraries = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+
 
     @property
     def total_libraries_in_state(self):
@@ -162,27 +141,10 @@ class PercentLibraryForState(Document):
     def total_libraries_in_state(self, number):
         self._total_libraries_in_state = number
 
-    @property
-    def total_libraries(self):
-        return self._total_libraries
 
-    @total_libraries.setter
-    def total_libraries(self, number):
-        self._total_libraries = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-
-class PercentLibraryPerAreaOfActivityPerState(Document):
+class PercentLibraryPerAreaOfActivityPerState(PercentLibrariesState):
     _libraries_per_area_per_state = DictField(required=True)
-    _libraries_per_state = DictField(required=True)
-    _create_date = DateTimeField(required=True)
+
 
     @property
     def libraries_per_area_per_state(self):
@@ -192,28 +154,13 @@ class PercentLibraryPerAreaOfActivityPerState(Document):
     def libraries_per_area_per_state(self, number):
         self._libraries_per_area_per_state = number
 
-    @property
-    def libraries_per_state(self):
-        return self._libraries_per_state
-
-    @libraries_per_state.setter
-    def libraries_per_state(self, number):
-        self._libraries_per_state = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 
-class PercentPublicOrPrivateLibraryPerState(Document):
+
+class PercentPublicOrPrivateLibraryPerState(PercentLibrariesState):
     _public_libraries_per_state = DictField(required=True)
     _private_libraries_per_state = DictField(required=True)
-    _libraries_per_state = DictField(required=True)
-    _create_date = DateTimeField(required=True)
+
 
     @property
     def public_libraries_per_state(self):
@@ -231,21 +178,6 @@ class PercentPublicOrPrivateLibraryPerState(Document):
     def private_libraries_per_state(self, number):
         self._private_libraries_per_state = number
 
-    @property
-    def libraries_per_state(self):
-        return self._libraries_per_state
-
-    @libraries_per_state.setter
-    def libraries_per_state(self, number):
-        self._libraries_per_state = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 
 # Percentage of libraries by type of sphere per state
