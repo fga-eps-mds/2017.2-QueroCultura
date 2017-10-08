@@ -3,7 +3,7 @@ var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
     maxZoom: 20,
     minZoom: 3,
     noWrap: true,
-    id: 'mapbox.dark',
+    id: 'mapbox.light',
     accessToken: 'your.mapbox.access.token'
 });
 
@@ -45,7 +45,7 @@ function MarkersPoints(){
 function SpaceMarkers(){
 
 		var getTimeNow = InitTime();
-	
+
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({

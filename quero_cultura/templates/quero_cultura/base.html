@@ -20,25 +20,19 @@
   <link rel="stylesheet" href="static/css/map.css"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
-
 </head>
 
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark " id="mainNav" >
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top " id="mainNav" style="background-color: #FA4F43">
     <a class="navbar-brand" href="" id="idQuero" align="center">Quero Cultura</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
+
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Web site Tour">
-          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
-            <i class="fa fa-fw fa-map-signs text-light"></i>
-            <span class="nav-link-text text-light">Web site Tour</span>
-          </a>
-        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-file-text-o text-success"></i>
@@ -57,9 +51,6 @@
             <span class="nav-link-text text-light">Agentes</span>
           </a>
         </li>
-
-
-
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Eventos">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-calendar-o text-warning"></i>
@@ -67,10 +58,19 @@
           </a>
         </li>
       </ul>
+
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
             <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" title="Web site Tour">
+          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
+            <i class="fa fa-fw fa fa-question-circle text-light"></i>
           </a>
         </li>
       </ul>
@@ -112,6 +112,7 @@
     <script src="static/js/sb-admin-datatables.min.js"></script>
     <script src="static/js/sb-admin-charts.min.js"></script>
     <script type = "text/javascript" src="static/intro.js"></script>
+    <script type="text/javascript" src="static/js/cookie.js"></script>
 
 
     <script>
@@ -170,6 +171,17 @@
   			]
   		})
 
+
+  </script>
+
+
+  <script type="text/javascript">
+        // start intro tour only on first visit to website
+        var nome = readCookie("nome");
+        if(nome == null){
+            writeCookie("nome", "nome", 30);
+            intro.start();
+        }
 
   </script>
 
