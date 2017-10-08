@@ -8,6 +8,7 @@ from mongoengine import DateTimeField
 class PercentProjects(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _total_project = IntField(required=True)
     _create_date = DateTimeField(required=True)
     @property

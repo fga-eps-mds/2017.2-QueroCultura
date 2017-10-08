@@ -8,6 +8,7 @@ from mongoengine import DateTimeField
 class PercentEvent(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
 
     _total_events = IntField(required=True)
     _create_date = DateTimeField(required=True)
@@ -32,6 +33,8 @@ class PercentEvent(Document):
 class PercentEventState(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
+
     _total_state_events = DictField(required=True)
     _create_date = DateTimeField(required=True)
 

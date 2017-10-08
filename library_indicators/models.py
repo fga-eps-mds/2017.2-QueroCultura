@@ -10,7 +10,7 @@ from mongoengine import DateTimeField
 class PercentLibraries(Document):
     class Meta:
         abstract = True
-
+    meta = {'allow_inheritance': True}
     _total_libraries = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -33,6 +33,7 @@ class PercentLibraries(Document):
 class PercentLibrariesState(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _libraries_per_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
     @property

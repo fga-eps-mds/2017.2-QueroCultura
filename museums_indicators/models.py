@@ -9,6 +9,7 @@ from mongoengine import DateTimeField
 class PercentMuseumsState(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _total_museums_for_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -31,6 +32,7 @@ class PercentMuseumsState(Document):
 class PercentMuseums(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _total_museums = IntField(required=True)
     _create_date = DateTimeField(required=True)
 

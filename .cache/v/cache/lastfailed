@@ -1,5 +1,12 @@
 {
   "libery_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_create_date": true,
   "libery_indicators/tests.py::Teste::()::teste": true,
-  "libery_indicators/tests.py::teste": true
+  "libery_indicators/tests.py::teste": true,
+  "library_indicators/tests.py::TestPercentLibraryPerAreaOfActivity": true,
+  "library_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_libraries_per_activity": true,
+  "library_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_total_library": true,
+  "library_indicators/tests.py::TestPercentPublicOrPrivateLibrary": true,
+  "library_indicators/tests.py::TestPercentPublicOrPrivateLibrary::()::test_total_library": true,
+  "library_indicators/tests.py::TestPercentPublicOrPrivateLibrary::()::test_total_private_libraries": true,
+  "library_indicators/tests.py::TestPercentPublicOrPrivateLibrary::()::test_total_public_libraries": true
 }

@@ -9,6 +9,7 @@ from mongoengine import DateTimeField
 class PercentSpace(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _total_space = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -30,6 +31,8 @@ class PercentSpace(Document):
 class PercentSpaceState(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
+
     _total_space_per_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -116,7 +119,6 @@ class PercentSpaceForState(PercentSpaceState):
 
 
 # -------------------- Space Registered --------------------------------------
-
 
 class QuantityOfRegisteredSpace(PercentSpace):
     _total_space_registered_per_mounth_per_year = DictField(required=True)

@@ -7,7 +7,7 @@ from mongoengine import DateTimeField
 class PercentEventMixIndicator(Document):
     class Meta:
         abstract = True
-
+    meta = {'allow_inheritance': True}
     _total_events = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
@@ -30,6 +30,7 @@ class PercentEventMixIndicator(Document):
 class PercentEventMixIndicatorState(Document):
     class Meta:
         abstract = True
+    meta = {'allow_inheritance': True}
     _total_events_per_state = DictField(required=True)
     _create_date = DateTimeField(required=True)
     @property
