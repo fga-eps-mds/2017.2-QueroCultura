@@ -26,6 +26,7 @@ function InitTime(){
 
 	var getTimeNow = new Date();
     getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - 5);
+    getTimeNow.setMilliseconds(0);
     getTimeNow = getTimeNow.toJSON();
 
 	return getTimeNow;
@@ -45,7 +46,7 @@ function MarkersPoints(){
 function SpaceMarkers(){
 
 		var getTimeNow = InitTime();
-	
+
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
