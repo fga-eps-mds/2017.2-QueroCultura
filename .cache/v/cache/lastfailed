@@ -2,6 +2,7 @@
   "libery_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_create_date": true,
   "libery_indicators/tests.py::Teste::()::teste": true,
   "libery_indicators/tests.py::teste": true,
+<<<<<<< HEAD
   "library_indicators/tests.py::TestPercentLibraryForState::()": true,
   "library_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()": true,
   "library_indicators/tests.py::TestPercentLibraryPerAreaOfActivityPerState::()": true,
@@ -11,4 +12,9 @@
   "library_indicators/tests.py::TestPercentPublicOrPrivateLibraryPerState::()": true,
   "library_indicators/tests.py::TestPercentPublicOrPrivateLibraryPerState::()::test_total_library": true,
   "library_indicators/tests.py::TestQuantityOfRegisteredLibraries::()": true
+=======
+  "mixed_indicators/tests.py::TestClassRequestMixedRawData": true,
+  "project_indicators/tests.py::TestClassRequestProjectsRawData": true,
+  "space_indicators/tests.py::TestClassRequestSpacesRawData": true
+>>>>>>> UC02_UpdateRawData
 }
