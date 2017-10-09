@@ -8,6 +8,21 @@ from .models import PercentAgentsForState
 from .models import PercentAgentsPerAreaOperationForState
 from .models import PercentIndividualAndCollectiveAgentForState
 
+class TestPercentAgentsPerAreaOperantion(object):
+    @staticmethod
+    def test_total_agents():
+        PercentAgentsPerAreaOperation.drop_collection()
+        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now(), 10)
+        agent_indicator.save()
+        query = PercentAgentsPerAreaOperation.objects.first()
+        assert query._total_agents == 50
+
+    @staticmethod
+    def test_total_agents_area_oreration():
+        PercentAgentsPerAreaOperation.drop_collection()
+        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now(), 10)
+        query = PercentAgentsPerAreaOperation.objects.first()
+        assert query._total_agents_area_oreration == 10
 
 
 class TestAmountAgentsRegisteredPerMonth(object):
@@ -15,6 +30,7 @@ class TestAmountAgentsRegisteredPerMonth(object):
     def total_agents_registered_mounth():
         AmountAgentsRegisteredPerYear.drop_collection()
         agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
+        agents_in_year.save()
         query = AmountAgentsRegisteredPerYear.object.first()
         assert query._total_agents_registered_year == 10
 
@@ -23,6 +39,7 @@ class TestAmountAgentsRegisteredPerYear(object):
     def total_agents_registered_year():
         AmountAgentsRegisteredPerYear.drop_collection()
         agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
+        agents_in_year.save()
         query = AmountAgentsRegisteredPerYear.object.first()
         assert query._total_agents_registered_year == 10
 

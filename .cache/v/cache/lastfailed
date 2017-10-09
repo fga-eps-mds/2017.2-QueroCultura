@@ -1,6 +1,8 @@
 {
-  "agents_indicators/tests.py::TestAmountAgentsRegisteredPerYear::()": true,
-  "agents_indicators/tests.py::TestPercentIndividualAndCollectiveAgent::()": true,
+  "agents_indicators/tests.py::TestPercentAgentsPerAreaOperantion::()::test_total_agents": true,
+  "agents_indicators/tests.py::TestPercentAgentsPerAreaOperantion::()::test_total_agents_area_oreration": true,
+  "agents_indicators/tests.py::TestPercentAgentsPerAreaOperantion::()::test_total_collective_agent": true,
+  "agents_indicators/tests.py::TestPercentAgentsPerAreaOperantion::()::test_total_individual_agent": true,
   "libery_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_create_date": true,
   "libery_indicators/tests.py::Teste::()::teste": true,
   "libery_indicators/tests.py::teste": true,
