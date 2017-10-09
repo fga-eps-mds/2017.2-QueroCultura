@@ -8,6 +8,16 @@ from .models import PercentAgentsForState
 from .models import PercentAgentsPerAreaOperationForState
 from .models import PercentIndividualAndCollectiveAgentForState
 
+
+
+class TestAmountAgentsRegisteredPerMonth(object):
+    @staticmethod
+    def total_agents_registered_mounth():
+        AmountAgentsRegisteredPerYear.drop_collection()
+        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
+        query = AmountAgentsRegisteredPerYear.object.first()
+        assert query._total_agents_registered_year == 10
+
 class TestAmountAgentsRegisteredPerYear(object):
     @staticmethod
     def total_agents_registered_year():
@@ -21,8 +31,7 @@ class TestPercentIndividualAndCollectiveAgent(object):
     @staticmethod
     def test_total_agents():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50,
-                datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
         assert query._total_agents == 50
@@ -30,8 +39,7 @@ class TestPercentIndividualAndCollectiveAgent(object):
     @staticmethod
     def test_total_individual_agent():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50,
-                datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
         assert query._total_individual_agent == 10
@@ -39,8 +47,7 @@ class TestPercentIndividualAndCollectiveAgent(object):
     @staticmethod
     def test_total_collective_agent():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50,
-                datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
         assert query._total_collective_agent == 10
