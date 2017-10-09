@@ -22,10 +22,10 @@ var markersSpace = new L.FeatureGroup();
 
 // function returns hour now with 5 minutes delay
 
-function InitTime(){
+function InitTime(minutes){
 
 	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - 5);
+    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - minutes);
     getTimeNow = getTimeNow.toJSON();
 
 	return getTimeNow;
@@ -33,23 +33,28 @@ function InitTime(){
 
 function MarkersPoints(){
 
-	SpaceMarkers();
-	EventMarkers();
-	AgentMarkers();
-	ProjectMarkers();
+  SpaceMarkers("png", 30);
+	EventMarkers("png", 30);
+	AgentMarkers("png", 30);
+	ProjectMarkers("png", 30);
+
+	SpaceMarkers("gif", 5);
+	EventMarkers("gif", 5);
+	AgentMarkers("gif", 5);
+	ProjectMarkers("gif", 5);
 
 }
 
 // creating space markers
 
-function SpaceMarkers(){
+function SpaceMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime();
+		var getTimeNow = InitTime(minutes);
 
 	    markersSpace.clearLayers();;
 
 	    var redMarker = L.icon({
-	    	iconUrl: "static/images/markerSpace.gif",
+	    	iconUrl: "static/images/markerSpace."+imageExtension,
 	    	iconSize: [20,20],
 	    });
 
@@ -80,14 +85,14 @@ function SpaceMarkers(){
 
 // creating Agents markers
 
-function AgentMarkers(){
+function AgentMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime();
+		var getTimeNow = InitTime(minutes);
 
 	    markersAgent.clearLayers();;
 
 	    var blueMarker = L.icon({
-	    	iconUrl: "static/images/markerAgent.gif",
+	    	iconUrl: "static/images/markerAgent."+imageExtension,
 	    	iconSize: [20,20],
 	    });
 
@@ -118,13 +123,13 @@ function AgentMarkers(){
 
 // creating events markers
 
-function EventMarkers(){
+function EventMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime();
+		var getTimeNow = InitTime(minutes);
 	    markersEvent.clearLayers();
 
 	    var yellowMarker = L.icon({
-	    	iconUrl: "static/images/markerEvent.gif",
+	    	iconUrl: "static/images/markerEvent."+imageExtension,
 	    	iconSize: [20,20],
 	    });
 
@@ -156,13 +161,13 @@ function EventMarkers(){
 
 // creating projects markers
 
-function ProjectMarkers(){
+function ProjectMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime();
+		var getTimeNow = InitTime(minutes);
 	    markersProject.clearLayers();
 
 	    var greenMarker = L.icon({
-	    	iconUrl: "static/images/markerProject.gif",
+	    	iconUrl: "static/images/markerProject."+imageExtension,
 	    	iconSize: [20,20],
 	    });
 
