@@ -8,6 +8,14 @@ from .models import PercentAgentsForState
 from .models import PercentAgentsPerAreaOperationForState
 from .models import PercentIndividualAndCollectiveAgentForState
 
+class TestAmountAgentsRegisteredPerYear(object):
+    @staticmethod
+    def total_agents_registered_year():
+        AmountAgentsRegisteredPerYear.drop_collection()
+        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
+        query = AmountAgentsRegisteredPerYear.object.first()
+        assert query._total_agents_registered_year == 10
+
 class TestPercentIndividualAndCollectiveAgent(object):
 
     @staticmethod
@@ -26,7 +34,7 @@ class TestPercentIndividualAndCollectiveAgent(object):
                 datetime.now(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
-        assert query._total_agents == 10
+        assert query._total_individual_agent == 10
 
     @staticmethod
     def test_total_collective_agent():
@@ -35,7 +43,7 @@ class TestPercentIndividualAndCollectiveAgent(object):
                 datetime.now(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
-        assert query._total_agents == 10
+        assert query._total_collective_agent == 10
 
 def test_success_request():
     current_time = datetime.now().__str__()
