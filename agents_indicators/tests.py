@@ -1,6 +1,41 @@
 from datetime import datetime
 from .api_connections import RequestAgentsRawData
+from .models import PercentIndividualAndCollectiveAgent
+from .models import AmountAgentsRegisteredPerYear
+from .models import AmountAgentsRegisteredPerMonth
+from .models import PercentAgentsPerAreaOperation
+from .models import PercentAgentsForState
+from .models import PercentAgentsPerAreaOperationForState
+from .models import PercentIndividualAndCollectiveAgentForState
 
+class TestPercentIndividualAndCollectiveAgent(object):
+
+    @staticmethod
+    def test_total_agents():
+        PercentIndividualAndCollectiveAgent.drop_collection()
+        agent_indicator = PercentIndividualAndCollectiveAgent(50,
+                datetime.now(), 10, 10)
+        agent_indicator.save()
+        query = PercentIndividualAndCollectiveAgent.objects.first()
+        assert query._total_agents == 50
+
+    @staticmethod
+    def test_total_individual_agent():
+        PercentIndividualAndCollectiveAgent.drop_collection()
+        agent_indicator = PercentIndividualAndCollectiveAgent(50,
+                datetime.now(), 10, 10)
+        agent_indicator.save()
+        query = PercentIndividualAndCollectiveAgent.objects.first()
+        assert query._total_agents == 10
+
+    @staticmethod
+    def test_total_collective_agent():
+        PercentIndividualAndCollectiveAgent.drop_collection()
+        agent_indicator = PercentIndividualAndCollectiveAgent(50,
+                datetime.now(), 10, 10)
+        agent_indicator.save()
+        query = PercentIndividualAndCollectiveAgent.objects.first()
+        assert query._total_agents == 10
 
 def test_success_request():
     current_time = datetime.now().__str__()
