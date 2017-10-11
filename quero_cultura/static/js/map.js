@@ -20,7 +20,7 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
-// function returns hour now with 5 minutes delay
+// function returns hour now with minutes delay
 
 function InitTime(minutes){
 
@@ -33,15 +33,15 @@ function InitTime(minutes){
 
 function MarkersPoints(){
 
-  SpaceMarkers("png", 30);
-	EventMarkers("png", 30);
-	AgentMarkers("png", 30);
-	ProjectMarkers("png", 30);
+  SpaceMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
+	EventMarkers("png", 1440);
+	AgentMarkers("png", 1440);
+	ProjectMarkers("png", 1440);
 
-	SpaceMarkers("gif", 5);
-	EventMarkers("gif", 5);
-	AgentMarkers("gif", 5);
-	ProjectMarkers("gif", 5);
+	SpaceMarkers("gif", 60);
+	EventMarkers("gif", 60);
+	AgentMarkers("gif", 60);
+	ProjectMarkers("gif", 60);
 
 }
 
@@ -55,7 +55,7 @@ function SpaceMarkers(imageExtension, minutes){
 
 	    var redMarker = L.icon({
 	    	iconUrl: "static/images/markerSpace."+imageExtension,
-	    	iconSize: [20,20],
+	    	iconSize: [25,25],
 	    });
 
 	    var promise = $.getJSON(
@@ -93,7 +93,7 @@ function AgentMarkers(imageExtension, minutes){
 
 	    var blueMarker = L.icon({
 	    	iconUrl: "static/images/markerAgent."+imageExtension,
-	    	iconSize: [20,20],
+	    	iconSize: [25,25],
 	    });
 
 	    var promise = $.getJSON(
@@ -130,7 +130,7 @@ function EventMarkers(imageExtension, minutes){
 
 	    var yellowMarker = L.icon({
 	    	iconUrl: "static/images/markerEvent."+imageExtension,
-	    	iconSize: [20,20],
+	    	iconSize: [25,25],
 	    });
 
 	    var promise = $.getJSON(
@@ -168,7 +168,7 @@ function ProjectMarkers(imageExtension, minutes){
 
 	    var greenMarker = L.icon({
 	    	iconUrl: "static/images/markerProject."+imageExtension,
-	    	iconSize: [20,20],
+	    	iconSize: [25,25],
 	    });
 
 	    var promise = $.getJSON(
