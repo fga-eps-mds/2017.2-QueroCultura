@@ -3,8 +3,8 @@ from .api_connections import RequestEventsRawData
 from .models import QuantityOfRegisteredEvents
 from .models import PercentEventsPerLanguage
 from .models import PercentEventsPerAgeRange
-
-
+from .models import PercentTypeEventsForState
+from .models import PercentEventsPerAgeRangePerState
 
 class TestQuantityOfRegisteredEvents(object):
 
@@ -72,6 +72,29 @@ class TestPercentEventsPerAgeRange(object):
         indicator.save()
         query = PercentEventsPerAgeRange.objects.first()
         assert query._total_events_per_age_range == total_events_range
+
+class TestPercentTypeEventsForState(object):
+
+    @staticmethod
+    def type_state_events():
+        PercentTypeEventsForState.drop_collection()
+        total_events_range = 35
+        indicator = PercentTypeEventsForState(20, datetime.now(), total_events_range)
+        indicator.save()
+        query = PercentTypeEventsForState.objects.first()
+        assert query._type_state_events == total_events_range
+
+class TestEventsPerAgeRangePerState(object):
+
+    @staticmethod
+    def total_events_age_range_state():
+        PercentEventsPerAgeRangePerState.drop_collection()
+        total_events_range = 35
+        indicator = PercentEventsPerAgeRangePerState(20, datetime.now(), total_events_range)
+        indicator.save()
+        query = PercentEventsPerAgeRangePerState.objects.first()
+        assert query._total_events_age_range_state == total_events_range
+
 
 class TestClassRequestEventsRawData(object):
 
