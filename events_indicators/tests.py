@@ -11,19 +11,19 @@ class TestQuantityOfRegisteredEvents(object):
     def test_total_events_registered_per_mouth_per_year():
         QuantityOfRegisteredEvents.drop_collection()
         totalEvents = {"mes e ano": "7 2017"}
-        event_indicator = QuantityOfRegisteredEvents(totalEvents,{"2017":"março"}, 12 , datetime.now())
+        event_indicator = QuantityOfRegisteredEvents( 12 , datetime.now(),totalEvents,{"2017":"março"})
         event_indicator.save()
-        querry = QuantityOfRegisteredEvents.objects.first()
-        assert querry._totalEventsRegisteredPerMounthPerYear == totalEvents
+        query = QuantityOfRegisteredEvents.objects.first()
+        assert query._totalEventsRegisteredPerMounthPerYear == totalEvents
 
     @staticmethod
     def test_total_events_registered_per_year():
         QuantityOfRegisteredEvents.drop_collection()
         totalEvents = {"mes e ano": "7 2017"}
-        event_indicator = QuantityOfRegisteredEvents({"2017":"março"}, totalEvents, 12 , datetime.now())
+        event_indicator = QuantityOfRegisteredEvents( 12 , datetime.now(),{"2017":"março"}, totalEvents)
         event_indicator.save()
-        querry = QuantityOfRegisteredEvents.objects.first()
-        assert querry._totalEventsRegisteredPerYear == totalEvents
+        query = QuantityOfRegisteredEvents.objects.first()
+        assert query._totalEventsRegisteredPerYear == totalEvents
 
     @staticmethod
     def test_total_events():
@@ -31,9 +31,9 @@ class TestQuantityOfRegisteredEvents(object):
         totalEvents = 20
         event_indicator = QuantityOfRegisteredEvents({"2017":"março"}, {"mes e ano": "7 2017"}, totalEvents , datetime.now())
         event_indicator.save()
-        querry = QuantityOfRegisteredEvents.objects.first()
-        assert querry._totalEvents == totalEvents
+        query = QuantityOfRegisteredEvents.objects.first()
 
+        assert query._totalEvents == totalEvents
 class TestPercentEventsPerLanguage(object):
 
     @staticmethod
