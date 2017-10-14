@@ -107,10 +107,10 @@ class TestClassRequestMixedRawData(object):
         intenger = 1
         assert type_mixed_raw_data == type(intenger)
 
-def test_data_lenght():
-    current_time = datetime.now().__str__()
-    request_mixed_raw_data = RequestMixedIndicatorsRawData(current_time)
-    mixed_raw_data = request_mixed_raw_data.data_length
-    type_mixed_raw_data = type(mixed_raw_data)
-    integer = 1
-    assert type_mixed_raw_data == type(integer)
+  def test_data_lenght():
+        current_time = datetime.now().__str__()
+        request_mixed_raw_data = RequestMixedIndicatorsRawData(current_time)
+        mixed_raw_data = request_mixed_raw_data.data_length
+        type_mixed_raw_data = type(mixed_raw_data)
+        integer = 1
+        assert type_mixed_raw_data == type(integer)

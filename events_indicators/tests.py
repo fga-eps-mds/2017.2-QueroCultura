@@ -33,15 +33,6 @@ class TestQuantityOfRegisteredEvents(object):
         querry = QuantityOfRegisteredEvents.objects.first()
         assert querry._totalEvents == totalEvents
 
-# -------------------- state indicators --------------------------------------
-
-
-
-
-
-# --------------------- national indicators ----------------------------------
-
-
 class TestPercentEventsPerLanguage(object):
 
     def test_percent_events_per_language(self):
