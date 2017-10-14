@@ -3,8 +3,6 @@ from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
-
 class PercentEvent(Document):
     class Meta:
         abstract = True
