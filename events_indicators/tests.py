@@ -5,87 +5,84 @@ from .models import PercentEventsPerLanguage
 from .models import PercentEventsPerAgeRange
 
 
+
 class TestQuantityOfRegisteredEvents(object):
 
     @staticmethod
     def test_total_events_registered_per_mouth_per_year():
         QuantityOfRegisteredEvents.drop_collection()
-        totalEvents = {"mes e ano": "7 2017"}
-        event_indicator = QuantityOfRegisteredEvents( 12 , datetime.now(),totalEvents,{"2017":"março"})
+        total_events_mouth = 20
+        event_indicator = QuantityOfRegisteredEvents(50,
+                                                     datetime.now(), 20,
+                                                     total_events_mouth)
         event_indicator.save()
         query = QuantityOfRegisteredEvents.objects.first()
-        assert query._totalEventsRegisteredPerMounthPerYear == totalEvents
+        assert query._total_events_registered_per_mounth_per_year == 20
 
     @staticmethod
     def test_total_events_registered_per_year():
         QuantityOfRegisteredEvents.drop_collection()
-        totalEvents = {"mes e ano": "7 2017"}
-        event_indicator = QuantityOfRegisteredEvents( 12 , datetime.now(),{"2017":"março"}, totalEvents)
+        total_events_year = 10
+        event_indicator = QuantityOfRegisteredEvents(50, datetime.now(),
+                                                     total_events_year, 20)
         event_indicator.save()
         query = QuantityOfRegisteredEvents.objects.first()
-        assert query._totalEventsRegisteredPerYear == totalEvents
+        assert query._total_events_registered_per_year == 20
 
     @staticmethod
     def test_total_events():
         QuantityOfRegisteredEvents.drop_collection()
-        totalEvents = 20
-        event_indicator = QuantityOfRegisteredEvents({"2017":"março"}, {"mes e ano": "7 2017"}, totalEvents , datetime.now())
+        total_events = 20
+        event_indicator = QuantityOfRegisteredEvents(total_events,
+                                                     datetime.now(),
+                                                     20,
+                                                     20)
         event_indicator.save()
         query = QuantityOfRegisteredEvents.objects.first()
+        assert query._total_events == 20
 
-        assert query._totalEvents == totalEvents
 class TestPercentEventsPerLanguage(object):
 
     @staticmethod
     def test_percent_events_per_language():
         PercentEventsPerLanguage.drop_collection()
-        total = {'activity area': 20}
-        indicator = PercentEventsPerLanguage(total, 20, datetime.now())
+        total_events_per_language = 20
+        indicator = PercentEventsPerLanguage(10,
+                                             datetime.now(), total_events_per_language)
         indicator.save()
         query = PercentEventsPerLanguage.objects.first()
-        assert query._totalEventsPerLanguage == total
+        assert query._total_events_per_language == 20
 
     @staticmethod
     def test_total_events():
         PercentEventsPerLanguage.drop_collection()
-        total = 50
-        indicator = PercentEventsPerLanguage({'activity area': 20}, total, datetime.now())
+        total_events = 20
+        indicator = PercentEventsPerLanguage(total_events, datetime.now(), 20)
         indicator.save()
         query = PercentEventsPerLanguage.objects.first()
-        assert query._totalEvents == total
-
+        assert query._total_events == total_events
 
 class TestPercentEventsPerAgeRange(object):
 
     @staticmethod
     def test_percent_events_per_language():
         PercentEventsPerAgeRange.drop_collection()
-        total = {'activity area': 20}
-        indicator = PercentEventsPerAgeRange(total, 20, datetime.now())
+        total_events_range = 35
+        indicator = PercentEventsPerAgeRange(20, datetime.now(), total_events_range)
         indicator.save()
         query = PercentEventsPerAgeRange.objects.first()
-        assert query._totalEventsPerAgeRange == total
-
-    @staticmethod
-    def test_total_library():
-        PercentEventsPerAgeRange.drop_collection()
-        total = 50
-        indicator = PercentEventsPerAgeRange({'activity area': 20}, total, datetime.now())
-        indicator.save()
-        query = PercentEventsPerAgeRange.objects.first()
-        assert query._totalEvents == total
-
+        assert query._total_events_per_age_range == total_events_range
 
 class TestClassRequestEventsRawData(object):
 
-    def test_success_request():
+    def test_success_request(self):
         current_time = datetime.now().__str__()
         request_events_raw_data = RequestEventsRawData(current_time)
         response_events_raw_data = request_events_raw_data.response
         response_status_code = response_events_raw_data.status_code
         assert response_status_code == 200
 
-    def test_data_content():
+    def test_data_content(self):
         current_time = datetime.now().__str__()
         request_events_raw_data = RequestEventsRawData(current_time)
         events_raw_data = request_events_raw_data.data
@@ -93,7 +90,7 @@ class TestClassRequestEventsRawData(object):
         empty_list = []
         assert type_events_raw_data == type(empty_list)
 
-    def test_data_lenght():
+    def test_data_lenght(self):
         current_time = datetime.now().__str__()
         request_events_raw_data = RequestEventsRawData(current_time)
         events_raw_data = request_events_raw_data.data_length
