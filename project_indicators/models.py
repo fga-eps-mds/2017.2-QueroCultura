@@ -1,10 +1,8 @@
-# from django.db import models
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
 class PercentProjects(Document):
     class Meta:
         abstract = True
@@ -40,11 +38,8 @@ class PercentProjectPerType(PercentProjects):
         self._total_project_per_type = number
 
 
-
-
 class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
     _total_project_that_accept_online_transitions = IntField(required=True)
-
 
     @property
     def total_project_that_accept_online_transitions(self):
@@ -53,10 +48,6 @@ class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
     @total_project_that_accept_online_transitions.setter
     def total_project_that_accept_online_transitions(self, number):
         self._total_project_that_accept_online_transitions = number
-
-
-
-# -------------------- state indicators --------------------------------------
 
 
 class PercentProjectPerTypePerState(Document):

@@ -4,7 +4,6 @@ from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
 
 class PercentSpace(Document):
     class Meta:
@@ -79,9 +78,6 @@ class PercentSpacePerOccupationArea(PercentSpace):
         self._total_Space = number
 
 
-# -------------------- state indicators --------------------------------------
-
-
 class PercentSpacePerTypePerState(PercentSpaceState):
     _total_space = DictField(required=True)
 
@@ -92,7 +88,6 @@ class PercentSpacePerTypePerState(PercentSpaceState):
     @total_space.setter
     def total_space(self, number):
         self._total_space = number
-
 
 class PercentSpacePerOccupationAreaPerState(PercentSpaceState):
     _total_space_occupation_area_per_state = DictField(required=True)
@@ -118,8 +113,6 @@ class PercentSpaceForState(PercentSpaceState):
         self._total_spaces = number
 
 
-# -------------------- Space Registered --------------------------------------
-
 class QuantityOfRegisteredSpace(PercentSpace):
     _total_space_registered_per_mounth_per_year = DictField(required=True)
     _total_space_register = DictField(required=True)
@@ -136,6 +129,6 @@ class QuantityOfRegisteredSpace(PercentSpace):
     def total_space_register(self):
         return self._total_space_register
 
-    @total_space_registered_per_year.setter
-    def ttotal_space_register(self, number):
+    @total_space_register.setter
+    def total_space_register(self, number):
         self._total_space_register = number

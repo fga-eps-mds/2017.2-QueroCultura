@@ -26,11 +26,3 @@ class TestClassRequestSpacesRawData(object):
         type_space_raw_data = type(space_raw_data)
         intenger = 1
         assert type_space_raw_data == type(intenger)
-
-def test_data_lenght():
-    current_time = datetime.now().__str__()
-    request_spaces_raw_data = RequestSpacesRawData(current_time)
-    spaces_raw_data = request_spaces_raw_data.data_length
-    type_spaces_raw_data = type(spaces_raw_data)
-    integer = 1
-    assert type_spaces_raw_data == type(integer)
