@@ -9,6 +9,7 @@ from .models import PercentEventsPerAgeRange
 
 class TestQuantityOfRegisteredEvents(object):
 
+    @staticmethod
     def test_total_events_registered_per_mouth_per_year(self):
         QuantityOfRegisteredEvents.drop_collection()
         totalEvents = {"mes e ano": "7 2017"}
@@ -17,6 +18,7 @@ class TestQuantityOfRegisteredEvents(object):
         querry = QuantityOfRegisteredEvents.objects.first()
         assert querry._totalEventsRegisteredPerMounthPerYear == totalEvents
 
+    @staticmethod
     def test_total_events_registered_per_year(self):
         QuantityOfRegisteredEvents.drop_collection()
         totalEvents = {"mes e ano": "7 2017"}
@@ -25,6 +27,7 @@ class TestQuantityOfRegisteredEvents(object):
         querry = QuantityOfRegisteredEvents.objects.first()
         assert querry._totalEventsRegisteredPerYear == totalEvents
 
+    @staticmethod
     def test_total_events(self):
         QuantityOfRegisteredEvents.drop_collection()
         totalEvents = 20
@@ -35,40 +38,44 @@ class TestQuantityOfRegisteredEvents(object):
 
 class TestPercentEventsPerLanguage(object):
 
+    @staticmethod
     def test_percent_events_per_language(self):
         PercentEventsPerLanguage.drop_collection()
         total = {'activity area': 20}
         indicator = PercentEventsPerLanguage(total, 20, datetime.now())
         indicator.save()
-        querry = PercentEventsPerLanguage.objects.first()
-        assert querry._totalEventsPerLanguage == total
+        query = PercentEventsPerLanguage.objects.first()
+        assert query._totalEventsPerLanguage == total
 
+    @staticmethod
     def test_total_events(self):
         PercentEventsPerLanguage.drop_collection()
         total = 50
         indicator = PercentEventsPerLanguage({'activity area': 20}, total, datetime.now())
         indicator.save()
-        querry = PercentEventsPerLanguage.objects.first()
-        assert querry._totalEvents == total
+        query = PercentEventsPerLanguage.objects.first()
+        assert query._totalEvents == total
 
 
 class TestPercentEventsPerAgeRange(object):
 
+    @staticmethod
     def test_percent_events_per_language(self):
         PercentEventsPerAgeRange.drop_collection()
         total = {'activity area': 20}
         indicator = PercentEventsPerAgeRange(total, 20, datetime.now())
         indicator.save()
-        querry = PercentEventsPerAgeRange.objects.first()
-        assert querry._totalEventsPerAgeRange == total
+        query = PercentEventsPerAgeRange.objects.first()
+        assert query._totalEventsPerAgeRange == total
 
+    @staticmethod
     def test_total_library(self):
         PercentEventsPerAgeRange.drop_collection()
         total = 50
         indicator = PercentEventsPerAgeRange({'activity area': 20}, total, datetime.now())
         indicator.save()
-        querry = PercentEventsPerAgeRange.objects.first()
-        assert querry._totalEvents == total
+        query = PercentEventsPerAgeRange.objects.first()
+        assert query._totalEvents == total
 
 
 # Testes do arquivo api_connections.py
