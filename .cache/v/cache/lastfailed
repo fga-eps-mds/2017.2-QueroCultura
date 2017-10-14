@@ -1,6 +1,7 @@
 {
-  "agents_indicators/tests.py::test_data_content": true,
-  "agents_indicators/tests.py::test_success_request": true,
+  "events_indicators/tests.py::TestClassRequestEventsRawData::()::test_data_content": true,
+  "events_indicators/tests.py::TestClassRequestEventsRawData::()::test_data_lenght": true,
+  "events_indicators/tests.py::TestClassRequestEventsRawData::()::test_success_request": true,
   "events_indicators/tests.py::TestPercentEventsPerAgeRange::()::test_percent_events_per_language": true,
   "events_indicators/tests.py::TestPercentEventsPerAgeRange::()::test_total_library": true,
   "events_indicators/tests.py::TestPercentEventsPerLanguage::()::test_percent_events_per_language": true,
