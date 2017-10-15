@@ -21,12 +21,35 @@ integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO
 crossorigin=""></script>
 
 <script type = "text/javascript" src="static/js/map.js"></script>
+	
+	<script>
+		function checkFilter(element){
+			if(element.name == "agents"){
+				markersEvent.clearLayers();
+				AgentMarkers("png", 1440);
+			}
+			localStorage.setItem(element.name, element.checked);
+		}
+	</script>
 
 	<script>
+		function clearFilters(){
+			localStorage.clear();
+		}
+	</script>
 
-		MarkersPoints();
-		setInterval(function(){MarkersPoints()}, 15000);
-
+	<script>
+		if(localStorage.getItem("agents")){
+			AgentMarkers("png", 1440);
+			console.log("agents");
+		}else if(localStorage.getItem("spaces")){
+			SpacesMarkers("png", 1440);
+			console.log("spaces");
+		}else{
+			console.log("lixo");
+			MarkersPoints();
+			setInterval(function(){MarkersPoints()}, 15000);
+		}
 	</script>
 
 	{% endblock %}

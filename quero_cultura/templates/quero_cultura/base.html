@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-light" id="page-top">
+<body class="fixed-nav sticky-footer bg-light" id="page-top" onload="clearFilters()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
     <a class="navbar-brand" href="" id="idQuero" align="center">Quero Cultura</a>
@@ -30,6 +30,15 @@
 
       <span class="navbar-toggler-icon"></span>
     </button>
+
+     <!-- Marker filters -->
+    <form id="test">
+      <input type="checkbox" name="agents" value="Agents" onclick="checkFilter(this)">
+      <input type="checkbox" name="spaces" value="Spaces" onclick="checkFilter(this)">
+      <input type="checkbox" name="events" value="Events" onclick="checkFilter(this)">
+      <input type="checkbox" name="projects" value="Projects" onclick="checkFilter(this)">
+    </form>
+  
     <div class="collapse navbar-collapse" id="navbarResponsive">
 
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
