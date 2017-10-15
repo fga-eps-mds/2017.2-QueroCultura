@@ -124,7 +124,6 @@ class PercentMuseumsPromoteGuidedTourForState(PercentMuseumsState):
 
 
 
-# --------------------- national indicators ----------------------------------
 class PercentThematicsMuseums(PercentMuseums):
     _thematics_museums = IntField(required=True)
 
@@ -150,8 +149,6 @@ class PercentTypeMuseums(PercentMuseums):
         self._type_museums = number
 
 
-
-
 class PercentPublicOrPrivateMuseums(PercentMuseums):
     _total_public_museums = IntField(required=True)
     _total_private_museums = IntField(required=True)
@@ -172,32 +169,6 @@ class PercentPublicOrPrivateMuseums(PercentMuseums):
     def total_private_museums(self, number):
         self._total_private_museums = number
 
-class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
-    _total_museums_historical = IntField(required=True)
-
-    @property
-    def total_museums_historical(self):
-        return self._total_museums_historical
-
-    @total_museums_historical.setter
-    def total_museums_historical(self, number):
-        self._total_museums_historical = number
-
-
-class PercentMuseumsPromoteGuidedTour(PercentMuseums):
-    _total_museums_promote_guide = IntField(required=True)
-
-    @property
-    def total_museums_promote_guide(self):
-        return self._total_museums_promote_guide
-
-    @total_museums_promote_guide.setter
-    def total_museums_promote_guide(self, number):
-        self._total_museums_promote_guide = number
-
-
-
-# Amount of Museums registered on year on the platform throughout its existence
 class AmountMuseumsRegisteredYear(Document):
     _total_museums_registered_year = DictField(required=True)
     _create_date = DateTimeField(required=True)
@@ -218,37 +189,24 @@ class AmountMuseumsRegisteredYear(Document):
     def create_date(self, number):
         self._create_date = number
 
-
-# Amount of Museums registered monthly on the platform throughout its existence
-class AmountMuseumsRegisteredMonth(Document):
-    _total_museums_registered_month = DictField(required=True)
-    _create_date = DateTimeField(required=True)
+class PercentMuseumsPromoteGuidedTour(PercentMuseums):
+    _total_museums_promote_guide = IntField(required=True)
 
     @property
-    def total_museums_registered_month(self):
-        return self._total_museums_registered_month
+    def total_museums_promote_guide(self):
+        return self._total_museums_promote_guide
 
-    @total_museums_registered_month.setter
-    def total_museums_registered_month(self, number):
-        self._total_museums_registered_month = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-
-# Percentage of museumms by states
-class PercentMuseumsForState(PercentMuseums):
-    _total_museums_for_state = DictField(required=True)
+    @total_museums_promote_guide.setter
+    def total_museums_promote_guide(self, number):
+        self._total_museums_promote_guide = number
+        
+class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
+    _total_museums_historical = IntField(required=True)
 
     @property
-    def total_museums_for_state(self):
-        return self._total_museums_for_state
+    def total_museums_historical(self):
+        return self._total_museums_historical
 
-    @total_museums_for_state.setter
-    def total_museums_for_state(self, number):
-        self._total_museums_for_state = number
+    @total_museums_historical.setter
+    def total_museums_historical(self, number):
+        self._total_museums_historical = number

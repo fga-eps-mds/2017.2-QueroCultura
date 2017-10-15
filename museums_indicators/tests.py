@@ -6,7 +6,10 @@ from .models import PercentTypeMuseumsForState
 from .models import PercentPublicOrPrivateMuseumsForState
 from .models import PercentMuseumsHistoricalArchivePublicAccessForState
 from .models import PercentMuseumsPromoteGuidedTourForState
-
+from .models import PercentThematicsMuseums
+from .models import PercentTypeMuseums
+from .models import PercentPublicOrPrivateMuseums
+from .models import PercentMuseumsHistoricalArchivePublicAccess
 
 class TestPercentThematicsMuseumsForState(object):
 
@@ -81,6 +84,58 @@ class TestPercentMuseumsPromoteGuidedTourForState(object):
         museums_indicator.save()
         query = PercentMuseumsPromoteGuidedTourForState.objects.first()
         assert query._total_museums_guide_tour == museums
+
+class TestPercentThematicsMuseums(object):
+
+    def test_thematics_museums(self):
+        PercentThematicsMuseums.drop_collection()
+        museums = 10
+        museums_indicator = PercentThematicsMuseums(
+            10, datetime.now(), museums)
+        museums_indicator.save()
+        query = PercentThematicsMuseums.objects.first()
+        assert query._thematics_museums == museums
+
+class TestPercentTypeMuseums(object):
+
+    def test_type_museums(self):
+        PercentTypeMuseums.drop_collection()
+        museums = 10
+        museums_indicator = PercentTypeMuseums(
+            10, datetime.now(), museums)
+        museums_indicator.save()
+        query = PercentTypeMuseums.objects.first()
+        assert query._type_museums == museums
+
+
+class TestPercentPublicOrPrivateMuseums(object):
+    def test_total_public_museums(self):
+        PercentPublicOrPrivateMuseums.drop_collection()
+        museums = 10
+        museums_indicator = PercentPublicOrPrivateMuseums(10,
+                                                         datetime.now(), museums,10)
+        museums_indicator.save()
+        query = PercentPublicOrPrivateMuseums.objects.first()
+        assert query._total_public_museums == museums
+
+    def test_total_private_museums(self):
+        PercentPublicOrPrivateMuseums.drop_collection()
+        museums = 10
+        museums_indicator = PercentPublicOrPrivateMuseums(
+            10, datetime.now(), museums,10)
+        museums_indicator.save()
+        query = PercentPublicOrPrivateMuseums.objects.first()
+        assert query._total_private_museums == museums
+
+class TestPercentMuseumsHistoricalArchivePublicAccess(object):
+    def test_total_museums_historical(self):
+        PercentMuseumsHistoricalArchivePublicAccess.drop_collection()
+        museums = 10
+        museums_indicator = PercentMuseumsHistoricalArchivePublicAccess(
+            10, datetime.now(), museums)
+        museums_indicator.save()
+        query = PercentMuseumsHistoricalArchivePublicAccess.objects.first()
+        assert query._total_museums_historical == museums
 
 
 class TestClassRequestMuseumsRawData(object):
