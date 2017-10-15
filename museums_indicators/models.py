@@ -168,7 +168,7 @@ class PercentPublicOrPrivateMuseums(PercentMuseums):
     def total_private_museums(self):
         return self._total_private_museums
 
-    @total_private_museums.sette
+    @total_private_museums.setter
     def total_private_museums(self, number):
         self._total_private_museums = number
 
