@@ -108,13 +108,10 @@ class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
     def create_date(self, number):
         self._create_date = number
 
-# -------------------- Project Registered -------------------------------------
-
 
 class QuantityOfRegisteredProject(PercentProjects):
     _total_project_registered_per_mounth_per_year = IntField(required=True)
     _total_project_registered_per_year = IntField(required=True)
-
 
     @property
     def total_project_registered_per_mounth_per_year(self):

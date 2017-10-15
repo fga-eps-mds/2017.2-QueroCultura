@@ -76,7 +76,7 @@ class TestPercentEventsPerAgeRange(object):
 class TestPercentTypeEventsForState(object):
 
     @staticmethod
-    def type_state_events():
+    def test_type_state_events():
         PercentTypeEventsForState.drop_collection()
         total_events_range = 35
         indicator = PercentTypeEventsForState(20, datetime.now(), total_events_range)
@@ -87,7 +87,7 @@ class TestPercentTypeEventsForState(object):
 class TestEventsPerAgeRangePerState(object):
 
     @staticmethod
-    def total_events_age_range_state():
+    def test_total_events_age_range_state():
         PercentEventsPerAgeRangePerState.drop_collection()
         total_events_range = 35
         indicator = PercentEventsPerAgeRangePerState(20, datetime.now(), total_events_range)
