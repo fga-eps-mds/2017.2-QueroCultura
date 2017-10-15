@@ -1,6 +1,5 @@
 # from django.db import models
 from mongoengine import Document
-from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
@@ -32,7 +31,7 @@ class PercentSpaceState(Document):
         abstract = True
     meta = {'allow_inheritance': True}
 
-    _total_space_per_state = DictField(required=True)
+    _total_space_per_state = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -51,8 +50,7 @@ class PercentSpaceState(Document):
         self._total_space_per_state = number
 
 class PercentSpacePerType(PercentSpace):
-    _total_space_per_type = DictField(required=True)
-
+    _total_space_per_type = IntField(required=True)
 
     @property
     def total_space_per_type(self):
@@ -63,11 +61,8 @@ class PercentSpacePerType(PercentSpace):
         self._total_space_per_type = number
 
 
-
-
 class PercentSpacePerOccupationArea(PercentSpace):
-    _total_Space = DictField(required=True)
-
+    _total_Space = IntField(required=True)
 
     @property
     def total_space_per_occupation_area(self):
@@ -79,7 +74,7 @@ class PercentSpacePerOccupationArea(PercentSpace):
 
 
 class PercentSpacePerTypePerState(PercentSpaceState):
-    _total_space = DictField(required=True)
+    _total_space = IntField(required=True)
 
     @property
     def total_space(self):
@@ -90,7 +85,7 @@ class PercentSpacePerTypePerState(PercentSpaceState):
         self._total_space = number
 
 class PercentSpacePerOccupationAreaPerState(PercentSpaceState):
-    _total_space_occupation_area_per_state = DictField(required=True)
+    _total_space_occupation_area_per_state = IntField(required=True)
 
     @property
     def total_space_occupation_area_per_state(self):
@@ -111,24 +106,3 @@ class PercentSpaceForState(PercentSpaceState):
     @total_spaces.setter
     def total_spaces(self, number):
         self._total_spaces = number
-
-
-class QuantityOfRegisteredSpace(PercentSpace):
-    _total_space_registered_per_mounth_per_year = DictField(required=True)
-    _total_space_register = DictField(required=True)
-
-    @property
-    def total_space_registered_per_mounth_per_year(self):
-        return self._total_space_registered_per_mounth_per_year
-
-    @total_space_registered_per_mounth_per_year.setter
-    def total_space_registered_per_mounth_per_year(self, number):
-        self._total_space_registered_per_mounth_per_year = number
-
-    @property
-    def total_space_register(self):
-        return self._total_space_register
-
-    @total_space_register.setter
-    def total_space_register(self, number):
-        self._total_space_register = number
