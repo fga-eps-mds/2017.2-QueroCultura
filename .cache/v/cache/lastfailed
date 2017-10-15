@@ -1,13 +1,5 @@
 {
   "events_indicators/tests.py::TestPercentEventsPerAgeRange::()::test_total_library": true,
-  "mixed_indicators/tests.py::TestPercentEventsInAccessibleSpaces::()::test_total_events": true,
-  "mixed_indicators/tests.py::TestPercentEventsInAccessibleSpaces::()::test_total_events_in_acessible_": true,
-  "mixed_indicators/tests.py::TestPercentEventsInAccessibleSpacesPerState::()::test_total_events_in_acessible_per_state": true,
   "mixed_indicators/tests.py::TestPercentEventsInAccessibleSpacesPerState::()::test_total_events_per_state": true,
-  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpace::()::test_total_events": true,
-  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpace::()::test_total_events_in_more_then_one_space": true,
-  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpacePerState::()::test_total_events_in_more_then_one_space_per_state": true,
-  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpacePerState::()::test_total_events_per_state": true,
-  "project_indicators/tests.py::TestPercentProjectPerType::()::test_total_project": true,
-  "project_indicators/tests.py::TestPercentProjectPerType::()::test_total_project_per_type": true
+  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpace::()::test_total_events": true
 }

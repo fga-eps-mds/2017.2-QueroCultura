@@ -11,37 +11,29 @@ class TestPercentEventsInAccessibleSpaces(object):
     def test_total_events(self):
         PercentEventsInAccessibleSpaces.drop_collection()
         indicator = 50
-        mixed_indicator = PercentEventsInAccessibleSpaces(indicator, 50, datetime.now())
+        mixed_indicator = PercentEventsInAccessibleSpaces(indicator, datetime.now(),50)
         mixed_indicator.save()
         query = PercentEventsInAccessibleSpaces.objects.first()
-        assert query._totalEvents == indicator
+        assert query._total_events == indicator
 
     def test_total_events_in_acessible_(self):
         PercentEventsInAccessibleSpaces.drop_collection()
         indicator = 50
-        mixed_indicator = PercentEventsInAccessibleSpaces(50 , indicator, datetime.now())
+        mixed_indicator = PercentEventsInAccessibleSpaces(50 , datetime.now(), indicator)
         mixed_indicator.save()
         query = PercentEventsInAccessibleSpaces.objects.first()
-        assert query._totalEventsInAccessibleSpaces == indicator
+        assert query._total_events_in_accessible_spaces == indicator
 
 
 class TestPercentEventsInMoreThenOneSpace(object):
 
-    def test_total_events(self):
-        PercentEventsInMoreThenOneSpace.drop_collection()
-        indicator = 50
-        mixed_indicator = PercentEventsInMoreThenOneSpace(indicator, 10, datetime.now())
-        mixed_indicator.save()
-        query = PercentEventsInMoreThenOneSpace.objects.first()
-        assert query._totalEvents == indicator
-
     def test_total_events_in_more_then_one_space(self):
         PercentEventsInMoreThenOneSpace.drop_collection()
         indicator = 10
-        mixed_indicator = PercentEventsInMoreThenOneSpace(50, 10, datetime.now())
+        mixed_indicator = PercentEventsInMoreThenOneSpace(50, datetime.now(), 10)
         mixed_indicator.save()
         query = PercentEventsInMoreThenOneSpace.objects.first()
-        assert query._totalEventsInMoreThenOneSpace == indicator
+        assert query._total_events_in_more_then_one_space  == indicator
 
 
 class TestPercentEventsInMoreThenOneSpacePerState(object):
@@ -49,38 +41,29 @@ class TestPercentEventsInMoreThenOneSpacePerState(object):
     def test_total_events_per_state(self):
         PercentEventsInMoreThenOneSpacePerState.drop_collection()
         indicator = 10
-        mixed_indicator = PercentEventsInMoreThenOneSpacePerState(indicator, 10, datetime.now())
+        mixed_indicator = PercentEventsInMoreThenOneSpacePerState(indicator, datetime.now(), 10)
         mixed_indicator.save()
         query = PercentEventsInMoreThenOneSpacePerState.objects.first()
-        assert querry._totalEventsPerState == indicator
+        assert query._total_events_in_more_then_one_space_per_state  == indicator
 
     def test_total_events_in_more_then_one_space_per_state(self):
         PercentEventsInMoreThenOneSpacePerState.drop_collection()
         indicator = 10
-        mixed_indicator = PercentEventsInMoreThenOneSpacePerState(10, indicator, datetime.now())
+        mixed_indicator = PercentEventsInMoreThenOneSpacePerState(10, datetime.now(), indicator)
         mixed_indicator.save()
         query = PercentEventsInMoreThenOneSpacePerState.objects.first()
-        assert query._totalEventsInMoreThenOneSpacePerState == indicator
+        assert query._total_events_in_more_then_one_space_per_state == indicator
 
 
 class TestPercentEventsInAccessibleSpacesPerState(object):
 
-    def test_total_events_per_state(self):
-        PercentEventsInAccessibleSpacesPerState.drop_collection()
-        indicator = 10
-        mixed_indicator = PercentEventsInAccessibleSpacesPerState(indicator, 10, datetime.now())
-        mixed_indicator.save()
-        query = PercentEventsInAccessibleSpacesPerState.objects.first()
-        assert query._totalEventsPerState == indicator
-
     def test_total_events_in_acessible_per_state(self):
         PercentEventsInAccessibleSpacesPerState.drop_collection()
         indicator = 25
-        mixed_indicator = PercentEventsInAccessibleSpacesPerState(25 , indicator, datetime.now())
+        mixed_indicator = PercentEventsInAccessibleSpacesPerState(25 , datetime.now(), indicator)
         mixed_indicator.save()
         query = PercentEventsInAccessibleSpacesPerState.objects.first()
-        assert query._totalEventsInAccessibleSpacesPerState == indicator
-
+        assert query._total_events_in_accessible_spaces_per_state== indicator
 
 class TestClassRequestMixedRawData(object):
 

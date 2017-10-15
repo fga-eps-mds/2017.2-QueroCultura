@@ -9,19 +9,19 @@ class TestPercentProjectPerType(object):
 
     def test_total_project(self):
         PercentProjectPerType.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectPerType(indicator, {"Tipo": 50}, datetime.now())
+        indicator = 5
+        project_indicator = PercentProjectPerType(indicator, datetime.now(), 5)
         project_indicator.save()
         query = PercentProjectPerType.objects.first()
-        assert query._totalProject == indicator
+        assert query._total_project == indicator
 
     def test_total_project_per_type(self):
         PercentProjectPerType.drop_collection()
-        indicator = {"tipo": 50}
-        project_indicator = PercentProjectPerType(50, indicator, datetime.now())
+        indicator = 5
+        project_indicator = PercentProjectPerType(50, datetime.now(), indicator)
         project_indicator.save()
         query = PercentProjectPerType.objects.first()
-        assert query._totalProjectPerType == indicator
+        assert query._total_project_per_type == indicator
 
 
 class PercentPercentProjectThatAcceptOnlineTransitions(object):

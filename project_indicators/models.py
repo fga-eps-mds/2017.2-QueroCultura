@@ -1,5 +1,4 @@
 from mongoengine import Document
-from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
@@ -27,7 +26,7 @@ class PercentProjects(Document):
 
 class PercentProjectPerType(PercentProjects):
 
-    _total_project_per_type = DictField(required=True)
+    _total_project_per_type = IntField(required=True)
 
     @property
     def total_project_per_type(self):
@@ -51,8 +50,8 @@ class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
 
 
 class PercentProjectPerTypePerState(Document):
-    _total_project_per_state = DictField(required=True)
-    _total_project_per_type_per_state = DictField(required=True)
+    _total_project_per_state = IntField(required=True)
+    _total_project_per_type_per_state = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -81,8 +80,8 @@ class PercentProjectPerTypePerState(Document):
 
 
 class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
-    _total_project_online_transitions = DictField(required=True)
-    _total_project_per_state = DictField(required=True)
+    _total_project_online_transitions = IntField(required=True)
+    _total_project_per_state = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -113,8 +112,8 @@ class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
 
 
 class QuantityOfRegisteredProject(PercentProjects):
-    _total_project_registered_per_mounth_per_year = DictField(required=True)
-    _total_project_registered_per_year = DictField(required=True)
+    _total_project_registered_per_mounth_per_year = IntField(required=True)
+    _total_project_registered_per_year = IntField(required=True)
 
 
     @property
