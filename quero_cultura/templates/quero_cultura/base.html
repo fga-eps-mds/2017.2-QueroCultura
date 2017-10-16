@@ -70,7 +70,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" title="Web site Tour">
           <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
-            <i class="fa fa-fw fa fa-question-circle text-light"></i>
+            <i class="fa fa-fw fa fa-question-circle text-light" id="tourButton"></i>
           </a>
         </li>
       </ul>
@@ -120,8 +120,13 @@
     //Create web site tour
 
     var intro = introJs();
-  		 intro.setOptions({
-  			 steps: [
+      intro.setOption("nextLabel", "Próximo")
+
+      intro.setOption("prevLabel", "Anterior")
+      intro.setOption("skipLabel", "Fechar")
+      intro.setOption("doneLabel", "Fechar")
+  		intro.setOptions({
+  		 steps: [
 
   				 {
   							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !"
@@ -129,17 +134,23 @@
 
   				 {
 
-  							intro: '<h2>Mapa</h2>Aqui no mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.'
-  					},
-
-  					{
-
-  						 intro: '<h2>Marcadores</h2> Os marcadores do mapa são separados por cor, vamos ver o que cada um significa! ',
+  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.'
   					},
 
             {
 
-  						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/marker_4.png" height="35" width="35" /> ',
+  						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom nos locais de interesse.',
+               element: ".leaflet-control-zoom"
+  					},
+
+  					{
+
+  						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+  					},
+
+            {
+
+  						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/markerAgent.png" height="35" width="35" /> ',
   					},
 
             {
@@ -163,7 +174,8 @@
   					},
 
             {
-              intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique na imagem:  <img src="static/images/mapIcon.png"  height="35" width="35"  />',
+              intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique no botão indicado.',
+              element: "#tourButton"
 
             },
 
