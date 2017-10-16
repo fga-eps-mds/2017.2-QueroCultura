@@ -33,7 +33,7 @@ function InitTime(minutes){
 
 function MarkersPoints(){
 
-  SpaceMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
+    SpaceMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
 	EventMarkers("png", 1440);
 	AgentMarkers("png", 1440);
 	ProjectMarkers("png", 1440);
@@ -45,11 +45,34 @@ function MarkersPoints(){
 
 }
 
+function createPromise(url, type, minutes){
+
+    var getTimeNow = InitTime(minutes);
+
+    select = ''
+    switch(type){
+        case 'event': select = 'name, occurrences.{space.{location}}, singleUrl'
+            break
+        case 'project': select = 'name, owner.location, singleUrl '
+            break
+        case 'space':
+        case 'agent':
+            select = 'name, location, singleUrl'
+            break
+    }
+
+    var promise = $.getJSON(url,
+      {
+        '@select' : select,
+        '@or' : 1,
+        'createTimestamp' : "GT("+getTimeNow+")",
+        'updateTimestamp' : "GT("+getTimeNow+")"
+      },);
+      return promise
+}
+
 // creating space markers
-
 function SpaceMarkers(imageExtension, minutes){
-
-		var getTimeNow = InitTime(minutes);
 
 	    markersSpace.clearLayers();;
 
@@ -58,15 +81,7 @@ function SpaceMarkers(imageExtension, minutes){
 	    	iconSize: [25,25],
 	    });
 
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/space/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+	    var promise = createPromise('http://mapas.cultura.gov.br/api/space/find', 'space', minutes)
 
 	    promise.then(function(data) {
 
@@ -80,18 +95,9 @@ function SpaceMarkers(imageExtension, minutes){
             }
 	    });
 
-      var promise = $.getJSON(
-	      'http://spcultura.prefeitura.sp.gov.br/api/space/find',
+      var promise = createPromise('http://spcultura.prefeitura.sp.gov.br/api/space/find', 'space', minutes)
 
-	      {
-	        '@select' : 'name, location, singleUrl',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
+      promise.then(function(data) {
             for(var i=0; i < data.length; i++){
             	if(data[i]["location"] != null){
 	            	var marker = L.marker([data[i]["location"]["latitude"],
@@ -102,15 +108,7 @@ function SpaceMarkers(imageExtension, minutes){
             }
 	    });
 
-      var promise = $.getJSON(
-	      'http://mapa.cultura.ce.gov.br/api/space/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+      var promise = createPromise('http://mapa.cultura.ce.gov.br/api/space/find', 'space', minutes)
 
 	    promise.then(function(data) {
 
@@ -131,8 +129,6 @@ function SpaceMarkers(imageExtension, minutes){
 
 function AgentMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime(minutes);
-
 	    markersAgent.clearLayers();;
 
 	    var blueMarker = L.icon({
@@ -140,15 +136,7 @@ function AgentMarkers(imageExtension, minutes){
 	    	iconSize: [25,25],
 	    });
 
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/agent/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+	    var promise = createPromise('http://mapas.cultura.gov.br/api/agent/find', 'agent', minutes)
 
         promise.then(function(data) {
 
@@ -162,15 +150,7 @@ function AgentMarkers(imageExtension, minutes){
               }
   	    });
 
-      var promise = $.getJSON(
-	      'http://mapa.cultura.ce.gov.br/api/agent/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+        var promise = createPromise('http://mapa.cultura.ce.gov.br/api/agent/find', 'agent', minutes)
 
         promise.then(function(data) {
 
@@ -184,15 +164,7 @@ function AgentMarkers(imageExtension, minutes){
               }
   	    });
 
-        var promise = $.getJSON(
-  	      'http://spcultura.prefeitura.sp.gov.br/api/agent/find',
-
-  	      {
-  	        '@select' : 'name, location, singleUrl ',
-  	        '@or' : 1,
-  	        'createTimestamp' : "GT("+getTimeNow+")",
-  	        'updateTimestamp' : "GT("+getTimeNow+")"
-  	      },);
+        var promise = createPromise('http://spcultura.prefeitura.sp.gov.br/api/agent/find', 'agent', minutes)
 
 	    promise.then(function(data) {
 
@@ -213,7 +185,6 @@ function AgentMarkers(imageExtension, minutes){
 
 function EventMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime(minutes);
 	    markersEvent.clearLayers();
 
 	    var yellowMarker = L.icon({
@@ -221,15 +192,20 @@ function EventMarkers(imageExtension, minutes){
 	    	iconSize: [25,25],
 	    });
 
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/event/find',
+	    var promise = createPromise('http://mapas.cultura.gov.br/api/event/find', 'event', minutes)
+	    promise.then(function(data) {
 
-	      {
-	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+            for(var i=0; i < data.length; i++){
+            	if((data[i]["occurrences"]).length != 0){
+	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
+	            							{icon: yellowMarker}).addTo(markersEvent);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
+        var promise = createPromise('http://spcultura.prefeitura.sp.gov.br/api/event/find', 'event', minutes)
 
 	    promise.then(function(data) {
 
@@ -243,37 +219,7 @@ function EventMarkers(imageExtension, minutes){
             }
 	    });
 
-      var promise = $.getJSON(
-	      'http://spcultura.prefeitura.sp.gov.br/api/event/find',
-
-	      {
-	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
-            for(var i=0; i < data.length; i++){
-            	if((data[i]["occurrences"]).length != 0){
-	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
-	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
-	            							{icon: yellowMarker}).addTo(markersEvent);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
-	    });
-
-      var promise = $.getJSON(
-	      'http://mapa.cultura.ce.gov.br/api/event/find',
-
-	      {
-	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+        var promise = createPromise('http://mapa.cultura.ce.gov.br/api/event/find', 'event', minutes)
 
 	    promise.then(function(data) {
 
@@ -294,7 +240,6 @@ function EventMarkers(imageExtension, minutes){
 
 function ProjectMarkers(imageExtension, minutes){
 
-		var getTimeNow = InitTime(minutes);
 	    markersProject.clearLayers();
 
 	    var greenMarker = L.icon({
@@ -302,15 +247,21 @@ function ProjectMarkers(imageExtension, minutes){
 	    	iconSize: [25,25],
 	    });
 
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/project/find',
+	    var promise = createPromise('http://mapas.cultura.gov.br/api/project/find', 'project', minutes)
 
-	      {
-	        '@select' : 'name, owner.location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+	    promise.then(function(data) {
+
+            for(var i=0; i < data.length; i++){
+            	if(data[i]["owner"] != null){
+	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
+	            							data[i]["owner"]["location"]["longitude"]],
+	            							{icon: greenMarker}).addTo(markersProject);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
+        var promise = createPromise('http://mapa.cultura.ce.gov.br/api/project/find', 'project', minutes)
 
 	    promise.then(function(data) {
 
@@ -325,38 +276,7 @@ function ProjectMarkers(imageExtension, minutes){
             }
 	    });
 
-      var promise = $.getJSON(
-	      'http://mapa.cultura.ce.gov.br/api/project/find',
-
-	      {
-	        '@select' : 'name, owner.location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
-
-            for(var i=0; i < data.length; i++){
-            	if(data[i]["owner"] != null){
-	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
-	            							data[i]["owner"]["location"]["longitude"]],
-	            							{icon: greenMarker}).addTo(markersProject);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
-	    });
-
-      var promise = $.getJSON(
-	      'http://spcultura.prefeitura.sp.gov.br/api/project/find',
-
-	      {
-	        '@select' : 'name, owner.location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+        var promise = createPromise('http://spcultura.prefeitura.sp.gov.br/api/project/find', 'project', minutes)
 
 	    promise.then(function(data) {
 
