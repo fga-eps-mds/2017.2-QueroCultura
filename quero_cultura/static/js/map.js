@@ -30,6 +30,23 @@ function InitTime(minutes){
 
 	return getTimeNow;
 }
+function createMarkerIcon(color, extension){
+    filename = ''
+    switch (color) {
+        case 'red': filename = 'markerSpace'
+            break
+        case 'blue': filename = 'markerAgent'
+            break
+        case 'yellow': filename = 'markerEvent'
+            break
+        case 'green': filename = 'markerProject'
+            break
+    }
+
+    return L.icon({ iconUrl: "static/images/"+filename+"."+ extension,
+                    iconSize: [25,25],
+                 });
+}
 
 function MarkersPoints(){
 
@@ -72,10 +89,7 @@ function createPromise(url, type, minutes){
 }
 
 function createSpaceMarker(data, imageExtension){
-    var redMarker = L.icon({
-        iconUrl: "static/images/markerSpace."+imageExtension,
-        iconSize: [25,25],
-    });
+    var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"] != null){
@@ -110,10 +124,7 @@ function SpaceMarkers(imageExtension, minutes){
 // creating Agents markers
 
 function createAgentMarker(data, imageExtension){
-    var blueMarker = L.icon({
-        iconUrl: "static/images/markerAgent."+imageExtension,
-        iconSize: [25,25],
-    });
+    var blueMarker = createMarkerIcon('blue', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["location"] != null){
@@ -146,10 +157,7 @@ function AgentMarkers(imageExtension, minutes){
 
 // creating events markers
 function createEventMarker(data, imageExtension){
-    var yellowMarker = L.icon({
-    	iconUrl: "static/images/markerEvent."+imageExtension,
-    	iconSize: [25,25],
-    });
+    var yellowMarker = createMarkerIcon('yellow', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
@@ -182,10 +190,7 @@ function EventMarkers(imageExtension, minutes){
 
 // creating projects markers
 function createProjectMarker(data, imageExtension){
-    var greenMarker = L.icon({
-        iconUrl: "static/images/markerProject."+imageExtension,
-        iconSize: [25,25],
-    });
+    var greenMarker = createMarkerIcon('green', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
