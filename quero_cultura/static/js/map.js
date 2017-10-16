@@ -78,9 +78,53 @@ function SpaceMarkers(imageExtension, minutes){
 	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
-
-            map.addLayer(markersSpace);
 	    });
+
+      var promise = $.getJSON(
+	      'http://spcultura.prefeitura.sp.gov.br/api/space/find',
+
+	      {
+	        '@select' : 'name, location, singleUrl',
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+getTimeNow+")",
+	        'updateTimestamp' : "GT("+getTimeNow+")"
+	      },);
+
+	    promise.then(function(data) {
+
+            for(var i=0; i < data.length; i++){
+            	if(data[i]["location"] != null){
+	            	var marker = L.marker([data[i]["location"]["latitude"],
+	            							data[i]["location"]["longitude"]],
+	            							{icon: redMarker}).addTo(markersSpace);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
+      var promise = $.getJSON(
+	      'http://mapa.cultura.ce.gov.br/api/space/find',
+
+	      {
+	        '@select' : 'name, location, singleUrl',
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+getTimeNow+")",
+	        'updateTimestamp' : "GT("+getTimeNow+")"
+	      },);
+
+	    promise.then(function(data) {
+
+            for(var i=0; i < data.length; i++){
+            	if(data[i]["location"] != null){
+	            	var marker = L.marker([data[i]["location"]["latitude"],
+	            							data[i]["location"]["longitude"]],
+	            							{icon: redMarker}).addTo(markersSpace);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
+      map.addLayer(markersSpace);
 }
 
 // creating Agents markers
@@ -116,9 +160,8 @@ function AgentMarkers(imageExtension, minutes){
 	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
-
-            map.addLayer(markersAgent);
 	    });
+      map.addLayer(markersAgent);
 }
 
 // creating events markers
@@ -153,10 +196,8 @@ function EventMarkers(imageExtension, minutes){
 	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
-
-            map.addLayer(markersEvent);
-
 	    });
+      map.addLayer(markersEvent);
 }
 
 // creating projects markers
@@ -192,8 +233,6 @@ function ProjectMarkers(imageExtension, minutes){
 	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             	}
             }
-
-			map.addLayer(markersProject);
-
 	    });
+      map.addLayer(markersProject);
 }
