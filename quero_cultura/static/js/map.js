@@ -242,6 +242,51 @@ function EventMarkers(imageExtension, minutes){
             	}
             }
 	    });
+
+      var promise = $.getJSON(
+	      'http://spcultura.prefeitura.sp.gov.br/api/event/find',
+
+	      {
+	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+getTimeNow+")",
+	        'updateTimestamp' : "GT("+getTimeNow+")"
+	      },);
+
+	    promise.then(function(data) {
+
+            for(var i=0; i < data.length; i++){
+            	if((data[i]["occurrences"]).length != 0){
+	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
+	            							{icon: yellowMarker}).addTo(markersEvent);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
+      var promise = $.getJSON(
+	      'http://mapa.cultura.ce.gov.br/api/event/find',
+
+	      {
+	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+getTimeNow+")",
+	        'updateTimestamp' : "GT("+getTimeNow+")"
+	      },);
+
+	    promise.then(function(data) {
+
+            for(var i=0; i < data.length; i++){
+            	if((data[i]["occurrences"]).length != 0){
+	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
+	            							{icon: yellowMarker}).addTo(markersEvent);
+	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            	}
+            }
+	    });
+
       map.addLayer(markersEvent);
 }
 
