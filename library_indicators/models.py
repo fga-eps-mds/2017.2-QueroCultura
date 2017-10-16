@@ -3,9 +3,6 @@ from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
-
-
 
 class PercentLibraries(Document):
     class Meta:

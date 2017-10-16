@@ -1,9 +1,6 @@
 from mongoengine import Document
-from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
-
-# --------------------- national indicators ----------------------------------
 
 class PercentEvent(Document):
     class Meta:
@@ -35,7 +32,7 @@ class PercentEventState(Document):
         abstract = True
     meta = {'allow_inheritance': True}
 
-    _total_state_events = DictField(required=True)
+    _total_state_events = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -56,7 +53,7 @@ class PercentEventState(Document):
 
 
 class PercentEventsPerLanguage(PercentEvent):
-    _total_events_per_language = DictField(required=True)
+    _total_events_per_language = IntField(required=True)
 
     @property
     def total_events_per_language(self):
@@ -68,7 +65,7 @@ class PercentEventsPerLanguage(PercentEvent):
 
 
 class PercentEventsPerAgeRange(PercentEvent):
-    _total_events_per_age_range = DictField(required=True)
+    _total_events_per_age_range = IntField(required=True)
 
     @property
     def total_events_per_age_range(self):
@@ -79,13 +76,8 @@ class PercentEventsPerAgeRange(PercentEvent):
         self._total_events_per_age_range = number
 
 
-
-# -------------------- state indicators --------------------------------------
-
-
 class PercentTypeEventsForState(PercentEventState):
-    _type_state_events = DictField(required=True)
-
+    _type_state_events = IntField(required=True)
 
     @property
     def type_state_events(self):
@@ -96,10 +88,8 @@ class PercentTypeEventsForState(PercentEventState):
         self._type_state_events = number
 
 
-
-
 class PercentEventsPerLanguagePerState(PercentEventState):
-    _total_events_language_state = DictField(required=True)
+    _total_events_language_state = IntField(required=True)
 
 
     @property
@@ -111,10 +101,8 @@ class PercentEventsPerLanguagePerState(PercentEventState):
         self._total_events_language_state = number
 
 
-
 class PercentEventsPerAgeRangePerState(PercentEventState):
-    _total_events_age_range_state = DictField(required=True)
-
+    _total_events_age_range_state = IntField(required=True)
 
     @property
     def total_events_age_range_state(self):
@@ -124,12 +112,10 @@ class PercentEventsPerAgeRangePerState(PercentEventState):
     def total_events_age_range_state(self, number):
         self._total_events_age_range_state = number
 
-# -------------------- Events Registered --------------------------------------
-
 
 class QuantityOfRegisteredEvents(PercentEvent):
-    _total_events_registered_per_mounth_per_year = DictField(required=True)
-    _total_events_registered_per_year = DictField(required=True)
+    _total_events_registered_per_mounth_per_year = IntField(required=True)
+    _total_events_registered_per_year = IntField(required=True)
 
     @property
     def total_events_registered_per_mounth_per_year(self):
