@@ -9,15 +9,15 @@ var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
 
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
-	  var cmAttr = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-		cmUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
+var cmAttr = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+cmUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
 
-	  var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
-		midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr});
+var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
+midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr});
 
 var map = L.map('map', {maxBounds: bounds})
-    .addLayer(mapboxTiles)
-    .setView([-15.2222, -50.1222], 4);
+	.addLayer(mapboxTiles)
+	.setView([-15.2222, -50.1222], 4);
 
 
 map.zoomControl.setPosition('topright');
@@ -43,12 +43,9 @@ var groupedOverlays = {
   },
 };
 
-// Use the custom grouped layer control, not "L.control.layers"
-
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
 // function returns hour now with minutes delay
-
 function InitTime(minutes){
 
 	var getTimeNow = new Date();
@@ -58,17 +55,27 @@ function InitTime(minutes){
 	return getTimeNow;
 }
 
-function MarkersPoints(){
+function MarkersPoints(firstTime){
 
-  SpaceMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
-	EventMarkers("png", 1440);
-	AgentMarkers("png", 1440);
-	ProjectMarkers("png", 1440);
+	if(map.hasLayer(markersAgent) || firstTime){
+		AgentMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
+		AgentMarkers("gif", 60);
+	}
 
-	SpaceMarkers("gif", 60);
-	EventMarkers("gif", 60);
-	AgentMarkers("gif", 60);
-	ProjectMarkers("gif", 60);
+	if(map.hasLayer(markersEvent) || firstTime){
+		EventMarkers("png", 1440);
+		EventMarkers("gif", 60);
+	}
+
+	if(map.hasLayer(markersSpace) || firstTime){
+		SpaceMarkers("png", 1440);
+		SpaceMarkers("gif", 60);
+	}
+
+  if(map.hasLayer(markersProject) || firstTime){
+		ProjectMarkers("png", 1440);
+		ProjectMarkers("gif", 60);
+	}
 
 }
 

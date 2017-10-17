@@ -24,9 +24,8 @@ crossorigin=""></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
-		 	console.log("lixo");
-		 	MarkersPoints();
-			 setInterval(function(){MarkersPoints()}, 15000);
+		 	MarkersPoints(true);
+			setInterval(function(){MarkersPoints(false)}, 15000);
 	</script>
 
 	{% endblock %}
