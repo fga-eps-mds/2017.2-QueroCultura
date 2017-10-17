@@ -19,14 +19,13 @@
 <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
 integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
 crossorigin=""></script>
+<script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js"></script>
 
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
-
-		MarkersPoints();
-		setInterval(function(){MarkersPoints()}, 15000);
-
+		 	MarkersPoints(true);
+			setInterval(function(){MarkersPoints(false)}, 15000);
 	</script>
 
 	{% endblock %}
