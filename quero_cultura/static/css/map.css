@@ -21,8 +21,8 @@
 
 #title-block {
     background-color: transparent;
-    margin-top: 7%;
-    margin-left: 83%;
+    margin-top: 12%;
+    margin-left: 78%;
     position: relative;
     font-family: 'Anton';
     text-align: center;
@@ -37,8 +37,8 @@
 
     background-color: transparent;
     border-style: solid;
-    border-color: red green;
-    margin-left: 77%;
+    border-color: #333;
+    margin-left: 72%;
     position: relative;
     overflow: auto;
 }
