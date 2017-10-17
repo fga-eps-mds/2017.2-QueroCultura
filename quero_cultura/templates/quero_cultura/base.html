@@ -17,6 +17,7 @@
   <!-- Custom styles for this template-->
   <link href="static/css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="static/introjs.css"/>
+  <!--<link href="static/introjs-nassim.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="static/css/map.css"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
@@ -35,7 +36,7 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-file-text-o text-success"></i>
+            <i class="fa fa-fw fa-file-text-o text-success" id="projetosId"></i>
             <span class="nav-link-text text-light">Projetos</span>
           </a>
         </li>
@@ -120,56 +121,61 @@
     //Create web site tour
 
     var intro = introJs();
-      intro.setOption("nextLabel", "Próximo")
+      intro.setOption("nextLabel", '<img src="static/images/arrow.png" height="15px" alt="" />')
 
-      intro.setOption("prevLabel", "Anterior")
-      intro.setOption("skipLabel", "Fechar")
-      intro.setOption("doneLabel", "Fechar")
+      intro.setOption("prevLabel", '<img src="static/images/invert_arrow.png" height="15px" alt="" />')
+      intro.setOption("skipLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+      intro.setOption("doneLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+      .setOption("showStepNumbers", false)
   		intro.setOptions({
   		 steps: [
 
   				 {
-  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !"
-  				 },
+  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
+                element: ".navbar-nav sidenav-toggler"
+           },
 
   				 {
 
-  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.'
+  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+
   					},
 
             {
 
-  						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom nos locais de interesse.',
+  						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom para ver os locais de interesse.',
                element: ".leaflet-control-zoom"
+
   					},
 
   					{
 
-  						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+  						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, para ver um marcador clique .',
   					},
 
             {
 
-  						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/markerAgent.png" height="35" width="35" /> ',
+  						 intro: '<h2>Projetos</h2>Os marcadores de projetos são indetificados pela imagem: <img src="static/images/markerProject.png" height="35px" alt="" /> .',
+  					},
+            {
+
+  						 intro: '<h2>Espaços</h2>Os marcadores de espaços são indetificados pela imagem: <img src="static/images/markerSpace.png" height="35px" alt="" /> .',
   					},
 
             {
 
-  						 intro: '<h2>Espaços</h2> Os marcadores de espaços são identificados pela cor vermelha, como na imagem: <img src="static/images/marker_2.png" height="35" width="35" /> ',
-  					},
+               intro: '<h2>Agentes</h2>Os marcadores de agentes são indetificados pela imagem: <img src="static/images/markerAgent.png" height="35px" alt="" /> .',
+            },
 
             {
 
-  						 intro: '<h2>Evento</h2> Os marcadores de eventos são identificados pela cor amarela, como na imagem: <img src="static/images/marker_6.png" height="35" width="35" /> ',
-  					},
+               intro: '<h2>Eventos</h2>Os marcadores de eventos são indetificados pela imagem: <img src="static/images/markerEvent.png" height="35px" alt="" /> .',
+            },
+
 
             {
-
-  						 intro: '<h2>Projetos</h2> Os marcadores de projetos são identificados pela cor verde, como na imagem: <img src="static/images/marker_7.png" height="35" width="35" /> ',
-  					},
-
-            {
-              intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores clicando no botão: <img src="static/images/indicadoresButton.png"  height="35" width="35"  />',
+              intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
+              element: '.navbar-nav'
 
   					},
 
@@ -182,6 +188,7 @@
 
   			]
   		})
+
 
 
   </script>

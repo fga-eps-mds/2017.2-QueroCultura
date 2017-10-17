@@ -21,7 +21,7 @@
 }
 
 .introjs-fixParent {
-  z-index: auto !important;
+  z-index: 3000 !important;
   opacity: 1.0 !important;
   -webkit-transform: none !important;
      -moz-transform: none !important;
@@ -65,6 +65,7 @@ tr.introjs-showElement > th {
       -ms-transition: all 0.3s ease-out;
        -o-transition: all 0.3s ease-out;
           transition: all 0.3s ease-out;
+  opacity: 0.5;
 }
 
 .introjs-tooltipReferenceLayer {
