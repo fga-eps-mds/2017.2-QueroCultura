@@ -45,7 +45,7 @@
             <span class="nav-link-text text-light">Espaços</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes" id="agents1">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-user text-info"></i>
             <span class="nav-link-text text-light">Agentes</span>
@@ -113,15 +113,32 @@
     <script src="static/js/sb-admin-charts.min.js"></script>
     <script type = "text/javascript" src="static/intro.js"></script>
     <script type="text/javascript" src="static/js/cookie.js"></script>
-
+    <script type="text/javascript" src="static/js/map.js"></script>
+    <script type="text/javascript" src="static/css/map.css"></script>
 
     <script>
 
     //Create web site tour
+    var blueMarkers1 = L.icon({
+        iconUrl: "static/images/markerAgent.png",
+        iconSize: [25,25],
+      });
+    var markerg = new L.FeatureGroup();
+
+    var marker1 = L.marker([10.2222, -90.1222], {
+                      icon: L.extendedDivIcon({
+
+                        // Set classes here, as usual
+                        className: "myIcon1",
+
+                        style: {
+                          backgroundColor: '#fff'
+                        }
+                      }).addTo(map);
+    
 
     var intro = introJs();
       intro.setOption("nextLabel", "Próximo")
-
       intro.setOption("prevLabel", "Anterior")
       intro.setOption("skipLabel", "Fechar")
       intro.setOption("doneLabel", "Fechar")
@@ -129,18 +146,20 @@
   		 steps: [
 
   				 {
-  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !"
+  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
+                element: "#exampleAccordion"
   				 },
 
   				 {
 
-  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.'
+  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+                element: ".my-div-icon"
   					},
 
             {
-
   						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom nos locais de interesse.',
-               element: ".leaflet-control-zoom"
+               
+               element: "#myicon"
   					},
 
   					{
@@ -151,7 +170,7 @@
             {
 
   						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/markerAgent.png" height="35" width="35" /> ',
-  					},
+            },
 
             {
 
@@ -183,6 +202,7 @@
   			]
   		})
 
+      
 
   </script>
 
@@ -194,6 +214,8 @@
             writeCookie("nome", "nome", 30);
             intro.start();
         }
+
+
 
   </script>
 
