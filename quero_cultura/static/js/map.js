@@ -9,27 +9,11 @@ var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
 
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
-var cities = new L.LayerGroup();
-
-	  L.marker([0, 0]).bindPopup('This is Littleton, CO.').addTo(cities),
-	  L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-	  L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-	  L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
-
-	  var restaurants = new L.LayerGroup();
-
-	  L.marker([39.69, -104.85]).bindPopup('A fake restaurant').addTo(restaurants);
-	  L.marker([39.69, -105.12]).bindPopup('A fake restaurant').addTo(restaurants);
-
-
 	  var cmAttr = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
 		cmUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
 
 	  var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
-		midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr}),
-		espaços = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr}),
-		projetos = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr}),
-		motorways = L.tileLayer(cmUrl, {styleId: 46561, attribution: cmAttr});
+		midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr});
 
 var map = L.map('map', {maxBounds: bounds})
     .addLayer(mapboxTiles)
@@ -44,23 +28,24 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 
-	  var baseLayers = {
-		"Minimal": minimal,
-		"Night View": midnight
-	  };
+var baseLayers = {
+  "Light": minimal,
+  "Dark": midnight
+};
 
-	  // Overlay layers are grouped
-	  var groupedOverlays = {
-		"Landmarks": {
-		  "Agentes": markersAgent,
-		  "Eventos": markersEvent,
-		  "Espaços": markersSpace,
-		  "Projetos": markersProject,
-		},
-	  };
+// Overlay layers are grouped
+var groupedOverlays = {
+"": {
+  "Agentes": markersAgent,
+  "Eventos": markersEvent,
+  "Espaços": markersSpace,
+  "Projetos": markersProject,
+  },
+};
 
-	  // Use the custom grouped layer control, not "L.control.layers"
-	  L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+// Use the custom grouped layer control, not "L.control.layers"
+
+L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
 // function returns hour now with minutes delay
 

@@ -22,38 +22,6 @@ crossorigin=""></script>
 <script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js"></script>
 
 <script type = "text/javascript" src="static/js/map.js"></script>
-	
-	<script>
-		function checkFilter(element){
-			if(localStorage.getItem(element.name)){
-				localStorage.setItem(element.name, false);
-				switch(element.name){
-					case "agents": markersAgent.clearLayers();
-					case "events": markersEvent.clearLayers();
-					case "spaces": markersSpace.clearLayers();
-					case "projects": markersProject.clearLayers();
-				}
-			}else{
-				localStorage.setItem(element.name, true);
-				switch(element.name){
-					case "agents": AgentMarkers("png", 1440);
-					setInterval(function(){AgentMarkers()}, 15000);
-					case "events": EventMarkers("png", 1440);
-					setInterval(function(){EventMarkers()}, 15000);
-					case "spaces": SpaceMarkers("png", 1440);
-					setInterval(function(){spaceMarkers()}, 15000);
-					case "projects": ProjectMarkers("png", 1440);
-					setInterval(function(){ProjectMarkers()}, 15000);
-				}
-			}
-		}
-	</script>
-
-	<script>
-		function clearFilters(){
-			localStorage.clear();
-		}
-	</script>
 
 	<script>
 		 	console.log("lixo");
