@@ -19,3 +19,63 @@
       font-family: 'Anton';
   }
 
+#info {
+  float: right;
+  margin: 0;
+  width: 50%;
+  height: 100%;
+}
+
+/*General marker style*/
+.map-marker {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  background: #444;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  margin-top: -34px; /*Shift by arrow top+height*/
+  margin-left: -13px; /*Shift by half the marker width*/
+}
+
+.map-marker div.arrow {
+  position: relative;
+  border-style: solid;
+  border-color: #444 transparent transparent transparent;
+  border-width: 10px 6px 0 6px; /*Arrow w/h is defined by the borders*/
+  left: 7px; /*(Marker width - arrow width)/2*/
+  width: 0px; height: 0px;
+}
+
+.map-marker div.icon {
+  position: relative;
+  overflow: hidden;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-color: #ccc;
+  width: 24px; /*Same as marker width*/
+  height: 24px; /*Same as marker height*/
+  line-height: 24px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+/*Marker content instances*/
+.map-marker.A div.icon:before{
+  content: 'A';
+}
+
+/*Marker color instances*/
+.map-marker.red div.icon{background: #ff2222;}
+
+.map-marker.green div.icon{background: #008800;color: #fff;}
+.map-marker.green {background: #000;}
+.map-marker.green div.arrow{border-top-color: #000;}
+
+/*Marker states*/
+.map-marker.inactive {
+  opacity: 0.6;
+}
