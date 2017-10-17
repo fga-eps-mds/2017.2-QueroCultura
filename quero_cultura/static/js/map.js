@@ -31,6 +31,24 @@ function InitTime(minutes){
 	return getTimeNow;
 }
 
+function createMarkerIcon(color, extension){
+    filename = ''
+    switch (color) {
+        case 'red': filename = 'markerSpace'
+            break
+        case 'blue': filename = 'markerAgent'
+            break
+        case 'yellow': filename = 'markerEvent'
+            break
+        case 'green': filename = 'markerProject'
+            break
+    }
+
+    return L.icon({ iconUrl: "static/images/"+filename+"."+ extension,
+                    iconSize: [25,25],
+                 });
+}
+
 function MarkersPoints(){
 
     SpaceMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
@@ -46,7 +64,6 @@ function MarkersPoints(){
 }
 
 function createPromise(url, type, minutes){
-
     var getTimeNow = InitTime(minutes);
 
     select = ''
@@ -71,11 +88,31 @@ function createPromise(url, type, minutes){
       return promise
 }
 
-function createSpaceMarker(data, imageExtension){
-    var redMarker = L.icon({
-        iconUrl: "static/images/markerSpace."+imageExtension,
-        iconSize: [25,25],
+function loadMarkers(type, imageExtension, minutes){
+    loadMarkersInInstance(type,'http://mapas.cultura.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    loadMarkersInInstance(type,'http://spcultura.prefeitura.sp.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    loadMarkersInInstance(type,'http://mapa.cultura.ce.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+}
+
+function loadMarkersInInstance(type, url, imageExtension, minutes) {
+    var promise = createPromise(url, type, minutes)
+
+    promise.then(function(data) {
+        switch (type) {
+            case 'project': createProjectMarker(data, imageExtension)
+            break
+            case 'event': createEventMarker(data, imageExtension)
+            break
+            case 'agent': createAgentMarker(data, imageExtension)
+            break
+            case 'space': createSpaceMarker(data, imageExtension)
+            break
+        }
     });
+}
+
+function createSpaceMarker(data, imageExtension){
+    var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"] != null){
@@ -87,33 +124,18 @@ function createSpaceMarker(data, imageExtension){
     }
 }
 
-function loadSpaceMarkers(url, imageExtension, minutes) {
-    var promise = createPromise(url, 'space', minutes)
-
-    promise.then(function(data) {
-        createSpaceMarker(data, imageExtension)
-    });
-}
-
 // creating space markers
 function SpaceMarkers(imageExtension, minutes){
+    markersSpace.clearLayers()
 
-	    markersSpace.clearLayers();;
+    loadMarkers('space', imageExtension, minutes)
 
-	    loadSpaceMarkers('http://mapas.cultura.gov.br/api/space/find', imageExtension, minutes)
-        loadSpaceMarkers('http://spcultura.prefeitura.sp.gov.br/api/space/find', imageExtension, minutes)
-        loadSpaceMarkers('http://mapa.cultura.ce.gov.br/api/space/find', imageExtension, minutes)
-
-        map.addLayer(markersSpace);
+    map.addLayer(markersSpace)
 }
 
 // creating Agents markers
-
 function createAgentMarker(data, imageExtension){
-    var blueMarker = L.icon({
-        iconUrl: "static/images/markerAgent."+imageExtension,
-        iconSize: [25,25],
-    });
+    var blueMarker = createMarkerIcon('blue', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["location"] != null){
@@ -125,31 +147,17 @@ function createAgentMarker(data, imageExtension){
     }
 }
 
-function loadAgentMarkers(url, imageExtension, minutes) {
-    var promise = createPromise(url, 'agent', minutes)
-
-    promise.then(function(data) {
-        createAgentMarker(data, imageExtension)
-    });
-}
-
 function AgentMarkers(imageExtension, minutes){
+    markersAgent.clearLayers()
 
-	    markersAgent.clearLayers();;
+    loadMarkers('agent', imageExtension, minutes)
 
-	    loadAgentMarkers('http://mapas.cultura.gov.br/api/agent/find', imageExtension, minutes)
-        loadAgentMarkers('http://mapa.cultura.ce.gov.br/api/agent/find', imageExtension, minutes)
-        loadAgentMarkers('http://spcultura.prefeitura.sp.gov.br/api/agent/find', imageExtension, minutes)
-
-      map.addLayer(markersAgent);
+    map.addLayer(markersAgent)
 }
 
 // creating events markers
 function createEventMarker(data, imageExtension){
-    var yellowMarker = L.icon({
-    	iconUrl: "static/images/markerEvent."+imageExtension,
-    	iconSize: [25,25],
-    });
+    var yellowMarker = createMarkerIcon('yellow', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
@@ -161,31 +169,17 @@ function createEventMarker(data, imageExtension){
     }
 }
 
-function loadEventMarkers(url, imageExtension, minutes) {
-    var promise = createPromise(url, 'event', minutes)
-
-    promise.then(function(data) {
-        createEventMarker(data, imageExtension)
-    });
-}
-
 function EventMarkers(imageExtension, minutes){
+    markersEvent.clearLayers()
 
-	    markersEvent.clearLayers();
+    loadMarkers('event', imageExtension, minutes)
 
-	    loadEventMarkers('http://mapas.cultura.gov.br/api/event/find', imageExtension, minutes)
-        loadEventMarkers('http://spcultura.prefeitura.sp.gov.br/api/event/find', imageExtension, minutes)
-        loadEventMarkers('http://mapa.cultura.ce.gov.br/api/event/find', imageExtension, minutes)
-
-      map.addLayer(markersEvent);
+    map.addLayer(markersEvent)
 }
 
 // creating projects markers
 function createProjectMarker(data, imageExtension){
-    var greenMarker = L.icon({
-        iconUrl: "static/images/markerProject."+imageExtension,
-        iconSize: [25,25],
-    });
+    var greenMarker = createMarkerIcon('green', imageExtension)
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
@@ -198,21 +192,10 @@ function createProjectMarker(data, imageExtension){
 
 }
 
-function loadProjectMarkers(url, imageExtension, minutes) {
-    var promise = createPromise(url, 'project', minutes)
-
-    promise.then(function(data) {
-        createProjectMarker(data, imageExtension)
-    });
-}
-
 function ProjectMarkers(imageExtension, minutes){
+    markersProject.clearLayers()
 
-	    markersProject.clearLayers();
+    loadMarkers('project', imageExtension, minutes)
 
-	    loadProjectMarkers('http://mapas.cultura.gov.br/api/project/find', imageExtension, minutes)
-        loadProjectMarkers('http://mapa.cultura.ce.gov.br/api/project/find', imageExtension, minutes)
-        loadProjectMarkers('http://spcultura.prefeitura.sp.gov.br/api/project/find', imageExtension, minutes)
-
-      map.addLayer(markersProject);
+    map.addLayer(markersProject);
 }
