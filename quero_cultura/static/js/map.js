@@ -21,13 +21,11 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 // function returns hour now with minutes delay
-
 function InitTime(minutes){
 
 	var getTimeNow = new Date();
     getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - minutes);
     getTimeNow = getTimeNow.toJSON();
-
 	return getTimeNow;
 }
 
@@ -43,9 +41,31 @@ function MarkersPoints(){
 	AgentMarkers("gif", 60);
 	ProjectMarkers("gif", 60);
 
+    updateFeed()
 }
 
-// creating space markers
+function updateFeed(){
+    var isPrinted = false
+    newMarkers.forEach(function(value, key){
+        isPrinted = false
+
+        printedFeed.forEach(function(printed_value,printed_key){
+            if(printed_key == key){
+                isPrinted = true
+            }
+        }, printedFeed)
+
+        if(isPrinted == false){
+            diffFeed.set(key,value)
+            printedFeed.set(key,value)
+        }
+    }, newMarkers)
+
+    //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
+    console.log(diffFeed)
+    diffFeed = new Map()
+}
+
 function SpaceMarkers(imageExtension, minutes){
     markersSpace.clearLayers()
 
@@ -62,7 +82,6 @@ function AgentMarkers(imageExtension, minutes){
     map.addLayer(markersAgent)
 }
 
-
 function EventMarkers(imageExtension, minutes){
     markersEvent.clearLayers()
 
@@ -70,8 +89,6 @@ function EventMarkers(imageExtension, minutes){
 
     map.addLayer(markersEvent)
 }
-
-// creating projects markers
 
 function ProjectMarkers(imageExtension, minutes){
     markersProject.clearLayers()

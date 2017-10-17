@@ -1,3 +1,7 @@
+var newMarkers = new Map()
+var printedFeed = new Map()
+var diffFeed = new Map()
+
 function createMarkerIcon(color, extension){
     filename = ''
     switch (color) {
@@ -21,6 +25,7 @@ function createSpaceMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"] != null){
+            newMarkers.set(data[i]["id"], data[i])
             var marker = L.marker([data[i]["location"]["latitude"],
                                     data[i]["location"]["longitude"]],
                                     {icon: redMarker}).addTo(markersSpace);
@@ -33,7 +38,9 @@ function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if(data[i]["location"] != null){
+
+        if(data[i]["location"] != null){
+            newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
         							data[i]["location"]["longitude"]],
         							{icon: blueMarker}).addTo(markersAgent);
@@ -47,6 +54,7 @@ function createEventMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
+            newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
         							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
         							{icon: yellowMarker}).addTo(markersEvent);
@@ -60,6 +68,7 @@ function createProjectMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
+            newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
         							data[i]["owner"]["location"]["longitude"]],
         							{icon: greenMarker}).addTo(markersProject);
