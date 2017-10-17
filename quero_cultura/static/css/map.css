@@ -6,7 +6,8 @@
 }
 
 .map-container{
-
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .sticky-footer .container{
@@ -14,7 +15,66 @@
 }
 
 
-  #idQuero{
+#idQuero{
+  font-family: 'Anton';
+}
 
-      font-family: 'Anton';
-  }
+#title-block {
+    background-color: transparent;
+    margin-top: 7%;
+    margin-left: 83%;
+    position: relative;
+    font-family: 'Anton';
+    text-align: center;
+}
+
+.block{
+    height: 370px;
+    width: 280px;
+
+    max-height: 370px;
+    max-width: 280px;
+
+    background-color: transparent;
+    border-style: solid;
+    border-color: red green;
+    margin-left: 77%;
+    position: relative;
+    overflow: auto;
+}
+
+.block #cards{
+  font-family: 'sans-serif';
+  text-align: center;
+}
+
+.block #content{
+  margin-top: 2%;
+  background-color: #c3bfbf;
+  overflow: hidden;
+}
+
+
+.block #point{
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  background-color: #c3bfbf;
+  float: left;
+}
+
+.block #text{
+  margin-right: 2%;
+  vertical-align: middle;
+}
+
+.block a{
+  font-weight: bold;
+  color: black;
+  margin-top: 100%;
+}
+
+.block svg{
+  height: 40px;
+  width: 30px;
+}
