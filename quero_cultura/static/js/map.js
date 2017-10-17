@@ -6,14 +6,16 @@ var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
     id: 'mapbox.light',
     accessToken: 'your.mapbox.access.token'
 });
+var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2pqY2FzdHJvIiwiYSI6ImNqN21vYXpiMDFib3UzMnQ2OG1uM205NWEifQ.8sFAUtZu22lf_o3kmEVlMg',{
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 20,
+    minZoom: 3,
+    noWrap: true,
+    id: 'mapbox.dark',
+    accessToken: 'your.mapbox.access.token'
+});
 
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
-
-var cmAttr = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-cmUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
-
-var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
-midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr});
 
 var map = L.map('map', {maxBounds: bounds})
 	.addLayer(mapboxTiles)
@@ -29,8 +31,8 @@ var markersSpace = new L.FeatureGroup();
 
 
 var baseLayers = {
-  "Light": minimal,
-  "Dark": midnight
+  "Light": mapboxTiles,
+  "Dark": mapboxTilesDark
 };
 
 // Overlay layers are grouped
