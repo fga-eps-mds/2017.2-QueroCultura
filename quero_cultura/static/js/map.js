@@ -62,6 +62,7 @@ function updateFeed(){
     }, newMarkers)
 
     //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
+    AddInfoToFeed(diffFeed)
     console.log(diffFeed)
     diffFeed = new Map()
 }
@@ -96,4 +97,70 @@ function ProjectMarkers(imageExtension, minutes){
     loadMarkers('project', imageExtension, minutes)
 
     map.addLayer(markersProject);
+}
+
+function AddInfoToFeed(diffFeed) {
+  var count = 0
+
+  diffFeed.forEach(function(value,key){
+    var name = value['name']
+    var type = value['type']
+    var singleUrl = value['singleUrl']
+
+    if(count < 10){
+      var html = AddHTMLToFeed(name, type, singleUrl)
+
+      $('#cards').append(html)
+      var height = $('#cards')[0].scrollHeight;
+      console.log("h", height);
+      $(".block" ).scrollTop(height);
+    }
+    count++
+
+  }, diffFeed)
+}
+
+function AddHTMLToFeed(name, type, singleUrl){
+  color = GetColorByType(type)
+
+  var html =
+    "<div id='content'>"+
+      "<div id='point'> "+
+      "  <svg> "+
+          "<circle cx='15' cy='25' r='7' fill='"+color+"' />  "+
+        "</svg> "+
+      "</div> "+
+
+      "<div id='text'>  "+
+        "<a href='"+singleUrl+"'>"+name+"</a>"+
+      "</div>"+
+    "</div>"
+  return html
+}
+
+function GetColorByType(type) {
+  var color = "red";
+  console.log(type);
+  switch (type) {
+    case 'project':
+      color = "#28a745"
+      break
+
+    case 'space':
+      color = "#dc3545"
+      break
+
+    case 'agent':
+      color = "#17a2b8"
+      break
+
+    case 'event':
+      color = "#ffc107"
+      break
+
+    default:
+      color = "black"
+  }
+
+  return color
 }
