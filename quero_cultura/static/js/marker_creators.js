@@ -25,6 +25,7 @@ function createSpaceMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"] != null){
+            data[i]["type"] = "space"
             newMarkers.set(data[i]["id"], data[i])
             var marker = L.marker([data[i]["location"]["latitude"],
                                     data[i]["location"]["longitude"]],
@@ -40,6 +41,7 @@ function createAgentMarker(data, imageExtension){
     for(var i=0; i < data.length; i++){
 
         if(data[i]["location"] != null){
+            data[i]["type"] = "agent"
             newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
         							data[i]["location"]["longitude"]],
@@ -54,7 +56,8 @@ function createEventMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
-            newMarkers.set(data[i]["id"], data[i])
+          data[i]["type"] = "event"
+          newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
         							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
         							{icon: yellowMarker}).addTo(markersEvent);
@@ -68,7 +71,8 @@ function createProjectMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
-            newMarkers.set(data[i]["id"], data[i])
+          data[i]["type"] = "project"
+          newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
         							data[i]["owner"]["location"]["longitude"]],
         							{icon: greenMarker}).addTo(markersProject);
