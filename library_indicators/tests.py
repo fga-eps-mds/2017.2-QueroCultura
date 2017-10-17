@@ -18,8 +18,8 @@ class TestPercentLibraryPerAreaOfActivity(object):
         library_indicator = PercentLibraryPerAreaOfActivity(
             20, datetime.now(), libraries_per_activity)
         library_indicator.save()
-        querry = PercentLibraryPerAreaOfActivity.objects.first()
-        assert querry._libraries_per_activity == libraries_per_activity
+        query = PercentLibraryPerAreaOfActivity.objects.first()
+        assert query._libraries_per_activity == libraries_per_activity
 
     @staticmethod
     def test_total_library():
@@ -30,7 +30,6 @@ class TestPercentLibraryPerAreaOfActivity(object):
         library_indicator.save()
         query = PercentLibraryPerAreaOfActivity.objects.first()
         assert query._total_libraries == total_libraries
-
 
 class TestPercentPublicOrPrivateLibrary(object):
 
@@ -74,8 +73,8 @@ class TestPercentLibraryPerAreaOfActivityPerState(object):
         library_indicator = PercentLibraryPerAreaOfActivityPerState(
             {'teste': 20}, datetime.now(), total_library_per_area_of_activity)
         library_indicator.save()
-        querry = PercentLibraryPerAreaOfActivityPerState.objects.first()
-        assert querry._libraries_per_area_per_state == total_library_per_area_of_activity
+        query = PercentLibraryPerAreaOfActivityPerState.objects.first()
+        assert query._libraries_per_area_per_state == total_library_per_area_of_activity
 
 
 class TestPercentPublicOrPrivateLibraryPerState(object):
@@ -109,8 +108,8 @@ class TestQuantityOfRegisteredLibraries(object):
         library_indicator = QuantityOfRegisteredlibraries(
             20, datetime.now(), libraries_monthly, {'2015': 20})
         library_indicator.save()
-        querry = QuantityOfRegisteredlibraries.objects.first()
-        assert querry._libraries_registered_monthly == libraries_monthly
+        query = QuantityOfRegisteredlibraries.objects.first()
+        assert query._libraries_registered_monthly == libraries_monthly
 
     @staticmethod
     def test_libraries_registered_yearly():
@@ -119,8 +118,8 @@ class TestQuantityOfRegisteredLibraries(object):
         library_indicator = QuantityOfRegisteredlibraries(
             20, datetime.now(), {'julho': 50}, libraries_yearly)
         library_indicator.save()
-        querry = QuantityOfRegisteredlibraries.objects.first()
-        assert querry._libraries_registered_yearly == libraries_yearly
+        query = QuantityOfRegisteredlibraries.objects.first()
+        assert query._libraries_registered_yearly == libraries_yearly
 
 
 class TestPercentLibraryTypeSphere(object):
@@ -132,8 +131,8 @@ class TestPercentLibraryTypeSphere(object):
         library_indicator = PercentLibrariesTypeSphere(
             20, datetime.now(), total_libraries_type_sphere)
         library_indicator.save()
-        querry = PercentLibrariesTypeSphere.objects.first()
-        assert querry._total_libraries_type_sphere == total_libraries_type_sphere
+        query = PercentLibrariesTypeSphere.objects.first()
+        assert query._total_libraries_type_sphere == total_libraries_type_sphere
 
 
 class TestPercentLibraryForState(object):
@@ -145,8 +144,8 @@ class TestPercentLibraryForState(object):
         library_indicator = PercentLibraryForState(
             20, datetime.now(), libraries_for_state)
         library_indicator.save()
-        querry = PercentLibraryForState.objects.first()
-        assert querry._total_libraries_in_state == libraries_for_state
+        query = PercentLibraryForState.objects.first()
+        assert query._total_libraries_in_state == libraries_for_state
 
 def test_success_request():
     current_time = datetime.now().__str__()

@@ -129,8 +129,6 @@ class PercentAgentsPerAreaOperation(PercentAgents):
         self._total_agents_area_oreration = number
 
 
-
-# -------------------- state indicators --------------------------------
 class PercentAgentsForState(PercentAgents):
     _total_agents_for_states = DictField(required=True)
 
