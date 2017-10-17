@@ -11,7 +11,7 @@ var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
 var cities = new L.LayerGroup();
 
-	  L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+	  L.marker([0, 0]).bindPopup('This is Littleton, CO.').addTo(cities),
 	  L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
 	  L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
 	  L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
@@ -52,10 +52,10 @@ var markersSpace = new L.FeatureGroup();
 	  // Overlay layers are grouped
 	  var groupedOverlays = {
 		"Landmarks": {
-		  "Agentes": motorways,
-		  "Eventos": cities,
-		  "Espaços": espaços,
-		  "Projetos": projetos,
+		  "Agentes": markersAgent,
+		  "Eventos": markersEvent,
+		  "Espaços": markersSpace,
+		  "Projetos": markersProject,
 		},
 	  };
 
