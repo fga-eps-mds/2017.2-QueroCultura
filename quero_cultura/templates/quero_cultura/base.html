@@ -121,38 +121,12 @@
 
     <script>
 
-    //Create web site tour
-    var blueMarkers1 = L.icon({
-        iconUrl: "static/images/markerAgent.png",
-        iconSize: [25,25],
-      });
-    
-    data = [{iconclass: 'A', lat: 0, lon: -90.735}
-       ];
-
-      var iconclasses = {
-        A: 'font-size: 22px;'
-      };
-      
-      data.forEach(function(row){
-        var pos = new L.LatLng(row.lat,row.lon);
-        var iconclass = iconclasses[row.iconclass]?row.iconclass:'';
-        var iconstyle = iconclass?iconclasses[iconclass]:'';
-        var icontext = iconclass?'':row.iconclass;
-
-         var icon = L.divIcon({
-           className: 'map-marker '+iconclass,
-           iconSize:null,
-           html:'<div class="icon" style="'+iconstyle+'">'+icontext+'</div><div class="arrow" />'
-         });
-
-        L.marker(pos).addTo(map); //reference marker
-        L.marker(pos,{icon: icon}).addTo(map);
-
-      });
-
-
-    
+    //Create web site tour    
+    if ($(document).height() > $(window).height()) {
+       var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+       
+       $('html').addClass('noscroll').css('top',-scrollTop);         
+    }
 
     var intro = introJs();
 
@@ -174,7 +148,6 @@
   				 {
 
   							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
-                element: ".map-marker.A div.icon"
   					},
 
             {
@@ -201,11 +174,6 @@
 
   						 intro: '<h2>Espaços</h2>Os marcadores de espaços são indetificados pela imagem: <img src="static/images/markerSpace.png" height="35px" alt="" /> .',
   					},
-
-            {
-
-               intro: '<h2>Agentes</h2>Os marcadores de agentes são indetificados pela imagem: <img src="static/images/markerAgent.png" height="35px" alt="" /> .',
-            },
 
             {
 

@@ -1,7 +1,7 @@
 .introjs-overlay {
   position: absolute;
   box-sizing: content-box;
-  z-index: 999999;
+  z-index: 9999999 !important;
   background-color: #000;
   opacity: 0;
   background: -moz-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
@@ -21,27 +21,25 @@
 }
 
 .introjs-fixParent {
-  position: fixed;
-  z-index: none !important;
-
+  z-index: 99999999 !important;
   opacity: 1.0 !important;
   -webkit-transform: none !important;
      -moz-transform: none !important;
       -ms-transform: none !important;
        -o-transform: none !important;
           transform: none !important;
+  
 }
 
 .introjs-showElement,
 tr.introjs-showElement > td,
 tr.introjs-showElement > th {
   z-index: 9999999 !important;
-  position: fixed;
 }
 
 .introjs-disableInteraction {
   z-index: 99999999 !important;
-  position: fixed;
+  position: absolute;
   background-color: white;
   opacity: 0;
   filter: alpha(opacity=0);
