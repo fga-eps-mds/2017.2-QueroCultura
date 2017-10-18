@@ -1,10 +1,7 @@
-# from django.db import models
 from mongoengine import Document
-from mongoengine import DictField
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
 class PercentProjects(Document):
     class Meta:
         abstract = True
@@ -29,7 +26,7 @@ class PercentProjects(Document):
 
 class PercentProjectPerType(PercentProjects):
 
-    _total_project_per_type = DictField(required=True)
+    _total_project_per_type = IntField(required=True)
 
     @property
     def total_project_per_type(self):
@@ -40,11 +37,8 @@ class PercentProjectPerType(PercentProjects):
         self._total_project_per_type = number
 
 
-
-
 class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
     _total_project_that_accept_online_transitions = IntField(required=True)
-
 
     @property
     def total_project_that_accept_online_transitions(self):
@@ -55,13 +49,9 @@ class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
         self._total_project_that_accept_online_transitions = number
 
 
-
-# -------------------- state indicators --------------------------------------
-
-
 class PercentProjectPerTypePerState(Document):
-    _total_project_per_state = DictField(required=True)
-    _total_project_per_type_per_state = DictField(required=True)
+    _total_project_per_state = IntField(required=True)
+    _total_project_per_type_per_state = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -90,8 +80,8 @@ class PercentProjectPerTypePerState(Document):
 
 
 class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
-    _total_project_online_transitions = DictField(required=True)
-    _total_project_per_state = DictField(required=True)
+    _total_project_online_transitions = IntField(required=True)
+    _total_project_per_state = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
     @property
@@ -118,13 +108,10 @@ class PercentProjectThatAcceptOnlineTransitionsPerState(Document):
     def create_date(self, number):
         self._create_date = number
 
-# -------------------- Project Registered -------------------------------------
-
 
 class QuantityOfRegisteredProject(PercentProjects):
-    _total_project_registered_per_mounth_per_year = DictField(required=True)
-    _total_project_registered_per_year = DictField(required=True)
-
+    _total_project_registered_per_mounth_per_year = IntField(required=True)
+    _total_project_registered_per_year = IntField(required=True)
 
     @property
     def total_project_registered_per_mounth_per_year(self):
