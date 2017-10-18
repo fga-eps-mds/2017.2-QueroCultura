@@ -1,9 +1,14 @@
 #map {
   height: 96%;
   width: 100%;
-  z-index: none;
-  position: absolute !important;
 
+  z-index: none;
+  position: absolute;
+}
+
+.map-container{
+  display: flex;
+  flex-flow: row wrap;
 }
 html.noscroll {
     position: fixed; 
@@ -15,10 +20,6 @@ html.noscroll {
   background-color:'red';
 }
 
-  #idQuero{
-
-      font-family: 'Anton';
-  }
 .icon1{
   position: absolute !important;
   z-index: 1 !important;
@@ -31,3 +32,69 @@ html.noscroll {
   z-index: none;
 }
 
+
+#idQuero{
+  font-family: 'Anton';
+}
+
+#title-block {
+    z-index: 9999999 !important;
+    background-color: transparent;
+    margin-top: 12%;
+    margin-left: 78%;
+    position: relative;
+    font-family: 'Anton';
+    text-align: center;
+}
+
+.block{
+    z-index: 9999999 !important;
+    height: 370px;
+    width: 280px;
+
+    max-height: 370px;
+    max-width: 280px;
+
+    background-color: transparent;
+    border-style: solid;
+    border-color: #333;
+    margin-left: 72%;
+    position: relative;
+    overflow: auto;
+}
+
+.block #cards{
+  font-family: 'sans-serif';
+  text-align: center;
+}
+
+.block #content{
+  margin-top: 2%;
+  background-color: #c3bfbf;
+  overflow: hidden;
+}
+
+
+.block #point{
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  background-color: #c3bfbf;
+  float: left;
+}
+
+.block #text{
+  margin-right: 2%;
+  vertical-align: middle;
+}
+
+.block a{
+  font-weight: bold;
+  color: black;
+  margin-top: 100%;
+}
+
+.block svg{
+  height: 40px;
+  width: 30px;
+}

@@ -107,18 +107,18 @@
     <!-- Core plugin JavaScript-->
     <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="static/vendor/chart.js/Chart.min.js"></script>
     <script src="static/vendor/datatables/jquery.dataTables.js"></script>
     <script src="static/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="static/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="static/js/sb-admin-datatables.min.js"></script>
-    <script src="static/js/sb-admin-charts.min.js"></script>
     <script type = "text/javascript" src="static/intro.js"></script>
     <script type="text/javascript" src="static/js/cookie.js"></script>
+<<<<<<< HEAD
     <script type="text/javascript" src="static/js/map.js"></script>
     <script type="text/javascript" src="static/css/map.css"></script>
+=======
+    
+>>>>>>> b74a20006b8baf23870683c7d5b3b08a2e2931bd
 
     <script>
 
@@ -161,6 +161,13 @@
 
     					},
 
+
+              {
+
+                 intro: '<h2>Filtro</h2>Filtra a exibição de marcadores e altera o visual do mapa',
+                 element: ".leaflet-control-layers-toggle"
+              },
+
     					{
 
     						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, para ver um marcador clique .',
@@ -181,9 +188,10 @@
 
               {
 
-                 intro: '<h2>Eventos</h2>Os marcadores de eventos são indetificados pela imagem: <img src="static/images/markerEvent.png" height="35px" alt="" /> .',
+                 intro: '<h2>Feed de atualizações</h2>O feed exibe as ultimas atualizações do registros da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+                  element: ".block"
+              
               },
-
 
               {
                 intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
