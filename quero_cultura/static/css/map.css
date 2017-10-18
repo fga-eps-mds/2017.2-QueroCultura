@@ -4,6 +4,7 @@
 
   z-index: none;
   position: absolute;
+
 }
 
 .map-container{
@@ -11,7 +12,7 @@
   flex-flow: row wrap;
 }
 html.noscroll {
-    position: fixed; 
+    position: fixed;
     overflow-y: hidden;
     width: 100%;
 }
@@ -19,19 +20,6 @@ html.noscroll {
 .sticky-footer .container{
   background-color:'red';
 }
-
-.icon1{
-  position: absolute !important;
-  z-index: 1 !important;
-	background: red;
-}
-
-#oi{
-  background-color: red;
-  position: absolute;
-  z-index: none;
-}
-
 
 #idQuero{
   font-family: 'Anton';
