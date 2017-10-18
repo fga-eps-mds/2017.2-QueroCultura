@@ -73,7 +73,7 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" title="Web site Tour">
-          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
+          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:startIntro();">
             <i class="fa fa-fw fa fa-question-circle text-light" id="tourButton"></i>
           </a>
         </li>
@@ -123,82 +123,84 @@
     <script>
 
     //Create web site tour    
-    if ($(document).height() > $(window).height()) {
-       var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
-       
-       $('html').addClass('noscroll').css('top',-scrollTop);         
-    }
+    function startIntro(){ 
 
-    var intro = introJs();
+      if ($(document).height() > $(window).height()) {
+         var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+         
+         $('html').addClass('noscroll').css('top',-scrollTop);         
+      }
 
-      intro.setOption("nextLabel", '<img src="static/images/arrow.png" height="15px" alt="" />')
+      var intro = introJs();
 
-      intro.setOption("prevLabel", '<img src="static/images/invert_arrow.png" height="15px" alt="" />')
-      intro.setOption("skipLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
-      intro.setOption("doneLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
-      .setOption("showStepNumbers", false)
+        intro.setOption("nextLabel", '<img src="static/images/arrow.png" height="15px" alt="" />')
 
-  		intro.setOptions({
-  		 steps: [
+        intro.setOption("prevLabel", '<img src="static/images/invert_arrow.png" height="15px" alt="" />')
+        intro.setOption("skipLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+        intro.setOption("doneLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+        .setOption("showStepNumbers", false)
 
-  				 {
-  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
-                element: ".navbar-nav sidenav-toggler"
-           },
+    		intro.setOptions({
+    		 steps: [
 
-  				 {
+    				 {
+    							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
+                  element: ".navbar-nav sidenav-toggler"
+             },
 
-  							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
-  					},
+    				 {
 
-            {
+    							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+    					},
 
-  						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom para ver os locais de interesse.',
-               element: ".leaflet-control-zoom"
+              {
 
-  					},
+    						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom para ver os locais de interesse.',
+                 element: ".leaflet-control-zoom"
 
-  					{
+    					},
 
-  						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, para ver um marcador clique .',
-  					},
+    					{
 
-            {
+    						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, para ver um marcador clique .',
+    					},
 
-  						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/markerAgent.png" height="35" width="35" /> ',
-            },
+              {
 
-            { intro: '<h2>Projetos</h2>Os marcadores de projetos são indetificados pela imagem: <img src="static/images/markerProject.png" height="35px" alt="" /> .',
-            },
-        
-            {
+    						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/markerAgent.png" height="35" width="35" /> ',
+              },
 
-  						 intro: '<h2>Espaços</h2>Os marcadores de espaços são indetificados pela imagem: <img src="static/images/markerSpace.png" height="35px" alt="" /> .',
-  					},
+              { intro: '<h2>Projetos</h2>Os marcadores de projetos são indetificados pela imagem: <img src="static/images/markerProject.png" height="35px" alt="" /> .',
+              },
+          
+              {
 
-            {
+    						 intro: '<h2>Espaços</h2>Os marcadores de espaços são indetificados pela imagem: <img src="static/images/markerSpace.png" height="35px" alt="" /> .',
+    					},
 
-               intro: '<h2>Eventos</h2>Os marcadores de eventos são indetificados pela imagem: <img src="static/images/markerEvent.png" height="35px" alt="" /> .',
-            },
+              {
 
-
-            {
-              intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
-              element: '.navbar-nav'
-
-  					},
-
-            {
-              intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique no botão indicado.',
-              element: "#tourButton"
-
-            },
+                 intro: '<h2>Eventos</h2>Os marcadores de eventos são indetificados pela imagem: <img src="static/images/markerEvent.png" height="35px" alt="" /> .',
+              },
 
 
-  			]
-  		})
+              {
+                intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
+                element: '.navbar-nav'
 
-      
+    					},
+
+              {
+                intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique no botão indicado.',
+                element: "#tourButton"
+
+              },
+    			]
+    		})
+
+        intro.start();
+
+      }
 
 
   </script>
@@ -209,10 +211,8 @@
         var nome = readCookie("nome");
         if(nome == null){
             writeCookie("nome", "nome", 30);
-            intro.start();
+            startIntro();
         }
-
-
 
   </script>
 
