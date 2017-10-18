@@ -19,7 +19,15 @@ html.noscroll {
 
       font-family: 'Anton';
   }
-.myIcon1{
-	background: black;
+.icon1{
+  position: absolute !important;
+  z-index: 1 !important;
+	background: red;
+}
+
+#oi{
+  background-color: red;
+  position: absolute;
+  z-index: none;
 }
 
