@@ -16,7 +16,7 @@ function createMarkerIcon(color, extension){
     }
 
     return L.icon({ iconUrl: "static/images/"+filename+"."+ extension,
-                    iconSize: [25,25],
+                    iconSize: [25,25]
                  });
 }
 
@@ -24,7 +24,7 @@ function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
-        if(data[i]["location"] != null){
+        if(data[i]["location"] !== null){
             data[i]["type"] = "space"
             newMarkers.set(data[i]["id"], data[i])
             var marker = L.marker([data[i]["location"]["latitude"],
@@ -40,7 +40,7 @@ function createAgentMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
 
-        if(data[i]["location"] != null){
+        if(data[i]["location"] !== null){
             data[i]["type"] = "agent"
             newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
@@ -55,7 +55,7 @@ function createEventMarker(data, imageExtension){
     var yellowMarker = createMarkerIcon('yellow', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if((data[i]["occurrences"]).length != 0){
+    	if((data[i]["occurrences"]).length !== 0){
           data[i]["type"] = "event"
           newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
@@ -70,7 +70,7 @@ function createProjectMarker(data, imageExtension){
     var greenMarker = createMarkerIcon('green', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if(data[i]["owner"] != null){
+    	if(data[i]["owner"] !== null){
           data[i]["type"] = "project"
           newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["owner"]["location"]["latitude"],

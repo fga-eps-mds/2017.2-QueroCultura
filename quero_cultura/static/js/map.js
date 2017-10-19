@@ -37,12 +37,11 @@ var baseLayers = {
 
 // Overlay layers are grouped
 var groupedOverlays = {
-"": {
-  "Agentes": markersAgent,
-  "Eventos": markersEvent,
-  "Espaços": markersSpace,
-  "Projetos": markersProject,
-  },
+    "": {"Agentes": markersAgent,
+         "Eventos": markersEvent,
+         "Espaços": markersSpace,
+         "Projetos": markersProject
+        }
 };
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
@@ -63,7 +62,6 @@ function MarkersPoints(firstTime){
 		AgentMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
 		AgentMarkers("gif", 60);
 	}
-
 	if(map.hasLayer(markersEvent) || firstTime){
 		EventMarkers("png", 1440);
 		EventMarkers("gif", 60);
@@ -88,12 +86,12 @@ function updateFeed(){
         isPrinted = false
 
         printedFeed.forEach(function(printed_value,printed_key){
-            if(printed_key == key){
+            if(printed_key === key){
                 isPrinted = true
             }
         }, printedFeed)
 
-        if(isPrinted == false){
+        if(isPrinted === false){
             diffFeed.set(key,value)
             printedFeed.set(key,value)
         }
