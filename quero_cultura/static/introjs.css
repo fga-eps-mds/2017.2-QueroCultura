@@ -1,7 +1,7 @@
 .introjs-overlay {
   position: absolute;
   box-sizing: content-box;
-  z-index: 999999;
+  z-index: 9999999 !important;
   background-color: #000;
   opacity: 0;
   background: -moz-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
@@ -21,19 +21,20 @@
 }
 
 .introjs-fixParent {
-  z-index: auto !important;
+  z-index: 99999999 !important;
   opacity: 1.0 !important;
   -webkit-transform: none !important;
      -moz-transform: none !important;
       -ms-transform: none !important;
        -o-transform: none !important;
           transform: none !important;
+  
 }
 
 .introjs-showElement,
 tr.introjs-showElement > td,
 tr.introjs-showElement > th {
-  z-index: 9999999 !important;
+  z-index: 99999999 !important;
 }
 
 .introjs-disableInteraction {
@@ -65,6 +66,7 @@ tr.introjs-showElement > th {
       -ms-transition: all 0.3s ease-out;
        -o-transition: all 0.3s ease-out;
           transition: all 0.3s ease-out;
+  opacity: 0.5;
 }
 
 .introjs-tooltipReferenceLayer {
