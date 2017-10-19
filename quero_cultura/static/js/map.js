@@ -52,6 +52,7 @@ function InitTime(minutes){
 
 	var getTimeNow = new Date();
     getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - minutes);
+    getTimeNow.setMilliseconds(0);
     getTimeNow = getTimeNow.toJSON();
 	return getTimeNow;
 }
