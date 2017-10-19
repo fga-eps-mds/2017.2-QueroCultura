@@ -4,6 +4,7 @@ from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerYear
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
+from .models import PercentAgentsPerAreaOperation
 
 
 class TestAmountAgentsRegisteredPerMonth(object):
@@ -84,3 +85,14 @@ class TestRequestAgentsRawData(object):
         type_agents_raw_data = type(agents_raw_data)
         intenger = 1
         assert type_agents_raw_data == type(intenger)
+
+
+class TestePercentAgentsPerAreaOperation(object):
+
+    @staticmethod
+    def teste_total_agents_area_oreration():
+        PercentAgentsPerAreaOperation.drop_collection()
+        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now(),{"area": 10})
+        agent_indicator.save()
+        query = PercentAgentsPerAreaOperation.objects.first()
+        assert query._total_agents_area_oreration == {"area": 10}
