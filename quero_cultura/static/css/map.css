@@ -1,25 +1,32 @@
 #map {
   height: 96%;
   width: 100%;
-  z-index: 0;
-  position: fixed;
+
+  z-index: none;
+  position: absolute;
+
 }
 
 .map-container{
   display: flex;
   flex-flow: row wrap;
 }
+html.noscroll {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+}
 
 .sticky-footer .container{
   background-color:'red';
 }
-
 
 #idQuero{
   font-family: 'Anton';
 }
 
 #title-block {
+    z-index: 9999999 !important;
     background-color: transparent;
     margin-top: 12%;
     margin-left: 78%;
@@ -29,6 +36,7 @@
 }
 
 .block{
+    z-index: 9999999 !important;
     height: 370px;
     width: 280px;
 
