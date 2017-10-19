@@ -1,12 +1,9 @@
 from datetime import datetime
-from .api_connections import RequestAgentsRawData
+from .api_connection import RequestAgentsRawData
 from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerYear
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
-from .models import PercentAgentsForState
-from .models import PercentAgentsPerAreaOperationForState
-from .models import PercentIndividualAndCollectiveAgentForState
 
 
 class TestAmountAgentsRegisteredPerMonth(object):
@@ -19,6 +16,7 @@ class TestAmountAgentsRegisteredPerMonth(object):
         query = AmountAgentsRegisteredPerMonth.object.first()
         assert query._total_agents_registered_year == 10
 
+
 class TestAmountAgentsRegisteredPerYear(object):
     @staticmethod
     def total_agents_registered_year():
@@ -27,6 +25,7 @@ class TestAmountAgentsRegisteredPerYear(object):
         agents_in_year.save()
         query = AmountAgentsRegisteredPerYear.object.first()
         assert query._total_agents_registered_year == 10
+
 
 class TestPercentIndividualAndCollectiveAgent(object):
 
@@ -54,25 +53,34 @@ class TestPercentIndividualAndCollectiveAgent(object):
         query = PercentIndividualAndCollectiveAgent.objects.first()
         assert query._total_collective_agent == 10
 
-def test_success_request():
-    current_time = datetime.now().__str__()
-    request_agents_raw_data = RequestAgentsRawData(current_time)
-    response_agents_raw_data = request_agents_raw_data.response
-    response_status_code = response_agents_raw_data.status_code
-    assert response_status_code == 200
 
-def test_data_content():
-    current_time = datetime.now().__str__()
-    request_agents_raw_data = RequestAgentsRawData(current_time)
-    agents_raw_data = request_agents_raw_data.data
-    type_agents_raw_data = type(agents_raw_data)
-    empty_list = []
-    assert type_agents_raw_data == type(empty_list)
+class TestRequestAgentsRawData(object):
 
-def test_data_lenght():
-    current_time = datetime.now().__str__()
-    request_agents_raw_data = RequestAgentsRawData(current_time)
-    agents_raw_data = request_agents_raw_data.data_length
-    type_agents_raw_data = type(agents_raw_data)
-    intenger = 1
-    assert type_agents_raw_data == type(intenger)
+    @staticmethod
+    def test_success_request():
+        current_time = datetime.now().__str__()
+        url = 'http://mapas.cultura.gov.br/api/agent/find/'
+        request_agents_raw_data = RequestAgentsRawData(current_time, url)
+        response_agents_raw_data = request_agents_raw_data.response
+        response_status_code = response_agents_raw_data.status_code
+        assert response_status_code == 200
+
+    @staticmethod
+    def test_data_content():
+        current_time = datetime.now().__str__()
+        url = 'http://mapas.cultura.gov.br/api/agent/find/'
+        request_agents_raw_data = RequestAgentsRawData(current_time, url)
+        agents_raw_data = request_agents_raw_data.data
+        type_agents_raw_data = type(agents_raw_data)
+        empty_list = []
+        assert type_agents_raw_data == type(empty_list)
+
+    @staticmethod
+    def test_data_lenght():
+        current_time = datetime.now().__str__()
+        url = "http://mapas.cultura.gov.br/api/agent/find/"
+        request_agents_raw_data = RequestAgentsRawData(current_time, url)
+        agents_raw_data = request_agents_raw_data.data_length
+        type_agents_raw_data = type(agents_raw_data)
+        intenger = 1
+        assert type_agents_raw_data == type(intenger)

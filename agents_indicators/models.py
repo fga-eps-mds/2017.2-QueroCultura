@@ -11,7 +11,6 @@ class PercentAgents(Document):
     _total_agents = IntField(required=True)
     _create_date = DateTimeField(required=True)
 
-
     @property
     def create_date(self):
         return self._create_date
@@ -28,28 +27,6 @@ class PercentAgents(Document):
     def total_agents(self, number):
         self._total_agents = number
 
-class PercentAgentsState(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_agents_for_state = DictField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def total_agents_for_state(self):
-        return self._total_agents_for_state
-
-    @total_agents_for_state.setter
-    def total_agents_for_state(self, number):
-        self._total_agents_for_state = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 # Percentage of individual and collective agents
 class PercentIndividualAndCollectiveAgent(PercentAgents):
@@ -82,7 +59,6 @@ class AmountAgentsRegisteredPerYear(Document):
     def create_date(self):
         return self._createDate
 
-
     @create_date.setter
     def create_date(self, number):
         self._create_date = number
@@ -94,6 +70,7 @@ class AmountAgentsRegisteredPerYear(Document):
     @total_agents_registered_year.setter
     def total_agents_registered_year(self, text):
         self._total_agents_registered_year = text
+
 
 # Number of agents registered monthly on the platform throughout its existence
 class AmountAgentsRegisteredPerMonth(Document):
@@ -127,48 +104,3 @@ class PercentAgentsPerAreaOperation(PercentAgents):
     @total_agents_area_oreration.setter
     def total_agents_per_area_oreration(self, number):
         self._total_agents_area_oreration = number
-
-
-class PercentAgentsForState(PercentAgents):
-    _total_agents_for_states = DictField(required=True)
-
-    @property
-    def total_agents_for_states(self):
-        return self._total_agents_for_states
-
-    @total_agents_for_states.setter
-    def total_agents_for_states(self, number):
-        self._total_agents_for_states = number
-
-
-class PercentAgentsPerAreaOperationForState(PercentAgentsState):
-    _total_agents__operation_state = DictField(required=True)
-
-    @property
-    def total_agents__operation_state(self):
-        return self._total_agents__operation_state
-
-    @total_agents__operation_state.setter
-    def total_agents__operation_state(self, number):
-        self._total_agents__operation_state = number
-
-
-class PercentIndividualAndCollectiveAgentForState(PercentAgentsState):
-    _total_individual_agent_state = DictField(required=True)
-    _total_collective_agent_state = DictField(required=True)
-
-    @property
-    def total_individual_agent_state(self):
-        return self._total_individual_agent_state
-
-    @total_individual_agent_state.setter
-    def total_individual_agent_state(self, number):
-        self._total_individual_agent_state = number
-
-    @property
-    def total_collective_agent_state(self):
-        return self._total_collective_agent_state
-
-    @total_collective_agent_state.setter
-    def total_collective_agent_state(self, number):
-        self._total_collective_agent_state = number
