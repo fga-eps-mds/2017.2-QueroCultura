@@ -59,6 +59,38 @@ describe("SpaceMarkers", function(){
 
 		expect(map.addLayer).toHaveBeenCalledWith(markersSpace)
 	});
+
+	it("should load SpaceMarkers", function(){
+		spyOn(window, "loadMarkers")
+
+		SpaceMarkers(imageExtension, minutes)
+
+		expect(window.loadMarkers).toHaveBeenCalledWith('space',imageExtension, minutes)
+	});
+
+});
+
+describe("AgentMarkers", function(){
+	beforeEach(function(){
+		imageExtension = "png"
+		minutes = 60
+	});
+
+	it("should add new agent markers to map layer", function(){
+		spyOn(map, "addLayer")
+
+		AgentMarkers(imageExtension, minutes)
+
+		expect(map.addLayer).toHaveBeenCalledWith(markersAgent)
+	});
+
+	it("should load AgentMarkers", function(){
+		spyOn(window, 'loadMarkers')
+
+		AgentMarkers(imageExtension, minutes)
+
+		expect(window.loadMarkers).toHaveBeenCalledWith('agent', imageExtension, minutes)
+	});
 });
 
 describe("ProjectMarkers", function(){
@@ -81,7 +113,7 @@ describe("ProjectMarkers", function(){
 
 		ProjectMarkers(imageExtension, minutes);
 
-		expect(window.loadMarkers).toHaveBeenCalledWith('project',imageExtension, minutes)
+		expect(window.loadMarkers).toHaveBeenCalledWith('project', imageExtension, minutes)
 	})
 });
 
