@@ -17,3 +17,15 @@ def build_temporal_indicator(data):
             temporal_indicator[x[0]][x[1]] += 1
 
     return temporal_indicator
+
+
+def build_type_indicator(data):
+    per_type = {}
+
+    for i in data:
+        if not (i["type"]["name"] in per_type):
+            per_type[i["type"]["name"]] = 1
+        else:
+            per_type[i["type"]["name"]] += 1
+
+    return per_type
