@@ -45,6 +45,22 @@ describe('GetColorByType', function () {
 	});
 });
 
+describe("SpaceMarkers", function(){
+
+	beforeEach(function(){
+		imageExtension = "gif"
+		minutes = 60
+	});
+
+	it("should add new space markers to map layer", function(){
+		spyOn(map, "addLayer")
+
+		SpaceMarkers(imageExtension, minutes)
+
+		expect(map.addLayer).toHaveBeenCalledWith(markersSpace)
+	});
+});
+
 describe("ProjectMarkers", function(){
 
 	beforeEach(function(){
