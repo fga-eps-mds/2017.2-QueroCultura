@@ -68,3 +68,19 @@ describe("ProjectMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('project',imageExtension, minutes)
 	})
 });
+
+
+describe("AddInfoToFeed", function(){
+
+	it("should get all data", function(){
+		diffFeed2 = new Map()
+		diffFeed2.set(123,{"name":"Pablo","type":"Agente","singleUrl":"teste"})
+		diffFeed2.set(1234,{"name":"Pablo2","type":"Agente2","singleUrl":"teste2"})
+
+		spyOn(diffFeed2,'forEach')
+
+		AddInfoToFeed(diffFeed2);
+
+		expect(diffFeed2.forEach).toHaveBeenCalled()
+	})
+})
