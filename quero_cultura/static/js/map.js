@@ -47,6 +47,86 @@ var groupedOverlays = {
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
+/* Defines the date used by the query
+   based in the last minutes passed by parameter.
+   If we pass 60 as parameter this function returns
+   the current date time minus 60 minutes and so on. */
+   function getQueryDateTime(lastMinutes){
+    var currentDateTime = new Date()
+    var queryDateTime = new Date()
+    var timezone = 3
+    queryDateTime.setHours(currentDateTime.getHours() - timezone,
+                           currentDateTime.getMinutes() - lastMinutes)
+
+	return queryDateTime.toJSON()
+}
+
+function createQueryPromise(instanceURL, markerType, lastMinutes){
+    var queryDateTime = getQueryDateTime(lastMinutes);
+    instanceURL = instanceURL+markerType+'/find'
+    console.log(instanceURL)
+
+    switch(markerType){
+        case 'event':
+            select = 'name, occurrences.{space.{location}}, singleUrl'
+            break
+        case 'project':
+            select = 'name, owner.location, singleUrl '
+            break
+        case 'space':
+        case 'agent':
+            select = 'name, location, singleUrl'
+            break
+        default:
+            select = ''
+    }
+
+    var promise = $.getJSON(instanceURL,
+      {
+        '@select' : select,
+        '@or' : 1,
+        'createTimestamp' : "GT("+queryDateTime+")",
+        'updateTimestamp' : "GT("+queryDateTime+")"
+      },);
+
+    promise.then(function(data){
+        localStorage.setItem('last-day-'+markerType, JSON.stringify(data))
+        loadMarkers(markerType, 'png', data)
+        console.log(JSON.parse(localStorage.getItem('last-day-'+markerType)))
+    })
+      return promise
+}
+
+/* Function to load the markers of the last 24 hours in the first time
+that the user access the page or refresh it */
+function firstMarkersLoad(instanceURL){
+    var lastDay = 1440 // A day has 1440 minutes
+    var typeList = ['project', 'event', 'agent', 'space']
+
+    for (i in typeList){
+        markerType = typeList[i]
+        promise = createQueryPromise(instanceURL, markerType, lastDay) 
+    }
+    map.addLayer(markersEvent)
+    map.addLayer(markersProject)
+    map.addLayer(markersAgent)
+    map.addLayer(markersSpace)
+}
+
+function loadMarkers(markerType, imageExtension, markersData) {
+    console.log(markerType)
+    switch (markerType) {
+        case 'project': createProjectMarker(markersData, imageExtension)
+        break
+        case 'event': createEventMarker(markersData, imageExtension)
+        break
+        case 'agent': createAgentMarker(markersData, imageExtension)
+        break
+        case 'space': createSpaceMarker(markersData, imageExtension)
+        break
+    }
+}
+
 // function returns hour now with minutes delay
 function InitTime(minutes){
 
