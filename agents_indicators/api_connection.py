@@ -5,7 +5,7 @@ import requests
 class RequestAgentsRawData(object):
 
     def __init__(self, last_update_time, url):
-        self._filters = {'@select': 'terms, type, createTimestamp, En_Estado',
+        self._filters = {'@select': 'terms, type, createTimestamp',
                          'createTimestamp': "GT("+last_update_time+")"}
         self._response = requests.get(url, self._filters)
         self._data = json.loads(self._response.text)
