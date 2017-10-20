@@ -127,6 +127,9 @@ function EventMarkers(imageExtension, minutes){
     map.addLayer(markersEvent)
 }
 
+connections = {
+    loadMarkers:loadMarkers
+}
 function ProjectMarkers(imageExtension, minutes){
     markersProject.clearLayers()
 

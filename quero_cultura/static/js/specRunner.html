@@ -10,18 +10,36 @@
       <script src="jasmine/jasmine.js"></script>
       <script src="jasmine/jasmine-html.js"></script>
       <script src="jasmine/boot.js"></script>
-
-      <!-- include source files here... -->
-      <script src="map.js"></script>
-
-      <!-- include spec files here... -->
-
-      <script src="spec/mapSpec.js"></script>
-
-
+      
 </head>
 
 <body>
-  
+	<div style="display:none" class="map-container">
+		<div id="map"></div>
+	</div>
+      
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+	</script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+	<script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js">
+	</script>
+
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+	<script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js">
+	</script>
+
+	<!-- include source files here... -->
+
+	<script src="connections.js"></script>
+	<script src="map.js"></script>
+	<script src="marker_creators.js"></script>
+
+	<!-- include spec files here... -->
+	<script src="spec/mapSpec.js"></script>
+
+
+
 </body>
 </html>

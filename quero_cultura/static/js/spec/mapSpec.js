@@ -1,4 +1,3 @@
-//Testes feitos para o mapa
 describe('InitTime', function () {
 	it('should get time with 3 hours and X minutes delay', function () {
 		delay = -5;
@@ -44,4 +43,28 @@ describe('GetColorByType', function () {
 		color = GetColorByType(type);
 		expect(color).toEqual(colorRGB);
 	});
+});
+
+describe("ProjectMarkers", function(){
+
+	beforeEach(function(){
+		imageExtension = "png"
+		minutes = 60
+	})
+
+	it("should add new markers to map layer", function(){
+		spyOn(map,"addLayer")
+
+		ProjectMarkers(imageExtension, minutes);
+
+		expect(map.addLayer).toHaveBeenCalledWith(markersProject)
+	})
+
+	it("should load ProjectMarkers", function(){
+		spyOn(window,'loadMarkers')
+
+		ProjectMarkers(imageExtension, minutes);
+
+		expect(window.loadMarkers).toHaveBeenCalledWith('project',imageExtension, minutes)
+	})
 });
