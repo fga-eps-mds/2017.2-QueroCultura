@@ -3,17 +3,18 @@ from .api_connection import RequestAgentsRawData
 from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
-from .views import *
+from .views import update_agent_indicator
+
 
 class TestAmountAgentsRegisteredPerMonth(object):
 
     @staticmethod
     def total_agents_registered_month():
         AmountAgentsRegisteredPerMonth.drop_collection()
-        agents_in_month = AmountAgentsRegisteredPerMonth({"01":10}, datetime.now().__str__())
+        agents_in_month = AmountAgentsRegisteredPerMonth({"01": 10}, datetime.now().__str__())
         agents_in_month.save()
         query = AmountAgentsRegisteredPerMonth.object.first()
-        assert query.total_agents_registered_month == {"01":10}
+        assert query.total_agents_registered_month == {"01": 10}
 
 
 class TestPercentIndividualAndCollectiveAgent(object):
@@ -80,10 +81,11 @@ class TestPercentAgentsPerAreaOperation(object):
     @staticmethod
     def test_total_agents_area_oreration():
         PercentAgentsPerAreaOperation.drop_collection()
-        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now().__str__(),{"area": 10})
+        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now().__str__(), {"area": 10})
         agent_indicator.save()
         query = PercentAgentsPerAreaOperation.objects.first()
         assert query.total_agents_area_oreration == {"area": 10}
+
 
 class TestUpdateAgentIndicator(object):
 

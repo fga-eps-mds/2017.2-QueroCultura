@@ -5,6 +5,7 @@ from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
 from datetime import datetime
 
+
 def build_temporal_indicator(data):
     temporal_indicator = {}
 
@@ -50,13 +51,13 @@ def build_operation_area_indicator(data):
 def update_agent_indicator():
 
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
-        PercentIndividualAndCollectiveAgent(0,"2010-01-01 15:47:38.337553",0,0).save()
+        PercentIndividualAndCollectiveAgent(0, "2010-01-01 15:47:38.337553", 0, 0).save()
 
     if len(PercentAgentsPerAreaOperation.objects) == 0:
-        PercentAgentsPerAreaOperation(0,"2010-01-01 15:47:38.337553",{"00":0}).save()
+        PercentAgentsPerAreaOperation(0, "2010-01-01 15:47:38.337553", {"00": 0}).save()
 
     if len(AmountAgentsRegisteredPerMonth.objects) == 0:
-        AmountAgentsRegisteredPerMonth({"00":0},"2010-01-01 15:47:38.337553").save()
+        AmountAgentsRegisteredPerMonth({"00": 0}, "2010-01-01 15:47:38.337553").save()
 
     index = PercentAgentsPerAreaOperation.objects.count()
 
@@ -77,10 +78,6 @@ def update_agent_indicator():
     new_individual = last_type.total_individual_agent + new_type["Individual"]
     new_collective = last_type.total_collective_agent + new_type["Coletivo"]
 
-    AmountAgentsRegisteredPerMonth(new_per_month,new_create_date).save()
-    PercentIndividualAndCollectiveAgent(new_total,new_create_date,new_individual,new_collective).save()
-    PercentAgentsPerAreaOperation(new_total,new_create_date,new_per_area).save()
-
-# print(build_temporal_indicator(RequestAgentsRawData("2015-05-20 15:47:38.337553", "http://mapas.cultura.gov.br/api/agent/find/").data))
-# print(build_type_indicator(RequestAgentsRawData("2015-05-20 15:47:38.337553", "http://mapas.cultura.gov.br/api/agent/find/").data))
-# print(build_operation_area_indicator(RequestAgentsRawData("2015-05-20 15:47:38.337553", "http://mapas.cultura.gov.br/api/agent/find/").data))
+    AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()
+    PercentIndividualAndCollectiveAgent(new_total, new_create_date, new_individual, new_collective).save()
+    PercentAgentsPerAreaOperation(new_total, new_create_date, new_per_area).save()
