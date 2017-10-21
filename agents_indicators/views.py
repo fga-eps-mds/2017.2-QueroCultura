@@ -64,7 +64,7 @@ def build_operation_area_indicator(new_data, old_data):
     return per_operation_area
 
 
-def update_agent_indicator():
+def update_agent_indicator(url):
 
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
         PercentIndividualAndCollectiveAgent(0, "2012-01-01 15:47:38.337553", 0, 0).save()
@@ -81,7 +81,7 @@ def update_agent_indicator():
     last_type = PercentIndividualAndCollectiveAgent.objects[index-1]
     last_temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
 
-    request = RequestAgentsRawData(last_per_area.create_date, "http://mapas.cultura.gov.br/api/agent/find/")
+    request = RequestAgentsRawData(last_per_area.create_date, url)
 
     new_total = request.data_length + last_per_area.total_agents
     new_create_date = datetime.now().__str__()

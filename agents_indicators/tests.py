@@ -95,7 +95,7 @@ class TestUpdateAgentIndicator(object):
         PercentIndividualAndCollectiveAgent.drop_collection()
         AmountAgentsRegisteredPerMonth.drop_collection()
 
-        update_agent_indicator()
+        update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
 
         total = len(PercentIndividualAndCollectiveAgent.objects)
         total += len(AmountAgentsRegisteredPerMonth.objects)
