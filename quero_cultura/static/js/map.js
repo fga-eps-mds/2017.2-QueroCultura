@@ -89,12 +89,16 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
         'updateTimestamp' : "GT("+queryDateTime+")"
       },);
 
-    promise.then(function(data){
-        localStorage.setItem('last-day-'+markerType, JSON.stringify(data))
-        loadMarkers(markerType, 'png', data)
-        console.log(JSON.parse(localStorage.getItem('last-day-'+markerType)))
-    })
       return promise
+}
+
+function savePromise(markerType,promise,makerTime) {
+
+      promise.then(function(data){
+          localStorage.setItem(markerTime,markerType, JSON.stringify(data))
+          loadMarkers(markerType, 'png', data)
+      })
+
 }
 
 /* Function to load the markers of the last 24 hours in the first time
@@ -102,11 +106,15 @@ that the user access the page or refresh it */
 function firstMarkersLoad(instanceURL){
     var lastDay = 1440 // A day has 1440 minutes
     var typeList = ['project', 'event', 'agent', 'space']
+    var promiseList = array()
 
     for (i in typeList){
         markerType = typeList[i]
-        promise = createQueryPromise(instanceURL, markerType, lastDay) 
+        promiseList.push(createQueryPromise(instanceURL, markerType, lastDay))
+
     }
+
+    savePromise('agent',promiseList[0],'lastDay')
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -125,6 +133,37 @@ function loadMarkers(markerType, imageExtension, markersData) {
         case 'space': createSpaceMarker(markersData, imageExtension)
         break
     }
+}
+
+function lastMinuteMarker() {
+
+  var lastMinute = 1 // A day has 1440 minutes
+  var typeList = ['project', 'event', 'agent', 'space']
+  var promiseList = array()
+
+  for (i in typeList){
+      markerType = typeList[i]
+      promiseList.push(createQueryPromise(instanceURL, markerType, lastMinute))
+  }
+
+  savePromise('agent',promiseList[0],'lastMinute')
+
+}
+
+function checkDoubleMarkers() {
+
+  var lastMinute = localStorage.getItem(lastMinute)
+  var lastDay = localStorage.getItem(lastDay)
+
+  for (var i = 0; i < lastDay.length; i++) {
+    for (var j = 0; j < lastMinute.length; j++) {
+      if(lastDay[i].id == lastMinute[j].id){
+          console.log(lastDay[i])
+          lastDay[i] = lastMinute[j]
+      }
+    }
+  }
+  return lastDay
 }
 
 // function returns hour now with minutes delay
