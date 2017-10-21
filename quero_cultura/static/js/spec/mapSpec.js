@@ -93,6 +93,29 @@ describe("AgentMarkers", function(){
 	});
 });
 
+describe("EventMarkers", function(){
+	beforeEach(function(){
+		imageExtension = "png"
+		minutes = 60
+	});
+
+	it("should add new event markers to map layer", function(){
+		spyOn(map, "addLayer")
+
+		EventMarkers(imageExtension, minutes)
+
+		expect(map.addLayer).toHaveBeenCalledWith(markersEvent)
+	});
+
+	it("should load EventMarkers", function(){
+		spyOn(window, 'loadMarkers')
+
+		EventMarkers(imageExtension, minutes)
+
+		expect(window.loadMarkers).toHaveBeenCalledWith('event', imageExtension, minutes)
+	});
+});
+
 describe("ProjectMarkers", function(){
 
 	beforeEach(function(){
