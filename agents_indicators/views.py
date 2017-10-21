@@ -1,12 +1,28 @@
 from .api_connection import RequestAgentsRawData
 from django.shortcuts import render
 from .models import PercentIndividualAndCollectiveAgent
-from .models import AmountAgentsRegisteredPerMonth
+from .models import AmountAgentsRegisteredPerMonth 
 from .models import PercentAgentsPerAreaOperation
 from datetime import datetime
+import json
 
 def index(request):
-    return render(request, 'index.html')
+
+    update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
+    index = AmountAgentsRegisteredPerMonth.objects.count()
+  
+    queryset = AmountAgentsRegisteredPerMonth.objects[index-1]
+    queryset = queryset.total_agents_registered_month["2016"]
+
+    names = queryset.keys()
+    prices = queryset.values()
+
+    context = {
+        'names': json.dumps(names),
+        'prices': json.dumps(prices),
+    }
+
+    return render(request, 'index.html', context)
 
 
 def build_temporal_indicator(new_data, old_data):

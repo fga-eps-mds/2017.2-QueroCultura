@@ -31,6 +31,12 @@ crossorigin=""></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
+			if ($(document).height() > $(window).height()) {
+ 		        var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+
+         		$('html').addClass('noscroll').css('top',-scrollTop);
+      		}
+      		
 		 	MarkersPoints(true);
 			setInterval(function(){MarkersPoints(false)}, 15000);
 	</script>

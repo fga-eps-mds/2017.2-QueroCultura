@@ -119,12 +119,6 @@
     //Create web site tour
     function startIntro(){
 
-      if ($(document).height() > $(window).height()) {
-         var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
-
-         $('html').addClass('noscroll').css('top',-scrollTop);
-      }
-
       var intro = introJs();
 
         intro.setOption("nextLabel", '<img src="static/images/arrow.png" height="15px" alt="" />')
