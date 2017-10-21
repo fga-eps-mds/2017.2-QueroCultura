@@ -1,31 +1,19 @@
 from datetime import datetime
 from .api_connection import RequestAgentsRawData
 from .models import PercentIndividualAndCollectiveAgent
-from .models import AmountAgentsRegisteredPerYear
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
-from .models import PercentAgentsPerAreaOperation
-
+from .views import *
 
 class TestAmountAgentsRegisteredPerMonth(object):
 
     @staticmethod
     def total_agents_registered_mounth():
         AmountAgentsRegisteredPerMonth.drop_collection()
-        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
+        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now().__str__())
         agents_in_year.save()
         query = AmountAgentsRegisteredPerMonth.object.first()
-        assert query._total_agents_registered_year == 10
-
-
-class TestAmountAgentsRegisteredPerYear(object):
-    @staticmethod
-    def total_agents_registered_year():
-        AmountAgentsRegisteredPerYear.drop_collection()
-        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now())
-        agents_in_year.save()
-        query = AmountAgentsRegisteredPerYear.object.first()
-        assert query._total_agents_registered_year == 10
+        assert query.total_agents_registered_year == 10
 
 
 class TestPercentIndividualAndCollectiveAgent(object):
@@ -33,26 +21,26 @@ class TestPercentIndividualAndCollectiveAgent(object):
     @staticmethod
     def test_total_agents():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now().__str__(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
-        assert query._total_agents == 50
+        assert query.total_agents == 50
 
     @staticmethod
     def test_total_individual_agent():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now().__str__(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
-        assert query._total_individual_agent == 10
+        assert query.total_individual_agent == 10
 
     @staticmethod
     def test_total_collective_agent():
         PercentIndividualAndCollectiveAgent.drop_collection()
-        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now(), 10, 10)
+        agent_indicator = PercentIndividualAndCollectiveAgent(50, datetime.now().__str__(), 10, 10)
         agent_indicator.save()
         query = PercentIndividualAndCollectiveAgent.objects.first()
-        assert query._total_collective_agent == 10
+        assert query.total_collective_agent == 10
 
 
 class TestRequestAgentsRawData(object):
@@ -87,12 +75,12 @@ class TestRequestAgentsRawData(object):
         assert type_agents_raw_data == type(intenger)
 
 
-class TestePercentAgentsPerAreaOperation(object):
+class TestPercentAgentsPerAreaOperation(object):
 
     @staticmethod
-    def teste_total_agents_area_oreration():
+    def test_total_agents_area_oreration():
         PercentAgentsPerAreaOperation.drop_collection()
-        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now(),{"area": 10})
+        agent_indicator = PercentAgentsPerAreaOperation(50, datetime.now().__str__(),{"area": 10})
         agent_indicator.save()
         query = PercentAgentsPerAreaOperation.objects.first()
-        assert query._total_agents_area_oreration == {"area": 10}
+        assert query.total_agents_area_oreration == {"area": 10}
