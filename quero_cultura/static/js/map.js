@@ -124,7 +124,7 @@ function firstMarkersLoad(instanceURL){
 
 function loadMarkers(markerType, imageExtension, markersData) {
     console.log(markerType)
-    markersData = JSON.parse(checkDoubleMarkers(markerType))
+    markersData = checkDoubleMarkers(markerType)
     console.log(markersData)
 
     switch (markerType) {
@@ -155,17 +155,25 @@ function lastMinuteMarker(instanceURL) {
 }
 
 function checkDoubleMarkers(markerType) {
-  var lastMinuteMarkers = localStorage.getItem('last-minute' + '-' + markerType)
-  var lastDayMarkers = localStorage.getItem('last-day' + '-' + markerType)
+  var lastMinuteMarkers = JSON.parse(localStorage.getItem('last-minute' + '-' + markerType))
+  var lastDayMarkers = JSON.parse(localStorage.getItem('last-day' + '-' + markerType))
   var validMarkers = lastDayMarkers
+  var aux = Array()
 
   for (var i = 0; i < validMarkers.length; i++) {
+    validMarkers[i]['img-ext'] = 'png'
     for (var j = 0; j < lastMinuteMarkers.length; j++) {
-      if(validMarkers[i].id == lastMinuteMarkers[j].id){
-          validMarkers[i] = lastMinuteMarkers[j]
+      if(Object.is(validMarkers[i].id, lastMinuteMarkers[j].id)){
+        validMarkers[i] = lastMinuteMarkers[j]
+        validMarkers[i]['img-ext'] = 'gif'
+      }else{
+        console.log("aaa")
+        lastMinuteMarkers[j]['img-ext'] = 'gif'
+        aux.push(lastMinuteMarkers[j])
       }
     }
   }
+  validMarkers.push.apply(validMarkers, aux)
   return validMarkers
 }
 
