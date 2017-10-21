@@ -8,12 +8,12 @@ from .views import *
 class TestAmountAgentsRegisteredPerMonth(object):
 
     @staticmethod
-    def total_agents_registered_mounth():
+    def total_agents_registered_month():
         AmountAgentsRegisteredPerMonth.drop_collection()
-        agents_in_year = AmountAgentsRegisteredPerYear(10, datetime.now().__str__())
-        agents_in_year.save()
+        agents_in_month = AmountAgentsRegisteredPerMonth({"01":10}, datetime.now().__str__())
+        agents_in_month.save()
         query = AmountAgentsRegisteredPerMonth.object.first()
-        assert query.total_agents_registered_year == 10
+        assert query.total_agents_registered_month == {"01":10}
 
 
 class TestPercentIndividualAndCollectiveAgent(object):
@@ -84,3 +84,19 @@ class TestPercentAgentsPerAreaOperation(object):
         agent_indicator.save()
         query = PercentAgentsPerAreaOperation.objects.first()
         assert query.total_agents_area_oreration == {"area": 10}
+
+class TestUpdateAgentIndicator(object):
+
+    @staticmethod
+    def test_update_agent_indicator():
+        PercentAgentsPerAreaOperation.drop_collection()
+        PercentIndividualAndCollectiveAgent.drop_collection()
+        AmountAgentsRegisteredPerMonth.drop_collection()
+
+        update_agent_indicator()
+
+        total = len(PercentIndividualAndCollectiveAgent.objects)
+        total += len(AmountAgentsRegisteredPerMonth.objects)
+        total += len(PercentAgentsPerAreaOperation.objects)
+
+        assert total == 6
