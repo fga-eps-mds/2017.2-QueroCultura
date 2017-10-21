@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .api_connection import RequestAgentsRawData
 
+def index(request):
+    return render(request, 'index.html')
+
 
 def build_temporal_indicator(data):
     temporal_indicator = {}

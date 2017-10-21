@@ -19,7 +19,7 @@ function createPromise(url, type, minutes){
         '@or' : 1,
         'createTimestamp' : "GT("+getTimeNow+")",
         'updateTimestamp' : "GT("+getTimeNow+")"
-      },);
+      });
       return promise
 }
 
