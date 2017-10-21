@@ -1,7 +1,7 @@
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import DateTimeField
+from mongoengine import StringField
 
 
 class PercentAgents(Document):
@@ -9,7 +9,7 @@ class PercentAgents(Document):
         abstract = True
     meta = {'allow_inheritance': True}
     _total_agents = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):
@@ -50,32 +50,10 @@ class PercentIndividualAndCollectiveAgent(PercentAgents):
         self._total_collective_agent = number
 
 
-# Amount of agents registered per year on the platform throughout its existence
-class AmountAgentsRegisteredPerYear(Document):
-    _total_agents_registered_year = DictField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-    @property
-    def total_agents_registered_year(self):
-        return self._total_agents_registered_year
-
-    @total_agents_registered_year.setter
-    def total_agents_registered_year(self, text):
-        self._total_agents_registered_year = text
-
-
 # Number of agents registered monthly on the platform throughout its existence
 class AmountAgentsRegisteredPerMonth(Document):
     _total_agents_registered_month = DictField(required=True)
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def total_agents_registered_month(self):
