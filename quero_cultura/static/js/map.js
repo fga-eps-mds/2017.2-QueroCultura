@@ -92,12 +92,15 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
       return promise
 }
 
-function savePromise(markerType,promise,makerTime) {
+function saveQueryResult(instanceURL, markerType, lastMinutes, queryName) {
+    
+    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
+    var storageKey = queryName + '-' + markerType
 
-      promise.then(function(data){
-          localStorage.setItem(markerTime,markerType, JSON.stringify(data))
-          loadMarkers(markerType, 'png', data)
-      })
+    promise.then(function(data){
+        localStorage.setItem(storageKey, JSON.stringify(data))
+        loadMarkers(markerType, 'png', data)
+    })
 
 }
 
@@ -106,15 +109,13 @@ that the user access the page or refresh it */
 function firstMarkersLoad(instanceURL){
     var lastDay = 1440 // A day has 1440 minutes
     var typeList = ['project', 'event', 'agent', 'space']
-    var promiseList = array()
 
     for (i in typeList){
         markerType = typeList[i]
-        promiseList.push(createQueryPromise(instanceURL, markerType, lastDay))
-
+        saveQueryResult(instanceURL, markerType, lastDay, 'last-day')
+        saveQueryResult(instanceURL, markerType, lastMinute, 'last-minute')
     }
 
-    savePromise('agent',promiseList[0],'lastDay')
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -123,6 +124,9 @@ function firstMarkersLoad(instanceURL){
 
 function loadMarkers(markerType, imageExtension, markersData) {
     console.log(markerType)
+    markersData = JSON.parse(checkDoubleMarkers(markerType))
+    console.log(markersData)
+
     switch (markerType) {
         case 'project': createProjectMarker(markersData, imageExtension)
         break
@@ -135,35 +139,34 @@ function loadMarkers(markerType, imageExtension, markersData) {
     }
 }
 
-function lastMinuteMarker() {
-
-  var lastMinute = 1 // A day has 1440 minutes
+function lastMinuteMarker(instanceURL) {
+  var lastMinute = 1
   var typeList = ['project', 'event', 'agent', 'space']
-  var promiseList = array()
 
   for (i in typeList){
       markerType = typeList[i]
-      promiseList.push(createQueryPromise(instanceURL, markerType, lastMinute))
+      saveQueryResult(instanceURL, markerType, lastMinute, 'last-minute')
   }
 
-  savePromise('agent',promiseList[0],'lastMinute')
-
+  map.addLayer(markersEvent)
+  map.addLayer(markersProject)
+  map.addLayer(markersAgent)
+  map.addLayer(markersSpace)
 }
 
-function checkDoubleMarkers() {
+function checkDoubleMarkers(markerType) {
+  var lastMinuteMarkers = localStorage.getItem('last-minute' + '-' + markerType)
+  var lastDayMarkers = localStorage.getItem('last-day' + '-' + markerType)
+  var validMarkers = lastDayMarkers
 
-  var lastMinute = localStorage.getItem(lastMinute)
-  var lastDay = localStorage.getItem(lastDay)
-
-  for (var i = 0; i < lastDay.length; i++) {
-    for (var j = 0; j < lastMinute.length; j++) {
-      if(lastDay[i].id == lastMinute[j].id){
-          console.log(lastDay[i])
-          lastDay[i] = lastMinute[j]
+  for (var i = 0; i < validMarkers.length; i++) {
+    for (var j = 0; j < lastMinuteMarkers.length; j++) {
+      if(validMarkers[i].id == lastMinuteMarkers[j].id){
+          validMarkers[i] = lastMinuteMarkers[j]
       }
     }
   }
-  return lastDay
+  return validMarkers
 }
 
 // function returns hour now with minutes delay
