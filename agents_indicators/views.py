@@ -1,21 +1,31 @@
 from .api_connection import RequestAgentsRawData
 from django.shortcuts import render
 from .models import PercentIndividualAndCollectiveAgent
-from .models import AmountAgentsRegisteredPerMonth 
+from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
 from datetime import datetime
 import json
 
+
 def index(request):
+    # PercentAgentsPerAreaOperation.drop_collection()
+    # PercentIndividualAndCollectiveAgent.drop_collection()
+    # AmountAgentsRegisteredPerMonth.drop_collection()
 
-    update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
+    # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
     index = AmountAgentsRegisteredPerMonth.objects.count()
-  
-    queryset = AmountAgentsRegisteredPerMonth.objects[index-1]
-    queryset = queryset.total_agents_registered_month["2016"]
 
-    names = queryset.keys()
-    prices = queryset.values()
+    queryset = AmountAgentsRegisteredPerMonth.objects[index-1]
+    queryset = queryset.total_agents_registered_month["2014"]
+
+    names = []
+    prices = []
+
+    for i in queryset.keys():
+        names.append(i)
+
+    for i in queryset.values():
+        prices.append(i)
 
     context = {
         'names': json.dumps(names),
