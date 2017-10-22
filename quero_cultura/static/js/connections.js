@@ -39,6 +39,7 @@ function loadMarkersInInstance(type, url, imageExtension, minutes) {
             case 'event': createEventMarker(data, imageExtension)
             break
             case 'agent': createAgentMarker(data, imageExtension)
+            console.log("huehue",data)
             break
             case 'space': createSpaceMarker(data, imageExtension)
             break

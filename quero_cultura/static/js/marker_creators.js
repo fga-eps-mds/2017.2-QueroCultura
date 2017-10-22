@@ -27,6 +27,7 @@ function createSpaceMarker(data, imageExtension){
         if(data[i]["location"] != null){
             data[i]["type"] = "space"
             newMarkers.set(data[i]["id"], data[i])
+
             var marker = L.marker([data[i]["location"]["latitude"],
                                     data[i]["location"]["longitude"]],
                                     {icon: redMarker}).addTo(markersSpace);
@@ -42,7 +43,10 @@ function createAgentMarker(data, imageExtension){
 
         if(data[i]["location"] != null){
             data[i]["type"] = "agent"
-            newMarkers.set(data[i]["id"], data[i])
+            newMarkers.set(data[i]["singleUrl"], data[i])
+            console.log("huehue")
+            console.log("teste",data[i]["singleUrl"])
+            console.log(data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
         							data[i]["location"]["longitude"]],
         							{icon: blueMarker}).addTo(markersAgent);
