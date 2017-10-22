@@ -20,13 +20,31 @@ function createMarkerIcon(color, extension){
                  });
 }
 
+// this function  return instance initials
+function getInitialInstance(data,position){
+  var url = data[position]["singleUrl"]
+  var splitUrl = url.split(".")
+  console.log("split",splitUrl[2])
+  return splitUrl[2]
+}
+function makeIdForMarker(data,position){
+
+  var initialsInstance = getInitialInstance(data,position)
+  var id = data[position]["id"]
+  var idString = id.toString()
+  var identification = initialsInstance+idString
+  console.log("identification",identification)
+  return identification
+}
+
 function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"] != null){
             data[i]["type"] = "space"
-            newMarkers.set(data[i]["id"], data[i])
+            var idForMarker = makeIdForMarker(data,i)
+            newMarkers.set(idForMarker, data[i])
 
             var marker = L.marker([data[i]["location"]["latitude"],
                                     data[i]["location"]["longitude"]],
@@ -35,12 +53,7 @@ function createSpaceMarker(data, imageExtension){
         }
     }
 }
-function makeIdForMarker(data,position){
-  var id = data[position]["id"]
-  var url = data[position]["singleUrl"]
-  var splitUrl = url.split(".")
-  console.log("split",splitUrl[2])
-}
+
 function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
 
@@ -48,10 +61,8 @@ function createAgentMarker(data, imageExtension){
 
         if(data[i]["location"] != null){
             data[i]["type"] = "agent"
-            makeIdForMarker(data,i)
-            newMarkers.set(data[i]["singleUrl"], data[i])
-            console.log("teste",data[i]["singleUrl"])
-            console.log(data[i])
+            var idForMarker = makeIdForMarker(data,i)
+            newMarkers.set(idForMarker, data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
         							data[i]["location"]["longitude"]],
         							{icon: blueMarker}).addTo(markersAgent);
@@ -66,7 +77,8 @@ function createEventMarker(data, imageExtension){
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
           data[i]["type"] = "event"
-          newMarkers.set(data[i]["id"], data[i])
+          var idForMarker = makeIdForMarker(data,i)
+          newMarkers.set(idForMarker, data[i])
         	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
         							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
         							{icon: yellowMarker}).addTo(markersEvent);
@@ -81,7 +93,8 @@ function createProjectMarker(data, imageExtension){
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
           data[i]["type"] = "project"
-          newMarkers.set(data[i]["id"], data[i])
+          var idForMarker = makeIdForMarker(data,i)
+          newMarkers.set(idForMarker, data[i])
         	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
         							data[i]["owner"]["location"]["longitude"]],
         							{icon: greenMarker}).addTo(markersProject);
