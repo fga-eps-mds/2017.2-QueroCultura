@@ -35,7 +35,12 @@ function createSpaceMarker(data, imageExtension){
         }
     }
 }
-
+function makeIdForMarker(data,position){
+  var id = data[position]["id"]
+  var url = data[position]["singleUrl"]
+  var splitUrl = url.split(".")
+  console.log("split",splitUrl[2])
+}
 function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
 
@@ -43,8 +48,8 @@ function createAgentMarker(data, imageExtension){
 
         if(data[i]["location"] != null){
             data[i]["type"] = "agent"
+            makeIdForMarker(data,i)
             newMarkers.set(data[i]["singleUrl"], data[i])
-            console.log("huehue")
             console.log("teste",data[i]["singleUrl"])
             console.log(data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
