@@ -15,16 +15,25 @@ function createMarkerIcon(color, extension){
             break
     }
 
-    return L.icon({ iconUrl: "static/images/"+filename+"."+ extension,
-                    iconSize: [25,25],
-                 });
+    if(extension == "gif"){
+
+      var imageLocation = "static/images/"+filename+"."+"gif"
+      return L.icon({ iconUrl: imageLocation,
+        iconSize: [25,25],
+      });
+    }else{
+      var imageLocation = "static/images/"+filename+"."+"png"
+      return L.icon({ iconUrl: imageLocation,
+        iconSize: [25,25],
+      });
+    }
 }
+
 
 // this function  return instance initials
 function getInitialInstance(data,position){
   var url = data[position]["singleUrl"]
   var splitUrl = url.split(".")
-  console.log("split",splitUrl[2])
   return splitUrl[2]
 }
 function makeIdForMarker(data,position){
@@ -33,7 +42,6 @@ function makeIdForMarker(data,position){
   var id = data[position]["id"]
   var idString = id.toString()
   var identification = initialsInstance+idString
-  console.log("identification",identification)
   return identification
 }
 
@@ -56,19 +64,32 @@ function createSpaceMarker(data, imageExtension){
 
 function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
-
     for(var i=0; i < data.length; i++){
 
-        if(data[i]["location"] != null){
+        if(imageExtension == "gif"){
+
+          if(data[i]["location"] != null){
             data[i]["type"] = "agent"
             var idForMarker = makeIdForMarker(data,i)
             newMarkers.set(idForMarker, data[i])
-        	var marker = L.marker([data[i]["location"]["latitude"],
-        							data[i]["location"]["longitude"]],
-        							{icon: blueMarker}).addTo(markersAgent);
-        	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-    	}
-    }
+            var marker = L.marker([data[i]["location"]["latitude"],
+            data[i]["location"]["longitude"]],
+            {icon: blueMarker}).setZIndexOffset(1000).addTo(markersAgent)
+            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+
+          }
+        }else{
+          data[i]["type"] = "agent"
+          var idForMarker = makeIdForMarker(data,i)
+          newMarkers.set(idForMarker, data[i])
+          var marker = L.marker([data[i]["location"]["latitude"],
+          data[i]["location"]["longitude"]],
+          {icon: blueMarker}).setZIndexOffset(-30).addTo(markersAgent)
+          marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+
+        }
+
+  }
 }
 
 function createEventMarker(data, imageExtension){
