@@ -79,6 +79,7 @@ function createAgentMarker(data, imageExtension){
 
           }
         }else{
+
           data[i]["type"] = "agent"
           var idForMarker = makeIdForMarker(data,i)
           newMarkers.set(idForMarker, data[i])
@@ -97,13 +98,26 @@ function createEventMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if((data[i]["occurrences"]).length != 0){
-          data[i]["type"] = "event"
-          var idForMarker = makeIdForMarker(data,i)
-          newMarkers.set(idForMarker, data[i])
-        	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
-        							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
-        							{icon: yellowMarker}).addTo(markersEvent);
-        	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+          if(imageExtension == "gif"){
+
+            data[i]["type"] = "event"
+            var idForMarker = makeIdForMarker(data,i)
+            newMarkers.set(idForMarker, data[i])
+            var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+            data[i]["occurrences"][0]["space"]["location"]["longitude"]],
+            {icon: yellowMarker}).setZIndexOffset(1000).addTo(markersEvent);
+            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+          }else{
+
+            data[i]["type"] = "event"
+            var idForMarker = makeIdForMarker(data,i)
+            newMarkers.set(idForMarker, data[i])
+            var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
+            data[i]["occurrences"][0]["space"]["location"]["longitude"]],
+            {icon: yellowMarker}).setZIndexOffset(-30).addTo(markersEvent);
+            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+
+          }
     	}
     }
 }
