@@ -242,3 +242,17 @@ describe('GetColorByType', function () {
 	});
 
 });
+
+describe('AddHTMLToFeed', function () {
+
+	it('should get color by type', function () {
+
+		spyOn(window,'GetColorByType')
+
+		AddHTMLToFeed('James Bond', 'agent', '007');
+
+		expect(window.GetColorByType).toHaveBeenCalledWith('agent')
+
+	});
+
+});
