@@ -49,15 +49,28 @@ function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
+
         if(data[i]["location"] != null){
+          if(imageExtension == "gif"){
             data[i]["type"] = "space"
             var idForMarker = makeIdForMarker(data,i)
             newMarkers.set(idForMarker, data[i])
-
             var marker = L.marker([data[i]["location"]["latitude"],
                                     data[i]["location"]["longitude"]],
-                                    {icon: redMarker}).addTo(markersSpace);
+                                    {icon: redMarker}).setZIndexOffset(1000).addTo(markersSpace);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+
+          }else{
+
+            data[i]["type"] = "space"
+            var idForMarker = makeIdForMarker(data,i)
+            newMarkers.set(idForMarker, data[i])
+            var marker = L.marker([data[i]["location"]["latitude"],
+            data[i]["location"]["longitude"]],
+            {icon: redMarker}).setZIndexOffset(-30).addTo(markersSpace);
+            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+
+          }
         }
     }
 }
