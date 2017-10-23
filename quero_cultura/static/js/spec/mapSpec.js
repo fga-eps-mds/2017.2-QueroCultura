@@ -190,6 +190,38 @@ describe('MarkersPoints', function () {
 		expect(window.ProjectMarkers).toHaveBeenCalledWith("gif", 60)
   });
 
+	it('should verify if has layer', function(){
+		spyOn(map, 'hasLayer')
+
+		MarkersPoints(true)
+
+		expect(map.hasLayer).toHaveBeenCalledWith(markersAgent)
+	});
+
+	it('should verify if has layer', function(){
+		spyOn(map, 'hasLayer')
+
+		MarkersPoints(true)
+
+		expect(map.hasLayer).toHaveBeenCalledWith(markersEvent)
+	});
+
+	it('should verify if has layer', function(){
+		spyOn(map, 'hasLayer')
+
+		MarkersPoints(true)
+
+		expect(map.hasLayer).toHaveBeenCalledWith(markersSpace)
+	});
+
+	it('should verify if has layer', function(){
+		spyOn(map, 'hasLayer')
+
+		MarkersPoints(true)
+
+		expect(map.hasLayer).toHaveBeenCalledWith(markersProject)
+	});
+
 });
 
 describe('GetColorByType', function () {
@@ -259,9 +291,9 @@ describe('AddHTMLToFeed', function () {
 
 describe("updateFeed", function(){
 
-	it("should update feed", function(){
+	it("should add diffFeed to feed", function(){
 		newMarkers1 = new Map()
-		
+
 		spyOn(window,'AddInfoToFeed')
 
 		updateFeed();
