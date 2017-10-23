@@ -374,3 +374,43 @@ describe('loadMarkers', function(){
 		expect(window.loadMarkersInInstance).toHaveBeenCalled()
 	});
 });
+
+describe('createMarkerIcon', function(){
+	it('should create red marker icon', function(){
+		spyOn(L, 'icon')
+
+		createMarkerIcon('red', 'gif')
+
+		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerSpace"+"."+ "gif",
+                    iconSize: [25,25]})
+	});
+	it('should create blue marker icon', function(){
+		spyOn(L, 'icon')
+
+		createMarkerIcon('blue', 'png')
+
+		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerAgent"+"."+ "png",
+                    iconSize: [25,25]
+                 })
+	});
+
+	it('should create yellow marker icon', function(){
+		spyOn(L, 'icon')
+
+		createMarkerIcon('yellow', 'png')
+
+		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerEvent"+"."+ "png",
+                    iconSize: [25,25]
+                 })
+	});
+
+	it('should create green marker icon', function(){
+		spyOn(L, 'icon')
+
+		createMarkerIcon('green', 'png')
+
+		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerProject"+"."+ "png",
+                    iconSize: [25,25]
+                 })
+	});
+});
