@@ -140,14 +140,26 @@ function createProjectMarker(data, imageExtension){
 
     for(var i=0; i < data.length; i++){
     	if(data[i]["owner"] != null){
+        if(imageExtension == "gif"){
           data[i]["type"] = "project"
           var idForMarker = makeIdForMarker(data,i)
           newMarkers.set(idForMarker, data[i])
         	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
         							data[i]["owner"]["location"]["longitude"]],
-        							{icon: greenMarker}).addTo(markersProject);
+        							{icon: greenMarker}).setZIndexOffset(1000).addTo(markersProject);
         	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-    	}
+
+        }else{
+
+          data[i]["type"] = "project"
+          var idForMarker = makeIdForMarker(data,i)
+          newMarkers.set(idForMarker, data[i])
+          var marker = L.marker([data[i]["owner"]["location"]["latitude"],
+          data[i]["owner"]["location"]["longitude"]],
+          {icon: greenMarker}).setZIndexOffset(-30).addTo(markersProject);
+          marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+        }
+      }
     }
 
 }
