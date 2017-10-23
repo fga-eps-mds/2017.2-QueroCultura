@@ -155,3 +155,68 @@ describe("AddInfoToFeed", function(){
 		expect(diffFeed2.forEach).toHaveBeenCalled()
 	})
 })
+
+describe('MarkersPoints', function () {
+
+	it('should add new marker point', function () {
+    spyOn(window, 'AgentMarkers')
+
+		MarkersPoints(true)
+
+		expect(window.AgentMarkers).toHaveBeenCalledWith("png", 1440)
+    });
+
+});
+
+describe('GetColorByType', function () {
+
+	it('should add color by type agent', function () {
+		type1 = 'agent'
+
+		var color = GetColorByType(type1)
+
+		expect(color).toEqual('#17a2b8')
+	});
+
+	it('should add color by type project', function () {
+
+		type1 = 'project'
+
+		var color = GetColorByType(type1)
+
+		expect(color).toEqual('#28a745')
+
+	});
+
+	it('should add color by type space', function () {
+
+		type1 = 'space'
+
+		var color = GetColorByType(type1)
+
+		expect(color).toEqual('#dc3545')
+	});
+
+	it('should add color by type event', function () {
+
+		type1 = 'event'
+
+		var color = GetColorByType(type1)
+
+		expect(color).toEqual('#ffc107')
+
+	});
+
+	it('should add color by type default', function () {
+
+		type1 = 'other'
+
+		var color = GetColorByType(type1)
+
+		expect(color).toEqual('black')
+
+	});
+
+
+
+});
