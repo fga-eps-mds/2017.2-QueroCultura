@@ -253,6 +253,13 @@ describe('MarkersPoints', function () {
 		expect(map.hasLayer).toHaveBeenCalledWith(markersProject)
 	});
 
+	it('should update feed', function(){
+		spyOn(window, 'updateFeed')
+
+		MarkersPoints(true)
+
+		expect(window.updateFeed).toHaveBeenCalledWith()
+	});
 });
 
 describe('GetColorByType', function () {
