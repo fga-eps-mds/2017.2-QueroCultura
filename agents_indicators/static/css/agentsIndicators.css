@@ -1,0 +1,14 @@
+.chart-container-line{
+	position: relative; 
+	height:40vh; 
+	width:50vw;
+	margin-left: 600px;
+}
+
+.chart-container-pie{
+	position: relative; 
+	height:30vh; 
+	width:40vw;
+	margin-left: 600px;
+	padding-top: 5%;
+}

@@ -32,7 +32,7 @@ def index(request):
         'prices': json.dumps(prices),
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'agents_indicators/index.html', context)
 
 
 def build_temporal_indicator(new_data, old_data):
