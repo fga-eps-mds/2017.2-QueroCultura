@@ -68,6 +68,13 @@ describe("SpaceMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('space',imageExtension, minutes)
 	});
 
+	it("should clear layers", function(){
+		spyOn(markersSpace, 'clearLayers')
+
+		SpaceMarkers(imageExtension, minutes)
+
+		expect(markersSpace.clearLayers).toHaveBeenCalledWith()
+	});
 });
 
 describe("AgentMarkers", function(){
@@ -91,6 +98,14 @@ describe("AgentMarkers", function(){
 
 		expect(window.loadMarkers).toHaveBeenCalledWith('agent', imageExtension, minutes)
 	});
+
+	it("should clear layers", function(){
+		spyOn(markersAgent, 'clearLayers')
+
+		AgentMarkers(imageExtension, minutes)
+
+		expect(markersAgent.clearLayers).toHaveBeenCalledWith()
+	});
 });
 
 describe("EventMarkers", function(){
@@ -113,6 +128,14 @@ describe("EventMarkers", function(){
 		EventMarkers(imageExtension, minutes)
 
 		expect(window.loadMarkers).toHaveBeenCalledWith('event', imageExtension, minutes)
+	});
+
+	it("should clear layers", function(){
+		spyOn(markersEvent, 'clearLayers')
+
+		EventMarkers(imageExtension, minutes)
+
+		expect(markersEvent.clearLayers).toHaveBeenCalledWith()
 	});
 });
 
@@ -138,6 +161,14 @@ describe("ProjectMarkers", function(){
 
 		expect(window.loadMarkers).toHaveBeenCalledWith('project', imageExtension, minutes)
 	})
+
+	it("should clear layers", function(){
+		spyOn(markersProject, 'clearLayers')
+
+		ProjectMarkers(imageExtension, minutes)
+
+		expect(markersProject.clearLayers).toHaveBeenCalledWith()
+	});
 });
 
 
@@ -301,19 +332,39 @@ describe('updateFeed', function(){
 		expect(window.AddInfoToFeed).toHaveBeenCalled()
 	});
 });
-/*
+
 describe('createSpaceMarker', function(){
 
 	it('should create space marker icon', function(){
 		spyOn(window,'createMarkerIcon')
-
-		AddHTMLToFeed('2011', 'gif');
+		data1 = {}
+		createSpaceMarker(data1, 'gif');
 
 		expect(window.createMarkerIcon).toHaveBeenCalledWith('red', 'gif')
 	});
 
 });
-*/
+
+describe('createAgentMarker', function(){
+	it('should create agent marker icon', function(){
+		spyOn(window, 'createMarkerIcon')
+		data1 = {}
+		createAgentMarker(data1, 'png')
+
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('blue', 'png')
+	});
+});
+
+describe('createEventMarker', function(){
+	it('should create event marker icon', function(){
+		spyOn(window, 'createMarkerIcon')
+		data1 = {}
+		createEventMarker(data1, 'gif')
+
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('yellow', 'gif')
+	});
+});
+
 describe('loadMarkers', function(){
 	it('should load markers in instance', function(){
 		spyOn(window, 'loadMarkersInInstance')
