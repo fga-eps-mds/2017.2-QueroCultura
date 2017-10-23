@@ -256,3 +256,16 @@ describe('AddHTMLToFeed', function () {
 	});
 
 });
+
+describe("updateFeed", function(){
+
+	it("should update feed", function(){
+		newMarkers1 = new Map()
+		
+		spyOn(window,'AddInfoToFeed')
+
+		updateFeed();
+
+		expect(window.AddInfoToFeed).toHaveBeenCalled()
+	})
+})
