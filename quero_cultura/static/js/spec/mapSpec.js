@@ -158,13 +158,37 @@ describe("AddInfoToFeed", function(){
 
 describe('MarkersPoints', function () {
 
-	it('should add new marker point', function () {
+	it('should add new agent marker point', function () {
     spyOn(window, 'AgentMarkers')
 
 		MarkersPoints(true)
 
 		expect(window.AgentMarkers).toHaveBeenCalledWith("png", 1440)
-    });
+  });
+
+	it('should add new event marker point', function () {
+    spyOn(window, 'EventMarkers')
+
+		MarkersPoints(true)
+
+		expect(window.EventMarkers).toHaveBeenCalledWith("gif", 60)
+  });
+
+	it('should add new space marker point', function () {
+    spyOn(window, 'SpaceMarkers')
+
+		MarkersPoints(true)
+
+		expect(window.SpaceMarkers).toHaveBeenCalledWith("png", 1440)
+  });
+
+	it('should add new project marker point', function () {
+    spyOn(window, 'ProjectMarkers')
+
+		MarkersPoints(true)
+
+		expect(window.ProjectMarkers).toHaveBeenCalledWith("gif", 60)
+  });
 
 });
 
@@ -216,7 +240,5 @@ describe('GetColorByType', function () {
 		expect(color).toEqual('black')
 
 	});
-
-
 
 });
