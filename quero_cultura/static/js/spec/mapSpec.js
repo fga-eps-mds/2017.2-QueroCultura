@@ -289,7 +289,7 @@ describe('AddHTMLToFeed', function () {
 
 });
 
-describe("updateFeed", function(){
+describe('updateFeed', function(){
 
 	it("should add diffFeed to feed", function(){
 		newMarkers1 = new Map()
@@ -299,5 +299,27 @@ describe("updateFeed", function(){
 		updateFeed();
 
 		expect(window.AddInfoToFeed).toHaveBeenCalled()
-	})
-})
+	});
+});
+/*
+describe('createSpaceMarker', function(){
+
+	it('should create space marker icon', function(){
+		spyOn(window,'createMarkerIcon')
+
+		AddHTMLToFeed('2011', 'gif');
+
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('red', 'gif')
+	});
+
+});
+*/
+describe('loadMarkers', function(){
+	it('should load markers in instance', function(){
+		spyOn(window, 'loadMarkersInInstance')
+
+		loadMarkers('agent', 'gif', '60')
+
+		expect(window.loadMarkersInInstance).toHaveBeenCalled()
+	});
+});
