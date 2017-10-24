@@ -49,10 +49,6 @@ def index(request):
             
 
     context = {
-       
-    }
-
-    contexArea = {
         'nameArea': json.dumps(nameArea),
         'qtdArea': json.dumps(qtdArea),
         'names': json.dumps(names),
@@ -62,7 +58,7 @@ def index(request):
         'growth': json.dumps(growth),
     }
 
-    return render(request, 'agents_indicators/index.html', contexArea)
+    return render(request, 'agents_indicators/index.html', context)
 
 
 def build_temporal_indicator(new_data, old_data):
