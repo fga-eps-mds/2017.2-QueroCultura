@@ -2,6 +2,8 @@ var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
 
+var printedMarkers = Array()
+
 function createMarkerIcon(color, extension){
     filename = ''
     switch (color) {
@@ -31,6 +33,8 @@ function createSpaceMarker(data, imageExtension){
                                     data[i]["location"]["longitude"]],
                                     {icon: redMarker}).addTo(markersSpace);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
         }
     }
 }
@@ -44,9 +48,11 @@ function createAgentMarker(data, imageExtension){
             data[i]["type"] = "agent"
             newMarkers.set(data[i]["id"], data[i])
         	var marker = L.marker([data[i]["location"]["latitude"],
-        							data[i]["location"]["longitude"]],
+                                    data[i]["location"]["longitude"]],
         							{icon: blueMarker}).addTo(markersAgent);
-        	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
     	}
     }
 }
@@ -62,7 +68,9 @@ function createEventMarker(data, imageExtension){
         							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
         							{icon: yellowMarker}).addTo(markersEvent);
         	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-    	}
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
+        }
     }
 }
 
@@ -77,7 +85,9 @@ function createProjectMarker(data, imageExtension){
         							data[i]["owner"]["location"]["longitude"]],
         							{icon: greenMarker}).addTo(markersProject);
         	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-    	}
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
+        }
     }
 
 }
