@@ -110,41 +110,12 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
 
 }
 
-/*function saveQueryResult_test(instanceURL, markerType, lastMinutes, saveArray) {
-    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
-    promise.then(function(data){
-        loadMarkers(markerType, 'gif', data)
-        saveArray.push.apply(saveArray, data)
-    })
-
-}*/
-
-/* Function to load the markers of the last 24 hours in the first time
-that the user access the page or refresh it */
-function firstMarkersLoad(){
-    var lastDay = 1440 // A day has 1440 minutes
-
+function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
     for(i in instanceList){
         for (j in typeList){
             instanceURL = instanceList[i]
             markerType = typeList[j]
-            saveAndLoadData(instanceURL, markerType, lastDay, lastDayData, 'png')
-        }
-    }
-    map.addLayer(markersEvent)
-    map.addLayer(markersProject)
-    map.addLayer(markersAgent)
-    map.addLayer(markersSpace)
-}
-
-function lastHourMarkers() {
-    var lastHour = 60
-
-    for(i in instanceList){
-        for (j in typeList){
-            instanceURL = instanceList[i]
-            markerType = typeList[j]
-            saveAndLoadData(instanceURL, markerType, lastHour, lastHourData, 'gif')
+            saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
         }
     }
     checkMarkersDuplicity(lastHourData)
@@ -153,21 +124,6 @@ function lastHourMarkers() {
     map.addLayer(markersAgent)
     map.addLayer(markersSpace)
     updateFeed()
-}
-
-function loadAndUpdateMarkers(lastMinutes){
-    for(i in instanceList){
-        for (j in typeList){
-            instanceURL = instanceList[i]
-            markerType = typeList[j]
-            saveQueryResult_test(instanceURL, markerType, lastHour, lastHourData)
-        }
-    }
-    checkMarkersDuplicity(lastHourData)
-    map.addLayer(markersEvent)
-    map.addLayer(markersProject)
-    map.addLayer(markersAgent)
-    map.addLayer(markersSpace)
 }
 
 function loadMarkers(markerType, imageExtension, markersData) {
