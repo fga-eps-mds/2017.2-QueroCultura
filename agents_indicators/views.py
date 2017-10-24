@@ -13,49 +13,53 @@ def index(request):
     # AmountAgentsRegisteredPerMonth.drop_collection()
 
     # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
+
     index = PercentIndividualAndCollectiveAgent.objects.count()
 
-    queryset = PercentIndividualAndCollectiveAgent.objects[index-1]
-    agentArea = PercentAgentsPerAreaOperation.objects[index-1]
-    agentArea = agentArea.total_agents_area_oreration
-    year = AmountAgentsRegisteredPerMonth.objects[index-1]
-    year = year.total_agents_registered_month
+    per_type = PercentIndividualAndCollectiveAgent.objects[index-1]
 
-    names = ["Individual", "Coletivo"]
-    prices = [queryset.total_individual_agent, queryset.total_collective_agent]
-    
-    nameArea = []
-    qtdArea = []
+    per_area = PercentAgentsPerAreaOperation.objects[index-1]
+    per_area = per_area.total_agents_area_oreration
 
-    v = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-    x = 0
+    temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
+    temporal = temporal.total_agents_registered_month
 
-    keys = []
-    values = []
-    growth = []
+    per_type_keys = ["Individual", "Coletivo"]
+    per_type_values = [per_type.total_individual_agent, per_type.total_collective_agent]
+    print(per_type_values[1])
+    per_area_keys = []
+    per_area_values = []
 
-    for i in range(2013, 2013+len(year)):
-       for j in v:
-           if (j in year[str(i)]):
-               keys.append(str(i)+"-"+j)
-               values.append(year[str(i)][j])
-               x += year[str(i)][j]
-               growth.append(x)
-    
-    for i in agentArea:
-        if i == i.capitalize():
-            nameArea.append(i)
-            qtdArea.append(agentArea[i])
-            
+    for area in per_area:
+        if area == area.capitalize():
+            per_area_keys.append(area)
+            per_area_values.append(per_area[area])
+
+    months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+    last_year = 2013 + len(temporal)
+    growthing = 0
+
+    temporal_keys = []
+    temporal_values = []
+    temporal_growth = []
+
+    for year in range(2013, last_year):
+        for month in months:
+            if (month in temporal[str(year)]):
+                temporal_keys.append(str(year) + "-" + month)
+                temporal_values.append(temporal[str(year)][month])
+
+                growthing += temporal[str(year)][month]
+                temporal_growth.append(growthing)
 
     context = {
-        'nameArea': json.dumps(nameArea),
-        'qtdArea': json.dumps(qtdArea),
-        'names': json.dumps(names),
-        'prices': json.dumps(prices),
-        'keys': json.dumps(keys),
-        'values': json.dumps(values),
-        'growth': json.dumps(growth),
+        'per_area_keys': json.dumps(per_area_keys),
+        'per_area_values': json.dumps(per_area_values),
+        'per_type_keys': json.dumps(per_type_keys),
+        'per_type_values': json.dumps(per_type_values),
+        'temporal_keys': json.dumps(temporal_keys),
+        'temporal_values': json.dumps(temporal_values),
+        'temporal_growth': json.dumps(temporal_growth),
     }
 
     return render(request, 'agents_indicators/index.html', context)
@@ -64,26 +68,29 @@ def index(request):
 def build_temporal_indicator(new_data, old_data):
     temporal_indicator = {}
 
-    for i in new_data:
-        x = i["createTimestamp"]["date"].split("-")
+    for agent in new_data:
+        split_date = agent["createTimestamp"]["date"].split("-")
 
-        if not (x[0] in temporal_indicator):
-            temporal_indicator[x[0]] = {}
-            temporal_indicator[x[0]][x[1]] = 1
-        elif not (x[1] in temporal_indicator.get(x[0])):
-            temporal_indicator[x[0]][x[1]] = 1
-        else:
-            temporal_indicator[x[0]][x[1]] += 1
+        year = split_date[0]
+        month = split_date[1]
 
-    for i in old_data:
-        if not (i in temporal_indicator):
-            temporal_indicator[i] = old_data[i]
+        if not (year in temporal_indicator):
+            temporal_indicator[year] = {}
+            temporal_indicator[year][month] = 1
+        elif not (month in temporal_indicator.get(year)):
+            temporal_indicator[year][month] = 1
         else:
-            for j in old_data[i]:
-                if not (j in temporal_indicator[i]):
-                    temporal_indicator[i][j] = old_data[i][j]
+            temporal_indicator[year][month] += 1
+
+    for year in old_data:
+        if not (year in temporal_indicator):
+            temporal_indicator[year] = old_data[year]
+        else:
+            for month in old_data[year]:
+                if not (month in temporal_indicator[year]):
+                    temporal_indicator[year][month] = old_data[year][month]
                 else:
-                    temporal_indicator[i][j] += old_data[i][j]
+                    temporal_indicator[year][month] += old_data[year][month]
 
     return temporal_indicator
 
@@ -103,18 +110,18 @@ def build_type_indicator(data):
 def build_operation_area_indicator(new_data, old_data):
     per_operation_area = {}
 
-    for i in new_data:
-        for j in i["terms"]["area"]:
-            if not (j in per_operation_area):
-                per_operation_area[j] = 1
+    for agent in new_data:
+        for area in agent["terms"]["area"]:
+            if not (area in per_operation_area):
+                per_operation_area[area] = 1
             else:
-                per_operation_area[j] += 1
+                per_operation_area[area] += 1
 
-    for i in old_data:
-            if not (i in per_operation_area):
-                per_operation_area[i] = old_data[i]
+    for area in old_data:
+            if not (area in per_operation_area):
+                per_operation_area[area] = old_data[area]
             else:
-                per_operation_area[i] += old_data[i]
+                per_operation_area[area] += old_data[area]
 
     return per_operation_area
 
@@ -123,11 +130,7 @@ def update_agent_indicator(url):
 
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
         PercentIndividualAndCollectiveAgent(0, "2012-01-01 15:47:38.337553", 0, 0).save()
-
-    if len(PercentAgentsPerAreaOperation.objects) == 0:
-        PercentAgentsPerAreaOperation(0, "2012-01-01 15:47:38.337553", {"Literarura": 0}).save()
-
-    if len(AmountAgentsRegisteredPerMonth.objects) == 0:
+        PercentAgentsPerAreaOperation(0, "2012-01-01 15:47:38.337553", {"Literatura": 0}).save()
         AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, "2012-01-01 15:47:38.337553").save()
 
     index = PercentAgentsPerAreaOperation.objects.count()
