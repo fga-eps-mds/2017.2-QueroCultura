@@ -33,3 +33,24 @@
 	padding-left: 20%;
 	padding-top: 10%;
 }
+
+.text-chart-init{
+	position: relative; 
+	padding-left: 20%;
+	padding-top: 2%;
+}
+
+.text-chart h3{
+	border: 2px;
+    padding: 10px;
+    background: #dddddd;
+    border-top-right-radius:2em;
+}
+
+.text-chart-init h3{
+	border: 2px;
+    padding: 10px;
+    background: #dddddd;
+    border-top-right-radius:2em;
+}
+
