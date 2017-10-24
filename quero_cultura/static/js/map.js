@@ -160,27 +160,28 @@ function checkMarkersDuplicity(lastHourArray) {
 function MarkersPoints(firstTime){
 
 	if(map.hasLayer(markersAgent) || firstTime){
+    AgentMarkers("gif", 60);
 		AgentMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
-		AgentMarkers("gif", 60);
 	}
 
 	if(map.hasLayer(markersEvent) || firstTime){
+    EventMarkers("gif", 60);
 		EventMarkers("png", 1440);
-		EventMarkers("gif", 60);
 	}
 
 	if(map.hasLayer(markersSpace) || firstTime){
+    SpaceMarkers("gif", 60);
 		SpaceMarkers("png", 1440);
-		SpaceMarkers("gif", 60);
 	}
 
   if(map.hasLayer(markersProject) || firstTime){
+    ProjectMarkers("gif", 60);
 		ProjectMarkers("png", 1440);
-		ProjectMarkers("gif", 60);
 	}
 
     updateFeed()
 }
+
 
 function updateFeed(){
     var isPrinted = false

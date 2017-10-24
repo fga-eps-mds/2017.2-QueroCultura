@@ -9,6 +9,8 @@
   <meta name="author" content="">
   <title>Quero Cultura</title>
   <!-- Bootstrap core CSS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +19,7 @@
   <!-- Custom styles for this template-->
   <link href="static/css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="static/introjs.css"/>
+  <!--<link href="static/introjs-nassim.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="static/css/map.css"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
@@ -36,7 +39,7 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-file-text-o text-success"></i>
+            <i class="fa fa-fw fa-file-text-o text-success" id="projetosId"></i>
             <span class="nav-link-text text-light">Projetos</span>
           </a>
         </li>
@@ -46,7 +49,7 @@
             <span class="nav-link-text text-light">Espaços</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes" id="agents1">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-user text-info"></i>
             <span class="nav-link-text text-light">Agentes</span>
@@ -70,8 +73,8 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" title="Web site Tour">
-          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:intro.start();">
-            <i class="fa fa-fw fa fa-question-circle text-light"></i>
+          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:startIntro();">
+            <i class="fa fa-fw fa fa-question-circle text-light" id="tourButton"></i>
           </a>
         </li>
       </ul>
@@ -87,7 +90,7 @@
     <footer class="sticky-footer" style= "background-color:transparent">
       <div class="container" >
         <div class="text-right">
-          <small style="color:white">Copyright © Quero Cultura 2017</small>
+          <small style="color:white">Copyleft Quero Cultura 2017</small>
           <img src="static/images/logo.png" height="60" width="59" alt="">
         </div>
       </div>
@@ -110,63 +113,90 @@
     <!-- Custom scripts for this page-->
     <script type = "text/javascript" src="static/intro.js"></script>
     <script type="text/javascript" src="static/js/cookie.js"></script>
-    
 
     <script>
 
     //Create web site tour
+    function startIntro(){
 
-    var intro = introJs();
-  		 intro.setOptions({
-  			 steps: [
+      if ($(document).height() > $(window).height()) {
+         var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
 
-  				 {
-  							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !"
-  				 },
+         $('html').addClass('noscroll').css('top',-scrollTop);
+      }
 
-  				 {
+      var intro = introJs();
 
-  							intro: '<h2>Mapa</h2>Aqui no mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.'
-  					},
+        intro.setOption("nextLabel", '<img src="static/images/arrow.png" height="15px" alt="" />')
 
-  					{
+        intro.setOption("prevLabel", '<img src="static/images/invert_arrow.png" height="15px" alt="" />')
+        intro.setOption("skipLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+        intro.setOption("doneLabel", '<img src="static/images/x_button.png" height="15px" alt="" />')
+        .setOption("showStepNumbers", false)
 
-  						 intro: '<h2>Marcadores</h2> Os marcadores do mapa são separados por cor, vamos ver o que cada um significa! ',
-  					},
+    		intro.setOptions({
+    		 steps: [
 
-            {
+    				 {
+    							intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
+                  element: ".navbar-nav sidenav-toggler"
+             },
 
-  						 intro: '<h2>Agentes</h2> Os marcadores de agentes são identificados pela cor azul, como na imagem: <img src="static/images/marker_4.png" height="35" width="35" /> ',
-  					},
+    				 {
 
-            {
+    							intro: '<h2>Mapa</h2>No mapa você poderá ver as últimas atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+                  element: "#oi"
+    					},
 
-  						 intro: '<h2>Espaços</h2> Os marcadores de espaços são identificados pela cor vermelha, como na imagem: <img src="static/images/marker_2.png" height="35" width="35" /> ',
-  					},
+              {
 
-            {
+    						 intro: '<h2>Zoom</h2>Para uma melhor intereção com o mapa use a tecla de zoom para ver os locais de interesse.',
+                 element: ".leaflet-control-zoom"
 
-  						 intro: '<h2>Evento</h2> Os marcadores de eventos são identificados pela cor amarela, como na imagem: <img src="static/images/marker_6.png" height="35" width="35" /> ',
-  					},
-
-            {
-
-  						 intro: '<h2>Projetos</h2> Os marcadores de projetos são identificados pela cor verde, como na imagem: <img src="static/images/marker_7.png" height="35" width="35" /> ',
-  					},
-
-            {
-              intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores clicando no botão: <img src="static/images/indicadoresButton.png"  height="35" width="35"  />',
-
-  					},
-
-            {
-              intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique na imagem:  <img src="static/images/mapIcon.png"  height="35" width="35"  />',
-
-            },
+    					},
 
 
-  			]
-  		})
+              {
+
+                 intro: '<h2>Filtro</h2>Nos filtos você pode escolher quais marcadores gostarai de ver e escolher a cor do mapa',
+                 element: ".leaflet-control-layers-toggle"
+              },
+
+    					{
+
+    						 intro: '<h2>Marcadores</h2>Os marcadores mostram novos cadastros e atualizações da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, para ver um marcador clique .',
+    					},
+
+              {
+
+    						 intro: '<h2>Agentes</h2> Os marcadores de agentes: <img src="static/images/markerAgent.png" height="35" /><br> Marcadores de projetos: <img src="static/images/markerProject.png" height="35px" alt="" /><br> Marcadores de Espaço: <img src="static/images/markerSpace.png" height="35px" alt="" /><br> Marcadores de evento: <br><img src="static/images/markerEvent.png" height="35px" alt="" /> ',
+              },
+
+
+              {
+
+                 intro: '<h2>Feed de atualizações</h2>O feed exibe as ultimas atualizações do registros da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+                  element: ".block"
+
+              },
+
+              {
+                intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
+                element: '.navbar-nav'
+
+    					},
+
+              {
+                intro: '<h2>Fim !</h2> Agora que você chegou ao final do tour, visite o site e caso queira fazer o tour novamente clique no botão indicado.',
+                element: "#tourButton"
+
+              },
+    			]
+    		})
+
+        intro.start();
+
+      }
 
 
   </script>
@@ -177,7 +207,7 @@
         var nome = readCookie("nome");
         if(nome == null){
             writeCookie("nome", "nome", 30);
-            intro.start();
+            startIntro();
         }
 
   </script>
