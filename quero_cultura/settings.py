@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quero_cultura',
+    'agents_indicators',
     'mongoengine',
     'requests',
 ]
