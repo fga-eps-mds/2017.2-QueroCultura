@@ -7,10 +7,9 @@
 
 .chart-container-agents{
 	position: relative; 
-	height:30vh; 
-	width:40vw;
-	margin-left: 35%;
-	padding-top: 8%;
+	height:70%; 
+	width:70%;
+	padding-left: 30%;
 
 }
 
@@ -18,7 +17,6 @@
 	position: relative; 
 	height:100%; 
 	width:100%;
-	padding-top: 40%;
 	padding-left: 20%;
 }
 
@@ -27,6 +25,11 @@
 	height:100%; 
 	width:100%;
 	padding-left: 20%;
-	padding-top: 10%;
 
+}
+
+.text-chart{
+	position: relative; 
+	padding-left: 20%;
+	padding-top: 10%;
 }
