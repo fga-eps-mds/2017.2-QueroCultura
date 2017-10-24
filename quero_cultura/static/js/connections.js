@@ -25,8 +25,8 @@ function createPromise(url, type, minutes){
 
 function loadMarkers(type, imageExtension, minutes){
     loadMarkersInInstance(type,'http://mapas.cultura.gov.br/api/'+type+'/find' ,imageExtension,minutes)
-    loadMarkersInInstance(type,'http://spcultura.prefeitura.sp.gov.br/api/'+type+'/find' ,imageExtension,minutes)
-    loadMarkersInInstance(type,'http://mapa.cultura.ce.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    //loadMarkersInInstance(type,'http://spcultura.prefeitura.sp.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    //loadMarkersInInstance(type,'http://mapa.cultura.ce.gov.br/api/'+type+'/find' ,imageExtension,minutes)
 }
 
 function loadMarkersInInstance(type, url, imageExtension, minutes) {
@@ -39,7 +39,6 @@ function loadMarkersInInstance(type, url, imageExtension, minutes) {
             case 'event': createEventMarker(data, imageExtension)
             break
             case 'agent': createAgentMarker(data, imageExtension)
-            console.log("huehue",data)
             break
             case 'space': createSpaceMarker(data, imageExtension)
             break
