@@ -3,19 +3,36 @@
 	{% block content %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="static/css/agentsIndicators.css"/>
-
+    <div class="text-chart">
+      <h3>Quantitativo Mensal</h3>
+      <p>Este gráfico refere-se à quantidade de Agentes que se cadastraram por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
+    </div>
     <div class="chart-container-month">
       <canvas id="bar-chart-month"></canvas>
+    </div>
+
+    <div class="text-chart">
+      <h3>Porcentagem de Agentes por Tipo</h3>
+      <p>Este gráfico refere-se à porcentagem de agentes que se declaram "Individuais" ou "Coletivos". Agentes individuais são os perfis que representam apenas uma pessoa, enquanto os coletivos podem representar uma empresa, ong, grupo cultural, entre outras entidades coletivas.</p>
     </div>
 
     <div class="chart-container-agents">
       <canvas id="pie-chart-agents"></canvas>
     </div>
 
+    <div class="text-chart">
+      <h3>Quantitativo de Agentes por Área de Atuação</h3>
+      <p>Este gráfico refere-se à quantidade de agentes cadastrados que declaram ter afinidade ou efetivamente atuar em determinada área de contibuição cultural."</p>
+    </div>
+
     <div class="chart-container-area">
       <canvas id="bar-chart-area"></canvas>
     </div>
 
+    <div class="text-chart">
+      <h3>Crescimento da Plataforma "Mapas Culturais" </h3>
+      <p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de agentes ao longo de sua existência.</p>
+    </div>
     <div class="chart-container-time">
       <canvas id="line-chart-time"></canvas>
     </div>
@@ -31,7 +48,7 @@
   	    data: {
   	        labels: names,
   	        datasets: [{
-  	            label: 'Quantidades de Registros ao longo dos mêses',
+  	            label: 'Quantidades total de registros no momento',
   	            data: prices,
   	            fill: false,
   	            borderWidth: 2.5,
@@ -56,7 +73,7 @@
         options: {
                  title: {
                     display: true,
-                    text: 'Porcentagem de agentes'
+                    text: 'Quantidades de Registros ao longo do tempo'
               }
         }
   	});
@@ -75,8 +92,8 @@
                   label: 'Points',
                   data: pricesP,
                   backgroundColor: [
-                    'rgba(77,166,253,1)',
-                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 51, 51,1)',
+                    'rgba(153, 255, 51, 1)',
 
                   ]
 
@@ -89,7 +106,7 @@
               },
               title: {
                 display: true,
-                text: 'Porcentagem de agentes'
+                text: 'Porcentagem de agentes individuais e coletivos'
               }
            }
       });
@@ -105,7 +122,7 @@
        data: {
            labels: nameArea,
            datasets: [{
-               label: 'Areas de atuação',
+               label: 'Área de atuação',
                data: amountArea,
                backgroundColor: poolColors(amountArea.length),
 
@@ -120,9 +137,10 @@
                    }
                }]
            },
+           legend: {display: true},
            title: {
               display: true,
-              text: 'Porcentagem de agentes'
+              text: 'Quantidade de registros por área de atuação'
             }
        }
    });
@@ -166,9 +184,10 @@
                    }
                }]
            },
+           legend: {display: false},
            title: {
               display: true,
-              text: 'Porcentagem de agentes'
+              text: 'Quantidade de registros cadastrados no mês'
            }
        }
    });
