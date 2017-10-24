@@ -29,6 +29,15 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
+//
+var lastDayData = Array()
+var lastHourData = Array()
+
+var instanceList = ['http://mapas.cultura.gov.br/api/',
+                    'http://spcultura.prefeitura.sp.gov.br/api/',
+                    'http://mapa.cultura.ce.gov.br/api/']
+
+var typeList = ['project', 'event', 'agent', 'space']
 
 var baseLayers = {
   "Light": mapboxTiles,
@@ -51,7 +60,7 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
    based in the last minutes passed by parameter.
    If we pass 60 as parameter this function returns
    the current date time minus 60 minutes and so on. */
-   function getQueryDateTime(lastMinutes){
+function getQueryDateTime(lastMinutes){
     var currentDateTime = new Date()
     var queryDateTime = new Date()
     var timezone = 3
@@ -92,30 +101,69 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
       return promise
 }
 
-function saveQueryResult(instanceURL, markerType, lastMinutes, queryName) {
-    
+function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
     var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
-    var storageKey = queryName + '-' + markerType
-
     promise.then(function(data){
-        localStorage.setItem(storageKey, JSON.stringify(data))
-        loadMarkers(markerType, 'png', data)
+        loadMarkers(markerType, markerImageExtension, data)
+        saveArray.push.apply(saveArray, data)
     })
 
 }
 
+/*function saveQueryResult_test(instanceURL, markerType, lastMinutes, saveArray) {
+    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
+    promise.then(function(data){
+        loadMarkers(markerType, 'gif', data)
+        saveArray.push.apply(saveArray, data)
+    })
+
+}*/
+
 /* Function to load the markers of the last 24 hours in the first time
 that the user access the page or refresh it */
-function firstMarkersLoad(instanceURL){
+function firstMarkersLoad(){
     var lastDay = 1440 // A day has 1440 minutes
-    var typeList = ['project', 'event', 'agent', 'space']
 
-    for (i in typeList){
-        markerType = typeList[i]
-        saveQueryResult(instanceURL, markerType, lastDay, 'last-day')
-        saveQueryResult(instanceURL, markerType, lastMinute, 'last-minute')
+    for(i in instanceList){
+        for (j in typeList){
+            instanceURL = instanceList[i]
+            markerType = typeList[j]
+            saveAndLoadData(instanceURL, markerType, lastDay, lastDayData, 'png')
+        }
     }
+    map.addLayer(markersEvent)
+    map.addLayer(markersProject)
+    map.addLayer(markersAgent)
+    map.addLayer(markersSpace)
+}
 
+function lastHourMarkers() {
+    var lastHour = 60
+
+    for(i in instanceList){
+        for (j in typeList){
+            instanceURL = instanceList[i]
+            markerType = typeList[j]
+            saveAndLoadData(instanceURL, markerType, lastHour, lastHourData, 'gif')
+        }
+    }
+    checkMarkersDuplicity(lastHourData)
+    map.addLayer(markersEvent)
+    map.addLayer(markersProject)
+    map.addLayer(markersAgent)
+    map.addLayer(markersSpace)
+    updateFeed()
+}
+
+function loadAndUpdateMarkers(lastMinutes){
+    for(i in instanceList){
+        for (j in typeList){
+            instanceURL = instanceList[i]
+            markerType = typeList[j]
+            saveQueryResult_test(instanceURL, markerType, lastHour, lastHourData)
+        }
+    }
+    checkMarkersDuplicity(lastHourData)
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -123,10 +171,6 @@ function firstMarkersLoad(instanceURL){
 }
 
 function loadMarkers(markerType, imageExtension, markersData) {
-    console.log(markerType)
-    markersData = checkDoubleMarkers(markerType)
-    console.log(markersData)
-
     switch (markerType) {
         case 'project': createProjectMarker(markersData, imageExtension)
         break
@@ -139,51 +183,22 @@ function loadMarkers(markerType, imageExtension, markersData) {
     }
 }
 
-function lastMinuteMarker(instanceURL) {
-  var lastMinute = 1
-  var typeList = ['project', 'event', 'agent', 'space']
 
-  for (i in typeList){
-      markerType = typeList[i]
-      saveQueryResult(instanceURL, markerType, lastMinute, 'last-minute')
-  }
-
-  map.addLayer(markersEvent)
-  map.addLayer(markersProject)
-  map.addLayer(markersAgent)
-  map.addLayer(markersSpace)
-}
-
-function checkDoubleMarkers(markerType) {
-  var lastMinuteMarkers = JSON.parse(localStorage.getItem('last-minute' + '-' + markerType))
-  var lastDayMarkers = JSON.parse(localStorage.getItem('last-day' + '-' + markerType))
-  var validMarkers = lastDayMarkers
-  var aux = Array()
-
-  for (var i = 0; i < validMarkers.length; i++) {
-    validMarkers[i]['img-ext'] = 'png'
-    for (var j = 0; j < lastMinuteMarkers.length; j++) {
-      if(Object.is(validMarkers[i].id, lastMinuteMarkers[j].id)){
-        validMarkers[i] = lastMinuteMarkers[j]
-        validMarkers[i]['img-ext'] = 'gif'
-      }else{
-        console.log("aaa")
-        lastMinuteMarkers[j]['img-ext'] = 'gif'
-        aux.push(lastMinuteMarkers[j])
-      }
+function checkMarkersDuplicity(lastHourArray) {
+    var duplicates = Array()
+    
+    for(i in lastHourArray){
+        for(j in printedMarkers){
+            if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
+                map.removeLayer(printedMarkers[j].marker)
+                duplicates.push(j)
+            }
+        }
     }
-  }
-  validMarkers.push.apply(validMarkers, aux)
-  return validMarkers
-}
 
-// function returns hour now with minutes delay
-function InitTime(minutes){
-
-	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - minutes);
-    getTimeNow = getTimeNow.toJSON();
-	return getTimeNow;
+    for(i in duplicates){
+        printedMarkers.splice(duplicates[i], 1)
+    }
 }
 
 function MarkersPoints(firstTime){
@@ -232,38 +247,6 @@ function updateFeed(){
     AddInfoToFeed(diffFeed)
     console.log(diffFeed)
     diffFeed = new Map()
-}
-
-function SpaceMarkers(imageExtension, minutes){
-    markersSpace.clearLayers()
-
-    loadMarkers('space', imageExtension, minutes)
-
-    map.addLayer(markersSpace)
-}
-
-function AgentMarkers(imageExtension, minutes){
-    markersAgent.clearLayers()
-
-    loadMarkers('agent', imageExtension, minutes)
-
-    map.addLayer(markersAgent)
-}
-
-function EventMarkers(imageExtension, minutes){
-    markersEvent.clearLayers()
-
-    loadMarkers('event', imageExtension, minutes)
-
-    map.addLayer(markersEvent)
-}
-
-function ProjectMarkers(imageExtension, minutes){
-    markersProject.clearLayers()
-
-    loadMarkers('project', imageExtension, minutes)
-
-    map.addLayer(markersProject);
 }
 
 function AddInfoToFeed(diffFeed) {
