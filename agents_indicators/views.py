@@ -8,33 +8,43 @@ import json
 
 
 def index(request):
+    # Codigo que dropa a base de dados
+
     # PercentAgentsPerAreaOperation.drop_collection()
     # PercentIndividualAndCollectiveAgent.drop_collection()
     # AmountAgentsRegisteredPerMonth.drop_collection()
 
+    # Codigo provisorio de atulização do BD - Celery fara as atualizações
+    
     # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
 
+    # Retorna na variavel index a quantidade de registros existentes
     index = PercentIndividualAndCollectiveAgent.objects.count()
 
+    # Usa o valor de index para acessar elementos no BD pelo indice
     per_type = PercentIndividualAndCollectiveAgent.objects[index-1]
-
     per_area = PercentAgentsPerAreaOperation.objects[index-1]
-    per_area = per_area.total_agents_area_oreration
-
     temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
+
+    # Atribui as variaveis valores para apresentação dos indicadores
+    per_area = per_area.total_agents_area_oreration
     temporal = temporal.total_agents_registered_month
 
+    # Prepara visualização do indicador por tipo
     per_type_keys = ["Individual", "Coletivo"]
     per_type_values = [per_type.total_individual_agent, per_type.total_collective_agent]
 
+    # Inicializa variaveis com listas vazias
     per_area_keys = []
     per_area_values = []
 
+    # Prepara visualização do indicador por area de atuação
     for area in per_area:
         if area == area.capitalize():
             per_area_keys.append(area)
             per_area_values.append(per_area[area])
 
+    # Inicializa variaveis que auxiliam na preparação do indicador temporal
     months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
     last_year = 2013 + len(temporal)
     growthing = 0
@@ -43,6 +53,7 @@ def index(request):
     temporal_values = []
     temporal_growth = []
 
+    # Prepara visualização do indicador temporal
     for year in range(2013, last_year):
         for month in months:
             if (month in temporal[str(year)]):
@@ -52,6 +63,7 @@ def index(request):
                 growthing += temporal[str(year)][month]
                 temporal_growth.append(growthing)
 
+    # Cria dicionario para apresentação dos graficos de indicadores
     context = {
         'per_area_keys': json.dumps(per_area_keys),
         'per_area_values': json.dumps(per_area_values),
@@ -62,6 +74,7 @@ def index(request):
         'temporal_growth': json.dumps(temporal_growth),
     }
 
+    # Renderiza pagina e envia dicionario para apresentação dos graficos
     return render(request, 'agents_indicators/index.html', context)
 
 
@@ -95,14 +108,14 @@ def build_temporal_indicator(new_data, old_data):
     return temporal_indicator
 
 
-def build_type_indicator(data):
+def build_type_indicator(new_data):
     per_type = {}
 
-    for i in data:
-        if not (i["type"]["name"] in per_type):
-            per_type[i["type"]["name"]] = 1
+    for agent in new_data:
+        if not (agent["type"]["name"] in per_type):
+            per_type[agent["type"]["name"]] = 1
         else:
-            per_type[i["type"]["name"]] += 1
+            per_type[agent["type"]["name"]] += 1
 
     return per_type
 
@@ -128,19 +141,24 @@ def build_operation_area_indicator(new_data, old_data):
 
 def update_agent_indicator(url):
 
+    # Cria registro inicial caso seja o primeiro uso da aplicação
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
         PercentIndividualAndCollectiveAgent(0, "2012-01-01 15:47:38.337553", 0, 0).save()
         PercentAgentsPerAreaOperation(0, "2012-01-01 15:47:38.337553", {"Literatura": 0}).save()
         AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, "2012-01-01 15:47:38.337553").save()
 
+    # Retorna na variavel index a quantidade de registros existentes
     index = PercentAgentsPerAreaOperation.objects.count()
 
+    # Usa o valor de index para acessar elementos no BD pelo indice
     last_per_area = PercentAgentsPerAreaOperation.objects[index-1]
     last_type = PercentIndividualAndCollectiveAgent.objects[index-1]
     last_temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
 
+    # Requisita dados da API MinC a partir de data passada por parmetro
     request = RequestAgentsRawData(last_per_area.create_date, url)
 
+    # Geração indicadores de agentes atualizados
     new_total = request.data_length + last_per_area.total_agents
     new_create_date = datetime.now().__str__()
 
@@ -151,6 +169,7 @@ def update_agent_indicator(url):
     new_individual = last_type.total_individual_agent + new_type["Individual"]
     new_collective = last_type.total_collective_agent + new_type["Coletivo"]
 
+    # Persistencia de indicadores de agentes atualizados
     AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()
     PercentIndividualAndCollectiveAgent(new_total, new_create_date, new_individual, new_collective).save()
     PercentAgentsPerAreaOperation(new_total, new_create_date, new_per_area).save()
