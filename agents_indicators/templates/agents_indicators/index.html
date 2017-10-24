@@ -3,7 +3,7 @@
 	{% block content %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="static/css/agentsIndicators.css"/>
-    
+
     <div class="chart-container-month">
       <canvas id="bar-chart-month"></canvas>
     </div>
@@ -11,7 +11,7 @@
     <div class="chart-container-agents">
       <canvas id="pie-chart-agents"></canvas>
     </div>
-    
+
     <div class="chart-container-area">
       <canvas id="bar-chart-area"></canvas>
     </div>
@@ -24,8 +24,8 @@
   <script>
 
   	var ctx = document.getElementById("line-chart-time");
-  	var names = JSON.parse('{{ keys|safe }}');
-  	var prices = JSON.parse('{{ growth|safe }}');
+  	var names = JSON.parse('{{ temporal_keys|safe }}');
+  	var prices = JSON.parse('{{ temporal_growth|safe }}');
   	var agentchart = new Chart(ctx, {
   	    type: 'line',
   	    data: {
@@ -65,8 +65,8 @@
   <script>
 
       var ctxP = document.getElementById("pie-chart-agents");
-      var namesP = JSON.parse('{{ names|safe }}');
-      var pricesP = JSON.parse('{{ prices|safe }}');
+      var namesP = JSON.parse('{{ per_type_keys|safe }}');
+      var pricesP = JSON.parse('{{ per_type_values|safe }}');
       var agentpie = new Chart(ctxP, {
           type: 'pie',
           data: {
@@ -77,9 +77,9 @@
                   backgroundColor: [
                     'rgba(77,166,253,1)',
                     'rgba(255, 159, 64, 1)',
-                       
+
                   ]
-                                
+
               }]
           },
           options: {
@@ -96,10 +96,10 @@
   </script>
 
   <script>
-       
+
     var ctxArea = document.getElementById("bar-chart-area");
-    var nameArea = JSON.parse('{{ nameArea|safe }}');
-    var amountArea = JSON.parse('{{ qtdArea|safe }}');
+    var nameArea = JSON.parse('{{ per_area_keys|safe }}');
+    var amountArea = JSON.parse('{{ per_area_values|safe }}');
     var agentB = new Chart(ctxArea, {
        type: 'bar',
        data: {
@@ -139,14 +139,14 @@
         var g = Math.floor(Math.random() * 255);
         var b = Math.floor(Math.random() * 255);
         return "rgb(" + r + "," + g + "," + b + ")";
-    } 
+    }
    </script>
 
     <script>
-       
+
     var ctxB = document.getElementById("bar-chart-month");
-    var namesB = JSON.parse('{{ keys|safe }}');
-    var pricesB = JSON.parse('{{ values|safe }}');
+    var namesB = JSON.parse('{{ temporal_keys|safe }}');
+    var pricesB = JSON.parse('{{ temporal_values|safe }}');
     var agentB = new Chart(ctxB, {
        type: 'bar',
        data: {
@@ -155,7 +155,7 @@
                label: 'Cadastros no mês',
                data: pricesB,
                backgroundColor: poolColors(pricesB.length),
-               
+
            }]
        },
        options: {
@@ -186,6 +186,6 @@
         var g = Math.floor(Math.random() * 255);
         var b = Math.floor(Math.random() * 255);
         return "rgb(" + r + "," + g + "," + b + ")";
-    } 
+    }
    </script>
 {% endblock %}
