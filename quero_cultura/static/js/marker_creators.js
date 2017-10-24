@@ -2,6 +2,8 @@ var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
 
+var printedMarkers = Array()
+
 function createMarkerIcon(color, extension){
     filename = ''
     switch (color) {
@@ -59,9 +61,9 @@ function createSpaceMarker(data, imageExtension){
                                     data[i]["location"]["longitude"]],
                                     {icon: redMarker}).setZIndexOffset(1000).addTo(markersSpace);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
           }else{
-
             data[i]["type"] = "space"
             var idForMarker = makeIdForMarker(data,i)
             newMarkers.set(idForMarker, data[i])
@@ -69,7 +71,8 @@ function createSpaceMarker(data, imageExtension){
             data[i]["location"]["longitude"]],
             {icon: redMarker}).setZIndexOffset(-30).addTo(markersSpace);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
           }
         }
     }
@@ -89,10 +92,10 @@ function createAgentMarker(data, imageExtension){
             data[i]["location"]["longitude"]],
             {icon: blueMarker}).setZIndexOffset(1000).addTo(markersAgent)
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
           }
         }else{
-
           data[i]["type"] = "agent"
           var idForMarker = makeIdForMarker(data,i)
           newMarkers.set(idForMarker, data[i])
@@ -100,7 +103,8 @@ function createAgentMarker(data, imageExtension){
           data[i]["location"]["longitude"]],
           {icon: blueMarker}).setZIndexOffset(-30).addTo(markersAgent)
           marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-
+          identifiedMarker = {"id" : data[i].id,"marker" : marker}
+          printedMarkers.push(identifiedMarker)
         }
 
   }
@@ -120,6 +124,8 @@ function createEventMarker(data, imageExtension){
             data[i]["occurrences"][0]["space"]["location"]["longitude"]],
             {icon: yellowMarker}).setZIndexOffset(1000).addTo(markersEvent);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
           }else{
 
             data[i]["type"] = "event"
@@ -129,7 +135,8 @@ function createEventMarker(data, imageExtension){
             data[i]["occurrences"][0]["space"]["location"]["longitude"]],
             {icon: yellowMarker}).setZIndexOffset(-30).addTo(markersEvent);
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
           }
     	}
     }
@@ -148,6 +155,10 @@ function createProjectMarker(data, imageExtension){
         							data[i]["owner"]["location"]["longitude"]],
         							{icon: greenMarker}).setZIndexOffset(1000).addTo(markersProject);
         	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
+        }
+
 
         }else{
 
@@ -158,8 +169,9 @@ function createProjectMarker(data, imageExtension){
           data[i]["owner"]["location"]["longitude"]],
           {icon: greenMarker}).setZIndexOffset(-30).addTo(markersProject);
           marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+          identifiedMarker = {"id" : data[i].id,"marker" : marker}
+          printedMarkers.push(identifiedMarker)
         }
       }
-    }
-
 }
+
