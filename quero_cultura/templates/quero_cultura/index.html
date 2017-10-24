@@ -31,9 +31,9 @@ crossorigin=""></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
-		 	//MarkersPoints(true);
-			//setInterval(function(){MarkersPoints(false)}, 15000);
-			lastMinuteMarker('http://spcultura.prefeitura.sp.gov.br/api/')
+			firstMarkersLoad()
+			lastHourMarkers()
+			setInterval(function(){lastHourMarkers()}, 30000)
 	</script>
 
 	{% endblock %}
