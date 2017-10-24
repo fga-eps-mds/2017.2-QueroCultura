@@ -15,7 +15,7 @@ def index(request):
     # AmountAgentsRegisteredPerMonth.drop_collection()
 
     # Codigo provisorio de atulização do BD - Celery fara as atualizações
-    
+
     # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
 
     # Retorna na variavel index a quantidade de registros existentes
@@ -31,8 +31,12 @@ def index(request):
     temporal = temporal.total_agents_registered_month
 
     # Prepara visualização do indicador por tipo
+    total_per_type = per_type.total_individual_agent
+    total_per_type += per_type.total_collective_agent
+    percent_indivividual = per_type.total_individual_agent/total_per_type * 100
+    percent_collective = per_type.total_collective_agent / total_per_type * 100
     per_type_keys = ["Individual", "Coletivo"]
-    per_type_values = [per_type.total_individual_agent, per_type.total_collective_agent]
+    per_type_values = [round(percent_indivividual, 2), round(percent_collective, 2)]
 
     # Inicializa variaveis com listas vazias
     per_area_keys = []
