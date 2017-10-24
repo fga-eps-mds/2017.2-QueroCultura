@@ -12,72 +12,113 @@
       <canvas id="piechart"></canvas>
     </div>
 
-   	<script>
+    <div class="chart-container-bar">
+      <canvas id="barchart"></canvas>
+    </div>
 
-	var ctx = document.getElementById("linechart");
-	var names = JSON.parse('{{ names|safe }}');
-	var prices = JSON.parse('{{ prices|safe }}');
-	var agentchart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: names,
-	        datasets: [{
-	            label: 'Quantidades de Registros por Mês ao Longo do Ano',
-	            data: prices,
-	            fill: false,
-	            borderWidth: 2.5,
-	            borderColor: 'rgba(77,166,253,0.85)',
-	            backgroundColor: 'transparent',
-              	bordeCapStyle: 'butt',
-              	borderDash: [],
-              	borderJoinStyle: 'miter',
-              	pointBorderColr: "rgba(75,192,192,1",
-              	pointBackgroundcOLOR: "fff",
-              	pointBorderWidth: 3,
-              	pointHoverRadius: 5,
-              	pointHoverBackgroundColor: "rgba(75,192,192,1)",
-              	pointHoverBorderColor: "rgba(220,220,220,1)",
-              	pointHoverBorderWidth: 2,
-              	pointRadius: 1,
-              	pointHitRadius: 10,
+  <script>
 
-	        }]
-	    },
-	    options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                time: {
-                     unit: 'month'
-                }
-            }]
-        }
-    }
-	});
+  	var ctx = document.getElementById("linechart");
+  	var names = JSON.parse('{{ keys|safe }}');
+  	var prices = JSON.parse('{{ growth|safe }}');
+  	var agentchart = new Chart(ctx, {
+  	    type: 'line',
+  	    data: {
+  	        labels: names,
+  	        datasets: [{
+  	            label: 'Quantidades de Registros por Mês ao Longo do Ano',
+  	            data: prices,
+  	            fill: false,
+  	            borderWidth: 2.5,
+  	            borderColor: 'rgba(77,166,253,0.85)',
+  	            backgroundColor: 'transparent',
+                	bordeCapStyle: 'butt',
+                	borderDash: [],
+                	borderJoinStyle: 'miter',
+                	pointBorderColr: "rgba(75,192,192,1",
+                	pointBackgroundcOLOR: "fff",
+                	pointBorderWidth: 3,
+                	pointHoverRadius: 5,
+                	pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                	pointHoverBorderColor: "rgba(220,220,220,1)",
+                	pointHoverBorderWidth: 2,
+                	pointRadius: 1,
+                	pointHitRadius: 10,
+
+  	        }]
+  	    },
+  	});
 	</script>
 
-      <script>
+  <script>
 
-  var ctxP = document.getElementById("piechart");
-  var namesP = JSON.parse('{{ names|safe }}');
-  var pricesP = JSON.parse('{{ prices|safe }}');
-  var agentpie = new Chart(ctxP, {
-      type: 'pie',
-      data: {
-          labels: namesP,
-          datasets: [{
-              label: 'Points',
-              data: pricesP,
-                            
-          }]
-      },
-      options: {
-          cutoutPercentage: 50,
-          animation:{
-            animateScale: true,
+      var ctxP = document.getElementById("piechart");
+      var namesP = JSON.parse('{{ names|safe }}');
+      var pricesP = JSON.parse('{{ prices|safe }}');
+      var agentpie = new Chart(ctxP, {
+          type: 'pie',
+          data: {
+              labels: namesP,
+              datasets: [{
+                  label: 'Points',
+                  data: pricesP,
+                  backgroundColor: [
+                    'rgba(77,166,253,1)',
+                    'rgba(255, 159, 64, 1)',
+                       
+                  ]
+                                
+              }]
+          },
+          options: {
+              cutoutPercentage: 50,
+              animation:{
+                animateScale: true,
+              }
           }
-      }
-  });
+      });
   </script>
 
+  <script>
+       
+    var ctxB = document.getElementById("barchart");
+    var namesB = JSON.parse('{{ keys|safe }}');
+    var pricesB = JSON.parse('{{ values|safe }}');
+    var agentB = new Chart(ctxB, {
+       type: 'bar',
+       data: {
+           labels: namesB,
+           datasets: [{
+               label: 'Produtos',
+               data: pricesB,
+               backgroundColor: [
+                   'rgba(255, 99, 132, 0.2)',
+                   'rgba(54, 162, 235, 0.2)',
+                   'rgba(255, 206, 86, 0.2)',
+                   'rgba(75, 192, 192, 0.2)',
+                   'rgba(153, 102, 255, 0.2)',
+                   'rgba(255, 159, 64, 0.2)'
+               ],
+               borderColor: [
+                   'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                   'rgba(255, 206, 86, 1)',
+                   'rgba(75, 192, 192, 1)',
+                   'rgba(153, 102, 255, 1)',
+                   'rgba(255, 159, 64, 1)'
+               ],
+               borderWidth: 1
+           }]
+       },
+       options: {
+           scales: {
+               yAxes: [{
+                   ticks: {
+                       beginAtZero:true
+                   }
+               }]
+           }
+       }
+   });
+   </script>
 {% endblock %}

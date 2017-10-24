@@ -13,26 +13,56 @@ def index(request):
     # AmountAgentsRegisteredPerMonth.drop_collection()
 
     # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
-    index = AmountAgentsRegisteredPerMonth.objects.count()
+    index = PercentIndividualAndCollectiveAgent.objects.count()
 
-    queryset = AmountAgentsRegisteredPerMonth.objects[index-1]
-    queryset = queryset.total_agents_registered_month["2014"]
+    queryset = PercentIndividualAndCollectiveAgent.objects[index-1]
+    agentArea = PercentAgentsPerAreaOperation.objects[index-1]
+    agentArea = agentArea.total_agents_area_oreration
+    year = AmountAgentsRegisteredPerMonth.objects[index-1]
+    year = year.total_agents_registered_month
 
-    names = []
-    prices = []
+    names = ["Individual", "Coletivo"]
+    prices = [queryset.total_individual_agent, queryset.total_collective_agent]
+    
+    nameArea = []
+    qtdArea = []
 
-    for i in queryset.keys():
-        names.append(i)
+    v = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+    x = 0
 
-    for i in queryset.values():
-        prices.append(i)
+    keys = []
+    values = []
+    growth = []
+
+    for i in range(2013, 2013+len(year)):
+       for j in v:
+           if (j in year[str(i)]):
+               keys.append(str(i)+"-"+j)
+               values.append(year[str(i)][j])
+               x += year[str(i)][j]
+               growth.append(x)
+    
+    for i in agentArea:
+        if i == i.capitalize():
+            nameArea.append(i)
+            qtdArea.append(agentArea[i])
+            
 
     context = {
-        'names': json.dumps(names),
-        'prices': json.dumps(prices),
+       
     }
 
-    return render(request, 'agents_indicators/index.html', context)
+    contexArea = {
+        'nameArea': json.dumps(nameArea),
+        'qtdArea': json.dumps(qtdArea),
+        'names': json.dumps(names),
+        'prices': json.dumps(prices),
+        'keys': json.dumps(keys),
+        'values': json.dumps(values),
+        'growth': json.dumps(growth),
+    }
+
+    return render(request, 'agents_indicators/index.html', contexArea)
 
 
 def build_temporal_indicator(new_data, old_data):
