@@ -41,8 +41,16 @@
 }
 
 .text-chart h3{
-	border: 2px solid;
+	border: 2px;
     padding: 10px;
     background: #dddddd;
     border-top-right-radius:2em;
 }
+
+.text-chart-init h3{
+	border: 2px;
+    padding: 10px;
+    background: #dddddd;
+    border-top-right-radius:2em;
+}
+
