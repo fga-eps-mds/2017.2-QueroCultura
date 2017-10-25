@@ -424,7 +424,7 @@ describe('createMarkerIcon', function(){
 
 describe('eraseCookie', function(){
 
-	it('should create cookie', function(){
+	it('should erase cookie', function(){
 
 		spyOn(window, 'writeCookie')
 
