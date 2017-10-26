@@ -42,12 +42,21 @@ def get_undefined_library():
 #        PercentPublicOrPrivateLibrary(total_libraries, datetime.datetime.now(), public_libraries, private_libraries)
 
 
-def get_occupation_area():
+def get_all_occupation_area():
     count = 0
+    areas = {}
     for librarie in get_all_libraries():
         for area in librarie["terms"]["area"]:
-            print(area)
+            filter_types(area, areas)
+
+
+#return dictionary with value of each area
+def filter_types_area(actual_area, areas):
+    if not (actual_area in areas):
+        areas[actual_area] = 1
+    else:
+        areas[actual_area] += 1
 
 
 
-print(get_occupation_area())
+get_occupation_area()
