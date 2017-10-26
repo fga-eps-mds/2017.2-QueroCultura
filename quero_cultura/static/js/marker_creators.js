@@ -78,7 +78,6 @@ function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
     for(var i=0; i < data.length; i++){
 
-
           if(data[i]["location"] != null){
             data[i]["type"] = "agent"
             var idForMarker = makeIdForMarker(data,i)

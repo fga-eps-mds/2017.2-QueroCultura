@@ -13,14 +13,28 @@ def get_public_libraries():
 
     count = 0
     for librarie in get_all_libraries():
-        print(librarie['esfera'])
         if(librarie["esfera"] != None and librarie["esfera"] == 'Pública'):
             count  = count + 1
 
     return count
 
 
+def get_private_libraries():
+    count = 0
+
+    for librarie in get_all_libraries():
+        if(librarie["esfera"] != None and librarie["esfera"] == 'Privada'):
+            count  = count + 1
+
+    return count
 
 
+def get_undefined_library():
+    count = 0
+    for librarie in get_all_libraries():
+        if(librarie["esfera"] == None ):
+            count  = count + 1
 
-print(get_public_libraries())
+    return count
+
+print(get_undefined_library())
