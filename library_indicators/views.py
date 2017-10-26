@@ -1,6 +1,7 @@
 from api_connections import RequestLibraryRawData
 #from models import PercentLibraries
 #from models import PercentPublicOrPrivateLibrary
+#from models import PercentLibraryPerAreaOfActivity
 import datetime
 
 def get_all_libraries():
@@ -31,9 +32,10 @@ def get_undefined_library():
             count = count + 1
     return count
 
-#def update_library_indicator():
+#def update_library_public_private_indicator():
 #    if(len(PercentPublicOrPrivateLibrary.objects) == 0):
 #        PercentPublicOrPrivateLibrary(0, "2012-01-01 15:47:38.337553", 0, 0).save()
+#
 #    else:
 #        undefined_library = get_undefined_library()
 #        public_libraries = get_public_libraries()
@@ -42,12 +44,17 @@ def get_undefined_library():
 #        PercentPublicOrPrivateLibrary(total_libraries, datetime.datetime.now(), public_libraries, private_libraries)
 
 
+#def update_library_per_area_activity():
+#     if(len(PercentLibraryPerAreaOfActivity.objects) == 0):
+#
+#
+#
+
 def get_all_occupation_area():
-    count = 0
     areas = {}
     for librarie in get_all_libraries():
         for area in librarie["terms"]["area"]:
-            filter_types(area, areas)
+            filter_types_area(area, areas)
 
 
 #return dictionary with value of each area
@@ -59,4 +66,4 @@ def filter_types_area(actual_area, areas):
 
 
 
-get_occupation_area()
+get_all_occupation_area()
