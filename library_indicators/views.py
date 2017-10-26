@@ -68,13 +68,13 @@ def get_libraries_per_year():
     create_dates = {}
     for librarie in get_all_libraries():
         date = format_date(librarie["createTimestamp"]["date"])
-        #print(librarie["createTimestamp"]["date"])
-        #filter_libraries_per_year(create_dates,librarie["createTimestamp"]["date"])
-
+        filter_libraries_per_year(create_dates,date)
+    print(create_dates)
 
 def format_date(date):
     right_date = date.split(" ")
-    return right_date[0]
+    year_date = right_date[0].split("-")
+    return year_date[0]
 
 def filter_libraries_per_year(create_dates, date):
     if not (date in create_dates):
