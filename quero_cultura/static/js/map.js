@@ -29,6 +29,15 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
+//
+var lastDayData = Array()
+var lastHourData = Array()
+
+var instanceList = ['http://mapas.cultura.gov.br/api/',
+                    'http://spcultura.prefeitura.sp.gov.br/api/',
+                    'http://mapa.cultura.ce.gov.br/api/']
+
+var typeList = ['project', 'event', 'agent', 'space']
 
 var baseLayers = {
   "Light": mapboxTiles,
@@ -46,39 +55,107 @@ var groupedOverlays = {
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
-// function returns hour now with minutes delay
-function InitTime(minutes){
+/* Defines the date used by the query
+   based in the last minutes passed by parameter.
+   If we pass 60 as parameter this function returns
+   the current date time minus 60 minutes and so on. */
+function getQueryDateTime(lastMinutes){
+    var currentDateTime = new Date()
+    var queryDateTime = new Date()
+    var timezone = 3
+    queryDateTime.setHours(currentDateTime.getHours() - timezone,
+                           currentDateTime.getMinutes() - lastMinutes)
 
-	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 3, getTimeNow.getMinutes() - minutes);
-    getTimeNow.setMilliseconds(0);
-    getTimeNow = getTimeNow.toJSON();
-	return getTimeNow;
+	return queryDateTime.toJSON()
 }
 
-function MarkersPoints(firstTime){
+function createQueryPromise(instanceURL, markerType, lastMinutes){
+    var queryDateTime = getQueryDateTime(lastMinutes);
+    instanceURL = instanceURL+markerType+'/find'
+    console.log(instanceURL)
 
-	if(map.hasLayer(markersAgent) || firstTime){
-		AgentMarkers("png", 1440); //1440 = 24 x 60, minutes in a day
-		AgentMarkers("gif", 60);
-	}
-	if(map.hasLayer(markersEvent) || firstTime){
-		EventMarkers("png", 1440);
-		EventMarkers("gif", 60);
-	}
+    switch(markerType){
+        case 'event':
+            select = 'name, occurrences.{space.{location}}, singleUrl'
+            break
+        case 'project':
+            select = 'name, owner.location, singleUrl '
+            break
+        case 'space':
+        case 'agent':
+            select = 'name, location, singleUrl'
+            break
+        default:
+            select = ''
+    }
 
-	if(map.hasLayer(markersSpace) || firstTime){
-		SpaceMarkers("png", 1440);
-		SpaceMarkers("gif", 60);
-	}
+    var promise = $.getJSON(instanceURL,
+      {
+        '@select' : select,
+        '@or' : 1,
+        'createTimestamp' : "GT("+queryDateTime+")",
+        'updateTimestamp' : "GT("+queryDateTime+")"
+      },);
 
-  if(map.hasLayer(markersProject) || firstTime){
-		ProjectMarkers("png", 1440);
-		ProjectMarkers("gif", 60);
-	}
+      return promise
+}
 
+function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
+    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
+    promise.then(function(data){
+        loadMarkers(markerType, markerImageExtension, data)
+        saveArray.push.apply(saveArray, data)
+    })
+
+}
+
+function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
+    for(i in instanceList){
+        for (j in typeList){
+            instanceURL = instanceList[i]
+            markerType = typeList[j]
+            saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
+        }
+    }
+    checkMarkersDuplicity(lastHourData)
+    map.addLayer(markersEvent)
+    map.addLayer(markersProject)
+    map.addLayer(markersAgent)
+    map.addLayer(markersSpace)
     updateFeed()
 }
+
+function loadMarkers(markerType, imageExtension, markersData) {
+    switch (markerType) {
+        case 'project': createProjectMarker(markersData, imageExtension)
+        break
+        case 'event': createEventMarker(markersData, imageExtension)
+        break
+        case 'agent': createAgentMarker(markersData, imageExtension)
+        break
+        case 'space': createSpaceMarker(markersData, imageExtension)
+        break
+    }
+}
+
+
+function checkMarkersDuplicity(lastHourArray) {
+    var duplicates = Array()
+    
+    for(i in lastHourArray){
+        for(j in printedMarkers){
+            if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
+                map.removeLayer(printedMarkers[j].marker)
+                duplicates.push(j)
+            }
+        }
+    }
+
+    for(i in duplicates){
+        printedMarkers.splice(duplicates[i], 1)
+    }
+}
+
 
 function updateFeed(){
     var isPrinted = false
@@ -101,38 +178,6 @@ function updateFeed(){
     AddInfoToFeed(diffFeed)
     console.log(diffFeed)
     diffFeed = new Map()
-}
-
-function SpaceMarkers(imageExtension, minutes){
-    markersSpace.clearLayers()
-
-    loadMarkers('space', imageExtension, minutes)
-
-    map.addLayer(markersSpace)
-}
-
-function AgentMarkers(imageExtension, minutes){
-    markersAgent.clearLayers()
-
-    loadMarkers('agent', imageExtension, minutes)
-
-    map.addLayer(markersAgent)
-}
-
-function EventMarkers(imageExtension, minutes){
-    markersEvent.clearLayers()
-
-    loadMarkers('event', imageExtension, minutes)
-
-    map.addLayer(markersEvent)
-}
-
-function ProjectMarkers(imageExtension, minutes){
-    markersProject.clearLayers()
-
-    loadMarkers('project', imageExtension, minutes)
-
-    map.addLayer(markersProject);
 }
 
 function AddInfoToFeed(diffFeed) {
