@@ -65,5 +65,12 @@ def filter_types_area(actual_area, areas):
         areas[actual_area] += 1
 
 
+#def get_libraries_per_year():
+#    for librarie in get_all_libraries:
 
-get_all_occupation_area()
+def get_libraries_per_year():
+    for librarie in get_all_libraries():
+        print(librarie["createTimestamp"]["date"])
+
+get_libraries_per_year()
+#print(get_all_libraries())
