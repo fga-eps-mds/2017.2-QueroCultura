@@ -31,8 +31,21 @@ crossorigin=""></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
-		 	MarkersPoints(true);
-			setInterval(function(){MarkersPoints(false)}, 15000);
+	  if ($(document).height() > $(window).height()) {
+ 		        var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+
+         		$('html').addClass('noscroll').css('top',-scrollTop);
+      		}
+
+    var day = 1440 // A day has 1440 minutes
+		var hour = 60
+
+    loadAndUpdateMarkers(day, lastDayData, 'png')
+		loadAndUpdateMarkers(hour, lastHourData, 'gif')
+		setInterval(function(){loadAndUpdateMarkers(hour, lastHourData, 'gif')}, 30000)
+
+    
+    
 	</script>
 
 	{% endblock %}
