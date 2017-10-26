@@ -64,14 +64,14 @@ def filter_types_area(actual_area, areas):
     else:
         areas[actual_area] += 1
 
-def get_libraries_per_year():
-    create_dates = {}
-    for librarie in get_all_libraries():
-        date = format_date(librarie["createTimestamp"]["date"])
-        filter_libraries_per_year(create_dates,date)
-    print(create_dates)
 
-def format_date(date):
+def get_libraries_per_year():
+    create_date_year = {}
+    for librarie in get_all_libraries():
+        date = format_date_year(librarie["createTimestamp"]["date"])
+        filter_libraries_per_year(create_date_year,date)
+
+def format_date_year(date):
     right_date = date.split(" ")
     year_date = right_date[0].split("-")
     return year_date[0]
@@ -82,4 +82,22 @@ def filter_libraries_per_year(create_dates, date):
     else:
         create_dates[date] += 1
 
-get_libraries_per_year()
+def format_date_month(date):
+    right_date = date.split(" ")
+    year_date = right_date[0].split("-")
+    return year_date[1]
+
+def get_libraries_per_month():
+    create_date_month = {}
+    for librarie in get_all_libraries():
+        date = format_date_month(librarie["createTimestamp"]["date"])
+        filter_libraries_per_month(create_date_month, date)
+    print(create_date_month)
+
+def filter_libraries_per_month(create_date_month, month):
+    if not (month in create_date_month):
+        create_date_month[month] = 1
+    else:
+        create_date_month[month] += 1
+
+get_libraries_per_month()
