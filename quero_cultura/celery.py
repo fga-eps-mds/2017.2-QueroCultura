@@ -3,7 +3,6 @@ from celery import Celery
 from celery.schedules import crontab
 from celery.signals import beat_init
 
-
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quero_cultura.settings')
 
@@ -22,13 +21,12 @@ app.autodiscover_tasks()
 def debug_task(self):
   print('Request: {0!r}'.format(self.request))
 
-
 app.conf.beat_schedule = {
     'update_agent_indicator': {
         'task': 'update_agent_indicator',
-        'schedule': crontab(minute=25,
-                            hour=16,
-                            day_of_week='tuesday'),
+        'schedule': crontab(minute=0,
+                            hour=3,
+                            day_of_week='sunday'),
         'args': ["http://mapas.cultura.gov.br/api/agent/find/"],
     },
 }
