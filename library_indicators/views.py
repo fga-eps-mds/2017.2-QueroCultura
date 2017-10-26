@@ -64,13 +64,18 @@ def filter_types_area(actual_area, areas):
     else:
         areas[actual_area] += 1
 
-
-#def get_libraries_per_year():
-#    for librarie in get_all_libraries:
-
 def get_libraries_per_year():
+    create_dates = {}
     for librarie in get_all_libraries():
-        print(librarie["createTimestamp"]["date"])
+        filter_libraries_per_year(create_dates,librarie["createTimestamp"]["date"])
+    print(create_dates)
+
+def format_date(date):
+
+def filter_libraries_per_year(create_dates, date):
+    if not (date in create_dates):
+        create_dates[date] = 1
+    else:
+        create_dates[date] += 1
 
 get_libraries_per_year()
-#print(get_all_libraries())
