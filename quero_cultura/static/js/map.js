@@ -46,12 +46,11 @@ var baseLayers = {
 
 // Overlay layers are grouped
 var groupedOverlays = {
-"": {
-  "Agentes": markersAgent,
-  "Eventos": markersEvent,
-  "Espaços": markersSpace,
-  "Projetos": markersProject,
-  },
+    "": {"Agentes": markersAgent,
+         "Eventos": markersEvent,
+         "Espaços": markersSpace,
+         "Projetos": markersProject
+        }
 };
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
@@ -163,12 +162,12 @@ function updateFeed(){
         isPrinted = false
 
         printedFeed.forEach(function(printed_value,printed_key){
-            if(printed_key == key){
+            if(printed_key === key){
                 isPrinted = true
             }
         }, printedFeed)
 
-        if(isPrinted == false){
+        if(isPrinted === false){
             diffFeed.set(key,value)
             printedFeed.set(key,value)
         }
