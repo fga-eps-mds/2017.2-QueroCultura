@@ -5,5 +5,22 @@ from api_connections import RequestLibraryRawData
 def get_all_libraries():
     request = RequestLibraryRawData("2012-01-01 15:47:38.337553")
 
-    libraries = request.response
+    libraries = request.data
+
     return libraries
+
+def get_public_libraries():
+
+    count = 0
+    for librarie in get_all_libraries():
+        print(librarie['esfera'])
+        if(librarie["esfera"] != None and librarie["esfera"] == 'Pública'):
+            count  = count + 1
+
+    return count
+
+
+
+
+
+print(get_public_libraries())
