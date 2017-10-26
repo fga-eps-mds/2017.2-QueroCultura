@@ -73,7 +73,6 @@ function getQueryDateTime(lastMinutes){
 function createQueryPromise(instanceURL, markerType, lastMinutes){
     var queryDateTime = getQueryDateTime(lastMinutes);
     instanceURL = instanceURL+markerType+'/find'
-    console.log(instanceURL)
 
     switch(markerType){
         case 'event':
@@ -142,7 +141,7 @@ function loadMarkers(markerType, imageExtension, markersData) {
 
 function checkMarkersDuplicity(lastHourArray) {
     var duplicates = Array()
-    
+
     for(i in lastHourArray){
         for(j in printedMarkers){
             if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
@@ -177,7 +176,6 @@ function updateFeed(){
 
     //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
     AddInfoToFeed(diffFeed)
-    console.log(diffFeed)
     diffFeed = new Map()
 }
 

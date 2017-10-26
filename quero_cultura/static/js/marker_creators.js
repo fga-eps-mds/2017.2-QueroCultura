@@ -1,6 +1,7 @@
 var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
+var readYaml = require('read-yaml');
 
 var printedMarkers = Array()
 
@@ -16,7 +17,11 @@ function createMarkerIcon(color, extension){
         case 'green': filename = 'markerProject'
             break
     }
-
+      readYaml('t.yaml', function(err, data) {
+      if (err) throw err;
+      console.log(data);
+    });
+      console.log("toqui");
     if(extension == "gif"){
 
       var imageLocation = "static/images/"+filename+"."+"gif"
@@ -54,6 +59,7 @@ function setZIndex(imageExtension){
     return -30
   }
 }
+
 function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
