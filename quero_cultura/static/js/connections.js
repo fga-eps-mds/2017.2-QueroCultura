@@ -25,8 +25,8 @@ function createPromise(url, type, minutes){
 
 function loadMarkers(type, imageExtension, minutes){
     loadMarkersInInstance(type,'http://mapas.cultura.gov.br/api/'+type+'/find' ,imageExtension,minutes)
-    //loadMarkersInInstance(type,'http://spcultura.prefeitura.sp.gov.br/api/'+type+'/find' ,imageExtension,minutes)
-    //loadMarkersInInstance(type,'http://mapa.cultura.ce.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    loadMarkersInInstance(type,'http://spcultura.prefeitura.sp.gov.br/api/'+type+'/find' ,imageExtension,minutes)
+    loadMarkersInInstance(type,'http://mapa.cultura.ce.gov.br/api/'+type+'/find' ,imageExtension,minutes)
 }
 
 function loadMarkersInInstance(type, url, imageExtension, minutes) {
