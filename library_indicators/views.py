@@ -100,4 +100,14 @@ def filter_libraries_per_month(create_date_month, month):
     else:
         create_date_month[month] += 1
 
-get_libraries_per_month()
+
+def get_all_type_sphere():
+    per_type = {}
+    for library in get_all_libraries():
+        filter_sphere_type(per_type,library)
+
+def filter_sphere_type(per_type, library):
+    if not (library["esfera_tipo"] in per_type):
+        per_type[library["esfera_tipo"]] = 1
+    else:
+        per_type[library["esfera_tipo"]] += 1
