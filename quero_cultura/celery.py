@@ -2,6 +2,8 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 from celery.signals import beat_init
+from datetime import timedelta
+from datetime import datetime
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quero_cultura.settings')
@@ -28,5 +30,13 @@ app.conf.beat_schedule = {
                             hour=3,
                             day_of_week='sunday'),
         'args': ["http://mapas.cultura.gov.br/api/agent/find/"],
+    },
+    'update_agent_indicator_now': {
+        'task': 'update_agent_indicator',
+        'schedule': 10.0,
+        'args': ["http://mapas.cultura.gov.br/api/agent/find/"],
+        'options':{
+            'expires': datetime.now() + timedelta(seconds=15.0),
+        },
     },
 }
