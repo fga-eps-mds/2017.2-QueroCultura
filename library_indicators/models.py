@@ -108,7 +108,7 @@ class PercentLibrariesTypeSphere(PercentLibraries):
 
 
 class QuantityOfRegisteredlibraries(PercentLibraries):
-    # registered per Month and per Year
+
     _libraries_registered_monthly = DictField(required=True)
     _libraries_registered_yearly = DictField(required=True)
 
