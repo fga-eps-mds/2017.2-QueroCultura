@@ -16,7 +16,7 @@ class TestPercentLibraryPerAreaOfActivity(object):
         PercentLibraryPerAreaOfActivity.drop_collection()
         libraries_per_activity = {'activity area': 20}
         library_indicator = PercentLibraryPerAreaOfActivity(
-            20, datetime.now(), libraries_per_activity)
+            20, datetime.now(), libraries_per_activity,0)
         library_indicator.save()
         query = PercentLibraryPerAreaOfActivity.objects.first()
         assert query._libraries_per_activity == libraries_per_activity
@@ -26,7 +26,7 @@ class TestPercentLibraryPerAreaOfActivity(object):
         PercentLibraryPerAreaOfActivity.drop_collection()
         total_libraries = 50
         library_indicator = PercentLibraryPerAreaOfActivity(
-            total_libraries, datetime.now(), {'activity area': 20})
+            total_libraries, datetime.now(), {'activity area': 20},0)
         library_indicator.save()
         query = PercentLibraryPerAreaOfActivity.objects.first()
         assert query._total_libraries == total_libraries

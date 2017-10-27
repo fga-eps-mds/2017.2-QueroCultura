@@ -1,15 +1,20 @@
-from api_connections import RequestLibraryRawData
-from models import PercentLibraries
-from models import PercentPublicOrPrivateLibrary
-from models import PercentLibraryPerAreaOfActivity
+from .api_connections import RequestLibraryRawData
+from .models import PercentLibraries
+from .models import PercentPublicOrPrivateLibrary
+from .models import PercentLibraryPerAreaOfActivity
+from django.shortcuts import render
 import datetime
 
 
+DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+
+def index(request):
+    #update_library_public_private_indicator()
+    return render(request, 'libraries_indicator/index.html')
 
 def update_library_public_private_indicator():
     if(len(PercentPublicOrPrivateLibrary.objects) == 0):
-        PercentPublicOrPrivateLibrary(0, "2012-01-01 15:47:38.337553", 0, 0).save()
-
+        PercentPublicOrPrivateLibrary(0, DEFAULT_INITIAL_DATE , 0, 0).save()
     else:
         undefined_library = get_undefined_library()
         public_libraries = get_public_libraries()
@@ -18,13 +23,10 @@ def update_library_public_private_indicator():
         PercentPublicOrPrivateLibrary(total_libraries, datetime.datetime.now(), public_libraries, private_libraries).save()
 
 
-def update_library_per_area_activity():
-     if(len(PercentLibraryPerAreaOfActivity.objects) == 0):
-         pass
 
 
 def get_all_libraries():
-    request = RequestLibraryRawData("2012-01-01 15:47:38.337553")
+    request = RequestLibraryRawData(DEFAULT_INITIAL_DATE)
     libraries = request.data
     return libraries
 
@@ -51,13 +53,16 @@ def get_undefined_library():
             count = count + 1
     return count
 
+#def get_total_areas():
+#    for area in get_all_occupation_area():
+
 
 def get_all_occupation_area():
     areas = {}
     for librarie in get_all_libraries():
         for area in librarie["terms"]["area"]:
             filter_types_area(area, areas)
-
+    return areas
 
 #return dictionary with value of each area
 def filter_types_area(actual_area, areas):
