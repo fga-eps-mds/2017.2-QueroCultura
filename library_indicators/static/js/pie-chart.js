@@ -1,15 +1,3 @@
-{% extends 'quero_cultura/base.html' %}
-
-{% block content %}
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<link rel="stylesheet" href="static/css/libraryIndicators.css"/>
-
-<div class="chart-container-library">
-  <canvas id="pie-chart-library"></canvas>
-</div>
-
-<script>
 var ctx = document.getElementById('pie-chart-library').getContext('2d');
 var chart = new Chart(ctx, {
   // The type of chart we want to create
@@ -41,6 +29,3 @@ var chart = new Chart(ctx, {
     }
   }
 });
-</script>
-
-{% endblock %}
