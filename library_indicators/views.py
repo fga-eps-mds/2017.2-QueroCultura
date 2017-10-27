@@ -9,9 +9,11 @@ import datetime
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
-    #update_library_public_private_indicator()
-    last_register = PercentPublicOrPrivateLibrary.objects.count()
-    percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register-1]
+    update_indicators()
+    last_register_percent_private_library = PercentPublicOrPrivateLibrary.objects.count()
+    percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register_percent_private_library-1]
+    last_register_quantity_libraries = QuantityOfRegisteredlibraries.objects.count()
+    quantity_libraries = QuantityOfRegisteredlibraries.objects[last_register_quantity_libraries -1]
 
     context = {
         'total_libraries': percent_public_private._total_public_libraries,
@@ -20,16 +22,22 @@ def index(request):
     }
     return render(request, 'libraries_indicator/index.html', context)
 
+def update_indicators():
+    update_library_public_private_indicator()
+    update_quantity_libraries()
 def update_library_public_private_indicator():
-    if(len(PercentPublicOrPrivateLibrary.objects) == 0):
+    if len(PercentPublicOrPrivateLibrary.objects == 0):
         PercentPublicOrPrivateLibrary(0, DEFAULT_INITIAL_DATE, 0, 0).save()
     else:
         undefined_library = 0
         public_libraries = 0
         private_libraries = 0
         total_libraries = 0
-        set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries)
-        PercentPublicOrPrivateLibrary(total_libraries, datetime.datetime.now(), public_libraries, private_libraries).save()
+        set_libraries_amount(undefined_library,
+                             public_libraries, private_libraries, total_libraries)
+        PercentPublicOrPrivateLibrary(total_libraries,
+                                      datetime.datetime.now(),
+                                      public_libraries, private_libraries).save()
 
 def set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries):
     undefined_library = get_undefined_library()
@@ -37,19 +45,21 @@ def set_libraries_amount(undefined_library, public_libraries, private_libraries,
     private_libraries = get_private_libraries()
     total_libraries = undefined_library + public_libraries + private_libraries
 
-def update_amount_year_libraries():
+def update_quantity_libraries():
     if len(QuantityOfRegisteredlibraries.object) == 0:
-        QuantityOfRegisteredlibraries(0, DEFAULT_INITIAL_DATE, 0 ,0).save()
+        QuantityOfRegisteredlibraries(0, DEFAULT_INITIAL_DATE, 0, 0).save()
     else:
         undefined_library = 0
         public_libraries = 0
         private_libraries = 0
         total_libraries = 0
-        year_libraries ={}
+        year_libraries = {}
         year_libraries = get_libraries_per_year()
         mouth_libraries = get_libraries_per_month()
-        set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries)
-        QuantityOfRegisteredlibraries(total_libraries, datetime.datetime.now(),mouth_libraries, year_libraries)
+        set_libraries_amount(undefined_library,
+                             public_libraries, private_libraries, total_libraries)
+        QuantityOfRegisteredlibraries(total_libraries,
+                                      datetime.datetime.now(), mouth_libraries, year_libraries)
 
 def get_all_libraries():
     request = RequestLibraryRawData(DEFAULT_INITIAL_DATE)
@@ -135,7 +145,7 @@ def filter_libraries_per_month(create_date_month, month):
 def get_all_type_sphere():
     per_type = {}
     for library in get_all_libraries():
-        filter_sphere_type(per_type,library)
+        filter_sphere_type(per_type, library)
 
 def filter_sphere_type(per_type, library):
     if not (library["esfera_tipo"] in per_type):
