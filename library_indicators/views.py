@@ -3,6 +3,7 @@ from .models import PercentLibraries
 from .models import PercentPublicOrPrivateLibrary
 from .models import PercentLibraryPerAreaOfActivity
 from .models import QuantityOfRegisteredlibraries
+from .models import PercentLibrariesTypeSphere
 from django.shortcuts import render
 import datetime
 
@@ -21,6 +22,8 @@ def index(request):
         'amount_private_libraries': percent_public_private._total_private_libraries,
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
         'quantity_per_year': quantity_libraries._libraries_registered_yearly
+
+
     }
     return render(request, 'libraries_indicator/index.html', context)
 
@@ -60,12 +63,19 @@ def update_quantity_libraries():
         mouth_libraries = {}
         get_libraries_per_year(year_libraries)
         get_libraries_per_month(mouth_libraries)
-        print
         set_libraries_amount(undefined_library,
                              public_libraries, private_libraries, total_libraries)
         QuantityOfRegisteredlibraries(total_libraries,
                                       datetime.datetime.now(),
                                       mouth_libraries, year_libraries).save()
+
+def update_type_sphere_indicator():
+    if (len(PercentLibrariesTypeSphere.objects)== 0):
+        PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE, 0, 0).save()
+    else:
+    type_sphere_total = get_all_type_sphere()
+    PercentLibrariesTypeSphere(type_sphere_total).save()
+
 
 def get_all_libraries():
     request = RequestLibraryRawData(DEFAULT_INITIAL_DATE)
@@ -150,6 +160,7 @@ def get_all_type_sphere():
     per_type = {}
     for library in get_all_libraries():
         filter_sphere_type(per_type, library)
+    return per_type
 
 def filter_sphere_type(per_type, library):
     if not (library["esfera_tipo"] in per_type):
