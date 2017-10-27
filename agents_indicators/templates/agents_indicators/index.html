@@ -1,7 +1,6 @@
 {% extends 'quero_cultura/base.html' %}
 
 	{% block content %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="static/css/agentsIndicators.css"/>
 
     <div class="text-chart-init">
@@ -39,175 +38,13 @@
       <canvas id="line-chart-time"></canvas>
     </div>
 
-  <script>
 
-  	var ctx = document.getElementById("line-chart-time");
-  	var name_growth = JSON.parse('{{ temporal_keys|safe }}');
-  	var temp_growth = JSON.parse('{{ temporal_growth|safe }}');
-  	var agentchart = new Chart(ctx, {
-  	    type: 'line',
-  	    data: {
-  	        labels: name_growth,
-  	        datasets: [{
-  	            label: 'Quantidades total de registros no momento',
-  	            data: temp_growth,
-  	            fill: false,
-  	            borderWidth: 2.5,
-  	            borderColor: 'rgba(77,166,253,0.85)',
-  	            backgroundColor: 'transparent',
-                	bordeCapStyle: 'butt',
-                	borderDash: [],
-                	borderJoinStyle: 'miter',
-                	pointBorderColr: "rgba(75,192,192,1",
-                	pointBackgroundcOLOR: "fff",
-                	pointBorderWidth: 3,
-                	pointHoverRadius: 5,
-                	pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                	pointHoverBorderColor: "rgba(220,220,220,1)",
-                	pointHoverBorderWidth: 2,
-                	pointRadius: 1,
-                	pointHitRadius: 10,
-
-  	        }]
-  	    },
-
-        options: {
-                 title: {
-                    display: true,
-                    text: 'Quantidades de Registros ao longo do tempo'
-              }
-        }
-  	});
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <script src="static/js/graphics.js"></script>
+	<script type="text/javascript">
+		temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
+	 	per_area_graphic('{{ per_area_keys|safe }}','{{ per_area_values|safe }}')
+		per_type_graphic('{{ per_type_keys|safe }}','{{ per_type_values|safe }}')
+ 		per_grow_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
 	</script>
-
-  <script>
-
-      var ctx_type = document.getElementById("pie-chart-agents");
-      var name_type = JSON.parse('{{ per_type_keys|safe }}');
-      var value_type = JSON.parse('{{ per_type_values|safe }}');
-      var agent_type = new Chart(ctx_type, {
-          type: 'pie',
-          data: {
-              labels: name_type,
-              datasets: [{
-                  label: 'Points',
-                  data: value_type,
-                  backgroundColor: [
-                    'rgba(255, 51, 51,1)',
-                    'rgba(153, 255, 51, 1)',
-
-                  ]
-
-              }]
-          },
-          options: {
-              cutoutPercentage: 50,
-              animation:{
-                animateScale: true,
-              },
-              title: {
-                display: true,
-                text: 'Porcentagem de agentes individuais e coletivos'
-              }
-           }
-      });
-
-
-  </script>
-
-  <script>
-
-    var ctxArea = document.getElementById("bar-chart-area");
-    var nameArea = JSON.parse('{{ per_area_keys|safe }}');
-    var amountArea = JSON.parse('{{ per_area_values|safe }}');
-    var agentB = new Chart(ctxArea, {
-       type: 'bar',
-       data: {
-           labels: nameArea,
-           datasets: [{
-               label: 'Área de atuação',
-               data: amountArea,
-               backgroundColor: poolColors(amountArea.length),
-
-           }]
-       },
-
-       options: {
-           scales: {
-               yAxes: [{
-                   ticks: {
-                       beginAtZero:true
-                   }
-               }]
-           },
-           legend: {display: true},
-           title: {
-              display: true,
-              text: 'Quantidade de registros por área de atuação'
-            }
-       }
-   });
-    function poolColors(a) {
-        var pool = [];
-        for(i=0;i<a;i++){
-            pool.push(dynamicColors());
-        }
-        return pool;
-    }
-
-    function dynamicColors() {
-        var r = Math.floor(Math.random() * 255);
-        var g = Math.floor(Math.random() * 255);
-        var b = Math.floor(Math.random() * 255);
-        return "rgb(" + r + "," + g + "," + b + ")";
-    }
-   </script>
-
-    <script>
-
-    var ctx_temporal = document.getElementById("bar-chart-month");
-    var name_temporal = JSON.parse('{{ temporal_keys|safe }}');
-    var value_temporal = JSON.parse('{{ temporal_values|safe }}');
-    var agentB = new Chart(ctx_temporal, {
-       type: 'bar',
-       data: {
-           labels: name_temporal,
-           datasets: [{
-               label: 'Cadastros no mês',
-               data: value_temporal,
-               backgroundColor: poolColors(value_temporal.length),
-
-           }]
-       },
-       options: {
-           scales: {
-               yAxes: [{
-                   ticks: {
-                       beginAtZero:true
-                   }
-               }]
-           },
-           legend: {display: false},
-           title: {
-              display: true,
-              text: 'Quantidade de registros cadastrados no mês'
-           }
-       }
-   });
-
-    function poolColors(a) {
-        var pool = [];
-        for(i=0;i<a;i++){
-            pool.push(dynamicColors());
-        }
-        return pool;
-    }
-
-    function dynamicColors() {
-        var r = Math.floor(Math.random() * 255);
-        var g = Math.floor(Math.random() * 255);
-        var b = Math.floor(Math.random() * 255);
-        return "rgb(" + r + "," + g + "," + b + ")";
-    }
-   </script>
 {% endblock %}
