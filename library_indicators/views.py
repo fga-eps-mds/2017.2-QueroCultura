@@ -2,6 +2,7 @@ from .api_connections import RequestLibraryRawData
 from .models import PercentLibraries
 from .models import PercentPublicOrPrivateLibrary
 from .models import PercentLibraryPerAreaOfActivity
+from .models import QuantityOfRegisteredlibraries
 from django.shortcuts import render
 import datetime
 
@@ -23,12 +24,32 @@ def update_library_public_private_indicator():
     if(len(PercentPublicOrPrivateLibrary.objects) == 0):
         PercentPublicOrPrivateLibrary(0, DEFAULT_INITIAL_DATE, 0, 0).save()
     else:
-        undefined_library = get_undefined_library()
-        public_libraries = get_public_libraries()
-        private_libraries = get_private_libraries()
-        total_libraries = undefined_library + public_libraries + private_libraries
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries)
         PercentPublicOrPrivateLibrary(total_libraries, datetime.datetime.now(), public_libraries, private_libraries).save()
 
+def set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries):
+    undefined_library = get_undefined_library()
+    public_libraries = get_public_libraries()
+    private_libraries = get_private_libraries()
+    total_libraries = undefined_library + public_libraries + private_libraries
+
+def update_amount_year_libraries():
+    if len(QuantityOfRegisteredlibraries.object) == 0:
+        QuantityOfRegisteredlibraries(0, DEFAULT_INITIAL_DATE, 0 ,0).save()
+    else:
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        year_libraries ={}
+        year_libraries = get_libraries_per_year()
+        mouth_libraries = get_libraries_per_month()
+        set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries)
+        QuantityOfRegisteredlibraries(total_libraries, datetime.datetime.now(),mouth_libraries, year_libraries)
 
 def get_all_libraries():
     request = RequestLibraryRawData(DEFAULT_INITIAL_DATE)
@@ -58,9 +79,6 @@ def get_undefined_library():
             count = count + 1
     return count
 
-#def get_total_areas():
-#    for area in get_all_occupation_area():
-
 
 def get_all_occupation_area():
     areas = {}
@@ -82,6 +100,7 @@ def get_libraries_per_year():
     for librarie in get_all_libraries():
         date = format_date_year(librarie["createTimestamp"]["date"])
         filter_libraries_per_year(create_date_year,date)
+    return create_date_year
 
 def format_date_year(date):
     right_date = date.split(" ")
@@ -104,7 +123,7 @@ def get_libraries_per_month():
     for librarie in get_all_libraries():
         date = format_date_month(librarie["createTimestamp"]["date"])
         filter_libraries_per_month(create_date_month, date)
-    print(create_date_month)
+    return create_date_month
 
 def filter_libraries_per_month(create_date_month, month):
     if not (month in create_date_month):
