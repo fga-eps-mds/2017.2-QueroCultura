@@ -7,6 +7,7 @@ __pycache__/
 
 \.cache/v/cache/
 .cache/
+cache/
 
 coverage/PhantomJS 2\.1\.1 \(Linux 0\.0\.0\)/lcov-report/
 
