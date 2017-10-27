@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'quero_cultura',
     'agents_indicators',
+    'library_indicators',
     'mongoengine',
     'requests',
 ]
