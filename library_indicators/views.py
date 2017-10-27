@@ -4,19 +4,18 @@ from .models import PercentPublicOrPrivateLibrary
 from .models import PercentLibraryPerAreaOfActivity
 from django.shortcuts import render
 import datetime
-import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
-    update_library_public_private_indicator()
+    #update_library_public_private_indicator()
     last_register = PercentPublicOrPrivateLibrary.objects.count()
-    per_type = PercentPublicOrPrivateLibrary.objects[last_register-1]
+    percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register-1]
 
-    print ("quantidade", last_register)
-    print ("blabla", per_type._total_public_libraries)
     context = {
-        'teste': per_type._total_public_libraries,
+        'total_libraries': percent_public_private._total_public_libraries,
+        'amount_public_libraries':percent_public_private._total_public_libraries,
+        'amount_private_libraries':percent_public_private._total_private_libraries,
     }
     return render(request, 'libraries_indicator/index.html', context)
 
