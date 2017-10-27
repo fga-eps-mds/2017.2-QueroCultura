@@ -145,7 +145,6 @@ def filter_libraries_per_month(create_date_month, month):
     else:
         create_date_month[month] += 1
 
-
 def get_all_type_sphere():
     per_type = {}
     for library in get_all_libraries():

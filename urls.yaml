@@ -1,0 +1,5 @@
+- http://bibliotecas.cultura.gov.br/api/space/find/ #index position 0
+- http://mapas.cultura.gov.br/api/event/find/       #index position 1
+- http://museus.cultura.gov.br/api/space/find/      #index position 2
+- http://mapas.cultura.gov.br/api/project/find/     #index position 3
+- http://mapas.cultura.gov.br/api/space/find/       #index position  4

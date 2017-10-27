@@ -1,11 +1,11 @@
 import json
 import requests
-
+import yaml
 
 class RequestLibraryRawData(object):
     def __init__(self, last_update_time):
         self._get_time = last_update_time
-        self._url = 'http://bibliotecas.cultura.gov.br/api/space/find/'
+        self._url = self.get_url()
         self._filters = {'@select': 'En_Estado, esfera, esfera_tipo, terms,'
                                     + 'createTimestamp',
                          'createTimestamp': "GT("+self._get_time+")"}
@@ -23,3 +23,12 @@ class RequestLibraryRawData(object):
     @property
     def data_length(self):
         return len(self._data)
+
+    def get_url(self):
+        urls_files = open("./urls.yaml", 'r')
+        urls = yaml.load(urls_files)
+        url_list = []
+        for url in urls:
+            url_list.append(url)
+        print(url_list[0])
+        return url_list[0]
