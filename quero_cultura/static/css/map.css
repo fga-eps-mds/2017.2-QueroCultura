@@ -1,7 +1,6 @@
 #map {
   height: 96%;
   width: 100%;
-
   z-index: none;
   position: absolute;
 
@@ -10,7 +9,9 @@
 .map-container{
   display: flex;
   flex-flow: row wrap;
+  overflow: scroll;
 }
+
 html.noscroll {
     position: fixed;
     overflow-y: hidden;
@@ -28,8 +29,8 @@ html.noscroll {
 #title-block {
     z-index: 9999999 !important;
     background-color: transparent;
-    margin-top: 12%;
-    margin-left: 78%;
+    margin-top: 5%;
+    margin-left: 10%;
     position: relative;
     font-family: 'Anton';
     text-align: center;
@@ -37,16 +38,14 @@ html.noscroll {
 
 .block{
     z-index: 9999999 !important;
-    height: 370px;
+    height: 550px;
     width: 280px;
-
-    max-height: 370px;
+    max-height: 570px;
     max-width: 280px;
-
     background-color: transparent;
-    border-style: solid;
     border-color: #333;
-    margin-left: 72%;
+    margin-left: 1%;
+    margin-top: 1%;
     position: relative;
     overflow: auto;
 }
@@ -85,4 +84,35 @@ html.noscroll {
 .block svg{
   height: 40px;
   width: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+@media (max-width: 991px) {
+  .map-container{
+    max-height: 100vh;
+  }
+
+  #map {
+    height: 500px;
+    position: relative;
+
+  }
+
+  .block{
+    margin-top: 5%;
+    margin-bottom: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40vh;
+    background-color: transparent;
+    position: relative;
+  }
 }

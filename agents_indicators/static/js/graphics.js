@@ -14,7 +14,6 @@ function dynamicColors() {
 }
 
 function temporal_graphic(keys,data){
-    console.log(data)
     var ctx_temporal = document.getElementById("bar-chart-month");
 
     var name_temporal = JSON.parse(keys);
