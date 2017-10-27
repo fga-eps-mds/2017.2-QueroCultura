@@ -1,41 +1,41 @@
 .chart-container-month{
-	position: relative; 
-	height:100%; 
+	position: relative;
+	height:100%;
 	width:100%;
 	padding-left: 20%;
 }
 
 .chart-container-agents{
-	position: relative; 
-	height:70%; 
+	position: relative;
+	height:70%;
 	width:70%;
 	padding-left: 30%;
 
 }
 
 .chart-container-area{
-	position: relative; 
-	height:100%; 
+	position: relative;
+	height:100%;
 	width:100%;
 	padding-left: 20%;
 }
 
 .chart-container-time{
-	position: relative; 
-	height:100%; 
+	position: relative;
+	height:100%;
 	width:100%;
 	padding-left: 20%;
 
 }
 
 .text-chart{
-	position: relative; 
+	position: relative;
 	padding-left: 20%;
 	padding-top: 10%;
 }
 
 .text-chart-init{
-	position: relative; 
+	position: relative;
 	padding-left: 20%;
 	padding-top: 2%;
 }
@@ -54,3 +54,37 @@
     border-top-right-radius:2em;
 }
 
+.indicators_navbar{
+	background-color: green;
+	margin-bottom: 5%;
+	text-align: center;
+}
+
+.indicators_navbar ul{
+	display: inline;
+	float: left;
+	margin-top: 2%;
+}
+
+.indicators_navbar li{
+	display: inline-block;
+	float: left;
+	border: 2px solid blue;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.indicators_navbar li:first-child {
+	border-radius: 15px 0px 0px 15px;
+	border: 2px solid blue;
+
+}
+
+.indicators_navbar li:last-child {
+	border-radius: 0px 15px 15px 0px;
+	border: 2px solid blue;
+}
+
+.indicators_navbar li:hover {
+  background-color: #87CEFF;
+}

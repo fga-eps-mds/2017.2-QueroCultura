@@ -79,7 +79,7 @@ def index(request):
     }
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
-    return render(request, 'agents_indicators/index.html', context)
+    return render(request, 'agents_indicators/agents_indicators.html', context)
 
 
 def build_temporal_indicator(new_data, old_data):
