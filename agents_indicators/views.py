@@ -5,18 +5,9 @@ from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
 from datetime import datetime
 import json
-
+from celery.decorators import task
 
 def index(request):
-    # Codigo que dropa a base de dados
-
-    # PercentAgentsPerAreaOperation.drop_collection()
-    # PercentIndividualAndCollectiveAgent.drop_collection()
-    # AmountAgentsRegisteredPerMonth.drop_collection()
-
-    # Codigo provisorio de atulização do BD - Celery fara as atualizações
-
-    # update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
 
     # Retorna na variavel index a quantidade de registros existentes
     index = PercentIndividualAndCollectiveAgent.objects.count()
@@ -142,7 +133,7 @@ def build_operation_area_indicator(new_data, old_data):
 
     return per_operation_area
 
-
+@task(name="update_agent_indicator")
 def update_agent_indicator(url):
 
     # Cria registro inicial caso seja o primeiro uso da aplicação
