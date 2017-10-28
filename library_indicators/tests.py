@@ -16,12 +16,31 @@ from .views import get_libraries_per_month
 from .views import get_public_libraries
 from .views import get_private_libraries
 from .views import get_all_libraries
-
+from .views import get_undefined_library
+from .views import get_all_occupation_area
 class TestUpdateIndicator(unittest.TestCase):
     @staticmethod
     def test_get_public_libraries():
         value = get_public_libraries()
         assert value
+
+
+    @staticmethod
+    def test_get_all_occupation_area():
+        value = {}
+        value = get_all_occupation_area()
+        assert value
+
+    @staticmethod
+    def test_get_private_libraries():
+        value = get_private_libraries()
+        assert value
+
+    @staticmethod
+    def test_get_all_libraries():
+        value = get_all_libraries()
+        assert value
+
     @staticmethod
     def test_get_libraries_per_month():
         month = {}
