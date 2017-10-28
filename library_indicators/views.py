@@ -60,7 +60,6 @@ def update_quantity_libraries():
         mouth_libraries = {}
         get_libraries_per_year(year_libraries)
         get_libraries_per_month(mouth_libraries)
-        print
         set_libraries_amount(undefined_library,
                              public_libraries, private_libraries, total_libraries)
         QuantityOfRegisteredlibraries(total_libraries,

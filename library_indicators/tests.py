@@ -1,4 +1,5 @@
 from datetime import datetime
+import unittest
 from .api_connections import RequestLibraryRawData
 from .models import PercentLibraryPerAreaOfActivity
 from .models import PercentPublicOrPrivateLibrary
@@ -7,7 +8,20 @@ from .models import PercentPublicOrPrivateLibraryPerState
 from .models import QuantityOfRegisteredlibraries
 from .models import PercentLibrariesTypeSphere
 from .models import PercentLibraryForState
+from .views import update_indicators
 
+class TestUpdateIndicator(unittest.TestCase):
+    @staticmethod
+    def test_update_indicators():
+        count_percent = 0
+        count_public = 0
+        PercentPublicOrPrivateLibrary.drop_collection()
+        QuantityOfRegisteredlibraries.drop_collection()
+        update_indicators()
+        count_percent += PercentPublicOrPrivateLibrary.objects.count()
+        count_public += QuantityOfRegisteredlibraries.objects.count()
+        result = count_percent + count_public
+        assert result == 2
 
 class TestPercentLibraryPerAreaOfActivity(object):
 
