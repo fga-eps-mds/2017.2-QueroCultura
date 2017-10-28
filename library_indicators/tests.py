@@ -12,12 +12,24 @@ from .views import update_indicators
 from .views import set_libraries_amount
 from .views import format_date_year
 from .views import format_date_month
+from .views import get_libraries_per_month
+from .views import get_public_libraries
+from .views import get_private_libraries
+from .views import get_all_libraries
 
 class TestUpdateIndicator(unittest.TestCase):
+    @staticmethod
+    def test_get_public_libraries():
+        value = get_public_libraries()
+        assert value
+    @staticmethod
+    def test_get_libraries_per_month():
+        month = {}
+        get_libraries_per_month(month)
+        assert month
 
     @staticmethod
-    @staticmethod
-    def test_format_date_mounth():
+    def test_format_date_mouth():
         date = format_date_month("2012-01-01 15:47:38.337553")
         assert date == "01"
 

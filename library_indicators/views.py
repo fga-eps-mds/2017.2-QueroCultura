@@ -129,8 +129,8 @@ def filter_libraries_per_year(create_dates, date):
 
 def format_date_month(date):
     right_date = date.split(" ")
-    year_date = right_date[0].split("-")
-    return year_date[1]
+    month_date = right_date[0].split("-")
+    return month_date[1]
 
 def get_libraries_per_month(create_date_month):
 
