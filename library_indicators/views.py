@@ -6,11 +6,11 @@ from .models import QuantityOfRegisteredlibraries
 from .models import PercentLibrariesTypeSphere
 from django.shortcuts import render
 import datetime
+from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
-    update_indicators()
 
     last_register_percent_private_library = PercentPublicOrPrivateLibrary.objects.count()
     percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register_percent_private_library-1]
@@ -37,7 +37,7 @@ def index(request):
     return render(request, 'libraries_indicator/index.html', context)
 
 
-
+@task(name="update_library_indicator")
 def update_indicators():
     update_library_public_private_indicator()
     update_quantity_libraries()
@@ -139,7 +139,7 @@ def get_all_occupation_area():
     count = 0
     for librarie in get_all_libraries():
         for area in librarie["terms"]["area"]:
-            count = filter_types_area(area, areas)
+            filter_types_area(area, areas)
     return areas
 
 #return dictionary with value of each area
