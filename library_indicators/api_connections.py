@@ -30,5 +30,4 @@ class RequestLibraryRawData(object):
         url_list = []
         for url in urls:
             url_list.append(url)
-        print(url_list[0])
         return url_list[0]

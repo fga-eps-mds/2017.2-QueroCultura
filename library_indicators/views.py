@@ -33,8 +33,6 @@ def index(request):
         'type_sphere_total': type_sphere_total._total_libraries_type_sphere,
         'ocupation_area_total':ocupation_area_total._libraries_per_activity,
         'amount_of_ocupation_area':ocupation_area_total._amount_areas,
-
-
     }
     return render(request, 'libraries_indicator/index.html', context)
 

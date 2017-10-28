@@ -18,7 +18,16 @@ from .views import get_private_libraries
 from .views import get_all_libraries
 from .views import get_undefined_library
 from .views import get_all_occupation_area
+from .views import get_all_type_sphere
+
 class TestUpdateIndicator(unittest.TestCase):
+
+    @staticmethod
+    def test_get_all_type_sphere():
+        values = {}
+        values = get_all_type_sphere()
+        assert values
+
     @staticmethod
     def test_get_public_libraries():
         value = get_public_libraries()
@@ -65,13 +74,19 @@ class TestUpdateIndicator(unittest.TestCase):
     def test_update_indicators():
         count_percent = 0
         count_public = 0
+        count_sphere = 0
+        count_activity = 0
         PercentPublicOrPrivateLibrary.drop_collection()
         QuantityOfRegisteredlibraries.drop_collection()
+        PercentLibrariesTypeSphere.drop_collection()
+        PercentLibraryPerAreaOfActivity.drop_collection()
         update_indicators()
         count_percent += PercentPublicOrPrivateLibrary.objects.count()
         count_public += QuantityOfRegisteredlibraries.objects.count()
-        result = count_percent + count_public
-        assert result == 2
+        count_sphere += PercentLibrariesTypeSphere.objects.count()
+        count_activity += PercentLibraryPerAreaOfActivity.objects.count()
+        result = count_percent + count_public + count_sphere + count_activity
+        assert result == 4
 
     @staticmethod
     def test_set_amount_libraries_undefined():
