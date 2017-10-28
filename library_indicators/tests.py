@@ -34,6 +34,36 @@ class TestUpdateIndicator(unittest.TestCase):
                                                                                                    public_libraries, private_libraries, total_libraries)
         assert undefined_library
 
+    @staticmethod
+    def test_set_amount_libraries_total():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert total_libraries
+
+    @staticmethod
+    def test_set_amount_libraries_public():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert public_libraries
+
+    @staticmethod
+    def test_set_amount_libraries_private():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert private_libraries
+
 class TestPercentLibraryPerAreaOfActivity(object):
 
     @staticmethod
