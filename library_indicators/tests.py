@@ -24,6 +24,10 @@ class TestUpdateIndicator(unittest.TestCase):
         value = get_public_libraries()
         assert value
 
+    @staticmethod
+    def test_get_undefined_libraries():
+        value = get_undefined_library()
+        assert value
 
     @staticmethod
     def test_get_all_occupation_area():
