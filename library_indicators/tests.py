@@ -9,6 +9,7 @@ from .models import QuantityOfRegisteredlibraries
 from .models import PercentLibrariesTypeSphere
 from .models import PercentLibraryForState
 from .views import update_indicators
+from .views import set_libraries_amount
 
 class TestUpdateIndicator(unittest.TestCase):
     @staticmethod
@@ -22,6 +23,16 @@ class TestUpdateIndicator(unittest.TestCase):
         count_public += QuantityOfRegisteredlibraries.objects.count()
         result = count_percent + count_public
         assert result == 2
+
+    @staticmethod
+    def test_set_amount_libraries_undefined():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert undefined_library
 
 class TestPercentLibraryPerAreaOfActivity(object):
 

@@ -16,7 +16,7 @@ def index(request):
     quantity_libraries = QuantityOfRegisteredlibraries.objects[last_register_quantity_libraries -1]
 
     context = {
-        'total_libraries': percent_public_private._total_public_libraries,
+        'total_libraries': percent_public_private._total_libraries,
         'amount_public_libraries': percent_public_private._total_public_libraries,
         'amount_private_libraries': percent_public_private._total_private_libraries,
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
@@ -36,8 +36,12 @@ def update_library_public_private_indicator():
         public_libraries = 0
         private_libraries = 0
         total_libraries = 0
-        set_libraries_amount(undefined_library,
+        undefined_library, public_libraries, private_libraries, total_libraries =  set_libraries_amount(undefined_library,
                              public_libraries, private_libraries, total_libraries)
+        print (undefined_library)
+        print (public_libraries)
+        print (private_libraries)
+        print (total_libraries)
         PercentPublicOrPrivateLibrary(total_libraries,
                                       datetime.datetime.now(),
                                       public_libraries, private_libraries).save()
@@ -47,6 +51,7 @@ def set_libraries_amount(undefined_library, public_libraries, private_libraries,
     public_libraries = get_public_libraries()
     private_libraries = get_private_libraries()
     total_libraries = undefined_library + public_libraries + private_libraries
+    return undefined_library, public_libraries, private_libraries, total_libraries
 
 def update_quantity_libraries():
     if (len(QuantityOfRegisteredlibraries.objects) == 0):
