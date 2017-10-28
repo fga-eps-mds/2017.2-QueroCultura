@@ -11,17 +11,23 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
     update_indicators()
+
     last_register_percent_private_library = PercentPublicOrPrivateLibrary.objects.count()
     percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register_percent_private_library-1]
+
     last_register_quantity_libraries = QuantityOfRegisteredlibraries.objects.count()
     quantity_libraries = QuantityOfRegisteredlibraries.objects[last_register_quantity_libraries -1]
+
+    last_register_type_sphere_quantity = PercentLibrariesTypeSphere.objects.count()
+    type_sphere_total = PercentLibrariesTypeSphere.objects[last_register_type_sphere_quantity - 1]
 
     context = {
         'total_libraries': percent_public_private._total_public_libraries,
         'amount_public_libraries': percent_public_private._total_public_libraries,
         'amount_private_libraries': percent_public_private._total_private_libraries,
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
-        'quantity_per_year': quantity_libraries._libraries_registered_yearly
+        'quantity_per_year': quantity_libraries._libraries_registered_yearly,
+        'type_sphere_total': ,
 
 
     }
@@ -30,6 +36,7 @@ def index(request):
 def update_indicators():
     update_library_public_private_indicator()
     update_quantity_libraries()
+    update_type_sphere_indicator()
 
 def update_library_public_private_indicator():
     if (len(PercentPublicOrPrivateLibrary.objects)== 0):
@@ -71,10 +78,12 @@ def update_quantity_libraries():
 
 def update_type_sphere_indicator():
     if (len(PercentLibrariesTypeSphere.objects)== 0):
-        PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE, 0, 0).save()
+        PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE,{'Municipal': 1}).save()
     else:
-    type_sphere_total = get_all_type_sphere()
-    PercentLibrariesTypeSphere(type_sphere_total).save()
+        total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
+        type_sphere_total = {}
+        type_sphere_total = get_all_type_sphere()
+        PercentLibrariesTypeSphere(total_libraries,datetime.datetime.now(),type_sphere_total).save()
 
 
 def get_all_libraries():
@@ -158,12 +167,16 @@ def filter_libraries_per_month(create_date_month, month):
 
 def get_all_type_sphere():
     per_type = {}
+    per_type['None'] = 1
     for library in get_all_libraries():
         filter_sphere_type(per_type, library)
     return per_type
 
 def filter_sphere_type(per_type, library):
-    if not (library["esfera_tipo"] in per_type):
-        per_type[library["esfera_tipo"]] = 1
+    if(library["esfera_tipo"] != None):
+        if not (library["esfera_tipo"] in per_type):
+            per_type[library["esfera_tipo"]] = 1
+        else:
+            per_type[library["esfera_tipo"]] += 1
     else:
-        per_type[library["esfera_tipo"]] += 1
+        per_type['None'] += 1
