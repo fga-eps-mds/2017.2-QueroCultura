@@ -1,12 +1,12 @@
 import json
 import requests
-
+import yaml
 
 class RequestEventsRawData(object):
 
     def __init__(self, last_update_time):
         self._get_time = last_update_time
-        self._url = 'http://mapas.cultura.gov.br/api/event/find/'
+        self._url = self.get_url()
         self._filters = {'@select': 'classificacaoEtaria, createTimestamp,'
                                     + 'terms, occurrences.{space.{En_Estado}}',
                          'createTimestamp': "GT("+self._get_time+")"}
@@ -24,3 +24,11 @@ class RequestEventsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
+
+    def get_url(self):
+        urls_files = open("./urls.yaml", 'r')
+        urls = yaml.load(urls_files)
+        url_list = []
+        for url in urls:
+            url_list.append(url)
+        return url_list[4]

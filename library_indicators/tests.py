@@ -1,4 +1,5 @@
 from datetime import datetime
+import unittest
 from .api_connections import RequestLibraryRawData
 from .models import PercentLibraryPerAreaOfActivity
 from .models import PercentPublicOrPrivateLibrary
@@ -7,7 +8,110 @@ from .models import PercentPublicOrPrivateLibraryPerState
 from .models import QuantityOfRegisteredlibraries
 from .models import PercentLibrariesTypeSphere
 from .models import PercentLibraryForState
+from .views import update_indicators
+from .views import set_libraries_amount
+from .views import format_date_year
+from .views import format_date_month
+from .views import get_libraries_per_month
+from .views import get_public_libraries
+from .views import get_private_libraries
+from .views import get_all_libraries
+from .views import get_undefined_library
+from .views import get_all_occupation_area
+class TestUpdateIndicator(unittest.TestCase):
+    @staticmethod
+    def test_get_public_libraries():
+        value = get_public_libraries()
+        assert value
 
+    @staticmethod
+    def test_get_undefined_libraries():
+        value = get_undefined_library()
+        assert value
+
+    @staticmethod
+    def test_get_all_occupation_area():
+        value = {}
+        value = get_all_occupation_area()
+        assert value
+
+    @staticmethod
+    def test_get_private_libraries():
+        value = get_private_libraries()
+        assert value
+
+    @staticmethod
+    def test_get_all_libraries():
+        value = get_all_libraries()
+        assert value
+
+    @staticmethod
+    def test_get_libraries_per_month():
+        month = {}
+        get_libraries_per_month(month)
+        assert month
+
+    @staticmethod
+    def test_format_date_mouth():
+        date = format_date_month("2012-01-01 15:47:38.337553")
+        assert date == "01"
+
+    @staticmethod
+    def test_format_date_year():
+        date = format_date_year("2012-01-01 15:47:38.337553")
+        assert date == "2012"
+
+    @staticmethod
+    def test_update_indicators():
+        count_percent = 0
+        count_public = 0
+        PercentPublicOrPrivateLibrary.drop_collection()
+        QuantityOfRegisteredlibraries.drop_collection()
+        update_indicators()
+        count_percent += PercentPublicOrPrivateLibrary.objects.count()
+        count_public += QuantityOfRegisteredlibraries.objects.count()
+        result = count_percent + count_public
+        assert result == 2
+
+    @staticmethod
+    def test_set_amount_libraries_undefined():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert undefined_library
+
+    @staticmethod
+    def test_set_amount_libraries_total():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert total_libraries
+
+    @staticmethod
+    def test_set_amount_libraries_public():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert public_libraries
+
+    @staticmethod
+    def test_set_amount_libraries_private():
+        undefined_library = 0
+        public_libraries = 0
+        private_libraries = 0
+        total_libraries = 0
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                   public_libraries, private_libraries, total_libraries)
+        assert private_libraries
 
 class TestPercentLibraryPerAreaOfActivity(object):
 
