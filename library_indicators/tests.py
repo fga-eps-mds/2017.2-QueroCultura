@@ -10,8 +10,22 @@ from .models import PercentLibrariesTypeSphere
 from .models import PercentLibraryForState
 from .views import update_indicators
 from .views import set_libraries_amount
+from .views import format_date_year
+from .views import format_date_month
 
 class TestUpdateIndicator(unittest.TestCase):
+
+    @staticmethod
+    @staticmethod
+    def test_format_date_mounth():
+        date = format_date_month("2012-01-01 15:47:38.337553")
+        assert date == "01"
+
+    @staticmethod
+    def test_format_date_year():
+        date = format_date_year("2012-01-01 15:47:38.337553")
+        assert date == "2012"
+
     @staticmethod
     def test_update_indicators():
         count_percent = 0

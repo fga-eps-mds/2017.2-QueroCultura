@@ -38,10 +38,6 @@ def update_library_public_private_indicator():
         total_libraries = 0
         undefined_library, public_libraries, private_libraries, total_libraries =  set_libraries_amount(undefined_library,
                              public_libraries, private_libraries, total_libraries)
-        print (undefined_library)
-        print (public_libraries)
-        print (private_libraries)
-        print (total_libraries)
         PercentPublicOrPrivateLibrary(total_libraries,
                                       datetime.datetime.now(),
                                       public_libraries, private_libraries).save()
