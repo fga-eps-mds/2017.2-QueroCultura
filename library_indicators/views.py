@@ -27,17 +27,21 @@ def index(request):
         'amount_private_libraries': percent_public_private._total_private_libraries,
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
         'quantity_per_year': quantity_libraries._libraries_registered_yearly,
-        'type_sphere_total': ,
+        'type_sphere_total': type_sphere_total._total_libraries_type_sphere,
+        'ocupation_area_total': xablau,
 
 
     }
     return render(request, 'libraries_indicator/index.html', context)
 
-def update_indicators():
-    update_library_public_private_indicator()
-    update_quantity_libraries()
-    update_type_sphere_indicator()
 
+
+def update_indicators():
+    print("ola")
+    #update_library_public_private_indicator()
+    #update_quantity_libraries()
+    #update_type_sphere_indicator()
+    update_ocupation_area_indicator()
 def update_library_public_private_indicator():
     if (len(PercentPublicOrPrivateLibrary.objects)== 0):
         PercentPublicOrPrivateLibrary(0, DEFAULT_INITIAL_DATE, 0, 0).save()
@@ -82,9 +86,25 @@ def update_type_sphere_indicator():
         PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE,{'Municipal': 1}).save()
     else:
         total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
-        type_sphere_total = {}
         type_sphere_total = get_all_type_sphere()
-        PercentLibrariesTypeSphere(total_libraries,datetime.datetime.now(),type_sphere_total).save()
+        PercentLibrariesTypeSphere(total_libraries,
+                                    datetime.datetime.now(),
+                                    type_sphere_total).save()
+
+def update_ocupation_area_indicator():
+    if (len(PercentLibraryPerAreaOfActivity.objects)== 0):
+        PercentLibraryPerAreaOfActivity(0, DEFAULT_INITIAL_DATE,{'Leitura': 1},0).save()
+    else:
+
+        ocupation_area_total = get_all_occupation_area()
+        amount_ocupation_area = len(ocupation_area_total)
+
+        total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
+        PercentLibraryPerAreaOfActivity(total_libraries,
+                                        datetime.datetime.now(),
+                                        ocupation_area_total,
+                                        amount_ocupation_area).save()
+
 
 
 def get_all_libraries():
@@ -118,9 +138,10 @@ def get_undefined_library():
 
 def get_all_occupation_area():
     areas = {}
+    count = 0
     for librarie in get_all_libraries():
         for area in librarie["terms"]["area"]:
-            filter_types_area(area, areas)
+            count = filter_types_area(area, areas)
     return areas
 
 #return dictionary with value of each area
@@ -180,3 +201,5 @@ def filter_sphere_type(per_type, library):
             per_type[library["esfera_tipo"]] += 1
     else:
         per_type['None'] += 1
+
+xablau = get_all_occupation_area()
