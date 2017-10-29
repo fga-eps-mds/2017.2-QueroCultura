@@ -2,7 +2,12 @@ from django.shortcuts import render
 from .models import PercentEventsPerAgeRange
 from .models import PercentEventsPerLanguage
 from .models import QuantityOfRegisteredEvents
+from .api_connections import RequestEventsRawData
+from quero_cultura.views import build_temporal_indicator
+from datetime import datetime
+import yaml
 
+DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
     return render(request, 'events_indicators/events_indicators.html')
@@ -47,6 +52,33 @@ def build_language_indicator(new_data, old_data):
 
 def update_event_indicator():
     if len(PercentEventsPerLanguage.objects) == 0:
-        PercentEventsPerLanguage(0, "2012-01-01 15:47:38.337553", {"Teatro": 0}).save()
-        PercentEventsPerAgeRange(0, "2012-01-01 15:47:38.337553", {"Livre": 0}).save()
-        QuantityOfRegisteredEvents(0, "2012-01-01 15:47:38.337553", {"2015": {"01": 0}}).save()
+        PercentEventsPerLanguage(0, DEFAULT_INITIAL_DATE, {"Teatro": 0}).save()
+        PercentEventsPerAgeRange(0, DEFAULT_INITIAL_DATE, {"Livre": 0}).save()
+        QuantityOfRegisteredEvents(0, DEFAULT_INITIAL_DATE, {"2015": {"01": 0}}).save()
+
+    index = PercentEventsPerLanguage.objects.count()
+
+    last_per_language = PercentEventsPerLanguage.objects[index - 1]
+    last_per_age_range = PercentEventsPerAgeRange.objects[index - 1]
+    last_temporal = QuantityOfRegisteredEvents.objects[index - 1]
+
+    urls_files = open("./urls.yaml", 'r')
+    urls = yaml.load(urls_files)
+
+    new_per_language = last_per_language.total_events_per_language
+    new_per_age_range = last_per_age_range.total_events_per_age_range
+    new_temporal = last_temporal.total_events_registered_per_mounth_per_year
+
+    for url in urls:
+        request = RequestEventsRawData(last_per_language.create_date, url)
+
+        new_per_language = build_language_indicator(request.data, new_per_language)
+        new_per_age_range = build_age_range_indicator(request.data, new_per_age_range)
+        new_temporal = build_temporal_indicator(request.data, new_temporal)
+
+    new_create_date = datetime.now()
+    new_total = last_per_language.total_events + request.data_length
+
+    PercentEventsPerLanguage(new_total, new_create_date, new_per_language).save()
+    PercentEventsPerAgeRange(new_total, new_create_date, new_per_age_range).save()
+    QuantityOfRegisteredEvents(new_total, new_create_date, new_temporal).save()
