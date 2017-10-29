@@ -3,6 +3,7 @@ from .api_connections import RequestEventsRawData
 from .models import QuantityOfRegisteredEvents
 from .models import PercentEventsPerLanguage
 from .models import PercentEventsPerAgeRange
+from .views import update_event_indicator
 
 
 class TestQuantityOfRegisteredEvents(object):
@@ -88,3 +89,20 @@ class TestClassRequestEventsRawData(object):
         type_events_raw_data = type(events_raw_data)
         intenger = 1
         assert type_events_raw_data == type(intenger)
+
+
+class TestUpdateEventIndicator(object):
+
+    @staticmethod
+    def test_update_event_indicator():
+        PercentEventsPerLanguage.drop_collection()
+        PercentEventsPerAgeRange.drop_collection()
+        QuantityOfRegisteredEvents.drop_collection()
+
+        update_event_indicator()
+
+        total = len(PercentEventsPerLanguage.objects)
+        total += len(PercentEventsPerAgeRange.objects)
+        total += len(QuantityOfRegisteredEvents.objects)
+
+        assert total == 6
