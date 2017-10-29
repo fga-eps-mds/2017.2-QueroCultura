@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mongoengine',
     'agents_indicators',
+    'events_indicators',
     'requests',
 ]
 
