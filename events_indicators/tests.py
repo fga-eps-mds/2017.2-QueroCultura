@@ -100,14 +100,14 @@ class TestClassRequestEventsRawData(object):
 
     def test_success_request(self):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(current_time)
+        request_events_raw_data = RequestEventsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         response_events_raw_data = request_events_raw_data.response
         response_status_code = response_events_raw_data.status_code
         assert response_status_code == 200
 
     def test_data_content(self):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(current_time)
+        request_events_raw_data = RequestEventsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         events_raw_data = request_events_raw_data.data
         type_events_raw_data = type(events_raw_data)
         empty_list = []
@@ -115,7 +115,7 @@ class TestClassRequestEventsRawData(object):
 
     def test_data_lenght(self):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(current_time)
+        request_events_raw_data = RequestEventsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         events_raw_data = request_events_raw_data.data_length
         type_events_raw_data = type(events_raw_data)
         intenger = 1

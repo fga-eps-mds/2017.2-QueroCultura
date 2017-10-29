@@ -2,41 +2,38 @@
 	position: relative;
 	height:100%;
 	width:100%;
-	padding-left: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .chart-container-agents{
 	position: relative;
 	height:70%;
 	width:70%;
-	padding-left: 30%;
-
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .chart-container-area{
 	position: relative;
 	height:100%;
 	width:100%;
-	padding-left: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .chart-container-time{
 	position: relative;
 	height:100%;
 	width:100%;
-	padding-left: 20%;
-
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .text-chart{
 	position: relative;
-	padding-left: 20%;
-	padding-top: 10%;
-}
-
-.text-chart-init{
-	position: relative;
-	padding-left: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 	padding-top: 2%;
 }
 
