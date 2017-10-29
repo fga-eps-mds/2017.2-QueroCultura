@@ -40,3 +40,6 @@ def build_language_indicator(new_data, old_data):
                 per_language[linguagem] += old_data[linguagem]
 
     return per_language
+
+
+# def update_event_indicator():

@@ -2,6 +2,7 @@ from mongoengine import Document
 from mongoengine import IntField
 from mongoengine import DateTimeField
 
+
 class PercentEvent(Document):
     class Meta:
         abstract = True
@@ -18,7 +19,6 @@ class PercentEvent(Document):
     def create_date(self, number):
         self._create_date = number
 
-
     @property
     def total_events(self):
         return self._total_events
@@ -26,30 +26,6 @@ class PercentEvent(Document):
     @total_events.setter
     def total_events(self, number):
         self._total_events = number
-
-class PercentEventState(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-
-    _total_state_events = IntField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def total_state_events(self):
-        return self._total_state_events
-
-    @total_state_events.setter
-    def total_state_events(self, number):
-        self._total_state_events = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 
 class PercentEventsPerLanguage(PercentEvent):
@@ -74,43 +50,6 @@ class PercentEventsPerAgeRange(PercentEvent):
     @total_events_per_age_range.setter
     def total_events_per_age_range(self, number):
         self._total_events_per_age_range = number
-
-
-class PercentTypeEventsForState(PercentEventState):
-    _type_state_events = IntField(required=True)
-
-    @property
-    def type_state_events(self):
-        return self._type_state_events
-
-    @type_state_events.setter
-    def type_state_events(self, number):
-        self._type_state_events = number
-
-
-class PercentEventsPerLanguagePerState(PercentEventState):
-    _total_events_language_state = IntField(required=True)
-
-
-    @property
-    def total_events_language_state(self):
-        return self._total_events_language_state
-
-    @total_events_language_state.setter
-    def total_events_language_state(self, number):
-        self._total_events_language_state = number
-
-
-class PercentEventsPerAgeRangePerState(PercentEventState):
-    _total_events_age_range_state = IntField(required=True)
-
-    @property
-    def total_events_age_range_state(self):
-        return self._total_events_age_range_state
-
-    @total_events_age_range_state.setter
-    def total_events_age_range_state(self, number):
-        self._total_events_age_range_state = number
 
 
 class QuantityOfRegisteredEvents(PercentEvent):
