@@ -42,15 +42,15 @@ app.conf.beat_schedule = {
     },
     'update_libray_indicator': {
         'task': 'update_library_indicator',
-        'schedule': crontab(minute=0,
+        'schedule': crontab(minute=5,
                             hour=3,
                             day_of_week='sunday'),
     },
     'update_libray_indicator_now': {
         'task': 'update_library_indicator',
-        'schedule': 10.0,
+        'schedule': 20.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=15.0),
+            'expires': datetime.now() + timedelta(seconds=30.0),
         },
     },
 
