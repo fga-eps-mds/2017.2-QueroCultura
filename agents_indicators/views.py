@@ -161,8 +161,15 @@ def update_agent_indicator(url):
     new_per_month = build_temporal_indicator(request.data, last_temporal.total_agents_registered_month)
     new_type = build_type_indicator(request.data)
 
-    new_individual = last_type.total_individual_agent + new_type["Individual"]
-    new_collective = last_type.total_collective_agent + new_type["Coletivo"]
+    if "Individual" in new_type:
+        new_individual = last_type.total_individual_agent + new_type["Individual"]
+    else:
+        new_individual = last_type.total_individual_agent
+
+    if "Coletivo" in new_type:
+        new_collective = last_type.total_collective_agent + new_type["Coletivo"]
+    else:
+        new_collective = last_type.total_collective_agent
 
     # Persistencia de indicadores de agentes atualizados
     AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()
