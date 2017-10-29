@@ -23,21 +23,29 @@ def index(request):
     per_age_range = per_age_range.total_events_per_age_range
     temporal = temporal.total_events_registered_per_mounth_per_year
 
-    per_language_keys = per_language.keys()
-    per_language_values = per_language.values()
+    per_language_keys = []
+    per_language_values = []
 
-    per_age_range_keys = per_age_range.keys()
-    per_age_range_values = per_age_range.values()
+    for language in per_language:
+        per_language_keys.append(language)
+        per_language_values.append(per_language[language])
+
+    per_age_range_keys = []
+    per_age_range_values = []
+
+    for age_range in per_age_range:
+        per_age_range_keys.append(age_range)
+        per_age_range_values.append(per_age_range[age_range])
 
     months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-    last_year = 2013 + len(temporal)
+    last_year = 2014 + len(temporal)
     growthing = 0
 
     temporal_keys = []
     temporal_values = []
     temporal_growth = []
-
-    for year in range(2013, last_year):
+    print("\n\n", temporal, "\n\n")
+    for year in range(2014, last_year):
         for month in months:
             if (month in temporal[str(year)]):
                 temporal_keys.append(str(year) + "-" + month)
