@@ -10,23 +10,13 @@ class TestQuantityOfRegisteredEvents(object):
     @staticmethod
     def test_total_events_registered_per_mouth_per_year():
         QuantityOfRegisteredEvents.drop_collection()
-        total_events_mouth = 20
+        total_events_mouth = {"01": 10}
         event_indicator = QuantityOfRegisteredEvents(50,
-                                                     datetime.now(), 20,
+                                                     datetime.now(),
                                                      total_events_mouth)
         event_indicator.save()
         query = QuantityOfRegisteredEvents.objects.first()
-        assert query._total_events_registered_per_mounth_per_year == 20
-
-    @staticmethod
-    def test_total_events_registered_per_year():
-        QuantityOfRegisteredEvents.drop_collection()
-        total_events_year = 10
-        event_indicator = QuantityOfRegisteredEvents(50, datetime.now(),
-                                                     total_events_year, 20)
-        event_indicator.save()
-        query = QuantityOfRegisteredEvents.objects.first()
-        assert query._total_events_registered_per_year == 20
+        assert query._total_events_registered_per_mounth_per_year == total_events_mouth
 
     @staticmethod
     def test_total_events():
@@ -34,8 +24,7 @@ class TestQuantityOfRegisteredEvents(object):
         total_events = 20
         event_indicator = QuantityOfRegisteredEvents(total_events,
                                                      datetime.now(),
-                                                     20,
-                                                     20)
+                                                     {"01": 10})
         event_indicator.save()
         query = QuantityOfRegisteredEvents.objects.first()
         assert query._total_events == 20
@@ -46,18 +35,18 @@ class TestPercentEventsPerLanguage(object):
     @staticmethod
     def test_percent_events_per_language():
         PercentEventsPerLanguage.drop_collection()
-        total_events_per_language = 20
+        total_events_per_language = {"01": 10}
         indicator = PercentEventsPerLanguage(10,
                                              datetime.now(), total_events_per_language)
         indicator.save()
         query = PercentEventsPerLanguage.objects.first()
-        assert query._total_events_per_language == 20
+        assert query._total_events_per_language == total_events_per_language
 
     @staticmethod
     def test_total_events():
         PercentEventsPerLanguage.drop_collection()
         total_events = 20
-        indicator = PercentEventsPerLanguage(total_events, datetime.now(), 20)
+        indicator = PercentEventsPerLanguage(total_events, datetime.now(), {"01": 10})
         indicator.save()
         query = PercentEventsPerLanguage.objects.first()
         assert query._total_events == total_events
@@ -68,7 +57,7 @@ class TestPercentEventsPerAgeRange(object):
     @staticmethod
     def test_percent_events_per_language():
         PercentEventsPerAgeRange.drop_collection()
-        total_events_range = 35
+        total_events_range = {"01": 10}
         indicator = PercentEventsPerAgeRange(20, datetime.now(), total_events_range)
         indicator.save()
         query = PercentEventsPerAgeRange.objects.first()

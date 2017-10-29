@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import PercentEventsPerAgeRange
+from .models import PercentEventsPerLanguage
+from .models import QuantityOfRegisteredEvents
 
 
 def index(request):
@@ -42,4 +45,8 @@ def build_language_indicator(new_data, old_data):
     return per_language
 
 
-# def update_event_indicator():
+def update_event_indicator():
+    if len(PercentEventsPerLanguage.objects) == 0:
+        PercentEventsPerLanguage(0, "2012-01-01 15:47:38.337553", {"Teatro": 0}).save()
+        PercentEventsPerAgeRange(0, "2012-01-01 15:47:38.337553", {"Livre": 0}).save()
+        QuantityOfRegisteredEvents(0, "2012-01-01 15:47:38.337553", {"2015": {"01": 0}}).save()

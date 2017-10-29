@@ -1,5 +1,6 @@
 from mongoengine import Document
 from mongoengine import IntField
+from mongoengine import DictField
 from mongoengine import DateTimeField
 
 
@@ -29,7 +30,7 @@ class PercentEvent(Document):
 
 
 class PercentEventsPerLanguage(PercentEvent):
-    _total_events_per_language = IntField(required=True)
+    _total_events_per_language = DictField(required=True)
 
     @property
     def total_events_per_language(self):
@@ -41,7 +42,7 @@ class PercentEventsPerLanguage(PercentEvent):
 
 
 class PercentEventsPerAgeRange(PercentEvent):
-    _total_events_per_age_range = IntField(required=True)
+    _total_events_per_age_range = DictField(required=True)
 
     @property
     def total_events_per_age_range(self):
@@ -53,8 +54,7 @@ class PercentEventsPerAgeRange(PercentEvent):
 
 
 class QuantityOfRegisteredEvents(PercentEvent):
-    _total_events_registered_per_mounth_per_year = IntField(required=True)
-    _total_events_registered_per_year = IntField(required=True)
+    _total_events_registered_per_mounth_per_year = DictField(required=True)
 
     @property
     def total_events_registered_per_mounth_per_year(self):
@@ -63,11 +63,3 @@ class QuantityOfRegisteredEvents(PercentEvent):
     @total_events_registered_per_mounth_per_year.setter
     def total_events_registered_per_mounth_per_year(self, number):
         self._total_events_registered_per_mounth_per_year = number
-
-    @property
-    def total_events_registered_per_year(self):
-        return self._total_events_registered_per_year
-
-    @total_events_registered_per_year.setter
-    def total_events_registered_per_year(self, number):
-        self._total_events_registered_per_year = number
