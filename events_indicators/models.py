@@ -34,7 +34,7 @@ class PercentEventsPerLanguage(PercentEvent):
 
     @property
     def total_events_per_language(self):
-        return self._tota_events_per_language
+        return self._total_events_per_language
 
     @total_events_per_language.setter
     def total_events_per_language(self, number):

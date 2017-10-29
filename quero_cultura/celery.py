@@ -51,5 +51,17 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=30.0),
         },
     },
-
+    'update_event_indicator': {
+        'task': 'update_event_indicator',
+        'schedule': crontab(minute=0,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'update_event_indicator_now': {
+        'task': 'update_event_indicator',
+        'schedule': 15.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=20.0),
+        },
+    },
 }
