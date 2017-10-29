@@ -30,12 +30,10 @@ app.conf.beat_schedule = {
         'schedule': crontab(minute=0,
                             hour=3,
                             day_of_week='sunday'),
-        'args': ["http://mapas.cultura.gov.br/api/agent/find/"],
     },
     'update_agent_indicator_now': {
         'task': 'update_agent_indicator',
         'schedule': 10.0,
-        'args': ["http://mapas.cultura.gov.br/api/agent/find/"],
         'options': {
             'expires': datetime.now() + timedelta(seconds=15.0),
         },

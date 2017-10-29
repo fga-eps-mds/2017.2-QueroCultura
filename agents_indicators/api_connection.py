@@ -1,6 +1,5 @@
 import json
 import requests
-import yaml
 
 
 class RequestAgentsRawData(object):
@@ -8,7 +7,7 @@ class RequestAgentsRawData(object):
     def __init__(self, last_update_time, url):
         self._filters = {'@select': 'terms, type, createTimestamp',
                          'createTimestamp': "GT("+last_update_time+")"}
-        self._response = requests.get(url, self._filters)
+        self._response = requests.get(url+"agent/find/", self._filters)
         self._data = json.loads(self._response.text)
 
     @property
@@ -22,11 +21,3 @@ class RequestAgentsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
-    def get_url(self):
-        urls_files = open("./urls.yaml", 'r')
-        urls = yaml.load(urls_files)
-        url_list = []
-        for url in urls:
-            url_list.append(url)
-        return url_list[1]

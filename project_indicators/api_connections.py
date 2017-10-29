@@ -1,15 +1,13 @@
 import json
 import requests
-import yaml
+
 
 class RequestProjectsRawData(object):
 
-    def __init__(self, last_update_time):
-        self._get_time = last_update_time
-        self._url = self.get_url()
+    def __init__(self, last_update_time, url):
         self._filters = {'@select': 'type, createTimestamp',
-                         'createTimestamp': "GT("+self._get_time+")"}
-        self._response = requests.get(self._url, self._filters)
+                         'createTimestamp': "GT("+last_update_time+")"}
+        self._response = requests.get(url+"project/find/", self._filters)
         self._data = json.loads(self._response.text)
 
     @property
@@ -23,11 +21,3 @@ class RequestProjectsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
-    def get_url(self):
-        urls_files = open("./urls.yaml", 'r')
-        urls = yaml.load(urls_files)
-        url_list = []
-        for url in urls:
-            url_list.append(url)
-        return url_list[3]

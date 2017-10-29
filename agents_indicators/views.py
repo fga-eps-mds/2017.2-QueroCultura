@@ -133,8 +133,10 @@ def build_operation_area_indicator(new_data, old_data):
 
     return per_operation_area
 
+
 @task(name="update_agent_indicator")
-def update_agent_indicator(url):
+def update_agent_indicator():
+    url = "http://mapas.cultura.gov.br/api/"
 
     # Cria registro inicial caso seja o primeiro uso da aplicação
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
