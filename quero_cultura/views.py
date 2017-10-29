@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import yaml
 
 
 def index(request):

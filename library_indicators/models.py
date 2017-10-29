@@ -51,7 +51,7 @@ class PercentLibrariesState(Document):
 
 class PercentLibraryPerAreaOfActivity(PercentLibraries):
     _libraries_per_activity = DictField(required=True)
-
+    _amount_areas = IntField(required=True)
 
     @property
     def total_libraries_per_activity(self):
@@ -61,6 +61,13 @@ class PercentLibraryPerAreaOfActivity(PercentLibraries):
     def total_libraries_per_activity(self, number):
         self._libraries_per_activity = number
 
+    @property
+    def total_amount_areas(self):
+        return self._amount_areas
+
+    @total_amount_areas.setter
+    def total_amount_areas(self, number):
+        self._amount_areas = number
 
 
 
@@ -101,7 +108,7 @@ class PercentLibrariesTypeSphere(PercentLibraries):
 
 
 class QuantityOfRegisteredlibraries(PercentLibraries):
-    # registered per Month and per Year
+
     _libraries_registered_monthly = DictField(required=True)
     _libraries_registered_yearly = DictField(required=True)
 

@@ -1,5 +1,6 @@
 import json
 import requests
+import yaml
 
 
 class RequestAgentsRawData(object):
@@ -21,3 +22,11 @@ class RequestAgentsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
+
+    def get_url(self):
+        urls_files = open("./urls.yaml", 'r')
+        urls = yaml.load(urls_files)
+        url_list = []
+        for url in urls:
+            url_list.append(url)
+        return url_list[1]
