@@ -23,6 +23,7 @@ class TestPercentSpacePerType(object):
         query = PercentSpacePerType.objects.first()
         assert query._total_space_per_type == indicator
 
+
 class TestPercentSpacePerTypePerState(object):
     def test_total_space(self):
         PercentSpacePerTypePerState.drop_collection()
@@ -31,6 +32,7 @@ class TestPercentSpacePerTypePerState(object):
         project_indicator.save()
         query = PercentSpacePerTypePerState.objects.first()
         assert query._total_space == indicator
+
 
 class TestPercentSpacePerOccupationAreaPerState(object):
     def test_total_space_occupation_area_per_state(self):
@@ -41,6 +43,7 @@ class TestPercentSpacePerOccupationAreaPerState(object):
         query = PercentSpacePerOccupationAreaPerState.objects.first()
         assert query._total_space_occupation_area_per_state == indicator
 
+
 class TestPercentSpaceForState(object):
     def test_total_space_occupation_area_per_state(self):
         PercentSpaceForState.drop_collection()
@@ -50,18 +53,19 @@ class TestPercentSpaceForState(object):
         query = PercentSpaceForState.objects.first()
         assert query._total_spaces == indicator
 
+
 class TestClassRequestSpacesRawData(object):
 
     def test_success_request(self):
         current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time)
+        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
         response_space_raw_data = request_space_raw_data.response
         response_status_code = response_space_raw_data.status_code
         assert response_status_code == 200
 
     def test_data_content(self):
         current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time)
+        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
         space_raw_data = request_space_raw_data.data
         type_space_raw_data = type(space_raw_data)
         empty_list = []
@@ -69,7 +73,7 @@ class TestClassRequestSpacesRawData(object):
 
     def test_data_lenght(self):
         current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time)
+        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
         space_raw_data = request_space_raw_data.data_length
         type_space_raw_data = type(space_raw_data)
         intenger = 1
