@@ -1,39 +1,39 @@
 {% extends 'quero_cultura/base.html' %}
 
-{% block content %}
+  {% block content %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<link rel="stylesheet" href="static/css/libraryIndicators.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="static/css/libraryIndicators.css"/>
 
-<div class="chart-container-library">
-    <canvas id="pie-chart-library"></canvas>
-</div>
+    <div class="chart-container-library">
+        <canvas id="pie-chart-library"></canvas>
+    </div>
 
-<div class="chart-container-area">
-    <canvas id="bar-chart-area"></canvas>
-</div>
+    <div class="chart-container-area">
+        <canvas id="bar-chart-area"></canvas>
+    </div>
 
-<div class="chart-container-area">
-    <canvas id="bar-chart-sphere"></canvas>
-</div>
+    <div class="chart-container-area">
+        <canvas id="bar-chart-sphere"></canvas>
+    </div>
 
-<div class="chart-container-area">
-    <canvas id="line-chart-time"></canvas>
-</div>
+    <div class="chart-container-area">
+        <canvas id="line-chart-time"></canvas>
+    </div>
 
-<div class="chart-container-area">
-    <canvas id="line-chart-year"></canvas>
-</div>
+    <div class="chart-container-area">
+        <canvas id="line-chart-year"></canvas>
+    </div>
 
-<script type = "text/javascript" src="static/js/charts.js"></script>
-<script type = "text/javascript">
+    <script type = "text/javascript" src="static/js/charts.js"></script>
+    <script type = "text/javascript">
 
-    public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
-    bar_chart({{ocupation_area_total|safe}}, "bar-chart-area", 'Área de atuação', 'Quantidade de registros por área de atuação')
-    bar_chart({{type_sphere_total|safe}}, "bar-chart-sphere", 'Tipo de esfera', 'Quantidade de registros por tipo de esfera')
-    line_chart({{quantity_per_mouth|safe}}, "line-chart-time", "Registros por mês", "Quantidade de bibliotecas cadastrados por mes na plataforma")
-    line_chart({{quantity_per_year|safe}}, "line-chart-year", "Registros por ano", "Quantidade de bibliotecas cadastrados por ano na plataforma ao longo de sua existencia")
+        public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
+        bar_chart({{ocupation_area_total|safe}}, "bar-chart-area", 'Área de atuação', 'Quantidade de registros por área de atuação')
+        bar_chart({{type_sphere_total|safe}}, "bar-chart-sphere", 'Tipo de esfera', 'Quantidade de registros por tipo de esfera')
+        line_chart({{quantity_per_mouth|safe}}, "line-chart-time", "Registros por mês", "Quantidade de bibliotecas cadastrados por mes na plataforma")
+        line_chart({{quantity_per_year|safe}}, "line-chart-year", "Registros por ano", "Quantidade de bibliotecas cadastrados por ano na plataforma ao longo de sua existencia")
 
-</script>
+    </script>
 
-{% endblock %}
+  {% endblock %}

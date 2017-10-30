@@ -5,9 +5,11 @@
  */
 html {
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+  }
 
 body {
+  font-family: 'Saira Semi Condensed', sans-serif;
   overflow-x: hidden; }
 
 body.sticky-footer {
@@ -51,6 +53,10 @@ body.fixed-nav {
 
 .z-1 {
   z-index: 1; }
+
+#navbarResponsive{
+  font-size: 18px;
+}
 
 #mainNav .navbar-collapse {
   overflow: auto;
