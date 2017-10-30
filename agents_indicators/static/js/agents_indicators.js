@@ -1,36 +1,17 @@
-$("#quantitativo_mensal").show();
-$("#agentes_tipo").hide();
-$("#agentes_area").hide();
-$("#crescimento").hide();
+var options_list = ["#quantitativo_mensal", "#agentes_tipo", "#agentes_area", "#crescimento"]
 
-//Aparece quantitativo_mensal
-$("#quantitativo_mensal_button").click(function() {
-  $("#quantitativo_mensal").show();
-  $("#agentes_tipo").hide();
-  $("#agentes_area").hide();
-  $("#crescimento").hide();
+$(document).ready(function() {
+  for (var i = 0; i < options_list.length; i++) {
+    $(options_list[i]).hide();
+  }
+  $(options_list[0]).show('medium', function() {});
+  $('.container-indicators').css({visibility:'visible'})
 });
 
-//Aparece agentes_tipo
-$("#agentes_tipo_button").click(function() {
-  $("#quantitativo_mensal").hide();
-  $("#agentes_tipo").show();
-  $("#agentes_area").hide();
-  $("#crescimento").hide();
-});
-
-//Aparece agentes_area
-$("#agentes_area_button").click(function() {
-  $("#quantitativo_mensal").hide();
-  $("#agentes_tipo").hide();
-  $("#agentes_area").show();
-  $("#crescimento").hide();
-});
-
-//Aparece crescimento
-$("#crescimento_button").click(function() {
-  $("#quantitativo_mensal").hide();
-  $("#agentes_tipo").hide();
-  $("#agentes_area").hide();
-  $("#crescimento").show();
+$("input[name='sc-1-1']").on('change',function() {
+  var option_clicked = $("input[name='sc-1-1']:checked").val();
+  for (var i = 0; i < options_list.length; i++) {
+        $(options_list[i]).hide();
+  }
+  $(option_clicked).show('medium', function() {});
 });
