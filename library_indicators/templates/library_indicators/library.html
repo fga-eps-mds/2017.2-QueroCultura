@@ -6,19 +6,24 @@
 <link rel="stylesheet" href="static/css/libraryIndicators.css"/>
 
 <div class="chart-container-library">
-  <canvas id="pie-chart-library"></canvas>
+    <canvas id="pie-chart-library"></canvas>
 </div>
 
-<div class="chart-container-library">
-  <canvas id="bar-chart-area"></canvas>
+<div class="chart-container-area">
+    <canvas id="bar-chart-area"></canvas>
+</div>
+
+<div class="chart-container-area">
+    <canvas id="bar-chart-sphere"></canvas>
 </div>
 
 <script type = "text/javascript" src="static/js/charts.js"></script>
 <script type = "text/javascript">
 
+    public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
+    bar_chart({{ocupation_area_total|safe}}, "bar-chart-area", 'Área de atuação', 'Quantidade de registros por área de atuação')
+    bar_chart({{type_sphere_total|safe}}, "bar-chart-sphere", 'Tipo de esfera', 'Quantidade de registros por tipo de esfera')
 
-  public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
-  per_area_chart({{ocupation_area_total|safe}})
 </script>
 
 {% endblock %}

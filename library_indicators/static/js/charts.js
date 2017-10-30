@@ -45,39 +45,37 @@ function public_private_chart(amount_public_libraries, amount_private_libraries)
   });
 }
 
-function per_area_chart(ocupation_area_total){
-  var ctxArea = document.getElementById("bar-chart-area");
-  console.log(ocupation_area_total);
-  var nameArea = [];
-  var amountArea = [];
-  jQuery.each(ocupation_area_total, function(key, value){
-    nameArea.push(key);
-    amountArea.push(value);
-  });
+function bar_chart(indicators, chartId, labelName, description){
+    var ctxArea = document.getElementById(chartId);
 
+    var nameArea = [];
+    var amountArea = [];
+    jQuery.each(indicators, function(key, value){
+      nameArea.push(key);
+      amountArea.push(value);
+    });
 
-  console.log(ocupation_area_total);
-  var agentB = new Chart(ctxArea, {
-                          type: 'bar',
-                          data: {
-                              labels: nameArea,
-                              datasets: [{
-                                  label: 'Área de atuação',
-                                  data: amountArea,
-                                  backgroundColor: poolColors(amountArea.length)
-                              }]
-                          },
-                          options: {
-                              scales: {
-                                  yAxes: [{
-                                      ticks: {beginAtZero:true}
-                                 }]
-                             },
-                             legend: {display: true},
-                             title: {display: true,
-                                     text: 'Quantidade de registros por área de atuação'
-                             }
-                          }
-                      });
+    var chart = new Chart(ctxArea, {
+                            type: 'bar',
+                            data: {
+                                labels: nameArea,
+                                datasets: [{
+                                    label: labelName,
+                                    data: amountArea,
+                                    backgroundColor: poolColors(amountArea.length)
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {beginAtZero:true}
+                                   }]
+                               },
+                               legend: {display: true},
+                               title: {display: true,
+                                       text: description
+                               }
+                            }
+                        });
 
 }
