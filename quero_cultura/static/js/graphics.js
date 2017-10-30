@@ -91,7 +91,7 @@ function per_type_graphic(per_type_keys, per_type_values){
                     });
 }
 
-function grow_graphic(temporal_keys ,temporal_values){
+function growth_graphic(temporal_keys ,temporal_values){
         var ctx = document.getElementById("line-chart-time");
         var name_growth = JSON.parse(temporal_keys);
         var temp_growth = JSON.parse(temporal_values);

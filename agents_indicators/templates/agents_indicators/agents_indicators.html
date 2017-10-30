@@ -58,11 +58,10 @@
 
 
 	<script src="static/js/agents_indicators.js"></script>
-	<script src="static/js/graphics.js"></script>
 	<script type="text/javascript">
 		temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
 		per_area_graphic('{{ per_area_keys|safe }}','{{ per_area_values|safe }}')
 		per_type_graphic('{{ per_type_keys|safe }}','{{ per_type_values|safe }}')
-		per_grow_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
+		growth_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
 	</script>
 {% endblock %}
