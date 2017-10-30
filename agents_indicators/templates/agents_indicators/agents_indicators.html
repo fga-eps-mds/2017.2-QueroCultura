@@ -4,65 +4,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="static/css/agentsIndicators.css"/>
 
-	<div class="indicators_navbar">
-		<ul>
-			<li id="quantitativo_mensal_button">Quantitativo Mensal</li>
-			<li id="agentes_tipo_button">Porcentagem de Agentes por Tipo</li>
-			<li id="agentes_area_button">Quantitativo de Agentes por Área de Atuação</li>
-			<li id="crescimento_button">Crescimento da Plataforma "Mapas Culturais"</li>
-		</ul>
-	</div>
+		<div class="container">
+			<div class="segmented-control" style="width: 100%; color: #5FBAAC">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-1" checked>
+		    <input type="radio" name="sc-1-1" id="sc-1-1-2">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-3" >
+		    <input type="radio" name="sc-1-1" id="sc-1-1-4">
 
-	<div id="quantitativo_mensal">
-	    <div class="text-chart-init">
-	      <h3>Quantitativo Mensal</h3>
-	      <p>Este gráfico refere-se à quantidade de Agentes que se cadastraram por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
-	    </div>
+		    <label for="sc-1-1-1" data-value="Quantitativo Mensal" id="quantitativo_mensal_button">
+					Quantitativo Mensal
+				</label>
 
-	    <div class="chart-container-month">
-	      <canvas id="bar-chart-month"></canvas>
-	    </div>
-	</div>
+				<label for="sc-1-1-2" data-value="Agentes por Tipo" id="agentes_tipo_button">
+					Agentes por Tipo
+				</label>
 
-	<div id="agentes_tipo">
-	    <div class="text-chart">
-			<h3>Porcentagem de Agentes por Tipo</h3>
-			<p>Este gráfico refere-se à porcentagem de agentes que se declaram "Individuais" ou "Coletivos". Agentes individuais são os perfis que representam apenas uma pessoa, enquanto os coletivos podem representar uma empresa, ong, grupo cultural, entre outras entidades coletivas.</p>
-	    </div>
+				<label for="sc-1-1-3" data-value="Agentes por Área" id="agentes_area_button">
+					Agentes por Área
+				</label>
 
-	    <div class="chart-container-agents">
-      		<canvas id="pie-chart-agents"></canvas>
-	    </div>
-	</div>
-
-	<div id="agentes_area">
-		<div class="text-chart">
-			<h3>Quantitativo de Agentes por Área de Atuação</h3>
-			<p>Este gráfico refere-se à quantidade de agentes cadastrados que declaram ter afinidade ou efetivamente atuar em determinada área de contibuição cultural."</p>
+				<label for="sc-1-1-4" data-value="Crescimento da Plataforma" id="crescimento_button">
+					Crescimento da Plataforma
+				</label>
+			</div>
 		</div>
 
-		<div class="chart-container-area">
-			<canvas id="bar-chart-area"></canvas>
-		</div>
-	</div>
+		<div class="container-indicators">
+			<div id="quantitativo_mensal">
+		    <div class="text-chart-init">
+		      <p>Este gráfico refere-se à quantidade de Agentes que se cadastraram por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
+		    </div>
 
-	<div id="crescimento">
-		<div class="text-chart">
-			<h3>Crescimento da Plataforma "Mapas Culturais"</h3>
-			<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de agentes ao longo de sua existência.</p>
-		</div>
-		<div class="chart-container-time">
-			<canvas id="line-chart-time"></canvas>
-		</div>
-	</div>
+		    <div class="chart-container">
+		      <canvas id="bar-chart-month"></canvas>
+		    </div>
+			</div>
 
+			<div id="agentes_tipo">
+				<div class="text-chart-init">
+					<p>Este gráfico refere-se à porcentagem de agentes que se declaram "Individuais" ou "Coletivos". Agentes individuais são os perfis que representam apenas uma pessoa, enquanto os coletivos podem representar uma empresa, ong, grupo cultural, entre outras entidades coletivas.</p>
+				</div>
 
-	<script src="static/js/agents_indicators.js"></script>
-	<script src="static/js/graphics.js"></script>
-	<script type="text/javascript">
-		temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
-		per_area_graphic('{{ per_area_keys|safe }}','{{ per_area_values|safe }}')
-		per_type_graphic('{{ per_type_keys|safe }}','{{ per_type_values|safe }}')
-		per_grow_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
-	</script>
+		    <div class="chart-container">
+	      		<canvas id="pie-chart-agents"></canvas>
+		    </div>
+			</div>
+
+			<div id="agentes_area">
+				<div class="text-chart-init">
+					<p>Este gráfico refere-se à quantidade de agentes cadastrados que declaram ter afinidade ou efetivamente atuar em determinada área de contibuição cultural."</p>
+				</div>
+
+				<div class="chart-container">
+					<canvas id="bar-chart-area"></canvas>
+				</div>
+			</div>
+
+			<div id="crescimento">
+				<div class="text-chart-init">
+					<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de agentes ao longo de sua existência.</p>
+				</div>
+				<div class="chart-container">
+					<canvas id="line-chart-time"></canvas>
+				</div>
+			</div>
+		</div>
+
+		<script src="static/js/agents_indicators.js"></script>
+		<script src="static/js/graphics.js"></script>
+		<script type="text/javascript">
+			temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
+			per_area_graphic('{{ per_area_keys|safe }}','{{ per_area_values|safe }}')
+			per_type_graphic('{{ per_type_keys|safe }}','{{ per_type_values|safe }}')
+			per_grow_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
+		</script>
 {% endblock %}

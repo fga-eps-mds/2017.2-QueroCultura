@@ -4,7 +4,7 @@ $("#agentes_area").hide();
 $("#crescimento").hide();
 
 //Aparece quantitativo_mensal
-$("#quantitativo_mensal_button" ).click(function() {
+$("#quantitativo_mensal_button").click(function() {
   $("#quantitativo_mensal").show();
   $("#agentes_tipo").hide();
   $("#agentes_area").hide();
@@ -12,7 +12,7 @@ $("#quantitativo_mensal_button" ).click(function() {
 });
 
 //Aparece agentes_tipo
-$("#agentes_tipo_button" ).click(function() {
+$("#agentes_tipo_button").click(function() {
   $("#quantitativo_mensal").hide();
   $("#agentes_tipo").show();
   $("#agentes_area").hide();
@@ -20,7 +20,7 @@ $("#agentes_tipo_button" ).click(function() {
 });
 
 //Aparece agentes_area
-$("#agentes_area_button" ).click(function() {
+$("#agentes_area_button").click(function() {
   $("#quantitativo_mensal").hide();
   $("#agentes_tipo").hide();
   $("#agentes_area").show();
@@ -28,7 +28,7 @@ $("#agentes_area_button" ).click(function() {
 });
 
 //Aparece crescimento
-$("#crescimento_button" ).click(function() {
+$("#crescimento_button").click(function() {
   $("#quantitativo_mensal").hide();
   $("#agentes_tipo").hide();
   $("#agentes_area").hide();
