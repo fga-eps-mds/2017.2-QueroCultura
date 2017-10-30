@@ -4,7 +4,7 @@ $(document).ready(function() {
   for (var i = 0; i < options_list.length; i++) {
     $(options_list[i]).hide();
   }
-  $(options_list[0]).show('medium', function() {});
+  $(options_list[0]).fadeIn(1700);
   $('.container-indicators').css({visibility:'visible'})
 });
 
@@ -13,5 +13,5 @@ $("input[name='sc-1-1']").on('change',function() {
   for (var i = 0; i < options_list.length; i++) {
         $(options_list[i]).hide();
   }
-  $(option_clicked).show('medium', function() {});
+  $(option_clicked).fadeIn(1500);
 });
