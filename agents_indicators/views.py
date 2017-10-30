@@ -6,6 +6,9 @@ from .models import PercentAgentsPerAreaOperation
 from datetime import datetime
 import json
 from celery.decorators import task
+from quero_cultura.views import build_temporal_indicator
+from quero_cultura.views import build_operation_area_indicator
+
 
 def index(request):
 
@@ -70,37 +73,7 @@ def index(request):
     }
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
-    return render(request, 'agents_indicators/index.html', context)
-
-
-def build_temporal_indicator(new_data, old_data):
-    temporal_indicator = {}
-
-    for agent in new_data:
-        split_date = agent["createTimestamp"]["date"].split("-")
-
-        year = split_date[0]
-        month = split_date[1]
-
-        if not (year in temporal_indicator):
-            temporal_indicator[year] = {}
-            temporal_indicator[year][month] = 1
-        elif not (month in temporal_indicator.get(year)):
-            temporal_indicator[year][month] = 1
-        else:
-            temporal_indicator[year][month] += 1
-
-    for year in old_data:
-        if not (year in temporal_indicator):
-            temporal_indicator[year] = old_data[year]
-        else:
-            for month in old_data[year]:
-                if not (month in temporal_indicator[year]):
-                    temporal_indicator[year][month] = old_data[year][month]
-                else:
-                    temporal_indicator[year][month] += old_data[year][month]
-
-    return temporal_indicator
+    return render(request, 'agents_indicators/agents_indicators.html', context)
 
 
 def build_type_indicator(new_data):
@@ -115,26 +88,9 @@ def build_type_indicator(new_data):
     return per_type
 
 
-def build_operation_area_indicator(new_data, old_data):
-    per_operation_area = {}
-
-    for agent in new_data:
-        for area in agent["terms"]["area"]:
-            if not (area in per_operation_area):
-                per_operation_area[area] = 1
-            else:
-                per_operation_area[area] += 1
-
-    for area in old_data:
-            if not (area in per_operation_area):
-                per_operation_area[area] = old_data[area]
-            else:
-                per_operation_area[area] += old_data[area]
-
-    return per_operation_area
-
 @task(name="update_agent_indicator")
-def update_agent_indicator(url):
+def update_agent_indicator():
+    url = "http://mapas.cultura.gov.br/api/"
 
     # Cria registro inicial caso seja o primeiro uso da aplicação
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
@@ -161,8 +117,15 @@ def update_agent_indicator(url):
     new_per_month = build_temporal_indicator(request.data, last_temporal.total_agents_registered_month)
     new_type = build_type_indicator(request.data)
 
-    new_individual = last_type.total_individual_agent + new_type["Individual"]
-    new_collective = last_type.total_collective_agent + new_type["Coletivo"]
+    if "Individual" in new_type:
+        new_individual = last_type.total_individual_agent + new_type["Individual"]
+    else:
+        new_individual = last_type.total_individual_agent
+
+    if "Coletivo" in new_type:
+        new_collective = last_type.total_collective_agent + new_type["Coletivo"]
+    else:
+        new_collective = last_type.total_collective_agent
 
     # Persistencia de indicadores de agentes atualizados
     AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()

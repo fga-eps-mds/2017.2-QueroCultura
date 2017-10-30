@@ -1,5 +1,4 @@
 from .api_connections import RequestLibraryRawData
-from .models import PercentLibraries
 from .models import PercentPublicOrPrivateLibrary
 from .models import PercentLibraryPerAreaOfActivity
 from .models import QuantityOfRegisteredlibraries
@@ -9,6 +8,7 @@ import datetime
 from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+
 
 def index(request):
 
@@ -31,10 +31,11 @@ def index(request):
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
         'quantity_per_year': quantity_libraries._libraries_registered_yearly,
         'type_sphere_total': type_sphere_total._total_libraries_type_sphere,
-        'ocupation_area_total':ocupation_area_total._libraries_per_activity,
-        'amount_of_ocupation_area':ocupation_area_total._amount_areas,
+        'ocupation_area_total': ocupation_area_total._libraries_per_activity,
+        'amount_of_ocupation_area': ocupation_area_total._amount_areas,
     }
-    return render(request, 'libraries_indicator/index.html', context)
+
+    return render(request, 'library_indicators/library.html', context)
 
 
 @task(name="update_library_indicator")
@@ -44,8 +45,9 @@ def update_indicators():
     update_type_sphere_indicator()
     update_ocupation_area_indicator()
 
+
 def update_library_public_private_indicator():
-    if (len(PercentPublicOrPrivateLibrary.objects)== 0):
+    if (len(PercentPublicOrPrivateLibrary.objects) == 0):
         PercentPublicOrPrivateLibrary(0, DEFAULT_INITIAL_DATE, 0, 0).save()
     else:
         undefined_library = 0
@@ -58,12 +60,14 @@ def update_library_public_private_indicator():
                                       datetime.datetime.now(),
                                       public_libraries, private_libraries).save()
 
+
 def set_libraries_amount(undefined_library, public_libraries, private_libraries, total_libraries):
     undefined_library = get_undefined_library()
     public_libraries = get_public_libraries()
     private_libraries = get_private_libraries()
     total_libraries = undefined_library + public_libraries + private_libraries
     return undefined_library, public_libraries, private_libraries, total_libraries
+
 
 def update_quantity_libraries():
     if (len(QuantityOfRegisteredlibraries.objects) == 0):
@@ -83,8 +87,9 @@ def update_quantity_libraries():
                                       datetime.datetime.now(),
                                       mouth_libraries, year_libraries).save()
 
+
 def update_type_sphere_indicator():
-    if (len(PercentLibrariesTypeSphere.objects)== 0):
+    if (len(PercentLibrariesTypeSphere.objects) == 0):
         PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE,{'Municipal': 1}).save()
     else:
         total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
@@ -93,8 +98,9 @@ def update_type_sphere_indicator():
                                     datetime.datetime.now(),
                                     type_sphere_total).save()
 
+
 def update_ocupation_area_indicator():
-    if (len(PercentLibraryPerAreaOfActivity.objects)== 0):
+    if (len(PercentLibraryPerAreaOfActivity.objects) == 0):
         PercentLibraryPerAreaOfActivity(0, DEFAULT_INITIAL_DATE,{'Leitura': 1},0).save()
     else:
         ocupation_area_total = get_all_occupation_area()
@@ -105,10 +111,12 @@ def update_ocupation_area_indicator():
                                         ocupation_area_total,
                                         amount_ocupation_area).save()
 
+
 def get_all_libraries():
     request = RequestLibraryRawData(DEFAULT_INITIAL_DATE)
     libraries = request.data
     return libraries
+
 
 def get_public_libraries():
     count = 0
@@ -116,6 +124,7 @@ def get_public_libraries():
         if librarie["esfera"] != None and librarie["esfera"] == 'Pública':
             count = count + 1
     return count
+
 
 def get_private_libraries():
     count = 0
@@ -142,7 +151,8 @@ def get_all_occupation_area():
             filter_types_area(area, areas)
     return areas
 
-#return dictionary with value of each area
+
+# return dictionary with value of each area
 def filter_types_area(actual_area, areas):
     if not (actual_area in areas):
         areas[actual_area] = 1
@@ -153,12 +163,14 @@ def filter_types_area(actual_area, areas):
 def get_libraries_per_year(create_date_year):
     for librarie in get_all_libraries():
         date = format_date_year(librarie["createTimestamp"]["date"])
-        filter_libraries_per_year(create_date_year,date)
+        filter_libraries_per_year(create_date_year, date)
+
 
 def format_date_year(date):
     right_date = date.split(" ")
     year_date = right_date[0].split("-")
     return year_date[0]
+
 
 def filter_libraries_per_year(create_dates, date):
     if not (date in create_dates):
@@ -166,10 +178,12 @@ def filter_libraries_per_year(create_dates, date):
     else:
         create_dates[date] += 1
 
+
 def format_date_month(date):
     right_date = date.split(" ")
     month_date = right_date[0].split("-")
     return month_date[1]
+
 
 def get_libraries_per_month(create_date_month):
 
@@ -184,12 +198,14 @@ def filter_libraries_per_month(create_date_month, month):
     else:
         create_date_month[month] += 1
 
+
 def get_all_type_sphere():
     per_type = {}
     per_type['None'] = 1
     for library in get_all_libraries():
         filter_sphere_type(per_type, library)
     return per_type
+
 
 def filter_sphere_type(per_type, library):
     if(library["esfera_tipo"] != None):

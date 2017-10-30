@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^agents_indicators', include('agents_indicators.urls')),
-    url(r'^library_indicators', include('library_indicators.urls'))
+    url(r'^library_indicators', include('library_indicators.urls')),
+    url(r'^events_indicators', include('events_indicators.urls')),
 ]

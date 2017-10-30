@@ -6,15 +6,15 @@
 	padding-right: 5%;
 }
 
-.chart-container-agents{
+.chart-container-events{
 	position: relative;
-	height:70%;
-	width:70%;
+	height:100%;
+	width:100%;
 	padding-left: 5%;
 	padding-right: 5%;
 }
 
-.chart-container-area{
+.chart-container-language{
 	position: relative;
 	height:100%;
 	width:100%;
