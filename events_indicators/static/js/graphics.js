@@ -67,30 +67,6 @@ function per_area_graphic(per_area_keys, per_area_values){
                         });
 }
 
-function per_type_graphic(per_type_keys, per_type_values){
-    var ctx_type = document.getElementById("pie-chart-agents");
-    var name_type = JSON.parse(per_type_keys);
-    var value_type = JSON.parse(per_type_values);
-    var agent_type = new Chart(ctx_type, {
-                        type: 'pie',
-                        data: {
-                            labels: name_type,
-                            datasets: [{
-                                      label: 'Points',
-                                      data: value_type,
-                                      backgroundColor: ['rgba(255, 51, 51,1)','rgba(153, 255, 51, 1)']
-                            }]
-                        },
-                        options: {
-                          cutoutPercentage: 50,
-                          animation:{animateScale: true},
-                          title: {display: true,
-                                  text: 'Porcentagem de agentes individuais e coletivos'
-                              }
-                        }
-                    });
-}
-
 function grow_graphic(temporal_keys ,temporal_values){
         var ctx = document.getElementById("line-chart-time");
         var name_growth = JSON.parse(temporal_keys);
