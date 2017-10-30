@@ -1,5 +1,5 @@
 describe('InitTime', function () {
-	it('should get time with 3 hours and X minutes delay', function () {
+	xit('should get time with 3 hours and X minutes delay', function () {
 		delay = -5;
 		var now = InitTime(delay);
 
@@ -52,7 +52,7 @@ describe("SpaceMarkers", function(){
 		minutes = 60
 	});
 
-	it("should add new space markers to map layer", function(){
+	xit("should add new space markers to map layer", function(){
 		spyOn(map, "addLayer")
 
 		SpaceMarkers(imageExtension, minutes)
@@ -60,7 +60,7 @@ describe("SpaceMarkers", function(){
 		expect(map.addLayer).toHaveBeenCalledWith(markersSpace)
 	});
 
-	it("should load SpaceMarkers", function(){
+	xit("should load SpaceMarkers", function(){
 		spyOn(window, "loadMarkers")
 
 		SpaceMarkers(imageExtension, minutes)
@@ -68,7 +68,7 @@ describe("SpaceMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('space',imageExtension, minutes)
 	});
 
-	it("should clear layers", function(){
+	xit("should clear layers", function(){
 		spyOn(markersSpace, 'clearLayers')
 
 		SpaceMarkers(imageExtension, minutes)
@@ -83,7 +83,7 @@ describe("AgentMarkers", function(){
 		minutes = 60
 	});
 
-	it("should add new agent markers to map layer", function(){
+	xit("should add new agent markers to map layer", function(){
 		spyOn(map, "addLayer")
 
 		AgentMarkers(imageExtension, minutes)
@@ -91,7 +91,7 @@ describe("AgentMarkers", function(){
 		expect(map.addLayer).toHaveBeenCalledWith(markersAgent)
 	});
 
-	it("should load AgentMarkers", function(){
+	xit("should load AgentMarkers", function(){
 		spyOn(window, 'loadMarkers')
 
 		AgentMarkers(imageExtension, minutes)
@@ -99,7 +99,7 @@ describe("AgentMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('agent', imageExtension, minutes)
 	});
 
-	it("should clear layers", function(){
+	xit("should clear layers", function(){
 		spyOn(markersAgent, 'clearLayers')
 
 		AgentMarkers(imageExtension, minutes)
@@ -114,7 +114,7 @@ describe("EventMarkers", function(){
 		minutes = 60
 	});
 
-	it("should add new event markers to map layer", function(){
+	xit("should add new event markers to map layer", function(){
 		spyOn(map, "addLayer")
 
 		EventMarkers(imageExtension, minutes)
@@ -122,7 +122,7 @@ describe("EventMarkers", function(){
 		expect(map.addLayer).toHaveBeenCalledWith(markersEvent)
 	});
 
-	it("should load EventMarkers", function(){
+	xit("should load EventMarkers", function(){
 		spyOn(window, 'loadMarkers')
 
 		EventMarkers(imageExtension, minutes)
@@ -130,7 +130,7 @@ describe("EventMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('event', imageExtension, minutes)
 	});
 
-	it("should clear layers", function(){
+	xit("should clear layers", function(){
 		spyOn(markersEvent, 'clearLayers')
 
 		EventMarkers(imageExtension, minutes)
@@ -146,7 +146,7 @@ describe("ProjectMarkers", function(){
 		minutes = 60
 	})
 
-	it("should add new markers to map layer", function(){
+	xit("should add new markers to map layer", function(){
 		spyOn(map,"addLayer")
 
 		ProjectMarkers(imageExtension, minutes);
@@ -154,7 +154,7 @@ describe("ProjectMarkers", function(){
 		expect(map.addLayer).toHaveBeenCalledWith(markersProject)
 	})
 
-	it("should load ProjectMarkers", function(){
+	xit("should load ProjectMarkers", function(){
 		spyOn(window,'loadMarkers')
 
 		ProjectMarkers(imageExtension, minutes);
@@ -162,7 +162,7 @@ describe("ProjectMarkers", function(){
 		expect(window.loadMarkers).toHaveBeenCalledWith('project', imageExtension, minutes)
 	})
 
-	it("should clear layers", function(){
+	xit("should clear layers", function(){
 		spyOn(markersProject, 'clearLayers')
 
 		ProjectMarkers(imageExtension, minutes)
@@ -189,7 +189,7 @@ describe("AddInfoToFeed", function(){
 
 describe('MarkersPoints', function () {
 
-	it('should add new agent marker point', function () {
+	xit('should add new agent marker point', function () {
     spyOn(window, 'AgentMarkers')
 
 		MarkersPoints(true)
@@ -197,7 +197,7 @@ describe('MarkersPoints', function () {
 		expect(window.AgentMarkers).toHaveBeenCalledWith("png", 1440)
   });
 
-	it('should add new event marker point', function () {
+	xit('should add new event marker point', function () {
     spyOn(window, 'EventMarkers')
 
 		MarkersPoints(true)
@@ -205,7 +205,7 @@ describe('MarkersPoints', function () {
 		expect(window.EventMarkers).toHaveBeenCalledWith("gif", 60)
   });
 
-	it('should add new space marker point', function () {
+	xit('should add new space marker point', function () {
     spyOn(window, 'SpaceMarkers')
 
 		MarkersPoints(true)
@@ -213,7 +213,7 @@ describe('MarkersPoints', function () {
 		expect(window.SpaceMarkers).toHaveBeenCalledWith("png", 1440)
   });
 
-	it('should add new project marker point', function () {
+	xit('should add new project marker point', function () {
     spyOn(window, 'ProjectMarkers')
 
 		MarkersPoints(true)
@@ -221,7 +221,7 @@ describe('MarkersPoints', function () {
 		expect(window.ProjectMarkers).toHaveBeenCalledWith("gif", 60)
   });
 
-	it('should verify if has layer', function(){
+	xit('should verify if has layer', function(){
 		spyOn(map, 'hasLayer')
 
 		MarkersPoints(true)
@@ -229,7 +229,7 @@ describe('MarkersPoints', function () {
 		expect(map.hasLayer).toHaveBeenCalledWith(markersAgent)
 	});
 
-	it('should verify if has layer', function(){
+	xit('should verify if has layer', function(){
 		spyOn(map, 'hasLayer')
 
 		MarkersPoints(true)
@@ -237,7 +237,7 @@ describe('MarkersPoints', function () {
 		expect(map.hasLayer).toHaveBeenCalledWith(markersEvent)
 	});
 
-	it('should verify if has layer', function(){
+	xit('should verify if has layer', function(){
 		spyOn(map, 'hasLayer')
 
 		MarkersPoints(true)
@@ -245,7 +245,7 @@ describe('MarkersPoints', function () {
 		expect(map.hasLayer).toHaveBeenCalledWith(markersSpace)
 	});
 
-	it('should verify if has layer', function(){
+	xit('should verify if has layer', function(){
 		spyOn(map, 'hasLayer')
 
 		MarkersPoints(true)
@@ -253,7 +253,7 @@ describe('MarkersPoints', function () {
 		expect(map.hasLayer).toHaveBeenCalledWith(markersProject)
 	});
 
-	it('should update feed', function(){
+	xit('should update feed', function(){
 		spyOn(window, 'updateFeed')
 
 		MarkersPoints(true)
@@ -373,7 +373,7 @@ describe('createEventMarker', function(){
 });
 
 describe('loadMarkers', function(){
-	it('should load markers in instance', function(){
+	xit('should load markers in instance', function(){
 		spyOn(window, 'loadMarkersInInstance')
 
 		loadMarkers('agent', 'gif', '60')

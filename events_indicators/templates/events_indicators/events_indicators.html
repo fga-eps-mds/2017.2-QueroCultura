@@ -1,0 +1,68 @@
+{% extends 'quero_cultura/base.html' %}
+
+	{% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <link rel="stylesheet" href="static/css/events_indicators.css"/>
+
+	<div class="indicators_navbar">
+		<ul>
+			<li id="quantitativo_mensal_button">Quantitativo Mensal</li>
+			<li id="agentes_tipo_button">Quantidade de Eventos por Faixa Etaria</li>
+			<li id="agentes_area_button">Quantitativo de Eventos por Linguagem</li>
+			<li id="crescimento_button">Crescimento da Plataforma "Mapas Culturais"</li>
+		</ul>
+	</div>
+
+	<div id="quantitativo_mensal">
+	    <div class="text-chart">
+	      <h3>Quantitativo Mensal</h3>
+	      <p>Este gráfico refere-se à quantidade de Eventos cadastrados por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
+	    </div>
+
+	    <div class="chart-container-month">
+	      <canvas id="bar-chart-month"></canvas>
+	    </div>
+	</div>
+
+	<div id="events_type">
+	    <div class="text-chart">
+			<h3>Porcentagem de Eventos por Faixa Etaria</h3>
+			<p>Este gráfico refere-se à quantidade de eventos que se encaixam em determinada faixa etaria.</p>
+	    </div>
+
+	    <div class="chart-container-events">
+      		<canvas id="bar-chart-events"></canvas>
+	    </div>
+	</div>
+
+	<div id="events_language">
+		<div class="text-chart">
+			<h3>Quantitativo de Eventos por Linguagem</h3>
+			<p>Este gráfico refere-se à quantidade de eventos cadastrados que declaram ter afinidade ou efetivamente atuar em determinada linguagem cultural."</p>
+		</div>
+
+		<div class="chart-container-language">
+			<canvas id="bar-chart-language"></canvas>
+		</div>
+	</div>
+
+	<div id="crescimento">
+		<div class="text-chart">
+			<h3>Crescimento da Plataforma "Mapas Culturais"</h3>
+			<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de eventos ao longo de sua existência.</p>
+		</div>
+		<div class="chart-container-time">
+			<canvas id="line-chart-time"></canvas>
+		</div>
+	</div>
+
+
+	<script src="static/js/events_indicators.js"></script>
+	<script src="static/js/graphics_events.js"></script>
+	<script type="text/javascript">
+		temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
+		per_grow_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
+		per_language_graphic('{{ per_language_keys|safe }}','{{ per_language_values|safe }}')
+		per_age_range_graphic('{{ per_age_range_keys|safe }}','{{ per_age_range_values|safe }}')
+	</script>
+{% endblock %}

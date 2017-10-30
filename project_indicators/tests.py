@@ -44,6 +44,7 @@ class TestPercentPercentProjectThatAcceptOnlineTransitions(object):
         query = PercentProjectThatAcceptOnlineTransitions.objects.first()
         assert query._total_project == indicator
 
+
 class TestPercentProjectPerTypePerState(object):
 
     def test_total_project_per_state(self):
@@ -61,6 +62,7 @@ class TestPercentProjectPerTypePerState(object):
         project_indicator.save()
         query = PercentProjectPerTypePerState.objects.first()
         assert query._total_project_per_type_per_state == 50
+
 
 class TestPercentProjectThatAcceptOnlineTransitionsPerState(object):
     def test_total_project_online_transitions(self):
@@ -83,6 +85,7 @@ class TestPercentProjectThatAcceptOnlineTransitionsPerState(object):
         query = PercentProjectThatAcceptOnlineTransitionsPerState.objects.first()
         assert query._total_project_per_state == 50
 
+
 class TestQuantityOfRegisteredProject(object):
     def test_total_project_registered_per_mounth_per_year(self):
         QuantityOfRegisteredProject.drop_collection()
@@ -100,18 +103,19 @@ class TestQuantityOfRegisteredProject(object):
         query = QuantityOfRegisteredProject.objects.first()
         assert query._total_project_registered_per_year == 50
 
+
 class TestClassRequestProjectsRawData(object):
 
     def test_success_request(self):
         current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(current_time)
+        request_project_raw_data = RequestProjectsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         response_project_raw_data = request_project_raw_data.response
         response_status_code = response_project_raw_data.status_code
         assert response_status_code == 200
 
     def test_data_content(self):
         current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(current_time)
+        request_project_raw_data = RequestProjectsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         project_raw_data = request_project_raw_data.data
         type_project_raw_data = type(project_raw_data)
         empty_list = []
@@ -119,7 +123,7 @@ class TestClassRequestProjectsRawData(object):
 
     def test_data_lenght(self):
         current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(current_time)
+        request_project_raw_data = RequestProjectsRawData(current_time, "http://mapas.cultura.gov.br/api/")
         project_raw_data = request_project_raw_data.data_length
         type_project_raw_data = type(project_raw_data)
         intenger = 1

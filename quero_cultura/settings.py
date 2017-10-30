@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'quero_cultura',
     'agents_indicators',
     'library_indicators',
+    'events_indicators',
     'mongoengine',
     'requests',
     'django_celery_beat',

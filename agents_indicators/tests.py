@@ -49,7 +49,7 @@ class TestRequestAgentsRawData(object):
     @staticmethod
     def test_success_request():
         current_time = datetime.now().__str__()
-        url = 'http://mapas.cultura.gov.br/api/agent/find/'
+        url = "http://mapas.cultura.gov.br/api/"
         request_agents_raw_data = RequestAgentsRawData(current_time, url)
         response_agents_raw_data = request_agents_raw_data.response
         response_status_code = response_agents_raw_data.status_code
@@ -58,7 +58,7 @@ class TestRequestAgentsRawData(object):
     @staticmethod
     def test_data_content():
         current_time = datetime.now().__str__()
-        url = 'http://mapas.cultura.gov.br/api/agent/find/'
+        url = "http://mapas.cultura.gov.br/api/"
         request_agents_raw_data = RequestAgentsRawData(current_time, url)
         agents_raw_data = request_agents_raw_data.data
         type_agents_raw_data = type(agents_raw_data)
@@ -68,7 +68,7 @@ class TestRequestAgentsRawData(object):
     @staticmethod
     def test_data_lenght():
         current_time = datetime.now().__str__()
-        url = "http://mapas.cultura.gov.br/api/agent/find/"
+        url = "http://mapas.cultura.gov.br/api/"
         request_agents_raw_data = RequestAgentsRawData(current_time, url)
         agents_raw_data = request_agents_raw_data.data_length
         type_agents_raw_data = type(agents_raw_data)
@@ -95,7 +95,7 @@ class TestUpdateAgentIndicator(object):
         PercentIndividualAndCollectiveAgent.drop_collection()
         AmountAgentsRegisteredPerMonth.drop_collection()
 
-        update_agent_indicator("http://mapas.cultura.gov.br/api/agent/find/")
+        update_agent_indicator()
 
         total = len(PercentIndividualAndCollectiveAgent.objects)
         total += len(AmountAgentsRegisteredPerMonth.objects)
