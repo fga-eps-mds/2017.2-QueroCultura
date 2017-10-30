@@ -9,9 +9,16 @@
   <canvas id="pie-chart-library"></canvas>
 </div>
 
+<div class="chart-container-library">
+  <canvas id="bar-chart-area"></canvas>
+</div>
+
 <script type = "text/javascript" src="static/js/charts.js"></script>
 <script type = "text/javascript">
-  public_private_chart(10, 11)
+
+
+  public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
+  per_area_chart({{ocupation_area_total|safe}})
 </script>
 
 {% endblock %}
