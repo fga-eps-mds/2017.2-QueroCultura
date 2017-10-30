@@ -1,4 +1,7 @@
 .segmented-control {
+  width: 100%;
+  height: 50px;
+  color: #343a40;
   position: relative;
   display: inline-block;
   border: 1px solid currentColor;
@@ -210,12 +213,6 @@
   text-align: center;
   padding: 0 6em;
   position: absolute;
-}
-
-#segmented-control-nav{
-  width: 100%;
-  color: #5FBAAC;
-  background-color: red;
 }
 
 @media (max-width: 991px) {

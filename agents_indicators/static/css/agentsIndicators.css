@@ -24,3 +24,7 @@
 	max-width: 45%;
 	margin: auto
 }
+
+.container-indicators{
+	visibility: hidden;
+}
