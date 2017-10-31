@@ -1,63 +1,87 @@
 {% extends 'quero_cultura/base.html' %}
+{% load static %}
 
 	{% block content %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
-    <link rel="stylesheet" href="static/css/events_indicators.css"/>
+		<!-- Import necessário para seguir o padrão de implementação visual -->
+		<link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
 
-	<div class="indicators_navbar">
-		<ul>
-			<li id="quantitativo_mensal_button">Quantitativo Mensal</li>
-			<li id="agentes_tipo_button">Quantidade de Eventos por Faixa Etaria</li>
-			<li id="agentes_area_button">Quantitativo de Eventos por Linguagem</li>
-			<li id="crescimento_button">Crescimento da Plataforma "Mapas Culturais"</li>
-		</ul>
-	</div>
+		<!-- Div responsável por imprimir a navbar dos indicadores de eventos -->
+		<div class="container">
+			<div class="segmented-control">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#quantitativo-mensal" checked>
+		    <input type="radio" name="sc-1-1" id="sc-1-1-2" value="#events-type">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-3" value="#events-language">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-4" value="#crescimento">
 
-	<div id="quantitativo_mensal">
-	    <div class="text-chart">
-	      <h3>Quantitativo Mensal</h3>
-	      <p>Este gráfico refere-se à quantidade de Eventos cadastrados por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
-	    </div>
+		    <label for="sc-1-1-1" data-value="Quantitativo Mensal">
+					Quantitativo Mensal
+				</label>
 
-	    <div class="chart-container-month">
-	      <canvas id="bar-chart-month"></canvas>
-	    </div>
-	</div>
+				<label for="sc-1-1-2" data-value="Eventos por Faixa Etária">
+					Eventos por Faixa Etária
+				</label>
 
-	<div id="events_type">
-	    <div class="text-chart">
-			<h3>Porcentagem de Eventos por Faixa Etaria</h3>
-			<p>Este gráfico refere-se à quantidade de eventos que se encaixam em determinada faixa etaria.</p>
-	    </div>
+				<label for="sc-1-1-3" data-value="Eventos por Linguagem">
+					Eventos por Linguagem
+				</label>
 
-	    <div class="chart-container-events">
-      		<canvas id="bar-chart-events"></canvas>
-	    </div>
-	</div>
-
-	<div id="events_language">
-		<div class="text-chart">
-			<h3>Quantitativo de Eventos por Linguagem</h3>
-			<p>Este gráfico refere-se à quantidade de eventos cadastrados que declaram ter afinidade ou efetivamente atuar em determinada linguagem cultural."</p>
+				<label for="sc-1-1-4" data-value="Crescimento da Plataforma">
+					Crescimento da Plataforma
+				</label>
+			</div>
 		</div>
 
-		<div class="chart-container-language">
-			<canvas id="bar-chart-area"></canvas>
-		</div>
-	</div>
+		<!-- Área onde os graficos são printados -->
+		<div class="container-indicators">
+			<div id="quantitativo-mensal">
+			    <div class="chart-container">
+			      <canvas id="bar-chart-month"></canvas>
+			    </div>
 
-	<div id="crescimento">
-		<div class="text-chart">
-			<h3>Crescimento da Plataforma "Mapas Culturais"</h3>
-			<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de eventos ao longo de sua existência.</p>
-		</div>
-		<div class="chart-container-time">
-			<canvas id="line-chart-time"></canvas>
-		</div>
-	</div>
+					<div class="text-chart-init">
+						<p>Este gráfico refere-se à quantidade de Eventos cadastrados por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
+					</div>
+			</div>
 
+			<div id="events-type">
+			    <div class="chart-container">
+		      		<canvas id="bar-chart-events"></canvas>
+			    </div>
+
+					<div class="text-chart-init">
+					<p>Este gráfico refere-se à quantidade de eventos que se encaixam em determinada faixa etária.</p>
+					</div>
+			</div>
+
+			<div id="events-language">
+				<div class="chart-container">
+					<canvas id="bar-chart-area"></canvas>
+				</div>
+
+				<div class="text-chart-init">
+					<p>Este gráfico refere-se à quantidade de eventos cadastrados que declaram ter afinidade ou efetivamente atuar em determinada linguagem cultural."</p>
+				</div>
+			</div>
+
+			<div id="crescimento">
+				<div class="chart-container">
+					<canvas id="line-chart-time"></canvas>
+				</div>
+
+				<div class="text-chart-init">
+					<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de eventos ao longo de sua existência.</p>
+				</div>
+			</div>
+		</div>
+
+	<!-- Imports necessários para funcionalidade da navbar e gráficos-->
+	<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
+	<script src="{% static 'js/color_manager.js' %}" type="text/javascript"></script>
+	<script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
+	<script src="{% static 'js/graphics.js' %}" type="text/javascript"></script>
 	<script src="static/js/events_graphics.js"></script>
-	<script src="static/js/events_indicators.js"></script>
 	<script type="text/javascript">
 		per_month_bar_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
 		growth_line_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')

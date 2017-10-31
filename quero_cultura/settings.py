@@ -135,3 +135,6 @@ CELERY_TIMEZONE = TIME_ZONE
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+STATICFILES_DIRS = ['quero_cultura/static/',
+                    'agents_indicators/static/']

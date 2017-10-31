@@ -1,39 +1,115 @@
 {% extends 'quero_cultura/base.html' %}
+{% load static %}
 
-{% block content %}
+  {% block content %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<link rel="stylesheet" href="static/css/libraryIndicators.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	   <!-- Import necessário para seguir o padrão de implementação visual -->
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/library-indicators.css' %}"/>
 
-<div class="chart-container-library">
-    <canvas id="pie-chart-library"></canvas>
-</div>
+		<!-- Div responsável por imprimir a navbar dos indicadores de bibliotecas -->
+    <div class="container">
+			<div class="segmented-control">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#bibliotecas-tipo" checked>
+		    <input type="radio" name="sc-1-1" id="sc-1-1-2" value="#bibliotecas-area">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-3" value="#bibliotecas-esfera">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-4" value="#bibliotecas-cadastros-mes">
+		    <input type="radio" name="sc-1-1" id="sc-1-1-5" value="#bibliotecas-cadastros-ano">
 
-<div class="chart-container-area">
-    <canvas id="bar-chart-area"></canvas>
-</div>
+		    <label for="sc-1-1-1" data-value="Bibliotecas por Tipo">
+					Bibliotecas por Tipo
+				</label>
 
-<div class="chart-container-area">
-    <canvas id="bar-chart-sphere"></canvas>
-</div>
+				<label for="sc-1-1-2" data-value="Bibliotecas por Área">
+					Bibliotecas por Área
+				</label>
 
-<div class="chart-container-area">
-    <canvas id="line-chart-time"></canvas>
-</div>
+				<label for="sc-1-1-3" data-value="Bibliotecas por Esfera">
+					Bibliotecas por Esfera
+				</label>
 
-<div class="chart-container-area">
-    <canvas id="line-chart-year"></canvas>
-</div>
+				<label for="sc-1-1-4" data-value="Cadastros por Mês">
+					Cadastros por Mês
+				</label>
 
-<script type = "text/javascript" src="static/js/library_graphics.js"></script>
-<script type = "text/javascript">
+        <label for="sc-1-1-5" data-value="Cadastros por Ano">
+					Cadastros por Ano
+				</label>
 
-    public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
-    bar_chart({{ocupation_area_total|safe}}, "bar-chart-area", 'Área de atuação', 'Quantidade de registros por área de atuação')
-    bar_chart({{type_sphere_total|safe}}, "bar-chart-sphere", 'Tipo de esfera', 'Quantidade de registros por tipo de esfera')
-    line_chart({{quantity_per_mouth|safe}}, "line-chart-time", "Registros por mês", "Quantidade de bibliotecas cadastrados por mes na plataforma")
-    line_chart({{quantity_per_year|safe}}, "line-chart-year", "Registros por ano", "Quantidade de bibliotecas cadastrados por ano na plataforma ao longo de sua existencia")
+			</div>
+		</div>
 
-</script>
+		<!-- Área onde os graficos são printados -->
+		<div class="container-indicators">
+      <div id="bibliotecas-tipo">
+        <div class="chart-container">
+          <canvas id="pie-chart-library"></canvas>
+        </div>
 
-{% endblock %}
+        <div class="text-chart-init">
+          <p>Este gráfico refere-se à porcentagem dos tipos de bibliotecas cadastradas.</p>
+        </div>
+      </div>
+
+      <div id="bibliotecas-area">
+        <div class="chart-container">
+            <canvas id="bar-chart-area"></canvas>
+        </div>
+
+        <div class="text-chart-init">
+          <p>Este gráfico refere-se à quantidade das bibliotecas por área de atuação.</p>
+        </div>
+      </div>
+
+
+      <div id="bibliotecas-esfera">
+        <div class="chart-container">
+            <canvas id="bar-chart-sphere"></canvas>
+        </div>
+
+        <div class="text-chart-init">
+          <p>Este gráfico refere-se à quantidade das bibliotecas por tipo de esfera.</p>
+        </div>
+      </div>
+
+      <div id="bibliotecas-cadastros-mes">
+        <div class="chart-container">
+            <canvas id="line-chart-time"></canvas>
+        </div>
+
+        <div class="text-chart-init">
+          <p>Este gráfico refere-se aos cadastros de bibliotecas por mês.</p>
+        </div>
+      </div>
+
+
+      <div id="bibliotecas-cadastros-ano">
+        <div class="chart-container">
+            <canvas id="line-chart-year"></canvas>
+        </div>
+
+        <div class="text-chart-init">
+          <p>Este gráfico refere-se aos cadastros de bibliotecas por ano.</p>
+        </div>
+      </div>
+    </div>
+
+	   <!-- Imports necessários para funcionalidade da navbar e gráficos-->
+		<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
+    <script src="{% static 'js/color_manager.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/graphics.js' %}" type="text/javascript"></script>
+    <script type = "text/javascript" src="static/js/library_graphics.js"></script>
+    <script type = "text/javascript">
+
+        public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
+        bar_chart({{ocupation_area_total|safe}}, "bar-chart-area", 'Área de atuação', 'Quantidade de registros por área de atuação')
+        bar_chart({{type_sphere_total|safe}}, "bar-chart-sphere", 'Tipo de esfera', 'Quantidade de registros por tipo de esfera')
+        line_chart({{quantity_per_mouth|safe}}, "line-chart-time", "Registros por mês", "Quantidade de bibliotecas cadastrados por mes na plataforma")
+        line_chart({{quantity_per_year|safe}}, "line-chart-year", "Registros por ano", "Quantidade de bibliotecas cadastrados por ano na plataforma ao longo de sua existencia")
+
+    </script>
+
+  {% endblock %}
