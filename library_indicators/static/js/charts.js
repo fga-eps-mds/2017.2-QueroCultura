@@ -1,35 +1,39 @@
 function public_private_chart(amount_public_libraries, amount_private_libraries){
-    var keys = ["Pública", "Privada"]
-    var values = [amount_public_libraries, amount_private_libraries]
-    var context = document.getElementById('pie-chart-library').getContext('2d');
+    graphics_data = {keys: ["Pública", "Privada"],
+                     values: [amount_public_libraries, amount_private_libraries],
+                     category: "pie"
+    }
+    graphics_data.label = "Points"
+    graphics_data.context = document.getElementById('pie-chart-library').getContext('2d')
+    graphics_data.description = 'Porcentagem de bibliotecas públicas e privadas'
 
-    var label = "Points"
-    var description = 'Porcentagem de bibliotecas públicas e privadas'
-    var category = "pie"
-
-    createChart(category, context, keys, values, label, description)
+    createChart(graphics_data)
 }
 
 function bar_chart(indicators, chartId, label, description){
     indicators = convertIndicators(indicators)
-    var keys = indicators.keys;
-    var values = indicators.values;
+    graphics_data = {category: "bar",
+                     keys: indicators.keys,
+                     values: indicators.values,
+                     label: label,
+                     context:document.getElementById(chartId),
+                     description:description
+    }
 
-    var context = document.getElementById(chartId);
-
-    var category = 'bar'
-    createChart(category, context, keys, values, label, description)
+    createChart(graphics_data)
 }
 
 function line_chart(indicators, chartId, label, description){
     indicators = convertIndicators(indicators)
-    var keys = indicators.keys;
-    var values = indicators.values;
+    graphics_data = {category: "line",
+                     keys: indicators.keys,
+                     values: indicators.values,
+                     label: label,
+                     context:document.getElementById(chartId),
+                     description:description
+    }
 
-    var context = document.getElementById(chartId);
-
-    var category = "line"
-    createChart(category, context, keys, values, label, description)
+    createChart(graphics_data)
 }
 
 function convertIndicators(indicators){

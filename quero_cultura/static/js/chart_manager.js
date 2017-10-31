@@ -61,10 +61,10 @@ function createData(category, keys, values, label){
     }
 }
 
-function createChart(category, context, keys, values, label, description){
-    var data = {type: category,
-        data: createData(category, keys, values, label),
-        options: createOptions(category, description)
+function createChart(graphics_data){
+    var data = {type: graphics_data.category,
+        data: createData(graphics_data.category, graphics_data.keys, graphics_data.values, graphics_data.label),
+        options: createOptions(graphics_data.category, graphics_data.description)
     }
-    return new Chart(context, data);
+    return new Chart(graphics_data.context, data);
 }

@@ -1,44 +1,49 @@
-function temporal_graphic(temporal_keys,temporal_data){
-    var keys = JSON.parse(temporal_keys);
-    var values = JSON.parse(temporal_data);
-    var context = document.getElementById("bar-chart-month");
+function createDefaultData(category, data_keys, data_values){
+    var graphics_data = {category: category,
+                         keys: JSON.parse(data_keys),
+                         values: JSON.parse(data_values)
+        }
+        return graphics_data
+}
 
-    var label = 'Cadastros no Mês'
-    var description = 'Quantidade de registros cadastrados no mês'
-    var category = 'bar'
-    createChart(category, context, keys, values, label, description)
+function temporal_graphic(data_keys, data_values){
+    var graphics_data = createDefaultData("bar", data_keys, data_values)
+
+    graphics_data.label = 'Cadastros no Mês'
+    graphics_data.context = document.getElementById("bar-chart-month")
+    graphics_data.description = 'Quantidade de registros cadastrados no mês'
+    
+    createChart(graphics_data)
 }
 
 
-function per_area_graphic(per_area_keys, per_area_values){
-    var keys = JSON.parse(per_area_keys);
-    var values = JSON.parse(per_area_values);
-    var context = document.getElementById("bar-chart-area");
+function per_area_graphic(data_keys, data_values){
+    var graphics_data = createDefaultData("bar", data_keys, data_values)
 
-    var label = 'Área de atuação'
-    var description = 'Quantidade de registros por área de atuação'
-    var category = 'bar'
-    createChart(category, context, keys, values, label, description)
+    graphics_data.label = 'Área de atuação'
+    graphics_data.context = document.getElementById("bar-chart-area")
+    graphics_data.description = 'Quantidade de registros por área de atuação'
+
+    createChart(graphics_data)
 }
 
-function growth_graphic(temporal_keys ,temporal_values){
-    var keys = JSON.parse(temporal_keys);
-    var values = JSON.parse(temporal_values);
-    var context = document.getElementById("line-chart-time");
+function growth_graphic(data_keys ,data_values){
+    var graphics_data = createDefaultData("line", data_keys, data_values)
 
-    var label = 'Quantidades total de registros no momento'
-    var description = 'Quantidades de Registros ao longo do tempo'
-    var category = 'line'
-    createChart(category, context, keys, values, label, description)
+    graphics_data.label = 'Quantidades total de registros no momento'
+    graphics_data.context = document.getElementById("line-chart-time")
+    graphics_data.description = 'Quantidades de Registros ao longo do tempo'
+
+    createChart(graphics_data)
 }
 
-function per_type_graphic(per_type_keys, per_type_values){
-    var keys = JSON.parse(per_type_keys);
-    var values = JSON.parse(per_type_values);
-    var context = document.getElementById("pie-chart-agents");
 
-    var label = "Points"
-    var description = 'Porcentagem de agentes individuais e coletivos'
-    var category = "pie"
-    createChart(category, context, keys, values, label, description)
+function per_type_graphic(data_keys, data_values){
+    var graphics_data = createDefaultData("pie", data_keys, data_values)
+
+    graphics_data.label = "Points"
+    graphics_data.context = document.getElementById("pie-chart-agents")
+    graphics_data.description = 'Porcentagem de agentes individuais e coletivos'
+
+    createChart(graphics_data)
 }
