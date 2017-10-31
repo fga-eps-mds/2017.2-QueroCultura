@@ -42,3 +42,26 @@ describe('bar_chart', function(){
         expect(window.createChart).toHaveBeenCalledWith(graphics_data)
     });
 });
+
+describe('line_chart', function(){
+    it('should create line chart', function(){
+        var stringChart = '<div><canvas style="display:none" id="pie-chart-library"></canvas></div>'
+        $("body").append(stringChart)
+
+        indicators = []
+        indicators = convertIndicators(indicators)
+        graphics_data = {category: "line",
+                         keys: indicators.keys,
+                         values: indicators.values,
+                         label: "Registros por mês",
+                         context:document.getElementById("line-chart-time"),
+                         description: "Quantidade de bibliotecas cadastrados por mes na plataforma"
+        }
+
+        spyOn(window, 'createChart')
+
+        line_chart(indicators, "line-chart-time", "Registros por mês", "Quantidade de bibliotecas cadastrados por mes na plataforma")
+
+        expect(window.createChart).toHaveBeenCalledWith(graphics_data)
+    });
+});
