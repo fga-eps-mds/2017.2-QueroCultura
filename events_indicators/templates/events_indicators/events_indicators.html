@@ -56,12 +56,12 @@
 		</div>
 	</div>
 
-	<script src="static/js/graphics_events.js"></script>
+	<script src="static/js/events_graphics.js"></script>
 	<script src="static/js/events_indicators.js"></script>
 	<script type="text/javascript">
-		temporal_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
-		growth_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
-		per_area_graphic('{{ per_language_keys|safe }}','{{ per_language_values|safe }}')
+		per_month_bar_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
+		growth_line_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
+		per_area_bar_graphic('{{ per_language_keys|safe }}','{{ per_language_values|safe }}')
 		per_age_range_graphic('{{ per_age_range_keys|safe }}','{{ per_age_range_values|safe }}')
 	</script>
 {% endblock %}

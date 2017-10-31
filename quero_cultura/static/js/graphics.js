@@ -6,18 +6,18 @@ function createDefaultData(category, data_keys, data_values){
         return graphics_data
 }
 
-function temporal_graphic(data_keys, data_values){
+function per_month_bar_graphic(data_keys, data_values){
     var graphics_data = createDefaultData("bar", data_keys, data_values)
 
     graphics_data.label = 'Cadastros no Mês'
     graphics_data.context = document.getElementById("bar-chart-month")
     graphics_data.description = 'Quantidade de registros cadastrados no mês'
-    
+
     createChart(graphics_data)
 }
 
 
-function per_area_graphic(data_keys, data_values){
+function per_area_bar_graphic(data_keys, data_values){
     var graphics_data = createDefaultData("bar", data_keys, data_values)
 
     graphics_data.label = 'Área de atuação'
@@ -27,7 +27,7 @@ function per_area_graphic(data_keys, data_values){
     createChart(graphics_data)
 }
 
-function growth_graphic(data_keys ,data_values){
+function growth_line_graphic(data_keys ,data_values){
     var graphics_data = createDefaultData("line", data_keys, data_values)
 
     graphics_data.label = 'Quantidades total de registros no momento'
@@ -38,7 +38,7 @@ function growth_graphic(data_keys ,data_values){
 }
 
 
-function per_type_graphic(data_keys, data_values){
+function per_type_pie_graphic(data_keys, data_values){
     var graphics_data = createDefaultData("pie", data_keys, data_values)
 
     graphics_data.label = "Points"

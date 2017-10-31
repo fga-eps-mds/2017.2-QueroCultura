@@ -37,7 +37,7 @@ describe("graphics",function(){
 
             $("body").append(stringChart)
 
-            temporal_graphic(keys,values)
+            per_month_bar_graphic(keys,values)
 
             chart = document.getElementById("bar-chart-month").outerHTML
             expect(stringChart).not.toEqual(chart)
@@ -53,7 +53,7 @@ describe("graphics",function(){
 
             $("body").append(stringChart)
 
-            per_area_graphic(keys,values)
+            per_area_bar_graphic(keys,values)
 
             chart = document.getElementById("bar-chart-area").outerHTML
             expect(stringChart).not.toEqual(chart)
@@ -69,7 +69,7 @@ describe("graphics",function(){
 
             $("body").append(stringChart)
 
-            growth_graphic(keys,values)
+            growth_line_graphic(keys,values)
 
             chart = document.getElementById("line-chart-time").outerHTML
             expect(stringChart).not.toEqual(chart)
