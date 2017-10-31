@@ -65,3 +65,14 @@ describe('line_chart', function(){
         expect(window.createChart).toHaveBeenCalledWith(graphics_data)
     });
 });
+
+describe('convertIndicators', function(){
+    it('shoud convert indicator in keys end values', function(){
+        spyOn(jQuery, 'each')
+
+        indicator = []
+        convertIndicators(indicator)
+
+        expect(jQuery.each).toHaveBeenCalled()
+    });
+});
