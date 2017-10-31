@@ -14,12 +14,12 @@
 </head>
 
 <body>
-	<div style="display:none" class="map-container">
-		<div id="map"></div>
-	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-	</script>
+    <div style="display:none" class="map-container">
+        <div id="map"></div>
+    </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
@@ -30,22 +30,26 @@
 	<script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js">
 	</script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 	<!-- include source files here... -->
 
 	<script src="quero_cultura/static/js/connections.js"></script>
-	<script src="quero_cultura/static/js/map.js"></script>
 	<script src="quero_cultura/static/js/marker_creators.js"></script>
-  <script src="quero_cultura/static/js/cookie.js"></script>
-  <script src="library_indicators/static/js/charts.js">
+    <script src="quero_cultura/static/js/map.js"></script>
+    <script src="quero_cultura/static/js/color_manager.js"></script>
+    <script src="quero_cultura/static/js/chart_manager.js"></script>
+    <script src="quero_cultura/static/js/graphics.js"></script>
 
-  </script>
+    <script src="quero_cultura/static/js/cookie.js"></script>
+
+    <script src="library_indicators/static/js/library_graphics.js"></script>
+    <script src="events_indicators/static/js/events_graphics.js"></script>
 
 	<!-- include spec files here... -->
 	<script src="quero_cultura/static/js/spec/mapSpec.js"></script>
-  <script src="library_indicators/static/js/spec/librarySpec.js"></script>
-
+    <script src="quero_cultura/static/js/spec/graphicsSpec.js"></script>
+    <script src="events_indicators/static/js/spec/graphics_eventsSpec.js"></script>
 
 
 </body>

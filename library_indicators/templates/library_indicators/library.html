@@ -95,7 +95,10 @@
     </div>
 
 		<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
-    <script type = "text/javascript" src="static/js/charts.js"></script>
+    <script src="{% static 'js/color_manager.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/graphics.js' %}" type="text/javascript"></script>
+    <script type = "text/javascript" src="static/js/library_graphics.js"></script>
     <script type = "text/javascript">
 
         public_private_chart({{amount_public_libraries}}, {{amount_private_libraries}})
