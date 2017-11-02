@@ -10,7 +10,7 @@ function per_age_range_graphic(per_age_range_keys, per_age_range_values){
             datasets: [{
                 label: 'Faixa Etaria',
                 data: value_age_range,
-                backgroundColor: poolColors(value_age_range.length)
+                backgroundColor: 'rgba(17,90,163,1)'
             }]
         },
         options: {
