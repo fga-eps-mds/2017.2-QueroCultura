@@ -316,3 +316,12 @@ describe('setZIndex', function(){
 		expect(test).toEqual(equal)
 	});
 });
+
+describe('loadMarkersInInstance', function(){
+	xit('should call createPromise', function(){
+
+		spyOn(window, 'createPromise')
+		loadMarkersInInstance('agent', 'agent123', 'gif', 60)
+		expect(window.createPromise).toHaveBeenCalled()
+	});
+});
