@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import yaml
+from collections import OrderedDict
 
 
 def index(request):
@@ -53,3 +54,7 @@ def build_temporal_indicator(new_data, old_data):
                     temporal_indicator[year][month] += old_data[year][month]
 
     return temporal_indicator
+
+
+def sort_dict(dictionary):
+    return dict(OrderedDict(sorted(dictionary.items(), key = lambda t:t[1])))
