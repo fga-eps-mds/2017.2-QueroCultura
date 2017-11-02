@@ -106,12 +106,33 @@ describe('createEventMarker', function(){
 });
 
 describe('loadMarkers', function(){
-	xit('should load markers in instance', function(){
-		spyOn(window, 'loadMarkersInInstance')
+	it('should load markers in instance', function(){
+		spyOn(window, 'createProjectMarker')
+
+		loadMarkers('project', 'gif', '60')
+
+		expect(window.createProjectMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createEventMarker')
+
+		loadMarkers('event', 'gif', '60')
+
+		expect(window.createEventMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createAgentMarker')
 
 		loadMarkers('agent', 'gif', '60')
 
-		expect(window.loadMarkersInInstance).toHaveBeenCalled()
+		expect(window.createAgentMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createSpaceMarker')
+
+		loadMarkers('space', 'gif', '60')
+
+		expect(window.createSpaceMarker).toHaveBeenCalled()
 	});
 });
 
@@ -238,5 +259,30 @@ describe('loadAndUpdateMarkers', function(){
 		spyOn(window, 'updateFeed')
 		loadAndUpdateMarkers(5,[],'gif')
 		expect(window.updateFeed).toHaveBeenCalledWith()
+	});
+});
+
+describe('checkMarkersDuplicity', function(){
+	xit('should remove layers', function(){
+		spyOn(map, 'removeLayer')
+		var value = Array()
+		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
+		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
+
+
+		checkMarkersDuplicity(value)
+		expect(map.removeLayer).toHaveBeenCalled()
+	});
+});
+
+describe('getInitialInstance', function(){
+	it('should get initial instance', function(){
+		data = [{'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
+		position = 0
+		var url = data[position]["singleUrl"]
+	    var splitUrl = url.split(".")
+		var test = getInitialInstance(data, position)
+
+		expect(test).toEqual(splitUrl[2])
 	});
 });
