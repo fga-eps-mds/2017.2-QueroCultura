@@ -15,6 +15,7 @@ var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/
     accessToken: 'your.mapbox.access.token'
 });
 
+
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
 var map = L.map('map', {maxBounds: bounds})
@@ -75,14 +76,14 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
 
     switch(markerType){
         case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl'
+            select = 'name, occurrences.{space.{location}}, singleUrl, subsite'
             break
         case 'project':
-            select = 'name, owner.location, singleUrl '
+            select = 'name, owner.location, singleUrl, subsite'
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl'
+            select = 'name, location, singleUrl, subsite'
             break
         default:
             select = ''
@@ -94,7 +95,7 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
         '@or' : 1,
         'createTimestamp' : "GT("+queryDateTime+")",
         'updateTimestamp' : "GT("+queryDateTime+")"
-      },);
+      });
 
       return promise
 }

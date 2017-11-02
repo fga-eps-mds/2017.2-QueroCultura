@@ -31,12 +31,28 @@ function createMarkerIcon(color, extension){
 }
 
 
+function getSubsite(subsiteId){
+  //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
+  var promise = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
+    {
+      '@select' : 'url',
+      'id': 'eq('+subsiteId+')'
+    });
+
+  promise.then(function(data){
+    console.log(data[0]["url"])
+  })
+}
+
 // this function  return instance initials
 function getInitialInstance(data,position){
+  getSubsite(3) //testing
+
   var url = data[position]["singleUrl"]
   var splitUrl = url.split(".")
   return splitUrl[2]
 }
+
 function makeIdForMarker(data,position){
 
   var initialsInstance = getInitialInstance(data,position)
