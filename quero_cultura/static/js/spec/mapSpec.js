@@ -174,3 +174,17 @@ describe('readCookie', function(){
 		expect(test).toEqual(null)
 	});
 });
+
+describe('getQueryDateTime', function () {
+	it('should create a new date time', function () {
+		delay = -5;
+		var now = getQueryDateTime(delay);
+		var timeTest = new Date();
+
+		timeTest.setHours(timeTest.getHours() - 3, timeTest.getMinutes() - delay);
+		timeTest = timeTest.toJSON();
+
+		expect(now).toEqual(timeTest);
+
+    });
+});
