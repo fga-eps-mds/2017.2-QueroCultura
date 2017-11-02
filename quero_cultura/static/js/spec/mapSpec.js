@@ -175,7 +175,7 @@ describe('readCookie', function(){
 	});
 });
 
-describe('getQueryDateTime', function () {
+describe('getQueryDateTime', function() {
 	it('should create a new date time', function () {
 		delay = -5;
 		var now = getQueryDateTime(delay);
@@ -187,4 +187,56 @@ describe('getQueryDateTime', function () {
 		expect(now).toEqual(timeTest);
 
     });
+});
+
+describe('createQueryPromise',function(){
+	it('Should call getQueryDateTime', function(){
+		spyOn(window, 'getQueryDateTime')
+		createQueryPromise('instanceURL','event',5)
+		expect(window.getQueryDateTime).toHaveBeenCalledWith(5)
+	});
+	xit('Should return promise',function(){
+		var dateTime = getQueryDateTime(5)
+		var select = 'name, occurrences.{space.{location}}, singleUrl'
+		var promise = $.getJSON("instanceURLevent/find",
+	      {
+	        '@select' : select,
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+dateTime+")",
+	        'updateTimestamp' : "GT("+dateTime+")"
+	      },);
+		  var equal = createQueryPromise('instanceURL','event',5)
+		  expect(equal).toEqual(promise)
+	});
+});
+
+describe('saveAndLoadData', function(){
+	xit('Should call createQueryPromise', function(){
+		spyOn(window, 'createQueryPromise')
+		saveAndLoadData('instanceURL', 'event', 5, [], 'gif')
+		expect(window.createQueryPromise).toHaveBeenCalled()
+	});
+});
+
+describe('loadAndUpdateMarkers', function(){
+	it('Should call saveAndLoadData', function(){
+		spyOn(window, 'saveAndLoadData')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.saveAndLoadData).toHaveBeenCalled()
+	});
+	it('Should call checkMarkersDuplicity', function(){
+		spyOn(window, 'checkMarkersDuplicity')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.checkMarkersDuplicity).toHaveBeenCalledWith(lastHourData)
+	});
+	it('Should call addLayer', function(){
+		spyOn(map,'addLayer')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(map.addLayer).toHaveBeenCalledTimes(4)
+	});
+	it('Should call updateFeed', function(){
+		spyOn(window, 'updateFeed')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.updateFeed).toHaveBeenCalledWith()
+	});
 });
