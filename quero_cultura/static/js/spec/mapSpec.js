@@ -303,3 +303,16 @@ describe('makeIdForMarker', function(){
 			expect(identification).toEqual(equal)
 		});
 });
+
+describe('setZIndex', function(){
+	it('Should return 1000', function(){
+			equal = 1000
+			test = setZIndex('gif')
+			expect(test).toEqual(equal)
+	});
+	it('Should return -30', function(){
+		equal = -30
+		test = setZIndex('png')
+		expect(test).toEqual(equal)
+	});
+});
