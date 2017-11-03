@@ -85,25 +85,16 @@ def update_project_indicator():
         request = RequestProjectsRawData(last_per_Type.create_date, url)
         new_total += request.data_length
 
-        x = url.split(".")
-        y = ""
-        for i in x:
-            y += i
+        mongo_url = url.replace(".", "")
 
-        if not(y in new_per_type):
-            new_per_type[y] = build_type_indicator(request.data, {})
+        if not(mongo_url in new_per_type):
+            new_per_type[mongo_url] = build_type_indicator(request.data, {})
+            new_per_online[mongo_url] = build_online_record_indicator(request.data, {})
+            new_temporal[mongo_url] = build_temporal_indicator(request.data, {})
         else:
-            new_per_type[y] = build_type_indicator(request.data, new_per_type[y])
-
-        if not(y in new_per_online):
-            new_per_online[y] = build_online_record_indicator(request.data, {})
-        else:
-            new_per_online[y] = build_online_record_indicator(request.data, new_per_online[y])
-
-        if not(y in new_temporal):
-            new_temporal[y] = build_temporal_indicator(request.data, {})
-        else:
-            new_temporal[y] = build_temporal_indicator(request.data, new_temporal[y])
+            new_per_type[mongo_url] = build_type_indicator(request.data, new_per_type[mongo_url])
+            new_per_online[mongo_url] = build_online_record_indicator(request.data, new_per_online[mongo_url])
+            new_temporal[mongo_url] = build_temporal_indicator(request.data, new_temporal[mongo_url])
 
     new_create_date = str(datetime.now())
 
