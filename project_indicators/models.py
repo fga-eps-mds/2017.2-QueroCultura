@@ -1,6 +1,7 @@
 from mongoengine import Document
 from mongoengine import IntField
-from mongoengine import DateTimeField
+from mongoengine import StringField
+from mongoengine import DictField
 
 
 class PercentProjects(Document):
@@ -8,7 +9,7 @@ class PercentProjects(Document):
         abstract = True
     meta = {'allow_inheritance': True}
     _total_project = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):
@@ -28,7 +29,7 @@ class PercentProjects(Document):
 
 
 class PercentProjectPerType(PercentProjects):
-    _total_project_per_type = IntField(required=True)
+    _total_project_per_type = DictField(required=True)
 
     @property
     def total_project_per_type(self):
@@ -40,7 +41,7 @@ class PercentProjectPerType(PercentProjects):
 
 
 class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
-    _total_project_that_accept_online_transitions = IntField(required=True)
+    _total_project_that_accept_online_transitions = DictField(required=True)
 
     @property
     def total_project_that_accept_online_transitions(self):
@@ -52,7 +53,7 @@ class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
 
 
 class QuantityOfRegisteredProject(PercentProjects):
-    _total_project_registered_per_mounth_per_year = IntField(required=True)
+    _total_project_registered_per_mounth_per_year = DictField(required=True)
 
     @property
     def total_project_registered_per_mounth_per_year(self):
