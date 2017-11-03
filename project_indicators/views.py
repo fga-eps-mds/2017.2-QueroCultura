@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from quero_cultura.views import build_temporal_indicator
+from .models import PercentProjectPerType
+from .models import PercentProjectThatAcceptOnlineTransitions
+from .models import QuantityOfRegisteredProject
 
-
-# Create your views here.
 
 def index(request):
 

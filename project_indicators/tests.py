@@ -2,8 +2,6 @@ from datetime import datetime
 from .api_connections import RequestProjectsRawData
 from .models import PercentProjectPerType
 from .models import PercentProjectThatAcceptOnlineTransitions
-from .models import PercentProjectPerTypePerState
-from .models import PercentProjectThatAcceptOnlineTransitionsPerState
 from .models import QuantityOfRegisteredProject
 
 
@@ -45,63 +43,14 @@ class TestPercentPercentProjectThatAcceptOnlineTransitions(object):
         assert query._total_project == indicator
 
 
-class TestPercentProjectPerTypePerState(object):
-
-    def test_total_project_per_state(self):
-        PercentProjectPerTypePerState.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectPerTypePerState(indicator, 50, datetime.now())
-        project_indicator.save()
-        query = PercentProjectPerTypePerState.objects.first()
-        assert query._total_project_per_state == indicator
-
-    def test_total_project_per_type_per_state(self):
-        PercentProjectPerTypePerState.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectPerTypePerState(50, indicator, datetime.now())
-        project_indicator.save()
-        query = PercentProjectPerTypePerState.objects.first()
-        assert query._total_project_per_type_per_state == 50
-
-
-class TestPercentProjectThatAcceptOnlineTransitionsPerState(object):
-    def test_total_project_online_transitions(self):
-        PercentProjectThatAcceptOnlineTransitionsPerState.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectThatAcceptOnlineTransitionsPerState(50,
-                                                                              indicator,
-                                                                              datetime.now())
-        project_indicator.save()
-        query = PercentProjectThatAcceptOnlineTransitionsPerState.objects.first()
-        assert query._total_project_online_transitions == 50
-
-    def test_total_project_per_state(self):
-        PercentProjectThatAcceptOnlineTransitionsPerState.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectThatAcceptOnlineTransitionsPerState(50,
-                                                                              indicator,
-                                                                              datetime.now())
-        project_indicator.save()
-        query = PercentProjectThatAcceptOnlineTransitionsPerState.objects.first()
-        assert query._total_project_per_state == 50
-
-
 class TestQuantityOfRegisteredProject(object):
     def test_total_project_registered_per_mounth_per_year(self):
         QuantityOfRegisteredProject.drop_collection()
         indicator = 50
-        project_indicator = QuantityOfRegisteredProject(50, datetime.now(), indicator, 50)
+        project_indicator = QuantityOfRegisteredProject(50, datetime.now(), indicator)
         project_indicator.save()
         query = QuantityOfRegisteredProject.objects.first()
         assert query._total_project_registered_per_mounth_per_year == 50
-
-    def test_total_project_registered_per_year(self):
-        QuantityOfRegisteredProject.drop_collection()
-        indicator = 50
-        project_indicator = QuantityOfRegisteredProject(50, datetime.now(), indicator, 50)
-        project_indicator.save()
-        query = QuantityOfRegisteredProject.objects.first()
-        assert query._total_project_registered_per_year == 50
 
 
 class TestClassRequestProjectsRawData(object):
