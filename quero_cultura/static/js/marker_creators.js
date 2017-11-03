@@ -1,6 +1,7 @@
 var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
+var subsites = {1:"museus.cultura.gov.br",2:"bibliotecas.cultura.gov.br",4:"mapas.cultura.gov.br",9:"mapacultural.es.gov.br",11:"pb.mapas.cultura.gov.br",12:"ma.mapas.cultura.gov.br",15:"pa.mapas.cultura.gov.br",16:"jaguarao.rs.mapas.cultura.gov.br",17:"meleva.cultura.gov.br",18:"grucultura.guarulhos.sp.gov.br",20:"laguna.sc.mapas.cultura.gov.br",21:"mapa.cultura.aracaju.se.gov.br",22:"francodarocha.sp.mapas.cultura.gov.br",23:"mapacultural.itu.sp.gov.br",24:"ba.mapas.cultura.gov.br",25:"mapacultural.parnaiba.pi.gov.br",26:"osasco.sp.mapas.cultura.gov.br",27:"camacari.ba.mapas.cultura.gov.br",28:"ilheus.ba.mapas.cultura.gov.br",29:"varzeagrande.mt.mapas.cultura.gov.br",30:"pontosdememoria.cultura.gov.br",31:"mapadaculturafoz.pmfi.pr.gov.br",32:"senhordobonfim.ba.mapas.cultura.gov.br",33:"mapas.cultura.se.gov.br",34:"mapacultural.itapetininga.sp.gov.br",35:"mapacultural.ipatinga.mg.gov.br",36:"mapacultural.novohamburgo.rs.gov.br",37:"mapacultural.saocaetanodosul.sp.gov.br"}
 
 var printedMarkers = Array()
 
@@ -30,23 +31,21 @@ function createMarkerIcon(color, extension){
     }
 }
 
-
-function getSubsite(subsiteId){
-  //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
-  var promise = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
-    {
-      '@select' : 'url',
-      'id': 'eq('+subsiteId+')'
-    });
-
-  promise.then(function(data){
-    console.log(data[0]["url"])
-  })
-}
+//
+// function getSubsite(subsiteId){
+//   //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
+//
+//   response = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
+//     {
+//       '@select' : 'url',
+//       'id': 'eq('+subsiteId+')'
+//   });
+//
+//   return response
+// }
 
 // this function  return instance initials
 function getInitialInstance(data,position){
-  getSubsite(3) //testing
 
   var url = data[position]["singleUrl"]
   var splitUrl = url.split(".")
@@ -102,7 +101,13 @@ function createAgentMarker(data, imageExtension){
             var marker = L.marker([data[i]["location"]["latitude"],
             data[i]["location"]["longitude"]],
             {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
-            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            if(data[i]['subsite'] != null){
+                linkSubsite = "http://www."+subsites[data[i]['subsite']] + "/agente/" + data[i]["id"]
+                marker.bindPopup('<h6><b>Subsite:</b></h6>'+data[i]["subsite"]+'<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
+                console.log(linkSubsite);
+            }else{
+                marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
+            }
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
           }
