@@ -28,7 +28,7 @@ class TestPercentPercentProjectThatAcceptOnlineTransitions(object):
 
     def test_total_project_that_accept_online_transitions(self):
         PercentProjectThatAcceptOnlineTransitions.drop_collection()
-        indicator = {'5':5}
+        indicator = {'5': 5}
         project_indicator = PercentProjectThatAcceptOnlineTransitions(5, str(datetime.now()), indicator)
         project_indicator.save()
         query = PercentProjectThatAcceptOnlineTransitions.objects.first()
@@ -46,7 +46,7 @@ class TestPercentPercentProjectThatAcceptOnlineTransitions(object):
 class TestQuantityOfRegisteredProject(object):
     def test_total_project_registered_per_mounth_per_year(self):
         QuantityOfRegisteredProject.drop_collection()
-        indicator = {'5':5}
+        indicator = {'5': 5}
         project_indicator = QuantityOfRegisteredProject(50, str(datetime.now()), indicator)
         project_indicator.save()
         query = QuantityOfRegisteredProject.objects.first()

@@ -9,8 +9,8 @@ from celery.decorators import task
 import yaml
 import json
 
-
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+
 
 def index(request):
     update_project_indicator()
@@ -62,9 +62,9 @@ def build_online_record_indicator(new_data, old_data):
 
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
-        PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'http://mapas.cultura.gov.br/api/': {'Exposição': 0}}).save()
-        PercentProjectThatAcceptOnlineTransitions(0, DEFAULT_INITIAL_DATE, {'http://mapas.cultura.gov.br/api/': {'True': 0, 'False': 0}}).save()
-        QuantityOfRegisteredProject(0, DEFAULT_INITIAL_DATE, {'http://mapas.cultura.gov.br/api/': {'2015': {'01': 0}}}).save()
+        PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'Exposição': 0}}).save()
+        PercentProjectThatAcceptOnlineTransitions(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'True': 0, 'False': 0}}).save()
+        QuantityOfRegisteredProject(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'2015': {'01': 0}}}).save()
 
     index = PercentProjectPerType.objects.count()
 
@@ -85,20 +85,25 @@ def update_project_indicator():
         request = RequestProjectsRawData(last_per_Type.create_date, url)
         new_total += request.data_length
 
-        if not(url in new_per_type):
-            new_per_type[url] = build_type_indicator(request.data, {})
-        else:
-            new_per_type[url] = build_type_indicator(request.data, new_per_type[url])
+        x = url.split(".")
+        y = ""
+        for i in x:
+            y += i
 
-        if not(url in new_per_online):
-            new_per_online[url] = build_online_record_indicator(request.data, {})
+        if not(y in new_per_type):
+            new_per_type[y] = build_type_indicator(request.data, {})
         else:
-            new_per_online[url] = build_online_record_indicator(request.data, new_per_online[url])
+            new_per_type[y] = build_type_indicator(request.data, new_per_type[y])
 
-        if not(url in new_temporal):
-            new_temporal[url] = build_temporal_indicator(request.data, {})
+        if not(y in new_per_online):
+            new_per_online[y] = build_online_record_indicator(request.data, {})
         else:
-            new_temporal[url] = build_temporal_indicator(request.data, new_temporal[url])
+            new_per_online[y] = build_online_record_indicator(request.data, new_per_online[y])
+
+        if not(y in new_temporal):
+            new_temporal[y] = build_temporal_indicator(request.data, {})
+        else:
+            new_temporal[y] = build_temporal_indicator(request.data, new_temporal[y])
 
     new_create_date = str(datetime.now())
 
