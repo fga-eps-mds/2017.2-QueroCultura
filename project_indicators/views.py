@@ -12,3 +12,21 @@ def index(request):
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
     return render(request, 'project_indicators/project-indicators.html', context)
+
+
+def build_type_indicator(new_data, old_data):
+    per_type = {}
+
+    for project in new_data:
+        if not (project["type"]["name"] in per_type):
+            per_type[project["type"]["name"]] = 1
+        else:
+            per_type[project["type"]["name"]] += 1
+
+    for project in old_data:
+        if not (project in per_type):
+            per_type[project] = old_data[project]
+        else:
+            per_type[project] += old_data[project]
+
+    return per_type
