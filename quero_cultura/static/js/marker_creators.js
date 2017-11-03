@@ -97,6 +97,17 @@ function setZIndex(imageExtension){
   }
 }
 
+//Verify if exist an subsite, if exist, change url to subsite
+function createPopup(type,data,marker){
+    if(data.subsite != null){
+        linkSubsite = "http://"+subsites[data.subsite] + "/"+type+"/" + data.id
+        marker.bindPopup('<h6><b>Subsite:</b></h6>'+data.subsite+'<h6><b>Nome:</b></h6>'+data.name+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
+        console.log(linkSubsite);
+    }else{
+        marker.bindPopup('<h6><b>Nome:</b></h6>'+data.name+'<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>');
+    }
+}
+
 function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
@@ -111,13 +122,7 @@ function createSpaceMarker(data, imageExtension){
                                    data[i]["location"]["longitude"]],
                                    {icon: redMarker}).setZIndexOffset(valueZindex).addTo(markersSpace);
 
-            //Verify if exist an subsite, if exist, change url to subsite 
-            if(data[i]['subsite'] != null){
-                linkSubsite = "http://"+subsites[data[i]['subsite']] + "/espaco/" + data[i]["id"]
-                marker.bindPopup('<h6><b>Subsite:</b></h6>'+data[i]["subsite"]+'<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
-            }else{
-                marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            }           
+            createPopup("espaco",data[i],marker)
 
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
@@ -138,14 +143,7 @@ function createAgentMarker(data, imageExtension){
                                    data[i]["location"]["longitude"]],
                                    {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
 
-            //Verify if exist an subsite, if exist, change url to subsite 
-            if(data[i]['subsite'] != null){
-                linkSubsite = "http://"+subsites[data[i]['subsite']] + "/agente/" + data[i]["id"]
-                marker.bindPopup('<h6><b>Subsite:</b></h6>'+data[i]["subsite"]+'<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
-                //console.log(linkSubsite);
-            }else{
-                marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            }
+            createPopup("agente",data[i],marker)
 
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
@@ -167,14 +165,7 @@ function createEventMarker(data, imageExtension){
                                    data[i]["occurrences"][0]["space"]["location"]["longitude"]],
                                    {icon: yellowMarker}).setZIndexOffset(valueZindex).addTo(markersEvent);
 
-            //Verify if exist an subsite, if exist, change url to subsite
-            if(data[i]['subsite'] != null){
-                linkSubsite = "http://"+subsites[data[i]['subsite']] + "/evento/" + data[i]["id"]
-                marker.bindPopup('<h6><b>Subsite:</b></h6>'+data[i]["subsite"]+'<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
-                //console.log(linkSubsite)
-            }else{
-                marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            }
+            createPopup("evento",data[i],marker)
 
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
@@ -192,18 +183,11 @@ function createProjectMarker(data, imageExtension){
           var idForMarker = makeIdForMarker(data,i)
           var valueZindex = setZIndex(imageExtension)
           newMarkers.set(idForMarker, data[i])
-        	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
+          var marker = L.marker([data[i]["owner"]["location"]["latitude"],
         							           data[i]["owner"]["location"]["longitude"]],
         							           {icon: greenMarker}).setZIndexOffset(valueZindex).addTo(markersProject);
-          
-          //Verify if exist an subsite, if exist, change url to subsite
-          if(data[i]['subsite'] != null){
-              linkSubsite = "http://"+subsites[data[i]['subsite']] + "/projeto/" + data[i]["id"]
-              marker.bindPopup('<h6><b>Subsite:</b></h6>'+data[i]["subsite"]+'<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
-              console.log(linkSubsite)
-          }else{
-              marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-          }
+
+          createPopup("projeto",data[i],marker)
 
           identifiedMarker = {"id" : data[i].id,"marker" : marker}
           printedMarkers.push(identifiedMarker)
