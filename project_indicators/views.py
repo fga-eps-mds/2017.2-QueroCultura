@@ -30,3 +30,21 @@ def build_type_indicator(new_data, old_data):
             per_type[project] += old_data[project]
 
     return per_type
+
+
+def build_online_record_indicator(new_data, old_data):
+    per_online_record = {}
+
+    for project in new_data:
+        if not (str(project["useRegistrations"]) in per_online_record):
+            per_online_record[str(project["useRegistrations"])] = 1
+        else:
+            per_online_record[str(project["useRegistrations"])] += 1
+
+    for project in old_data:
+        if not (project in per_online_record):
+            per_online_record[project] = old_data[project]
+        else:
+            per_online_record[project] += old_data[project]
+
+    return per_online_record
