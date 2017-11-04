@@ -15,12 +15,11 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 def index(request):
     update_project_indicator()
 
-    # load per type indicator
     index = PercentProjectPerType.objects.count()
+
+    # load indicators
     per_type = PercentProjectPerType.objects[index - 1]
-    # load per online indicator
-    per_online = PercentProjectThatAcceptOnlineTransitions.objects[index -1]
-    # load temporal indicator
+    per_online = PercentProjectThatAcceptOnlineTransitions.objects[index - 1]
     temporal = QuantityOfRegisteredProject.objects[index - 1]
 
     per_type = per_type.total_project_per_type
@@ -114,21 +113,29 @@ def update_project_indicator():
 
 
 def prepare_temporal_vision(temporal):
-    # Inicializa variaveis que auxiliam na preparação do indicador temporal
     months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-    last_year = 2013 + len(temporal)
-    growthing = 0
+    prepared_temporal = {}
 
-    temporal_keys = []
-    temporal_values = []
-    temporal_growth = []
+    for url in temporal:
+        first_year = int(min(temporal[url].keys()))
+        last_year = int(max(temporal[url].keys())) + 1
+        growthing = 0
 
-    # Prepara visualização do indicador temporal
-    for year in range(2013, last_year):
-        for month in months:
-            if (month in temporal[str(year)]):
-                temporal_keys.append(str(year) + "-" + month)
-                temporal_values.append(temporal[str(year)][month])
+        temporal_keys = []
+        temporal_values = []
+        temporal_growth = []
 
-                growthing += temporal[str(year)][month]
-                temporal_growth.append(growthing)
+        for year in range(first_year, last_year):
+            for month in months:
+                if (month in temporal[url][str(year)]):
+                    temporal_keys.append(str(year) + "-" + month)
+                    temporal_values.append(temporal[url][str(year)][month])
+
+                    growthing += temporal[url][str(year)][month]
+                    temporal_growth.append(growthing)
+
+        prepared_temporal["keys_"+url] = temporal_keys
+        prepared_temporal["values_"+url] = temporal_values
+        prepared_temporal["growth_"+url] = temporal_growth
+
+    return prepared_temporal
