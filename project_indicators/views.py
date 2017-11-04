@@ -26,6 +26,7 @@ def index(request):
     per_online = per_online.total_project_that_accept_online_transitions
     temporal = temporal.QuantityOfRegisteredProject
 
+    temporal = prepare_temporal_vision(temporal)
     # Cria dicionario para apresentação dos graficos de indicadores
     context = {}
 
@@ -134,8 +135,15 @@ def prepare_temporal_vision(temporal):
                     growthing += temporal[url][str(year)][month]
                     temporal_growth.append(growthing)
 
-        prepared_temporal["keys_"+url] = temporal_keys
-        prepared_temporal["values_"+url] = temporal_values
-        prepared_temporal["growth_"+url] = temporal_growth
+        prepared_temporal["keys_temporal_"+url] = temporal_keys
+        prepared_temporal["values_temporal_"+url] = temporal_values
+        prepared_temporal["growth_temporal_"+url] = temporal_growth
 
     return prepared_temporal
+
+
+def prepare_indicator_list(indicator, indicator_name):
+    keys = []
+    values = []
+
+    
