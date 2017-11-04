@@ -2,6 +2,8 @@ var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
 
+// variable that contains the subsites of mapas.cultura.gov.br(Mapas BR) with yours respectives id's
+// These can be obtained in follow link: 'http://mapas.cultura.gov.br/api/subsite/find?@select=url'
 var subsites = {1:"museus.cultura.gov.br",
                 2:"bibliotecas.cultura.gov.br",
                 4:"mapas.cultura.gov.br",
@@ -59,29 +61,33 @@ function createMarkerIcon(color, extension){
     }
 }
 
-//
-// function getSubsite(subsiteId){
-//   //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
-//
-//   response = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
-//     {
-//       '@select' : 'url',
-//       'id': 'eq('+subsiteId+')'
-//   });
-//
-//   return response
-// }
+/* Return a string with the subsite's url, using an subsiteId
+*/
+function getSubsite(subsiteId){
+    //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
+    
+    /*
+    response = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
+        {
+        '@select' : 'url',
+        'id': 'eq('+subsiteId+')'
+    });
+
+    return response
+    */
+
+    subsite = subsites[subsiteId].toString()
+    return subsite
+}
 
 // this function  return instance initials
 function getInitialInstance(data,position){
-
   var url = data[position]["singleUrl"]
   var splitUrl = url.split(".")
   return splitUrl[2]
 }
 
 function makeIdForMarker(data,position){
-
   var initialsInstance = getInitialInstance(data,position)
   var id = data[position]["id"]
   var idString = id.toString()
@@ -97,27 +103,36 @@ function setZIndex(imageExtension){
   }
 }
 
-//Verify if exist an subsite, if exist, change url to subsite
+/* Create a popup to marker 
+*/
 function createPopup(type,data,marker){
-    if(data.subsite != null){
-        linkSubsite = "http://"+subsites[data.subsite] + "/"+type+"/" + data.id
-        marker.bindPopup('<h6><b>Subsite:</b></h6>'+data.subsite+'<h6><b>Nome:</b></h6>'+data.name+'<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>');
-        console.log(linkSubsite);
+    var popup = '<h6><b>Load Error</b></h6>'
+
+    // Check if exist an subsite link, if exist, change url to subsite.
+    if(data.subsite == null){
+        //In normal flux, doesn't exist subsite and we use "singleUrl"
+        popup = '<h6><b>Nome:</b></h6>'+data.name+
+                '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
     }else{
-        marker.bindPopup('<h6><b>Nome:</b></h6>'+data.name+'<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>');
+        linkSubsite = "http://"+getSubsite(data.subsite) + "/"+type+"/" + data.id
+        popup = '<h6><b>Subsite:</b></h6>'+data.subsite+
+                '<h6><b>Nome:</b></h6>'+data.name+
+                '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
     }
+
+    marker.bindPopup(popup);
 }
 
 function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
     for(var i=0; i < data.length; i++){
-
         if(data[i]["location"] != null){
-          var valueZindex = setZIndex(imageExtension)
+            var valueZindex = setZIndex(imageExtension)
             data[i]["type"] = "space"
             var idForMarker = makeIdForMarker(data,i)
             newMarkers.set(idForMarker, data[i])
+
             var marker = L.marker([data[i]["location"]["latitude"],
                                    data[i]["location"]["longitude"]],
                                    {icon: redMarker}).setZIndexOffset(valueZindex).addTo(markersSpace);
@@ -132,13 +147,14 @@ function createSpaceMarker(data, imageExtension){
 
 function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
-    for(var i=0; i < data.length; i++){
 
-          if(data[i]["location"] != null){
+    for(var i=0; i < data.length; i++){
+        if(data[i]["location"] != null){
             data[i]["type"] = "agent"
             var idForMarker = makeIdForMarker(data,i)
             var valueZindex = setZIndex(imageExtension)
             newMarkers.set(idForMarker, data[i])
+
             var marker = L.marker([data[i]["location"]["latitude"],
                                    data[i]["location"]["longitude"]],
                                    {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
@@ -147,20 +163,20 @@ function createAgentMarker(data, imageExtension){
 
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
-          }
-  }
+        }
+    }
 }
 
 function createEventMarker(data, imageExtension){
     var yellowMarker = createMarkerIcon('yellow', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if((data[i]["occurrences"]).length != 0){
-
+    	  if((data[i]["occurrences"]).length != 0){
             data[i]["type"] = "event"
             var idForMarker = makeIdForMarker(data,i)
             var valueZindex = setZIndex(imageExtension)
             newMarkers.set(idForMarker, data[i])
+
             var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
                                    data[i]["occurrences"][0]["space"]["location"]["longitude"]],
                                    {icon: yellowMarker}).setZIndexOffset(valueZindex).addTo(markersEvent);
@@ -169,8 +185,7 @@ function createEventMarker(data, imageExtension){
 
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
-
-    	}
+    	  }
     }
 }
 
@@ -178,19 +193,20 @@ function createProjectMarker(data, imageExtension){
     var greenMarker = createMarkerIcon('green', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if(data[i]["owner"] != null){
-          data[i]["type"] = "project"
-          var idForMarker = makeIdForMarker(data,i)
-          var valueZindex = setZIndex(imageExtension)
-          newMarkers.set(idForMarker, data[i])
-          var marker = L.marker([data[i]["owner"]["location"]["latitude"],
-        							           data[i]["owner"]["location"]["longitude"]],
-        							           {icon: greenMarker}).setZIndexOffset(valueZindex).addTo(markersProject);
+    	  if(data[i]["owner"] != null){
+            data[i]["type"] = "project"
+            var idForMarker = makeIdForMarker(data,i)
+            var valueZindex = setZIndex(imageExtension)
+            newMarkers.set(idForMarker, data[i])
 
-          createPopup("projeto",data[i],marker)
+            var marker = L.marker([data[i]["owner"]["location"]["latitude"],
+          							           data[i]["owner"]["location"]["longitude"]],
+          							           {icon: greenMarker}).setZIndexOffset(valueZindex).addTo(markersProject);
 
-          identifiedMarker = {"id" : data[i].id,"marker" : marker}
-          printedMarkers.push(identifiedMarker)
+            createPopup("projeto",data[i],marker)
+
+            identifiedMarker = {"id" : data[i].id,"marker" : marker}
+            printedMarkers.push(identifiedMarker)
         }
-      }
+    }
 }
