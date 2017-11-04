@@ -5,7 +5,9 @@ from mongoengine import StringField
 
 # -------------------- state indicators --------------------------------
 
+
 class PercentMuseums(Document):
+
     class Meta:
         abstract = True
     meta = {'allow_inheritance': True}
@@ -41,7 +43,6 @@ class PercentThematicsMuseums(PercentMuseums):
         self._thematics_museums = number
 
 
-
 class PercentTypeMuseums(PercentMuseums):
     _type_museums = DictField(required=True)
 
@@ -56,7 +57,7 @@ class PercentTypeMuseums(PercentMuseums):
 
 class PercentPublicOrPrivateMuseums(PercentMuseums):
     _total_public_private_museums = DictField(required=True)
-    
+
     @property
     def total_public_private_museums(self):
         return self._total_public_private_museums
@@ -64,6 +65,7 @@ class PercentPublicOrPrivateMuseums(PercentMuseums):
     @total_public_private_museums.setter
     def total_public_private_museums(self, number):
         self._total_public_private_museums = number
+
 
 class AmountMuseumsRegisteredYear(Document):
     _total_museums_registered_year = DictField(required=True)
@@ -85,6 +87,7 @@ class AmountMuseumsRegisteredYear(Document):
     def create_date(self, number):
         self._create_date = number
 
+
 class PercentMuseumsPromoteGuidedTour(PercentMuseums):
     _total_museums_promote_guide = DictField(required=True)
 
@@ -95,7 +98,8 @@ class PercentMuseumsPromoteGuidedTour(PercentMuseums):
     @total_museums_promote_guide.setter
     def total_museums_promote_guide(self, number):
         self._total_museums_promote_guide = number
-        
+
+
 class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
     _total_museums_historical = DictField(required=True)
 
