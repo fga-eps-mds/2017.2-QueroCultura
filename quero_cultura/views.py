@@ -58,3 +58,24 @@ def build_temporal_indicator(new_data, old_data):
 
 def sort_dict(dictionary):
     return dict(OrderedDict(sorted(dictionary.items(), key = lambda t:t[1])))
+
+
+class ParserYAML(object):
+    def __init__(self):
+        self._urls_files = open("./urls.yaml", 'r')
+        self._urls = yaml.load(self._urls_files)
+        self._multi_instances_urls = self._urls['multi-instancias']
+        self._library_urls = self._urls['bibliotecas']
+        self._museums_urls = self._urls['museus']
+
+    @property
+    def get_multi_instances_urls(self):
+        return self._multi_instances_urls
+
+    @property
+    def get_library_urls(self):
+        return self._library_urls
+
+    @property
+    def get_museums_urls(self):
+        return self._museums_urls
