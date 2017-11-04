@@ -1,11 +1,13 @@
 import json
 import requests
-
+from quero_cultura.views import ParserYAML
 
 class RequestMuseumRawData(object):
 
     def __init__(self, last_update_time):
-        self._url = "http://museus.cultura.gov.br/api/space/find/"
+        self._parser_yaml = ParserYAML()
+        self._musuem_url = self._parser_yaml.get_museus_urls
+        self._url = self._musuem_url[0]
         self._filters = {'@select': 'mus_tipo, mus_tipo_tematica,'
                                     + 'En_Estado, esfera,'
                                     + 'mus_servicos_visitaGuiada, '
