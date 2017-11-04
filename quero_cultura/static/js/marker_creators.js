@@ -39,20 +39,19 @@ var printedMarkers = Array()
 /* Add an marker icon to the map
    considering the icon extension
 */
-function createMarkerIcon(color, extension){
+function createMarkerIcon(markerType, extension){
     filename = ''
-    switch (color) {
-        case 'red': filename = 'markerSpace'
+    switch (markerType) {
+        case 'space': filename = 'markerSpace'
             break
-        case 'blue': filename = 'markerAgent'
+        case 'agent': filename = 'markerAgent'
             break
-        case 'yellow': filename = 'markerEvent'
+        case 'event': filename = 'markerEvent'
             break
-        case 'green': filename = 'markerProject'
+        case 'project': filename = 'markerProject'
             break
     }
     if(extension == "gif"){
-
       var imageLocation = "static/images/"+filename+"."+"gif"
       return L.icon({ iconUrl: imageLocation,
         iconSize: [25,25],
@@ -86,17 +85,17 @@ function getSubsite(subsiteId){
 
 /* Return instance initials
 */
-function getInitialInstance(data,position){
-  var url = data[position]["singleUrl"]
+function getInitialInstance(data){
+  var url = data["singleUrl"]
   var splitUrl = url.split(".")
   return splitUrl[2]
 }
 
 /*  Create an ID to identify the marker when added to the map
 */
-function makeIdForMarker(data,position){
-  var initialsInstance = getInitialInstance(data,position)
-  var id = data[position]["id"]
+function makeIdForMarker(data){
+  var initialsInstance = getInitialInstance(data)
+  var id = data["id"]
   var idString = id.toString()
   var identification = initialsInstance+idString
   return identification
@@ -132,27 +131,31 @@ function createPopup(type,data,marker){
     marker.bindPopup(popup);
 }
 
+function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude, longitude){
+    var valueZindex = setZIndex(imageExtension)
+    var idForMarker = makeIdForMarker(data)
+    newMarkers.set(idForMarker, data)
+    
+    // Instantiates a Marker object given a geographical point and optionally an options object
+    var marker = L.marker([latitude, longitude], {icon: icon}).setZIndexOffset(valueZindex).addTo(featureGroup);
+
+    createPopup(type,data,marker)
+    var identifiedMarker = {"id" : data.id,"marker" : marker}
+    printedMarkers.push(identifiedMarker)
+}
+
 /* Create a space marker and add into map
    receiving an 'data' that constains space informations obtained of api
 */
 function createSpaceMarker(data, imageExtension){
-    var redMarker = createMarkerIcon('red', imageExtension)
+    var icon = createMarkerIcon('space', imageExtension)
+    var type = "espaco"
 
     for(var i=0; i < data.length; i++){
-        if(data[i]["location"] != null){
-            var valueZindex = setZIndex(imageExtension)
-            data[i]["type"] = "space"
-            var idForMarker = makeIdForMarker(data,i)
-            newMarkers.set(idForMarker, data[i])
-
-            var marker = L.marker([data[i]["location"]["latitude"],
-                                   data[i]["location"]["longitude"]],
-                                   {icon: redMarker}).setZIndexOffset(valueZindex).addTo(markersSpace);
-
-            createPopup("espaco",data[i],marker)
-
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+        if(data[i]["location"]){        
+            var latitude = data[i]["location"]["latitude"]
+            var longitude = data[i]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, type, markersSpace, latitude, longitude)
         }
     }
 }
@@ -161,23 +164,14 @@ function createSpaceMarker(data, imageExtension){
    receiving an 'data' that constains agent informations obtained of api
 */
 function createAgentMarker(data, imageExtension){
-    var blueMarker = createMarkerIcon('blue', imageExtension)
+    var icon = createMarkerIcon('agent', imageExtension)
+    var type = "agente"
 
     for(var i=0; i < data.length; i++){
-        if(data[i]["location"] != null){
-            data[i]["type"] = "agent"
-            var idForMarker = makeIdForMarker(data,i)
-            var valueZindex = setZIndex(imageExtension)
-            newMarkers.set(idForMarker, data[i])
-
-            var marker = L.marker([data[i]["location"]["latitude"],
-                                   data[i]["location"]["longitude"]],
-                                   {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
-
-            createPopup("agente",data[i],marker)
-
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+        if(data[i]["location"]){
+            var latitude = data[i]["location"]["latitude"]
+            var longitude = data[i]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, type, markersAgent, latitude, longitude)
         }
     }
 }
@@ -186,23 +180,14 @@ function createAgentMarker(data, imageExtension){
    receiving an 'data' that constains event informations obtained of api
 */
 function createEventMarker(data, imageExtension){
-    var yellowMarker = createMarkerIcon('yellow', imageExtension)
+    var icon = createMarkerIcon('event', imageExtension)
+    var type = "evento"
 
     for(var i=0; i < data.length; i++){
-    	  if((data[i]["occurrences"]).length != 0){
-            data[i]["type"] = "event"
-            var idForMarker = makeIdForMarker(data,i)
-            var valueZindex = setZIndex(imageExtension)
-            newMarkers.set(idForMarker, data[i])
-
-            var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
-                                   data[i]["occurrences"][0]["space"]["location"]["longitude"]],
-                                   {icon: yellowMarker}).setZIndexOffset(valueZindex).addTo(markersEvent);
-
-            createPopup("evento",data[i],marker)
-
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+    	  if((data[i]["occurrences"]).length){
+            var latitude = data[i]["occurrences"][0]["space"]["location"]["latitude"]
+            var longitude = data[i]["occurrences"][0]["space"]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, type, markersEvent, latitude, longitude)
     	  }
     }
 }
@@ -211,23 +196,14 @@ function createEventMarker(data, imageExtension){
    receiving an 'data' that constains project informations obtained of api
 */
 function createProjectMarker(data, imageExtension){
-    var greenMarker = createMarkerIcon('green', imageExtension)
+    var icon = createMarkerIcon('project', imageExtension)
+    var type = "projeto"
 
     for(var i=0; i < data.length; i++){
-    	  if(data[i]["owner"] != null){
-            data[i]["type"] = "project"
-            var idForMarker = makeIdForMarker(data,i)
-            var valueZindex = setZIndex(imageExtension)
-            newMarkers.set(idForMarker, data[i])
-
-            var marker = L.marker([data[i]["owner"]["location"]["latitude"],
-          							           data[i]["owner"]["location"]["longitude"]],
-          							           {icon: greenMarker}).setZIndexOffset(valueZindex).addTo(markersProject);
-
-            createPopup("projeto",data[i],marker)
-
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+    	  if(data[i]["owner"]){            
+            var latitude = data[i]["owner"]["location"]["latitude"]
+            var longitude = data[i]["owner"]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, type, markersProject, latitude, longitude)
         }
     }
 }
