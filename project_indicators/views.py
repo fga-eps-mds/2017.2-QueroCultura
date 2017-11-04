@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import sort_dict
+from quero_cultura.views import ParserYAML
 from .models import PercentProjectPerType
 from .models import PercentProjectThatAcceptOnlineTransitions
 from .models import QuantityOfRegisteredProject
@@ -32,8 +33,8 @@ def index(request):
 
     # create context
     context = {}
-    urls_files = open('./urls.yaml', 'r')
-    urls = yaml.load(urls_files)
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
         new_url = url.replace(".", "")
@@ -103,8 +104,8 @@ def update_project_indicator():
     last_per_online_record = PercentProjectThatAcceptOnlineTransitions.objects[index - 1]
     last_temporal = QuantityOfRegisteredProject.objects[index - 1]
 
-    urls_files = open('./urls.yaml', 'r')
-    urls = yaml.load(urls_files)
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
 
     new_per_type = last_per_Type.total_project_per_type
     new_per_online = last_per_online_record.total_project_that_accept_online_transitions
