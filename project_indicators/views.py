@@ -14,9 +14,19 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 def index(request):
     update_project_indicator()
+
+    # load per type indicator
     index = PercentProjectPerType.objects.count()
     per_type = PercentProjectPerType.objects[index - 1]
-    print(per_type.total_project_per_type)
+    # load per online indicator
+    per_online = PercentProjectThatAcceptOnlineTransitions.objects[index -1]
+    # load temporal indicator
+    temporal = QuantityOfRegisteredProject.objects[index - 1]
+
+    per_type = per_type.total_project_per_type
+    per_online = per_online.total_project_that_accept_online_transitions
+    temporal = temporal.QuantityOfRegisteredProject
+
     # Cria dicionario para apresentação dos graficos de indicadores
     context = {}
 
@@ -101,3 +111,24 @@ def update_project_indicator():
     PercentProjectPerType(new_total, new_create_date, new_per_type).save()
     PercentProjectThatAcceptOnlineTransitions(new_total, new_create_date, new_per_online).save()
     QuantityOfRegisteredProject(new_total, new_create_date, new_temporal).save()
+
+
+def prepare_temporal_vision(temporal):
+    # Inicializa variaveis que auxiliam na preparação do indicador temporal
+    months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+    last_year = 2013 + len(temporal)
+    growthing = 0
+
+    temporal_keys = []
+    temporal_values = []
+    temporal_growth = []
+
+    # Prepara visualização do indicador temporal
+    for year in range(2013, last_year):
+        for month in months:
+            if (month in temporal[str(year)]):
+                temporal_keys.append(str(year) + "-" + month)
+                temporal_values.append(temporal[str(year)][month])
+
+                growthing += temporal[str(year)][month]
+                temporal_growth.append(growthing)
