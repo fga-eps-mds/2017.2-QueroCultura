@@ -6,8 +6,8 @@ class RequestMuseumRawData(object):
 
     def __init__(self, last_update_time):
         self._url = "http://museus.cultura.gov.br/api/space/find/"
-        self._filters = {'@select': 'mus_tipo, mus_tipo_tematica,'
-                                    + 'En_Estado, esfera,'
+        self._filters = {'@select': 'mus_tipo, mus_tipo_tematica, '
+                                    + 'esfera, '
                                     + 'mus_servicos_visitaGuiada, '
                                     + 'mus_arquivo_acessoPublico, '
                                     + 'createTimestamp',
