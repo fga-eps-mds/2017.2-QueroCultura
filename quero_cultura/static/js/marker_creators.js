@@ -33,8 +33,12 @@ var subsites = {1:"museus.cultura.gov.br",
                 36:"mapacultural.novohamburgo.rs.gov.br",
                 37:"mapacultural.saocaetanodosul.sp.gov.br"}
 
+// Contains markers printed on map
 var printedMarkers = Array()
 
+/* Add an marker icon to the map
+   considering the icon extension
+*/
 function createMarkerIcon(color, extension){
     filename = ''
     switch (color) {
@@ -80,13 +84,16 @@ function getSubsite(subsiteId){
     return subsite
 }
 
-// this function  return instance initials
+/* Return instance initials
+*/
 function getInitialInstance(data,position){
   var url = data[position]["singleUrl"]
   var splitUrl = url.split(".")
   return splitUrl[2]
 }
 
+/*  Create an ID to identify the marker when added to the map
+*/
 function makeIdForMarker(data,position){
   var initialsInstance = getInitialInstance(data,position)
   var id = data[position]["id"]
@@ -95,6 +102,8 @@ function makeIdForMarker(data,position){
   return identification
 }
 
+/*
+*/
 function setZIndex(imageExtension){
   if(imageExtension == "gif"){
     return 1000
@@ -123,6 +132,9 @@ function createPopup(type,data,marker){
     marker.bindPopup(popup);
 }
 
+/* Create a space marker and add into map
+   receiving an 'data' that constains space informations obtained of api
+*/
 function createSpaceMarker(data, imageExtension){
     var redMarker = createMarkerIcon('red', imageExtension)
 
@@ -145,6 +157,9 @@ function createSpaceMarker(data, imageExtension){
     }
 }
 
+/* Create a agent marker and add into map
+   receiving an 'data' that constains agent informations obtained of api
+*/
 function createAgentMarker(data, imageExtension){
     var blueMarker = createMarkerIcon('blue', imageExtension)
 
@@ -167,6 +182,9 @@ function createAgentMarker(data, imageExtension){
     }
 }
 
+/* Create a event marker and add into map
+   receiving an 'data' that constains event informations obtained of api
+*/
 function createEventMarker(data, imageExtension){
     var yellowMarker = createMarkerIcon('yellow', imageExtension)
 
@@ -189,6 +207,9 @@ function createEventMarker(data, imageExtension){
     }
 }
 
+/* Create a project marker and add into map
+   receiving an 'data' that constains project informations obtained of api
+*/
 function createProjectMarker(data, imageExtension){
     var greenMarker = createMarkerIcon('green', imageExtension)
 
