@@ -28,12 +28,30 @@ def index(request):
     temporal = temporal.total_project_registered_per_mounth_per_year
 
     per_type = prepare_indicator_list(per_type, 'per_type')
+    per_online = prepare_indicator_list(per_online, 'per_online')
     temporal = prepare_temporal_vision(temporal)
+
     # Cria dicionario para apresentação dos graficos de indicadores
-    context = {
-        'per_type_keys': json.dumps(per_type['keys_per_type_http://mapaculturacegovbr/api/']),
-        'per_type_values': json.dumps(per_type['values_per_type_http://mapaculturacegovbr/api/'])
-    }
+    context = {}
+    urls_files = open('./urls.yaml', 'r')
+    urls = yaml.load(urls_files)
+
+    for url in urls:
+        new_url = url.replace(".", "")
+        clean_url = new_url.replace("http://", "")
+        clean_url = clean_url.replace("/api/", "")
+
+        context['keys_per_type_' + clean_url] = json.dumps(per_type['keys_per_type_' + new_url])
+        context['values_per_type_' + clean_url] = json.dumps(per_type['values_per_type_' + new_url])
+
+        context['keys_per_online_' + clean_url] = json.dumps(per_online['keys_per_online_' + new_url])
+        context['values_per_online_' + clean_url] = json.dumps(per_online['values_per_online_' + new_url])
+
+        context['keys_temporal_' + clean_url] = json.dumps(temporal['keys_temporal_' + new_url])
+        context['values_temporal_' + clean_url] = json.dumps(temporal['valuse_temporal_' + new_url])
+        context['growth_temporal_' + clean_url] = json.dumps(temporal['growth_temporal_' + new_url])
+
+
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
     return render(request, 'project_indicators/project-indicators.html', context)
