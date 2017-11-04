@@ -14,8 +14,6 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 
 def index(request):
-    update_project_indicator()
-
     index = PercentProjectPerType.objects.count()
 
     # load indicators
@@ -27,11 +25,12 @@ def index(request):
     per_online = per_online.total_project_that_accept_online_transitions
     temporal = temporal.total_project_registered_per_mounth_per_year
 
+    # prepare indicators
     per_type = prepare_indicator_list(per_type, 'per_type')
     per_online = prepare_indicator_list(per_online, 'per_online')
     temporal = prepare_temporal_vision(temporal)
 
-    # Cria dicionario para apresentação dos graficos de indicadores
+    # create context
     context = {}
     urls_files = open('./urls.yaml', 'r')
     urls = yaml.load(urls_files)
@@ -50,8 +49,6 @@ def index(request):
         context['keys_temporal_' + clean_url] = json.dumps(temporal['keys_temporal_' + new_url])
         context['values_temporal_' + clean_url] = json.dumps(temporal['values_temporal_' + new_url])
         context['growth_temporal_' + clean_url] = json.dumps(temporal['growth_temporal_' + new_url])
-
-
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
     return render(request, 'project_indicators/project-indicators.html', context)
@@ -93,6 +90,7 @@ def build_online_record_indicator(new_data, old_data):
     return per_online_record
 
 
+@task(name="update_project_indicator")
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
         PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'Exposição': 0}}).save()
