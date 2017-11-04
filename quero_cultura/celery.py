@@ -53,7 +53,7 @@ app.conf.beat_schedule = {
     },
     'update_event_indicator': {
         'task': 'update_event_indicator',
-        'schedule': crontab(minute=0,
+        'schedule': crontab(minute=10,
                             hour=3,
                             day_of_week='sunday'),
     },
@@ -62,6 +62,19 @@ app.conf.beat_schedule = {
         'schedule': 15.0,
         'options': {
             'expires': datetime.now() + timedelta(seconds=20.0),
+        },
+    },
+    'update_project_indicator': {
+        'task': 'update_project_indicator',
+        'schedule': crontab(minute=15,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'update_project_indicator_now': {
+        'task': 'update_project_indicator',
+        'schedule': 25.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=35.0),
         },
     },
 }

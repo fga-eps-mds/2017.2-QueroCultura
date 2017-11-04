@@ -1,0 +1,25 @@
+{% extends 'quero_cultura/base.html' %}
+{% load static %}
+
+{% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
+
+    <div class="chart-container">
+        <canvas id="line-chart-temporal"></canvas>
+    </div>
+
+    <div class="text-chart-init">
+      <p>Este gráfico refere-se aos cadastros de bibliotecas por mês.</p>
+    </div>
+
+    <!-- Imports necessários para funcionalidade da navbar e gráficos-->
+    <script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
+    <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="static/js/chart_project.js"></script>
+    <script type="text/javascript">
+        temporal_line_graphic('{{keys_temporal_mapasculturagovbr|safe}}', '{{values_temporal_mapasculturagovbr|safe}}')
+    </script>
+
+{% endblock %}

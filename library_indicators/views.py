@@ -4,6 +4,7 @@ from .models import PercentLibraryPerAreaOfActivity
 from .models import QuantityOfRegisteredlibraries
 from .models import PercentLibrariesTypeSphere
 from django.shortcuts import render
+from quero_cultura.views import sort_dict
 import datetime
 from celery.decorators import task
 
@@ -30,12 +31,13 @@ def index(request):
         'amount_private_libraries': percent_public_private._total_private_libraries,
         'quantity_per_mouth': quantity_libraries._libraries_registered_monthly,
         'quantity_per_year': quantity_libraries._libraries_registered_yearly,
-        'type_sphere_total': type_sphere_total._total_libraries_type_sphere,
-        'ocupation_area_total': ocupation_area_total._libraries_per_activity,
+        'type_sphere_total': sort_dict(type_sphere_total._total_libraries_type_sphere),
+        'ocupation_area_total': sort_dict(ocupation_area_total._libraries_per_activity),
         'amount_of_ocupation_area': ocupation_area_total._amount_areas,
     }
 
     return render(request, 'library_indicators/library.html', context)
+
 
 
 @task(name="update_library_indicator")
