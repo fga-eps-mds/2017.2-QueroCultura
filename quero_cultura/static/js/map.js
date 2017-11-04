@@ -75,14 +75,14 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
 
     switch(markerType){
         case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl'
+            select = 'name, occurrences.{space.{location}}, singleUrl, createTimestamp, updateTimestamp'
             break
         case 'project':
-            select = 'name, owner.location, singleUrl '
+            select = 'name, owner.location, singleUrl, createTimestamp, updateTimestamp'
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl'
+            select = 'name, location, singleUrl, createTimestamp, updateTimestamp'
             break
         default:
             select = ''
@@ -184,10 +184,20 @@ function AddInfoToFeed(diffFeed) {
   diffFeed.forEach(function(value,key){
     var name = value['name']
     var type = value['type']
+    var location = value['location']
+    var createTimestamp = value['createTimestamp']
+    var updateTimestamp = value['updateTimestamp']
     var singleUrl = value['singleUrl']
 
+    if(updateTimestamp == null){
+        actionDateTime = createTimestamp
+    }else{
+        actionDateTime = updateTimestamp
+    }
+    
+
     if(count < 10){
-      var html = AddHTMLToFeed(name, type, singleUrl)
+      var html = AddHTMLToFeed(name, type, location, actionDateTime, singleUrl)
 
       $('#cards').append(html)
       var height = $('#cards')[0].scrollHeight;
@@ -199,9 +209,8 @@ function AddInfoToFeed(diffFeed) {
   }, diffFeed)
 }
 
-function AddHTMLToFeed(name, type, singleUrl){
+function AddHTMLToFeed(name, type, location, actionDateTime, singleUrl){
   color = GetColorByType(type)
-
   var html =
     "<div id='content'>"+
       "<div id='point'> "+
@@ -212,6 +221,8 @@ function AddHTMLToFeed(name, type, singleUrl){
 
       "<div id='text'>  "+
         "<a href='"+singleUrl+"'>"+name+"</a>"+
+        "<p>"+actionDateTime.date+"</p>"+
+        "<p>"+location+"</p>"+
       "</div>"+
     "</div>"
   return html
