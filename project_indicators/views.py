@@ -48,7 +48,7 @@ def index(request):
         context['values_per_online_' + clean_url] = json.dumps(per_online['values_per_online_' + new_url])
 
         context['keys_temporal_' + clean_url] = json.dumps(temporal['keys_temporal_' + new_url])
-        context['values_temporal_' + clean_url] = json.dumps(temporal['valuse_temporal_' + new_url])
+        context['values_temporal_' + clean_url] = json.dumps(temporal['values_temporal_' + new_url])
         context['growth_temporal_' + clean_url] = json.dumps(temporal['growth_temporal_' + new_url])
 
 
