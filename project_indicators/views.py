@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from quero_cultura.views import build_temporal_indicator
+from quero_cultura.views import sort_dict
 from .models import PercentProjectPerType
 from .models import PercentProjectThatAcceptOnlineTransitions
 from .models import QuantityOfRegisteredProject
@@ -24,11 +25,15 @@ def index(request):
 
     per_type = per_type.total_project_per_type
     per_online = per_online.total_project_that_accept_online_transitions
-    temporal = temporal.QuantityOfRegisteredProject
+    temporal = temporal.total_project_registered_per_mounth_per_year
 
+    per_type = prepare_indicator_list(per_type, 'per_type')
     temporal = prepare_temporal_vision(temporal)
     # Cria dicionario para apresentação dos graficos de indicadores
-    context = {}
+    context = {
+        'per_type_keys': json.dumps(per_type['keys_per_type_http://mapaculturacegovbr/api/']),
+        'per_type_values': json.dumps(per_type['values_per_type_http://mapaculturacegovbr/api/'])
+    }
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
     return render(request, 'project_indicators/project-indicators.html', context)
@@ -143,7 +148,18 @@ def prepare_temporal_vision(temporal):
 
 
 def prepare_indicator_list(indicator, indicator_name):
-    keys = []
-    values = []
+    sort_indicator = {}
+    prepared_indicator = {}
 
-    
+    for url in indicator:
+        sort_indicator = sort_dict(indicator[url])
+        keys = []
+        values = []
+        for key in sort_indicator:
+            keys.append(key)
+            values.append(sort_indicator[key])
+
+        prepared_indicator['keys_' + indicator_name + '_' + url] = keys
+        prepared_indicator['values_' + indicator_name + '_' + url] = values
+
+    return prepared_indicator
