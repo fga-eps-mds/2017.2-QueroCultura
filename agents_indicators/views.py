@@ -10,7 +10,7 @@ from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import build_operation_area_indicator
 from quero_cultura.views import sort_dict
 
-DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+
 def index(request):
 
     # Retorna na variavel index a quantidade de registros existentes
@@ -52,8 +52,7 @@ def index(request):
     temporal_keys = []
     temporal_values = []
     temporal_growth = []
-    s = {}
-    get_subsite(s)
+
     # Prepara visualização do indicador temporal
     for year in range(2013, last_year):
         for month in months:
@@ -73,7 +72,6 @@ def index(request):
         'temporal_keys': json.dumps(temporal_keys),
         'temporal_values': json.dumps(temporal_values),
         'temporal_growth': json.dumps(temporal_growth),
-        'teste': s
     }
 
     # Renderiza pagina e envia dicionario para apresentação dos graficos
@@ -91,20 +89,6 @@ def build_type_indicator(new_data):
 
     return per_type
 
-def get_values():
-    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapas.cultura.gov.br/api/")
-    return values.data
-
-def get_subsite(dict_instances):
-
-    for instance in get_values():
-        filter_subsite_instances(dict_instances, instance["subsite"])
-
-def filter_subsite_instances(dict_instances,id_instance):
-    if not (id_instance in dict_instances and id_instance != None) :
-        dict_instances[id_instance] = 1
-    else:
-        dict_instances[id_instance] += 1
 
 @task(name="update_agent_indicator")
 def update_agent_indicator():
