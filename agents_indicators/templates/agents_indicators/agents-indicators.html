@@ -81,9 +81,15 @@
 		<!-- Menu check box para as instancias -->
 
 	<div id="menu-instancias">
-		<label><input type="checkbox" value=""> Mapas</label><br/>
-		<label><input type="checkbox" value=""> São Paulo</label><br/>
-		<label><input type="checkbox" value="" > Ceará</label><br/>
+		<div class="radio">
+		  <label><input type="radio" name="optradio">Mapas</label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" name="optradio">São Paulo</label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" name="optradio" >Ceará</label>
+		</div>
 	</div>
 		<!-- Imports necessários para funcionalidade da navbar e gráficos-->
 		<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
