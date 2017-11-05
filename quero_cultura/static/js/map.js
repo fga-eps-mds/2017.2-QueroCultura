@@ -184,32 +184,46 @@ function AddInfoToFeed(diffFeed) {
   diffFeed.forEach(function(value,key){
     var name = value['name']
     var type = value['type']
-    var location = value['location']
     var createTimestamp = value['createTimestamp']
     var updateTimestamp = value['updateTimestamp']
     var singleUrl = value['singleUrl']
+
+    if(type == 'event'){
+        markerLocation = value['occurrences.{space.{location}}']
+    }else if(value['type'] == 'project'){
+        markerLocation = value.owner.location
+    }else if(value['type'] == 'agent'){
+        markerLocation = value.location
+    }
 
     if(updateTimestamp == null){
         actionDateTime = createTimestamp
     }else{
         actionDateTime = updateTimestamp
     }
-    
 
-    if(count < 10){
-      var html = AddHTMLToFeed(name, type, location, actionDateTime, singleUrl)
+    if(markerLocation.latitude != 0 && markerLocation.longitude != 0){
+        openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
+                        "&lon="+markerLocation.longitude+"&format=json"
 
-      $('#cards').append(html)
-      var height = $('#cards')[0].scrollHeight;
-      console.log("h", height);
-      $(".block" ).scrollTop(height);
+        console.log(openstreetURL)              
+        promise = $.getJSON(openstreetURL)
+        promise.then(function(data){
+            if(count < 10){
+                var html = AddHTMLToFeed(name, type, data.address.state,
+                                         data.address.city, actionDateTime, singleUrl)
+            
+                $('#cards').append(html)
+                var height = $('#cards')[0].scrollHeight;
+                $(".block" ).scrollTop(height);
+                }
+                count++
+        })
     }
-    count++
-
   }, diffFeed)
 }
 
-function AddHTMLToFeed(name, type, location, actionDateTime, singleUrl){
+function AddHTMLToFeed(name, type, uf, city, actionDateTime, singleUrl){
   color = GetColorByType(type)
   var html =
     "<div id='content'>"+
@@ -221,8 +235,8 @@ function AddHTMLToFeed(name, type, location, actionDateTime, singleUrl){
 
       "<div id='text'>  "+
         "<a href='"+singleUrl+"'>"+name+"</a>"+
-        "<p>"+actionDateTime.date+"</p>"+
-        "<p>"+location+"</p>"+
+        "<p>"+actionDateTime.date.substring(0, 19)+"</p>"+
+        "<p>"+city+ ' - ' + uf+"</p>"+
       "</div>"+
     "</div>"
   return html
@@ -230,7 +244,6 @@ function AddHTMLToFeed(name, type, location, actionDateTime, singleUrl){
 
 function GetColorByType(type) {
   var color = "red";
-  console.log(type);
   switch (type) {
     case 'project':
       color = "#28a745"
