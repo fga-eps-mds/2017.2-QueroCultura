@@ -188,42 +188,50 @@ function AddInfoToFeed(diffFeed) {
     var updateTimestamp = value['updateTimestamp']
     var singleUrl = value['singleUrl']
 
+    var markerLocation = null
+    
     if(type == 'event'){
-        markerLocation = value['occurrences.{space.{location}}']
+        markerLocation = value['occurrences'].pop().space.location
+        console.log(markerLocation)
     }else if(value['type'] == 'project'){
         markerLocation = value.owner.location
     }else if(value['type'] == 'agent'){
+        markerLocation = value.location
+    }else{
         markerLocation = value.location
     }
 
     if(updateTimestamp == null){
         actionDateTime = createTimestamp
+        actionType = 'Criação'
     }else{
         actionDateTime = updateTimestamp
+        actionType = 'Atualização'
     }
-
+    console.log('MEUDEUS')
     if(markerLocation.latitude != 0 && markerLocation.longitude != 0){
         openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
                         "&lon="+markerLocation.longitude+"&format=json"
 
-        console.log(openstreetURL)              
+        console.log(openstreetURL)
         promise = $.getJSON(openstreetURL)
         promise.then(function(data){
+            console.log('olko')
             if(count < 10){
-                var html = AddHTMLToFeed(name, type, data.address.state,
+                var html = AddHTMLToFeed(actionType, name, type, data.address.state,
                                          data.address.city, actionDateTime, singleUrl)
             
                 $('#cards').append(html)
                 var height = $('#cards')[0].scrollHeight;
                 $(".block" ).scrollTop(height);
-                }
-                count++
+            }
+            count++
         })
     }
   }, diffFeed)
 }
 
-function AddHTMLToFeed(name, type, uf, city, actionDateTime, singleUrl){
+function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleUrl){
   color = GetColorByType(type)
   var html =
     "<div id='content'>"+
@@ -235,8 +243,9 @@ function AddHTMLToFeed(name, type, uf, city, actionDateTime, singleUrl){
 
       "<div id='text'>  "+
         "<a href='"+singleUrl+"'>"+name+"</a>"+
-        "<p>"+actionDateTime.date.substring(0, 19)+"</p>"+
-        "<p>"+city+ ' - ' + uf+"</p>"+
+        "<p>"+actionType+""+ "<br>"
+        +actionDateTime.date.substring(0, 19)+"<br>"
+        +city+ ' - ' + uf+"</p>"+
       "</div>"+
     "</div>"
   return html
