@@ -184,11 +184,19 @@ function AddInfoToFeed(diffFeed) {
 
   diffFeed.forEach(function(value,key){
     var name = value['name']
-    var type = value['type']
-    var singleUrl = value['singleUrl']
+    var type = value['singleUrl']
+    var splitType = type.split("/")
+
+    type = splitType[3]
+
+    if(value["subsite"] == null){
+        var url = value['singleUrl']
+    }else{
+        var url = "http://"+getSubsite(value["subsite"]) + "/"+type+"/" + value["id"]
+    }
 
     if(count < 10){
-      var html = AddHTMLToFeed(name, type, singleUrl)
+      var html = AddHTMLToFeed(name, type, url)
 
       $('#cards').append(html)
       var height = $('#cards')[0].scrollHeight;
@@ -200,7 +208,7 @@ function AddInfoToFeed(diffFeed) {
   }, diffFeed)
 }
 
-function AddHTMLToFeed(name, type, singleUrl){
+function AddHTMLToFeed(name, type, url){
   color = GetColorByType(type)
 
   var html =
@@ -212,7 +220,7 @@ function AddHTMLToFeed(name, type, singleUrl){
       "</div> "+
 
       "<div id='text'>  "+
-        "<a href='"+singleUrl+"'>"+name+"</a>"+
+        "<a href='"+url+"'>"+name+"</a>"+
       "</div>"+
     "</div>"
   return html
@@ -222,19 +230,19 @@ function GetColorByType(type) {
   var color = "red";
   console.log(type);
   switch (type) {
-    case 'project':
+    case 'projeto':
       color = "#28a745"
       break
 
-    case 'space':
+    case 'espaco':
       color = "#dc3545"
       break
 
-    case 'agent':
+    case 'agente':
       color = "#17a2b8"
       break
 
-    case 'event':
+    case 'evento':
       color = "#ffc107"
       break
 
