@@ -61,8 +61,7 @@ def index(request):
     a = get_agents_ce_cultural()
     b = {}
     b = get_all_occupation_area_per_instance(9)
-    c = []
-    c = pass_for_list(b)
+
     # Prepares visualization of the temporal indicator
     for year in range(2013, last_year):
         for month in months:
@@ -82,7 +81,7 @@ def index(request):
         'temporal_keys': json.dumps(temporal_keys),
         'temporal_values': json.dumps(temporal_values),
         'temporal_growth': json.dumps(temporal_growth),
-        'teste': json.dumps(c)
+        'teste': b
     }
 
 
@@ -154,19 +153,12 @@ def filter_subsite_instances(dict_instances,id_instance):
 
 def get_all_occupation_area_per_instance(index):
     areas = {}
+    count = 0
     for agent in get_agents_cultural_maps():
         if(agent["subsite"] == index):
             for area in agent["terms"]["area"]:
                 filter_types_area(area, areas)
-
     return areas
-def pass_for_list(element_dict):
-    lista = []
-    for element in element_dict:
-        lista.append(element_dict[element])
-    for element in lista:
-        print(element)
-    return lista
 
 
 @task(name="update_agent_indicator")
