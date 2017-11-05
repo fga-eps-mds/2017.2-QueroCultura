@@ -13,19 +13,19 @@ from quero_cultura.views import sort_dict
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 def index(request):
 
-    # Retorna na variavel index a quantidade de registros existentes
+    # return index of amount exist register
     index = PercentIndividualAndCollectiveAgent.objects.count()
 
-    # Usa o valor de index para acessar elementos no BD pelo indice
+    # Use the index value to access elements in the DB by the index
     per_type = PercentIndividualAndCollectiveAgent.objects[index-1]
     per_area = PercentAgentsPerAreaOperation.objects[index-1]
     temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
 
-    # Atribui as variaveis valores para apresentação dos indicadores
+    # Assigns the variable values ​​for the presentation of the indicators
     per_area = per_area.total_agents_area_oreration
     temporal = temporal.total_agents_registered_month
 
-    # Prepara visualização do indicador por tipo
+    # Prepares visualization of the indicator by type
     total_per_type = per_type.total_individual_agent
     total_per_type += per_type.total_collective_agent
     percent_indivividual = per_type.total_individual_agent/total_per_type * 100
@@ -33,18 +33,19 @@ def index(request):
     per_type_keys = ["Individual", "Coletivo"]
     per_type_values = [round(percent_indivividual, 2), round(percent_collective, 2)]
 
-    # Inicializa variaveis com listas vazias
+
+    # Initializes variables with empty lists
     per_area_keys = []
     per_area_values = []
     per_area = sort_dict(per_area)
 
-    # Prepara visualização do indicador por area de atuação
+    # Prepares visualization of the indicator by actuation area
     for area in per_area:
         if area == area.capitalize():
             per_area_keys.append(area)
             per_area_values.append(per_area[area])
 
-    # Inicializa variaveis que auxiliam na preparação do indicador temporal
+    # Initializes variables that help in the preparation of the temporal indicator
     months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
     last_year = 2013 + len(temporal)
     growthing = 0
@@ -52,9 +53,12 @@ def index(request):
     temporal_keys = []
     temporal_values = []
     temporal_growth = []
-    s = {}
-    get_subsite(s)
-    # Prepara visualização do indicador temporal
+
+    #Use this just for see values on html
+    #s = {}
+    #get_subsite(s)
+
+    # Prepares visualization of the temporal indicator
     for year in range(2013, last_year):
         for month in months:
             if (month in temporal[str(year)]):
@@ -64,7 +68,7 @@ def index(request):
                 growthing += temporal[str(year)][month]
                 temporal_growth.append(growthing)
 
-    # Cria dicionario para apresentação dos graficos de indicadores
+    # Creates a dictionary for displaying graphs of indicators
     context = {
         'per_area_keys': json.dumps(per_area_keys),
         'per_area_values': json.dumps(per_area_values),
@@ -73,10 +77,11 @@ def index(request):
         'temporal_keys': json.dumps(temporal_keys),
         'temporal_values': json.dumps(temporal_values),
         'temporal_growth': json.dumps(temporal_growth),
-        'teste': s
+        #just for see dict on html
+        #'teste': s
     }
 
-    # Renderiza pagina e envia dicionario para apresentação dos graficos
+
     return render(request, 'agents_indicators/agents-indicators.html', context)
 
 
@@ -110,24 +115,25 @@ def filter_subsite_instances(dict_instances,id_instance):
 def update_agent_indicator():
     url = "http://mapas.cultura.gov.br/api/"
 
-    # Cria registro inicial caso seja o primeiro uso da aplicação
+    # Creates initial registration if it is the first use of the application
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
-        PercentIndividualAndCollectiveAgent(0, "2012-01-01 15:47:38.337553", 0, 0).save()
-        PercentAgentsPerAreaOperation(0, "2012-01-01 15:47:38.337553", {"Literatura": 0}).save()
-        AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, "2012-01-01 15:47:38.337553").save()
+        PercentIndividualAndCollectiveAgent(0, DEFAULT_INITIAL_DATE, 0, 0).save()
+        PercentAgentsPerAreaOperation(0, DEFAULT_INITIAL_DATE, {"Literatura": 0}).save()
+        AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, DEFAULT_INITIAL_DATE).save()
 
-    # Retorna na variavel index a quantidade de registros existentes
+    # Returns in the variable index the number of existing records
     index = PercentAgentsPerAreaOperation.objects.count()
 
-    # Usa o valor de index para acessar elementos no BD pelo indice
+    # Use the index value to access elements in the DB by the index
     last_per_area = PercentAgentsPerAreaOperation.objects[index-1]
     last_type = PercentIndividualAndCollectiveAgent.objects[index-1]
     last_temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
 
-    # Requisita dados da API MinC a partir de data passada por parmetro
+    # Requires MinC API data from date passed by parameter
     request = RequestAgentsRawData(last_per_area.create_date, url)
 
-    # Geração indicadores de agentes atualizados
+
+    # Generating Updated Agent Indicators
     new_total = request.data_length + last_per_area.total_agents
     new_create_date = datetime.now().__str__()
 
@@ -145,7 +151,7 @@ def update_agent_indicator():
     else:
         new_collective = last_type.total_collective_agent
 
-    # Persistencia de indicadores de agentes atualizados
+    # Persistence of Updated Agent Indicators
     AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()
     PercentIndividualAndCollectiveAgent(new_total, new_create_date, new_individual, new_collective).save()
     PercentAgentsPerAreaOperation(new_total, new_create_date, new_per_area).save()
