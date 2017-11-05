@@ -116,7 +116,7 @@
     <script src="{% static 'js/graphics.js' %}" type="text/javascript"></script>
 		<script type="text/javascript">
 			per_month_bar_graphic('{{ temporal_keys|safe }}','{{ temporal_values|safe }}')
- 			per_area_bar_graphic('{{ per_area_keys|safe }}','{{ per_area_values|safe }}')
+ 			per_area_bar_graphic('{{ per_area_keys|safe }}','{{ teste|safe }}')
  			per_type_pie_graphic('{{ per_type_keys|safe }}','{{ per_type_values|safe }}')
  			growth_line_graphic('{{ temporal_keys|safe }}','{{ temporal_growth|safe }}')
 		</script>
