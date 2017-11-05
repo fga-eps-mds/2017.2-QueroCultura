@@ -57,6 +57,10 @@ def index(request):
     #Use this just for see values on html
     s = {}
     get_subsite(s)
+    a = []
+    a = get_agents_ce_cultural()
+    b = {}
+    b = get_all_occupation_area_per_instance(9)
 
     # Prepares visualization of the temporal indicator
     for year in range(2013, last_year):
@@ -77,11 +81,12 @@ def index(request):
         'temporal_keys': json.dumps(temporal_keys),
         'temporal_values': json.dumps(temporal_values),
         'temporal_growth': json.dumps(temporal_growth),
-        'teste': s
+        'teste': b
     }
 
 
     return render(request, 'agents_indicators/agents-indicators.html', context)
+
 
 
 def build_type_indicator(new_data):
@@ -95,18 +100,11 @@ def build_type_indicator(new_data):
 
     return per_type
 
-def get_agents_cultural_maps():
-    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapas.cultura.gov.br/api/")
-    return values.data
-
-def get_agents_ce_cultural():
-    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapa.cultura.ce.gov.br/api/")
-    return values.data
-
 def get_subsite(dict_instances):
 
     for instance in get_agents_cultural_maps():
         filter_subsite_instances(dict_instances, instance["subsite"])
+
 
 def get_instance(index):
     instances_cultural_map = [
@@ -153,6 +151,14 @@ def filter_subsite_instances(dict_instances,id_instance):
     else :
         dict_instances[instance] += 1
 
+def get_all_occupation_area_per_instance(index):
+    areas = {}
+    count = 0
+    for agent in get_agents_cultural_maps():
+        if(agent["subsite"] == index):
+            for area in agent["terms"]["area"]:
+                filter_types_area(area, areas)
+    return areas
 
 
 @task(name="update_agent_indicator")
@@ -199,3 +205,18 @@ def update_agent_indicator():
     AmountAgentsRegisteredPerMonth(new_per_month, new_create_date).save()
     PercentIndividualAndCollectiveAgent(new_total, new_create_date, new_individual, new_collective).save()
     PercentAgentsPerAreaOperation(new_total, new_create_date, new_per_area).save()
+
+
+def get_agents_cultural_maps():
+    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapas.cultura.gov.br/api/")
+
+    return values.data
+def get_agents_ce_cultural():
+    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapa.cultura.ce.gov.br/api/")
+    return values.data
+
+def filter_types_area(actual_area, areas):
+    if not (actual_area in areas):
+        areas[actual_area] = 1
+    else:
+        areas[actual_area] += 1
