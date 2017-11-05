@@ -21,7 +21,3 @@ class RequestAgentsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
-
-values = RequestAgentsRawData("2012-01-01 15:47:38.337553", "http://mapa.cultura.ce.gov.br/api/")
-print(values.data_length)
