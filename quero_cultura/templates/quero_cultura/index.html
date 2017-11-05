@@ -38,10 +38,11 @@ crossorigin=""></script>
 
     	var day = 1440 // A day has 1440 minutes
 		var hour = 60
-
+		var minute = 1
 		loadAndUpdateMarkers(hour, lastHourData, 'gif')
     	loadAndUpdateMarkers(day, lastDayData, 'png')
-		setInterval(function(){loadAndUpdateMarkers(hour, lastHourData, 'gif')}, 30000)
+
+		setInterval(function(){loadAndUpdateMarkers(minute, lastMinuteData, 'gif')}, 60000)
 
 
 

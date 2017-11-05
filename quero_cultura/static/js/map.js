@@ -32,6 +32,7 @@ var markersSpace = new L.FeatureGroup();
 //
 var lastDayData = Array()
 var lastHourData = Array()
+var lastMinuteData = Array()
 
 var instanceList = ['http://mapas.cultura.gov.br/api/',
                     'http://spcultura.prefeitura.sp.gov.br/api/',
@@ -62,7 +63,7 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 function getQueryDateTime(lastMinutes){
     var currentDateTime = new Date()
     var queryDateTime = new Date()
-    var timezone = 3
+    var timezone = 2
     queryDateTime.setHours(currentDateTime.getHours() - timezone,
                            currentDateTime.getMinutes() - lastMinutes)
 
@@ -72,7 +73,6 @@ function getQueryDateTime(lastMinutes){
 function createQueryPromise(instanceURL, markerType, lastMinutes){
     var queryDateTime = getQueryDateTime(lastMinutes);
     instanceURL = instanceURL+markerType+'/find'
-
     switch(markerType){
         case 'event':
             select = 'name, occurrences.{space.{location}}, singleUrl, createTimestamp, updateTimestamp'
@@ -94,8 +94,9 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
         '@or' : 1,
         'createTimestamp' : "GT("+queryDateTime+")",
         'updateTimestamp' : "GT("+queryDateTime+")"
-      },);
+      });
 
+      console.log(queryDateTime)
       return promise
 }
 
@@ -121,8 +122,14 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
     map.addLayer(markersSpace)
-    updateFeed()
+    console.log(lastDayData)
+    console.log(lastHourData)
+    console.log(lastMinuteData)
+
+    lastMinuteData = Array()
+
 }
+
 
 function loadMarkers(markerType, imageExtension, markersData) {
     switch (markerType) {
@@ -165,6 +172,7 @@ function updateFeed(){
             if(printed_key === key){
                 isPrinted = true
             }
+
         }, printedFeed)
 
         if(isPrinted === false){
@@ -175,60 +183,57 @@ function updateFeed(){
 
     //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
     AddInfoToFeed(diffFeed)
-    diffFeed = new Map()
 }
 
 function AddInfoToFeed(diffFeed) {
-  var count = 0
+    var count = 0
 
-  diffFeed.forEach(function(value,key){
-    var name = value['name']
-    var type = value['type']
-    var createTimestamp = value['createTimestamp']
-    var updateTimestamp = value['updateTimestamp']
-    var singleUrl = value['singleUrl']
+    diffFeed.forEach(function(value,key){
+        var name = value['name']
+        var type = value['type']
+        var createTimestamp = value['createTimestamp']
+        var updateTimestamp = value['updateTimestamp']
+        var singleUrl = value['singleUrl']
 
-    var markerLocation = null
-    
-    if(type == 'event'){
-        markerLocation = value['occurrences'].pop().space.location
-        console.log(markerLocation)
-    }else if(value['type'] == 'project'){
-        markerLocation = value.owner.location
-    }else if(value['type'] == 'agent'){
-        markerLocation = value.location
-    }else{
-        markerLocation = value.location
-    }
+        var markerLocation = null
 
-    if(updateTimestamp == null){
-        actionDateTime = createTimestamp
-        actionType = 'Criação'
-    }else{
-        actionDateTime = updateTimestamp
-        actionType = 'Atualização'
-    }
-    console.log('MEUDEUS')
-    if(markerLocation.latitude != 0 && markerLocation.longitude != 0){
-        openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
-                        "&lon="+markerLocation.longitude+"&format=json"
+        if(type == 'event'){
+            markerLocation = value['occurrences'].pop().space.location
+        }else if(value['type'] == 'project'){
+            markerLocation = value.owner.location
+        }else if(value['type'] == 'agent'){
+            markerLocation = value.location
+        }else{
+            markerLocation = value.location
+        }
 
-        console.log(openstreetURL)
-        promise = $.getJSON(openstreetURL)
-        promise.then(function(data){
-            console.log('olko')
-            if(count < 10){
-                var html = AddHTMLToFeed(actionType, name, type, data.address.state,
-                                         data.address.city, actionDateTime, singleUrl)
-            
-                $('#cards').append(html)
-                var height = $('#cards')[0].scrollHeight;
-                $(".block" ).scrollTop(height);
-            }
-            count++
-        })
-    }
-  }, diffFeed)
+        if(updateTimestamp == null){
+            actionDateTime = createTimestamp
+            actionType = 'Criação'
+        }else{
+            actionDateTime = updateTimestamp
+            actionType = 'Atualização'
+        }
+        if(markerLocation.latitude != 0 && markerLocation.longitude != 0){
+            openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
+                            "&lon="+markerLocation.longitude+"&format=json"
+
+            promise = $.getJSON(openstreetURL)
+            promise.then(function(data){
+
+                // if(count < 10){
+                    var html = AddHTMLToFeed(actionType, name, type, data.address.state,
+                                             data.address.city, actionDateTime, singleUrl)
+
+                    $('#cards').append(html)
+                    var height = $('#cards')[0].scrollHeight;
+                    $(".block" ).scrollTop(height);
+                    //            }
+                //count++
+            })
+        }
+        }, diffFeed)
+    diffFeed = new Map()
 }
 
 function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleUrl){

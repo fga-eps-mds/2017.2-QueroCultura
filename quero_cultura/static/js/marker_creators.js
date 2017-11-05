@@ -84,8 +84,8 @@ function createAgentMarker(data, imageExtension){
             var valueZindex = setZIndex(imageExtension)
             newMarkers.set(idForMarker, data[i])
             var marker = L.marker([data[i]["location"]["latitude"],
-            data[i]["location"]["longitude"]],
-            {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
+                                   data[i]["location"]["longitude"]],
+                                   {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
             marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
             identifiedMarker = {"id" : data[i].id,"marker" : marker}
             printedMarkers.push(identifiedMarker)
