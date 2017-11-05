@@ -55,8 +55,8 @@ def index(request):
     temporal_growth = []
 
     #Use this just for see values on html
-    s = {}
-    get_subsite(s)
+    #s = {}
+    #get_subsite(s)
 
     # Prepares visualization of the temporal indicator
     for year in range(2013, last_year):
@@ -77,7 +77,8 @@ def index(request):
         'temporal_keys': json.dumps(temporal_keys),
         'temporal_values': json.dumps(temporal_values),
         'temporal_growth': json.dumps(temporal_growth),
-        'teste': s
+        #just for see dict on html
+        #'teste': s
     }
 
 
@@ -95,65 +96,20 @@ def build_type_indicator(new_data):
 
     return per_type
 
-def get_agents_cultural_maps():
+def get_values():
     values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapas.cultura.gov.br/api/")
-    return values.data
-
-def get_agents_ce_cultural():
-    values = RequestAgentsRawData(DEFAULT_INITIAL_DATE, "http://mapa.cultura.ce.gov.br/api/")
     return values.data
 
 def get_subsite(dict_instances):
 
-    for instance in get_agents_cultural_maps():
+    for instance in get_values():
         filter_subsite_instances(dict_instances, instance["subsite"])
 
-def get_instance(index):
-    instances_cultural_map = [
-        {"id":1,"instancia": "mapas_museus"},
-        {"id":2,"instancia": "mapas_bibliotecas"},
-        {"id":4,"instancia": "mapas_culturais"},
-        {"id":9,"instancia": "mapas_espirito_santo"},
-        {"id":11,"instancia": "mapas_paraiba"},
-        {"id":12,"instancia": "mapas_maranhão"},
-        {"id":15,"instancia": "mapas_pará"},
-        {"id":16,"instancia": "mapas_jaguarao"},
-        {"id":17,"instancia": "mapas_meleva"},
-        {"id":18,"instancia": "mapas_grucultura"},
-        {"id":20,"instancia": "mapas_laguna"},
-        {"id":21,"instancia": "mapas_aracaju"},
-        {"id":22,"instancia": "mapas_francodarocha"},
-        {"id":23,"instancia": "mapas_itu"},
-        {"id":24,"instancia": "mapas_ba"},
-        {"id":25,"instancia": "mapas_parnaiba"},
-        {"id":26,"instancia": "mapas_osasco"},
-        {"id":27,"instancia": "mapas_camacari"},
-        {"id":28,"instancia": "mapas_ilheus"},
-        {"id":29,"instancia": "mapas_varzeagrande"},
-        {"id":30,"instancia": "mapas_pontosdememoria"},
-        {"id":31,"instancia": "mapas_foz"},
-        {"id":32,"instancia": "mapas_senhordobonfim"},
-        {"id":33,"instancia": "mapas_sergipe"},
-        {"id":34,"instancia": "mapas_itapetininga"},
-        {"id":35,"instancia": "mapas_ipatinga"},
-        {"id":36,"instancia": "mapas_novohamburgo"},
-        {"id":37,"instancia": "mapas_saocaetanodosul"}
-    ]
-    for i in instances_cultural_map:
-        if(i["id"] == index):
-            return i["instancia"]
-        else:
-            pass
-    return ""
-
 def filter_subsite_instances(dict_instances,id_instance):
-    instance = get_instance(id_instance)
-    if  not(instance in dict_instances):
-        dict_instances[instance] = 1
-    else :
-        dict_instances[instance] += 1
-
-
+    if not (id_instance in dict_instances and id_instance != None) :
+        dict_instances[id_instance] = 1
+    else:
+        dict_instances[id_instance] += 1
 
 @task(name="update_agent_indicator")
 def update_agent_indicator():
