@@ -30,9 +30,9 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 //
-var lastDayData = Array()
-var lastHourData = Array()
-var lastMinuteData = Array()
+var lastDayData = new Array()
+var lastHourData = new Array()
+var lastMinuteData = new Array()
 
 var instanceList = ['http://mapas.cultura.gov.br/api/',
                     'http://spcultura.prefeitura.sp.gov.br/api/',
@@ -88,16 +88,13 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
             select = ''
     }
 
-    var promise = $.getJSON(instanceURL,
-      {
-        '@select' : select,
-        '@or' : 1,
-        'createTimestamp' : "GT("+queryDateTime+")",
-        'updateTimestamp' : "GT("+queryDateTime+")"
-      });
+    var promise = $.getJSON(instanceURL, {'@select' : select,
+                                          '@or' : 1,
+                                          'createTimestamp' : "GT("+queryDateTime+")",
+                                          'updateTimestamp' : "GT("+queryDateTime+")"
+                                         });
 
-      console.log(queryDateTime)
-      return promise
+    return promise
 }
 
 function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
@@ -105,6 +102,10 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
         saveArray.push.apply(saveArray, data)
+        if(saveArray === lastMinuteData){
+            AddInfoToFeed(saveArray)
+        }
+        saveArray = new Array()
     })
 
 }
@@ -117,16 +118,11 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
             saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
         }
     }
-    checkMarkersDuplicity(lastHourData)
+    //checkMarkersDuplicity(lastHourData)
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
     map.addLayer(markersSpace)
-    console.log(lastDayData)
-    console.log(lastHourData)
-    console.log(lastMinuteData)
-
-    lastMinuteData = Array()
 
 }
 
@@ -145,95 +141,53 @@ function loadMarkers(markerType, imageExtension, markersData) {
 }
 
 
-function checkMarkersDuplicity(lastHourArray) {
-    var duplicates = Array()
-
-    for(i in lastHourArray){
-        for(j in printedMarkers){
-            if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
-                map.removeLayer(printedMarkers[j].marker)
-                duplicates.push(j)
-            }
-        }
-    }
-
-    for(i in duplicates){
-        printedMarkers.splice(duplicates[i], 1)
-    }
-}
-
-
-function updateFeed(){
-    var isPrinted = false
-    newMarkers.forEach(function(value, key){
-        isPrinted = false
-
-        printedFeed.forEach(function(printed_value,printed_key){
-            if(printed_key === key){
-                isPrinted = true
-            }
-
-        }, printedFeed)
-
-        if(isPrinted === false){
-            diffFeed.set(key,value)
-            printedFeed.set(key,value)
-        }
-    }, newMarkers)
-
-    //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
-    AddInfoToFeed(diffFeed)
-}
-
 function AddInfoToFeed(diffFeed) {
-    var count = 0
 
-    diffFeed.forEach(function(value,key){
-        var name = value['name']
-        var type = value['type']
+    diffFeed.forEach(function(value, key){
+        var name = value.name
+        var type = value.type
         var createTimestamp = value['createTimestamp']
         var updateTimestamp = value['updateTimestamp']
         var singleUrl = value['singleUrl']
 
-        var markerLocation = null
+        var markerLocation = {}
 
-        if(type == 'event'){
+        if(type === 'event'){
             markerLocation = value['occurrences'].pop().space.location
-        }else if(value['type'] == 'project'){
+        }else if(type === 'project'){
             markerLocation = value.owner.location
-        }else if(value['type'] == 'agent'){
+        }else if(type === 'agent'){
             markerLocation = value.location
         }else{
             markerLocation = value.location
         }
 
-        if(updateTimestamp == null){
+        if(updateTimestamp === null){
             actionDateTime = createTimestamp
             actionType = 'Criação'
         }else{
             actionDateTime = updateTimestamp
             actionType = 'Atualização'
         }
-        if(markerLocation.latitude != 0 && markerLocation.longitude != 0){
+        if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
             openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
                             "&lon="+markerLocation.longitude+"&format=json"
-
             promise = $.getJSON(openstreetURL)
             promise.then(function(data){
-
-                // if(count < 10){
-                    var html = AddHTMLToFeed(actionType, name, type, data.address.state,
-                                             data.address.city, actionDateTime, singleUrl)
+                if(data["error"] !== undefined){
+                    console.log("unable to locate Geocode")
+                    data.address = {"state": '', 'city': ''}
+                }
+                var html = AddHTMLToFeed(actionType, name, type, data.address.state,
+                    data.address.city, actionDateTime, singleUrl)
 
                     $('#cards').append(html)
                     var height = $('#cards')[0].scrollHeight;
                     $(".block" ).scrollTop(height);
-                    //            }
-                //count++
             })
         }
-        }, diffFeed)
-    diffFeed = new Map()
+    },diffFeed)
+
 }
 
 function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleUrl){
