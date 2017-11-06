@@ -26,11 +26,60 @@ def build_operation_area_indicator(new_data, old_data):
     return per_operation_area
 
 
+def build_simple_indicator(new_data, atribute):
+    indicator = {}
+
+    for register in new_data:
+        if not (str(register[atribute]) in indicator):
+            indicator[str(register[atribute])] = 1
+        else:
+            indicator[str(register[atribute])] += 1
+
+    return indicator
+
+
+def build_compound_indicator(new_data, first_atribute, second_atribute):
+    indicator = {}
+
+    for register in new_data:
+        if not (str(register[first_atribute][second_atribute]) in indicator):
+            indicator[str(register[first_atribute][second_atribute])] = 1
+        else:
+            indicator[str(register[first_atribute][second_atribute])] += 1
+
+    return indicator
+
+
+def merge_indicators(indicator, old_data):
+    new_indicator = indicator
+
+    for register in old_data:
+        if not (register in indicator):
+            new_indicator[register] = old_data[register]
+        else:
+            new_indicator[register] += old_data[register]
+
+    return indicator
+
+
+def build_two_loop_indicator(new_data, first_atribute, second_atribute):
+    indicator = {}
+
+    for register in new_data:
+        for sub_register in register[first_atribute][second_atribute]:
+            if not (str(sub_register) in indicator):
+                indicator[str(sub_register)] = 1
+            else:
+                indicator[str(sub_register)] += 1
+
+    return indicator
+
+
 def build_temporal_indicator(new_data, old_data):
     temporal_indicator = {}
 
-    for agent in new_data:
-        split_date = agent["createTimestamp"]["date"].split("-")
+    for register in new_data:
+        split_date = register["createTimestamp"]["date"].split("-")
 
         year = split_date[0]
         month = split_date[1]
