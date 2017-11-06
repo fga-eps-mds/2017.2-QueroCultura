@@ -192,7 +192,19 @@ function AddInfoToFeed(diffFeed) {
     if(value["subsite"] == null){
         var url = value['singleUrl']
     }else{
-        var url = "http://"+getSubsite(value["subsite"]) + "/"+type+"/" + value["id"]
+        var splitUrl = value["singleUrl"].split("/")
+        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
+
+        response = $.getJSON(instanceUrl+'/api/subsite/find',
+        {
+            '@select' : 'url',
+            'id': 'eq('+value["subsite"]+')'
+        }).then(function(subsiteData) {
+            var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+            console.log("feed"+url)
+        });
+
+        // var url = "http://"+getSubsite(value["subsite"]) + "/"+type+"/" + value["id"]
     }
 
     if(count < 10){

@@ -99,7 +99,7 @@ function setZIndex(imageExtension){
   }
 }
 
-/* Create a popup to marker 
+/* Create a popup to marker
 */
 function createPopup(type,data,marker){
 
@@ -112,7 +112,7 @@ function createPopup(type,data,marker){
     }else{
         // remove a marker type to url
         var splitUrl = data.singleUrl.split("/")
-        instanceUrl = splitUrl[0]+"//"+splitUrl[2] 
+        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
         console.log("INSTANCE"+instanceUrl)
 
         // this responpose get a subsite link for a instanceUrl
@@ -136,7 +136,7 @@ function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude
     var valueZindex = setZIndex(imageExtension)
     var idForMarker = makeIdForMarker(data)
     newMarkers.set(idForMarker, data)
-    
+
     // Instantiates a Marker object given a geographical point and optionally an options object
     var marker = L.marker([latitude, longitude], {icon: icon}).setZIndexOffset(valueZindex).addTo(featureGroup);
 
@@ -153,7 +153,7 @@ function createSpaceMarker(data, imageExtension){
     var type = "espaco"
 
     for(var i=0; i < data.length; i++){
-        if(data[i]["location"]){        
+        if(data[i]["location"]){
             var latitude = data[i]["location"]["latitude"]
             var longitude = data[i]["location"]["longitude"]
             addMarkerToMap(data[i], icon, imageExtension, type, markersSpace, latitude, longitude)
@@ -201,7 +201,7 @@ function createProjectMarker(data, imageExtension){
     var type = "projeto"
 
     for(var i=0; i < data.length; i++){
-    	  if(data[i]["owner"]){            
+    	  if(data[i]["owner"]){
             var latitude = data[i]["owner"]["location"]["latitude"]
             var longitude = data[i]["owner"]["location"]["longitude"]
             addMarkerToMap(data[i], icon, imageExtension, type, markersProject, latitude, longitude)
