@@ -78,11 +78,10 @@ def update_project_indicator():
 
     last_per_type = last_per_type.total_project_per_type
     last_per_online = last_per_online_record.total_project_that_accept_online_transitions
-    last_temporal = last_temporal.total_project_registered_per_mounth_per_year
+    new_temporal = last_temporal.total_project_registered_per_mounth_per_year
 
     new_per_type = {}
     new_per_online = {}
-    new_temporal = {}
 
     for url in urls:
         request = RequestProjectsRawData(last_update_date, url)
@@ -93,12 +92,12 @@ def update_project_indicator():
         new_per_type[mongo_url] = build_compound_indicator(request.data, "type", "name")
         new_per_online[mongo_url] = build_simple_indicator(request.data, "useRegistrations")
 
-        if not(mongo_url in new_per_type):
+        if not(mongo_url in new_temporal):
             new_temporal[mongo_url] = build_temporal_indicator(request.data, {})
         else:
-            new_per_type[mongo_url] = merge_indicators(new_per_type[mongo_url], last_per_type)
-            new_per_online[mongo_url] = merge_indicators(new_per_online[mongo_url], last_per_online)
-            new_temporal[mongo_url] = build_temporal_indicator(request.data, last_temporal[mongo_url])
+            new_per_type[mongo_url] = merge_indicators(new_per_type[mongo_url], last_per_type[mongo_url])
+            new_per_online[mongo_url] = merge_indicators(new_per_online[mongo_url], last_per_online[mongo_url])
+            new_temporal[mongo_url] = build_temporal_indicator(request.data, new_temporal[mongo_url])
 
     new_create_date = str(datetime.now())
 
