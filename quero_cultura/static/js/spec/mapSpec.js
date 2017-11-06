@@ -2,22 +2,22 @@
 describe('GetColorByType', function () {
 	it('should return a blue for agent', function () {
 		colorRGB = "#17a2b8";
-		type = "agent";
+		type = "agente";
     });
 
 	it('should return a red for spaces', function () {
 		colorRGB = "#dc3545";
-		type = "space";
+		type = "espaco";
     });
 
 	it('should return a green for project', function () {
 		colorRGB = "#28a745";
-		type = "project";
+		type = "projeto";
     });
 
 	it('should return a yellow for event', function () {
 		colorRGB = "#ffc107";
-		type = "event";
+		type = "evento";
 	});
 
 	it('should return a black for anything wrong and not classified', function(){
@@ -277,12 +277,11 @@ describe('checkMarkersDuplicity', function(){
 
 describe('getInitialInstance', function(){
 	it('should get initial instance', function(){
-		data = [{'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
+		data = [{"singleUrl": "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
 		position = 0
 		var url = data[position]["singleUrl"]
 	    var splitUrl = url.split(".")
-		var test = getInitialInstance(data, position)
-
+		var test = getInitialInstance(data[position])
 		expect(test).toEqual(splitUrl[2])
 	});
 });
