@@ -228,7 +228,7 @@ function AddHTMLToFeed(name, type, url){
 
 function GetColorByType(type) {
   var color = "red";
-  console.log(type);
+  //console.log(type);
   switch (type) {
     case 'projeto':
       color = "#28a745"

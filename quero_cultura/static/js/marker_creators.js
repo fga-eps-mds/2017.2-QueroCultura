@@ -67,18 +67,6 @@ function createMarkerIcon(markerType, extension){
 /* Return a string with the subsite's url, using an subsiteId
 */
 function getSubsite(subsiteId){
-    //http://mapas.cultura.gov.br/api/subsite/find?%40select=url&id=eq(37)
-    
-    /*
-    response = $.getJSON('http://mapas.cultura.gov.br/api/subsite/find',
-        {
-        '@select' : 'url',
-        'id': 'eq('+subsiteId+')'
-    });
-
-    return response
-    */
-
     subsite = subsites[subsiteId].toString()
     return subsite
 }
@@ -114,21 +102,34 @@ function setZIndex(imageExtension){
 /* Create a popup to marker 
 */
 function createPopup(type,data,marker){
-    var popup = '<h6><b>Load Error</b></h6>'
 
     // Check if exist an subsite link, if exist, change url to subsite.
     if(data.subsite == null){
         //In normal flux, doesn't exist subsite and we use "singleUrl"
-        popup = '<h6><b>Nome:</b></h6>'+data.name+
-                '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
+        var popup = '<h6><b>Nome:</b></h6>'+data.name+
+                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
+        marker.bindPopup(popup);
     }else{
-        linkSubsite = "http://"+getSubsite(data.subsite) + "/"+type+"/" + data.id
-        popup = '<h6><b>Subsite:</b></h6>'+data.subsite+
-                '<h6><b>Nome:</b></h6>'+data.name+
-                '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
-    }
+        // remove a marker type to url
+        var splitUrl = data.singleUrl.split("/")
+        instanceUrl = splitUrl[0]+"//"+splitUrl[2] 
+        console.log("INSTANCE"+instanceUrl)
 
-    marker.bindPopup(popup);
+        // this responpose get a subsite link for a instanceUrl
+        // remember that mapas br and ceara instances have subsites
+        response = $.getJSON(instanceUrl+'/api/subsite/find',
+        {
+            '@select' : 'url',
+            'id': 'eq('+data.subsite+')'
+        }).then(function(subsiteData) {
+            linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
+            var popup = '<h6><b>Subsite:</b></h6>'+data.subsite+
+                        '<h6><b>Nome:</b></h6>'+data.name+
+                        '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
+            marker.bindPopup(popup);
+            console.log(linkSubsite)
+        });
+    }
 }
 
 function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude, longitude){
