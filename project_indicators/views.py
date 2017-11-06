@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from quero_cultura.views import build_temporal_indicator
+from quero_cultura.views import build_simple_indicator
+from quero_cultura.views import build_compound_indicator
+from quero_cultura.views import merge_indicators
 from quero_cultura.views import sort_dict
 from quero_cultura.views import ParserYAML
 from .models import PercentProjectPerType
@@ -8,7 +11,6 @@ from .models import QuantityOfRegisteredProject
 from .api_connections import RequestProjectsRawData
 from datetime import datetime
 from celery.decorators import task
-import yaml
 import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
@@ -55,42 +57,6 @@ def index(request):
     return render(request, 'project_indicators/project-indicators.html', context)
 
 
-def build_type_indicator(new_data, old_data):
-    per_type = {}
-
-    for project in new_data:
-        if not (project["type"]["name"] in per_type):
-            per_type[project["type"]["name"]] = 1
-        else:
-            per_type[project["type"]["name"]] += 1
-
-    for project in old_data:
-        if not (project in per_type):
-            per_type[project] = old_data[project]
-        else:
-            per_type[project] += old_data[project]
-
-    return per_type
-
-
-def build_online_record_indicator(new_data, old_data):
-    per_online_record = {}
-
-    for project in new_data:
-        if not (str(project["useRegistrations"]) in per_online_record):
-            per_online_record[str(project["useRegistrations"])] = 1
-        else:
-            per_online_record[str(project["useRegistrations"])] += 1
-
-    for project in old_data:
-        if not (project in per_online_record):
-            per_online_record[project] = old_data[project]
-        else:
-            per_online_record[project] += old_data[project]
-
-    return per_online_record
-
-
 @task(name="update_project_indicator")
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
@@ -100,33 +66,39 @@ def update_project_indicator():
 
     index = PercentProjectPerType.objects.count()
 
-    last_per_Type = PercentProjectPerType.objects[index - 1]
+    last_per_type = PercentProjectPerType.objects[index - 1]
     last_per_online_record = PercentProjectThatAcceptOnlineTransitions.objects[index - 1]
     last_temporal = QuantityOfRegisteredProject.objects[index - 1]
+
+    new_total = last_per_type.total_project
+    last_update_date = last_per_type.create_date
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
 
-    new_per_type = last_per_Type.total_project_per_type
-    new_per_online = last_per_online_record.total_project_that_accept_online_transitions
-    new_temporal = last_temporal.total_project_registered_per_mounth_per_year
+    last_per_type = last_per_type.total_project_per_type
+    last_per_online = last_per_online_record.total_project_that_accept_online_transitions
+    last_temporal = last_temporal.total_project_registered_per_mounth_per_year
 
-    new_total = last_per_Type.total_project
+    new_per_type = {}
+    new_per_online = {}
+    new_temporal = {}
 
     for url in urls:
-        request = RequestProjectsRawData(last_per_Type.create_date, url)
+        request = RequestProjectsRawData(last_update_date, url)
         new_total += request.data_length
 
         mongo_url = url.replace(".", "")
 
+        new_per_type[mongo_url] = build_compound_indicator(request.data, "type", "name")
+        new_per_online[mongo_url] = build_simple_indicator(request.data, "useRegistrations")
+
         if not(mongo_url in new_per_type):
-            new_per_type[mongo_url] = build_type_indicator(request.data, {})
-            new_per_online[mongo_url] = build_online_record_indicator(request.data, {})
             new_temporal[mongo_url] = build_temporal_indicator(request.data, {})
         else:
-            new_per_type[mongo_url] = build_type_indicator(request.data, new_per_type[mongo_url])
-            new_per_online[mongo_url] = build_online_record_indicator(request.data, new_per_online[mongo_url])
-            new_temporal[mongo_url] = build_temporal_indicator(request.data, new_temporal[mongo_url])
+            new_per_type[mongo_url] = merge_indicators(new_per_type[mongo_url], last_per_type)
+            new_per_online[mongo_url] = merge_indicators(new_per_online[mongo_url], last_per_online)
+            new_temporal[mongo_url] = build_temporal_indicator(request.data, last_temporal[mongo_url])
 
     new_create_date = str(datetime.now())
 
