@@ -31,8 +31,9 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 //
-var lastDayData = Array()
-var lastHourData = Array()
+var lastDayData = new Array()
+var lastHourData = new Array()
+var lastMinuteData = new Array()
 
 var instanceList = ['http://mapas.cultura.gov.br/api/',
                     'http://spcultura.prefeitura.sp.gov.br/api/',
@@ -63,7 +64,7 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 function getQueryDateTime(lastMinutes){
     var currentDateTime = new Date()
     var queryDateTime = new Date()
-    var timezone = 3
+    var timezone = 2
     queryDateTime.setHours(currentDateTime.getHours() - timezone,
                            currentDateTime.getMinutes() - lastMinutes)
 
@@ -73,38 +74,42 @@ function getQueryDateTime(lastMinutes){
 function createQueryPromise(instanceURL, markerType, lastMinutes){
     var queryDateTime = getQueryDateTime(lastMinutes);
     instanceURL = instanceURL+markerType+'/find'
-
     switch(markerType){
         case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl, subsite'
+            select = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'project':
-            select = 'name, owner.location, singleUrl, subsite'
+            select = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl, subsite'
+            select = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         default:
             select = ''
     }
 
-    var promise = $.getJSON(instanceURL,
-      {
-        '@select' : select,
-        '@or' : 1,
-        'createTimestamp' : "GT("+queryDateTime+")",
-        'updateTimestamp' : "GT("+queryDateTime+")"
-      });
+    var promise = $.getJSON(instanceURL, {'@select' : select,
+                                          '@or' : 1,
+                                          'createTimestamp' : "GT("+queryDateTime+")",
+                                          'updateTimestamp' : "GT("+queryDateTime+")"
+                                         });
 
-      return promise
+    return promise
 }
 
 function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
     var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
+
         saveArray.push.apply(saveArray, data)
+
+        if(saveArray === lastMinuteData){
+            AddInfoToFeed(saveArray)
+        }
+
+        saveArray = new Array()
     })
 
 }
@@ -117,13 +122,13 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
             saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
         }
     }
-    checkMarkersDuplicity(lastHourData)
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
     map.addLayer(markersSpace)
-    updateFeed()
+
 }
+
 
 function loadMarkers(markerType, imageExtension, markersData) {
     switch (markerType) {
@@ -139,86 +144,71 @@ function loadMarkers(markerType, imageExtension, markersData) {
 }
 
 
-function checkMarkersDuplicity(lastHourArray) {
-    var duplicates = Array()
-
-    for(i in lastHourArray){
-        for(j in printedMarkers){
-            if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
-                map.removeLayer(printedMarkers[j].marker)
-                duplicates.push(j)
-            }
-        }
-    }
-
-    for(i in duplicates){
-        printedMarkers.splice(duplicates[i], 1)
-    }
-}
-
-
-function updateFeed(){
-    var isPrinted = false
-    newMarkers.forEach(function(value, key){
-        isPrinted = false
-
-        printedFeed.forEach(function(printed_value,printed_key){
-            if(printed_key === key){
-                isPrinted = true
-            }
-        }, printedFeed)
-
-        if(isPrinted === false){
-            diffFeed.set(key,value)
-            printedFeed.set(key,value)
-        }
-    }, newMarkers)
-
-    //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
-    AddInfoToFeed(diffFeed)
-    diffFeed = new Map()
-}
-
 function AddInfoToFeed(diffFeed) {
-  var count = 0
 
-  diffFeed.forEach(function(value,key){
-    var name = value['name']
-    var type = value['singleUrl']
-    var splitType = type.split("/")
+    diffFeed.forEach(function(value, key){
+        var name = value.name
+        var type = value.type
+        var createTimestamp = value['createTimestamp']
+        var updateTimestamp = value['updateTimestamp']
+        var singleUrl = value['singleUrl']
 
-    type = splitType[3]
+        var markerLocation = {}
 
-    // check if instance have a subsite and change url is positive
-    if(value["subsite"] == null){
-        var url = value['singleUrl']
-    }else{
-        var splitUrl = value["singleUrl"].split("/")
-        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
+        if(type === 'evento'){
+            markerLocation = value['occurrences'].pop().space.location
+        }else if(type === 'projeto'){
+            markerLocation = value.owner.location
+        }else if(type === 'agente'){
+            markerLocation = value.location
+        }else{
+            markerLocation = value.location
+        }
 
-        var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
-        promise.then(function(subsiteData) {
-            var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
-            console.log("feed: "+url)
-        });
-    }
+        if(updateTimestamp === null){
+            actionDateTime = createTimestamp
+            actionType = 'Criação'
+        }else{
+            actionDateTime = updateTimestamp
+            actionType = 'Atualização'
+        }
+        // check if instance have a subsite and change url is positive
+        if(value["subsite"] == null){
+            var url = value['singleUrl']
+        }else{
+            var splitUrl = value["singleUrl"].split("/")
+            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-    if(count < 10){
-      var html = AddHTMLToFeed(name, type, url)
+            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+            promise.then(function(subsiteData) {
+                var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                console.log("feed: "+url)
+            });
+        }
 
-      $('#cards').append(html)
-      var height = $('#cards')[0].scrollHeight;
-      console.log("h", height);
-      $(".block" ).scrollTop(height);
-    }
-    count++
+        if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
+            openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
+                            "&lon="+markerLocation.longitude+"&format=json"
+            promise = $.getJSON(openstreetURL)
+            promise.then(function(data){
+                if(data["error"] !== undefined){
+                    console.log("unable to locate Geocode")
+                    data.address = {"state": '', 'city': ''}
+                }
+                var html = AddHTMLToFeed(actionType, name, type, data.address.state,
+                    data.address.city, actionDateTime, singleUrl)
 
-  }, diffFeed)
+                    $('#cards').append(html)
+                    var height = $('#cards')[0].scrollHeight;
+                    $(".block" ).scrollTop(height);
+            })
+        }
+    },diffFeed)
+
 }
 
-function AddHTMLToFeed(name, type, url){
+function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleUrl){
   color = GetColorByType(type)
-
   var html =
     "<div id='content'>"+
       "<div id='point'> "+
@@ -228,7 +218,10 @@ function AddHTMLToFeed(name, type, url){
       "</div> "+
 
       "<div id='text'>  "+
-        "<a href='"+url+"'>"+name+"</a>"+
+        "<a href='"+singleUrl+"'>"+name+"</a>"+
+        "<p>"+actionType+""+ "<br>"
+        +actionDateTime.date.substring(0, 19)+"<br>"
+        +city+ ' - ' + uf+"</p>"+
       "</div>"+
     "</div>"
   return html
@@ -236,7 +229,6 @@ function AddHTMLToFeed(name, type, url){
 
 function GetColorByType(type) {
   var color = "red";
-  //console.log(type);
   switch (type) {
     case 'projeto':
       color = "#28a745"
