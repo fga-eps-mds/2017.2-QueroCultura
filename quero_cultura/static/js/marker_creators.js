@@ -92,7 +92,6 @@ function createPopup(data,marker){
             var popup = '<h6><b>Nome:</b></h6>'+data.name+
                         '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
             marker.bindPopup(popup);
-            console.log(linkSubsite)
         });
     }
 }

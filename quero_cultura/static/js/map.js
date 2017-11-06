@@ -31,15 +31,24 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 //
-var lastDayData = new Array()
-var lastHourData = new Array()
-var lastMinuteData = new Array()
 
+var typeList = ['project', 'event', 'agent', 'space']
+
+var lastDayData = initialize_data_map()
+var lastHourData = initialize_data_map()
+var lastMinuteData = initialize_data_map()
+
+function initialize_data_map(){
+    var map = {}
+    for (var i =0; i < typeList.length; i++){
+        map[typeList[i]] = new Array()
+    }
+    return map
+}
 var instanceList = ['http://mapas.cultura.gov.br/api/',
                     'http://spcultura.prefeitura.sp.gov.br/api/',
                     'http://mapa.cultura.ce.gov.br/api/']
 
-var typeList = ['project', 'event', 'agent', 'space']
 
 var baseLayers = {
   "Light": mapboxTiles,
@@ -103,13 +112,14 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
 
-        saveArray.push.apply(saveArray, data)
+        saveArray[markerType].push.apply(saveArray[markerType], data)
 
         if(saveArray === lastMinuteData){
-            AddInfoToFeed(saveArray)
+            console.log(saveArray)
+            AddInfoToFeed(saveArray[markerType])
+            saveArray[markerType] = new Array()
         }
 
-        saveArray = new Array()
     })
 
 }
@@ -182,7 +192,6 @@ function AddInfoToFeed(diffFeed) {
             var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
             promise.then(function(subsiteData) {
                 var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
-                console.log("feed: "+url)
             });
         }
 
