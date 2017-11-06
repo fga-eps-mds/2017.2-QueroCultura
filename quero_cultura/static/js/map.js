@@ -102,6 +102,7 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
     var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
+
         saveArray.push.apply(saveArray, data)
 
         if(saveArray === lastMinuteData){
@@ -154,11 +155,11 @@ function AddInfoToFeed(diffFeed) {
 
         var markerLocation = {}
 
-        if(type === 'event'){
+        if(type === 'evento'){
             markerLocation = value['occurrences'].pop().space.location
-        }else if(type === 'project'){
+        }else if(type === 'projeto'){
             markerLocation = value.owner.location
-        }else if(type === 'agent'){
+        }else if(type === 'agente'){
             markerLocation = value.location
         }else{
             markerLocation = value.location
