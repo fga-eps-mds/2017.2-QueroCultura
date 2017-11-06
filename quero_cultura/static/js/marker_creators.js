@@ -2,37 +2,6 @@ var newMarkers = new Map()
 var printedFeed = new Map()
 var diffFeed = new Map()
 
-// variable that contains the subsites of mapas.cultura.gov.br(Mapas BR) with yours respectives id's
-// These can be obtained in follow link: 'http://mapas.cultura.gov.br/api/subsite/find?@select=url'
-var subsites = {1:"museus.cultura.gov.br",
-                2:"bibliotecas.cultura.gov.br",
-                4:"mapas.cultura.gov.br",
-                9:"mapacultural.es.gov.br",
-                11:"pb.mapas.cultura.gov.br",
-                12:"ma.mapas.cultura.gov.br",
-                15:"pa.mapas.cultura.gov.br",
-                16:"jaguarao.rs.mapas.cultura.gov.br",
-                17:"meleva.cultura.gov.br",
-                18:"grucultura.guarulhos.sp.gov.br",
-                20:"laguna.sc.mapas.cultura.gov.br",
-                21:"mapa.cultura.aracaju.se.gov.br",
-                22:"francodarocha.sp.mapas.cultura.gov.br",
-                23:"mapacultural.itu.sp.gov.br",
-                24:"ba.mapas.cultura.gov.br",
-                25:"mapacultural.parnaiba.pi.gov.br",
-                26:"osasco.sp.mapas.cultura.gov.br",
-                27:"camacari.ba.mapas.cultura.gov.br",
-                28:"ilheus.ba.mapas.cultura.gov.br",
-                29:"varzeagrande.mt.mapas.cultura.gov.br",
-                30:"pontosdememoria.cultura.gov.br",
-                31:"mapadaculturafoz.pmfi.pr.gov.br",
-                32:"senhordobonfim.ba.mapas.cultura.gov.br",
-                33:"mapas.cultura.se.gov.br",
-                34:"mapacultural.itapetininga.sp.gov.br",
-                35:"mapacultural.ipatinga.mg.gov.br",
-                36:"mapacultural.novohamburgo.rs.gov.br",
-                37:"mapacultural.saocaetanodosul.sp.gov.br"}
-
 // Contains markers printed on map
 var printedMarkers = Array()
 
@@ -113,7 +82,6 @@ function createPopup(type,data,marker){
         // remove a marker type to url
         var splitUrl = data.singleUrl.split("/")
         instanceUrl = splitUrl[0]+"//"+splitUrl[2]
-        console.log("INSTANCE"+instanceUrl)
 
         // this responpose get a subsite link for a instanceUrl
         // remember that mapas br and ceara instances have subsites
@@ -123,8 +91,7 @@ function createPopup(type,data,marker){
             'id': 'eq('+data.subsite+')'
         }).then(function(subsiteData) {
             linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
-            var popup = '<h6><b>Subsite:</b></h6>'+data.subsite+
-                        '<h6><b>Nome:</b></h6>'+data.name+
+            var popup = '<h6><b>Nome:</b></h6>'+data.name+
                         '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
             marker.bindPopup(popup);
             console.log(linkSubsite)
