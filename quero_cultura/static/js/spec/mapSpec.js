@@ -1,37 +1,23 @@
-describe('InitTime', function () {
-	xit('should get time with 3 hours and X minutes delay', function () {
-		delay = -5;
-		var now = InitTime(delay);
-
-		var timeTest = new Date();
-		timeTest.setHours(timeTest.getHours() - 3, timeTest.getMinutes() - delay);
-		timeTest.setMilliseconds(0);
-		timeTest = timeTest.toJSON();
-
-		expect(now).toEqual(timeTest);
-
-    });
-});
 
 describe('GetColorByType', function () {
 	it('should return a blue for agent', function () {
 		colorRGB = "#17a2b8";
-		type = "agent";
+		type = "agente";
     });
 
 	it('should return a red for spaces', function () {
 		colorRGB = "#dc3545";
-		type = "space";
+		type = "espaco";
     });
 
 	it('should return a green for project', function () {
 		colorRGB = "#28a745";
-		type = "project";
+		type = "projeto";
     });
 
 	it('should return a yellow for event', function () {
 		colorRGB = "#ffc107";
-		type = "event";
+		type = "evento";
 	});
 
 	it('should return a black for anything wrong and not classified', function(){
@@ -44,133 +30,6 @@ describe('GetColorByType', function () {
 		expect(color).toEqual(colorRGB);
 	});
 });
-
-describe("SpaceMarkers", function(){
-
-	beforeEach(function(){
-		imageExtension = "gif"
-		minutes = 60
-	});
-
-	xit("should add new space markers to map layer", function(){
-		spyOn(map, "addLayer")
-
-		SpaceMarkers(imageExtension, minutes)
-
-		expect(map.addLayer).toHaveBeenCalledWith(markersSpace)
-	});
-
-	xit("should load SpaceMarkers", function(){
-		spyOn(window, "loadMarkers")
-
-		SpaceMarkers(imageExtension, minutes)
-
-		expect(window.loadMarkers).toHaveBeenCalledWith('space',imageExtension, minutes)
-	});
-
-	xit("should clear layers", function(){
-		spyOn(markersSpace, 'clearLayers')
-
-		SpaceMarkers(imageExtension, minutes)
-
-		expect(markersSpace.clearLayers).toHaveBeenCalledWith()
-	});
-});
-
-describe("AgentMarkers", function(){
-	beforeEach(function(){
-		imageExtension = "png"
-		minutes = 60
-	});
-
-	xit("should add new agent markers to map layer", function(){
-		spyOn(map, "addLayer")
-
-		AgentMarkers(imageExtension, minutes)
-
-		expect(map.addLayer).toHaveBeenCalledWith(markersAgent)
-	});
-
-	xit("should load AgentMarkers", function(){
-		spyOn(window, 'loadMarkers')
-
-		AgentMarkers(imageExtension, minutes)
-
-		expect(window.loadMarkers).toHaveBeenCalledWith('agent', imageExtension, minutes)
-	});
-
-	xit("should clear layers", function(){
-		spyOn(markersAgent, 'clearLayers')
-
-		AgentMarkers(imageExtension, minutes)
-
-		expect(markersAgent.clearLayers).toHaveBeenCalledWith()
-	});
-});
-
-describe("EventMarkers", function(){
-	beforeEach(function(){
-		imageExtension = "png"
-		minutes = 60
-	});
-
-	xit("should add new event markers to map layer", function(){
-		spyOn(map, "addLayer")
-
-		EventMarkers(imageExtension, minutes)
-
-		expect(map.addLayer).toHaveBeenCalledWith(markersEvent)
-	});
-
-	xit("should load EventMarkers", function(){
-		spyOn(window, 'loadMarkers')
-
-		EventMarkers(imageExtension, minutes)
-
-		expect(window.loadMarkers).toHaveBeenCalledWith('event', imageExtension, minutes)
-	});
-
-	xit("should clear layers", function(){
-		spyOn(markersEvent, 'clearLayers')
-
-		EventMarkers(imageExtension, minutes)
-
-		expect(markersEvent.clearLayers).toHaveBeenCalledWith()
-	});
-});
-
-describe("ProjectMarkers", function(){
-
-	beforeEach(function(){
-		imageExtension = "png"
-		minutes = 60
-	})
-
-	xit("should add new markers to map layer", function(){
-		spyOn(map,"addLayer")
-
-		ProjectMarkers(imageExtension, minutes);
-
-		expect(map.addLayer).toHaveBeenCalledWith(markersProject)
-	})
-
-	xit("should load ProjectMarkers", function(){
-		spyOn(window,'loadMarkers')
-
-		ProjectMarkers(imageExtension, minutes);
-
-		expect(window.loadMarkers).toHaveBeenCalledWith('project', imageExtension, minutes)
-	})
-
-	xit("should clear layers", function(){
-		spyOn(markersProject, 'clearLayers')
-
-		ProjectMarkers(imageExtension, minutes)
-
-		expect(markersProject.clearLayers).toHaveBeenCalledWith()
-	});
-});
-
 
 describe("AddInfoToFeed", function(){
 
@@ -186,132 +45,6 @@ describe("AddInfoToFeed", function(){
 		expect(diffFeed2.forEach).toHaveBeenCalled()
 	})
 })
-
-describe('MarkersPoints', function () {
-
-	xit('should add new agent marker point', function () {
-    spyOn(window, 'AgentMarkers')
-
-		MarkersPoints(true)
-
-		expect(window.AgentMarkers).toHaveBeenCalledWith("png", 1440)
-  });
-
-	xit('should add new event marker point', function () {
-    spyOn(window, 'EventMarkers')
-
-		MarkersPoints(true)
-
-		expect(window.EventMarkers).toHaveBeenCalledWith("gif", 60)
-  });
-
-	xit('should add new space marker point', function () {
-    spyOn(window, 'SpaceMarkers')
-
-		MarkersPoints(true)
-
-		expect(window.SpaceMarkers).toHaveBeenCalledWith("png", 1440)
-  });
-
-	xit('should add new project marker point', function () {
-    spyOn(window, 'ProjectMarkers')
-
-		MarkersPoints(true)
-
-		expect(window.ProjectMarkers).toHaveBeenCalledWith("gif", 60)
-  });
-
-	xit('should verify if has layer', function(){
-		spyOn(map, 'hasLayer')
-
-		MarkersPoints(true)
-
-		expect(map.hasLayer).toHaveBeenCalledWith(markersAgent)
-	});
-
-	xit('should verify if has layer', function(){
-		spyOn(map, 'hasLayer')
-
-		MarkersPoints(true)
-
-		expect(map.hasLayer).toHaveBeenCalledWith(markersEvent)
-	});
-
-	xit('should verify if has layer', function(){
-		spyOn(map, 'hasLayer')
-
-		MarkersPoints(true)
-
-		expect(map.hasLayer).toHaveBeenCalledWith(markersSpace)
-	});
-
-	xit('should verify if has layer', function(){
-		spyOn(map, 'hasLayer')
-
-		MarkersPoints(true)
-
-		expect(map.hasLayer).toHaveBeenCalledWith(markersProject)
-	});
-
-	xit('should update feed', function(){
-		spyOn(window, 'updateFeed')
-
-		MarkersPoints(true)
-
-		expect(window.updateFeed).toHaveBeenCalledWith()
-	});
-});
-
-describe('GetColorByType', function () {
-
-	it('should add color by type agent', function () {
-		type1 = 'agent'
-
-		var color = GetColorByType(type1)
-
-		expect(color).toEqual('#17a2b8')
-	});
-
-	it('should add color by type project', function () {
-
-		type1 = 'project'
-
-		var color = GetColorByType(type1)
-
-		expect(color).toEqual('#28a745')
-
-	});
-
-	it('should add color by type space', function () {
-
-		type1 = 'space'
-
-		var color = GetColorByType(type1)
-
-		expect(color).toEqual('#dc3545')
-	});
-
-	it('should add color by type event', function () {
-
-		type1 = 'event'
-
-		var color = GetColorByType(type1)
-
-		expect(color).toEqual('#ffc107')
-
-	});
-
-	it('should add color by type default', function () {
-
-		type1 = 'other'
-
-		var color = GetColorByType(type1)
-
-		expect(color).toEqual('black')
-
-	});
-
-});
 
 describe('AddHTMLToFeed', function () {
 
@@ -373,12 +106,33 @@ describe('createEventMarker', function(){
 });
 
 describe('loadMarkers', function(){
-	xit('should load markers in instance', function(){
-		spyOn(window, 'loadMarkersInInstance')
+	it('should load markers in instance', function(){
+		spyOn(window, 'createProjectMarker')
+
+		loadMarkers('project', 'gif', '60')
+
+		expect(window.createProjectMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createEventMarker')
+
+		loadMarkers('event', 'gif', '60')
+
+		expect(window.createEventMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createAgentMarker')
 
 		loadMarkers('agent', 'gif', '60')
 
-		expect(window.loadMarkersInInstance).toHaveBeenCalled()
+		expect(window.createAgentMarker).toHaveBeenCalled()
+	});
+	it('should load markers in instance', function(){
+		spyOn(window, 'createSpaceMarker')
+
+		loadMarkers('space', 'gif', '60')
+
+		expect(window.createSpaceMarker).toHaveBeenCalled()
 	});
 });
 
@@ -439,5 +193,134 @@ describe('readCookie', function(){
 		var test = readCookie('dontExist01020304')
 
 		expect(test).toEqual(null)
+	});
+});
+
+describe('getQueryDateTime', function() {
+	it('should create a new date time', function () {
+		delay = -5;
+		var now = getQueryDateTime(delay);
+		var timeTest = new Date();
+
+		timeTest.setHours(timeTest.getHours() - 3, timeTest.getMinutes() - delay);
+		timeTest = timeTest.toJSON();
+
+		expect(now).toEqual(timeTest);
+
+    });
+});
+
+describe('createQueryPromise',function(){
+	it('Should call getQueryDateTime', function(){
+		spyOn(window, 'getQueryDateTime')
+		createQueryPromise('instanceURL','event',5)
+		expect(window.getQueryDateTime).toHaveBeenCalledWith(5)
+	});
+	xit('Should return promise',function(){
+		var dateTime = getQueryDateTime(5)
+		var select = 'name, occurrences.{space.{location}}, singleUrl'
+		var promise = $.getJSON("instanceURLevent/find",
+	      {
+	        '@select' : select,
+	        '@or' : 1,
+	        'createTimestamp' : "GT("+dateTime+")",
+	        'updateTimestamp' : "GT("+dateTime+")"
+	      },);
+		  var equal = createQueryPromise('instanceURL','event',5)
+		  expect(equal).toEqual(promise)
+	});
+});
+
+describe('saveAndLoadData', function(){
+	xit('Should call createQueryPromise', function(){
+		spyOn(window, 'createQueryPromise')
+		saveAndLoadData('instanceURL', 'event', 5, [], 'gif')
+		expect(window.createQueryPromise).toHaveBeenCalled()
+	});
+});
+
+describe('loadAndUpdateMarkers', function(){
+	it('Should call saveAndLoadData', function(){
+		spyOn(window, 'saveAndLoadData')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.saveAndLoadData).toHaveBeenCalled()
+	});
+	it('Should call checkMarkersDuplicity', function(){
+		spyOn(window, 'checkMarkersDuplicity')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.checkMarkersDuplicity).toHaveBeenCalledWith(lastHourData)
+	});
+	it('Should call addLayer', function(){
+		spyOn(map,'addLayer')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(map.addLayer).toHaveBeenCalledTimes(4)
+	});
+	it('Should call updateFeed', function(){
+		spyOn(window, 'updateFeed')
+		loadAndUpdateMarkers(5,[],'gif')
+		expect(window.updateFeed).toHaveBeenCalledWith()
+	});
+});
+
+describe('checkMarkersDuplicity', function(){
+	xit('should remove layers', function(){
+		spyOn(map, 'removeLayer')
+		var value = Array()
+		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
+		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
+
+
+		checkMarkersDuplicity(value)
+		expect(map.removeLayer).toHaveBeenCalled()
+	});
+});
+
+describe('getInitialInstance', function(){
+	it('should get initial instance', function(){
+		data = [{"singleUrl": "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
+		position = 0
+		var url = data[position]["singleUrl"]
+	    var splitUrl = url.split(".")
+		var test = getInitialInstance(data[position])
+		expect(test).toEqual(splitUrl[2])
+	});
+});
+
+describe('makeIdForMarker', function(){
+		it('Should call getInitialInstance', function(){
+			spyOn(window,'getInitialInstance')
+			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
+			position = 0
+			makeIdForMarker(data,position)
+			expect(window.getInitialInstance).toHaveBeenCalled()
+		});
+		it('Should return identification', function(){
+			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
+			position = 0
+			identification = makeIdForMarker(data,position)
+			equal = 'sp1'
+			expect(identification).toEqual(equal)
+		});
+});
+
+describe('setZIndex', function(){
+	it('Should return 1000', function(){
+			equal = 1000
+			test = setZIndex('gif')
+			expect(test).toEqual(equal)
+	});
+	it('Should return -30', function(){
+		equal = -30
+		test = setZIndex('png')
+		expect(test).toEqual(equal)
+	});
+});
+
+describe('loadMarkersInInstance', function(){
+	xit('should call createPromise', function(){
+
+		spyOn(window, 'createPromise')
+		loadMarkersInInstance('agent', 'agent123', 'gif', 60)
+		expect(window.createPromise).toHaveBeenCalled()
 	});
 });

@@ -15,6 +15,7 @@ var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/
     accessToken: 'your.mapbox.access.token'
 });
 
+
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
 var map = L.map('map', {maxBounds: bounds})
@@ -75,14 +76,14 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
     instanceURL = instanceURL+markerType+'/find'
     switch(markerType){
         case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl, createTimestamp, updateTimestamp'
+            select = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'project':
-            select = 'name, owner.location, singleUrl, createTimestamp, updateTimestamp'
+            select = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl, createTimestamp, updateTimestamp'
+            select = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         default:
             select = ''
@@ -102,9 +103,11 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
         saveArray.push.apply(saveArray, data)
+
         if(saveArray === lastMinuteData){
             AddInfoToFeed(saveArray)
         }
+
         saveArray = new Array()
     })
 
@@ -118,7 +121,6 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
             saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
         }
     }
-    //checkMarkersDuplicity(lastHourData)
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -169,6 +171,20 @@ function AddInfoToFeed(diffFeed) {
             actionDateTime = updateTimestamp
             actionType = 'Atualização'
         }
+        // check if instance have a subsite and change url is positive
+        if(value["subsite"] == null){
+            var url = value['singleUrl']
+        }else{
+            var splitUrl = value["singleUrl"].split("/")
+            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
+
+            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+            promise.then(function(subsiteData) {
+                var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                console.log("feed: "+url)
+            });
+        }
+
         if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
             openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
                             "&lon="+markerLocation.longitude+"&format=json"
@@ -213,19 +229,19 @@ function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleU
 function GetColorByType(type) {
   var color = "red";
   switch (type) {
-    case 'project':
+    case 'projeto':
       color = "#28a745"
       break
 
-    case 'space':
+    case 'espaco':
       color = "#dc3545"
       break
 
-    case 'agent':
+    case 'agente':
       color = "#17a2b8"
       break
 
-    case 'event':
+    case 'evento':
       color = "#ffc107"
       break
 
