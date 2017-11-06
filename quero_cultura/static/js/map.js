@@ -189,22 +189,18 @@ function AddInfoToFeed(diffFeed) {
 
     type = splitType[3]
 
+    // check if instance have a subsite and change url is positive
     if(value["subsite"] == null){
         var url = value['singleUrl']
     }else{
         var splitUrl = value["singleUrl"].split("/")
         instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-        response = $.getJSON(instanceUrl+'/api/subsite/find',
-        {
-            '@select' : 'url',
-            'id': 'eq('+value["subsite"]+')'
-        }).then(function(subsiteData) {
+        var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+        promise.then(function(subsiteData) {
             var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
-            console.log("feed"+url)
+            console.log("feed: "+url)
         });
-
-        // var url = "http://"+getSubsite(value["subsite"]) + "/"+type+"/" + value["id"]
     }
 
     if(count < 10){

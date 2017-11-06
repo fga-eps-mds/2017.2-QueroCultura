@@ -68,9 +68,23 @@ function setZIndex(imageExtension){
   }
 }
 
+/* this responpose get a subsite link for a instanceUrl
+remember that mapas br and ceara instances have subsites
+*/
+function requestSubsite(url, subsiteID){
+
+    response = $.getJSON(url,
+    {
+        '@select' : 'url',
+        'id': 'eq('+subsiteID+')'
+    })
+
+    return response
+}
+
 /* Create a popup to marker
 */
-function createPopup(type,data,marker){
+function createPopup(data,marker){
 
     // Check if exist an subsite link, if exist, change url to subsite.
     if(data.subsite == null){
@@ -81,15 +95,12 @@ function createPopup(type,data,marker){
     }else{
         // remove a marker type to url
         var splitUrl = data.singleUrl.split("/")
+        type = splitUrl[3]
+
         instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-        // this responpose get a subsite link for a instanceUrl
-        // remember that mapas br and ceara instances have subsites
-        response = $.getJSON(instanceUrl+'/api/subsite/find',
-        {
-            '@select' : 'url',
-            'id': 'eq('+data.subsite+')'
-        }).then(function(subsiteData) {
+        var promise = requestSubsite(instanceUrl+'/api/subsite/find', data.subsite)
+        promise.then(function(subsiteData) {
             linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
             var popup = '<h6><b>Nome:</b></h6>'+data.name+
                         '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
@@ -99,7 +110,7 @@ function createPopup(type,data,marker){
     }
 }
 
-function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude, longitude){
+function addMarkerToMap(data, icon, imageExtension, featureGroup, latitude, longitude){
     var valueZindex = setZIndex(imageExtension)
     var idForMarker = makeIdForMarker(data)
     newMarkers.set(idForMarker, data)
@@ -107,7 +118,7 @@ function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude
     // Instantiates a Marker object given a geographical point and optionally an options object
     var marker = L.marker([latitude, longitude], {icon: icon}).setZIndexOffset(valueZindex).addTo(featureGroup);
 
-    createPopup(type,data,marker)
+    createPopup(data,marker)
     var identifiedMarker = {"id" : data.id,"marker" : marker}
     printedMarkers.push(identifiedMarker)
 }
@@ -117,13 +128,12 @@ function addMarkerToMap(data, icon, imageExtension, type, featureGroup, latitude
 */
 function createSpaceMarker(data, imageExtension){
     var icon = createMarkerIcon('space', imageExtension)
-    var type = "espaco"
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"]){
             var latitude = data[i]["location"]["latitude"]
             var longitude = data[i]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, type, markersSpace, latitude, longitude)
+            addMarkerToMap(data[i], icon, imageExtension, markersSpace, latitude, longitude)
         }
     }
 }
@@ -133,13 +143,12 @@ function createSpaceMarker(data, imageExtension){
 */
 function createAgentMarker(data, imageExtension){
     var icon = createMarkerIcon('agent', imageExtension)
-    var type = "agente"
 
     for(var i=0; i < data.length; i++){
         if(data[i]["location"]){
             var latitude = data[i]["location"]["latitude"]
             var longitude = data[i]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, type, markersAgent, latitude, longitude)
+            addMarkerToMap(data[i], icon, imageExtension, markersAgent, latitude, longitude)
         }
     }
 }
@@ -149,13 +158,12 @@ function createAgentMarker(data, imageExtension){
 */
 function createEventMarker(data, imageExtension){
     var icon = createMarkerIcon('event', imageExtension)
-    var type = "evento"
 
     for(var i=0; i < data.length; i++){
     	  if((data[i]["occurrences"]).length){
             var latitude = data[i]["occurrences"][0]["space"]["location"]["latitude"]
             var longitude = data[i]["occurrences"][0]["space"]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, type, markersEvent, latitude, longitude)
+            addMarkerToMap(data[i], icon, imageExtension, markersEvent, latitude, longitude)
     	  }
     }
 }
@@ -165,13 +173,12 @@ function createEventMarker(data, imageExtension){
 */
 function createProjectMarker(data, imageExtension){
     var icon = createMarkerIcon('project', imageExtension)
-    var type = "projeto"
 
     for(var i=0; i < data.length; i++){
     	  if(data[i]["owner"]){
             var latitude = data[i]["owner"]["location"]["latitude"]
             var longitude = data[i]["owner"]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, type, markersProject, latitude, longitude)
+            addMarkerToMap(data[i], icon, imageExtension, markersProject, latitude, longitude)
         }
     }
 }
