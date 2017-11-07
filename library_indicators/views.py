@@ -218,7 +218,7 @@ def get_all_type_sphere():
 
 
 def filter_sphere_type(per_type, library):
-    if(library["esfera_tipo"] != None):
+    if(library["esfera_tipo"] != None or library["esfera_tipo"] != ""):
         if not (library["esfera_tipo"] in per_type):
             per_type[library["esfera_tipo"]] = 1
         else:

@@ -32,6 +32,9 @@ function createDataSet(category,label,values){
                     data: values
                 }]
 
+    var primary_blue = 'rgba(17,90,163,1)';
+    var secondary_blue = 'rgba(86, 170, 255,1)';
+
     switch (category) {
         case "line":
             dataset[0].backgroundColor = "transparent"
@@ -52,10 +55,10 @@ function createDataSet(category,label,values){
             dataset[0].pointBorderColor = "rgba(75,192,192,1)"
             break;
         case "pie":
-            dataset[0].backgroundColor = ['rgba(17,90,163,1)','rgba(86, 170, 255,1)']
+            dataset[0].backgroundColor = [primary_blue,secondary_blue]
             break;
         case "bar":
-            dataset[0].backgroundColor = 'rgba(17,90,163,1)'
+            dataset[0].backgroundColor = primary_blue
             break;
     }
 

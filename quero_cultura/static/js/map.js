@@ -15,6 +15,7 @@ var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/
     accessToken: 'your.mapbox.access.token'
 });
 
+
 var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
 
 var map = L.map('map', {maxBounds: bounds})
@@ -30,14 +31,24 @@ var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
 //
-var lastDayData = Array()
-var lastHourData = Array()
 
+var typeList = ['project', 'event', 'agent', 'space']
+
+var lastDayData = initialize_data_map()
+var lastHourData = initialize_data_map()
+var lastMinuteData = initialize_data_map()
+
+function initialize_data_map(){
+    var map = {}
+    for (var i =0; i < typeList.length; i++){
+        map[typeList[i]] = new Array()
+    }
+    return map
+}
 var instanceList = ['http://mapas.cultura.gov.br/api/',
                     'http://spcultura.prefeitura.sp.gov.br/api/',
                     'http://mapa.cultura.ce.gov.br/api/']
 
-var typeList = ['project', 'event', 'agent', 'space']
 
 var baseLayers = {
   "Light": mapboxTiles,
@@ -62,7 +73,7 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 function getQueryDateTime(lastMinutes){
     var currentDateTime = new Date()
     var queryDateTime = new Date()
-    var timezone = 3
+    var timezone = 2
     queryDateTime.setHours(currentDateTime.getHours() - timezone,
                            currentDateTime.getMinutes() - lastMinutes)
 
@@ -72,38 +83,42 @@ function getQueryDateTime(lastMinutes){
 function createQueryPromise(instanceURL, markerType, lastMinutes){
     var queryDateTime = getQueryDateTime(lastMinutes);
     instanceURL = instanceURL+markerType+'/find'
-
     switch(markerType){
         case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl'
+            select = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'project':
-            select = 'name, owner.location, singleUrl '
+            select = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl'
+            select = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         default:
             select = ''
     }
 
-    var promise = $.getJSON(instanceURL,
-      {
-        '@select' : select,
-        '@or' : 1,
-        'createTimestamp' : "GT("+queryDateTime+")",
-        'updateTimestamp' : "GT("+queryDateTime+")"
-      },);
+    var promise = $.getJSON(instanceURL, {'@select' : select,
+                                          '@or' : 1,
+                                          'createTimestamp' : "GT("+queryDateTime+")",
+                                          'updateTimestamp' : "GT("+queryDateTime+")"
+                                         });
 
-      return promise
+    return promise
 }
 
 function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
     var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
     promise.then(function(data){
         loadMarkers(markerType, markerImageExtension, data)
-        saveArray.push.apply(saveArray, data)
+
+        saveArray[markerType].push.apply(saveArray[markerType], data)
+
+        if(saveArray === lastMinuteData){
+            AddInfoToFeed(saveArray[markerType])
+            saveArray[markerType] = new Array()
+        }
+
     })
 
 }
@@ -116,13 +131,13 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
             saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
         }
     }
-    checkMarkersDuplicity(lastHourData)
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
     map.addLayer(markersSpace)
-    updateFeed()
+
 }
+
 
 function loadMarkers(markerType, imageExtension, markersData) {
     switch (markerType) {
@@ -137,103 +152,142 @@ function loadMarkers(markerType, imageExtension, markersData) {
     }
 }
 
+function get_marker_location(value){
+    console.log(value)
 
-function checkMarkersDuplicity(lastHourArray) {
-    var duplicates = Array()
-
-    for(i in lastHourArray){
-        for(j in printedMarkers){
-            if(Object.is(lastHourArray[i].id, printedMarkers[j].id)){
-                map.removeLayer(printedMarkers[j].marker)
-                duplicates.push(j)
+    switch (value.type) {
+        case "evento":
+            var occurrences = value['occurrences'].pop()
+            if(occurrences === undefined){
+                return {latitude:0, longitude:0}
+            }else{
+                return occurrences.space.location
             }
-        }
-    }
-
-    for(i in duplicates){
-        printedMarkers.splice(duplicates[i], 1)
+        case "projeto":
+            return value.owner.location
+        default:
+            return value.location
     }
 }
 
+function create_url_to_feed(value){
+    return new Promise((resolve, reject) =>{
+        if(value["subsite"] === null){
+            resolve(value['singleUrl'])
+        }else{
+            var splitUrl = value["singleUrl"].split("/")
+            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-function updateFeed(){
-    var isPrinted = false
-    newMarkers.forEach(function(value, key){
-        isPrinted = false
-
-        printedFeed.forEach(function(printed_value,printed_key){
-            if(printed_key === key){
-                isPrinted = true
-            }
-        }, printedFeed)
-
-        if(isPrinted === false){
-            diffFeed.set(key,value)
-            printedFeed.set(key,value)
+            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+            promise.then(function(subsiteData) {
+                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                console.log(url)
+                resolve(url)
+            });
         }
-    }, newMarkers)
-
-    //######## Inserir no Feed os objetos contidos no Difffeed aqui antes de limpa-lo
-    AddInfoToFeed(diffFeed)
-    diffFeed = new Map()
+    })
 }
 
+function get_action(createTimestamp, updateTimestamp){
+    var update = {}
+    if(updateTimestamp === null){
+        update.time = createTimestamp
+        update.name = 'Criação'
+    }else{
+        update.time = updateTimestamp
+        update.name = 'Atualização'
+    }
+    return update
+}
+
+function create_location_promise(markerLocation){
+    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+"&lon="+markerLocation.longitude+"&format=json"
+    return $.getJSON(openstreetURL)
+}
+
+function get_location_data(markerLocation){
+    return new Promise((resolved, reject)=>{
+        if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
+            promise = create_location_promise(markerLocation)
+            promise.then(function(data){
+                if(data["error"] !== undefined){
+                    console.log("unable to locate Geocode")
+                    data.address = {"state": '', 'city': ''}
+                }
+
+                if(data.address.city == undefined){
+                    data.address.city = data.address.town
+                }
+                if(data.address.city == undefined){
+                    data.address.city = ''
+                }
+                if(data.address.state == undefined){
+                    data.address.state = ''
+                }
+                console.log(data.address.city)
+                resolved(data)
+            })
+        }else{
+            reject({})
+        }
+    })
+}
 function AddInfoToFeed(diffFeed) {
-  var count = 0
 
-  diffFeed.forEach(function(value,key){
-    var name = value['name']
-    var type = value['type']
-    var singleUrl = value['singleUrl']
+    diffFeed.forEach(async function(value, key){
+        var markerLocation = get_marker_location(value)
+        var url = await create_url_to_feed(value)
+        var data = await get_location_data(markerLocation)
+        var action = get_action(value.createTimestamp, value.updateTimestamp)
 
-    if(count < 10){
-      var html = AddHTMLToFeed(name, type, singleUrl)
+        var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
+        create_feed_block(html)
+    },diffFeed)
 
-      $('#cards').append(html)
-      var height = $('#cards')[0].scrollHeight;
-      console.log("h", height);
-      $(".block" ).scrollTop(height);
-    }
-    count++
-
-  }, diffFeed)
 }
 
-function AddHTMLToFeed(name, type, singleUrl){
-  color = GetColorByType(type)
+function create_feed_block(html){
+    $('#cards').append(html)
+    var height = $('#cards')[0].scrollHeight;
+    $(".block" ).scrollTop(height);
+}
 
-  var html =
-    "<div id='content'>"+
-      "<div id='point'> "+
-      "  <svg> "+
-          "<circle cx='15' cy='25' r='7' fill='"+color+"' />  "+
-        "</svg> "+
-      "</div> "+
+function AddHTMLToFeed(action, name, type, address, url){
+    color = GetColorByType(type)
+    var html = "<div id='content'>"+
+                   "<div id='point'>"+
+                       "<svg>"+
+                           "<circle cx='15' cy='25' r='7' fill='"+color+"' />"+
+                       "</svg>"+
+                   "</div> "+
 
-      "<div id='text'>  "+
-        "<a href='"+singleUrl+"'>"+name+"</a>"+
-      "</div>"+
-    "</div>"
-  return html
+                   "<div id='text'>  "+
+                       "<a href='"+url+"' target='_blank'>"+name+"</a>"+
+                       "<p>"+action.name+""+ "<br>"
+                            +action.time.date.substring(0, 19)+"<br>"
+                            +address.city+ ' - ' + address.state+
+                       "</p>"+
+                   "</div>"+
+               "</div>"
+    return html
 }
 
 function GetColorByType(type) {
   var color = "red";
-  console.log(type);
   switch (type) {
-    case 'project':
+    case 'projeto':
       color = "#28a745"
       break
 
-    case 'space':
+    case 'espaco':
       color = "#dc3545"
       break
 
-    case 'agent':
+    case 'agente':
       color = "#17a2b8"
       break
 
-    case 'event':
+    case 'evento':
       color = "#ffc107"
       break
 
