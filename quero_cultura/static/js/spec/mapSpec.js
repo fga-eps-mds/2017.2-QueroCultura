@@ -48,7 +48,7 @@ describe("AddInfoToFeed", function(){
 
 describe('AddHTMLToFeed', function () {
 
-	it('should get color by type', function () {
+	xit('should get color by type', function () {
 
 		spyOn(window,'GetColorByType')
 
@@ -60,19 +60,6 @@ describe('AddHTMLToFeed', function () {
 
 });
 
-describe('updateFeed', function(){
-
-	it("should add diffFeed to feed", function(){
-		newMarkers1 = new Map()
-
-		spyOn(window,'AddInfoToFeed')
-
-		updateFeed();
-
-		expect(window.AddInfoToFeed).toHaveBeenCalled()
-	});
-});
-
 describe('createSpaceMarker', function(){
 
 	it('should create space marker icon', function(){
@@ -80,7 +67,7 @@ describe('createSpaceMarker', function(){
 		data1 = {}
 		createSpaceMarker(data1, 'gif');
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('red', 'gif')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('espaco', 'gif')
 	});
 
 });
@@ -91,7 +78,7 @@ describe('createAgentMarker', function(){
 		data1 = {}
 		createAgentMarker(data1, 'png')
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('blue', 'png')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('agente', 'png')
 	});
 });
 
@@ -101,7 +88,7 @@ describe('createEventMarker', function(){
 		data1 = {}
 		createEventMarker(data1, 'gif')
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('yellow', 'gif')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('evento', 'gif')
 	});
 });
 
@@ -140,7 +127,7 @@ describe('createMarkerIcon', function(){
 	it('should create red marker icon', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('red', 'gif')
+		createMarkerIcon('espaco', 'gif')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerSpace"+"."+ "gif",
                     iconSize: [25,25]})
@@ -148,7 +135,7 @@ describe('createMarkerIcon', function(){
 	it('should create blue marker icon', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('blue', 'png')
+		createMarkerIcon('agente', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerAgent"+"."+ "png",
                     iconSize: [25,25]
@@ -158,7 +145,7 @@ describe('createMarkerIcon', function(){
 	it('should create yellow marker icon', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('yellow', 'png')
+		createMarkerIcon('evento', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerEvent"+"."+ "png",
                     iconSize: [25,25]
@@ -168,7 +155,7 @@ describe('createMarkerIcon', function(){
 	it('should create green marker icon', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('green', 'png')
+		createMarkerIcon('projeto', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerProject"+"."+ "png",
                     iconSize: [25,25]
@@ -202,7 +189,7 @@ describe('getQueryDateTime', function() {
 		var now = getQueryDateTime(delay);
 		var timeTest = new Date();
 
-		timeTest.setHours(timeTest.getHours() - 3, timeTest.getMinutes() - delay);
+		timeTest.setHours(timeTest.getHours() - 2, timeTest.getMinutes() - delay);
 		timeTest = timeTest.toJSON();
 
 		expect(now).toEqual(timeTest);
@@ -245,33 +232,10 @@ describe('loadAndUpdateMarkers', function(){
 		loadAndUpdateMarkers(5,[],'gif')
 		expect(window.saveAndLoadData).toHaveBeenCalled()
 	});
-	it('Should call checkMarkersDuplicity', function(){
-		spyOn(window, 'checkMarkersDuplicity')
-		loadAndUpdateMarkers(5,[],'gif')
-		expect(window.checkMarkersDuplicity).toHaveBeenCalledWith(lastHourData)
-	});
 	it('Should call addLayer', function(){
 		spyOn(map,'addLayer')
 		loadAndUpdateMarkers(5,[],'gif')
 		expect(map.addLayer).toHaveBeenCalledTimes(4)
-	});
-	it('Should call updateFeed', function(){
-		spyOn(window, 'updateFeed')
-		loadAndUpdateMarkers(5,[],'gif')
-		expect(window.updateFeed).toHaveBeenCalledWith()
-	});
-});
-
-describe('checkMarkersDuplicity', function(){
-	xit('should remove layers', function(){
-		spyOn(map, 'removeLayer')
-		var value = Array()
-		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
-		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
-
-
-		checkMarkersDuplicity(value)
-		expect(map.removeLayer).toHaveBeenCalled()
 	});
 });
 
@@ -286,23 +250,6 @@ describe('getInitialInstance', function(){
 	});
 });
 
-describe('makeIdForMarker', function(){
-		it('Should call getInitialInstance', function(){
-			spyOn(window,'getInitialInstance')
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			makeIdForMarker(data,position)
-			expect(window.getInitialInstance).toHaveBeenCalled()
-		});
-		it('Should return identification', function(){
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			identification = makeIdForMarker(data,position)
-			equal = 'sp1'
-			expect(identification).toEqual(equal)
-		});
-});
-
 describe('setZIndex', function(){
 	it('Should return 1000', function(){
 			equal = 1000
@@ -313,14 +260,5 @@ describe('setZIndex', function(){
 		equal = -30
 		test = setZIndex('png')
 		expect(test).toEqual(equal)
-	});
-});
-
-describe('loadMarkersInInstance', function(){
-	xit('should call createPromise', function(){
-
-		spyOn(window, 'createPromise')
-		loadMarkersInInstance('agent', 'agent123', 'gif', 60)
-		expect(window.createPromise).toHaveBeenCalled()
 	});
 });
