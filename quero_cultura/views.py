@@ -54,7 +54,7 @@ def merge_indicators(indicator, old_data):
     new_indicator = indicator
 
     for register in old_data:
-        if not (register in indicator):
+        if not (register in new_indicator):
             new_indicator[register] = old_data[register]
         else:
             new_indicator[register] += old_data[register]
