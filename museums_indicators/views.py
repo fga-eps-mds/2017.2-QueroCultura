@@ -8,6 +8,10 @@ from .models import PercentMuseumsPromoteGuidedTour
 from .models import PercentMuseumsHistoricalArchivePublicAccess
 from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import build_simple_indicator
+from quero_cultura.views import merge_indicators
+from datetime import datetime
+
+DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 #Busca os indicadores já cadastrados
 def load_current_musuem_indicators():
@@ -27,6 +31,7 @@ def load_current_musuem_indicators():
 
     #Adiciona as informações na lista de indicadores
     indicators.append(last_temporal.total_museums_registered_year)
+
     indicators.append(last_per_type.type_museums)
     indicators.append(last_per_thematic.thmeatics_museums)
     indicators.append(last_per_sphere.total_public_private_museums)
@@ -35,7 +40,7 @@ def load_current_musuem_indicators():
 
     return new_total, last_update_date, indicators
 
-#faz a request
+#Faz a request e traz os novos dados
 def request_museum_new_data(new_total, last_update_date, temporal_indicator):
     indicators = []
 
@@ -54,4 +59,38 @@ def request_museum_new_data(new_total, last_update_date, temporal_indicator):
 
     return new_total, indicators
 
-#consilidação do indicador
+# Atualiza os dados no banco
+def update_museum_indicator(new_total, new_data, old_data):
+
+    merged_data = []
+    new_create_date = str(datetime.now())
+    temporal_indicator = new_data[0]
+
+    for i in range(1,6):
+        merged_data.append(merge_indicators(new_data[i], old_data[i]))
+
+    PercentTypeMuseums(new_total, new_create_date, merged_data[0]).save()
+    PercentThematicsMuseums(new_total, new_create_date, merged_data[1]).save()
+    PercentPublicOrPrivateMuseums(new_total, new_create_date, merged_data[2]).save()
+    PercentMuseumsPromoteGuidedTour(new_total, new_create_date, merged_data[3]).save()
+    PercentMuseumsHistoricalArchivePublicAccess(new_total, new_create_date, merged_data[4]).save()
+    AmountMuseumsRegisteredYear(temporal_indicator, new_create_date).save()
+
+
+#Tarefa responsável por buscar dados da base e da api e altera-los no banco
+def periodic_update():
+    if len(PercentTypeMuseums.objects) == 0:
+        PercentTypeMuseums(0, DEFAULT_INITIAL_DATE, {'None': 0}).save()
+        PercentThematicsMuseums(0, DEFAULT_INITIAL_DATE, {'None': 0}).save()
+        PercentPublicOrPrivateMuseums(0, DEFAULT_INITIAL_DATE, {'None': 0}).save()
+        AmountMuseumsRegisteredYear({'2015': {'01': 0}}, DEFAULT_INITIAL_DATE).save()
+        PercentMuseumsPromoteGuidedTour(0, DEFAULT_INITIAL_DATE, {'None': 0}).save()
+        PercentMuseumsHistoricalArchivePublicAccess(0, DEFAULT_INITIAL_DATE, {'None': 0}).save()
+
+    new_total, last_update_date, old_data = load_current_musuem_indicators()
+
+    old_temporal_data = old_data[0]
+
+    new_total, new_data = request_museum_new_data(new_total, last_update_date, old_temporal_data)
+
+    update_museum_indicator(new_total, new_data, old_data)
