@@ -19,7 +19,8 @@
     <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
     <script type="text/javascript" src="static/js/chart_project.js"></script>
     <script type="text/javascript">
-        temporal_line_graphic('{{keys_temporal_mapasculturagovbr|safe}}', '{{values_temporal_mapasculturagovbr|safe}}')
+        console.log({{keys_per_type|safe}});
+        //temporal_line_graphic('{{keys_temporal_mapasculturagovbr|safe}}', '{{values_temporal_mapasculturagovbr|safe}}')
     </script>
 
 {% endblock %}
