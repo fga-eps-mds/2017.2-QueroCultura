@@ -17,11 +17,6 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 
 def index(request):
-    update_project_indicator()
-    # PercentProjectPerType.drop_collection()
-    # PercentProjectThatAcceptOnlineTransitions.drop_collection()
-    # QuantityOfRegisteredProject.drop_collection()
-
     per_type, per_online, temporal = load_last_registers()
 
     per_type = per_type.total_project_per_type
@@ -80,7 +75,7 @@ def load_last_registers():
     return last_per_type, last_per_online, last_temporal
 
 
-# @task(name="update_project_indicator")
+@task(name="update_project_indicator")
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
         PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'mapasculturagovbr': {'Exposição': 0}}).save()
