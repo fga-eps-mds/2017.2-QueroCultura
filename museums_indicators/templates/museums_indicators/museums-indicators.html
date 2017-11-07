@@ -47,6 +47,48 @@
 		<!-- Área onde os graficos são printados -->
 		   <!-- Área onde os graficos são printados -->
     <div class="container-indicators">
+    	<div id="museus-tipo">
+            <div class="chart-container">
+                <canvas id="bar-chart-type"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à porcentagem de projetos por tipo.</p>
+            </div>
+        </div>
+        <div id="musueus-tematica">
+            <div class="chart-container">
+                <canvas id="bar-chart-thematic"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à porcentagem de projetos por tipo.</p>
+            </div>
+        </div>
+
+        <div id="arquivo-publico">
+            <div class="chart-container">
+                <canvas id="pie-chart-archive"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à quantidade projetos que aceitam inscrições online.</p>
+            </div>
+        </div>
+       	<div id="visita-guiada">
+            <div class="chart-container">
+                <canvas id="pie-chart-guided"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à quantidade projetos que aceitam inscrições online.</p>
+            </div>
+        </div>
+		<div id="museus-esfera">
+            <div class="chart-container">
+                <canvas id="pie-chart-sphere"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à quantidade projetos que aceitam inscrições online.</p>
+            </div>
+        </div>
+
         <div id="crescimento">
             <div class="chart-container">
                 <canvas id="line-chart-growth"></canvas>
@@ -64,5 +106,11 @@
 	    <script type="text/javascript" src="static/js/chart_museum.js"></script>
 		<script type="text/javascript">
 		      growth_line_graphic('{{keys_total_temporal|safe}}','{{growth_total_temporal|safe}}');
+		      type_bar_graphic('{{keys_per_type|safe}}', '{{values_per_type|safe}}')
+		      thematic_bar_graphic('{{keys_total_per_thematic|safe}}', '{{values_total_per_thematic|safe}}')
+		      archive_pie_graphic('{{keys_total_archive|safe}}', '{{values_total_archive|safe}}')
+		      guided_pie_graphic('{{keys_total_guided_tour|safe}}', '{{values_total_guided_tour|safe}}')
+		      sphere_pie_graphic('{{keys_total_per_sphere|safe}}', '{{values_total_per_sphere|safe}}')
+		      
 		</script>
 {% endblock %}
