@@ -1,40 +1,18 @@
-# from django.db import models
 from mongoengine import Document
 from mongoengine import DictField
 from mongoengine import IntField
-from mongoengine import DateTimeField
+from mongoengine import StringField
 
 # -------------------- state indicators --------------------------------
 
-class PercentMuseumsState(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_museums_for_state = DictField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def total_museums_for_state(self):
-        return self._total_museums_for_state
-
-    @total_museums_for_state.setter
-    def total_museums_for_state(self, number):
-        self._total_museums_for_state = number
-
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
 
 class PercentMuseums(Document):
+
     class Meta:
         abstract = True
     meta = {'allow_inheritance': True}
     _total_museums = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def total_museums(self):
@@ -52,80 +30,9 @@ class PercentMuseums(Document):
     def create_date(self, number):
         self._create_date = number
 
-class PercentThematicsMuseumsForState(PercentMuseumsState):
-    _thematics_museums_for_state = DictField(required=True)
-
-    @property
-    def thmeatics_museums_for_state(self):
-        return self._thematics_museums_for_state
-
-    @thmeatics_museums_for_state.setter
-    def thmeatics_museums_for_state(self, number):
-        self._thematics_museums_for_state = number
-
-
-class PercentTypeMuseumsForState(PercentMuseumsState):
-    _type_museums_for_state = DictField(required=True)
-
-    @property
-    def type_museums_for_state(self):
-        return self._type_museums_for_state
-
-    @type_museums_for_state.setter
-    def type_museums_for_state(self, number):
-        self._type_museums_for_state = number
-
-
-
-class PercentPublicOrPrivateMuseumsForState(PercentMuseumsState):
-    _total_public_museums_for_state = DictField(required=True)
-    _total_private_museums_for_state = DictField(required=True)
-
-    @property
-    def total_public_museums_for_state(self):
-        return self._total_public_museums_for_state
-
-    @total_public_museums_for_state.setter
-    def total_public_museums_for_state(self, number):
-        self._total_public_museums_for_state = number
-
-    @property
-    def total_private_museums_for_state(self):
-        return self._total_private_museums_for_state
-
-    @total_private_museums_for_state.setter
-    def total_private_museums_for_state(self, number):
-        self._total_private_museums_for_state = number
-
-
-class PercentMuseumsHistoricalArchivePublicAccessForState(PercentMuseumsState):
-    _total_historical_archive = \
-                                        DictField(required=True)
-
-    @property
-    def total_historical_archive(self):
-        return self._total_historical_archive
-
-    @total_historical_archive.setter
-    def tal_historical_archive(self, number):
-        self._total_historical_archive = number
-
-
-class PercentMuseumsPromoteGuidedTourForState(PercentMuseumsState):
-    _total_museums_guide_tour = DictField(required=True)
-
-    @property
-    def total_museums_guide_tour(self):
-        return self._total_museums_guide_tour
-
-    @total_museums_guide_tour.setter
-    def total_museums_guide_tour(self, number):
-        self._total_museums_guide_tour = number
-
-
 
 class PercentThematicsMuseums(PercentMuseums):
-    _thematics_museums = IntField(required=True)
+    _thematics_museums = DictField(required=True)
 
     @property
     def thmeatics_museums(self):
@@ -136,9 +43,8 @@ class PercentThematicsMuseums(PercentMuseums):
         self._thematics_museums = number
 
 
-
 class PercentTypeMuseums(PercentMuseums):
-    _type_museums = IntField(required=True)
+    _type_museums = DictField(required=True)
 
     @property
     def type_museums(self):
@@ -150,28 +56,20 @@ class PercentTypeMuseums(PercentMuseums):
 
 
 class PercentPublicOrPrivateMuseums(PercentMuseums):
-    _total_public_museums = IntField(required=True)
-    _total_private_museums = IntField(required=True)
+    _total_public_private_museums = DictField(required=True)
 
     @property
-    def total_public_museums(self):
-        return self._total_public_museums
+    def total_public_private_museums(self):
+        return self._total_public_private_museums
 
-    @total_public_museums.setter
-    def total_public_museums(self, number):
-        self._total_public_museums = number
+    @total_public_private_museums.setter
+    def total_public_private_museums(self, number):
+        self._total_public_private_museums = number
 
-    @property
-    def total_private_museums(self):
-        return self._total_private_museums
-
-    @total_private_museums.setter
-    def total_private_museums(self, number):
-        self._total_private_museums = number
 
 class AmountMuseumsRegisteredYear(Document):
     _total_museums_registered_year = DictField(required=True)
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def total_museums_registered_year(self):
@@ -189,8 +87,9 @@ class AmountMuseumsRegisteredYear(Document):
     def create_date(self, number):
         self._create_date = number
 
+
 class PercentMuseumsPromoteGuidedTour(PercentMuseums):
-    _total_museums_promote_guide = IntField(required=True)
+    _total_museums_promote_guide = DictField(required=True)
 
     @property
     def total_museums_promote_guide(self):
@@ -199,9 +98,10 @@ class PercentMuseumsPromoteGuidedTour(PercentMuseums):
     @total_museums_promote_guide.setter
     def total_museums_promote_guide(self, number):
         self._total_museums_promote_guide = number
-        
+
+
 class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
-    _total_museums_historical = IntField(required=True)
+    _total_museums_historical = DictField(required=True)
 
     @property
     def total_museums_historical(self):
