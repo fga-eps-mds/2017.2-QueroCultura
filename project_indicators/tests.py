@@ -3,6 +3,7 @@ from .api_connections import RequestProjectsRawData
 from .models import PercentProjectPerType
 from .models import PercentProjectThatAcceptOnlineTransitions
 from .models import QuantityOfRegisteredProject
+from .views import update_project_indicator
 
 
 class TestPercentProjectPerType(object):
@@ -77,3 +78,20 @@ class TestClassRequestProjectsRawData(object):
         type_project_raw_data = type(project_raw_data)
         intenger = 1
         assert type_project_raw_data == type(intenger)
+
+
+class TestUpdateProjectIndicator(object):
+
+    @staticmethod
+    def test_update_event_indicator():
+        PercentProjectPerType.drop_collection()
+        PercentProjectThatAcceptOnlineTransitions.drop_collection()
+        QuantityOfRegisteredProject.drop_collection()
+
+        update_project_indicator()
+
+        total = len(PercentProjectPerType.objects)
+        total += len(PercentProjectThatAcceptOnlineTransitions.objects)
+        total += len(QuantityOfRegisteredProject.objects)
+
+        assert total == 6
