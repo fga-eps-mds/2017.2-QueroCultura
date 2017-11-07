@@ -30,13 +30,6 @@ function createMarkerIcon(markerType, extension){
     }
 }
 
-/* Return a string with the subsite's url, using an subsiteId
-*/
-function getSubsite(subsiteId){
-    subsite = subsites[subsiteId].toString()
-    return subsite
-}
-
 /* Return instance initials
 */
 function getInitialInstance(data){
