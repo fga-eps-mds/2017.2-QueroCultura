@@ -5,7 +5,7 @@ import requests
 class RequestAgentsRawData(object):
 
     def __init__(self, last_update_time, url):
-        self._filters = {'@select': 'terms, type, createTimestamp',
+        self._filters = {'@select': 'terms, type, createTimestamp, subsite',
                          'createTimestamp': "GT("+last_update_time+")"}
         self._response = requests.get(url+"agent/find/", self._filters)
         self._data = json.loads(self._response.text)
@@ -21,3 +21,7 @@ class RequestAgentsRawData(object):
     @property
     def data_length(self):
         return len(self._data)
+
+
+values = RequestAgentsRawData("2012-01-01 15:47:38.337553", "http://mapa.cultura.ce.gov.br/api/")
+print(values.data_length)
