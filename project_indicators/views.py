@@ -17,6 +17,11 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 
 def index(request):
+    update_project_indicator()
+    #PercentProjectPerType.drop_collection()
+    #PercentProjectThatAcceptOnlineTransitions.drop_collection()
+    #QuantityOfRegisteredProject.drop_collection()
+
     per_type, per_online, temporal = load_last_registers()
 
     per_type = per_type.total_project_per_type
@@ -53,12 +58,12 @@ def load_last_registers():
     return last_per_type, last_per_online, last_temporal
 
 
-@task(name="update_project_indicator")
+#@task(name="update_project_indicator")
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
-        PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'Exposição': 0}}).save()
-        PercentProjectThatAcceptOnlineTransitions(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'True': 0, 'False': 0}}).save()
-        QuantityOfRegisteredProject(0, DEFAULT_INITIAL_DATE, {'http://mapasculturagovbr/api/': {'2015': {'01': 0}}}).save()
+        PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'mapasculturagovbr': {'Exposição': 0}}).save()
+        PercentProjectThatAcceptOnlineTransitions(0, DEFAULT_INITIAL_DATE, {'mapasculturagovbr': {'True': 0, 'False': 0}}).save()
+        QuantityOfRegisteredProject(0, DEFAULT_INITIAL_DATE, {'mapasculturagovbr': {'2015': {'01': 0}}}).save()
 
     last_per_type, last_per_online, last_temporal = load_last_registers()
 
@@ -69,7 +74,7 @@ def update_project_indicator():
     urls = parser_yaml.get_multi_instances_urls
 
     last_per_type = last_per_type.total_project_per_type
-    last_per_online = last_per_online_record.total_project_that_accept_online_transitions
+    last_per_online = last_per_online.total_project_that_accept_online_transitions
     new_temporal = last_temporal.total_project_registered_per_mounth_per_year
 
     new_per_type = {}
@@ -119,6 +124,10 @@ def prepare_temporal_vision(temporal):
         temporal_values = []
         temporal_growth = []
 
+        prepared_temporal["keys_temporal"] = {}
+        prepared_temporal["values_temporal"] = {}
+        prepared_temporal["growth_temporal"] = {}
+
         for year in range(first_year, last_year):
             for month in months:
                 if (month in temporal[url][str(year)]):
@@ -127,6 +136,7 @@ def prepare_temporal_vision(temporal):
 
                     growthing += temporal[url][str(year)][month]
                     temporal_growth.append(growthing)
+
 
         prepared_temporal["keys_temporal"][url] = temporal_keys
         prepared_temporal["values_temporal"][url] = temporal_values
@@ -139,6 +149,9 @@ def prepare_indicator_list(indicator, indicator_name):
     sort_indicator = {}
     prepared_indicator = {}
 
+    prepared_indicator['keys_' + indicator_name] = {}
+    prepared_indicator['values_' + indicator_name] = {}
+
     for url in indicator:
         sort_indicator = sort_dict(indicator[url])
         keys = []
@@ -147,6 +160,7 @@ def prepare_indicator_list(indicator, indicator_name):
         for key in sort_indicator:
             keys.append(key)
             values.append(sort_indicator[key])
+
 
         prepared_indicator['keys_' + indicator_name][url] = keys
         prepared_indicator['values_' + indicator_name][url] = values
