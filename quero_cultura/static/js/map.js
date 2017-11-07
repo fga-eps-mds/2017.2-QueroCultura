@@ -115,7 +115,6 @@ function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, marker
         saveArray[markerType].push.apply(saveArray[markerType], data)
 
         if(saveArray === lastMinuteData){
-            console.log(saveArray)
             AddInfoToFeed(saveArray[markerType])
             saveArray[markerType] = new Array()
         }
@@ -153,87 +152,118 @@ function loadMarkers(markerType, imageExtension, markersData) {
     }
 }
 
+function get_marker_location(value){
+    console.log(value)
 
-function AddInfoToFeed(diffFeed) {
+    switch (value.type) {
+        case "evento":
+            var occurrences = value['occurrences'].pop()
+            if(occurrences === undefined){
+                return {latitude:0, longitude:0}
+            }else{
+                return occurrences.space.location
+            }
+        case "projeto":
+            return value.owner.location
+        default:
+            return value.location
+    }
+}
 
-    diffFeed.forEach(function(value, key){
-        var name = value.name
-        var type = value.type
-        var createTimestamp = value['createTimestamp']
-        var updateTimestamp = value['updateTimestamp']
-        var singleUrl = value['singleUrl']
-
-        var markerLocation = {}
-
-        if(type === 'evento'){
-            markerLocation = value['occurrences'].pop().space.location
-        }else if(type === 'projeto'){
-            markerLocation = value.owner.location
-        }else if(type === 'agente'){
-            markerLocation = value.location
-        }else{
-            markerLocation = value.location
-        }
-
-        if(updateTimestamp === null){
-            actionDateTime = createTimestamp
-            actionType = 'Criação'
-        }else{
-            actionDateTime = updateTimestamp
-            actionType = 'Atualização'
-        }
-        // check if instance have a subsite and change url is positive
-        if(value["subsite"] == null){
-            var url = value['singleUrl']
+function create_url_to_feed(value){
+    return new Promise((resolve, reject) =>{
+        if(value["subsite"] === null){
+            resolve(value['singleUrl'])
         }else{
             var splitUrl = value["singleUrl"].split("/")
             instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
             var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
             promise.then(function(subsiteData) {
-                var url =  "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                console.log(url)
+                resolve(url)
             });
         }
+    })
+}
 
+function get_action(createTimestamp, updateTimestamp){
+    var update = {}
+    if(updateTimestamp === null){
+        update.time = createTimestamp
+        update.name = 'Criação'
+    }else{
+        update.time = updateTimestamp
+        update.name = 'Atualização'
+    }
+    return update
+}
+
+function create_location_promise(markerLocation){
+    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+"&lon="+markerLocation.longitude+"&format=json"
+    return $.getJSON(openstreetURL)
+}
+
+function get_location_data(markerLocation){
+    return new Promise((resolved, reject)=>{
         if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
-            openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+
-                            "&lon="+markerLocation.longitude+"&format=json"
-            promise = $.getJSON(openstreetURL)
+            promise = create_location_promise(markerLocation)
             promise.then(function(data){
                 if(data["error"] !== undefined){
                     console.log("unable to locate Geocode")
                     data.address = {"state": '', 'city': ''}
                 }
-                var html = AddHTMLToFeed(actionType, name, type, data.address.state,
-                    data.address.city, actionDateTime, singleUrl)
 
-                    $('#cards').append(html)
-                    var height = $('#cards')[0].scrollHeight;
-                    $(".block" ).scrollTop(height);
+                if(data.address.city == undefined){
+                    data.address.city = data.address.town
+                }
+                console.log(data.address.city)
+                resolved(data)
             })
+        }else{
+            reject({})
         }
+    })
+}
+function AddInfoToFeed(diffFeed) {
+
+    diffFeed.forEach(async function(value, key){
+        var markerLocation = get_marker_location(value)
+        var url = await create_url_to_feed(value)
+        var data = await get_location_data(markerLocation)
+        var action = get_action(value.createTimestamp, value.updateTimestamp)
+
+        var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
+        create_feed_block(html)
     },diffFeed)
 
 }
 
-function AddHTMLToFeed(actionType, name, type, uf, city, actionDateTime, singleUrl){
-  color = GetColorByType(type)
-  var html =
-    "<div id='content'>"+
-      "<div id='point'> "+
-      "  <svg> "+
-          "<circle cx='15' cy='25' r='7' fill='"+color+"' />  "+
-        "</svg> "+
-      "</div> "+
+function create_feed_block(html){
+    $('#cards').append(html)
+    var height = $('#cards')[0].scrollHeight;
+    $(".block" ).scrollTop(height);
+}
 
-      "<div id='text'>  "+
-        "<a href='"+singleUrl+"'>"+name+"</a>"+
-        "<p>"+actionType+""+ "<br>"
-        +actionDateTime.date.substring(0, 19)+"<br>"
-        +city+ ' - ' + uf+"</p>"+
-      "</div>"+
-    "</div>"
-  return html
+function AddHTMLToFeed(action, name, type, address, url){
+    color = GetColorByType(type)
+    var html = "<div id='content'>"+
+                   "<div id='point'>"+
+                       "<svg>"+
+                           "<circle cx='15' cy='25' r='7' fill='"+color+"' />"+
+                       "</svg>"+
+                   "</div> "+
+
+                   "<div id='text'>  "+
+                       "<a href='"+url+"' target='_blank'>"+name+"</a>"+
+                       "<p>"+action.name+""+ "<br>"
+                            +action.time.date.substring(0, 19)+"<br>"
+                            +address.city+ ' - ' + address.state+
+                       "</p>"+
+                   "</div>"+
+               "</div>"
+    return html
 }
 
 function GetColorByType(type) {
