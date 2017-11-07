@@ -14,16 +14,20 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 def index(request):
 
     last_register_percent_private_library = PercentPublicOrPrivateLibrary.objects.count()
-    percent_public_private = PercentPublicOrPrivateLibrary.objects[last_register_percent_private_library-1]
+    percent_public_private = PercentPublicOrPrivateLibrary.objects[
+        last_register_percent_private_library - 1]
 
     last_register_quantity_libraries = QuantityOfRegisteredlibraries.objects.count()
-    quantity_libraries = QuantityOfRegisteredlibraries.objects[last_register_quantity_libraries -1]
+    quantity_libraries = QuantityOfRegisteredlibraries.objects[
+        last_register_quantity_libraries - 1]
 
     last_register_type_sphere_quantity = PercentLibrariesTypeSphere.objects.count()
-    type_sphere_total = PercentLibrariesTypeSphere.objects[last_register_type_sphere_quantity - 1]
+    type_sphere_total = PercentLibrariesTypeSphere.objects[
+        last_register_type_sphere_quantity - 1]
 
     last_register_ocupation_area_quantity = PercentLibraryPerAreaOfActivity.objects.count()
-    ocupation_area_total = PercentLibraryPerAreaOfActivity.objects[last_register_ocupation_area_quantity - 1]
+    ocupation_area_total = PercentLibraryPerAreaOfActivity.objects[
+        last_register_ocupation_area_quantity - 1]
 
     context = {
         'total_libraries': percent_public_private._total_libraries,
@@ -37,7 +41,6 @@ def index(request):
     }
 
     return render(request, 'library_indicators/library.html', context)
-
 
 
 @task(name="update_library_indicator")
@@ -56,8 +59,8 @@ def update_library_public_private_indicator():
         public_libraries = 0
         private_libraries = 0
         total_libraries = 0
-        undefined_library, public_libraries, private_libraries, total_libraries =  set_libraries_amount(undefined_library,
-                             public_libraries, private_libraries, total_libraries)
+        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
+                                                                                                       public_libraries, private_libraries, total_libraries)
         PercentPublicOrPrivateLibrary(total_libraries,
                                       datetime.datetime.now(),
                                       public_libraries, private_libraries).save()
@@ -73,7 +76,8 @@ def set_libraries_amount(undefined_library, public_libraries, private_libraries,
 
 def update_quantity_libraries():
     if (len(QuantityOfRegisteredlibraries.objects) == 0):
-        QuantityOfRegisteredlibraries(0, DEFAULT_INITIAL_DATE, {'julho':10}, {'2010':2}).save()
+        QuantityOfRegisteredlibraries(0, DEFAULT_INITIAL_DATE, {
+                                      'julho': 10}, {'2010': 2}).save()
     else:
         undefined_library = 0
         public_libraries = 0
@@ -92,22 +96,26 @@ def update_quantity_libraries():
 
 def update_type_sphere_indicator():
     if (len(PercentLibrariesTypeSphere.objects) == 0):
-        PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE,{'Municipal': 1}).save()
+        PercentLibrariesTypeSphere(0, DEFAULT_INITIAL_DATE, {
+                                   'Municipal': 1}).save()
     else:
-        total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
+        total_libraries = get_public_libraries() + get_private_libraries() + \
+            get_undefined_library()
         type_sphere_total = get_all_type_sphere()
         PercentLibrariesTypeSphere(total_libraries,
-                                    datetime.datetime.now(),
-                                    type_sphere_total).save()
+                                   datetime.datetime.now(),
+                                   type_sphere_total).save()
 
 
 def update_ocupation_area_indicator():
     if (len(PercentLibraryPerAreaOfActivity.objects) == 0):
-        PercentLibraryPerAreaOfActivity(0, DEFAULT_INITIAL_DATE,{'Leitura': 1},0).save()
+        PercentLibraryPerAreaOfActivity(
+            0, DEFAULT_INITIAL_DATE, {'Leitura': 1}, 0).save()
     else:
         ocupation_area_total = get_all_occupation_area()
         amount_ocupation_area = len(ocupation_area_total)
-        total_libraries = get_public_libraries() + get_private_libraries() + get_undefined_library()
+        total_libraries = get_public_libraries() + get_private_libraries() + \
+            get_undefined_library()
         PercentLibraryPerAreaOfActivity(total_libraries,
                                         datetime.datetime.now(),
                                         ocupation_area_total,
@@ -140,7 +148,7 @@ def get_private_libraries():
 def get_undefined_library():
     count = 0
     for librarie in get_all_libraries():
-        if( librarie["esfera"] == None ):
+        if(librarie["esfera"] == None):
             count = count + 1
     return count
 

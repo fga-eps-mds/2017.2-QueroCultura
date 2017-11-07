@@ -9,8 +9,8 @@ class RequestMuseumRawData(object):
         self._parser_yaml = ParserYAML()
         self._museum_url = self._parser_yaml.get_museums_urls
         self._url = self._museum_url[0]
-        self._filters = {'@select': 'mus_tipo, mus_tipo_tematica,'
-                                    + 'En_Estado, esfera,'
+        self._filters = {'@select': 'mus_tipo, mus_tipo_tematica, '
+                                    + 'esfera, '
                                     + 'mus_servicos_visitaGuiada, '
                                     + 'mus_arquivo_acessoPublico, '
                                     + 'createTimestamp',

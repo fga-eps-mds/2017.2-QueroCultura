@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="{% static 'css/agents-indicators.css' %}"/>
 
 		<!-- Div responsável por imprimir a navbar dos indicadores de agentes -->
+
 		<div class="container">
 			<div class="segmented-control">
 		    <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#quantitativo-mensal" checked>
@@ -75,7 +76,15 @@
 					<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de agentes ao longo de sua existência.</p>
 				</div>
 			</div>
+
 		</div>
+		<!-- Menu check box para as instancias -->
+
+	<div id="menu-instancias">
+		<label><input type="checkbox" value=""> Mapas</label><br/>
+		<label><input type="checkbox" value=""> São Paulo</label><br/>
+		<label><input type="checkbox" value="" > Ceará</label><br/>
+	</div>
 
 		<!-- Imports necessários para funcionalidade da navbar e gráficos-->
 		<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
