@@ -7,11 +7,11 @@ function createDefaultData(category, data_keys, data_values){
 }
 
 
-function temporal_line_graphic(data_keys ,data_values){
-    var graphics_data = createDefaultData("line", data_keys, data_values)
+function temporal_bar_graphic(data_keys ,data_values){
+    var graphics_data = createDefaultData("bar", data_keys, data_values)
 
     graphics_data.label = 'Quantidades de registros por mês'
-    graphics_data.context = document.getElementById("line-chart-temporal")
+    graphics_data.context = document.getElementById("bar-chart-temporal")
     graphics_data.description = 'Quantidades de Registros a cada mês'
 
     createChart(graphics_data)
