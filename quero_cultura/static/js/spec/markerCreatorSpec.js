@@ -1,3 +1,42 @@
+describe('requestSubsite', function(){
+	it('should be crete request a subsite and return a promise', function(){
+
+		var url = "http://mapas.cultura.gov.br/api/subsite/api/subsite/find"
+		subsiteID = 1
+		
+		promise = requestSubsite(url, subsiteID)
+		expect(promise).toBeDefined()
+	});
+});
+
+describe('createPopup', function(){
+	it('should be create a popup to marker without subsite', function(){
+		var data = [{"id": 1},{"subsite": null}, {"name": "Jeferson"}, {"singleUrl": "http://mapas.cultura.gov.br/agente/1"}]
+		var valueZindex = setZIndex('png')
+		var markerAgent = new L.FeatureGroup();
+        var marker = L.marker([0, 0]).setZIndexOffset(valueZindex).addTo(markerAgent)
+
+        spyOn(marker, 'bindPopup')
+		createPopup(data,marker)
+		expect(marker.bindPopup()).toHaveBeenCalled()
+	});
+});
+
+describe('addMarkerToMap', function(){
+	it('should be add a marker to map', function(){
+		var imageExtension = 'png'
+		var icon = createMarkerIcon('espaco', imageExtension)
+		var data = [{"id": 1}]
+		var markersSpace = new L.FeatureGroup();
+		var latitude = 0
+		var longitude = 0
+		
+		spyOn(printedMarkers,'push')
+		addMarkerToMap(data, icon, imageExtension, markersSpace, latitude, longitude)
+		expect(printedMarkers.push).toHaveBeenCalled()
+	});
+});
+
 describe('createSpaceMarker', function(){
 
 	it('should create space marker icon', function(){
@@ -91,15 +130,6 @@ describe('setZIndex', function(){
 		equal = -30
 		test = setZIndex('png')
 		expect(test).toEqual(equal)
-	});
-});
-
-describe('loadMarkersInInstance', function(){
-	xit('should call createPromise', function(){
-
-		spyOn(window, 'createPromise')
-		loadMarkersInInstance('agent', 'agent123', 'gif', 60)
-		expect(window.createPromise).toHaveBeenCalled()
 	});
 });
 
