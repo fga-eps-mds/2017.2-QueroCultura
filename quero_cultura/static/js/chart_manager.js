@@ -45,10 +45,10 @@ function createDataSet(category,label,values){
             dataset[0].pointBorderColor = "rgba(75,192,192,1)"
             break;
         case "pie":
-            dataset[0].backgroundColor = ['rgba(255, 51, 51,1)','rgba(153, 255, 51, 1)']
+            dataset[0].backgroundColor = ['rgba(17,90,163,1)','rgba(86, 170, 255,1)']
             break;
         case "bar":
-            dataset[0].backgroundColor = poolColors(values.length)
+            dataset[0].backgroundColor = 'rgba(17,90,163,1)'
             break;
     }
 
