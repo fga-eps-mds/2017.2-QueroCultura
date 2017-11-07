@@ -9,9 +9,13 @@ from .models import PercentMuseumsHistoricalArchivePublicAccess
 from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import build_simple_indicator
 from quero_cultura.views import merge_indicators
+from project_indicators.views import prepare_single_indicator_list
+from project_indicators.views import prepare_single_temporal_vision
 from datetime import datetime
+import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+
 
 #Busca os indicadores já cadastrados
 def load_current_musuem_indicators():
@@ -75,6 +79,39 @@ def update_museum_indicator(new_total, new_data, old_data):
     PercentMuseumsPromoteGuidedTour(new_total, new_create_date, merged_data[3]).save()
     PercentMuseumsHistoricalArchivePublicAccess(new_total, new_create_date, merged_data[4]).save()
     AmountMuseumsRegisteredYear(temporal_indicator, new_create_date).save()
+
+
+def index(request):
+
+    #Busca no banco indicadores consolidados
+    indicators = load_current_musuem_indicators()[2]
+
+    #Prepara visualização dos indicadores
+    total_temporal = prepare_single_temporal_vision(indicators[0])
+    total_per_type = prepare_single_indicator_list(indicators[1], "total_per_type")
+    total_per_thematic = prepare_single_indicator_list(indicators[2], "total_per_thematic")
+    total_per_sphere = prepare_single_indicator_list(indicators[3], "total_per_sphere")
+    total_guided_tour = prepare_single_indicator_list(indicators[4], "total_guided_tour")
+    total_archive = prepare_single_indicator_list(indicators[5], "total_archive")
+
+    #Criação do Context
+    context = {
+        'keys_total_temporal': json.dumps(total_temporal['keys_total_temporal']),
+        'values_total_temporal': json.dumps(total_temporal['values_total_temporal']),
+        'keys_per_type': json.dumps(total_per_type['keys_total_per_type']),
+        'values_per_type': json.dumps(total_per_type['values_total_per_type']),
+        'keys_total_per_thematic': json.dumps(total_per_thematic['keys_total_per_thematic']),
+        'values_total_per_thematic': json.dumps(total_per_thematic['values_total_per_thematic']),
+        'keys_total_per_sphere': json.dumps(total_per_sphere['keys_total_per_sphere']),
+        'values_total_per_sphere': json.dumps(total_per_sphere['values_total_per_sphere']),
+        'values_total_guided_tour': json.dumps(total_guided_tour['values_total_guided_tour']),
+        'keys_total_guided_tour': json.dumps(total_guided_tour['keys_total_guided_tour']),
+        'values_total_archive': json.dumps(total_archive['values_total_archive']),
+        'keys_total_archive': json.dumps(total_archive['keys_total_archive']),
+    }
+
+    return render(request, 'museums_indicators/museums-indicators.html', context)
+
 
 
 #Tarefa responsável por buscar dados da base e da api e altera-los no banco
