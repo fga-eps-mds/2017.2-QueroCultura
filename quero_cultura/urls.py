@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^agents_indicators', include('agents_indicators.urls')),
     url(r'^library_indicators', include('library_indicators.urls')),
     url(r'^events_indicators', include('events_indicators.urls')),
+    url(r'^project_indicators', include('project_indicators.urls')),
+    url(r'^museums_indicators', include('museums_indicators.urls')),
 ]

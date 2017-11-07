@@ -1,23 +1,22 @@
-
 describe('GetColorByType', function () {
 	it('should return a blue for agent', function () {
 		colorRGB = "#17a2b8";
-		type = "agent";
+		type = "agente";
     });
 
 	it('should return a red for spaces', function () {
 		colorRGB = "#dc3545";
-		type = "space";
+		type = "espaco";
     });
 
 	it('should return a green for project', function () {
 		colorRGB = "#28a745";
-		type = "project";
+		type = "projeto";
     });
 
 	it('should return a yellow for event', function () {
 		colorRGB = "#ffc107";
-		type = "event";
+		type = "evento";
 	});
 
 	it('should return a black for anything wrong and not classified', function(){
@@ -48,7 +47,7 @@ describe("AddInfoToFeed", function(){
 
 describe('AddHTMLToFeed', function () {
 
-	it('should get color by type', function () {
+	xit('should get color by type', function () {
 
 		spyOn(window,'GetColorByType')
 
@@ -58,51 +57,6 @@ describe('AddHTMLToFeed', function () {
 
 	});
 
-});
-
-describe('updateFeed', function(){
-
-	it("should add diffFeed to feed", function(){
-		newMarkers1 = new Map()
-
-		spyOn(window,'AddInfoToFeed')
-
-		updateFeed();
-
-		expect(window.AddInfoToFeed).toHaveBeenCalled()
-	});
-});
-
-describe('createSpaceMarker', function(){
-
-	it('should create space marker icon', function(){
-		spyOn(window,'createMarkerIcon')
-		data1 = {}
-		createSpaceMarker(data1, 'gif');
-
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('red', 'gif')
-	});
-
-});
-
-describe('createAgentMarker', function(){
-	it('should create agent marker icon', function(){
-		spyOn(window, 'createMarkerIcon')
-		data1 = {}
-		createAgentMarker(data1, 'png')
-
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('blue', 'png')
-	});
-});
-
-describe('createEventMarker', function(){
-	it('should create event marker icon', function(){
-		spyOn(window, 'createMarkerIcon')
-		data1 = {}
-		createEventMarker(data1, 'gif')
-
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('yellow', 'gif')
-	});
 });
 
 describe('loadMarkers', function(){
@@ -136,46 +90,6 @@ describe('loadMarkers', function(){
 	});
 });
 
-describe('createMarkerIcon', function(){
-	it('should create red marker icon', function(){
-		spyOn(L, 'icon')
-
-		createMarkerIcon('red', 'gif')
-
-		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerSpace"+"."+ "gif",
-                    iconSize: [25,25]})
-	});
-	it('should create blue marker icon', function(){
-		spyOn(L, 'icon')
-
-		createMarkerIcon('blue', 'png')
-
-		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerAgent"+"."+ "png",
-                    iconSize: [25,25]
-                 })
-	});
-
-	it('should create yellow marker icon', function(){
-		spyOn(L, 'icon')
-
-		createMarkerIcon('yellow', 'png')
-
-		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerEvent"+"."+ "png",
-                    iconSize: [25,25]
-                 })
-	});
-
-	it('should create green marker icon', function(){
-		spyOn(L, 'icon')
-
-		createMarkerIcon('green', 'png')
-
-		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerProject"+"."+ "png",
-                    iconSize: [25,25]
-                 })
-	});
-});
-
 describe('eraseCookie', function(){
 
 	it('should erase cookie', function(){
@@ -202,7 +116,7 @@ describe('getQueryDateTime', function() {
 		var now = getQueryDateTime(delay);
 		var timeTest = new Date();
 
-		timeTest.setHours(timeTest.getHours() - 3, timeTest.getMinutes() - delay);
+		timeTest.setHours(timeTest.getHours() - 2, timeTest.getMinutes() - delay);
 		timeTest = timeTest.toJSON();
 
 		expect(now).toEqual(timeTest);
@@ -245,83 +159,17 @@ describe('loadAndUpdateMarkers', function(){
 		loadAndUpdateMarkers(5,[],'gif')
 		expect(window.saveAndLoadData).toHaveBeenCalled()
 	});
-	it('Should call checkMarkersDuplicity', function(){
-		spyOn(window, 'checkMarkersDuplicity')
-		loadAndUpdateMarkers(5,[],'gif')
-		expect(window.checkMarkersDuplicity).toHaveBeenCalledWith(lastHourData)
-	});
 	it('Should call addLayer', function(){
 		spyOn(map,'addLayer')
 		loadAndUpdateMarkers(5,[],'gif')
 		expect(map.addLayer).toHaveBeenCalledTimes(4)
 	});
-	it('Should call updateFeed', function(){
-		spyOn(window, 'updateFeed')
-		loadAndUpdateMarkers(5,[],'gif')
-		expect(window.updateFeed).toHaveBeenCalledWith()
-	});
 });
 
-describe('checkMarkersDuplicity', function(){
-	xit('should remove layers', function(){
-		spyOn(map, 'removeLayer')
-		var value = Array()
-		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
-		value.push({id: 29883, name: "Guilherme Mauricio Monteiro", singleUrl: "http://spcultura.prefeitura.sp.gov.br/agente/29883/", type: "agent"})
-
-
-		checkMarkersDuplicity(value)
-		expect(map.removeLayer).toHaveBeenCalled()
+describe('initialize_data_map', function() {
+	it('Should initialize map data', function(){
+		var test = {}
+		var equal = initialize_data_map()
+		expect(typeof test).toEqual(typeof equal)
 	});
-});
-
-describe('getInitialInstance', function(){
-	it('should get initial instance', function(){
-		data = [{'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-		position = 0
-		var url = data[position]["singleUrl"]
-	    var splitUrl = url.split(".")
-		var test = getInitialInstance(data, position)
-
-		expect(test).toEqual(splitUrl[2])
-	});
-});
-
-describe('makeIdForMarker', function(){
-		it('Should call getInitialInstance', function(){
-			spyOn(window,'getInitialInstance')
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			makeIdForMarker(data,position)
-			expect(window.getInitialInstance).toHaveBeenCalled()
-		});
-		it('Should return identification', function(){
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			identification = makeIdForMarker(data,position)
-			equal = 'sp1'
-			expect(identification).toEqual(equal)
-		});
-});
-
-describe('setZIndex', function(){
-	it('Should return 1000', function(){
-			equal = 1000
-			test = setZIndex('gif')
-			expect(test).toEqual(equal)
-	});
-	it('Should return -30', function(){
-		equal = -30
-		test = setZIndex('png')
-		expect(test).toEqual(equal)
-	});
-});
-
-describe('loadMarkersInInstance', function(){
-	xit('should call createPromise', function(){
-
-		spyOn(window, 'createPromise')
-		loadMarkersInInstance('agent', 'agent123', 'gif', 60)
-		expect(window.createPromise).toHaveBeenCalled()
-	});
-});
+})

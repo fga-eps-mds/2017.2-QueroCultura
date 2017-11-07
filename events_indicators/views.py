@@ -4,8 +4,10 @@ from .models import PercentEventsPerLanguage
 from .models import QuantityOfRegisteredEvents
 from .api_connections import RequestEventsRawData
 from quero_cultura.views import build_temporal_indicator
+from quero_cultura.views import ParserYAML
 from datetime import datetime
 from celery.decorators import task
+from quero_cultura.views import sort_dict
 import yaml
 import json
 
@@ -22,9 +24,11 @@ def index(request):
     per_language = per_language.total_events_per_language
     per_age_range = per_age_range.total_events_per_age_range
     temporal = temporal.total_events_registered_per_mounth_per_year
-
+    
     per_language_keys = []
     per_language_values = []
+
+    per_language = sort_dict(per_language)
 
     for language in per_language:
         per_language_keys.append(language)
@@ -32,6 +36,8 @@ def index(request):
 
     per_age_range_keys = []
     per_age_range_values = []
+
+    per_age_range = sort_dict(per_age_range)
 
     for age_range in per_age_range:
         per_age_range_keys.append(age_range)
@@ -44,6 +50,7 @@ def index(request):
     temporal_keys = []
     temporal_values = []
     temporal_growth = []
+
     print("\n\n", temporal, "\n\n")
     for year in range(2014, last_year):
         for month in months:
@@ -106,6 +113,9 @@ def build_language_indicator(new_data, old_data):
 
 @task(name="update_event_indicator")
 def update_event_indicator():
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
+
     if len(PercentEventsPerLanguage.objects) == 0:
         PercentEventsPerLanguage(0, DEFAULT_INITIAL_DATE, {"Teatro": 0}).save()
         PercentEventsPerAgeRange(0, DEFAULT_INITIAL_DATE, {"Livre": 0}).save()
@@ -116,9 +126,6 @@ def update_event_indicator():
     last_per_language = PercentEventsPerLanguage.objects[index - 1]
     last_per_age_range = PercentEventsPerAgeRange.objects[index - 1]
     last_temporal = QuantityOfRegisteredEvents.objects[index - 1]
-
-    urls_files = open("./urls.yaml", 'r')
-    urls = yaml.load(urls_files)
 
     new_per_language = last_per_language.total_events_per_language
     new_per_age_range = last_per_age_range.total_events_per_age_range

@@ -8,6 +8,7 @@ import json
 from celery.decorators import task
 from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import build_operation_area_indicator
+from quero_cultura.views import sort_dict
 
 
 def index(request):
@@ -35,6 +36,7 @@ def index(request):
     # Inicializa variaveis com listas vazias
     per_area_keys = []
     per_area_values = []
+    per_area = sort_dict(per_area)
 
     # Prepara visualização do indicador por area de atuação
     for area in per_area:

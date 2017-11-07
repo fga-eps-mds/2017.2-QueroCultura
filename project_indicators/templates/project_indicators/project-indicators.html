@@ -1,0 +1,88 @@
+{% extends 'quero_cultura/base.html' %}
+{% load static %}
+
+{% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <!-- Import necessário para seguir o padrão de implementação visual -->
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
+    <link rel="stylesheet" href="static/css/agents-indicators.css"/>
+
+    <!-- Div responsável por imprimir a navbar dos indicadores de projetos -->
+    <div class="container">
+        <div class="segmented-control">
+        <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#quantitativo-mensal" checked>
+        <input type="radio" name="sc-1-1" id="sc-1-1-2" value="#projetos-tipo">
+        <input type="radio" name="sc-1-1" id="sc-1-1-3" value="#projetos-online">
+        <input type="radio" name="sc-1-1" id="sc-1-1-4" value="#crescimento">
+
+        <label for="sc-1-1-1" data-value="Quantitativo Mensal">
+                Quantitativo Mensal
+            </label>
+
+            <label for="sc-1-1-2" data-value="Projetos por Tipo">
+                Projetos por Tipo
+            </label>
+
+            <label for="sc-1-1-3" data-value="Projetos com inscrição online">
+                Projetos com inscrição online
+            </label>
+
+            <label for="sc-1-1-4" data-value="Crescimento da Plataforma">
+                Crescimento da Plataforma
+            </label>
+        </div>
+    </div>
+
+
+    <!-- Área onde os graficos são printados -->
+    <div class="container-indicators">
+        <div id="quantitativo-mensal">
+            <div class="chart-container">
+              <canvas id="bar-chart-temporal"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à quantidade de projetos cadastrados por mês na plataforma ao longo de sua existência.</p>
+            </div>
+        </div>
+
+        <div id="projetos-tipo">
+            <div class="chart-container">
+                <canvas id="bar-chart-type"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à porcentagem de projetos por tipo.</p>
+            </div>
+        </div>
+
+        <div id="projetos-online">
+            <div class="chart-container">
+                <canvas id="pie-chart-online"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se à quantidade projetos que aceitam inscrições online.</p>
+            </div>
+        </div>
+
+        <div id="crescimento">
+            <div class="chart-container">
+                <canvas id="line-chart-growth"></canvas>
+            </div>
+            <div class="text-chart-init">
+                <p>Este gráfico ilustra o crescimento da plataforma em relação ao total de registros de projetos ao longo de sua existência.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imports necessários para funcionalidade da navbar e gráficos-->
+    <script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
+    <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="static/js/chart_project.js"></script>
+    <script type="text/javascript">
+        temporal_bar_graphic('{{keys_total_temporal|safe}}', '{{values_total_temporal|safe}}')
+        type_bar_graphic('{{keys_total_per_type|safe}}', '{{values_total_per_type|safe}}')
+        online_pie_graphic('{{keys_total_per_online|safe}}', '{{values_total_per_online|safe}}')
+        growth_line_graphic('{{keys_total_temporal|safe}}','{{growth_total_temporal|safe}}')
+    </script>
+
+{% endblock %}

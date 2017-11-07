@@ -1,23 +1,23 @@
-var newMarkers = new Map()
-var printedFeed = new Map()
-var diffFeed = new Map()
-
+// Contains markers printed on map
 var printedMarkers = Array()
 
-function createMarkerIcon(color, extension){
+/* Add an marker icon to the map
+   considering the icon extension
+*/
+function createMarkerIcon(markerType, extension){
     filename = ''
-    switch (color) {
-        case 'red': filename = 'markerSpace'
+    switch (markerType) {
+        case 'espaco': filename = 'markerSpace'
             break
-        case 'blue': filename = 'markerAgent'
+        case 'agente': filename = 'markerAgent'
             break
-        case 'yellow': filename = 'markerEvent'
+        case 'evento': filename = 'markerEvent'
             break
-        case 'green': filename = 'markerProject'
+        case 'projeto': filename = 'markerProject'
             break
     }
-    if(extension == "gif"){
 
+    if(extension == "gif"){
       var imageLocation = "static/images/"+filename+"."+"gif"
       return L.icon({ iconUrl: imageLocation,
         iconSize: [25,25],
@@ -30,22 +30,23 @@ function createMarkerIcon(color, extension){
     }
 }
 
+/* Return a string with the subsite's url, using an subsiteId
+*/
+function getSubsite(subsiteId){
+    subsite = subsites[subsiteId].toString()
+    return subsite
+}
 
-// this function  return instance initials
-function getInitialInstance(data,position){
-  var url = data[position]["singleUrl"]
+/* Return instance initials
+*/
+function getInitialInstance(data){
+  var url = data["singleUrl"]
   var splitUrl = url.split(".")
   return splitUrl[2]
 }
-function makeIdForMarker(data,position){
 
-  var initialsInstance = getInitialInstance(data,position)
-  var id = data[position]["id"]
-  var idString = id.toString()
-  var identification = initialsInstance+idString
-  return identification
-}
-
+/*
+*/
 function setZIndex(imageExtension){
   if(imageExtension == "gif"){
     return 1000
@@ -54,82 +55,118 @@ function setZIndex(imageExtension){
   }
 }
 
+/* this responpose get a subsite link for a instanceUrl
+remember that mapas br and ceara instances have subsites
+*/
+function requestSubsite(url, subsiteID){
+
+    response = $.getJSON(url,
+    {
+        '@select' : 'url',
+        'id': 'eq('+subsiteID+')'
+    })
+
+    return response
+}
+
+/* Create a popup to marker
+*/
+function createPopup(data,marker){
+
+    // Check if exist an subsite link, if exist, change url to subsite.
+    if(data.subsite == null){
+        //In normal flux, doesn't exist subsite and we use "singleUrl"
+        var popup = '<h6><b>Nome:</b></h6>'+data.name+
+                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
+        marker.bindPopup(popup);
+    }else{
+        // remove a marker type to url
+        var splitUrl = data.singleUrl.split("/")
+        type = splitUrl[3]
+
+        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
+
+        var promise = requestSubsite(instanceUrl+'/api/subsite/find', data.subsite)
+        promise.then(function(subsiteData) {
+            linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
+            var popup = '<h6><b>Nome:</b></h6>'+data.name+
+                        '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
+            marker.bindPopup(popup);
+        });
+    }
+}
+
+function addMarkerToMap(data, icon, imageExtension, featureGroup, latitude, longitude){
+    var valueZindex = setZIndex(imageExtension)
+
+    // Instantiates a Marker object given a geographical point and optionally an options object
+    var marker = L.marker([latitude, longitude], {icon: icon}).setZIndexOffset(valueZindex).addTo(featureGroup);
+
+    createPopup(data,marker)
+    var identifiedMarker = {"id" : data.id,"marker" : marker}
+    printedMarkers.push(identifiedMarker)
+}
+
+/* Create a space marker and add into map
+   receiving an 'data' that constains space informations obtained of api
+*/
 function createSpaceMarker(data, imageExtension){
-    var redMarker = createMarkerIcon('red', imageExtension)
+    var icon = createMarkerIcon('espaco', imageExtension)
 
     for(var i=0; i < data.length; i++){
-
-        if(data[i]["location"] != null){
-          var valueZindex = setZIndex(imageExtension)
-            data[i]["type"] = "space"
-            var idForMarker = makeIdForMarker(data,i)
-            newMarkers.set(idForMarker, data[i])
-            var marker = L.marker([data[i]["location"]["latitude"],
-                                    data[i]["location"]["longitude"]],
-                                    {icon: redMarker}).setZIndexOffset(valueZindex).addTo(markersSpace);
-            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+        if(data[i]["location"]){
+            data[i]["type"] = "espaco"
+            var latitude = data[i]["location"]["latitude"]
+            var longitude = data[i]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, markersSpace, latitude, longitude)
         }
     }
 }
 
+/* Create a agent marker and add into map
+   receiving an 'data' that constains agent informations obtained of api
+*/
 function createAgentMarker(data, imageExtension){
-    var blueMarker = createMarkerIcon('blue', imageExtension)
-    for(var i=0; i < data.length; i++){
-
-          if(data[i]["location"] != null){
-            data[i]["type"] = "agent"
-            var idForMarker = makeIdForMarker(data,i)
-            var valueZindex = setZIndex(imageExtension)
-            newMarkers.set(idForMarker, data[i])
-            var marker = L.marker([data[i]["location"]["latitude"],
-            data[i]["location"]["longitude"]],
-            {icon: blueMarker}).setZIndexOffset(valueZindex).addTo(markersAgent)
-            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
-          }
-  }
-}
-
-function createEventMarker(data, imageExtension){
-    var yellowMarker = createMarkerIcon('yellow', imageExtension)
+    var icon = createMarkerIcon('agente', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if((data[i]["occurrences"]).length != 0){
-
-            data[i]["type"] = "event"
-            var idForMarker = makeIdForMarker(data,i)
-            var valueZindex = setZIndex(imageExtension)
-            newMarkers.set(idForMarker, data[i])
-            var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
-            data[i]["occurrences"][0]["space"]["location"]["longitude"]],
-            {icon: yellowMarker}).setZIndexOffset(valueZindex).addTo(markersEvent);
-            marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
-
-    	}
+        if(data[i]["location"]){
+            data[i]["type"] = "agente"
+            var latitude = data[i]["location"]["latitude"]
+            var longitude = data[i]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, markersAgent, latitude, longitude)
+        }
     }
 }
 
-function createProjectMarker(data, imageExtension){
-    var greenMarker = createMarkerIcon('green', imageExtension)
+/* Create a event marker and add into map
+   receiving an 'data' that constains event informations obtained of api
+*/
+function createEventMarker(data, imageExtension){
+    var icon = createMarkerIcon('evento', imageExtension)
 
     for(var i=0; i < data.length; i++){
-    	if(data[i]["owner"] != null){
-          data[i]["type"] = "project"
-          var idForMarker = makeIdForMarker(data,i)
-          var valueZindex = setZIndex(imageExtension)
+        data[i]["type"] = "evento"
+    	if((data[i]["occurrences"]).length){
+            var latitude = data[i]["occurrences"][0]["space"]["location"]["latitude"]
+            var longitude = data[i]["occurrences"][0]["space"]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, markersEvent, latitude, longitude)
+	    }
+    }
+}
 
-          newMarkers.set(idForMarker, data[i])
-        	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
-        							data[i]["owner"]["location"]["longitude"]],
-        							{icon: greenMarker}).setZIndexOffset(valueZindex).addTo(markersProject);
-        	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            identifiedMarker = {"id" : data[i].id,"marker" : marker}
-            printedMarkers.push(identifiedMarker)
+/* Create a project marker and add into map
+   receiving an 'data' that constains project informations obtained of api
+*/
+function createProjectMarker(data, imageExtension){
+    var icon = createMarkerIcon('projeto', imageExtension)
+
+    for(var i=0; i < data.length; i++){
+        if(data[i]["owner"]){
+            data[i]["type"] = "projeto"
+            var latitude = data[i]["owner"]["location"]["latitude"]
+            var longitude = data[i]["owner"]["location"]["longitude"]
+            addMarkerToMap(data[i], icon, imageExtension, markersProject, latitude, longitude)
         }
-      }
+    }
 }
