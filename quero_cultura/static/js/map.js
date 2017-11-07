@@ -218,6 +218,12 @@ function get_location_data(markerLocation){
                 if(data.address.city == undefined){
                     data.address.city = data.address.town
                 }
+                if(data.address.city == undefined){
+                    data.address.city = ''
+                }
+                if(data.address.state == undefined){
+                    data.address.state = ''
+                }
                 console.log(data.address.city)
                 resolved(data)
             })
