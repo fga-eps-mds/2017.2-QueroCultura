@@ -5,7 +5,7 @@ describe('createSpaceMarker', function(){
 		data1 = {}
 		createSpaceMarker(data1, 'gif');
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('red', 'gif')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('espaco', 'gif')
 	});
 
 });
@@ -16,7 +16,7 @@ describe('createAgentMarker', function(){
 		data1 = {}
 		createAgentMarker(data1, 'png')
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('blue', 'png')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('agente', 'png')
 	});
 });
 
@@ -26,43 +26,43 @@ describe('createEventMarker', function(){
 		data1 = {}
 		createEventMarker(data1, 'gif')
 
-		expect(window.createMarkerIcon).toHaveBeenCalledWith('yellow', 'gif')
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('evento', 'gif')
 	});
 });
 
 describe('createMarkerIcon', function(){
-	it('should create red marker icon', function(){
+	it('should create red marker icon for space', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('red', 'gif')
+		createMarkerIcon('espaco', 'gif')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerSpace"+"."+ "gif",
                     iconSize: [25,25]})
 	});
-	it('should create blue marker icon', function(){
+	it('should create blue marker icon for agent', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('blue', 'png')
+		createMarkerIcon('agente', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerAgent"+"."+ "png",
                     iconSize: [25,25]
                  })
 	});
 
-	it('should create yellow marker icon', function(){
+	it('should create yellow marker icon for event', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('yellow', 'png')
+		createMarkerIcon('evento', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerEvent"+"."+ "png",
                     iconSize: [25,25]
                  })
 	});
 
-	it('should create green marker icon', function(){
+	it('should create green marker icon for project', function(){
 		spyOn(L, 'icon')
 
-		createMarkerIcon('green', 'png')
+		createMarkerIcon('projeto', 'png')
 
 		expect(L.icon).toHaveBeenCalledWith({ iconUrl: "static/images/"+"markerProject"+"."+ "png",
                     iconSize: [25,25]
@@ -80,24 +80,6 @@ describe('getInitialInstance', function(){
 		expect(test).toEqual(splitUrl[2])
 	});
 });
-
-describe('makeIdForMarker', function(){
-		it('Should call getInitialInstance', function(){
-			spyOn(window,'getInitialInstance')
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			makeIdForMarker(data,position)
-			expect(window.getInitialInstance).toHaveBeenCalled()
-		});
-		it('Should return identification', function(){
-			data = [{'id': 1, 'singleUrl': "http://spcultura.prefeitura.sp.gov.br/projeto/3304/"}]
-			position = 0
-			identification = makeIdForMarker(data,position)
-			equal = 'sp1'
-			expect(identification).toEqual(equal)
-		});
-});
-
 
 describe('setZIndex', function(){
 	it('Should return 1000', function(){
