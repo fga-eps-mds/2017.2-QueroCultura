@@ -97,7 +97,7 @@ def index(request):
     #Criação do Context
     context = {
         'keys_total_temporal': json.dumps(total_temporal['keys_total_temporal']),
-        'values_total_temporal': json.dumps(total_temporal['values_total_temporal']),
+        'growth_total_temporal': json.dumps(total_temporal['growth_total_temporal']),
         'keys_per_type': json.dumps(total_per_type['keys_total_per_type']),
         'values_per_type': json.dumps(total_per_type['values_total_per_type']),
         'keys_total_per_thematic': json.dumps(total_per_thematic['keys_total_per_thematic']),
