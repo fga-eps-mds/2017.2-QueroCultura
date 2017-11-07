@@ -68,6 +68,9 @@
 .segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(5):after, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(5):before, .segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:before {
   left: 0%;
 }
+.segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(6):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(1):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 0%;
+}
 
 
 .segmented-control > input:disabled:nth-child(2) ~ label:nth-of-type(2) {
@@ -89,6 +92,10 @@
 .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(5):after, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(5):before, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:before {
   left: 20%;
 }
+.segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(2):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 16.6%;
+}
+
 
 .segmented-control > input:disabled:nth-child(3) ~ label:nth-of-type(3) {
   opacity: 0.3;
@@ -106,6 +113,9 @@
 .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(5):after, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(5):before, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:before {
   left: 40%;
 }
+.segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 33.1%;
+}
 
 
 .segmented-control > input:disabled:nth-child(4) ~ label:nth-of-type(4) {
@@ -121,7 +131,9 @@
 .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(5):after, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(5):before, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:before {
   left: 60%;
 }
-
+.segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(4):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 49.6%;
+}
 
 
 .segmented-control > input:disabled:nth-child(5) ~ label:nth-of-type(5) {
@@ -133,6 +145,21 @@
 }
 .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(5):after, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(5):before, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(5) ~ label:before {
   left: 80%;
+}
+.segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(5):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 66.1%;
+}
+
+
+.segmented-control > input:disabled:nth-child(6) ~ label:nth-of-type(6) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.segmented-control > input:nth-child(6):checked ~ label:nth-of-type(6):after, .segmented-control > input:nth-child(6):checked ~ label:nth-of-type(6):before {
+  opacity: 1;
+}
+.segmented-control > input:nth-child(6):checked ~ label:first-of-type:nth-last-of-type(6):after, .segmented-control > input:nth-child(6):checked ~ label:first-of-type:nth-last-of-type(6):before, .segmented-control > input:nth-child(6):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > input:nth-child(6):checked ~ label:first-of-type:nth-last-of-type(6) ~ label:before {
+  left: 83.6%;
 }
 
 
@@ -230,6 +257,9 @@
 }
 .segmented-control > label:first-of-type:nth-last-of-type(5), .segmented-control > label:first-of-type:nth-last-of-type(5):after, .segmented-control > label:first-of-type:nth-last-of-type(5):before, .segmented-control > label:first-of-type:nth-last-of-type(5) ~ label, .segmented-control > label:first-of-type:nth-last-of-type(5) ~ label:after, .segmented-control > label:first-of-type:nth-last-of-type(5) ~ label:before {
   width: 20%;
+}
+.segmented-control > label:first-of-type:nth-last-of-type(6), .segmented-control > label:first-of-type:nth-last-of-type(6):after, .segmented-control > label:first-of-type:nth-last-of-type(6):before, .segmented-control > label:first-of-type:nth-last-of-type(6) ~ label, .segmented-control > label:first-of-type:nth-last-of-type(6) ~ label:after, .segmented-control > label:first-of-type:nth-last-of-type(6) ~ label:before {
+  width: 16.6%;
 }
 
 .segmented-control.italic, .segmented-control .italic {
