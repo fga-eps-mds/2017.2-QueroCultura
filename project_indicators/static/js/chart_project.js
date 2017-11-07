@@ -33,7 +33,7 @@ function online_pie_graphic(data_keys ,data_values){
     var graphics_data = createDefaultData("pie", data_keys, data_values)
 
     graphics_data.label = 'Quantidade de projetos que aceitam inscrições online.'
-    graphics_data.context = document.getElementById("pie-chart-online")
+    graphics_data.context = document.getElementById("pie-chart-online").getContext('2d')
     graphics_data.description = 'Quantidades de Registros que aceitam inscrições online.'
 
     createChart(graphics_data)
