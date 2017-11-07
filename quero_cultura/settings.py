@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'library_indicators',
     'events_indicators',
     'project_indicators',
+    'museums_indicators',
     'mongoengine',
     'requests',
     'django_celery_beat',
