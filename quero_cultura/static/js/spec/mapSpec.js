@@ -262,3 +262,11 @@ describe('setZIndex', function(){
 		expect(test).toEqual(equal)
 	});
 });
+
+describe('initialize_data_map', function() {
+	it('Should initialize map data', function(){
+		var test = {}
+		var equal = initialize_data_map()
+		expect(typeof test).toEqual(typeof equal)
+	});
+})
