@@ -153,32 +153,39 @@ function loadMarkers(markerType, imageExtension, markersData) {
 }
 
 function get_marker_location(value){
+    console.log(value)
+
     switch (value.type) {
         case "evento":
-            return value['occurrences'].pop().space.location
+            var occurrences = value['occurrences'].pop()
+            if(occurrences === undefined){
+                return {latitude:0, longitude:0}
+            }else{
+                return occurrences.space.location
+            }
         case "projeto":
-            return value['occurrences'].pop().space.location
+            return value.owner.location
         default:
             return value.location
     }
 }
 
 function create_url_to_feed(value){
-    if(value["subsite"] === null){
-        return new Promise((resolve, reject) =>{
-                                                resolve(value['singleUrl'])
-                                                })
-    }else{
-        var splitUrl = value["singleUrl"].split("/")
-        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
+    return new Promise((resolve, reject) =>{
+        if(value["subsite"] === null){
+            resolve(value['singleUrl'])
+        }else{
+            var splitUrl = value["singleUrl"].split("/")
+            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-        var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
-        promise.then(function(subsiteData) {
-            var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
-            console.log(url)
-            return  new Promise((resolve, reject) =>{resolve(url)})
-        });
-    }
+            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+            promise.then(function(subsiteData) {
+                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                console.log(url)
+                resolve(url)
+            });
+        }
+    })
 }
 
 function get_action(createTimestamp, updateTimestamp){
@@ -193,30 +200,42 @@ function get_action(createTimestamp, updateTimestamp){
     return update
 }
 
-function create_location_promise(latitute, longitude){
-    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
+function create_location_promise(markerLocation){
+    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+"&lon="+markerLocation.longitude+"&format=json"
     return $.getJSON(openstreetURL)
 }
 
-function AddInfoToFeed(diffFeed) {
-
-    diffFeed.forEach(async function(value, key){
-        var markerLocation = get_marker_location(value.type, value)
-        var url = await create_url_to_feed(value)
-        var action = get_action(value.createTimestamp, value.updateTimestamp)
-
-
+function get_location_data(markerLocation){
+    return new Promise((resolved, reject)=>{
         if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
-            promise = create_location_promise(markerLocation.latitude, markerLocation.longitude)
+            promise = create_location_promise(markerLocation)
             promise.then(function(data){
                 if(data["error"] !== undefined){
                     console.log("unable to locate Geocode")
                     data.address = {"state": '', 'city': ''}
                 }
-                var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
-                create_feed_block(html)
+
+                if(data.address.city == undefined){
+                    data.address.city = data.address.town
+                }
+                console.log(data.address.city)
+                resolved(data)
             })
+        }else{
+            reject({})
         }
+    })
+}
+function AddInfoToFeed(diffFeed) {
+
+    diffFeed.forEach(async function(value, key){
+        var markerLocation = get_marker_location(value)
+        var url = await create_url_to_feed(value)
+        var data = await get_location_data(markerLocation)
+        var action = get_action(value.createTimestamp, value.updateTimestamp)
+
+        var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
+        create_feed_block(html)
     },diffFeed)
 
 }
@@ -227,7 +246,7 @@ function create_feed_block(html){
     $(".block" ).scrollTop(height);
 }
 
-function AddHTMLToFeed(action, name, type, adress, url){
+function AddHTMLToFeed(action, name, type, address, url){
     color = GetColorByType(type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
@@ -237,10 +256,10 @@ function AddHTMLToFeed(action, name, type, adress, url){
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+url+"'>"+name+"</a>"+
+                       "<a href='"+url+"' target='_blank'>"+name+"</a>"+
                        "<p>"+action.name+""+ "<br>"
                             +action.time.date.substring(0, 19)+"<br>"
-                            +address.city+ ' - ' + address.uf+
+                            +address.city+ ' - ' + address.state+
                        "</p>"+
                    "</div>"+
                "</div>"
