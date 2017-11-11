@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  metabase:
+    image: metabase/metabase
+    volumes:
+      - /tmp:/tmp
+    environment:
+      - MB_DB_FILE=/tmp/metabase.db
+    ports:
+      - "3000:3000"
   mongo:
     image: mongo
     ports:
