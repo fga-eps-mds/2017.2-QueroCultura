@@ -45,6 +45,3 @@ services:
         MB_DB_HOST: postgres
     depends_on:
       - postgres
-      - adminer
-
-
