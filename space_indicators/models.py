@@ -1,108 +1,35 @@
-# from django.db import models
 from mongoengine import Document
-from mongoengine import IntField
-from mongoengine import DateTimeField
+from mongoengine import StringField
 
 
-class PercentSpace(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_space = IntField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def total_space(self):
-        return self._total_space
-
-    @total_space.setter
-    def total_space(self, number):
-        self._total_space = number
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-class PercentSpaceState(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-
-    _total_space_per_state = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+class LastUpdateDate(Document):
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):
         return self._create_date
 
     @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-    @property
-    def total_space_per_state(self):
-        return self._total_space_per_state
+    def create_date(self, create_date):
+        self._create_date = create_date
 
-    @total_space_per_state.setter
-    def total_space_per_state(self, number):
-        self._total_space_per_state = number
 
-class PercentSpacePerType(PercentSpace):
-    _total_space_per_type = IntField(required=True)
+class PerOccupationArea(Document):
+    _instance = StringField(required=True)
+    _occupation_area = StringField(required=True)
 
     @property
-    def total_space_per_type(self):
-        return self._total_space_per_type
+    def instance(self):
+        return self._instance
 
-    @total_space_per_type.setter
-    def total_space_per_type(self, number):
-        self._total_space_per_type = number
-
-
-class PercentSpacePerOccupationArea(PercentSpace):
-    _total_Space = IntField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_space_per_occupation_area(self):
-        return self._total_Space
+    def occupation_area(self):
+        return self._occupation_area
 
-    @total_space_per_occupation_area.setter
-    def total_space_per_occupation_area(self, number):
-        self._total_Space = number
-
-
-class PercentSpacePerTypePerState(PercentSpaceState):
-    _total_space = IntField(required=True)
-
-    @property
-    def total_space(self):
-        return self._total_space
-
-    @total_space.setter
-    def total_space(self, number):
-        self._total_space = number
-
-class PercentSpacePerOccupationAreaPerState(PercentSpaceState):
-    _total_space_occupation_area_per_state = IntField(required=True)
-
-    @property
-    def total_space_occupation_area_per_state(self):
-        return self._total_space_occupation_area_per_state
-
-    @total_space_occupation_area_per_state.setter
-    def total_space_occupation_area_per_state(self, number):
-        self._total_space_occupation_area_per_state = number
-
-
-class PercentSpaceForState(PercentSpaceState):
-    _total_spaces = IntField(required=True)
-
-    @property
-    def total_spaces(self):
-        return self._total_spaces
-
-    @total_spaces.setter
-    def total_spaces(self, number):
-        self._total_spaces = number
+    @occupation_area.setter
+    def occupation_area(self, occupation_area):
+        self._occupation_area = occupation_area
