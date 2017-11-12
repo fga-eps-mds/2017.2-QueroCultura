@@ -32,6 +32,7 @@ services:
         - "5432:5432"
     volumes:
         - ./postgres_metabase:/postgres_metabase
+
   metabase:
     image: metabase/metabase
     ports:
@@ -43,5 +44,18 @@ services:
         MB_DB_USER: quero_cultura
         MB_DB_PASS: 123456
         MB_DB_HOST: postgres
+    depends_on:
+      - postgres
+
+  dkr:
+    image: docker
+    privileged: true
+    working_dir: "/dkr"
+    volumes:
+      - ".:/dkr"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: docker exec 20172querocultura_metabase_1 bash -c "sleep 60"
+    command: docker exec 20172querocultura_postgres_1 bash -c "sleep 20 && psql metabase quero_cultura -f /postgres_metabase/metabase.sql"
+
     depends_on:
       - postgres
