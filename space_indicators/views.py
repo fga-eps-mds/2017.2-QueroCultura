@@ -42,6 +42,6 @@ def populate_per_occupation_area():
         new_url = clean_url(url)
         for space in request:
             for area in space["terms"]["area"]:
-                PerOccupationArea(new_url, area).save()
+                PerOccupationArea(new_url, area, space['name']).save()
 
     LastUpdateDate(str(datetime.now())).save()

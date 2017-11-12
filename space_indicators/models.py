@@ -17,6 +17,7 @@ class LastUpdateDate(Document):
 class PerOccupationArea(Document):
     _instance = StringField(required=True)
     _occupation_area = StringField(required=True)
+    _name = StringField(required=True)
 
     @property
     def instance(self):
@@ -33,3 +34,11 @@ class PerOccupationArea(Document):
     @occupation_area.setter
     def occupation_area(self, occupation_area):
         self._occupation_area = occupation_area
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
