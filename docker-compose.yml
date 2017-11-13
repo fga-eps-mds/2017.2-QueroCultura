@@ -19,12 +19,16 @@ services:
   web:
     build: .
     command: chmod +x boot.sh
+    command: service varnish start
     command: ./boot.sh
     volumes:
       - .:/code
+      - ./varnish:/etc/varnish/
     ports:
       - "8000:8000"
+      - "6081:6081"
+      - "6082:6082"
+      - "80:80"
     depends_on:
-      - nginx
       - mongo
       - redis
