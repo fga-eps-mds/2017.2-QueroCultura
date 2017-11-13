@@ -13,6 +13,7 @@ class TestClassRequestSpacesRawData(object):
     def test_data_content(self):
         current_time = datetime.now().__str__()
         request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
+        print(request_space_raw_data)
         space_raw_data = request_space_raw_data.data
         type_space_raw_data = type(space_raw_data)
         empty_list = []
@@ -23,5 +24,5 @@ class TestClassRequestSpacesRawData(object):
         request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
         space_raw_data = request_space_raw_data.data_length
         type_space_raw_data = type(space_raw_data)
-        intenger = 1
-        assert type_space_raw_data == type(intenger)
+        integer = 1
+        assert type_space_raw_data == type(integer)
