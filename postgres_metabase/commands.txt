@@ -1,0 +1,5 @@
+cd postgres_metabase
+pg_dump -d metabase -U quero_cultura > metabase.sql
+
+psql metabase quero_cultura -f /postgres_metabase/metabase.sql
+psql metabase quero_cultura -f metabase.sql

@@ -10,6 +10,7 @@ from quero_cultura.views import build_temporal_indicator
 from quero_cultura.views import build_operation_area_indicator
 from quero_cultura.views import sort_dict
 
+DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 def index(request):
 
@@ -96,9 +97,9 @@ def update_agent_indicator():
 
     # Cria registro inicial caso seja o primeiro uso da aplicação
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
-        PercentIndividualAndCollectiveAgent(0, "2012-01-01 15:47:38.337553", 0, 0).save()
-        PercentAgentsPerAreaOperation(0, "2012-01-01 15:47:38.337553", {"Literatura": 0}).save()
-        AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, "2012-01-01 15:47:38.337553").save()
+        PercentIndividualAndCollectiveAgent(0, DEFAULT_INITIAL_DATE, 0, 0).save()
+        PercentAgentsPerAreaOperation(0, DEFAULT_INITIAL_DATE, {"Literatura": 0}).save()
+        AmountAgentsRegisteredPerMonth({"2015": {"01": 0}}, DEFAULT_INITIAL_DATE).save()
 
     # Retorna na variavel index a quantidade de registros existentes
     index = PercentAgentsPerAreaOperation.objects.count()

@@ -1,108 +1,63 @@
-# from django.db import models
 from mongoengine import Document
-from mongoengine import IntField
+from mongoengine import StringField
 from mongoengine import DateTimeField
 
 
-class PercentSpace(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_space = IntField(required=True)
-    _create_date = DateTimeField(required=True)
-
-    @property
-    def total_space(self):
-        return self._total_space
-
-    @total_space.setter
-    def total_space(self, number):
-        self._total_space = number
-    @property
-    def create_date(self):
-        return self._create_date
-
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-class PercentSpaceState(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-
-    _total_space_per_state = IntField(required=True)
-    _create_date = DateTimeField(required=True)
+class LastUpdateDate(Document):
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):
         return self._create_date
 
     @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-    @property
-    def total_space_per_state(self):
-        return self._total_space_per_state
+    def create_date(self, create_date):
+        self._create_date = create_date
 
-    @total_space_per_state.setter
-    def total_space_per_state(self, number):
-        self._total_space_per_state = number
 
-class PercentSpacePerType(PercentSpace):
-    _total_space_per_type = IntField(required=True)
+class SpaceData(Document):
+    _instance = StringField(required=True)
+    _occupation_area = StringField(required=True)
+    _name = StringField(required=True)
+    _date = DateTimeField(required=True)
+    _space_type = StringField(required=True)
 
     @property
-    def total_space_per_type(self):
-        return self._total_space_per_type
+    def instance(self):
+        return self._instance
 
-    @total_space_per_type.setter
-    def total_space_per_type(self, number):
-        self._total_space_per_type = number
-
-
-class PercentSpacePerOccupationArea(PercentSpace):
-    _total_Space = IntField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_space_per_occupation_area(self):
-        return self._total_Space
+    def occupation_area(self):
+        return self._occupation_area
 
-    @total_space_per_occupation_area.setter
-    def total_space_per_occupation_area(self, number):
-        self._total_Space = number
-
-
-class PercentSpacePerTypePerState(PercentSpaceState):
-    _total_space = IntField(required=True)
+    @occupation_area.setter
+    def occupation_area(self, occupation_area):
+        self._occupation_area = occupation_area
 
     @property
-    def total_space(self):
-        return self._total_space
+    def name(self):
+        return self._name
 
-    @total_space.setter
-    def total_space(self, number):
-        self._total_space = number
-
-class PercentSpacePerOccupationAreaPerState(PercentSpaceState):
-    _total_space_occupation_area_per_state = IntField(required=True)
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
-    def total_space_occupation_area_per_state(self):
-        return self._total_space_occupation_area_per_state
+    def date(self):
+        return self._date
 
-    @total_space_occupation_area_per_state.setter
-    def total_space_occupation_area_per_state(self, number):
-        self._total_space_occupation_area_per_state = number
-
-
-class PercentSpaceForState(PercentSpaceState):
-    _total_spaces = IntField(required=True)
+    @date.setter
+    def date(self, date):
+        self._date = date
 
     @property
-    def total_spaces(self):
-        return self._total_spaces
+    def space_type(self):
+        return self._space_type
 
-    @total_spaces.setter
-    def total_spaces(self, number):
-        self._total_spaces = number
+    @space_type.setter
+    def space_type(self, space_type):
+        self._space_type = space_type
