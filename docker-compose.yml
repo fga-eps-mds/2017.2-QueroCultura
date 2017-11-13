@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-  nginx:
-    image: nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - ./quero_cultura/templates/quero_cultura:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/nginx.conf
   mongo:
     image: mongo
     ports:
