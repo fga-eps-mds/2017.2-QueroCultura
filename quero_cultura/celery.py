@@ -77,4 +77,30 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=35.0),
         },
     },
+    'populate_space_data': {
+        'task': 'populate_space_data',
+        'schedule': crontab(minute=20,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'populate_space_data_now': {
+        'task': 'populate_space_data',
+        'schedule': 30.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=45.0),
+        },
+    },
+    'periodic_update': {
+        'task': 'periodic_update',
+        'schedule': crontab(minute=25,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'periodic_update_now': {
+        'task': 'periodic_update',
+        'schedule': 35.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=50.0),
+        },
+    },
 }
