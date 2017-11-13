@@ -5,6 +5,7 @@ from .models import SpaceData
 from .models import LastUpdateDate
 from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
+from celery.decorators import task
 import jwt
 
 METABASE_SITE_URL = "http://0.0.0.0:3000"
@@ -13,8 +14,6 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 
 def index(request):
-    # populate_per_occupation_area()
-
     payload = {"resource": {"dashboard": 1},
                "params": {}}
 
@@ -27,7 +26,8 @@ def index(request):
     return render(request, 'space_indicators/space-indicators.html', url)
 
 
-def populate_per_occupation_area():
+@task(name="populate_space_data")
+def populate_space_data():
     if len(LastUpdateDate.objects) == 0:
         LastUpdateDate(DEFAULT_INITIAL_DATE).save()
 
