@@ -7,6 +7,7 @@ from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from celery.decorators import task
+from .models import OccupationArea
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
@@ -17,8 +18,7 @@ def index(request):
     url = {"graphic1": get_metabase_url(view_type, 2),
            "graphic2": get_metabase_url(view_type, 4),
            "graphic3": get_metabase_url(view_type, 3),
-           "graphic4": get_metabase_url(view_type, 6),
-           "graphic5": get_metabase_url(view_type, 7)}
+           "graphic4": get_metabase_url(view_type, 7)}
     return render(request, 'space_indicators/space-indicators.html', url)
 
 
@@ -37,9 +37,10 @@ def populate_space_data():
         request = RequestSpacesRawData(last_update, url).data
         new_url = clean_url(url)
         for space in request:
+            date = space["createTimestamp"]['date']
+            SpaceData(new_url, space['name'], date,
+                      space['type']['name']).save()
             for area in space["terms"]["area"]:
-                date = space["createTimestamp"]['date']
-                SpaceData(new_url, area, space['name'],
-                          date, space['type']['name']).save()
+                OccupationArea(new_url, area).save()
 
     LastUpdateDate(str(datetime.now())).save()
