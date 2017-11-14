@@ -13,6 +13,23 @@ class TestLastUpdateDate(object):
         assert query.create_date == create_date
 
 
+class TestSpaceData(object):
+    def test_space_data(self):
+        SpaceData.drop_collection()
+        instance = "SP"
+        area = "Cinema"
+        name = "Cia"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        space_type = "Teatro"
+        SpaceData(instance, area, name, date, space_type).save()
+        query = SpaceData.objects.first()
+        assert query.instance == instance
+        assert query.occupation_area == area
+        assert query.name == name
+        assert query.date == date
+        assert query.space_type == space_type
+
+
 class TestClassRequestSpacesRawData(object):
     def test_success_request(self):
         current_time = datetime.now().__str__()
