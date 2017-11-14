@@ -70,6 +70,40 @@ class TestRequestAgentsRawData(object):
 
         assert response_status_code == 200
 
+    @requests_mock.Mocker(kw='mock')
+    def test_data_content(self, **kwargs):
+        current_time = datetime.now().__str__()
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = {
+            'None': 1,
+        }
+
+        kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+
+        request_agents_raw_data = RequestAgentsRawData(current_time, url)
+        agents_raw_data = request_agents_raw_data.data
+        type_agents_raw_data = type(agents_raw_data)
+        empty_list = {}
+        assert type_agents_raw_data == type(empty_list)
+
+    @requests_mock.Mocker(kw='mock')
+    def test_data_lenght(self, **kwargs):
+        current_time = datetime.now().__str__()
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = {
+            'None': 1,
+        }
+
+        kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+
+        request_agents_raw_data = RequestAgentsRawData(current_time, url)
+        agents_raw_data = request_agents_raw_data.data_length
+        type_agents_raw_data = type(agents_raw_data)
+        intenger = 1
+        assert type_agents_raw_data == type(intenger)
+
 
 class TestPercentAgentsPerAreaOperation(object):
 
