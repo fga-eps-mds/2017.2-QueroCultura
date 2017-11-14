@@ -5,7 +5,6 @@ from .models import MuseumData
 from .models import OccupationArea
 from .models import LastUpdateDate
 from quero_cultura.views import ParserYAML
-from .api_connections import TestMuseum
 import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
