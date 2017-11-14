@@ -5,24 +5,23 @@ from .models import SpaceData
 from .models import LastUpdateDate
 from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
+from quero_cultura.views import get_metabase_url
 from celery.decorators import task
-import jwt
 
-METABASE_SITE_URL = "http://0.0.0.0:3000"
-METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
+
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 
 def index(request):
-    payload = {"resource": {"dashboard": 1},
-               "params": {}}
+    view_type = "question"
+    number = 2
 
-    token = jwt.encode(payload, METABASE_SECRET_KEY, algorithm='HS256')
-    token = str(token).replace("b'", "")
-    token = token.replace("'", "")
 
-    i_frame_url = METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=true"
-    url = {"url": i_frame_url}
+    url = {"graphic1": get_metabase_url(view_type, 2),
+           "graphic2": get_metabase_url(view_type, 4),
+           "graphic3": get_metabase_url(view_type, 3),
+           "graphic4": get_metabase_url(view_type, 6),
+           "graphic5": get_metabase_url(view_type, 7)}
     return render(request, 'space_indicators/space-indicators.html', url)
 
 

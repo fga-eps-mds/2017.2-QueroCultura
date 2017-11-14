@@ -2,13 +2,108 @@
 {% load static %}
 
 {% block content %}
-<iframe
-  src="{{url|safe}}"
-  frameborder="0"
-  width="100%"
-  height="1500px"
-  allowtransparency
-></iframe>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
 
+<div class="container">
+    <div class="segmented-control">
+    <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#area" checked>
+    <input type="radio" name="sc-1-1" id="sc-1-1-2" value="#crescimento">
+    <input type="radio" name="sc-1-1" id="sc-1-1-3" value="#registro-mes">
+    <input type="radio" name="sc-1-1" id="sc-1-1-4" value="#crescimento-instancia">
+    <input type="radio" name="sc-1-1" id="sc-1-1-5" value="#tipo">
+
+    <label for="sc-1-1-1" data-value="Áreas de atuação">
+            Áreas de atuação
+        </label>
+
+        <label for="sc-1-1-2" data-value="Crescimento mensal">
+            Crescimento mensal
+        </label>
+
+        <label for="sc-1-1-3" data-value="Registros por mês">
+            Registros por mês
+        </label>
+
+        <label for="sc-1-1-4" data-value="Crescimento mensal por instância">
+            Crescimento mensal por instância
+        </label>
+
+        <label for="sc-1-1-5" data-value="Tipos por intância">
+            Tipos por intância
+        </label>
+
+    </div>
+</div>
+
+<div class="container-indicators">
+    <div id="area">
+        <div class="chart-container" id="graphic1">
+        </div>
+
+        <div class="text-chart-init">
+            <p>Este gráfico refere-se aos espaços por área de atuação separados por instância.</p>
+        </div>
+    </div>
+
+    <div id="crescimento">
+        <div class="chart-container" id="graphic2">
+        </div>
+
+        <div class="text-chart-init">
+            <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+        </div>
+    </div>
+
+
+    <div id="registro-mes">
+        <div class="chart-container" id="graphic3">
+        </div>
+
+        <div class="text-chart-init">
+            <p>Este gráfico refere-se à quantidade de registros por mês.</p>
+        </div>
+    </div>
+
+    <div id="crescimento-instancia">
+        <div class="chart-container" id="graphic4">
+        </div>
+
+        <div class="text-chart-init">
+            <p>Este gráfico refere-se aos cadastros de espaços por mês separados por instância.</p>
+        </div>
+    </div>
+
+
+    <div id="tipo">
+        <div class="chart-container" id="graphic5">
+        </div>
+
+        <div class="text-chart-init">
+            <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    createFrame("{{graphic1|safe}}", "#graphic1")
+    createFrame("{{graphic2|safe}}", "#graphic2")
+    createFrame("{{graphic3|safe}}", "#graphic3")
+    createFrame("{{graphic4|safe}}", "#graphic4")
+    createFrame("{{graphic5|safe}}", "#graphic5")
+
+    function createFrame(graphicURL, locationId){
+        var frame = '<iframe \
+          src="' + graphicURL + '" \
+          frameborder="0" \
+          width="100%" \
+          height="720px" \
+          allowtransparency \
+        ></iframe>'
+        $(locationId).append(frame)
+    }
+</script>
+
+<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
 
 {% endblock %}
