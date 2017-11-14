@@ -2265,6 +2265,10 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 44	card-update	2017-11-14 06:15:27.875+00	1	card	2	2	15	\N	{"name":"Áreas de Atuação por Instância","description":null}
 45	card-update	2017-11-14 13:45:43.322+00	1	card	6	2	12	\N	{"name":"Crescimento Cumulativo Mensal por Instância","description":null}
 46	card-update	2017-11-14 14:07:36.194+00	1	card	7	2	12	\N	{"name":"Tipos por Instância","description":null}
+47	card-create	2017-11-14 14:12:47.74+00	1	card	8	2	12	\N	{"name":"Space Data, Count, Grouped by Date (hour-of-day), Sorted by Date, (day) descending","description":null}
+48	dashboard-add-cards	2017-11-14 14:13:01.556+00	1	dashboard	1	\N	\N	\N	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","dashcards":[{"name":"Space Data, Count, Grouped by Date (hour-of-day), Sorted by Date, (day) descending","description":null,"id":7,"card_id":8}]}
+49	card-create	2017-11-14 14:13:59.883+00	1	card	9	2	12	\N	{"name":"Space Data, Count, Grouped by Date (day-of-week)","description":null}
+50	dashboard-add-cards	2017-11-14 14:14:17.404+00	1	dashboard	1	\N	\N	\N	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","dashcards":[{"name":"Space Data, Count, Grouped by Date (day-of-week)","description":null,"id":8,"card_id":9}]}
 \.
 
 
@@ -2368,6 +2372,7 @@ COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exect
 31	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	30	EXECUTED	7:347281cdb65a285b03aeaf77cb28e618	addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
 59	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	58	EXECUTED	7:583e67af40cae19cab645bbd703558ef	addColumn tableName=metabase_field	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
 32	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	31	EXECUTED	7:ff40b5fbe06dc5221d0b9223992ece25	createTable tableName=label; createIndex indexName=idx_label_slug, tableName=label; createTable tableName=card_label; addUniqueConstraint constraintName=unique_card_label_card_id_label_id, tableName=card_label; createIndex indexName=idx_card_label...		\N	3.5.3	\N	\N	0441238708
+66	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	64	EXECUTED	7:76d06b44a544105c2a613603b8bdf25f	sql; sql	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
 32	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	32	EXECUTED	7:af1dea42abdc7cd058b5f744602d7a22	createTable tableName=raw_table; createIndex indexName=idx_rawtable_database_id, tableName=raw_table; addUniqueConstraint constraintName=uniq_raw_table_db_schema_name, tableName=raw_table; createTable tableName=raw_column; createIndex indexName=id...		\N	3.5.3	\N	\N	0441238708
 34	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	33	EXECUTED	7:e65d70b4c914cfdf5b3ef9927565e899	addColumn tableName=pulse_channel		\N	3.5.3	\N	\N	0441238708
 35	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	34	EXECUTED	7:ab80b6b8e6dfc3fa3e8fa5954e3a8ec4	modifyDataType columnName=value, tableName=setting		\N	3.5.3	\N	\N	0441238708
@@ -2401,7 +2406,6 @@ COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exect
 15	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	14	EXECUTED	7:50c72a51651af76928c06f21c9e04f97	addColumn tableName=revision		\N	3.5.3	\N	\N	0441238708
 16	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	15	EXECUTED	7:a398a37dd953a0e82633d12658c6ac8f	dropNotNullConstraint columnName=last_login, tableName=core_user		\N	3.5.3	\N	\N	0441238708
 17	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	16	EXECUTED	7:5401ec35a5bd1275f93a7cac1ddd7591	addColumn tableName=metabase_database; sql		\N	3.5.3	\N	\N	0441238708
-66	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	64	EXECUTED	7:76d06b44a544105c2a613603b8bdf25f	sql; sql	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
 11	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	10	EXECUTED	7:c7ef8b4f4dcb3528f9282b51aea5bb2a	sql		\N	3.5.3	\N	\N	0441238708
 18	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	17	EXECUTED	7:329d897d44ba9893fdafc9ce7e876d73	createTable tableName=data_migrations; createIndex indexName=idx_data_migrations_id, tableName=data_migrations		\N	3.5.3	\N	\N	0441238708
 19	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	18	EXECUTED	7:e8fa976811e4d58d42a45804affa1d07	addColumn tableName=metabase_table		\N	3.5.3	\N	\N	0441238708
@@ -2463,7 +2467,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-11-14 14:01:31.382+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-11-14 14:10:00.418+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -3275,6 +3279,11 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xaf88207ed389ddf2ec7daccb2f096c11e729c561ab59b86b9b0bae7f737c3cab	107
 \\x690786c578aa71dbfc39be02bb8000711daa70ec780a85dea55674415b456869	159
 \\xdf52930e81201248ac87b273716bcd36685236a820763c0910351a6423f64dd0	157
+\\x83bc7a2c3fddc70fa50685b09c203f96fc8ab1e3f9874344cd64c04f561b6180	152
+\\x42ab6672810aae8ab9c80a8773f3c9ccd4163abd15ce71c392f0d3bf26e7432a	174
+\\xef5bd9ef6a787e726a00f1f31afbcf66a820544b5dbd88a3d3090b8d9667cefc	186
+\\x2787f566432a601c9d94e99f64d09057a13693b8ca76e9c670f73c105ee05e84	148
+\\x0d6dacd4a22d71ef38c35c9491e56b83c0d72367d6c709bc0110be1078cb12d4	94
 \\xa38a092a927dc417d2c0722172e7964b38ad1c069b195b87b09bae385c15a548	243
 \\x4e7c893acd5bfde7fcd471e99e3177f9513a2d2fd4169da913d89cb1605c78df	174
 \\xe620746dca7282cc9c4b6158121b53b22fb3385ac46fc75c6940a64dbd5ab333	247
@@ -3284,21 +3293,26 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xe484be966386b13d08209a8a31952e21d486fcb4a1546f54d764ed9a4ce0fb39	194
 \\x5597c7db1e2ac6aba6e4962252b31458acdbfc15a4223c18e78b13351d9f8d10	154
 \\xe7ce71c0296b3bed3d1b3ce5c6fe84437f0529e22b6b608b73e89f5fc2e026ae	267
+\\xc2ae1a1e2e8be5db1e55f61c039034cb17ca0c1edb6a9ca3e52e5ecf93fc6b9f	127
 \\xa8e6002aaf6b28052f04f321ba30b282f3606f857220d3388fc53b01daa26dc3	293
 \\x3e0aa390c3145a73d478d4dee6c735f4bd4230c5b1d4d4ea022bde4e9627f8a0	149
 \\x03466c05eb29b4f578c57c55e37bb44fc978b08d095f8c4255dd8a7aa80f7510	628
+\\xf9dd02dcf34a436ba1f43c19f258bea90c3778738187fe9de7ddb8e617bd74d0	135
+\\xcd6c11684675fd9ee2df16501ce78f775d0b4660f671f0e3652eb002a32f76da	113
 \\xb8ffca5df3125a1fc0115bbc4b6d25f74b61672ed730d91b397967cd5307f206	135
+\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	312
+\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	348
 \\x54e94b9f2a7b6c509ea7455c067fa9c9b3c1da6cad8e418ff92653027f054bfe	81
+\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	287
 \\x89cb9ad8bf643497986a3d5582ec59f4b69a653026dacd524b31b29be87a4229	127
-\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	269
-\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	275
+\\xcf5fa65ff623d108eb46e643a888d5cb7a593a64af7314b44379bbe7a510e574	159
+\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	352
+\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	394
+\\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	148
 \\xcca62bcb9ce629ccb24f725ece5e35030524055a86b66bcc953aba3577ebc9c3	54
 \\x6211b1138bac14e5fa2bcfee231d2ef771cfbaf3c6f887897328190dd8ff31cb	156
 \\x16e2d7ff11bc2e7d42782f48f0e2396a8b5a768fbc30b8d6e5aaaa10ab8ac394	96
 \\xddf69860789b56378e70bb0200b6ad3cfe9dcdb22cc1a67e2806a9d78a172d5b	145
-\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	318
-\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	263
-\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	197
 \.
 
 
@@ -3857,6 +3871,48 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 540	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:08:46.306	188	132	f	embedded-question	\N	1	3	\N	\N
 541	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:08:46.558	140	55	f	embedded-question	\N	1	4	\N	\N
 542	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:08:46.744	135	25	f	embedded-question	\N	1	7	\N	\N
+543	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:10:21.073	374	25	f	question	\N	1	7	\N	\N
+544	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:10:27.898	333	55	f	question	\N	1	4	\N	\N
+545	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-14 14:10:27.91	462	132	f	question	\N	1	6	\N	\N
+546	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:10:27.866	526	25	f	question	\N	1	7	\N	\N
+547	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-14 14:10:27.833	629	172	f	question	\N	1	2	\N	\N
+548	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:10:27.967	549	132	f	question	\N	1	3	\N	\N
+549	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:10:37.911	277	25	f	question	\N	1	7	\N	\N
+550	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:10:37.822	429	55	f	question	\N	1	4	\N	\N
+551	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-14 14:10:37.84	446	172	f	question	\N	1	2	\N	\N
+552	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:10:37.839	450	132	f	question	\N	1	3	\N	\N
+553	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-14 14:10:37.857	469	132	f	question	\N	1	6	\N	\N
+554	\\x83bc7a2c3fddc70fa50685b09c203f96fc8ab1e3f9874344cd64c04f561b6180	2017-11-14 14:10:59.572	152	24	f	ad-hoc	\N	1	\N	\N	\N
+555	\\x42ab6672810aae8ab9c80a8773f3c9ccd4163abd15ce71c392f0d3bf26e7432a	2017-11-14 14:11:07.107	180	24	f	ad-hoc	\N	1	\N	\N	\N
+556	\\x42ab6672810aae8ab9c80a8773f3c9ccd4163abd15ce71c392f0d3bf26e7432a	2017-11-14 14:11:18.939	122	24	f	ad-hoc	\N	1	\N	\N	\N
+557	\\xef5bd9ef6a787e726a00f1f31afbcf66a820544b5dbd88a3d3090b8d9667cefc	2017-11-14 14:11:33.427	186	24	f	ad-hoc	\N	1	\N	\N	\N
+558	\\x2787f566432a601c9d94e99f64d09057a13693b8ca76e9c670f73c105ee05e84	2017-11-14 14:11:39.461	148	24	f	ad-hoc	\N	1	\N	\N	\N
+559	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:12:54.612	425	55	f	question	\N	1	4	\N	\N
+560	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:12:54.712	378	25	f	question	\N	1	7	\N	\N
+561	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-14 14:12:54.596	587	172	f	question	\N	1	2	\N	\N
+562	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:12:54.608	577	132	f	question	\N	1	3	\N	\N
+563	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-14 14:12:54.7	540	132	f	question	\N	1	6	\N	\N
+564	\\xcf5fa65ff623d108eb46e643a888d5cb7a593a64af7314b44379bbe7a510e574	2017-11-14 14:12:55.309	131	24	f	question	\N	1	8	\N	\N
+565	\\x0d6dacd4a22d71ef38c35c9491e56b83c0d72367d6c709bc0110be1078cb12d4	2017-11-14 14:13:14.147	94	7	f	ad-hoc	\N	1	\N	\N	\N
+566	\\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	2017-11-14 14:13:21.612	154	7	f	ad-hoc	\N	1	\N	\N	\N
+567	\\xcf5fa65ff623d108eb46e643a888d5cb7a593a64af7314b44379bbe7a510e574	2017-11-14 14:14:04.194	257	24	f	question	\N	1	8	\N	\N
+568	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-14 14:14:04.122	344	172	f	question	\N	1	2	\N	\N
+569	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:14:04.159	457	25	f	question	\N	1	7	\N	\N
+570	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:14:04.165	482	55	f	question	\N	1	4	\N	\N
+571	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:14:04.16	497	132	f	question	\N	1	3	\N	\N
+572	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-14 14:14:04.181	487	132	f	question	\N	1	6	\N	\N
+573	\\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	2017-11-14 14:14:04.947	119	7	f	question	\N	1	9	\N	\N
+574	\\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	2017-11-14 14:14:28.809	108	7	f	question	\N	1	9	\N	\N
+575	\\xc2ae1a1e2e8be5db1e55f61c039034cb17ca0c1edb6a9ca3e52e5ecf93fc6b9f	2017-11-14 14:14:41.73	127	7	f	ad-hoc	\N	1	\N	\N	\N
+576	\\xf9dd02dcf34a436ba1f43c19f258bea90c3778738187fe9de7ddb8e617bd74d0	2017-11-14 14:14:48.543	135	7	f	ad-hoc	\N	1	\N	\N	\N
+577	\\xcd6c11684675fd9ee2df16501ce78f775d0b4660f671f0e3652eb002a32f76da	2017-11-14 14:14:56.092	113	7	f	ad-hoc	\N	1	\N	\N	\N
+580	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-14 14:15:28.765	334	25	f	question	\N	1	7	\N	\N
+581	\\xcf5fa65ff623d108eb46e643a888d5cb7a593a64af7314b44379bbe7a510e574	2017-11-14 14:15:28.83	296	24	f	question	\N	1	8	\N	\N
+578	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-14 14:15:28.795	262	55	f	question	\N	1	4	\N	\N
+579	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-14 14:15:28.745	342	172	f	question	\N	1	2	\N	\N
+582	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-14 14:15:28.764	419	132	f	question	\N	1	6	\N	\N
+583	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-14 14:15:28.758	452	132	f	question	\N	1	3	\N	\N
+584	\\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	2017-11-14 14:15:29.127	159	7	f	question	\N	1	9	\N	\N
 \.
 
 
@@ -3888,6 +3944,8 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 2	2017-11-12 21:42:36.767+00	2017-11-14 06:15:27.825+00	Áreas de Atuação por Instância	\N	bar	{"database":2,"type":"query","query":{"source_table":15,"aggregation":[["count"]],"breakout":[["field-id",594],["field-id",592]]}}	{"stackable.stack_type":"normalized"}	1	2	15	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Occupation Area","name":"_occupation_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 6	2017-11-12 23:08:52.511+00	2017-11-14 13:45:43.174+00	Crescimento Cumulativo Mensal por Instância	\N	line	{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}}	{"line.interpolate":"linear","line.marker_enabled":true}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 7	2017-11-12 23:51:12.874+00	2017-11-14 14:07:36.034+00	Tipos por Instância	\N	bar	{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["field-id",500],["field-id",498]],"order_by":[[["aggregation",0],"descending"]],"limit":25}}	{"stackable.stack_type":"stacked","graph.x_axis.title_text":"","graph.y_axis.scale":"linear","graph.y_axis.auto_split":true,"graph.x_axis.axis_enabled":true,"graph.y_axis.axis_enabled":true,"graph.y_axis.auto_range":true}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Text","display_name":"Space Type","name":"_space_type","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+8	2017-11-14 14:12:47.594+00	2017-11-14 14:12:47.594+00	Space Data, Count, Grouped by Date (hour-of-day), Sorted by Date, (day) descending	\N	bar	{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"hour-of-day"]],"aggregation":[["count"]],"order_by":[[["datetime-field",["field-id",501],"hour-of-day"],"descending"]]}}	{}	1	2	12	query	f	\N	\N	\N	f	\N	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"hour-of-day"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+9	2017-11-14 14:13:59.746+00	2017-11-14 14:13:59.746+00	Space Data, Count, Grouped by Date (day-of-week)	\N	line	{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"day-of-week"]],"aggregation":[["count"]]}}	{}	1	2	12	query	f	\N	\N	\N	f	\N	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"day-of-week"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -3904,7 +3962,7 @@ COPY report_cardfavorite (id, created_at, updated_at, card_id, owner_id) FROM st
 --
 
 COPY report_dashboard (id, created_at, updated_at, name, description, creator_id, parameters, points_of_interest, caveats, show_in_getting_started, public_uuid, made_public_by_id, enable_embedding, embedding_params, archived, "position") FROM stdin;
-1	2017-11-11 23:04:31.428+00	2017-11-13 00:11:38.681+00	Espaços	Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC	1	[]	\N	\N	f	\N	\N	t	{}	f	\N
+1	2017-11-11 23:04:31.428+00	2017-11-14 14:14:17.625+00	Espaços	Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC	1	[]	\N	\N	f	\N	\N	t	{}	f	\N
 \.
 
 
@@ -3913,11 +3971,13 @@ COPY report_dashboard (id, created_at, updated_at, name, description, creator_id
 --
 
 COPY report_dashboardcard (id, created_at, updated_at, "sizeX", "sizeY", "row", col, card_id, dashboard_id, parameter_mappings, visualization_settings) FROM stdin;
-2	2017-11-12 21:43:02.934+00	2017-11-12 23:56:01.659+00	9	8	0	0	2	1	[]	{}
-3	2017-11-12 23:01:55.335+00	2017-11-12 23:56:01.692+00	9	8	8	0	3	1	[]	{}
-4	2017-11-12 23:05:46.611+00	2017-11-12 23:56:01.703+00	9	8	0	9	4	1	[]	{}
-5	2017-11-12 23:09:03.988+00	2017-11-12 23:56:01.714+00	9	8	8	9	6	1	[]	{}
-6	2017-11-12 23:52:25.488+00	2017-11-12 23:56:01.725+00	18	10	16	0	7	1	[]	{}
+2	2017-11-12 21:43:02.934+00	2017-11-14 14:14:17.459+00	9	8	0	0	2	1	[]	{}
+3	2017-11-12 23:01:55.335+00	2017-11-14 14:14:17.476+00	9	8	8	0	3	1	[]	{}
+4	2017-11-12 23:05:46.611+00	2017-11-14 14:14:17.487+00	9	8	0	9	4	1	[]	{}
+5	2017-11-12 23:09:03.988+00	2017-11-14 14:14:17.498+00	9	8	8	9	6	1	[]	{}
+6	2017-11-12 23:52:25.488+00	2017-11-14 14:14:17.509+00	18	10	16	0	7	1	[]	{}
+7	2017-11-14 14:13:01.5+00	2017-11-14 14:14:17.52+00	4	4	26	0	8	1	[]	{}
+8	2017-11-14 14:14:17.36+00	2017-11-14 14:14:17.532+00	4	4	26	4	9	1	[]	{}
 \.
 
 
@@ -3935,23 +3995,17 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 17	Card	3	1	2017-11-12 23:01:23.185+00	{"description":null,"archived":false,"table_id":6,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":6,"breakout":[["datetime-field",["field-id",495],"month"]],"aggregation":[["count"]]}},"id":3,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
 22	Card	3	1	2017-11-12 23:02:45.107+00	{"description":null,"archived":false,"table_id":6,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":6,"breakout":[["datetime-field",["field-id",495],"month"],["field-id",272]],"aggregation":[["count"]]}},"id":3,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 23	Card	4	1	2017-11-12 23:05:39.103+00	{"description":null,"archived":false,"table_id":6,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Cumulative count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":6,"breakout":[["datetime-field",["field-id",495],"month"]],"aggregation":[["cum_count"]]}},"id":4,"display":"line","visualization_settings":{"line.marker_enabled":true,"line.interpolate":"cardinal","line.missing":"interpolate"},"public_uuid":null}	f	t	\N
-43	Dashboard	1	1	2017-11-12 23:54:51.513+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":4,"sizeY":4,"row":16,"col":4,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":8,"id":5,"card_id":6,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 52	Card	3	1	2017-11-13 00:08:11.164+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}},"id":3,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 55	Card	4	1	2017-11-13 00:10:07.479+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"month"]],"aggregation":[["cum_count"]]}},"id":4,"display":"line","visualization_settings":{"line.interpolate":"cardinal","line.marker_enabled":true},"public_uuid":null}	f	f	\N
 57	Dashboard	1	1	2017-11-13 00:10:44.794+00	{"description":null,"name":"                                                                                         Indicadores de Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 27	Card	5	1	2017-11-12 23:07:07.754+00	{"description":null,"archived":false,"table_id":6,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Cumulative count, Grouped by Date (month) and Instance","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":6,"breakout":[["datetime-field",["field-id",495],"month"],["field-id",272]],"aggregation":[["cum_count"]]}},"id":5,"display":"line","visualization_settings":{"line.interpolate":"linear","line.marker_enabled":true},"public_uuid":null}	f	t	\N
-44	Dashboard	1	1	2017-11-12 23:54:51.554+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":4,"sizeY":4,"row":16,"col":4,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":8,"id":5,"card_id":6,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 28	Card	6	1	2017-11-12 23:08:52.57+00	{"description":null,"archived":false,"table_id":6,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Cumulative count, Grouped by Date (month) and Instance","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":6,"breakout":[["datetime-field",["field-id",495],"month"],["field-id",272]],"aggregation":[["cum_count"]]}},"id":6,"display":"line","visualization_settings":{"line.interpolate":"cardinal","line.marker_enabled":true},"public_uuid":null}	f	t	\N
 32	Card	2	1	2017-11-12 23:39:41.142+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Occupation Area","name":"_occupation_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Count, Grouped by Instance and Occupation Area","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["field-id",500],["field-id",497]]}},"id":2,"display":"bar","visualization_settings":{"stackable.stack_type":"normalized"},"public_uuid":null}	f	f	\N
 33	Card	3	1	2017-11-12 23:40:19.033+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["datetime-field",["field-id",501],"month"]]}},"id":3,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
 34	Card	3	1	2017-11-12 23:40:49.773+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}},"id":3,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 35	Card	4	1	2017-11-12 23:41:52.319+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Cumulative count, Grouped by Date (month)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"month"]],"aggregation":[["cum_count"]]}},"id":4,"display":"line","visualization_settings":{"line.interpolate":"cardinal","line.marker_enabled":true},"public_uuid":null}	f	f	\N
 36	Card	6	1	2017-11-12 23:42:45.231+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Per Occupation Areas, Cumulative count, Grouped by Date (month) and Instance","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}},"id":6,"display":"line","visualization_settings":{"line.interpolate":"cardinal","line.marker_enabled":true},"public_uuid":null}	f	f	\N
-41	Dashboard	1	1	2017-11-12 23:53:49.086+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":8,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":4,"id":3,"card_id":3,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":8,"id":4,"card_id":4,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":12,"id":5,"card_id":6,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
-42	Dashboard	1	1	2017-11-12 23:53:49.125+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":8,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":4,"id":3,"card_id":3,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":8,"id":4,"card_id":4,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":12,"id":5,"card_id":6,"series":[]},{"sizeX":4,"sizeY":4,"row":8,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 37	Card	7	1	2017-11-12 23:51:12.946+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Space Type","name":"_space_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Space Data, Count, Grouped by Instance and Space Type","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["field-id",500],["field-id",498]]}},"id":7,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked","graph.x_axis.title_text":"","graph.y_axis.scale":"linear","graph.y_axis.auto_split":true,"graph.x_axis.axis_enabled":true,"graph.y_axis.axis_enabled":true,"graph.y_axis.auto_range":true},"public_uuid":null}	f	t	\N
-40	Dashboard	1	1	2017-11-12 23:52:25.712+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":4,"sizeY":4,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":4,"id":3,"card_id":3,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":8,"id":4,"card_id":4,"series":[]},{"sizeX":4,"sizeY":4,"row":0,"col":12,"id":5,"card_id":6,"series":[]},{"sizeX":4,"sizeY":4,"row":4,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
-45	Dashboard	1	1	2017-11-12 23:56:01.755+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 46	Dashboard	1	1	2017-11-12 23:56:01.815+00	{"description":null,"name":"Space Indicators","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 47	Dashboard	1	1	2017-11-13 00:04:22.916+00	{"description":null,"name":"Indicadores de Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
 48	Dashboard	1	1	2017-11-13 00:04:22.982+00	{"description":null,"name":"Indicadores de Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]}]}	f	f	\N
@@ -3977,6 +4031,14 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 71	Card	2	1	2017-11-14 06:15:27.844+00	{"description":null,"archived":false,"table_id":15,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Occupation Area","name":"_occupation_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Áreas de Atuação por Instância","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":15,"aggregation":[["count"]],"breakout":[["field-id",594],["field-id",592]]}},"id":2,"display":"bar","visualization_settings":{"stackable.stack_type":"normalized"},"public_uuid":null}	f	f	\N
 72	Card	6	1	2017-11-14 13:45:43.255+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Crescimento Cumulativo Mensal por Instância","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}},"id":6,"display":"line","visualization_settings":{"line.interpolate":"linear","line.marker_enabled":true},"public_uuid":null}	f	f	\N
 73	Card	7	1	2017-11-14 14:07:36.104+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Text","display_name":"Space Type","name":"_space_type","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Tipos por Instância","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["field-id",500],["field-id",498]],"order_by":[[["aggregation",0],"descending"]],"limit":25}},"id":7,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked","graph.x_axis.title_text":"","graph.y_axis.scale":"linear","graph.y_axis.auto_split":true,"graph.x_axis.axis_enabled":true,"graph.y_axis.axis_enabled":true,"graph.y_axis.auto_range":true},"public_uuid":null}	f	f	\N
+74	Card	8	1	2017-11-14 14:12:47.705+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"hour-of-day"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Space Data, Count, Grouped by Date (hour-of-day), Sorted by Date, (day) descending","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"hour-of-day"]],"aggregation":[["count"]],"order_by":[[["datetime-field",["field-id",501],"hour-of-day"],"descending"]]}},"id":8,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+75	Dashboard	1	1	2017-11-14 14:13:01.588+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":2,"sizeY":2,"row":0,"col":0,"id":7,"card_id":8,"series":[]}]}	f	f	\N
+76	Dashboard	1	1	2017-11-14 14:13:01.732+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":0,"id":7,"card_id":8,"series":[]}]}	f	f	\N
+77	Dashboard	1	1	2017-11-14 14:13:01.825+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":0,"id":7,"card_id":8,"series":[]}]}	f	f	\N
+78	Card	9	1	2017-11-14 14:13:59.816+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"day-of-week"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Space Data, Count, Grouped by Date (day-of-week)","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"day-of-week"]],"aggregation":[["count"]]}},"id":9,"display":"line","visualization_settings":{},"public_uuid":null}	f	t	\N
+79	Dashboard	1	1	2017-11-14 14:14:17.419+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":0,"id":7,"card_id":8,"series":[]},{"sizeX":2,"sizeY":2,"row":0,"col":0,"id":8,"card_id":9,"series":[]}]}	f	f	\N
+80	Dashboard	1	1	2017-11-14 14:14:17.607+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":0,"id":7,"card_id":8,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":4,"id":8,"card_id":9,"series":[]}]}	f	f	\N
+81	Dashboard	1	1	2017-11-14 14:14:17.681+00	{"description":"Indicadores criados para as informações de Espaços fornecidas pela plataforma Mapas Culturais do MinC","name":"Espaços","cards":[{"sizeX":9,"sizeY":8,"row":0,"col":0,"id":2,"card_id":2,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":0,"id":3,"card_id":3,"series":[]},{"sizeX":9,"sizeY":8,"row":0,"col":9,"id":4,"card_id":4,"series":[]},{"sizeX":9,"sizeY":8,"row":8,"col":9,"id":5,"card_id":6,"series":[]},{"sizeX":18,"sizeY":10,"row":16,"col":0,"id":6,"card_id":7,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":0,"id":7,"card_id":8,"series":[]},{"sizeX":4,"sizeY":4,"row":26,"col":4,"id":8,"card_id":9,"series":[]}]}	f	f	\N
 \.
 
 
@@ -4136,6 +4198,17 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 126	1	card	7	2017-11-14 14:05:43.041+00
 127	1	dashboard	1	2017-11-14 14:06:02.606+00
 128	1	card	7	2017-11-14 14:06:08.712+00
+129	1	card	7	2017-11-14 14:10:20.967+00
+130	1	dashboard	1	2017-11-14 14:10:27.754+00
+131	1	dashboard	1	2017-11-14 14:10:37.773+00
+132	1	card	8	2017-11-14 14:12:47.66+00
+133	1	dashboard	1	2017-11-14 14:12:54.548+00
+134	1	dashboard	1	2017-11-14 14:13:01.807+00
+135	1	card	9	2017-11-14 14:13:59.794+00
+136	1	dashboard	1	2017-11-14 14:14:04.09+00
+137	1	dashboard	1	2017-11-14 14:14:17.703+00
+138	1	card	9	2017-11-14 14:14:28.741+00
+139	1	dashboard	1	2017-11-14 14:15:28.72+00
 \.
 
 
@@ -4143,7 +4216,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 46, true);
+SELECT pg_catalog.setval('activity_id_seq', 50, true);
 
 
 --
@@ -4311,7 +4384,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 542, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 584, true);
 
 
 --
@@ -4332,7 +4405,7 @@ SELECT pg_catalog.setval('raw_table_id_seq', 1, false);
 -- Name: report_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_card_id_seq', 7, true);
+SELECT pg_catalog.setval('report_card_id_seq', 9, true);
 
 
 --
@@ -4353,14 +4426,14 @@ SELECT pg_catalog.setval('report_dashboard_id_seq', 1, true);
 -- Name: report_dashboardcard_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_dashboardcard_id_seq', 6, true);
+SELECT pg_catalog.setval('report_dashboardcard_id_seq', 8, true);
 
 
 --
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 73, true);
+SELECT pg_catalog.setval('revision_id_seq', 81, true);
 
 
 --
@@ -4374,7 +4447,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 128, true);
+SELECT pg_catalog.setval('view_log_id_seq', 139, true);
 
 
 --
