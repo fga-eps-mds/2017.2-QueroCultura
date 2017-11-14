@@ -3,6 +3,10 @@ from .api_connections import RequestSpacesRawData
 from .models import LastUpdateDate
 from .models import SpaceData
 from .models import OccupationArea
+from .views import populate_space_data
+from quero_cultura.views import ParserYAML
+import requests_mock
+import json
 
 
 class TestLastUpdateDate(object):
@@ -38,6 +42,31 @@ class TestSpaceData(object):
         assert query.name == name
         assert query.date == date
         assert query.space_type == space_type
+
+
+class TestPopulateSpaceData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_space_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Livre"}, "name": "FGA",
+                   "terms": {"area": ["Cinema", "Teatro"]}}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
+
+        LastUpdateDate.drop_collection()
+        OccupationArea.drop_collection()
+        SpaceData.drop_collection()
+
+        populate_space_data()
+
+        assert LastUpdateDate.objects.count() != 0
+        assert OccupationArea.objects.count() != 0
+        assert SpaceData.objects.count() != 0
 
 
 class TestClassRequestSpacesRawData(object):
