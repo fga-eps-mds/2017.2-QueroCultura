@@ -15,12 +15,9 @@ class LastUpdateDate(Document):
         self._create_date = create_date
 
 
-class SpaceData(Document):
+class OccupationArea(Document):
     _instance = StringField(required=True)
     _occupation_area = StringField(required=True)
-    _name = StringField(required=True)
-    _date = DateTimeField(required=True)
-    _space_type = StringField(required=True)
 
     @property
     def instance(self):
@@ -37,6 +34,21 @@ class SpaceData(Document):
     @occupation_area.setter
     def occupation_area(self, occupation_area):
         self._occupation_area = occupation_area
+
+
+class SpaceData(Document):
+    _instance = StringField(required=True)
+    _name = StringField(required=True)
+    _date = DateTimeField(required=True)
+    _space_type = StringField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
     def name(self):
