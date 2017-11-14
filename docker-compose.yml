@@ -46,6 +46,7 @@ services:
         MB_DB_HOST: postgres
     depends_on:
       - postgres
+      - dkr
 
   dkr:
     image: docker
@@ -54,7 +55,6 @@ services:
     volumes:
       - ".:/dkr"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    command: docker exec 20172querocultura_metabase_1 bash -c "sleep 60"
     command: docker exec 20172querocultura_postgres_1 bash -c "sleep 15 && psql metabase quero_cultura -f /postgres_metabase/metabase.sql"
 
     depends_on:
