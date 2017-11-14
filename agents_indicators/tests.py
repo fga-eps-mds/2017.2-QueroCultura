@@ -119,8 +119,15 @@ class TestPercentAgentsPerAreaOperation(object):
 
 class TestUpdateAgentIndicator(object):
 
-    @staticmethod
-    def test_update_agent_indicator():
+    @requests_mock.Mocker(kw='mock')
+    def test_update_agent_indicator(self, **kwargs):
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Coletivo"}, "terms": {"area": ["Cinema", "Teatro"]}}]
+
+        kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+
         PercentAgentsPerAreaOperation.drop_collection()
         PercentIndividualAndCollectiveAgent.drop_collection()
         AmountAgentsRegisteredPerMonth.drop_collection()
