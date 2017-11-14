@@ -12,6 +12,13 @@ function createOptions(category, description){
             break;
         case "bar":
             options.scales = {yAxes: [{ticks: {beginAtZero:true}}]}
+            // options.scales = {xAxes: [{ticks: {display:false}}]}
+            options.scales = {xAxes: [{
+                                        ticks: {
+                                          autoSkip: false,
+                                        }
+                            }]}
+
             options.legend = {display: true}
             break;
     }
