@@ -2,6 +2,7 @@ from datetime import datetime
 from .api_connections import RequestSpacesRawData
 from .models import LastUpdateDate
 from .models import SpaceData
+from .models import OccupationArea
 
 
 class TestLastUpdateDate(object):
@@ -13,18 +14,27 @@ class TestLastUpdateDate(object):
         assert query.create_date == create_date
 
 
+class TestOccupationArea(object):
+    def test_occupation_area(self):
+        OccupationArea.drop_collection()
+        instance = "SP"
+        area = "Cinema"
+        OccupationArea(instance, area).save()
+        query = OccupationArea.objects.first()
+        assert query.instance == instance
+        assert query.occupation_area == area
+
+
 class TestSpaceData(object):
     def test_space_data(self):
         SpaceData.drop_collection()
         instance = "SP"
-        area = "Cinema"
         name = "Cia"
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
         space_type = "Teatro"
-        SpaceData(instance, area, name, date, space_type).save()
+        SpaceData(instance, name, date, space_type).save()
         query = SpaceData.objects.first()
         assert query.instance == instance
-        assert query.occupation_area == area
         assert query.name == name
         assert query.date == date
         assert query.space_type == space_type
