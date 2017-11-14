@@ -8,14 +8,11 @@ from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from celery.decorators import task
 
-
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 
 def index(request):
     view_type = "question"
-    number = 2
-
 
     url = {"graphic1": get_metabase_url(view_type, 2),
            "graphic2": get_metabase_url(view_type, 4),

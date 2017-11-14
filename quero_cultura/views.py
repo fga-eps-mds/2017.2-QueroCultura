@@ -143,4 +143,4 @@ def get_metabase_url(view_type, number):
     token = str(token).replace("b'", "")
     token = token.replace("'", "")
 
-    return METABASE_SITE_URL + "/embed/"+ view_type +"/" + token + "#bordered=true&titled=true"
+    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled=true"
