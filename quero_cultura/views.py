@@ -2,6 +2,8 @@ from django.shortcuts import render
 from collections import OrderedDict
 from .api_connections import RequestMarkersRawData
 from .models import Marker
+import requests
+import json
 import datetime
 import yaml
 import jwt
@@ -48,8 +50,7 @@ class UpdateMarkers(object):
             else:
                 location = j_object['location']
 
-            city = get_marker_city(location)
-            state = get_marker_state(location)
+            city, state = get_marker_address(location)
             
             Marker(marker_id, name, marker_type, action_type, city, state,
                     single_url, subsite, create_time_stamp, update_time_stamp, location).save()
@@ -68,14 +69,16 @@ class UpdateMarkers(object):
         pass
 
 
-    def get_marker_city():
-        pass
+    def get_marker_address(location):
+        if location is not None:
+            if location['latitude'] != '0' or location['longitude'] != '0':
+                openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+location['latitude']+"&lon="+location['longitude']+"&format=json"
+                data = json.loads(requests.get(openstreetURL).text)
+                return (data['address']['city_district'], data['address']['state'])
 
+        return ('', '')
 
-    def get_marker_state():
-    
-
-
+ 
 
 def index(request):
     return render(request, 'quero_cultura/index.html', {})
