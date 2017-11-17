@@ -1,11 +1,80 @@
 from django.shortcuts import render
-import yaml
 from collections import OrderedDict
+from .api_connections import RequestMarkersRawData
+from .models import Marker
+import datetime
+import yaml
 import jwt
+
 
 
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
 METABASE_SITE_URL = "http://0.0.0.0:3000"
+
+
+class UpdateMarkers(object):
+
+    # instance_urls
+    # marker_types
+    # last_day
+    @task(name="last_day_update_map")
+    def last_day_update_map():
+
+        # One day has 1440 minutes
+        last_day = 1440
+        query_date_time = datetime.datetime.now() - datetime.timedelta(minutes=last_day)
+
+        # First time the server is up
+        if Markers.objects().count() == 0:
+            for url in instance_urls:
+                for marker_type in marker_types:
+                    request = RequestMarkersRawData(query_date_time, url, marker_type)
+                    save_markers_data(request.data, marker_type)
+
+
+    def save_markers_data(data, marker_type):
+        for j_object in data:
+            action_type = get_marker_action(j_object)
+            name = j_object['name']
+            single_url = j_object['singleUrl']
+            subsite = j_object['subsite']
+            create_time_stamp = get_date(j_object['createTimeStamp'])
+            update_time_stamp = get_date(j_object['updateTimeStamp'])
+
+            if marker_type = 'project':
+                location = None
+                if j_object['owner'] is not None:
+                    location = j_object['owner']['location']
+            else:
+                location = j_object['location']
+
+            city = get_marker_city(location)
+            state = get_marker_state(location)
+            
+            Marker(marker_id, name, marker_type, action_type, city, state,
+                    single_url, subsite, create_time_stamp, update_time_stamp, location).save()
+
+
+    def get_marker_action(marker):
+        if marker['updateTimeStamp'] == None:
+                action_type = 'creation'
+            else:
+                action_type = 'update'
+
+        return action_type
+
+
+    def get_date(time_stamp):
+        pass
+
+
+    def get_marker_city():
+        pass
+
+
+    def get_marker_state():
+    
+
 
 
 def index(request):
