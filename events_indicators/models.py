@@ -38,8 +38,7 @@ class EventLanguage(Document):
 
 class EventData(Document):
     _instance = StringField(required=True)
-    _event_type = StringField(required=True)
-    _classificacao_etaria = StringField(required=True)
+    _age_rage = StringField(required=True)
     _date = DateTimeField(required=True)
 
     @property
@@ -59,17 +58,9 @@ class EventData(Document):
         self._date = date
 
     @property
-    def classificacao_etaria(self):
-        return self._classificacao_etaria
+    def age_range(self):
+        return self._age_rage
 
-    @classificacao_etaria.setter
-    def classificacao_etaria(self, classificacao_etaria):
-        self._classificacao_etaria = classificacao_etaria
-
-    @property
-    def event_type(self):
-        return self._event_type
-
-    @event_type.setter
-    def event_type(self, event_type):
-        self._event_type = event_type
+    @age_range.setter
+    def age_range(self, age_range):
+        self._age_rage = age_range
