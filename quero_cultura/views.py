@@ -40,12 +40,75 @@ class UpdateMarkers(object):
 
     def save_markers_data(data, marker_type):
         for j_object in data:
-            action_type = get_marker_action(j_object)
-            name = j_object['name']
-            single_url = j_object['singleUrl']
-            subsite = j_object['subsite']
-            create_time_stamp = get_date(j_object['createTimeStamp'])
-            update_time_stamp = get_date(j_object['updateTimeStamp'])
+            print(j_object)
+            print('TIPO: ' + marker_type)
+            name = UpdateMarkers.get_attribute(j_object, 'name')
+            single_url = UpdateMarkers.get_attribute(j_object, 'singleUrl')
+            subsite = UpdateMarkers.get_attribute(j_object, 'subsite')
+            subsite = 0 if subsite == '' else subsite
+            create_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'createTimestamp'))
+            update_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'updateTimestamp'))
+            action = UpdateMarkers.get_marker_action(create_timestamp, update_timestamp)
+            action_time = action['time']
+            action_type = action['type']
+
+            location = UpdateMarkers.get_location(j_object, marker_type)
+
+            city, state = UpdateMarkers.get_marker_address(location)
+            
+            Marker(name, marker_type, action_type, action_time, city, state,
+                    single_url, subsite, create_timestamp, update_timestamp, location).save()
+
+
+    def get_marker_action(create_timestamp, update_timestamp):
+        print(create_timestamp)
+        print(update_timestamp)
+        action = {}
+        if update_timestamp is None or update_timestamp == '':
+            action['type'] = 'creation'
+            action['time']= create_timestamp
+        else:
+            action['type'] = 'update'
+            action['time'] = update_timestamp
+
+        print(action)
+        return action
+
+
+    def get_marker_address(location):
+        if location is not None:
+            if location['latitude'] != '0' or location['longitude'] != '0':
+                latitude = str(location['latitude'])
+                longitude = str(location['longitude'])
+                openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
+                print(openstreetURL)
+                data = json.loads(requests.get(openstreetURL).text)
+                try:
+                    return (data['address']['city_district'], data['address']['state'])
+                except:
+                    pass
+
+        return (None, None)
+
+
+    def get_attribute(j_object, key):
+        try:
+            attribute = j_object[key]
+        except:
+            attribute = ''
+
+        return attribute
+
+    
+    def get_date(timestamp):
+        print(timestamp)
+        if timestamp is not None and timestamp != '':
+            date = timestamp['date']
+        else:
+            date = None
+
+        return date
+
 
             if marker_type = 'project':
                 location = None
