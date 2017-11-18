@@ -17,6 +17,21 @@ class TestLastUpdateProjectDate(object):
         assert query.create_date == create_date
 
 
+class TestProjectData(object):
+    def test_project_data(self):
+        ProjectData.drop_collection()
+        instance = "SP"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        project_type = "Teatro"
+        online = "True"
+        ProjectData(instance, project_type, online, date).save()
+        query = ProjectData.objects.first()
+        assert query.instance == instance
+        assert query.online_subscribe == online
+        assert query.date == date
+        assert query.project_type == project_type
+
+
 class TestClassRequestProjectsRawData(object):
 
     def test_success_request(self):
