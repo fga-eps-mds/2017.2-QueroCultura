@@ -9,7 +9,13 @@ METABASE_SITE_URL = "http://0.0.0.0:3000"
 
 
 def index(request):
-    return render(request, 'quero_cultura/index.html', {})
+    parseYaml = ParserYAML()
+    urls = parseYaml.get_multi_instances_urls
+    context = {
+        "urls": urls,
+    }
+    print(context)
+    return render(request, 'quero_cultura/index.html', context)
 
 
 def build_operation_area_indicator(new_data, old_data):
@@ -70,8 +76,8 @@ def merge_indicators(indicator, old_data):
 def build_two_loop_indicator(new_data, first_atribute, second_atribute):
     indicator = {}
 
-    for register in new_data:
-        for sub_register in register[first_atribute][second_atribute]:
+    for sub_register in register[first_atribute][second_atribute]:
+        for register in new_data:
             if not (str(sub_register) in indicator):
                 indicator[str(sub_register)] = 1
             else:

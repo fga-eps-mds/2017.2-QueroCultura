@@ -1,3 +1,4 @@
+
 var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2pqY2FzdHJvIiwiYSI6ImNqN21vYXpiMDFib3UzMnQ2OG1uM205NWEifQ.8sFAUtZu22lf_o3kmEVlMg',{
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 20,
@@ -45,23 +46,6 @@ function initialize_data_map(){
     }
     return map
 }
-var instanceList = [//'http://mapas.cultura.gov.br/api/',
-                    //'http://spcultura.prefeitura.sp.gov.br/api/',
-                    //'http://mapa.cultura.ce.gov.br/api/',
-                    //'http://londrinacultura.londrina.pr.gov.br/api/',
-                    'http://culturaz.santoandre.sp.gov.br/api/'
-                    //'http://mapa.cultura.df.gov.br/api/',
-                    //'https://mapas.mt.gov.br/api/',
-                    //'http://estadodacultura.sp.gov.br/api/',
-                    //'http://lugaresdacultura.org.br/api/',
-                    //'http://blumenaumaiscultura.com.br/api/',
-                    //'http://mapaculturalbh.pbh.gov.br/api/',
-                    //'http://jpcultura.joaopessoa.pb.gov.br/api/',
-                    //'http://mapacultural.ubatuba.sp.gov.br/api/',
-                    //'http://londrinacultura.londrina.pr.gov.br/api/',
-                    //'http://www.mapacultural.pe.gov.br/api/'
-                  ]
-
 
 var baseLayers = {
   "Light": mapboxTiles,

@@ -33,6 +33,7 @@ services:
     volumes:
         - ./postgres_metabase:/postgres_metabase
 
+
   metabase:
     image: metabase/metabase
     ports:
