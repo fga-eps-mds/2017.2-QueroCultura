@@ -45,9 +45,7 @@ function initialize_data_map(){
     }
     return map
 }
-var instanceList = ['http://mapas.cultura.gov.br/api/',
-                    'http://spcultura.prefeitura.sp.gov.br/api/',
-                    'http://mapa.cultura.ce.gov.br/api/']
+var instanceList = ['http://londrinacultura.londrina.pr.gov.br/api/']
 
 
 var baseLayers = {
@@ -104,6 +102,7 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
                                           'updateTimestamp' : "GT("+queryDateTime+")"
                                          });
 
+    console.log("valllooooor",promise)
     return promise
 }
 
