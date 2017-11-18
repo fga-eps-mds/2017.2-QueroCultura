@@ -1,11 +1,20 @@
 from datetime import datetime
 from .api_connections import RequestProjectsRawData
-from .views import update_project_indicator
+from .views import populate_project_data
+from .models import LastUpdateProjectDate
+from .models import ProjectData
 from quero_cultura.views import ParserYAML
 import requests_mock
-import json
-import requests
 import yaml
+
+
+class TestLastUpdateProjectDate(object):
+    def test_last_update_project_date(self):
+        LastUpdateProjectDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateProjectDate(create_date).save()
+        query = LastUpdateProjectDate.objects.first()
+        assert query.create_date == create_date
 
 
 class TestClassRequestProjectsRawData(object):
@@ -35,31 +44,3 @@ class TestClassRequestProjectsRawData(object):
         type_project_raw_data = type(project_raw_data)
         intenger = 1
         assert type_project_raw_data == type(intenger)
-
-
-class TestUpdateProjectIndicator(object):
-
-    @requests_mock.Mocker(kw='mock')
-    def test_update_event_indicator(self, **kwargs):
-
-        parser_yaml = ParserYAML()
-
-        urls = parser_yaml.get_multi_instances_urls
-
-        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "type": {"name": "Oficina"}, "useRegistrations": True}]
-
-        for url in urls:
-            kwargs['mock'].get(url + "project/find/", text=json.dumps(result))
-
-        PercentProjectPerType.drop_collection()
-        PercentProjectThatAcceptOnlineTransitions.drop_collection()
-        QuantityOfRegisteredProject.drop_collection()
-
-        update_project_indicator()
-
-        total = len(PercentProjectPerType.objects)
-        total += len(PercentProjectThatAcceptOnlineTransitions.objects)
-        total += len(QuantityOfRegisteredProject.objects)
-
-        assert total == 6
