@@ -110,14 +110,26 @@ class UpdateMarkers(object):
         return date
 
 
-            if marker_type = 'project':
-                location = None
+    def get_location(j_object, marker_type):
+        if marker_type == 'project':
                 if j_object['owner'] is not None:
                     location = j_object['owner']['location']
             else:
-                location = j_object['location']
+                location = {'latitude': '0', 'longitude': '0'}
 
-            city, state = get_marker_address(location)
+        elif marker_type == 'event':
+            try:
+                location = j_object['occurrences'].pop()['space']['location']
+            except:
+                location = {'latitude': '0', 'longitude': '0'}
+        else:
+            try:
+                location = j_object['location']
+            except:
+                location = {'latitude': '0', 'longitude': '0'}
+
+        print(location)
+        return location
             
             Marker(marker_id, name, marker_type, action_type, city, state,
                     single_url, subsite, create_time_stamp, update_time_stamp, location).save()
