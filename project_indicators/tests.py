@@ -5,7 +5,7 @@ from .models import LastUpdateProjectDate
 from .models import ProjectData
 from quero_cultura.views import ParserYAML
 import requests_mock
-import yaml
+import json
 
 
 class TestLastUpdateProjectDate(object):
@@ -30,6 +30,27 @@ class TestProjectData(object):
         assert query.online_subscribe == online
         assert query.date == date
         assert query.project_type == project_type
+
+
+class TestPopulateProjectData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_project_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Livre"}, "useRegistrations": "FGA"}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "project/find/", text=json.dumps(result))
+
+        LastUpdateProjectDate.drop_collection()
+        ProjectData.drop_collection()
+
+        populate_project_data()
+
+        assert LastUpdateProjectDate.objects.count() != 0
+        assert ProjectData.objects.count() != 0
 
 
 class TestClassRequestProjectsRawData(object):
