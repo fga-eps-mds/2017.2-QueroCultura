@@ -45,7 +45,18 @@ function initialize_data_map(){
     }
     return map
 }
-var instanceList = ['http://londrinacultura.londrina.pr.gov.br/api/']
+var instanceList = ['http://londrinacultura.londrina.pr.gov.br/api/',
+                    'http://culturaz.santoandre.sp.gov.br/api/',
+                    'http://mapa.cultura.df.gov.br/api/',
+                    'https://mapas.mt.gov.br/api/',
+                    'http://estadodacultura.sp.gov.br/api/',
+                    'http://lugaresdacultura.org.br/api/',
+                    'http://blumenaumaiscultura.com.br/api/',
+                    'http://mapaculturalbh.pbh.gov.br/api/',
+                    'http://jpcultura.joaopessoa.pb.gov.br/api/',
+                    'http://mapacultural.ubatuba.sp.gov.br/api/',
+                    'http://londrinacultura.londrina.pr.gov.br/api/',
+                    'http://www.mapacultural.pe.gov.br']
 
 
 var baseLayers = {
@@ -90,7 +101,7 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
             break
         case 'space':
         case 'agent':
-            select = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
+            select = 'id ,name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
             break
         default:
             select = ''
@@ -102,7 +113,6 @@ function createQueryPromise(instanceURL, markerType, lastMinutes){
                                           'updateTimestamp' : "GT("+queryDateTime+")"
                                          });
 
-    console.log("valllooooor",promise)
     return promise
 }
 
