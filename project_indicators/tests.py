@@ -53,30 +53,19 @@ class TestPopulateProjectData(object):
         assert ProjectData.objects.count() != 0
 
 
-class TestClassRequestProjectsRawData(object):
+class TestRequestProjectsRawData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_request_projects_raw_data(self, **kwargs):
+        url = "http://mapas.cultura.gov.br/api/"
 
-    def test_success_request(self):
-        current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
-        response_project_raw_data = request_project_raw_data.response
-        response_status_code = response_project_raw_data.status_code
-        assert response_status_code == 200
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Livre"}, "useRegistrations": "FGA"}]
 
-    def test_data_content(self):
-        current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
-        project_raw_data = request_project_raw_data.data
-        type_project_raw_data = type(project_raw_data)
-        empty_list = []
-        assert type_project_raw_data == type(empty_list)
+        kwargs['mock'].get(url + "project/find/", text=json.dumps(result))
 
-    def test_data_lenght(self):
         current_time = datetime.now().__str__()
-        request_project_raw_data = RequestProjectsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
-        project_raw_data = request_project_raw_data.data_length
-        type_project_raw_data = type(project_raw_data)
-        intenger = 1
-        assert type_project_raw_data == type(intenger)
+        raw_data = RequestProjectsRawData(current_time,
+                                          "http://mapas.cultura.gov.br/api/")
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1
