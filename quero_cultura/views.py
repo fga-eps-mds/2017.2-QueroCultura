@@ -27,16 +27,15 @@ class UpdateMarkers(object):
     @task(name="last_day_update_map")
     def last_day_update_map():
 
-        # One day has 1440 minutes
-        last_day = 1440
-        query_date_time = datetime.datetime.now() - datetime.timedelta(minutes=last_day)
+        last_day = 1
+        query_date_time = datetime.datetime.now() - datetime.timedelta(days=last_day)
 
         # First time the server is up
-        if Markers.objects().count() == 0:
-            for url in instance_urls:
-                for marker_type in marker_types:
+        if Marker.objects().count() == 0:
+            for url in INSTANCE_URLS:
+                for marker_type in MARKER_TYPES:
                     request = RequestMarkersRawData(query_date_time, url, marker_type)
-                    save_markers_data(request.data, marker_type)
+                    UpdateMarkers.save_markers_data(request.data, marker_type)
 
 
     def save_markers_data(data, marker_type):
