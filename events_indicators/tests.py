@@ -2,9 +2,7 @@ from datetime import datetime
 from .api_connections import RequestEventsRawData
 from quero_cultura.views import ParserYAML
 import requests_mock
-import requests
 import json
-import yaml
 
 
 class TestClassRequestEventsRawData(object):
