@@ -2,6 +2,7 @@ from django.shortcuts import render
 from collections import OrderedDict
 from .api_connections import RequestMarkersRawData
 from .models import Marker
+from celery.decorators import task
 import requests
 import json
 import datetime
@@ -13,7 +14,11 @@ import jwt
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
 METABASE_SITE_URL = "http://0.0.0.0:3000"
 
+INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
+                    'http://spcultura.prefeitura.sp.gov.br/api/',
+                    'http://mapa.cultura.ce.gov.br/api/']
 
+MARKER_TYPES = ['event', 'agent', 'project', 'space']
 class UpdateMarkers(object):
 
     # instance_urls
