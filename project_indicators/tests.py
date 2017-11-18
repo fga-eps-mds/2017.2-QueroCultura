@@ -1,68 +1,11 @@
 from datetime import datetime
 from .api_connections import RequestProjectsRawData
-from .models import PercentProjectPerType
-from .models import PercentProjectThatAcceptOnlineTransitions
-from .models import QuantityOfRegisteredProject
 from .views import update_project_indicator
 from quero_cultura.views import ParserYAML
 import requests_mock
 import json
 import requests
 import yaml
-
-
-class TestPercentProjectPerType(object):
-
-    def test_total_project(self):
-        PercentProjectPerType.drop_collection()
-        indicator = 5
-        project_indicator = PercentProjectPerType(
-            indicator, str(datetime.now()), {'5': 5})
-        project_indicator.save()
-        query = PercentProjectPerType.objects.first()
-        assert query._total_project == indicator
-
-    def test_total_project_per_type(self):
-        PercentProjectPerType.drop_collection()
-        indicator = {'5': 5}
-        project_indicator = PercentProjectPerType(
-            50, str(datetime.now()), indicator)
-        project_indicator.save()
-        query = PercentProjectPerType.objects.first()
-        assert query._total_project_per_type == indicator
-
-
-class TestPercentPercentProjectThatAcceptOnlineTransitions(object):
-
-    def test_total_project_that_accept_online_transitions(self):
-        PercentProjectThatAcceptOnlineTransitions.drop_collection()
-        indicator = {'5': 5}
-        project_indicator = PercentProjectThatAcceptOnlineTransitions(
-            5, str(datetime.now()), indicator)
-        project_indicator.save()
-        query = PercentProjectThatAcceptOnlineTransitions.objects.first()
-        assert query._total_project_that_accept_online_transitions == indicator
-
-    def total_project(self):
-        PercentProjectThatAcceptOnlineTransitions.drop_collection()
-        indicator = 50
-        project_indicator = PercentProjectThatAcceptOnlineTransitions(
-            51, indicator, str(datetime.now()))
-        project_indicator.save()
-        query = PercentProjectThatAcceptOnlineTransitions.objects.first()
-        assert query._total_project == indicator
-
-
-class TestQuantityOfRegisteredProject(object):
-
-    def test_total_project_registered_per_mounth_per_year(self):
-        QuantityOfRegisteredProject.drop_collection()
-        indicator = {'5': 5}
-        project_indicator = QuantityOfRegisteredProject(
-            50, str(datetime.now()), indicator)
-        project_indicator.save()
-        query = QuantityOfRegisteredProject.objects.first()
-        assert query._total_project_registered_per_mounth_per_year == indicator
 
 
 class TestClassRequestProjectsRawData(object):
@@ -98,7 +41,7 @@ class TestUpdateProjectIndicator(object):
 
     @requests_mock.Mocker(kw='mock')
     def test_update_event_indicator(self, **kwargs):
-        
+
         parser_yaml = ParserYAML()
 
         urls = parser_yaml.get_multi_instances_urls
