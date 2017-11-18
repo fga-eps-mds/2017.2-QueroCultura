@@ -64,19 +64,19 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=20.0),
         },
     },
-    'update_project_indicator': {
-        'task': 'update_project_indicator',
-        'schedule': crontab(minute=15,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'update_project_indicator_now': {
-        'task': 'update_project_indicator',
-        'schedule': 25.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=35.0),
-        },
-    },
+    # 'update_project_indicator': {
+    #     'task': 'update_project_indicator',
+    #     'schedule': crontab(minute=15,
+    #                         hour=3,
+    #                         day_of_week='sunday'),
+    # },
+    # 'update_project_indicator_now': {
+    #     'task': 'update_project_indicator',
+    #     'schedule': 25.0,
+    #     'options': {
+    #         'expires': datetime.now() + timedelta(seconds=35.0),
+    #     },
+    # },
     'populate_space_data': {
         'task': 'populate_space_data',
         'schedule': crontab(minute=20,
@@ -90,17 +90,17 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=45.0),
         },
     },
-    'periodic_update': {
-        'task': 'periodic_update',
-        'schedule': crontab(minute=25,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'periodic_update_now': {
-        'task': 'periodic_update',
-        'schedule': 35.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=50.0),
-        },
-    },
+    # 'periodic_update': {
+    #     'task': 'periodic_update',
+    #     'schedule': crontab(minute=25,
+    #                         hour=3,
+    #                         day_of_week='sunday'),
+    # },
+    # 'periodic_update_now': {
+    #     'task': 'periodic_update',
+    #     'schedule': 35.0,
+    #     'options': {
+    #         'expires': datetime.now() + timedelta(seconds=50.0),
+    #     },
+    # },
 }
