@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine import IntField
+from mongoengine import StringField
 from mongoengine import DictField
 from mongoengine import DateTimeField
 
@@ -44,34 +44,34 @@ class EventData(Document):
     _classificacao_etaria = StringField(required=True)
     _date = DateTimeField(required=True)
 
-        @property
-        def instance(self):
-            return self._instance
+    @property
+    def instance(self):
+        return self._instance
 
-        @instance.setter
-        def instance(self, instance):
-            self._instance = instance
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
-        @property
-        def date(self):
-            return self._date
+    @property
+    def date(self):
+        return self._date
 
-        @date.setter
-        def date(self, date):
-            self._date = date
+    @date.setter
+    def date(self, date):
+        self._date = date
 
-        @property
-        def classificacao_etaria(self):
-            return self._classificacao_etaria
+    @property
+    def classificacao_etaria(self):
+        return self._classificacao_etaria
 
-        @classificacao_etaria.setter
-        def classificacao_etaria(self, classificacao_etaria):
-            self._classificacao_etaria = classificacao_etaria
+    @classificacao_etaria.setter
+    def classificacao_etaria(self, classificacao_etaria):
+        self._classificacao_etaria = classificacao_etaria
 
-        @property
-        def event_type(self):
-            return self._event_type
+    @property
+    def event_type(self):
+        return self._event_type
 
-        @event_type.setter
-        def event_type(self, event_type):
-            self._event_type = event_type
+    @event_type.setter
+    def event_type(self, event_type):
+        self._event_type = event_type
