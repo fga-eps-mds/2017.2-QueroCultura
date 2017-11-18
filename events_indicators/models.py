@@ -1,6 +1,5 @@
 from mongoengine import Document
 from mongoengine import StringField
-from mongoengine import DictField
 from mongoengine import DateTimeField
 
 
@@ -35,7 +34,6 @@ class EventLanguage(Document):
     @event_language.setter
     def event_language(self, event_language):
         self._event_language = event_language
-
 
 
 class EventData(Document):
