@@ -16,7 +16,7 @@ class LastUpdateLibraryDate(Document):
 
 
 class LibraryArea(Document):
-    _instante = StringField(required=True)
+    _instance = StringField(required=True)
     _area = StringField(required=True)
 
     @property
@@ -37,10 +37,10 @@ class LibraryArea(Document):
 
 
 class LibraryData(Document):
-	_instante = StringField(required=True)
-	_sphere = StringField(required=True)
-	_sphere_type = StringField(required=True)
-	_date = DateTimeField(required=True)
+    _instance = StringField(required=True)
+    _sphere = StringField(required=True)
+    _sphere_type = StringField(required=True)
+    _date = DateTimeField(required=True)
 
     @property
     def instance(self):
@@ -49,14 +49,14 @@ class LibraryData(Document):
     @instance.setter
     def instance(self, instance):
         self._instance = instance
-	
-	@property
+
+    @property
     def date(self):
         return self._date
 
     @date.setter
     def date(self, date):
-        self._date = date    
+        self._date = date
 
     @property
     def sphere(self):
@@ -67,9 +67,9 @@ class LibraryData(Document):
         self._sphere = sphere
 
     @property
-    def _sphere_type(self):
+    def sphere_type(self):
         return self._sphere_type
 
-    @sphere.setter
+    @sphere_type.setter
     def sphere_type(self, sphere_type):
-        self._sphere_type = sphere_type    
+        self._sphere_type = sphere_type
