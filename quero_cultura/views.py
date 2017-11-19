@@ -15,10 +15,12 @@ METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc6
 METABASE_SITE_URL = "http://0.0.0.0:3000"
 
 INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
-                    'http://spcultura.prefeitura.sp.gov.br/api/',
-                    'http://mapa.cultura.ce.gov.br/api/']
+                 'http://spcultura.prefeitura.sp.gov.br/api/',
+                 'http://mapa.cultura.ce.gov.br/api/']
 
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
+
+
 class UpdateMarkers(object):
 
     @task(name="last_day_update_map")
@@ -37,12 +39,12 @@ class UpdateMarkers(object):
 
     def save_markers_data(data, marker_type):
         for j_object in data:
-            print(j_object)
-            print('TIPO: ' + marker_type)
             name = UpdateMarkers.get_attribute(j_object, 'name')
             single_url = UpdateMarkers.get_attribute(j_object, 'singleUrl')
+
             subsite = UpdateMarkers.get_attribute(j_object, 'subsite')
             subsite = 0 if subsite == '' else subsite
+
             create_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'createTimestamp'))
             update_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'updateTimestamp'))
             action = UpdateMarkers.get_marker_action(create_timestamp, update_timestamp)
@@ -52,25 +54,22 @@ class UpdateMarkers(object):
             location = UpdateMarkers.get_location(j_object, marker_type)
 
             city, state = UpdateMarkers.get_marker_address(location)
-            
-            Marker(name, marker_type, action_type, action_time, city, state,
-                    single_url, subsite, create_timestamp, update_timestamp, location).save()
 
+            Marker(name, marker_type, action_type, action_time, city, state,
+                   single_url, subsite, create_timestamp,
+                   update_timestamp, location).save()
 
     def get_marker_action(create_timestamp, update_timestamp):
-        print(create_timestamp)
-        print(update_timestamp)
         action = {}
+
         if update_timestamp is None or update_timestamp == '':
             action['type'] = 'creation'
-            action['time']= create_timestamp
+            action['time'] = create_timestamp
         else:
             action['type'] = 'update'
             action['time'] = update_timestamp
 
-        print(action)
         return action
-
 
     def get_marker_address(location):
         if location is not None:
@@ -78,15 +77,13 @@ class UpdateMarkers(object):
                 latitude = str(location['latitude'])
                 longitude = str(location['longitude'])
                 openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
-                print(openstreetURL)
                 data = json.loads(requests.get(openstreetURL).text)
                 try:
                     return (data['address']['city_district'], data['address']['state'])
                 except:
-                    pass
+                    return('', '')
 
         return (None, None)
-
 
     def get_attribute(j_object, key):
         try:
@@ -96,9 +93,7 @@ class UpdateMarkers(object):
 
         return attribute
 
-    
     def get_date(timestamp):
-        print(timestamp)
         if timestamp is not None and timestamp != '':
             date = timestamp['date']
         else:
@@ -106,7 +101,6 @@ class UpdateMarkers(object):
 
         return date
 
-    
     def get_location(j_object, marker_type):
         if marker_type == 'project':
             if j_object['owner'] is not None:
@@ -125,7 +119,6 @@ class UpdateMarkers(object):
             except:
                 location = {'latitude': '0', 'longitude': '0'}
 
-        print(location)
         return location
 
 
@@ -135,7 +128,6 @@ class UpdateMarkers(object):
         for marker in all_markers:
             if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
                 marker.delete()
-
 
     def get_last_day_markers():
         all_markers = Marker.objects.all()
@@ -148,7 +140,6 @@ class UpdateMarkers(object):
 
         return last_day_markers
 
-
     def get_last_hour_markers():
         all_markers = Marker.objects.all()
         last_hour_markers = []
@@ -159,14 +150,17 @@ class UpdateMarkers(object):
 
         return last_hour_markers
 
-
-    def get_most_recently_markers():
+    def get_most_recent_markers():
         ordered_markers = Marker.objects.order_by('action_time')
         last_minute_markers = []
 
-        if(len(ordered_markers >= 10)):
-            for x in range(0, 9):
-                last_minute_markers.append(ordered_markers[x])
+        n_of_markers = 10
+
+        if len(ordered_markers) >= n_of_markers:
+            for i in range(0, n_of_markers-1):
+                last_minute_markers.append(ordered_markers[i])
+        else:
+            last_minute_markers += ordered_markers
 
         return last_minute_markers
 
@@ -180,16 +174,16 @@ def build_operation_area_indicator(new_data, old_data):
 
     for agent in new_data:
         for area in agent["terms"]["area"]:
-            if not (area in per_operation_area):
+            if area not in per_operation_area:
                 per_operation_area[area] = 1
             else:
                 per_operation_area[area] += 1
 
     for area in old_data:
-            if not (area in per_operation_area):
-                per_operation_area[area] = old_data[area]
-            else:
-                per_operation_area[area] += old_data[area]
+        if area not in per_operation_area:
+            per_operation_area[area] = old_data[area]
+        else:
+            per_operation_area[area] += old_data[area]
 
     return per_operation_area
 
@@ -198,7 +192,7 @@ def build_simple_indicator(new_data, atribute):
     indicator = {}
 
     for register in new_data:
-        if not (str(register[atribute]) in indicator):
+        if str(register[atribute]) not in indicator:
             indicator[str(register[atribute])] = 1
         else:
             indicator[str(register[atribute])] += 1
@@ -210,7 +204,7 @@ def build_compound_indicator(new_data, first_atribute, second_atribute):
     indicator = {}
 
     for register in new_data:
-        if not (str(register[first_atribute][second_atribute]) in indicator):
+        if str(register[first_atribute][second_atribute]) not in indicator:
             indicator[str(register[first_atribute][second_atribute])] = 1
         else:
             indicator[str(register[first_atribute][second_atribute])] += 1
@@ -222,7 +216,7 @@ def merge_indicators(indicator, old_data):
     new_indicator = indicator
 
     for register in old_data:
-        if not (register in new_indicator):
+        if register not in new_indicator:
             new_indicator[register] = old_data[register]
         else:
             new_indicator[register] += old_data[register]
@@ -235,7 +229,7 @@ def build_two_loop_indicator(new_data, first_atribute, second_atribute):
 
     for register in new_data:
         for sub_register in register[first_atribute][second_atribute]:
-            if not (str(sub_register) in indicator):
+            if str(sub_register) not in indicator:
                 indicator[str(sub_register)] = 1
             else:
                 indicator[str(sub_register)] += 1
@@ -252,20 +246,20 @@ def build_temporal_indicator(new_data, old_data):
         year = split_date[0]
         month = split_date[1]
 
-        if not (year in temporal_indicator):
+        if year not in temporal_indicator:
             temporal_indicator[year] = {}
             temporal_indicator[year][month] = 1
-        elif not (month in temporal_indicator.get(year)):
+        elif month not in temporal_indicator.get(year):
             temporal_indicator[year][month] = 1
         else:
             temporal_indicator[year][month] += 1
 
     for year in old_data:
-        if not (year in temporal_indicator):
+        if year not in temporal_indicator:
             temporal_indicator[year] = old_data[year]
         else:
             for month in old_data[year]:
-                if not (month in temporal_indicator[year]):
+                if month not in temporal_indicator[year]:
                     temporal_indicator[year][month] = old_data[year][month]
                 else:
                     temporal_indicator[year][month] += old_data[year][month]
@@ -274,7 +268,7 @@ def build_temporal_indicator(new_data, old_data):
 
 
 def sort_dict(dictionary):
-    return dict(OrderedDict(sorted(dictionary.items(), key = lambda t:t[1])))
+    return dict(OrderedDict(sorted(dictionary.items(), key=lambda t: t[1])))
 
 
 class ParserYAML(object):
@@ -306,4 +300,5 @@ def get_metabase_url(view_type, number):
     token = str(token).replace("b'", "")
     token = token.replace("'", "")
 
-    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled=true"
+    return (METABASE_SITE_URL + "/embed/" + view_type + "/" + token +
+            "#bordered=true&titled=true")
