@@ -119,20 +119,10 @@ class ParserYAML(object):
         self._urls_files = open("./urls.yaml", 'r')
         self._urls = yaml.load(self._urls_files)
         self._multi_instances_urls = self._urls['multi-instancias']
-        self._library_urls = self._urls['bibliotecas']
-        self._museums_urls = self._urls['museus']
 
     @property
     def get_multi_instances_urls(self):
         return self._multi_instances_urls
-
-    @property
-    def get_library_urls(self):
-        return self._library_urls
-
-    @property
-    def get_museums_urls(self):
-        return self._museums_urls
 
 
 def get_metabase_url(view_type, number):
