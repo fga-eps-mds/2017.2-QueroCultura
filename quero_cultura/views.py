@@ -23,19 +23,29 @@ MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 class UpdateMarkers(object):
 
-    @task(name="last_day_update_map")
-    def last_day_update_map():
+    @task(name="load_new_markers")
+    def load_new_markers():
 
-        last_day = 1
-        query_date_time = datetime.datetime.now() - datetime.timedelta(days=last_day)
+        if Marker.objects.count() == 0:
+            day_in_minutes = 1440
+            UpdateMarkers.load_markers(day_in_minutes)
+        else:
+            query_interval = 3
+            UpdateMarkers.load_markers(query_interval)
 
-        # First time the server is up
-        if Marker.objects().count() == 0:
-            for url in INSTANCE_URLS:
-                for marker_type in MARKER_TYPES:
-                    request = RequestMarkersRawData(query_date_time, url, marker_type)
-                    UpdateMarkers.save_markers_data(request.data, marker_type)
+    def load_markers(requested_time):
 
+        requested_time_difference = datetime.timedelta(minutes=requested_time)
+
+        now = datetime.datetime.now()
+
+        query_date_time = now - requested_time_difference
+
+        for url in INSTANCE_URLS:
+            for marker_type in MARKER_TYPES:
+                request = RequestMarkersRawData(query_date_time,
+                                                url, marker_type)
+                UpdateMarkers.save_markers_data(request.data, marker_type)
 
     def save_markers_data(data, marker_type):
         for j_object in data:
