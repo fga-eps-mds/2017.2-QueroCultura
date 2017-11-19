@@ -1,8 +1,44 @@
 from datetime import datetime
 from .api_connections import RequestEventsRawData
+from .models import EventData
+from .models import EventLanguage
+from .models import LastUpdateEventDate
 from quero_cultura.views import ParserYAML
 import requests_mock
 import json
+
+
+class TestLastUpdateEventDate(object):
+    def test_last_update_event_date(self):
+        LastUpdateEventDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateEventDate(create_date).save()
+        query = LastUpdateEventDate.objects.first()
+        assert query.create_date == create_date
+
+
+class TestEventLanguage(object):
+    def test_event_language(self):
+        EventLanguage.drop_collection()
+        instance = "SP"
+        language = "Cinema"
+        EventLanguage(instance, language).save()
+        query = EventLanguage.objects.first()
+        assert query.instance == instance
+        assert query.language == language
+
+
+class TestEventData(object):
+    def test_event_data(self):
+        EventData.drop_collection()
+        instance = "SP"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        age_range = "Livre"
+        EventData(instance, age_range, date).save()
+        query = EventData.objects.first()
+        assert query.instance == instance
+        assert query.date == date
+        assert query.age_range == age_range
 
 
 class TestClassRequestEventsRawData(object):
