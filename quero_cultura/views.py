@@ -21,171 +21,178 @@ INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 
-class UpdateMarkers(object):
+@task(name="load_new_markers")
+def load_new_markers():
 
-    @task(name="load_new_markers")
-    def load_new_markers():
+    if Marker.objects.count() == 0:
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaAAAA\nAAAAA\nAAAAAAA\nAAAAAAAAA\n\n\n\n\nAAAAAAAA\n\n\n\nAAAAAA")
+        day_in_minutes = 1440
+        load_markers(day_in_minutes)
+    else:
+        print("PORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA")
+        query_interval = 3
+        load_markers(query_interval)
 
-        if Marker.objects.count() == 0:
-            day_in_minutes = 1440
-            UpdateMarkers.load_markers(day_in_minutes)
+
+def load_markers(requested_time):
+
+    requested_time_difference = datetime.timedelta(minutes=requested_time)
+
+    now = datetime.datetime.now()
+
+    query_date_time = now - requested_time_difference
+
+    for url in INSTANCE_URLS:
+        for marker_type in MARKER_TYPES:
+            request = RequestMarkersRawData(query_date_time,
+                                            url, marker_type)
+            save_markers_data(request.data, marker_type)
+
+
+def save_markers_data(data, marker_type):
+    for j_object in data:
+        print(j_object)
+
+        marker = filter_data(j_object, marker_type)
+
+        Marker(marker['name'], marker_type, marker['action_type'],
+               marker['action_time'], marker['city'], marker['state'],
+               marker['single_url'], marker['subsite'],
+               marker['create_timestamp'],
+               marker['update_timestamp'], marker['location']).save()
+
+
+def filter_data(j_object, marker_type):
+    marker = {}
+    marker['name'] = get_attribute(j_object, 'name')
+    marker['single_url'] = get_attribute(j_object, 'singleUrl')
+
+    marker['subsite'] = get_attribute(j_object, 'subsite')
+    marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
+
+    create_timestamp = get_date(j_object, 'createTimestamp')
+    update_timestamp = get_date(j_object, 'updateTimestamp')
+    action = get_marker_action(create_timestamp, update_timestamp)
+
+    marker['create_timestamp'] = create_timestamp
+    marker['update_timestamp'] = update_timestamp
+    marker['action_time'] = action['time']
+    marker['action_type'] = action['type']
+
+    marker['location'] = get_location(j_object, marker_type)
+    marker['city'], marker['state'] = get_marker_address(marker['location'])
+
+    return marker
+
+
+def get_marker_action(create_timestamp, update_timestamp):
+    action = {}
+
+    if update_timestamp is None or update_timestamp == '':
+        action['type'] = 'creation'
+        action['time'] = create_timestamp
+    else:
+        action['type'] = 'update'
+        action['time'] = update_timestamp
+
+    return action
+
+
+def get_marker_address(location):
+    if location is not None:
+        if location['latitude'] != '0' or location['longitude'] != '0':
+            latitude = str(location['latitude'])
+            longitude = str(location['longitude'])
+
+            openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
+            data = json.loads(requests.get(openstreetURL).text)
+            try:
+                return (data['address']['city_district'], data['address']['state'])
+            except:
+                return('', '')
+
+    return (None, None)
+
+
+def get_attribute(j_object, key):
+    try:
+        attribute = j_object[key]
+    except:
+        attribute = ''
+
+    return attribute
+
+def get_date(j_object, which_timestamp):
+    timestamp = get_attribute(j_object, which_timestamp)
+    if timestamp is not None and timestamp != '':
+        date = timestamp['date']
+    else:
+        date = None
+
+    return date
+
+def get_location(j_object, marker_type):
+    if marker_type == 'project':
+        if j_object['owner'] is not None:
+            location = j_object['owner']['location']
         else:
-            query_interval = 3
-            UpdateMarkers.load_markers(query_interval)
+            location = {'latitude': '0', 'longitude': '0'}
 
-    def load_markers(requested_time):
-
-        requested_time_difference = datetime.timedelta(minutes=requested_time)
-
-        now = datetime.datetime.now()
-
-        query_date_time = now - requested_time_difference
-
-        for url in INSTANCE_URLS:
-            for marker_type in MARKER_TYPES:
-                request = RequestMarkersRawData(query_date_time,
-                                                url, marker_type)
-                UpdateMarkers.save_markers_data(request.data, marker_type)
-
-    def save_markers_data(data, marker_type):
-        for j_object in data:
-            print(j_object)
-
-            marker = UpdateMarkers.filter_data(j_object, marker_type)
-
-            Marker(marker['name'], marker_type, marker['action_type'],
-                   marker['action_time'], marker['city'], marker['state'],
-                   marker['single_url'], marker['subsite'],
-                   marker['create_timestamp'],
-                   marker['update_timestamp'], marker['location']).save()
-
-    def filter_data(j_object, marker_type):
-        marker = {}
-        marker['name'] = UpdateMarkers.get_attribute(j_object, 'name')
-        marker['single_url'] = UpdateMarkers.get_attribute(j_object, 'singleUrl')
-
-        marker['subsite'] = UpdateMarkers.get_attribute(j_object, 'subsite')
-        marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
-
-        create_timestamp = UpdateMarkers.get_date(j_object, 'createTimestamp')
-        update_timestamp = UpdateMarkers.get_date(j_object, 'updateTimestamp')
-        action = UpdateMarkers.get_marker_action(create_timestamp, update_timestamp)
-
-        marker['create_timestamp'] = create_timestamp
-        marker['update_timestamp'] = update_timestamp
-        marker['action_time'] = action['time']
-        marker['action_type'] = action['type']
-
-        marker['location'] = UpdateMarkers.get_location(j_object, marker_type)
-        marker['city'], marker['state'] = UpdateMarkers.get_marker_address(marker['location'])
-
-        return marker
-
-    def get_marker_action(create_timestamp, update_timestamp):
-        action = {}
-
-        if update_timestamp is None or update_timestamp == '':
-            action['type'] = 'creation'
-            action['time'] = create_timestamp
-        else:
-            action['type'] = 'update'
-            action['time'] = update_timestamp
-
-        return action
-
-    def get_marker_address(location):
-        if location is not None:
-            if location['latitude'] != '0' or location['longitude'] != '0':
-                latitude = str(location['latitude'])
-                longitude = str(location['longitude'])
-                openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
-                data = json.loads(requests.get(openstreetURL).text)
-                try:
-                    return (data['address']['city_district'], data['address']['state'])
-                except:
-                    return('', '')
-
-        return (None, None)
-
-    def get_attribute(j_object, key):
+    elif marker_type == 'event':
         try:
-            attribute = j_object[key]
+            location = j_object['occurrences'].pop()['space']['location']
         except:
-            attribute = ''
+            location = {'latitude': '0', 'longitude': '0'}
+    else:
+        try:
+            location = j_object['location']
+        except:
+            location = {'latitude': '0', 'longitude': '0'}
 
-        return attribute
-
-    def get_date(j_object, which_timestamp):
-        timestamp = UpdateMarkers.get_attribute(j_object, which_timestamp)
-        if timestamp is not None and timestamp != '':
-            date = timestamp['date']
-        else:
-            date = None
-
-        return date
-
-    def get_location(j_object, marker_type):
-        if marker_type == 'project':
-            if j_object['owner'] is not None:
-                location = j_object['owner']['location']
-            else:
-                location = {'latitude': '0', 'longitude': '0'}
-
-        elif marker_type == 'event':
-            try:
-                location = j_object['occurrences'].pop()['space']['location']
-            except:
-                location = {'latitude': '0', 'longitude': '0'}
-        else:
-            try:
-                location = j_object['location']
-            except:
-                location = {'latitude': '0', 'longitude': '0'}
-
-        return location
+    return location
 
 
-    def remove_expired_markers():
-        all_markers = Marker.objects.all()
+def remove_expired_markers():
+    all_markers = Marker.objects.all()
 
-        for marker in all_markers:
-            if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
-                marker.delete()
+    for marker in all_markers:
+        if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
+            marker.delete()
 
-    def get_last_day_markers():
-        all_markers = Marker.objects.all()
-        last_day_markers = []
+def get_last_day_markers():
+    all_markers = Marker.objects.all()
+    last_day_markers = []
 
-        for marker in all_markers:
-            # Markers of last day that are not in last hour
-            if marker.action_time <= (datetime.datetime.now() - datetime.timedelta(hours=1)):
-                last_day_markers.append(marker)
+    for marker in all_markers:
+        # Markers of last day that are not in last hour
+        if marker.action_time <= (datetime.datetime.now() - datetime.timedelta(hours=1)):
+            last_day_markers.append(marker)
 
-        return last_day_markers
+    return last_day_markers
 
-    def get_last_hour_markers():
-        all_markers = Marker.objects.all()
-        last_hour_markers = []
+def get_last_hour_markers():
+    all_markers = Marker.objects.all()
+    last_hour_markers = []
 
-        for marker in all_markers:
-            if marker.action_time > (datetime.datetime.now() - datetime.timedelta(hours=1)):
-                last_hour_markers.append(marker)
+    for marker in all_markers:
+        if marker.action_time > (datetime.datetime.now() - datetime.timedelta(hours=1)):
+            last_hour_markers.append(marker)
 
-        return last_hour_markers
+    return last_hour_markers
 
-    def get_most_recent_markers():
-        ordered_markers = Marker.objects.order_by('action_time')
-        last_minute_markers = []
+def get_most_recent_markers():
+    ordered_markers = Marker.objects.order_by('action_time')
+    last_minute_markers = []
 
-        n_of_markers = 10
+    n_of_markers = 10
 
-        if len(ordered_markers) >= n_of_markers:
-            for i in range(0, n_of_markers-1):
-                last_minute_markers.append(ordered_markers[i])
-        else:
-            last_minute_markers += ordered_markers
+    if len(ordered_markers) >= n_of_markers:
+        for i in range(0, n_of_markers-1):
+            last_minute_markers.append(ordered_markers[i])
+    else:
+        last_minute_markers += ordered_markers
 
-        return last_minute_markers
+    return last_minute_markers
 
 
 def index(request):
