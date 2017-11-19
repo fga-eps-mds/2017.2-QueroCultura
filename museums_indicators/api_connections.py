@@ -6,12 +6,12 @@ from quero_cultura.views import ParserYAML
 class RequestMuseumRawData(object):
 
     def __init__(self, last_update_time, url):
-        self._filters = {'@select': '*',
-                         'type': 'OR(EQ(60), EQ(61))', # 60 is the "Museu Público" id, and 61 is the "Museu Privado" id
-                         'createTimestamp': "GT("+last_update_time+")"}
-        print(self._filters)
-        self._response = requests.get(url+"space/find/", self._filters)
-        print(self._response)
+        self._filters = {'@select': 'mus_tipo, mus_tipo_tematica, esfera, '
+                                   + 'mus_servicos_visitaGuiada, '
+                                   + 'mus_arquivo_acessoPublico, '
+                                   + 'createTimestamp',
+                        'createTimestamp': "GT("+last_update_time+")"}
+        self._response = requests.get(url, self._filters)
         self._data = json.loads(self._response.text)
 
     @property
