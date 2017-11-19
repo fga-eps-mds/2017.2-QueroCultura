@@ -158,20 +158,22 @@ class UpdateMarkers(object):
         all_markers = Marker.objects.all()
         last_hour_markers = []
 
+        for marker in all_markers:
+            if marker.action_time > (datetime.datetime.now() - datetime.timedelta(hours=1)):
+                last_hour_markers.append(marker)
 
-    def get_date(time_stamp):
-        pass
+        return last_hour_markers
 
 
-    def get_marker_address(location):
-        if location is not None:
-            if location['latitude'] != '0' or location['longitude'] != '0':
-                openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+location['latitude']+"&lon="+location['longitude']+"&format=json"
-                data = json.loads(requests.get(openstreetURL).text)
-                return (data['address']['city_district'], data['address']['state'])
+    def get_most_recently_markers():
+        ordered_markers = Marker.objects.order_by('action_time')
+        last_minute_markers = []
 
-        return ('', '')
+        if(len(ordered_markers >= 10)):
+            for x in range(0, 9):
+                last_minute_markers.append(ordered_markers[x])
 
+        return last_minute_markers
  
 
 def index(request):
