@@ -1,7 +1,45 @@
 from datetime import datetime
 from .api_connections import RequestMuseumRawData
+from .models import LastUpdateMuseumDate
+from .models import MuseumData
+from .models import LastUpdateMuseumDate
+
 import requests_mock
 import json
+
+
+class TestLastUpdateMuseumDate(object):
+
+    def test_last_update_museum_date(self):
+        LastUpdateMuseumDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateMuseumDate(create_date).save()
+        query = LastUpdateMuseumDate.objects.first()
+        assert query.create_date == create_date
+
+
+class TestMuseumData(object):
+
+    def test_museum_data(self):
+        MuseumData.drop_collection()
+        instance = "SP"
+        museum_type = "Cia"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        thematic = "Teatro"
+        sphere = "None"
+        guided_tuor = "None"
+        public_archive = "None"
+
+        MuseumData(instance, museum_type, thematic, sphere,
+                   guided_tuor, public_archive, date).save()
+        query = MuseumData.objects.first()
+        assert query.instance == instance
+        assert query.museum_type == museum_type
+        assert query.thematic == thematic
+        assert query.sphere == sphere
+        assert query.guided_tuor == guided_tuor
+        assert query.public_archive == public_archive
+        assert query.date == date
 
 
 class TestRequestMuseumRawData(object):
@@ -11,7 +49,7 @@ class TestRequestMuseumRawData(object):
         url = "http://museus.cultura.gov.br/api/space/find"
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "esfera": "Publica", "mus_tipo": 'None', 
+                   "esfera": "Publica", "mus_tipo": 'None',
                    "mus_tipo_tematica": 'None',
                    "mus_servicos_visitaGuiada": 'None',
                    "mus_arquivo_acessoPublico": 'None'}]
