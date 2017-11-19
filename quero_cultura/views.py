@@ -14,7 +14,6 @@ def index(request):
     context = {
         "urls": urls,
     }
-    print(context)
     return render(request, 'quero_cultura/index.html', context)
 
 
