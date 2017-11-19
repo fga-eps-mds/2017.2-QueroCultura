@@ -23,6 +23,7 @@ app.autodiscover_tasks()
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
+now = datetime.now()
 
 app.conf.beat_schedule = {
     'update_agent_indicator': {
@@ -35,20 +36,20 @@ app.conf.beat_schedule = {
         'task': 'update_agent_indicator',
         'schedule': 10.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=15.0),
+            'expires': now + timedelta(seconds=15.0),
         },
     },
-    'update_libray_indicator': {
+    'update_library_indicator': {
         'task': 'update_library_indicator',
         'schedule': crontab(minute=5,
                             hour=3,
                             day_of_week='sunday'),
     },
-    'update_libray_indicator_now': {
+    'update_library_indicator_now': {
         'task': 'update_library_indicator',
         'schedule': 20.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=30.0),
+            'expires': now + timedelta(seconds=30.0),
         },
     },
     'update_event_indicator': {
@@ -61,7 +62,7 @@ app.conf.beat_schedule = {
         'task': 'update_event_indicator',
         'schedule': 15.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=20.0),
+            'expires': now + timedelta(seconds=20.0),
         },
     },
     'update_project_indicator': {
@@ -74,7 +75,7 @@ app.conf.beat_schedule = {
         'task': 'update_project_indicator',
         'schedule': 25.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=35.0),
+            'expires': now + timedelta(seconds=35.0),
         },
     },
     'populate_space_data': {
@@ -87,11 +88,11 @@ app.conf.beat_schedule = {
         'task': 'populate_space_data',
         'schedule': 30.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=45.0),
+            'expires': now + timedelta(seconds=31.0),
         },
     },
-    'last_day_update_map': {
-        'task': 'last_day_update_map',
-        'schedule': 40.0,
+    'load_new_markers': {
+        'task': 'load_new_markers',
+        'schedule': crontab(minute='*/3')
     },
 }
