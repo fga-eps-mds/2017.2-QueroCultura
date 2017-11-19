@@ -2,7 +2,7 @@ import json
 import requests
 
 
-SPACE_SELECT = ''
+SPACE_SELECT = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 EVENT_SELECT = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
 AGENT_SELECT = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
@@ -12,11 +12,11 @@ class RequestMarkersRawData(object):
     def __init__(self, query_date_time, url, marker_type):
 
         select = choose_select(marker_type)
-        self._filters = {'@select' : select,
-                         '@or' : 1,
-                         'createTimestamp' : "GT("+str(query_date_time)+")",
-                         'updateTimestamp' : "GT("+str(query_date_time)+")"
-                         }
+        self._filters = {'@select': select,
+                         '@or': 1,
+                         'createTimestamp': "GT("+str(query_date_time)+")",
+                         'updateTimestamp': "GT("+str(query_date_time)+")"
+                        }
         self._response = requests.get(url+marker_type+"/find/", self._filters)
         self._data = json.loads(self._response.text)
 
