@@ -1,28 +1,23 @@
 from datetime import datetime
 from .api_connections import RequestLibraryRawData
+import requests_mock
+import json
 
+class TestRequestLibraryRawData(object):
 
-def test_success_request():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    response_library_raw_data = request_library_raw_data.response
-    response_status_code = response_library_raw_data.status_code
-    assert response_status_code == 200
+    @requests_mock.Mocker(kw='mock')
+    def test_request_library_raw_data(self, **kwargs):
+        url = "http://bibliotecas.cultura.gov.br/api/space/find"
 
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "esfera": "Publica", "esfera_tipo": 'None', 
+                   "terms": {"area": ["Cinema", "Teatro"]}}]
 
-def test_data_content():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    library_raw_data = request_library_raw_data.data
-    type_library_raw_data = type(library_raw_data)
-    empty_list = []
-    assert type_library_raw_data == type(empty_list)
+        kwargs['mock'].get(url, text=json.dumps(result))
 
+        current_time = datetime.now().__str__()
+        raw_data = RequestLibraryRawData(current_time, url)
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1
 
-def test_data_lenght():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    library_raw_data = request_library_raw_data.data_length
-    type_library_raw_data = type(library_raw_data)
-    integer = 1
-    assert type_library_raw_data == type(integer)
