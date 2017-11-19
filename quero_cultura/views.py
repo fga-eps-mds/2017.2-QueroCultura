@@ -134,14 +134,29 @@ class UpdateMarkers(object):
             Marker(marker_id, name, marker_type, action_type, city, state,
                     single_url, subsite, create_time_stamp, update_time_stamp, location).save()
 
+    def remove_expired_markers():
+        all_markers = Marker.objects.all()
 
-    def get_marker_action(marker):
-        if marker['updateTimeStamp'] == None:
-                action_type = 'creation'
-            else:
-                action_type = 'update'
+        for marker in all_markers:
+            if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
+                marker.delete()
 
-        return action_type
+
+    def get_last_day_markers():
+        all_markers = Marker.objects.all()
+        last_day_markers = []
+
+        for marker in all_markers:
+            # Markers of last day that are not in last hour
+            if marker.action_time <= (datetime.datetime.now() - datetime.timedelta(hours=1)):
+                last_day_markers.append(marker)
+
+        return last_day_markers
+
+
+    def get_last_hour_markers():
+        all_markers = Marker.objects.all()
+        last_hour_markers = []
 
 
     def get_date(time_stamp):
