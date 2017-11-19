@@ -17,7 +17,7 @@ class LastUpdateEventDate(Document):
 
 class EventLanguage(Document):
     _instance = StringField(required=True)
-    _event_language = StringField(required=True)
+    _language = StringField(required=True)
 
     @property
     def instance(self):
@@ -28,12 +28,12 @@ class EventLanguage(Document):
         self._instance = instance
 
     @property
-    def event_language(self):
-        return self._event_language
+    def language(self):
+        return self._language
 
-    @event_language.setter
-    def event_language(self, event_language):
-        self._event_language = event_language
+    @language.setter
+    def language(self, language):
+        self._language = language
 
 
 class EventData(Document):
