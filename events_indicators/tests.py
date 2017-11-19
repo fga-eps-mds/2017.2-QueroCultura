@@ -3,6 +3,7 @@ from .api_connections import RequestEventsRawData
 from .models import EventData
 from .models import EventLanguage
 from .models import LastUpdateEventDate
+from .views import populate_event_data
 from quero_cultura.views import ParserYAML
 import requests_mock
 import json
@@ -39,6 +40,30 @@ class TestEventData(object):
         assert query.instance == instance
         assert query.date == date
         assert query.age_range == age_range
+
+
+class TestPopulateEventData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_event_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        LastUpdateEventDate.drop_collection()
+        EventLanguage.drop_collection()
+        EventData.drop_collection()
+
+        populate_event_data()
+
+        assert LastUpdateEventDate.objects.count() != 0
+        assert EventData.objects.count() != 0
+        assert EventLanguage.objects.count() != 0
 
 
 class TestClassRequestEventsRawData(object):
