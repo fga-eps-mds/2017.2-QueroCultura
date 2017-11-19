@@ -14,8 +14,8 @@ class RequestMarkersRawData(object):
         select = choose_select(marker_type)
         self._filters = {'@select' : select,
                          '@or' : 1,
-                         'createTimestamp' : "GT("+query_date_time+")",
-                         'updateTimestamp' : "GT("+query_date_time+")"
+                         'createTimestamp' : "GT("+str(query_date_time)+")",
+                         'updateTimestamp' : "GT("+str(query_date_time)+")"
                          }
         self._response = requests.get(url+marker_type+"/find/", self._filters)
         self._data = json.loads(self._response.text)
