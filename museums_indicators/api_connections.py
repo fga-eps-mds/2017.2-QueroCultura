@@ -1,6 +1,5 @@
 import json
 import requests
-from quero_cultura.views import ParserYAML
 
 
 class RequestMuseumRawData(object):
@@ -12,7 +11,7 @@ class RequestMuseumRawData(object):
                                     + 'createTimestamp',
                                     'createTimestamp':
                                     "GT("+last_update_time+")"}
-        self._response = requests.get(url, self._filters)
+        self._response = requests.get(url+"space/find/", self._filters)
         self._data = json.loads(self._response.text)
 
     @property

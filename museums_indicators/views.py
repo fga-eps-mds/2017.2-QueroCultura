@@ -6,8 +6,7 @@ from quero_cultura.views import ParserYAML
 import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
-
-
+urls = ["http://museus.cultura.gov.br/api/"]
 
 
 def index(request):

@@ -45,13 +45,13 @@ class TestLibraryData(object):
 class TestRequestLibraryRawData(object):
     @requests_mock.Mocker(kw='mock')
     def test_request_library_raw_data(self, **kwargs):
-        url = "http://bibliotecas.cultura.gov.br/api/space/find"
+        url = "http://bibliotecas.cultura.gov.br/api/"
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "esfera": "Publica", "esfera_tipo": 'None',
                    "terms": {"area": ["Cinema", "Teatro"]}}]
 
-        kwargs['mock'].get(url, text=json.dumps(result))
+        kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
 
         current_time = datetime.now().__str__()
         raw_data = RequestLibraryRawData(current_time, url)
