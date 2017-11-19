@@ -20,10 +20,10 @@ class MuseumData(Document):
 
     _instance = StringField(required=True)
     _museum_type = StringField(required=True)
-    _tematic = StringField(required=True)
+    _thematic = StringField(required=True)
     _sphere = StringField(required=True)
     _guided_tuor = StringField(required=True)
-    _plubic_archive = StringField(required=True)
+    _public_archive = StringField(required=True)
     _date = DateTimeField(required=True)
 
     @property
@@ -51,12 +51,12 @@ class MuseumData(Document):
         self._date = date
 
     @property
-    def tematic(self):
-        return self._tematic
+    def thematic(self):
+        return self._thematic
 
-    @tematic.setter
-    def tematic(self,tematic):
-        self._tematic = tematic
+    @thematic.setter
+    def thematic(self,thematic):
+        self._thematic = thematic
 
     @property
     def sphere(self):
