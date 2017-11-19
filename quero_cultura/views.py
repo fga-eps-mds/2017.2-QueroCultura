@@ -49,25 +49,37 @@ class UpdateMarkers(object):
 
     def save_markers_data(data, marker_type):
         for j_object in data:
-            name = UpdateMarkers.get_attribute(j_object, 'name')
-            single_url = UpdateMarkers.get_attribute(j_object, 'singleUrl')
+            print(j_object)
 
-            subsite = UpdateMarkers.get_attribute(j_object, 'subsite')
-            subsite = 0 if subsite == '' else subsite
+            marker = UpdateMarkers.filter_data(j_object, marker_type)
 
-            create_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'createTimestamp'))
-            update_timestamp = UpdateMarkers.get_date(UpdateMarkers.get_attribute(j_object, 'updateTimestamp'))
-            action = UpdateMarkers.get_marker_action(create_timestamp, update_timestamp)
-            action_time = action['time']
-            action_type = action['type']
+            Marker(marker['name'], marker_type, marker['action_type'],
+                   marker['action_time'], marker['city'], marker['state'],
+                   marker['single_url'], marker['subsite'],
+                   marker['create_timestamp'],
+                   marker['update_timestamp'], marker['location']).save()
 
-            location = UpdateMarkers.get_location(j_object, marker_type)
+    def filter_data(j_object, marker_type):
+        marker = {}
+        marker['name'] = UpdateMarkers.get_attribute(j_object, 'name')
+        marker['single_url'] = UpdateMarkers.get_attribute(j_object, 'singleUrl')
 
-            city, state = UpdateMarkers.get_marker_address(location)
+        marker['subsite'] = UpdateMarkers.get_attribute(j_object, 'subsite')
+        marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
 
-            Marker(name, marker_type, action_type, action_time, city, state,
-                   single_url, subsite, create_timestamp,
-                   update_timestamp, location).save()
+        create_timestamp = UpdateMarkers.get_date(j_object, 'createTimestamp')
+        update_timestamp = UpdateMarkers.get_date(j_object, 'updateTimestamp')
+        action = UpdateMarkers.get_marker_action(create_timestamp, update_timestamp)
+
+        marker['create_timestamp'] = create_timestamp
+        marker['update_timestamp'] = update_timestamp
+        marker['action_time'] = action['time']
+        marker['action_type'] = action['type']
+
+        marker['location'] = UpdateMarkers.get_location(j_object, marker_type)
+        marker['city'], marker['state'] = UpdateMarkers.get_marker_address(marker['location'])
+
+        return marker
 
     def get_marker_action(create_timestamp, update_timestamp):
         action = {}
@@ -103,7 +115,8 @@ class UpdateMarkers(object):
 
         return attribute
 
-    def get_date(timestamp):
+    def get_date(j_object, which_timestamp):
+        timestamp = UpdateMarkers.get_attribute(j_object, which_timestamp)
         if timestamp is not None and timestamp != '':
             date = timestamp['date']
         else:
