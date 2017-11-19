@@ -4,81 +4,78 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-content.css' %}"/>
 
-<div class="container">
-    <div class="segmented-control">
-    <input type="radio" name="sc-1-1" id="sc-1-1-1" value="#area" checked>
-    <input type="radio" name="sc-1-1" id="sc-1-1-2" value="#crescimento">
-    <input type="radio" name="sc-1-1" id="sc-1-1-3" value="#mes-instancias">
-    <input type="radio" name="sc-1-1" id="sc-1-1-4" value="#registro-mes">
-    <input type="radio" name="sc-1-1" id="sc-1-1-5" value="#tipo">
-
-    <label for="sc-1-1-1" data-value="Áreas de atuação">
+<div class="title">
+    <center>
+        <h1>
+            Dados de Espaços
+        </h1>
+    </center>
+</div>
+<div class="container-indicators">
+    <div class="row">
+        <div id="area" class="col-md-4 center flex-column content-chart">
+        <label>
             Áreas de atuação
         </label>
+            <div class="chart-container" id="graphic1">
+            </div>
 
-        <label for="sc-1-1-2" data-value="Crescimento mensal">
-            Crescimento mensal
-        </label>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se aos espaços por área de atuação separados por instância.</p>
+            </div>
+        </div>
 
-        <label for="sc-1-1-3" data-value="Registros por Mês por Instância">
+        <div id="crescimento" class="col-md-4 center flex-column content-chart">
+        <label>
             Registros por mês por Instância
         </label>
+            <div class="chart-container" id="graphic2">
+            </div>
 
-        <label for="sc-1-1-4" data-value="Registros por mês">
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+            </div>
+        </div>
+
+
+        <div id="registro-mes" class="col-md-4 center flex-column content-chart">
+        <label>
             Registros por mês
         </label>
+            <div class="chart-container" id="graphic3">
+            </div>
 
-        <label for="sc-1-1-5" data-value="Tipos por intância">
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="mes-instancias" class="col-md-4 center flex-column content-chart">
+        <label>
             Tipos por instância
         </label>
-    </div>
-</div>
 
-<div class="container-indicators">
-    <div id="area">
-        <div class="chart-container" id="graphic1">
+            <div class="chart-container" id="graphic5">
+            </div>
+
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
+            </div>
         </div>
 
-        <div class="text-chart-init">
-            <p>Este gráfico refere-se aos espaços por área de atuação separados por instância.</p>
-        </div>
-    </div>
+        <div id="tipo" class="col-md-4 center flex-column content-chart">
+        <label>
+            Cadastros de espaços
+        </label>
+            <div class="chart-container" id="graphic4">
+            </div>
 
-    <div id="crescimento">
-        <div class="chart-container" id="graphic2">
-        </div>
-
-        <div class="text-chart-init">
-            <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
-        </div>
-    </div>
-
-
-    <div id="registro-mes">
-        <div class="chart-container" id="graphic3">
-        </div>
-
-        <div class="text-chart-init">
-            <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
-        </div>
-    </div>
-
-    <div id="mes-instancias">
-        <div class="chart-container" id="graphic5">
-        </div>
-
-        <div class="text-chart-init">
-            <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
-        </div>
-    </div>
-
-    <div id="tipo">
-        <div class="chart-container" id="graphic4">
-        </div>
-
-        <div class="text-chart-init">
-            <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
+            <div class="text-chart-init">
+                <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
+            </div>
         </div>
     </div>
 </div>
