@@ -21,9 +21,6 @@ INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 class UpdateMarkers(object):
 
-    # instance_urls
-    # marker_types
-    # last_day
     @task(name="last_day_update_map")
     def last_day_update_map():
 
@@ -109,11 +106,11 @@ class UpdateMarkers(object):
 
         return date
 
-
+    
     def get_location(j_object, marker_type):
         if marker_type == 'project':
-                if j_object['owner'] is not None:
-                    location = j_object['owner']['location']
+            if j_object['owner'] is not None:
+                location = j_object['owner']['location']
             else:
                 location = {'latitude': '0', 'longitude': '0'}
 
@@ -130,9 +127,7 @@ class UpdateMarkers(object):
 
         print(location)
         return location
-            
-            Marker(marker_id, name, marker_type, action_type, city, state,
-                    single_url, subsite, create_time_stamp, update_time_stamp, location).save()
+
 
     def remove_expired_markers():
         all_markers = Marker.objects.all()
@@ -174,7 +169,7 @@ class UpdateMarkers(object):
                 last_minute_markers.append(ordered_markers[x])
 
         return last_minute_markers
- 
+
 
 def index(request):
     return render(request, 'quero_cultura/index.html', {})
