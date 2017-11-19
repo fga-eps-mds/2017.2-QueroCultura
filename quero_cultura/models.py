@@ -7,15 +7,15 @@ from mongoengine import IntField
 
 
 class Marker(Document):
-    marker_id = IntField(required=true)
-    name = StringField(required=true)
-    marker_type = StringField(required=true)
-    action_type = StringField(required=true)
+    name = StringField(required=True)
+    marker_type = StringField(required=True)
+    action_type = StringField(required=True)
+    action_time = DateTimeField(required=True)
     city = StringField(default=None)
     state = StringField(default=None)
-    single_url = URLField(required=true)
-    subsite = StringField(default=None)
+    single_url = URLField(default='')
+    subsite = IntField(default=None)
     create_time_stamp = DateTimeField(default=None)
     update_time_stamp = DateTimeField(default=None)
-    location = DictField(required=true)
+    location = DictField(required=True)
 
