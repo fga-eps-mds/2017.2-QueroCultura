@@ -1,8 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
-from project_indicators.views import clean_url
 from .models import MuseumData
-from .models import OccupationArea
 from .models import LastUpdateMuseumDate
 from quero_cultura.views import ParserYAML
 import json
