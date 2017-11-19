@@ -1,4 +1,6 @@
 from .api_connection import RequestAgentsRawData
+from .api_connection import RequestAgentsInPeriod
+from .api_connection import EmptyRequest
 from django.shortcuts import render
 from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerMonth
@@ -93,7 +95,7 @@ def build_type_indicator(new_data):
 
 @task(name="update_agent_indicator")
 def update_agent_indicator():
-    url = "http://mapas.cultura.gov.br/api/"
+    url = "http://spcultura.prefeitura.sp.gov.br/api/"
 
     # Cria registro inicial caso seja o primeiro uso da aplicação
     if len(PercentIndividualAndCollectiveAgent.objects) == 0:
@@ -110,7 +112,19 @@ def update_agent_indicator():
     last_temporal = AmountAgentsRegisteredPerMonth.objects[index-1]
 
     # Requisita dados da API MinC a partir de data passada por parmetro
-    request = RequestAgentsRawData(last_per_area.create_date, url)
+    if(last_per_area.create_date == DEFAULT_INITIAL_DATE):
+        this_year = datetime.today().year
+
+        # DEFAULT_INITIAL_DATE.year
+        default_year = 2012
+        request = EmptyRequest()
+        for year in range(default_year, this_year+1):
+            single_request = RequestAgentsInPeriod(year, url)
+            request.data += single_request.data
+
+        print(request.data_length)
+    else:
+        request = RequestAgentsRawData(last_per_area.create_date, url)
 
     # Geração indicadores de agentes atualizados
     new_total = request.data_length + last_per_area.total_agents
