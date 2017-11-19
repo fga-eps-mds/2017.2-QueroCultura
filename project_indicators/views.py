@@ -75,7 +75,7 @@ def load_last_registers():
     return last_per_type, last_per_online, last_temporal
 
 
-@task(name="update_project_indicator")
+@task(name="load_projects")
 def update_project_indicator():
     if len(PercentProjectPerType.objects) == 0:
         PercentProjectPerType(0, DEFAULT_INITIAL_DATE, {'mapasculturagovbr': {'Exposição': 0}}).save()

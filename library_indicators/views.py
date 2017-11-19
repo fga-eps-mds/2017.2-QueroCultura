@@ -43,7 +43,7 @@ def index(request):
     return render(request, 'library_indicators/library.html', context)
 
 
-@task(name="update_library_indicator")
+@task(name="load_libraries")
 def update_indicators():
     update_library_public_private_indicator()
     update_quantity_libraries()

@@ -23,7 +23,7 @@ def index(request):
     return render(request, 'space_indicators/space-indicators.html', url)
 
 
-@task(name="populate_space_data")
+@task(name="load_spaces")
 def populate_space_data():
     if len(LastUpdateDate.objects) == 0:
         LastUpdateDate(DEFAULT_INITIAL_DATE).save()

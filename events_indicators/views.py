@@ -24,7 +24,7 @@ def index(request):
     per_language = per_language.total_events_per_language
     per_age_range = per_age_range.total_events_per_age_range
     temporal = temporal.total_events_registered_per_mounth_per_year
-    
+
     per_language_keys = []
     per_language_values = []
 
@@ -111,7 +111,7 @@ def build_language_indicator(new_data, old_data):
     return per_language
 
 
-@task(name="update_event_indicator")
+@task(name="load_events")
 def update_event_indicator():
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls

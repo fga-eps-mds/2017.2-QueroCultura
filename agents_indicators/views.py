@@ -91,7 +91,7 @@ def build_type_indicator(new_data):
     return per_type
 
 
-@task(name="update_agent_indicator")
+@task(name="load_agents")
 def update_agent_indicator():
     url = "http://mapas.cultura.gov.br/api/"
 

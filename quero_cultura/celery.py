@@ -36,25 +36,30 @@ def debug_task(self):
 
 
 APP.conf.beat_schedule = {
-    'update_agents': create_task('update_agent_indicator',
+    'load_agents': create_task('load_agents', 30, 50),
+    'update_agents': create_task('load_agents',
                                  crontab(minute=0, hour=3,
                                          day_of_week='sunday')),
-    'load_agents': create_task('update_agent_indicator', 10, 15),
-    'update_libraries': create_task('update_library_indicator',
-                                    crontab(minute=5, hour=3,
-                                            day_of_week='sunday')),
-    'load_libraries': create_task('update_library_indicator', 20, 30),
-    'update_events': create_task('update_event_indicator',
+
+    # 'load_libraries': create_task('load_libraries', 30, 50),
+    # 'update_libraries': create_task('load_libraries',
+    #                                crontab(minute=5, hour=3,
+    #                                        day_of_week='sunday')),
+
+    'load_events': create_task('load_events', 30, 50),
+    'update_events': create_task('load_events',
                                  crontab(minute=10, hour=3,
                                          day_of_week='sunday')),
-    'load_events': create_task('update_event_indicator', 15, 20),
-    'update_projects': create_task('update_project_indicator',
+
+    'load_projects': create_task('load_projects', 30, 50),
+    'update_projects': create_task('load_projects',
                                    crontab(minute=15, hour=3,
                                            day_of_week='sunday')),
-    'load_projects': create_task('update_project_indicator', 25, 35),
-    'update_spaces': create_task('populate_space_data',
+
+    'load_spaces': create_task('load_spaces', 30, 50),
+    'update_spaces': create_task('load_spaces',
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
-    'load_spaces': create_task('populate_space_data', 30.0, 45),
-    'load_new_markers': create_task('load_new_markers', crontab(minute='*/3')),
+
+    'load_new_markers': create_task('load_new_markers', crontab(minute='*/3'))
 }
