@@ -115,27 +115,3 @@ class TestPercentAgentsPerAreaOperation(object):
         agent_indicator.save()
         query = PercentAgentsPerAreaOperation.objects.first()
         assert query.total_agents_area_oreration == {"area": 10}
-
-
-class TestUpdateAgentIndicator(object):
-
-    @requests_mock.Mocker(kw='mock')
-    def test_update_agent_indicator(self, **kwargs):
-        url = "http://mapas.cultura.gov.br/api/"
-
-        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "type": {"name": "Coletivo"}, "terms": {"area": ["Cinema", "Teatro"]}}]
-
-        kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
-
-        PercentAgentsPerAreaOperation.drop_collection()
-        PercentIndividualAndCollectiveAgent.drop_collection()
-        AmountAgentsRegisteredPerMonth.drop_collection()
-
-        update_agent_indicator()
-
-        total = len(PercentIndividualAndCollectiveAgent.objects)
-        total += len(AmountAgentsRegisteredPerMonth.objects)
-        total += len(PercentAgentsPerAreaOperation.objects)
-
-        assert total == 6
