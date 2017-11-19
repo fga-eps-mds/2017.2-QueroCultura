@@ -25,11 +25,9 @@ MARKER_TYPES = ['event', 'agent', 'project', 'space']
 def load_new_markers():
 
     if Marker.objects.count() == 0:
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaAAAA\nAAAAA\nAAAAAAA\nAAAAAAAAA\n\n\n\n\nAAAAAAAA\n\n\n\nAAAAAA")
         day_in_minutes = 1440
         load_markers(day_in_minutes)
     else:
-        print("PORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA\nPORRA")
         query_interval = 3
         load_markers(query_interval)
 
@@ -101,13 +99,17 @@ def get_marker_action(create_timestamp, update_timestamp):
 def get_marker_address(location):
     if location is not None:
         if location['latitude'] != '0' or location['longitude'] != '0':
-            latitude = str(location['latitude'])
-            longitude = str(location['longitude'])
 
-            openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+latitude+"&lon="+longitude+"&format=json"
-            data = json.loads(requests.get(openstreetURL).text)
+            latitude = "lat="+location['latitude']
+            longitude = "lon="+location['longitude']
+            base_url = "http://nominatim.openstreetmap.org/reverse?"
+
+            open_street_url = base_url+latitude+"&"+longitude+"&format=json"
+
+            data = json.loads(requests.get(open_street_url).text)
             try:
-                return (data['address']['city_district'], data['address']['state'])
+                return (data['address']['city_district'],
+                        data['address']['state'])
             except:
                 return('', '')
 
