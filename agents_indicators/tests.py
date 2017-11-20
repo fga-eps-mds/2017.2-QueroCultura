@@ -3,6 +3,9 @@ from .api_connection import RequestAgentsRawData
 from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
+from .models import LastUpdateAgentsDate
+from .models import AgentsArea
+from .models import AgentsData
 from .views import update_agent_indicator
 import requests_mock
 import requests
@@ -115,3 +118,18 @@ class TestPercentAgentsPerAreaOperation(object):
         agent_indicator.save()
         query = PercentAgentsPerAreaOperation.objects.first()
         assert query.total_agents_area_oreration == {"area": 10}
+
+
+#========== New testes =============
+
+class TestLastUpdateAgentsDate(object):
+
+    def test_last_agents_date(self):
+        LastUpdateAgentsDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateAgentsDate(create_date).save()
+        query = LastUpdateAgentsDate.objects.first()
+        assert query.create_date == create_date
+
+
+
