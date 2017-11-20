@@ -22,6 +22,16 @@ def index(request):
            "graphic5": get_metabase_url(view_type, 6)}
     return render(request, 'space_indicators/space-indicators.html', url)
 
+def graphicPage(request):
+    view_type = "question"
+    url = {"graphic1": get_metabase_url(view_type, 2),
+           "graphic2": get_metabase_url(view_type, 4),
+           "graphic3": get_metabase_url(view_type, 3),
+           "graphic4": get_metabase_url(view_type, 7),
+           "graphic5": get_metabase_url(view_type, 6)}
+
+    return render(request,'space_indicators/graphic.html',url)
+
 
 @task(name="populate_space_data")
 def populate_space_data():
