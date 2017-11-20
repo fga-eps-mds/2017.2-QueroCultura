@@ -3,9 +3,6 @@
 	height: auto;
 	width: 20%;*/
 }
-.col-md-4{
-	width: 20px;
-}
 
 .title{
 	margin-top: 5%;
@@ -17,8 +14,10 @@
 
 .container-indicators{
 	margin-top: 5%;
+	/*
 	margin-left: 5%;
 	margin-right: 5%;
+	*/
 	margin-bottom: 10%;
 	text-align: center;
 	position: relative;
