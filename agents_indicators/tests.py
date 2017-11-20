@@ -142,3 +142,17 @@ class TestAgentsArea(object):
         query = AgentsArea.objects.first()
         assert query.instance == instance
         assert query.area == area
+
+
+class TestAgentsData(object):
+
+    def test_agents_data(self):
+        AgentsData.drop_collection()
+        instance = "SP"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        agents_type = "Individual"
+        AgentsData(instance, agents_type, date).save()
+        query = AgentsData.objects.first()
+        assert query.instance == instance
+        assert query.date == date
+        assert query.agents_type == agents_type
