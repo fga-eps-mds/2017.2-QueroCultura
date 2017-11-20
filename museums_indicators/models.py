@@ -1,5 +1,4 @@
 from mongoengine import Document
-from mongoengine import IntField
 from mongoengine import StringField
 from mongoengine import DateTimeField
 
@@ -17,7 +16,6 @@ class LastUpdateMuseumDate(Document):
 
 
 class MuseumData(Document):
-
     _instance = StringField(required=True)
     _museum_type = StringField(required=True)
     _thematic = StringField(required=True)
@@ -55,7 +53,7 @@ class MuseumData(Document):
         return self._thematic
 
     @thematic.setter
-    def thematic(self,thematic):
+    def thematic(self, thematic):
         self._thematic = thematic
 
     @property

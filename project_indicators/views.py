@@ -17,7 +17,7 @@ def index(request):
            "graphic2": get_metabase_url(view_type, 11),
            "graphic3": get_metabase_url(view_type, 12),
            "graphic4": get_metabase_url(view_type, 13)}
-    # Renderiza pagina e envia dicionario para apresentação dos graficos
+
     return render(request, 'project_indicators/project-indicators.html', url)
 
 
