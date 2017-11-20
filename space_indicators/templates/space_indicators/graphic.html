@@ -10,12 +10,12 @@
 
 <script>
 
-num = sessionStorage.getItem("num");
-escolhaDeGrafico(num)
+number = sessionStorage.getItem("num");
+createGraphic(number)
 
-function escolhaDeGrafico (num) {
-  console.log(num)
-  switch(num) {
+function createGraphic (number) {
+  console.log(number)
+  switch(number) {
     case "1":
       createFrame("{{graphic1|safe}}", "#graphic")
       break;

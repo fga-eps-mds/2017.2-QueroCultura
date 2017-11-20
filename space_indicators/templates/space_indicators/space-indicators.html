@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-md-4 center flex-column content-chart">
-          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(2)"style="color:gray; font-weight: bold;">
+          <a href="{%url 'graphicPage' %}" onclick="javascript:graphicPicker(2)"style="color:gray; font-weight: bold;">
             <div class="border bg-white pv-10" >
               <span>Crescimento Cumulativo Mensal</span><br>
               <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
@@ -80,7 +80,6 @@
 
 <script>
 function graphicPicker(num) {
-    number = num;
     sessionStorage.setItem('num',num);
 }
 </script>
