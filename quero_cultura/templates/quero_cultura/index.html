@@ -32,24 +32,7 @@ crossorigin=""></script>
 
 	<script>
 
-		var instanceList = [ 'http://mapas.cultura.gov.br/api/',
-	     					 'http://spcultura.prefeitura.sp.gov.br/api/',
-	     					 'http://mapa.cultura.ce.gov.br/api/',
-	     					 'http://mapas.cultura.gov.br/api/',
-	     					 'http://spcultura.prefeitura.sp.gov.br/api/',
-	     					 'http://mapa.cultura.ce.gov.br/api/',
-	     					 'http://londrinacultura.londrina.pr.gov.br/api/',
-	     					 'http://culturaz.santoandre.sp.gov.br/api/',
-	     					 //'http://mapa.cultura.df.gov.br/api/',
-	     					 'https://mapas.mt.gov.br/api/',
-	     					 'http://estadodacultura.sp.gov.br/api/',
-	     					 'http://lugaresdacultura.org.br/api/',
-	     					 'http://blumenaumaiscultura.com.br/api/',
-	     					 'http://mapaculturalbh.pbh.gov.br/api/',
-	     					 'http://jpcultura.joaopessoa.pb.gov.br/api/',
-	     					 //'http://mapacultural.ubatuba.sp.gov.br/api/',
-	     					 'http://londrinacultura.londrina.pr.gov.br/api/',
-	     	 				 'http://www.mapacultural.pe.gov.br/api/']
+		var instanceList = {{urls|safe}}
 
 		if ($(document).height() > $(window).height()) {
  			var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
@@ -61,10 +44,7 @@ crossorigin=""></script>
 		var hour = 60
 		var lastMinutes = 10
 		var minute = 1
-		//console.log(lastDayData)
-		//console.log(lastHourData)
-		//console.log(lastMinuteData)
-    loadAndUpdateMarkers(day, lastDayData, 'png')
+    	loadAndUpdateMarkers(day, lastDayData, 'png')
 		loadAndUpdateMarkers(hour, lastHourData, 'gif')
 		loadAndUpdateMarkers(lastMinutes, lastMinuteData, 'gif')
 		setInterval(function(){loadAndUpdateMarkers(minute, lastMinuteData, 'gif')}, 60000)
