@@ -3,6 +3,49 @@
 
 {% block content %}
 
-<h1>Página teste</h1>
 
+<div class="chart-container" id="graphic"></div>
+
+
+
+<script>
+
+num = sessionStorage.getItem("num");
+escolhaDeGrafico(num)
+
+function escolhaDeGrafico (num) {
+  console.log(num)
+  switch(num) {
+    case "1":
+      createFrame("{{graphic1|safe}}", "#graphic")
+      break;
+    case "2":
+      createFrame("{{graphic2|safe}}", "#graphic")
+      break;
+    case "3":
+      createFrame("{{graphic3|safe}}", "#graphic")
+      break;
+    case "4":
+      createFrame("{{graphic4|safe}}", "#graphic")
+      break;
+    case "5":
+      createFrame("{{graphic5|safe}}", "#graphic")
+      break;
+}
+}
+
+
+function createFrame(graphicURL, locationId){
+    var frame = '<iframe \
+      src="' + graphicURL + '" \
+      frameborder="0" \
+      width="100%" \
+      height="800" \
+      allowtransparency \
+    ></iframe>'
+    $(locationId).append(frame)
+  }
+
+
+</script>
 {% endblock %}
