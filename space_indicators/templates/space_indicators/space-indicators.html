@@ -15,51 +15,67 @@
 </div>
 <div class="container-indicators">
     <div class="row">
-        <div id="area" class="col-md-4 center flex-column content-chart">
-            <div class="chart-container" id="graphic1">
+        <div class="col-md-4 center flex-column content-chart">
+          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(1)"style="color:gray; font-weight: bold;">
+            <div class="border bg-white pv-10" >
+              <span>Áreas de Atuação por Instância</span><br>
+              <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
             </div>
-
-            <div class="text-chart-init">
-                <p>Este gráfico refere-se aos espaços por área de atuação separados por instância.</p>
-            </div>
+          </a>
+          <div class="text-chart-init">
+              <p>Este gráfico refere-se aos espaços por área de atuação separados por instância.</p>
+          </div>
         </div>
 
-        <div id="crescimento" class="col-md-4 center flex-column content-chart">
-            <div class="chart-container" id="graphic2">
+        <div class="col-md-4 center flex-column content-chart">
+          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(2)"style="color:gray; font-weight: bold;">
+            <div class="border bg-white pv-10" >
+              <span>Crescimento Cumulativo Mensal</span><br>
+              <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
             </div>
+          </a>
+          <div class="text-chart-init">
+              <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+          </div>
+        </div>
 
-            <div class="text-chart-init">
-                <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+        <div class="col-md-4 center flex-column content-chart">
+          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(3)"style="color:gray; font-weight: bold;">
+            <div class="border bg-white pv-10" >
+              <span>Quantidade de Registros por Mês</span><br>
+              <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
             </div>
+          </a>
+          <div class="text-chart-init">
+              <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
+          </div>
         </div>
 
 
-        <div id="registro-mes" class="col-md-4 center flex-column content-chart">
-            <div class="chart-container" id="graphic3">
+        <div class="col-md-4 center flex-column content-chart">
+          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(4)"style="color:gray; font-weight: bold;">
+            <div class="border bg-white pv-10" >
+              <span>Tipos por Instância</span><br>
+              <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
             </div>
-
-            <div class="text-chart-init">
-                <p>Este gráfico refere-se aos cadastros de espaços por mês.</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div id="mes-instancias" class="col-md-4 center flex-column content-chart">
-            <div class="chart-container" id="graphic5">
-            </div>
-
-            <div class="text-chart-init">
-                <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
-            </div>
+          </a>
+          <div class="text-chart-init">
+              <p>Este gráfico refere-se aos cadastros em relação aos tipos de instancia.</p>
+          </div>
         </div>
 
-        <div id="tipo" class="col-md-4 center flex-column content-chart">
-            <div class="chart-container" id="graphic4">
+        <div class="col-md-4 center flex-column content-chart">
+          <a href="http://localhost:8000/space_indicators/graphic" onclick="javascript:graphicPicker(5)"style="color:gray; font-weight: bold;">
+            <div class="border bg-white pv-10" >
+              <span>Crescimento Cumulativo Mensal por Instância</span><br>
+              <img src="http://discourse.metabase.com/uploads/default/original/1X/5665072d585a0cfeaa5c1142f4100b64f11b6b0a.png" height="350" width="350" alt="">
             </div>
+          </a>
+          <div class="text-chart-init">
+              <p>Este gráfico ilustra o crescimento da plataforma em relação ao total de registros de espaço ao longo de sua existência</p>
+          </div>
+        </div>
 
-            <div class="text-chart-init">
-                <p>Este gráfico refere-se aos cadastros de espaços por ano.</p>
-            </div>
         </div>
     </div>
 </div>
@@ -82,6 +98,14 @@
         $(locationId).append(frame)
     }
 </script>
+
+<script>
+function graphicPicker(num) {
+    number = num;
+    sessionStorage.setItem('num',num);
+}
+</script>
+
 
 <script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
 
