@@ -100,3 +100,22 @@ class LastUpdateAgentsDate(Document):
         self._create_date = create_date
 
 
+class AgentsArea(Document):
+    _instance = StringField(required=True)
+    _area = StringField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def area(self):
+        return self._area
+
+    @area.setter
+    def area(self, area):
+        self._area = area
