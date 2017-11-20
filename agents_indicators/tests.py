@@ -132,4 +132,13 @@ class TestLastUpdateAgentsDate(object):
         assert query.create_date == create_date
 
 
+class TestAgentsArea(object):
 
+    def test_agents_area(self):
+        AgentsArea.drop_collection()
+        instance = "SP"
+        area = "Cinema"
+        AgentsArea(instance, area).save()
+        query = AgentsArea.objects.first()
+        assert query.instance == instance
+        assert query.area == area

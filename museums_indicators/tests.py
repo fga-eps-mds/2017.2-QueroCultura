@@ -3,7 +3,6 @@ from .api_connections import RequestMuseumRawData
 from .models import LastUpdateMuseumDate
 from .models import MuseumData
 from .models import LastUpdateMuseumDate
-
 import requests_mock
 import json
 
