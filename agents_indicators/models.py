@@ -5,6 +5,7 @@ from mongoengine import StringField
 
 
 class PercentAgents(Document):
+
     class Meta:
         abstract = True
     meta = {'allow_inheritance': True}
@@ -63,6 +64,7 @@ class AmountAgentsRegisteredPerMonth(Document):
     def total_agents_registered_month(self, number):
         self._total_agents_registered_month = number
 
+    # Já tem nas novas models la em baixo
     @property
     def create_date(self):
         return self._create_date
@@ -82,3 +84,19 @@ class PercentAgentsPerAreaOperation(PercentAgents):
     @total_agents_area_oreration.setter
     def total_agents_per_area_oreration(self, number):
         self._total_agents_area_oreration = number
+
+#=============== New Models ================
+
+
+class LastUpdateAgentsDate(Document):
+    _create_date = StringField(required=True)
+
+    @property
+    def create_date(self):
+        return self._create_date
+
+    @create_date.setter
+    def create_date(self, create_date):
+        self._create_date = create_date
+
+
