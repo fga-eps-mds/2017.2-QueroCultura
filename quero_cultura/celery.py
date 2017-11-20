@@ -90,17 +90,17 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=45.0),
         },
     },
-    # 'periodic_update': {
-    #     'task': 'periodic_update',
-    #     'schedule': crontab(minute=25,
-    #                         hour=3,
-    #                         day_of_week='sunday'),
-    # },
-    # 'periodic_update_now': {
-    #     'task': 'periodic_update',
-    #     'schedule': 35.0,
-    #     'options': {
-    #         'expires': datetime.now() + timedelta(seconds=50.0),
-    #     },
-    # },
+    'populate_museum_data': {
+        'task': 'populate_museum_data',
+        'schedule': crontab(minute=25,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'populate_museum_data_now': {
+        'task': 'populate_museum_data',
+        'schedule': 40.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=50.0),
+        },
+    },
 }
