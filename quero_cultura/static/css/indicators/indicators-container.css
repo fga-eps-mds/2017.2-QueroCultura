@@ -4,13 +4,18 @@
 	width: 20%;*/
 }
 
+.chart-group{ 
+  /*background-color: lightblue; 
+  height: auto; 
+  width: 20%;*/ 
+  background-color: white; 
+}
+
 .title{
 	margin-top: 5%;
 	margin-left: 5%;
 	margin-right: 5%;
 }
-
-/*===============================================*/
 
 .container-indicators{
 	margin-top: 5%;
