@@ -156,3 +156,22 @@ class TestAgentsData(object):
         assert query.instance == instance
         assert query.date == date
         assert query.agents_type == agents_type
+
+
+class TestRequestAgentsRawData(object):
+
+    @requests_mock.Mocker(kw='mock')
+    def test_request_agents_raw_data(self, **kwargs):
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = {
+            'None': 1
+        }
+
+        kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+
+        current_time = datetime.now().__str__()
+        raw_data = RequestAgentsRawData(current_time, url)
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1
