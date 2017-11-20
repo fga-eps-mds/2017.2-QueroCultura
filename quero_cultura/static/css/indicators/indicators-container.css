@@ -3,6 +3,9 @@
 	height: auto;
 	width: 20%;*/
 }
+.col-md-4{
+	width: 20px;
+}
 
 .title{
 	margin-top: 5%;
@@ -22,8 +25,8 @@
 }
 
 .chart-container{
-	position: relative;
-	/*height: 70%;
+	/*position: relative;
+	height: 70%;
 	width: 100%;*/
 	margin-left: auto;
 	margin-right: auto;
