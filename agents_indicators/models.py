@@ -119,3 +119,33 @@ class AgentsArea(Document):
     @area.setter
     def area(self, area):
         self._area = area
+
+
+class AgentsData(Document):
+    _instance = StringField(required=True)
+    _agents_type = StringField(required=True)
+    _date = DateTimeField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, date):
+        self._date = date
+
+    @property
+    def agents_type(self):
+        return self._agents_type
+
+    @agents_type.setter
+    def agents_type(self, agents_type):
+        self._agents_type = agents_type
