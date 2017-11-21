@@ -7,6 +7,7 @@ from .api_connection import RequestAgentsInPeriod
 from .api_connection import RequestAgentsRawData
 from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
+from quero_cultura.views import get_metabase_url
 from datetime import datetime
 from celery.decorators import task
 
@@ -17,14 +18,17 @@ CURRENT_YEAR = datetime.today().year + 1
 
 
 def index(request):
-    # AgentsArea.drop_collection()
-    # AgentsData.drop_collection()
-    # LastUpdateAgentsDate.drop_collection()
-    # populate_agent_data()
-    return render(request, 'agents_indicators/agents-indicators.html')
+    view_type = "question"
+
+    url = {"graphic1": get_metabase_url(view_type, 30),
+           "graphic2": get_metabase_url(view_type, 31),
+           "graphic3": get_metabase_url(view_type, 32),
+           "graphic4": get_metabase_url(view_type, 33)}
+
+    return render(request, 'agents_indicators/agents-indicators.html', url)
 
 
-# @task(name="populate_agent_data")
+@task(name="populate_agent_data")
 def populate_agent_data():
     if len(LastUpdateAgentsDate.objects) == 0:
         LastUpdateAgentsDate(DEFAULT_INITIAL_DATE).save()
