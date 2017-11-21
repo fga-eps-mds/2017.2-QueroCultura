@@ -11,8 +11,9 @@ from .models import OccupationArea
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
-view_type = "question"
 # Get graphics urls from metabase
+# To add new graphis, just add in the metabase_urls variable
+view_type = "question"
 metabase_urls = [{'id':1, 'url':get_metabase_url(view_type, 2)},
                  {'id':2, 'url':get_metabase_url(view_type, 4)},
                  {'id':3, 'url':get_metabase_url(view_type, 3)},
