@@ -37,7 +37,7 @@ def populate_project_data():
         new_url = clean_url(url)
         for project in request:
             date = project["createTimestamp"]['date']
-            ProjectData(new_url, project['type']['name'],
+            ProjectData(new_url, str(project['type']['name']),
                         str(project["useRegistrations"]), date).save()
 
     LastUpdateProjectDate(str(datetime.now())).save()

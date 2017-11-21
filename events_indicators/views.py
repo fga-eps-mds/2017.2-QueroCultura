@@ -39,7 +39,7 @@ def populate_event_data():
         new_url = clean_url(url)
         for event in request:
             date = event["createTimestamp"]['date']
-            EventData(new_url, event['classificacaoEtaria'], date).save()
+            EventData(new_url, str(event['classificacaoEtaria']), date).save()
             for language in event["terms"]["linguagem"]:
                 EventLanguage(new_url, language).save()
 
