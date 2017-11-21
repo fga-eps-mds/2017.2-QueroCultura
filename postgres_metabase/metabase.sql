@@ -2301,6 +2301,55 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 80	card-update	2017-11-19 18:08:01.81+00	1	card	16	2	18	\N	{"name":"Porcentagem de Eventos por Faixa Etária","description":null}
 81	card-update	2017-11-19 18:08:12.18+00	1	card	14	2	18	\N	{"name":"Quantidade de Registros por Mês","description":null}
 82	card-update	2017-11-19 18:08:12.235+00	1	card	14	2	18	\N	{"name":"Quantidade de Registros por Mês","description":null}
+83	card-create	2017-11-20 23:04:08.7+00	1	card	18	2	22	\N	{"name":"Quantidade de Registros por Tipo","description":null}
+84	card-create	2017-11-20 23:05:38.408+00	1	card	19	2	22	\N	{"name":"Quantidade de Registros por Temática","description":null}
+85	card-create	2017-11-20 23:06:35.801+00	1	card	20	2	22	\N	{"name":"Porcentagem por Esfera","description":null}
+86	card-create	2017-11-20 23:07:18.334+00	1	card	21	2	22	\N	{"name":"Porcentagem por Visita Guiada","description":null}
+87	card-create	2017-11-20 23:08:03.883+00	1	card	22	2	22	\N	{"name":"Porcentagem por Arquivo com Acesso Público","description":null}
+88	card-create	2017-11-20 23:09:02.864+00	1	card	23	2	22	\N	{"name":"Registros por Mês","description":null}
+89	card-create	2017-11-20 23:10:58.3+00	1	card	24	2	22	\N	{"name":"Crscimento Cumulativo Mensal","description":null}
+90	card-update	2017-11-20 23:11:14.58+00	1	card	24	2	22	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+91	card-update	2017-11-20 23:11:47.174+00	1	card	24	2	22	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+92	card-update	2017-11-20 23:11:53.716+00	1	card	22	2	22	\N	{"name":"Porcentagem por Arquivo com Acesso Público","description":null}
+93	card-update	2017-11-20 23:11:59.642+00	1	card	20	2	22	\N	{"name":"Porcentagem por Esfera","description":null}
+94	card-update	2017-11-20 23:12:09.736+00	1	card	21	2	22	\N	{"name":"Porcentagem por Visita Guiada","description":null}
+95	card-update	2017-11-20 23:12:21.462+00	1	card	19	2	22	\N	{"name":"Quantidade de Registros por Temática","description":null}
+96	card-update	2017-11-20 23:12:26.716+00	1	card	18	2	22	\N	{"name":"Quantidade de Registros por Tipo","description":null}
+97	card-update	2017-11-20 23:12:32.985+00	1	card	23	2	22	\N	{"name":"Registros por Mês","description":null}
+98	card-update	2017-11-20 23:16:43.757+00	1	card	24	2	22	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+99	card-update	2017-11-20 23:16:43.796+00	1	card	24	2	22	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+103	card-update	2017-11-20 23:17:21.363+00	1	card	20	2	22	\N	{"name":"Porcentagem por Esfera","description":null}
+105	card-update	2017-11-20 23:17:41.059+00	1	card	21	2	22	\N	{"name":"Porcentagem por Visita Guiada","description":null}
+107	card-update	2017-11-20 23:17:57.13+00	1	card	19	2	22	\N	{"name":"Quantidade de Registros por Temática","description":null}
+127	card-update	2017-11-20 23:51:58.642+00	1	card	26	2	25	\N	{"name":"Porcentagem por Tipo de Esfera","description":null}
+100	card-update	2017-11-20 23:17:02.523+00	1	card	22	2	22	\N	{"name":"Porcentagem por Arquivo com Acesso Público","description":null}
+111	card-update	2017-11-20 23:18:33.111+00	1	card	23	2	22	\N	{"name":"Registros por Mês","description":null}
+122	card-update	2017-11-20 23:51:33.907+00	1	card	28	2	25	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+125	card-update	2017-11-20 23:51:43.738+00	1	card	25	2	25	\N	{"name":"Porcentagem por Esfera","description":null}
+128	card-update	2017-11-20 23:52:08.771+00	1	card	29	2	23	\N	{"name":"Quantidade de Registros por Área","description":null}
+101	card-update	2017-11-20 23:17:02.576+00	1	card	22	2	22	\N	{"name":"Porcentagem por Arquivo com Acesso Público","description":null}
+102	card-update	2017-11-20 23:17:21.313+00	1	card	20	2	22	\N	{"name":"Porcentagem por Esfera","description":null}
+104	card-update	2017-11-20 23:17:40.989+00	1	card	21	2	22	\N	{"name":"Porcentagem por Visita Guiada","description":null}
+110	card-update	2017-11-20 23:18:33.037+00	1	card	23	2	22	\N	{"name":"Registros por Mês","description":null}
+114	card-create	2017-11-20 23:47:48.657+00	1	card	27	2	25	\N	{"name":"Quantidade de Registros por Mês","description":null}
+120	card-update	2017-11-20 23:51:04.7+00	1	card	29	2	23	\N	{"name":"Quantidade de Registros por Área","description":null}
+126	card-update	2017-11-20 23:51:58.58+00	1	card	26	2	25	\N	{"name":"Porcentagem por Tipo de Esfera","description":null}
+106	card-update	2017-11-20 23:17:57.076+00	1	card	19	2	22	\N	{"name":"Quantidade de Registros por Temática","description":null}
+108	card-update	2017-11-20 23:18:15.143+00	1	card	18	2	22	\N	{"name":"Quantidade de Registros por Tipo","description":null}
+109	card-update	2017-11-20 23:18:15.233+00	1	card	18	2	22	\N	{"name":"Quantidade de Registros por Tipo","description":null}
+115	card-create	2017-11-20 23:48:24.601+00	1	card	28	2	25	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+124	card-update	2017-11-20 23:51:43.687+00	1	card	25	2	25	\N	{"name":"Porcentagem por Esfera","description":null}
+112	card-create	2017-11-20 23:46:06.839+00	1	card	25	2	25	\N	{"name":"Porcentagem por Esfera","description":null}
+113	card-create	2017-11-20 23:47:00.417+00	1	card	26	2	25	\N	{"name":"Porcentagem por Tipo de Esfera","description":null}
+116	card-create	2017-11-20 23:50:00.693+00	1	card	29	2	23	\N	{"name":"Quantidade de Registros por Área","description":null}
+117	card-update	2017-11-20 23:50:36.315+00	1	card	28	2	25	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+118	card-update	2017-11-20 23:50:49.119+00	1	card	25	2	25	\N	{"name":"Porcentagem por Esfera","description":null}
+119	card-update	2017-11-20 23:50:54.652+00	1	card	26	2	25	\N	{"name":"Porcentagem por Tipo de Esfera","description":null}
+121	card-update	2017-11-20 23:51:10.716+00	1	card	27	2	25	\N	{"name":"Quantidade de Registros por Mês","description":null}
+123	card-update	2017-11-20 23:51:33.989+00	1	card	28	2	25	\N	{"name":"Crescimento Cumulativo Mensal","description":null}
+129	card-update	2017-11-20 23:52:08.842+00	1	card	29	2	23	\N	{"name":"Quantidade de Registros por Área","description":null}
+130	card-update	2017-11-20 23:52:23.214+00	1	card	27	2	25	\N	{"name":"Quantidade de Registros por Mês","description":null}
+131	card-update	2017-11-20 23:52:23.293+00	1	card	27	2	25	\N	{"name":"Quantidade de Registros por Mês","description":null}
 \.
 
 
@@ -2319,6 +2368,8 @@ COPY card_label (id, card_id, label_id) FROM stdin;
 COPY collection (id, name, slug, description, color, archived) FROM stdin;
 1	Indicadores de Projetos	indicadores_de_projetos	\N	#EF8C8C	f
 2	Indicadores de Eventos	indicadores_de_eventos	\N	#F1B556	f
+3	Indicadores de Museus	indicadores_de_museus	\N	#9CC177	f
+4	Indicadores de Bibliotecas	indicadores_de_bibliotecas	\N	#7172AD	f
 \.
 
 
@@ -2396,6 +2447,7 @@ ensure-protocol-specified-in-site-url	2017-11-11 23:01:35.076
 --
 
 COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exectype, md5sum, description, comments, tag, liquibase, contexts, labels, deployment_id) FROM stdin;
+28	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	27	EXECUTED	7:335e7e6b32dcbeb392150b3c3db2d5eb	addColumn tableName=core_user		\N	3.5.3	\N	\N	0441238708
 23	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	22	EXECUTED	7:43b9662bd798db391d4bbb7d4615bf0d	modifyDataType columnName=rows, tableName=metabase_table		\N	3.5.3	\N	\N	0441238708
 24	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	23	EXECUTED	7:69c2cad167fd7cec9e8c920d9ccab86e	createTable tableName=dependency; createIndex indexName=idx_dependency_model, tableName=dependency; createIndex indexName=idx_dependency_model_id, tableName=dependency; createIndex indexName=idx_dependency_dependent_on_model, tableName=dependency;...		\N	3.5.3	\N	\N	0441238708
 25	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	24	EXECUTED	7:327941d9ac9414f493471b746a812fa4	createTable tableName=metric; createIndex indexName=idx_metric_creator_id, tableName=metric; createIndex indexName=idx_metric_table_id, tableName=metric		\N	3.5.3	\N	\N	0441238708
@@ -2408,6 +2460,69 @@ COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exect
 59	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	58	EXECUTED	7:583e67af40cae19cab645bbd703558ef	addColumn tableName=metabase_field	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
 32	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	31	EXECUTED	7:ff40b5fbe06dc5221d0b9223992ece25	createTable tableName=label; createIndex indexName=idx_label_slug, tableName=label; createTable tableName=card_label; addUniqueConstraint constraintName=unique_card_label_card_id_label_id, tableName=card_label; createIndex indexName=idx_card_label...		\N	3.5.3	\N	\N	0441238708
 66	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	64	EXECUTED	7:76d06b44a544105c2a613603b8bdf25f	sql; sql	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+32	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	32	EXECUTED	7:af1dea42abdc7cd058b5f744602d7a22	createTable tableName=raw_table; createIndex indexName=idx_rawtable_database_id, tableName=raw_table; addUniqueConstraint constraintName=uniq_raw_table_db_schema_name, tableName=raw_table; createTable tableName=raw_column; createIndex indexName=id...		\N	3.5.3	\N	\N	0441238708
+34	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	33	EXECUTED	7:e65d70b4c914cfdf5b3ef9927565e899	addColumn tableName=pulse_channel		\N	3.5.3	\N	\N	0441238708
+35	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	34	EXECUTED	7:ab80b6b8e6dfc3fa3e8fa5954e3a8ec4	modifyDataType columnName=value, tableName=setting		\N	3.5.3	\N	\N	0441238708
+36	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	35	EXECUTED	7:de534c871471b400d70ee29122f23847	addColumn tableName=report_dashboard; addNotNullConstraint columnName=parameters, tableName=report_dashboard; addColumn tableName=report_dashboardcard; addNotNullConstraint columnName=parameter_mappings, tableName=report_dashboardcard		\N	3.5.3	\N	\N	0441238708
+66	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	64	EXECUTED	7:76d06b44a544105c2a613603b8bdf25f	sql; sql	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+37	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	36	EXECUTED	7:487dd1fa57af0f25edf3265ed9899588	addColumn tableName=query_queryexecution; addNotNullConstraint columnName=query_hash, tableName=query_queryexecution; createIndex indexName=idx_query_queryexecution_query_hash, tableName=query_queryexecution; createIndex indexName=idx_query_querye...		\N	3.5.3	\N	\N	0441238708
+8	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	7	EXECUTED	7:ea2727c7ce666178cff436549f81ddbd	addColumn tableName=metabase_table; addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
+38	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	37	EXECUTED	7:5e32fa14a0c34b99027e25901b7e3255	addColumn tableName=metabase_database; addColumn tableName=metabase_table; addColumn tableName=metabase_field; addColumn tableName=report_dashboard; addColumn tableName=metric; addColumn tableName=segment; addColumn tableName=metabase_database; ad...		\N	3.5.3	\N	\N	0441238708
+40	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	39	EXECUTED	7:0ba56822308957969bf5ad5ea8ee6707	createTable tableName=permissions_group; createIndex indexName=idx_permissions_group_name, tableName=permissions_group; createTable tableName=permissions_group_membership; addUniqueConstraint constraintName=unique_permissions_group_membership_user...		\N	3.5.3	\N	\N	0441238708
+41	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	40	EXECUTED	7:e1aa5b70f61426b29d74d38936e560de	dropColumn columnName=field_type, tableName=metabase_field; addDefaultValue columnName=active, tableName=metabase_field; addDefaultValue columnName=preview_display, tableName=metabase_field; addDefaultValue columnName=position, tableName=metabase_...		\N	3.5.3	\N	\N	0441238708
+42	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	41	EXECUTED	7:779407e2ea3b8d89092fc9f72e29fdaa	dropForeignKeyConstraint baseTableName=query_queryexecution, constraintName=fk_queryexecution_ref_query_id; dropColumn columnName=query_id, tableName=query_queryexecution; dropColumn columnName=is_staff, tableName=core_user; dropColumn columnName=...		\N	3.5.3	\N	\N	0441238708
+57	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	56	EXECUTED	7:5d51b16e22be3c81a27d3b5b345a8270	addColumn tableName=report_card	Added 0.25.0	\N	3.5.3	\N	\N	0441238708
+43	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	42	EXECUTED	7:dbc18c8ca697fc335869f0ed0eb5f4cb	createTable tableName=permissions_revision		\N	3.5.3	\N	\N	0441238708
+44	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	43	EXECUTED	7:1d09a61933bbc5a01b0ddef7bd1b1336	dropColumn columnName=public_perms, tableName=report_card; dropColumn columnName=public_perms, tableName=report_dashboard; dropColumn columnName=public_perms, tableName=pulse		\N	3.5.3	\N	\N	0441238708
+45	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	44	EXECUTED	7:9198081e3329df7903d9016804ef0cf0	addColumn tableName=report_dashboardcard; addNotNullConstraint columnName=visualization_settings, tableName=report_dashboardcard		\N	3.5.3	\N	\N	0441238708
+46	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	45	EXECUTED	7:aab12e940225b458986e15cf53d5d816	addNotNullConstraint columnName=row, tableName=report_dashboardcard; addNotNullConstraint columnName=col, tableName=report_dashboardcard; addDefaultValue columnName=row, tableName=report_dashboardcard; addDefaultValue columnName=col, tableName=rep...		\N	3.5.3	\N	\N	0441238708
+47	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	46	EXECUTED	7:381e18d5008269e299f12c9726163675	createTable tableName=collection; createIndex indexName=idx_collection_slug, tableName=collection; addColumn tableName=report_card; createIndex indexName=idx_card_collection_id, tableName=report_card		\N	3.5.3	\N	\N	0441238708
+48	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	47	EXECUTED	7:b8957fda76bab207f99ced39353df1da	createTable tableName=collection_revision		\N	3.5.3	\N	\N	0441238708
+49	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	48	EXECUTED	7:bb653dc1919f366bb81f3356a4cbfa6c	addColumn tableName=report_card; createIndex indexName=idx_card_public_uuid, tableName=report_card; addColumn tableName=report_dashboard; createIndex indexName=idx_dashboard_public_uuid, tableName=report_dashboard; dropNotNullConstraint columnName...		\N	3.5.3	\N	\N	0441238708
+50	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	49	EXECUTED	7:6a45ed802c2f724731835bfaa97c57c9	addColumn tableName=report_card; addColumn tableName=report_dashboard		\N	3.5.3	\N	\N	0441238708
+1	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	1	EXECUTED	7:4760863947b982cf4783d8a8e02dc4ea	createTable tableName=core_organization; createTable tableName=core_user; createTable tableName=core_userorgperm; addUniqueConstraint constraintName=idx_unique_user_id_organization_id, tableName=core_userorgperm; createIndex indexName=idx_userorgp...		\N	3.5.3	\N	\N	0441238708
+2	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	2	EXECUTED	7:816381628d3155232ae439826bfc3992	createTable tableName=core_session		\N	3.5.3	\N	\N	0441238708
+5	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	4	EXECUTED	7:593149128c8f3a7e1f37a483bc67a924	addColumn tableName=core_organization		\N	3.5.3	\N	\N	0441238708
+6	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	5	EXECUTED	7:d24f2f950306f150d87c4208520661d5	dropNotNullConstraint columnName=organization_id, tableName=metabase_database; dropForeignKeyConstraint baseTableName=metabase_database, constraintName=fk_database_ref_organization_id; dropNotNullConstraint columnName=organization_id, tableName=re...		\N	3.5.3	\N	\N	0441238708
+7	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	6	EXECUTED	7:baec0ec600ccc9bdadc176c1c4b29b77	addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
+39	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	38	EXECUTED	7:a63ada256c44684d2649b8f3c28a3023	addColumn tableName=core_user		\N	3.5.3	\N	\N	0441238708
+4	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	3	EXECUTED	7:1ed887e91a846f4d6cbe84d1efd126c4	createTable tableName=setting		\N	3.5.3	\N	\N	0441238708
+10	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	9	EXECUTED	7:ec4f8eecc37fdc8c22440490de3a13f0	createTable tableName=revision; createIndex indexName=idx_revision_model_model_id, tableName=revision		\N	3.5.3	\N	\N	0441238708
+12	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	11	EXECUTED	7:f78e18f669d7c9e6d06c63ea9929391f	addColumn tableName=report_card		\N	3.5.3	\N	\N	0441238708
+13	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	12	EXECUTED	7:20a2ef1765573854864909ec2e7de766	createTable tableName=activity; createIndex indexName=idx_activity_timestamp, tableName=activity; createIndex indexName=idx_activity_user_id, tableName=activity; createIndex indexName=idx_activity_custom_id, tableName=activity		\N	3.5.3	\N	\N	0441238708
+14	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	13	EXECUTED	7:6614fcaca4e41d003ce26de5cbc882f7	createTable tableName=view_log; createIndex indexName=idx_view_log_user_id, tableName=view_log; createIndex indexName=idx_view_log_timestamp, tableName=view_log		\N	3.5.3	\N	\N	0441238708
+15	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	14	EXECUTED	7:50c72a51651af76928c06f21c9e04f97	addColumn tableName=revision		\N	3.5.3	\N	\N	0441238708
+16	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	15	EXECUTED	7:a398a37dd953a0e82633d12658c6ac8f	dropNotNullConstraint columnName=last_login, tableName=core_user		\N	3.5.3	\N	\N	0441238708
+17	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	16	EXECUTED	7:5401ec35a5bd1275f93a7cac1ddd7591	addColumn tableName=metabase_database; sql		\N	3.5.3	\N	\N	0441238708
+11	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	10	EXECUTED	7:c7ef8b4f4dcb3528f9282b51aea5bb2a	sql		\N	3.5.3	\N	\N	0441238708
+18	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	17	EXECUTED	7:329d897d44ba9893fdafc9ce7e876d73	createTable tableName=data_migrations; createIndex indexName=idx_data_migrations_id, tableName=data_migrations		\N	3.5.3	\N	\N	0441238708
+19	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	18	EXECUTED	7:e8fa976811e4d58d42a45804affa1d07	addColumn tableName=metabase_table		\N	3.5.3	\N	\N	0441238708
+20	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	19	EXECUTED	7:9c5fedbd888307edf521a6a547f96f99	createTable tableName=pulse; createIndex indexName=idx_pulse_creator_id, tableName=pulse; createTable tableName=pulse_card; createIndex indexName=idx_pulse_card_pulse_id, tableName=pulse_card; createIndex indexName=idx_pulse_card_card_id, tableNam...		\N	3.5.3	\N	\N	0441238708
+21	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	20	EXECUTED	7:c23c71d8a11b3f38aaf5bf98acf51e6f	createTable tableName=segment; createIndex indexName=idx_segment_creator_id, tableName=segment; createIndex indexName=idx_segment_table_id, tableName=segment		\N	3.5.3	\N	\N	0441238708
+22	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	21	EXECUTED	7:cb6776ec86ab0ad9e74806a5460b9085	addColumn tableName=revision		\N	3.5.3	\N	\N	0441238708
+9	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	8	EXECUTED	7:c05cf8a25248b38e281e8e85de4275a2	addColumn tableName=metabase_table		\N	3.5.3	\N	\N	0441238708
+51	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	50	EXECUTED	7:2b28e18d04212a1cbd82eb7888ae4af3	createTable tableName=query_execution; createIndex indexName=idx_query_execution_started_at, tableName=query_execution; createIndex indexName=idx_query_execution_query_hash_started_at, tableName=query_execution		\N	3.5.3	\N	\N	0441238708
+52	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	51	EXECUTED	7:fbe1b7114f1d4f346543e3c22e28bde3	createTable tableName=query_cache; createIndex indexName=idx_query_cache_updated_at, tableName=query_cache; addColumn tableName=report_card		\N	3.5.3	\N	\N	0441238708
+53	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	52	EXECUTED	7:cc7ef026c3375d31df5f03036bb7e850	createTable tableName=query		\N	3.5.3	\N	\N	0441238708
+54	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	53	EXECUTED	7:0857800db71a4757e7202aad4eaed48d	addColumn tableName=pulse		\N	3.5.3	\N	\N	0441238708
+55	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	54	EXECUTED	7:e169c9d0a5220127b97630e95717c033	addColumn tableName=report_dashboard; createTable tableName=dashboard_favorite; addUniqueConstraint constraintName=unique_dashboard_favorite_user_id_dashboard_id, tableName=dashboard_favorite; createIndex indexName=idx_dashboard_favorite_user_id, ...		\N	3.5.3	\N	\N	0441238708
+56	wwwiiilll	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	55	EXECUTED	7:d72f90ad1c2911d60b943445a2cb7ee1	addColumn tableName=core_user	Added 0.25.0	\N	3.5.3	\N	\N	0441238708
+58	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	57	EXECUTED	7:a12d6057fa571739e5327316558a117f	createTable tableName=dimension; addUniqueConstraint constraintName=unique_dimension_field_id_name, tableName=dimension; createIndex indexName=idx_dimension_field_id, tableName=dimension	Added 0.25.0	\N	3.5.3	\N	\N	0441238708
+60	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	59	EXECUTED	7:888069f3cbfb80ac05a734c980ac5885	addColumn tableName=metabase_database	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+61	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	60	EXECUTED	7:070febe9fb610d73dc7bf69086f50a1d	addColumn tableName=metabase_field	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+62	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	61	EXECUTED	7:db49b2acae484cf753c67e0858e4b17f	addColumn tableName=metabase_database	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+63	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	62	EXECUTED	7:fd58f763ac416881865080b693ce9aab	addColumn tableName=metabase_database	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+64	senior	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	63	EXECUTED	7:1da13bf2e4248f9b47587f657c204dc3	dropForeignKeyConstraint baseTableName=raw_table, constraintName=fk_rawtable_ref_database	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+23	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	22	EXECUTED	7:43b9662bd798db391d4bbb7d4615bf0d	modifyDataType columnName=rows, tableName=metabase_table		\N	3.5.3	\N	\N	0441238708
+24	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	23	EXECUTED	7:69c2cad167fd7cec9e8c920d9ccab86e	createTable tableName=dependency; createIndex indexName=idx_dependency_model, tableName=dependency; createIndex indexName=idx_dependency_model_id, tableName=dependency; createIndex indexName=idx_dependency_dependent_on_model, tableName=dependency;...		\N	3.5.3	\N	\N	0441238708
+25	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	24	EXECUTED	7:327941d9ac9414f493471b746a812fa4	createTable tableName=metric; createIndex indexName=idx_metric_creator_id, tableName=metric; createIndex indexName=idx_metric_table_id, tableName=metric		\N	3.5.3	\N	\N	0441238708
+26	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	25	EXECUTED	7:ac7f40d2a3fbf3fea7936aa79bb1532b	addColumn tableName=metabase_database; sql		\N	3.5.3	\N	\N	0441238708
+27	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	26	EXECUTED	7:e3a52bd649da7940246e4236b204714b	createTable tableName=dashboardcard_series; createIndex indexName=idx_dashboardcard_series_dashboardcard_id, tableName=dashboardcard_series; createIndex indexName=idx_dashboardcard_series_card_id, tableName=dashboardcard_series		\N	3.5.3	\N	\N	0441238708
+29	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	28	EXECUTED	7:7b0bb8fcb7de2aa29ce57b32baf9ff31	addColumn tableName=pulse_channel		\N	3.5.3	\N	\N	0441238708
+30	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	29	EXECUTED	7:7b5245de5d964eedb5cd6fdf5afdb6fd	addColumn tableName=metabase_field; addNotNullConstraint columnName=visibility_type, tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
+31	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	30	EXECUTED	7:347281cdb65a285b03aeaf77cb28e618	addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
+59	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	58	EXECUTED	7:583e67af40cae19cab645bbd703558ef	addColumn tableName=metabase_field	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+32	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	31	EXECUTED	7:ff40b5fbe06dc5221d0b9223992ece25	createTable tableName=label; createIndex indexName=idx_label_slug, tableName=label; createTable tableName=card_label; addUniqueConstraint constraintName=unique_card_label_card_id_label_id, tableName=card_label; createIndex indexName=idx_card_label...		\N	3.5.3	\N	\N	0441238708
 32	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	32	EXECUTED	7:af1dea42abdc7cd058b5f744602d7a22	createTable tableName=raw_table; createIndex indexName=idx_rawtable_database_id, tableName=raw_table; addUniqueConstraint constraintName=uniq_raw_table_db_schema_name, tableName=raw_table; createTable tableName=raw_column; createIndex indexName=id...		\N	3.5.3	\N	\N	0441238708
 34	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	33	EXECUTED	7:e65d70b4c914cfdf5b3ef9927565e899	addColumn tableName=pulse_channel		\N	3.5.3	\N	\N	0441238708
 35	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	34	EXECUTED	7:ab80b6b8e6dfc3fa3e8fa5954e3a8ec4	modifyDataType columnName=value, tableName=setting		\N	3.5.3	\N	\N	0441238708
@@ -2502,7 +2617,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-11-19 17:51:47.976+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-11-20 22:55:02.44+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -2656,16 +2771,15 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 163	2017-11-12 21:38:39.149+00	2017-11-14 13:50:01.523+00	02	type/Integer	\N	t	\N	t	0	5	152	02	normal	\N	\N	\N	\N	\N	\N	0
 165	2017-11-12 21:38:39.17+00	2017-11-14 13:50:01.567+00	09	type/Integer	\N	t	\N	t	0	5	164	09	normal	\N	\N	\N	\N	\N	\N	0
 166	2017-11-12 21:38:39.188+00	2017-11-14 13:50:01.579+00	06	type/Integer	\N	t	\N	t	0	5	164	06	normal	\N	\N	\N	\N	\N	\N	0
-283	2017-11-12 21:38:44.918+00	2017-11-19 17:54:26.058+00	10	type/Integer	\N	t	\N	t	0	7	275	10	normal	\N	\N	\N	\N	\N	\N	0
-282	2017-11-12 21:38:44.906+00	2017-11-19 17:54:26.067+00	07	type/Integer	\N	t	\N	t	0	7	275	07	normal	\N	\N	\N	\N	\N	\N	0
-281	2017-11-12 21:38:44.895+00	2017-11-19 17:54:26.075+00	08	type/Integer	\N	t	\N	t	0	7	275	08	normal	\N	\N	\N	\N	\N	\N	0
-280	2017-11-12 21:38:44.883+00	2017-11-19 17:54:26.078+00	05	type/Integer	\N	t	\N	t	0	7	275	05	normal	\N	\N	\N	\N	\N	\N	0
-279	2017-11-12 21:38:44.872+00	2017-11-19 17:54:26.081+00	11	type/Integer	\N	t	\N	t	0	7	275	11	normal	\N	\N	\N	\N	\N	\N	0
-278	2017-11-12 21:38:44.862+00	2017-11-19 17:54:26.084+00	03	type/Integer	\N	t	\N	t	0	7	275	03	normal	\N	\N	\N	\N	\N	\N	0
-277	2017-11-12 21:38:44.85+00	2017-11-19 17:54:26.087+00	06	type/Integer	\N	t	\N	t	0	7	275	06	normal	\N	\N	\N	\N	\N	\N	0
-276	2017-11-12 21:38:44.839+00	2017-11-19 17:54:26.093+00	09	type/Integer	\N	t	\N	t	0	7	275	09	normal	\N	\N	\N	\N	\N	\N	0
-286	2017-11-12 21:38:44.95+00	2017-11-19 17:54:26.101+00	01	type/Integer	\N	t	\N	t	0	7	275	01	normal	\N	\N	\N	\N	\N	\N	0
+279	2017-11-12 21:38:44.872+00	2017-11-20 23:50:01.421+00	11	type/Integer	\N	t	\N	t	0	7	275	11	normal	\N	\N	\N	\N	\N	\N	0
 167	2017-11-12 21:38:39.21+00	2017-11-14 13:50:01.589+00	03	type/Integer	\N	t	\N	t	0	5	164	03	normal	\N	\N	\N	\N	\N	\N	0
+286	2017-11-12 21:38:44.95+00	2017-11-20 23:50:01.431+00	01	type/Integer	\N	t	\N	t	0	7	275	01	normal	\N	\N	\N	\N	\N	\N	0
+282	2017-11-12 21:38:44.906+00	2017-11-20 23:50:01.413+00	07	type/Integer	\N	t	\N	t	0	7	275	07	normal	\N	\N	\N	\N	\N	\N	0
+281	2017-11-12 21:38:44.895+00	2017-11-20 23:50:01.416+00	08	type/Integer	\N	t	\N	t	0	7	275	08	normal	\N	\N	\N	\N	\N	\N	0
+278	2017-11-12 21:38:44.862+00	2017-11-20 23:50:01.423+00	03	type/Integer	\N	t	\N	t	0	7	275	03	normal	\N	\N	\N	\N	\N	\N	0
+277	2017-11-12 21:38:44.85+00	2017-11-20 23:50:01.426+00	06	type/Integer	\N	t	\N	t	0	7	275	06	normal	\N	\N	\N	\N	\N	\N	0
+276	2017-11-12 21:38:44.839+00	2017-11-20 23:50:01.429+00	09	type/Integer	\N	t	\N	t	0	7	275	09	normal	\N	\N	\N	\N	\N	\N	0
+280	2017-11-12 21:38:44.883+00	2017-11-20 23:50:01.418+00	05	type/Integer	\N	t	\N	t	0	7	275	05	normal	\N	\N	\N	\N	\N	\N	0
 169	2017-11-12 21:38:39.251+00	2017-11-14 13:50:01.6+00	05	type/Integer	\N	t	\N	t	0	5	164	05	normal	\N	\N	\N	\N	\N	\N	0
 171	2017-11-12 21:38:39.281+00	2017-11-14 13:50:01.612+00	07	type/Integer	\N	t	\N	t	0	5	164	07	normal	\N	\N	\N	\N	\N	\N	0
 172	2017-11-12 21:38:39.292+00	2017-11-14 13:50:01.623+00	10	type/Integer	\N	t	\N	t	0	5	164	10	normal	\N	\N	\N	\N	\N	\N	0
@@ -2720,17 +2834,16 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 36	2017-11-12 21:38:37.295+00	2017-11-14 13:50:01.823+00	spculturaprefeituraspgovbr	type/Dictionary	\N	t	\N	t	0	5	35	Sp Cultura Pre Fei Tura Sp Gov Br	normal	\N	\N	\N	\N	\N	\N	0
 76	2017-11-12 21:38:37.953+00	2017-11-14 13:50:01.99+00	08	type/Integer	\N	t	\N	t	0	5	70	08	normal	\N	\N	\N	\N	\N	\N	0
 50	2017-11-12 21:38:37.538+00	2017-11-14 13:50:02.011+00	2017	type/Dictionary	\N	t	\N	t	0	5	36	2017	normal	\N	\N	2017-11-12 22:50:09.997+00	\N	\N	{"global":{"distinct-count":2}}	1
-306	2017-11-12 21:38:45.249+00	2017-11-19 17:54:26.169+00	12	type/Integer	\N	t	\N	t	0	7	297	12	normal	\N	\N	\N	\N	\N	\N	0
-305	2017-11-12 21:38:45.237+00	2017-11-19 17:54:26.172+00	10	type/Integer	\N	t	\N	t	0	7	297	10	normal	\N	\N	\N	\N	\N	\N	0
-304	2017-11-12 21:38:45.216+00	2017-11-19 17:54:26.174+00	07	type/Integer	\N	t	\N	t	0	7	297	07	normal	\N	\N	\N	\N	\N	\N	0
-301	2017-11-12 21:38:45.171+00	2017-11-19 17:54:26.179+00	11	type/Integer	\N	t	\N	t	0	7	297	11	normal	\N	\N	\N	\N	\N	\N	0
-302	2017-11-12 21:38:45.184+00	2017-11-19 17:54:26.182+00	05	type/Integer	\N	t	\N	t	0	7	297	05	normal	\N	\N	\N	\N	\N	\N	0
-300	2017-11-12 21:38:45.16+00	2017-11-19 17:54:26.19+00	03	type/Integer	\N	t	\N	t	0	7	297	03	normal	\N	\N	\N	\N	\N	\N	0
-299	2017-11-12 21:38:45.122+00	2017-11-19 17:54:26.194+00	06	type/Integer	\N	t	\N	t	0	7	297	06	normal	\N	\N	\N	\N	\N	\N	0
-298	2017-11-12 21:38:45.104+00	2017-11-19 17:54:26.197+00	09	type/Integer	\N	t	\N	t	0	7	297	09	normal	\N	\N	\N	\N	\N	\N	0
-303	2017-11-12 21:38:45.194+00	2017-11-19 17:54:26.199+00	08	type/Integer	\N	t	\N	t	0	7	297	08	normal	\N	\N	\N	\N	\N	\N	0
+302	2017-11-12 21:38:45.184+00	2017-11-20 23:50:01.529+00	05	type/Integer	\N	t	\N	t	0	7	297	05	normal	\N	\N	\N	\N	\N	\N	0
 87	2017-11-12 21:38:38.107+00	2017-11-14 13:50:02.488+00	05	type/Integer	\N	t	\N	t	0	5	84	05	normal	\N	\N	\N	\N	\N	\N	0
 92	2017-11-12 21:38:38.163+00	2017-11-14 13:50:02.786+00	09	type/Integer	\N	t	\N	t	0	5	91	09	normal	\N	\N	\N	\N	\N	\N	0
+303	2017-11-12 21:38:45.194+00	2017-11-20 23:50:01.546+00	08	type/Integer	\N	t	\N	t	0	7	297	08	normal	\N	\N	\N	\N	\N	\N	0
+305	2017-11-12 21:38:45.237+00	2017-11-20 23:50:01.517+00	10	type/Integer	\N	t	\N	t	0	7	297	10	normal	\N	\N	\N	\N	\N	\N	0
+304	2017-11-12 21:38:45.216+00	2017-11-20 23:50:01.521+00	07	type/Integer	\N	t	\N	t	0	7	297	07	normal	\N	\N	\N	\N	\N	\N	0
+301	2017-11-12 21:38:45.171+00	2017-11-20 23:50:01.525+00	11	type/Integer	\N	t	\N	t	0	7	297	11	normal	\N	\N	\N	\N	\N	\N	0
+300	2017-11-12 21:38:45.16+00	2017-11-20 23:50:01.533+00	03	type/Integer	\N	t	\N	t	0	7	297	03	normal	\N	\N	\N	\N	\N	\N	0
+299	2017-11-12 21:38:45.122+00	2017-11-20 23:50:01.538+00	06	type/Integer	\N	t	\N	t	0	7	297	06	normal	\N	\N	\N	\N	\N	\N	0
+298	2017-11-12 21:38:45.104+00	2017-11-20 23:50:01.542+00	09	type/Integer	\N	t	\N	t	0	7	297	09	normal	\N	\N	\N	\N	\N	\N	0
 101	2017-11-12 21:38:38.273+00	2017-11-14 13:50:02.797+00	01	type/Integer	\N	t	\N	t	0	5	91	01	normal	\N	\N	\N	\N	\N	\N	0
 100	2017-11-12 21:38:38.264+00	2017-11-14 13:50:02.808+00	04	type/Integer	\N	t	\N	t	0	5	91	04	normal	\N	\N	\N	\N	\N	\N	0
 196	2017-11-12 21:38:39.604+00	2017-11-14 13:50:03.251+00	Convenção	type/Integer	\N	t	\N	t	0	5	192	Convenção	normal	\N	\N	\N	\N	\N	\N	0
@@ -2746,56 +2859,54 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 192	2017-11-12 21:38:39.544+00	2017-11-14 13:50:02.979+00	spculturaprefeituraspgovbr	type/Dictionary	\N	t	\N	t	0	5	191	Sp Cultura Pre Fei Tura Sp Gov Br	normal	\N	\N	\N	\N	\N	\N	0
 194	2017-11-12 21:38:39.581+00	2017-11-14 13:50:03.262+00	Conferência Pública Estadual	type/Integer	\N	t	\N	t	0	5	192	Conferência Pública Esta Dual	normal	\N	\N	\N	\N	\N	\N	0
 294	2017-11-12 21:38:45.061+00	2017-11-19 17:54:25.968+00	07	type/Integer	\N	f	\N	t	0	7	288	07	normal	\N	\N	\N	\N	\N	\N	0
-296	2017-11-12 21:38:45.082+00	2017-11-19 17:54:25.998+00	12	type/Integer	\N	t	\N	t	0	7	288	12	normal	\N	\N	\N	\N	\N	\N	0
 293	2017-11-12 21:38:45.05+00	2017-11-19 17:54:25.952+00	08	type/Integer	\N	f	\N	t	0	7	288	08	normal	\N	\N	\N	\N	\N	\N	0
 292	2017-11-12 21:38:45.028+00	2017-11-19 17:54:25.96+00	05	type/Integer	\N	f	\N	t	0	7	288	05	normal	\N	\N	\N	\N	\N	\N	0
 295	2017-11-12 21:38:45.071+00	2017-11-19 17:54:25.964+00	10	type/Integer	\N	f	\N	t	0	7	288	10	normal	\N	\N	\N	\N	\N	\N	0
-331	2017-11-12 21:38:45.708+00	2017-11-19 17:54:26.008+00	12	type/Integer	\N	t	\N	t	0	7	322	12	normal	\N	\N	\N	\N	\N	\N	0
-330	2017-11-12 21:38:45.692+00	2017-11-19 17:54:26.011+00	10	type/Integer	\N	t	\N	t	0	7	322	10	normal	\N	\N	\N	\N	\N	\N	0
-328	2017-11-12 21:38:45.648+00	2017-11-19 17:54:26.015+00	08	type/Integer	\N	t	\N	t	0	7	322	08	normal	\N	\N	\N	\N	\N	\N	0
-334	2017-11-12 21:38:45.76+00	2017-11-19 17:54:26.022+00	02	type/Integer	\N	t	\N	t	0	7	322	02	normal	\N	\N	\N	\N	\N	\N	0
-333	2017-11-12 21:38:45.748+00	2017-11-19 17:54:26.025+00	01	type/Integer	\N	t	\N	t	0	7	322	01	normal	\N	\N	\N	\N	\N	\N	0
-326	2017-11-12 21:38:45.625+00	2017-11-19 17:54:26.029+00	11	type/Integer	\N	t	\N	t	0	7	322	11	normal	\N	\N	\N	\N	\N	\N	0
-325	2017-11-12 21:38:45.615+00	2017-11-19 17:54:26.035+00	03	type/Integer	\N	t	\N	t	0	7	322	03	normal	\N	\N	\N	\N	\N	\N	0
-324	2017-11-12 21:38:45.603+00	2017-11-19 17:54:26.038+00	06	type/Integer	\N	t	\N	t	0	7	322	06	normal	\N	\N	\N	\N	\N	\N	0
-332	2017-11-12 21:38:45.727+00	2017-11-19 17:54:26.042+00	04	type/Integer	\N	t	\N	t	0	7	322	04	normal	\N	\N	\N	\N	\N	\N	0
-317	2017-11-12 21:38:45.403+00	2017-11-19 17:54:26.115+00	07	type/Integer	\N	t	\N	t	0	7	310	07	normal	\N	\N	\N	\N	\N	\N	0
-316	2017-11-12 21:38:45.393+00	2017-11-19 17:54:26.119+00	08	type/Integer	\N	t	\N	t	0	7	310	08	normal	\N	\N	\N	\N	\N	\N	0
-315	2017-11-12 21:38:45.382+00	2017-11-19 17:54:26.122+00	05	type/Integer	\N	t	\N	t	0	7	310	05	normal	\N	\N	\N	\N	\N	\N	0
-314	2017-11-12 21:38:45.371+00	2017-11-19 17:54:26.125+00	11	type/Integer	\N	t	\N	t	0	7	310	11	normal	\N	\N	\N	\N	\N	\N	0
-313	2017-11-12 21:38:45.36+00	2017-11-19 17:54:26.136+00	03	type/Integer	\N	t	\N	t	0	7	310	03	normal	\N	\N	\N	\N	\N	\N	0
-312	2017-11-12 21:38:45.349+00	2017-11-19 17:54:26.139+00	06	type/Integer	\N	t	\N	t	0	7	310	06	normal	\N	\N	\N	\N	\N	\N	0
-319	2017-11-12 21:38:45.426+00	2017-11-19 17:54:26.143+00	04	type/Integer	\N	t	\N	t	0	7	310	04	normal	\N	\N	\N	\N	\N	\N	0
-311	2017-11-12 21:38:45.338+00	2017-11-19 17:54:26.146+00	09	type/Integer	\N	t	\N	t	0	7	310	09	normal	\N	\N	\N	\N	\N	\N	0
-321	2017-11-12 21:38:45.512+00	2017-11-19 17:54:26.15+00	02	type/Integer	\N	t	\N	t	0	7	310	02	normal	\N	\N	\N	\N	\N	\N	0
-320	2017-11-12 21:38:45.448+00	2017-11-19 17:54:26.153+00	01	type/Integer	\N	t	\N	t	0	7	310	01	normal	\N	\N	\N	\N	\N	\N	0
-318	2017-11-12 21:38:45.415+00	2017-11-19 17:54:26.156+00	10	type/Integer	\N	t	\N	t	0	7	310	10	normal	\N	\N	\N	\N	\N	\N	0
-362	2017-11-12 21:38:47.176+00	2017-11-19 17:54:27.358+00	arte digital	type/Integer	\N	t	\N	t	0	8	337	Arte Digital	normal	\N	\N	\N	\N	\N	\N	0
-352	2017-11-12 21:38:46.949+00	2017-11-19 17:54:27.361+00	cultura digital	type/Integer	\N	t	\N	t	0	8	337	Cultura Digital	normal	\N	\N	\N	\N	\N	\N	0
+333	2017-11-12 21:38:45.748+00	2017-11-20 23:50:01.387+00	01	type/Integer	\N	t	\N	t	0	7	322	01	normal	\N	\N	\N	\N	\N	\N	0
+326	2017-11-12 21:38:45.625+00	2017-11-20 23:50:01.39+00	11	type/Integer	\N	t	\N	t	0	7	322	11	normal	\N	\N	\N	\N	\N	\N	0
 427	2017-11-12 21:38:48.393+00	2017-11-19 17:54:27.267+00	Carnaval	type/Integer	\N	f	\N	t	0	8	337	Carnaval	normal	\N	\N	\N	\N	\N	\N	0
-351	2017-11-12 21:38:46.899+00	2017-11-19 17:54:27.364+00	livro	type/Integer	\N	t	\N	t	0	8	337	Liv Ro	normal	\N	\N	\N	\N	\N	\N	0
-350	2017-11-12 21:38:46.878+00	2017-11-19 17:54:27.366+00	patrimônio imaterial	type/Integer	\N	t	\N	t	0	8	337	Patrimônio I Material	normal	\N	\N	\N	\N	\N	\N	0
-349	2017-11-12 21:38:46.866+00	2017-11-19 17:54:27.369+00	comunicação	type/Integer	\N	t	\N	t	0	8	337	Comunicação	normal	\N	\N	\N	\N	\N	\N	0
-348	2017-11-12 21:38:46.833+00	2017-11-19 17:54:27.372+00	gestão cultural	type/Integer	\N	t	\N	t	0	8	337	Gestão Cultural	normal	\N	\N	\N	\N	\N	\N	0
-347	2017-11-12 21:38:46.811+00	2017-11-19 17:54:27.375+00	artes visuais	type/Integer	\N	t	\N	t	0	8	337	Artes Vi Sua Is	normal	\N	\N	\N	\N	\N	\N	0
-346	2017-11-12 21:38:46.799+00	2017-11-19 17:54:27.378+00	cultura indígena	type/Integer	\N	t	\N	t	0	8	337	Cultura Indígena	normal	\N	\N	\N	\N	\N	\N	0
-345	2017-11-12 21:38:46.778+00	2017-11-19 17:54:27.381+00	circo	type/Integer	\N	t	\N	t	0	8	337	Circo	normal	\N	\N	\N	\N	\N	\N	0
-344	2017-11-12 21:38:46.738+00	2017-11-19 17:54:27.384+00	Esporte	type/Integer	\N	t	\N	t	0	8	337	Esporte	normal	\N	\N	\N	\N	\N	\N	0
-343	2017-11-12 21:38:46.711+00	2017-11-19 17:54:27.387+00	cultura lgbt	type/Integer	\N	t	\N	t	0	8	337	Cultura Lgbt	normal	\N	\N	\N	\N	\N	\N	0
-342	2017-11-12 21:38:46.7+00	2017-11-19 17:54:27.39+00	Cultura Digital	type/Integer	\N	t	\N	t	0	8	337	Cultura Digital	normal	\N	\N	\N	\N	\N	\N	0
-340	2017-11-12 21:38:46.666+00	2017-11-19 17:54:27.392+00	Moda	type/Integer	\N	t	\N	t	0	8	337	Moda	normal	\N	\N	\N	\N	\N	\N	0
-339	2017-11-12 21:38:46.656+00	2017-11-19 17:54:27.396+00	cultura popular	type/Integer	\N	t	\N	t	0	8	337	Cultura Popular	normal	\N	\N	\N	\N	\N	\N	0
-436	2017-11-12 21:38:48.515+00	2017-11-19 17:54:27.399+00	Arqueologia	type/Integer	\N	t	\N	t	0	8	337	Ar Que O Logia	normal	\N	\N	\N	\N	\N	\N	0
-431	2017-11-12 21:38:48.438+00	2017-11-19 17:54:27.402+00	Fotografia	type/Integer	\N	t	\N	t	0	8	337	Fotogr A Fia	normal	\N	\N	\N	\N	\N	\N	0
-420	2017-11-12 21:38:48.263+00	2017-11-19 17:54:27.405+00	Rádio	type/Integer	\N	t	\N	t	0	8	337	Rádio	normal	\N	\N	\N	\N	\N	\N	0
-417	2017-11-12 21:38:48.205+00	2017-11-19 17:54:27.408+00	Antropologia	type/Integer	\N	t	\N	t	0	8	337	An Tro Polo Gia	normal	\N	\N	\N	\N	\N	\N	0
-416	2017-11-12 21:38:48.196+00	2017-11-19 17:54:27.411+00	dança	type/Integer	\N	t	\N	t	0	8	337	Dança	normal	\N	\N	\N	\N	\N	\N	0
-414	2017-11-12 21:38:48.172+00	2017-11-19 17:54:27.413+00	Música	type/Integer	\N	t	\N	t	0	8	337	Música	normal	\N	\N	\N	\N	\N	\N	0
-413	2017-11-12 21:38:48.152+00	2017-11-19 17:54:27.417+00	literatura	type/Integer	\N	t	\N	t	0	8	337	Literatura	normal	\N	\N	\N	\N	\N	\N	0
+325	2017-11-12 21:38:45.615+00	2017-11-20 23:50:01.393+00	03	type/Integer	\N	t	\N	t	0	7	322	03	normal	\N	\N	\N	\N	\N	\N	0
 216	2017-11-12 21:38:39.834+00	2017-11-14 13:50:03.273+00	Mostra	type/Integer	\N	t	\N	t	0	5	192	Most Ra	normal	\N	\N	\N	\N	\N	\N	0
 229	2017-11-12 21:38:39.989+00	2017-11-14 13:50:03.528+00	Jornada	type/Integer	\N	t	\N	t	0	5	217	Jorn Ada	normal	\N	\N	\N	\N	\N	\N	0
 253	2017-11-12 21:38:40.299+00	2017-11-14 13:50:03.793+00	Ciclo	type/Integer	\N	t	\N	t	0	5	242	Ci Clo	normal	\N	\N	\N	\N	\N	\N	0
 266	2017-11-12 21:38:40.499+00	2017-11-14 13:50:03.805+00	Sarau	type/Integer	\N	t	\N	t	0	5	242	Sara U	normal	\N	\N	\N	\N	\N	\N	0
+570	2017-11-13 23:50:12.505+00	2017-11-14 13:50:08.354+00	03	type/Integer	\N	t	\N	t	0	14	567	03	normal	\N	\N	\N	\N	\N	\N	0
+317	2017-11-12 21:38:45.403+00	2017-11-20 23:50:01.459+00	07	type/Integer	\N	t	\N	t	0	7	310	07	normal	\N	\N	\N	\N	\N	\N	0
+316	2017-11-12 21:38:45.393+00	2017-11-20 23:50:01.463+00	08	type/Integer	\N	t	\N	t	0	7	310	08	normal	\N	\N	\N	\N	\N	\N	0
+315	2017-11-12 21:38:45.382+00	2017-11-20 23:50:01.468+00	05	type/Integer	\N	t	\N	t	0	7	310	05	normal	\N	\N	\N	\N	\N	\N	0
+314	2017-11-12 21:38:45.371+00	2017-11-20 23:50:01.472+00	11	type/Integer	\N	t	\N	t	0	7	310	11	normal	\N	\N	\N	\N	\N	\N	0
+313	2017-11-12 21:38:45.36+00	2017-11-20 23:50:01.475+00	03	type/Integer	\N	t	\N	t	0	7	310	03	normal	\N	\N	\N	\N	\N	\N	0
+312	2017-11-12 21:38:45.349+00	2017-11-20 23:50:01.48+00	06	type/Integer	\N	t	\N	t	0	7	310	06	normal	\N	\N	\N	\N	\N	\N	0
+319	2017-11-12 21:38:45.426+00	2017-11-20 23:50:01.487+00	04	type/Integer	\N	t	\N	t	0	7	310	04	normal	\N	\N	\N	\N	\N	\N	0
+311	2017-11-12 21:38:45.338+00	2017-11-20 23:50:01.491+00	09	type/Integer	\N	t	\N	t	0	7	310	09	normal	\N	\N	\N	\N	\N	\N	0
+321	2017-11-12 21:38:45.512+00	2017-11-20 23:50:01.496+00	02	type/Integer	\N	t	\N	t	0	7	310	02	normal	\N	\N	\N	\N	\N	\N	0
+320	2017-11-12 21:38:45.448+00	2017-11-20 23:50:01.501+00	01	type/Integer	\N	t	\N	t	0	7	310	01	normal	\N	\N	\N	\N	\N	\N	0
+318	2017-11-12 21:38:45.415+00	2017-11-20 23:50:01.505+00	10	type/Integer	\N	t	\N	t	0	7	310	10	normal	\N	\N	\N	\N	\N	\N	0
+296	2017-11-12 21:38:45.082+00	2017-11-20 23:50:01.571+00	12	type/Integer	\N	t	\N	t	0	7	288	12	normal	\N	\N	\N	\N	\N	\N	0
+362	2017-11-12 21:38:47.176+00	2017-11-20 23:50:02.05+00	arte digital	type/Integer	\N	t	\N	t	0	8	337	Arte Digital	normal	\N	\N	\N	\N	\N	\N	0
+352	2017-11-12 21:38:46.949+00	2017-11-20 23:50:02.052+00	cultura digital	type/Integer	\N	t	\N	t	0	8	337	Cultura Digital	normal	\N	\N	\N	\N	\N	\N	0
+351	2017-11-12 21:38:46.899+00	2017-11-20 23:50:02.055+00	livro	type/Integer	\N	t	\N	t	0	8	337	Liv Ro	normal	\N	\N	\N	\N	\N	\N	0
+349	2017-11-12 21:38:46.866+00	2017-11-20 23:50:02.057+00	comunicação	type/Integer	\N	t	\N	t	0	8	337	Comunicação	normal	\N	\N	\N	\N	\N	\N	0
+348	2017-11-12 21:38:46.833+00	2017-11-20 23:50:02.06+00	gestão cultural	type/Integer	\N	t	\N	t	0	8	337	Gestão Cultural	normal	\N	\N	\N	\N	\N	\N	0
+347	2017-11-12 21:38:46.811+00	2017-11-20 23:50:02.062+00	artes visuais	type/Integer	\N	t	\N	t	0	8	337	Artes Vi Sua Is	normal	\N	\N	\N	\N	\N	\N	0
+346	2017-11-12 21:38:46.799+00	2017-11-20 23:50:02.065+00	cultura indígena	type/Integer	\N	t	\N	t	0	8	337	Cultura Indígena	normal	\N	\N	\N	\N	\N	\N	0
+345	2017-11-12 21:38:46.778+00	2017-11-20 23:50:02.067+00	circo	type/Integer	\N	t	\N	t	0	8	337	Circo	normal	\N	\N	\N	\N	\N	\N	0
+344	2017-11-12 21:38:46.738+00	2017-11-20 23:50:02.071+00	Esporte	type/Integer	\N	t	\N	t	0	8	337	Esporte	normal	\N	\N	\N	\N	\N	\N	0
+343	2017-11-12 21:38:46.711+00	2017-11-20 23:50:02.102+00	cultura lgbt	type/Integer	\N	t	\N	t	0	8	337	Cultura Lgbt	normal	\N	\N	\N	\N	\N	\N	0
+342	2017-11-12 21:38:46.7+00	2017-11-20 23:50:02.104+00	Cultura Digital	type/Integer	\N	t	\N	t	0	8	337	Cultura Digital	normal	\N	\N	\N	\N	\N	\N	0
+340	2017-11-12 21:38:46.666+00	2017-11-20 23:50:02.106+00	Moda	type/Integer	\N	t	\N	t	0	8	337	Moda	normal	\N	\N	\N	\N	\N	\N	0
+339	2017-11-12 21:38:46.656+00	2017-11-20 23:50:02.109+00	cultura popular	type/Integer	\N	t	\N	t	0	8	337	Cultura Popular	normal	\N	\N	\N	\N	\N	\N	0
+436	2017-11-12 21:38:48.515+00	2017-11-20 23:50:02.111+00	Arqueologia	type/Integer	\N	t	\N	t	0	8	337	Ar Que O Logia	normal	\N	\N	\N	\N	\N	\N	0
+431	2017-11-12 21:38:48.438+00	2017-11-20 23:50:02.114+00	Fotografia	type/Integer	\N	t	\N	t	0	8	337	Fotogr A Fia	normal	\N	\N	\N	\N	\N	\N	0
+420	2017-11-12 21:38:48.263+00	2017-11-20 23:50:02.116+00	Rádio	type/Integer	\N	t	\N	t	0	8	337	Rádio	normal	\N	\N	\N	\N	\N	\N	0
+417	2017-11-12 21:38:48.205+00	2017-11-20 23:50:02.119+00	Antropologia	type/Integer	\N	t	\N	t	0	8	337	An Tro Polo Gia	normal	\N	\N	\N	\N	\N	\N	0
+416	2017-11-12 21:38:48.196+00	2017-11-20 23:50:02.121+00	dança	type/Integer	\N	t	\N	t	0	8	337	Dança	normal	\N	\N	\N	\N	\N	\N	0
+414	2017-11-12 21:38:48.172+00	2017-11-20 23:50:02.124+00	Música	type/Integer	\N	t	\N	t	0	8	337	Música	normal	\N	\N	\N	\N	\N	\N	0
+413	2017-11-12 21:38:48.152+00	2017-11-20 23:50:02.126+00	literatura	type/Integer	\N	t	\N	t	0	8	337	Literatura	normal	\N	\N	\N	\N	\N	\N	0
+330	2017-11-12 21:38:45.692+00	2017-11-20 23:50:01.379+00	10	type/Integer	\N	t	\N	t	0	7	322	10	normal	\N	\N	\N	\N	\N	\N	0
+328	2017-11-12 21:38:45.648+00	2017-11-20 23:50:01.382+00	08	type/Integer	\N	t	\N	t	0	7	322	08	normal	\N	\N	\N	\N	\N	\N	0
+334	2017-11-12 21:38:45.76+00	2017-11-20 23:50:01.385+00	02	type/Integer	\N	t	\N	t	0	7	322	02	normal	\N	\N	\N	\N	\N	\N	0
+332	2017-11-12 21:38:45.727+00	2017-11-20 23:50:01.395+00	04	type/Integer	\N	t	\N	t	0	7	322	04	normal	\N	\N	\N	\N	\N	\N	0
 261	2017-11-12 21:38:40.444+00	2017-11-14 13:50:03.816+00	Parada e Desfile de Ações Afirmativas	type/Integer	\N	t	\N	t	0	5	242	Parada E Des File De Ações A Firm At Iv As	normal	\N	\N	\N	\N	\N	\N	0
 263	2017-11-12 21:38:40.465+00	2017-11-14 13:50:03.827+00	Concurso	type/Integer	type/Category	t	\N	t	0	5	242	Concur So	normal	\N	\N	2017-11-12 21:38:54.891+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":3257,"avg":1628.5}}}	1
 571	2017-11-13 23:50:12.517+00	2017-11-14 13:50:08.344+00	11	type/Integer	\N	t	\N	t	0	14	567	11	normal	\N	\N	\N	\N	\N	\N	0
@@ -2818,46 +2929,42 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 412	2017-11-12 21:38:48.131+00	2017-11-19 17:54:27.275+00	agentes	type/Integer	\N	f	\N	t	0	8	337	Agent Es	normal	\N	\N	\N	\N	\N	\N	0
 465	2017-11-12 21:38:48.869+00	2017-11-19 17:54:27.289+00	teatro estudantil	type/Integer	\N	f	\N	t	0	8	337	Teatro Est Ud An Til	normal	\N	\N	\N	\N	\N	\N	0
 423	2017-11-12 21:38:48.318+00	2017-11-19 17:54:27.303+00	danca	type/Integer	\N	f	\N	t	0	8	337	Dan Ca	normal	\N	\N	\N	\N	\N	\N	0
-409	2017-11-12 21:38:48.055+00	2017-11-19 17:54:27.42+00	Patrimônio Material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
+467	2017-11-12 21:38:48.891+00	2017-11-20 23:50:02.136+00	arqueologia	type/Integer	\N	t	\N	t	0	8	337	Ar Que O Logia	normal	\N	\N	\N	\N	\N	\N	0
 466	2017-11-12 21:38:48.881+00	2017-11-19 17:54:27.217+00	Orquestra	type/Integer	\N	f	\N	t	0	8	337	Or Quest Ra	normal	\N	\N	\N	\N	\N	\N	0
-408	2017-11-12 21:38:48+00	2017-11-19 17:54:27.423+00	jogos eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
-471	2017-11-12 21:38:48.949+00	2017-11-19 17:54:27.429+00	Dança	type/Integer	\N	t	\N	t	0	8	337	Dança	normal	\N	\N	\N	\N	\N	\N	0
-470	2017-11-12 21:38:48.928+00	2017-11-19 17:54:27.433+00	Artes Visuais	type/Integer	\N	t	\N	t	0	8	337	Artes Vi Sua Is	normal	\N	\N	\N	\N	\N	\N	0
-468	2017-11-12 21:38:48.902+00	2017-11-19 17:54:27.437+00	cultura cigana	type/Integer	\N	t	\N	t	0	8	337	Cultura Cig An A	normal	\N	\N	\N	\N	\N	\N	0
-467	2017-11-12 21:38:48.891+00	2017-11-19 17:54:27.443+00	arqueologia	type/Integer	\N	t	\N	t	0	8	337	Ar Que O Logia	normal	\N	\N	\N	\N	\N	\N	0
-464	2017-11-12 21:38:48.858+00	2017-11-19 17:54:27.446+00	Outros	type/Integer	\N	t	\N	t	0	8	337	Out Ros	normal	\N	\N	\N	\N	\N	\N	0
-463	2017-11-12 21:38:48.847+00	2017-11-19 17:54:27.449+00	Pesquisa	type/Integer	\N	t	\N	t	0	8	337	Pes Quis A	normal	\N	\N	\N	\N	\N	\N	0
-461	2017-11-12 21:38:48.824+00	2017-11-19 17:54:27.455+00	audiovisual	type/Integer	\N	t	\N	t	0	8	337	Audiovisual	normal	\N	\N	\N	\N	\N	\N	0
-459	2017-11-12 21:38:48.797+00	2017-11-19 17:54:27.458+00	artesanato	type/Integer	\N	t	\N	t	0	8	337	Artes An A To	normal	\N	\N	\N	\N	\N	\N	0
-458	2017-11-12 21:38:48.781+00	2017-11-19 17:54:27.46+00	arquivo	type/Integer	\N	t	\N	t	0	8	337	Ar Qui Vo	normal	\N	\N	\N	\N	\N	\N	0
-354	2017-11-12 21:38:47.043+00	2017-11-19 17:54:27.463+00	Cinema	type/Integer	\N	t	\N	t	0	8	337	Cinema	normal	\N	\N	\N	\N	\N	\N	0
-437	2017-11-12 21:38:48.539+00	2017-11-19 17:54:27.465+00	Literatura	type/Integer	\N	t	\N	t	0	8	337	Literatura	normal	\N	\N	\N	\N	\N	\N	0
-439	2017-11-12 21:38:48.559+00	2017-11-19 17:54:27.468+00	rádio	type/Integer	\N	t	\N	t	0	8	337	Rádio	normal	\N	\N	\N	\N	\N	\N	0
-433	2017-11-12 21:38:48.46+00	2017-11-19 17:54:27.471+00	Arquitetura-Urbanismo	type/Integer	\N	t	\N	t	0	8	337	Ar Quite Tura Urbanism O	normal	\N	\N	\N	\N	\N	\N	0
-430	2017-11-12 21:38:48.427+00	2017-11-19 17:54:27.474+00	Sociologia	type/Integer	\N	t	\N	t	0	8	337	Socio Logia	normal	\N	\N	\N	\N	\N	\N	0
-429	2017-11-12 21:38:48.415+00	2017-11-19 17:54:27.476+00	turismo	type/Integer	\N	t	\N	t	0	8	337	Turismo	normal	\N	\N	\N	\N	\N	\N	0
-425	2017-11-12 21:38:48.361+00	2017-11-19 17:54:27.48+00	esporte	type/Integer	\N	t	\N	t	0	8	337	Esporte	normal	\N	\N	\N	\N	\N	\N	0
-424	2017-11-12 21:38:48.339+00	2017-11-19 17:54:27.483+00	Turismo	type/Integer	\N	t	\N	t	0	8	337	Turismo	normal	\N	\N	\N	\N	\N	\N	0
-407	2017-11-12 21:38:47.974+00	2017-11-19 17:54:27.486+00	Direito Autoral	type/Integer	\N	t	\N	t	0	8	337	Dire I To Aut Oral	normal	\N	\N	\N	\N	\N	\N	0
-406	2017-11-12 21:38:47.962+00	2017-11-19 17:54:27.488+00	leitura	type/Integer	\N	t	\N	t	0	8	337	Lei Tura	normal	\N	\N	\N	\N	\N	\N	0
-402	2017-11-12 21:38:47.896+00	2017-11-19 17:54:27.491+00	Cultura Cigana	type/Integer	\N	t	\N	t	0	8	337	Cultura Cig An A	normal	\N	\N	\N	\N	\N	\N	0
-399	2017-11-12 21:38:47.784+00	2017-11-19 17:54:27.494+00	Cultura LGBT	type/Integer	\N	t	\N	t	0	8	337	Cultura Lgbt	normal	\N	\N	\N	\N	\N	\N	0
-398	2017-11-12 21:38:47.762+00	2017-11-19 17:54:27.497+00	Novas Mídias	type/Integer	\N	t	\N	t	0	8	337	Novas Mídias	normal	\N	\N	\N	\N	\N	\N	0
-396	2017-11-12 21:38:47.717+00	2017-11-19 17:54:27.499+00	filosofia	type/Integer	\N	t	\N	t	0	8	337	Filo Sofia	normal	\N	\N	\N	\N	\N	\N	0
-395	2017-11-12 21:38:47.706+00	2017-11-19 17:54:27.502+00	Saúde	type/Integer	\N	t	\N	t	0	8	337	Saúde	normal	\N	\N	\N	\N	\N	\N	0
-394	2017-11-12 21:38:47.696+00	2017-11-19 17:54:27.505+00	Teatro	type/Integer	\N	t	\N	t	0	8	337	Teatro	normal	\N	\N	\N	\N	\N	\N	0
-393	2017-11-12 21:38:47.686+00	2017-11-19 17:54:27.508+00	Filosofia	type/Integer	\N	t	\N	t	0	8	337	Filo Sofia	normal	\N	\N	\N	\N	\N	\N	0
-392	2017-11-12 21:38:47.661+00	2017-11-19 17:54:27.512+00	Livro	type/Integer	\N	t	\N	t	0	8	337	Liv Ro	normal	\N	\N	\N	\N	\N	\N	0
-391	2017-11-12 21:38:47.64+00	2017-11-19 17:54:27.515+00	Museu	type/Integer	\N	t	\N	t	0	8	337	Muse U	normal	\N	\N	\N	\N	\N	\N	0
-389	2017-11-12 21:38:47.6+00	2017-11-19 17:54:27.517+00	Cultura Popular	type/Integer	\N	t	\N	t	0	8	337	Cultura Popular	normal	\N	\N	\N	\N	\N	\N	0
-388	2017-11-12 21:38:47.577+00	2017-11-19 17:54:27.52+00	jornalismo	type/Integer	\N	t	\N	t	0	8	337	Jorn Al Is Mo	normal	\N	\N	\N	\N	\N	\N	0
-386	2017-11-12 21:38:47.541+00	2017-11-19 17:54:27.523+00	direito autoral	type/Integer	\N	t	\N	t	0	8	337	Dire I To Aut Oral	normal	\N	\N	\N	\N	\N	\N	0
+464	2017-11-12 21:38:48.858+00	2017-11-20 23:50:02.139+00	Outros	type/Integer	\N	t	\N	t	0	8	337	Out Ros	normal	\N	\N	\N	\N	\N	\N	0
+463	2017-11-12 21:38:48.847+00	2017-11-20 23:50:02.142+00	Pesquisa	type/Integer	\N	t	\N	t	0	8	337	Pes Quis A	normal	\N	\N	\N	\N	\N	\N	0
 518	2017-11-13 23:50:01.028+00	2017-11-14 13:50:00.338+00	Artes, arquitetura e linguística	type/Integer	\N	t	\N	t	0	13	515	Artes, Ar Quite Tura E Linguística	normal	\N	\N	\N	\N	\N	\N	0
 517	2017-11-13 23:50:01.012+00	2017-11-14 13:50:00.349+00	Antropologia e Arqueologia	type/Integer	\N	t	\N	t	0	13	515	An Tro Polo Gia E Ar Que O Logia	normal	\N	\N	\N	\N	\N	\N	0
 516	2017-11-13 23:50:01.001+00	2017-11-14 13:50:00.36+00	Meios de comunicação e transporte	type/Integer	\N	t	\N	t	0	13	515	Me Ios De Comunicação E Trans Porte	normal	\N	\N	\N	\N	\N	\N	0
 514	2017-11-13 23:50:00.972+00	2017-11-14 13:50:00.371+00	_total_museums	type/Integer	\N	t	\N	t	0	13	\N	Total Museums	normal	\N	\N	\N	\N	\N	\N	0
 506	2017-11-13 23:50:00.855+00	2017-11-14 13:50:00.382+00	_total_museums_historical	type/Dictionary	\N	t	\N	t	0	13	\N	Total Museums Historical	normal	\N	\N	\N	\N	\N	\N	0
-570	2017-11-13 23:50:12.505+00	2017-11-14 13:50:08.354+00	03	type/Integer	\N	t	\N	t	0	14	567	03	normal	\N	\N	\N	\N	\N	\N	0
+459	2017-11-12 21:38:48.797+00	2017-11-20 23:50:02.147+00	artesanato	type/Integer	\N	t	\N	t	0	8	337	Artes An A To	normal	\N	\N	\N	\N	\N	\N	0
+458	2017-11-12 21:38:48.781+00	2017-11-20 23:50:02.149+00	arquivo	type/Integer	\N	t	\N	t	0	8	337	Ar Qui Vo	normal	\N	\N	\N	\N	\N	\N	0
+354	2017-11-12 21:38:47.043+00	2017-11-20 23:50:02.152+00	Cinema	type/Integer	\N	t	\N	t	0	8	337	Cinema	normal	\N	\N	\N	\N	\N	\N	0
+437	2017-11-12 21:38:48.539+00	2017-11-20 23:50:02.154+00	Literatura	type/Integer	\N	t	\N	t	0	8	337	Literatura	normal	\N	\N	\N	\N	\N	\N	0
+439	2017-11-12 21:38:48.559+00	2017-11-20 23:50:02.157+00	rádio	type/Integer	\N	t	\N	t	0	8	337	Rádio	normal	\N	\N	\N	\N	\N	\N	0
+430	2017-11-12 21:38:48.427+00	2017-11-20 23:50:02.159+00	Sociologia	type/Integer	\N	t	\N	t	0	8	337	Socio Logia	normal	\N	\N	\N	\N	\N	\N	0
+429	2017-11-12 21:38:48.415+00	2017-11-20 23:50:02.162+00	turismo	type/Integer	\N	t	\N	t	0	8	337	Turismo	normal	\N	\N	\N	\N	\N	\N	0
+425	2017-11-12 21:38:48.361+00	2017-11-20 23:50:02.166+00	esporte	type/Integer	\N	t	\N	t	0	8	337	Esporte	normal	\N	\N	\N	\N	\N	\N	0
+424	2017-11-12 21:38:48.339+00	2017-11-20 23:50:02.169+00	Turismo	type/Integer	\N	t	\N	t	0	8	337	Turismo	normal	\N	\N	\N	\N	\N	\N	0
+407	2017-11-12 21:38:47.974+00	2017-11-20 23:50:02.173+00	Direito Autoral	type/Integer	\N	t	\N	t	0	8	337	Dire I To Aut Oral	normal	\N	\N	\N	\N	\N	\N	0
+406	2017-11-12 21:38:47.962+00	2017-11-20 23:50:02.177+00	leitura	type/Integer	\N	t	\N	t	0	8	337	Lei Tura	normal	\N	\N	\N	\N	\N	\N	0
+402	2017-11-12 21:38:47.896+00	2017-11-20 23:50:02.181+00	Cultura Cigana	type/Integer	\N	t	\N	t	0	8	337	Cultura Cig An A	normal	\N	\N	\N	\N	\N	\N	0
+399	2017-11-12 21:38:47.784+00	2017-11-20 23:50:02.185+00	Cultura LGBT	type/Integer	\N	t	\N	t	0	8	337	Cultura Lgbt	normal	\N	\N	\N	\N	\N	\N	0
+398	2017-11-12 21:38:47.762+00	2017-11-20 23:50:02.189+00	Novas Mídias	type/Integer	\N	t	\N	t	0	8	337	Novas Mídias	normal	\N	\N	\N	\N	\N	\N	0
+396	2017-11-12 21:38:47.717+00	2017-11-20 23:50:02.193+00	filosofia	type/Integer	\N	t	\N	t	0	8	337	Filo Sofia	normal	\N	\N	\N	\N	\N	\N	0
+395	2017-11-12 21:38:47.706+00	2017-11-20 23:50:02.198+00	Saúde	type/Integer	\N	t	\N	t	0	8	337	Saúde	normal	\N	\N	\N	\N	\N	\N	0
+394	2017-11-12 21:38:47.696+00	2017-11-20 23:50:02.202+00	Teatro	type/Integer	\N	t	\N	t	0	8	337	Teatro	normal	\N	\N	\N	\N	\N	\N	0
+393	2017-11-12 21:38:47.686+00	2017-11-20 23:50:02.207+00	Filosofia	type/Integer	\N	t	\N	t	0	8	337	Filo Sofia	normal	\N	\N	\N	\N	\N	\N	0
+392	2017-11-12 21:38:47.661+00	2017-11-20 23:50:02.21+00	Livro	type/Integer	\N	t	\N	t	0	8	337	Liv Ro	normal	\N	\N	\N	\N	\N	\N	0
+391	2017-11-12 21:38:47.64+00	2017-11-20 23:50:02.214+00	Museu	type/Integer	\N	t	\N	t	0	8	337	Muse U	normal	\N	\N	\N	\N	\N	\N	0
+389	2017-11-12 21:38:47.6+00	2017-11-20 23:50:02.218+00	Cultura Popular	type/Integer	\N	t	\N	t	0	8	337	Cultura Popular	normal	\N	\N	\N	\N	\N	\N	0
+388	2017-11-12 21:38:47.577+00	2017-11-20 23:50:02.222+00	jornalismo	type/Integer	\N	t	\N	t	0	8	337	Jorn Al Is Mo	normal	\N	\N	\N	\N	\N	\N	0
+386	2017-11-12 21:38:47.541+00	2017-11-20 23:50:02.228+00	direito autoral	type/Integer	\N	t	\N	t	0	8	337	Dire I To Aut Oral	normal	\N	\N	\N	\N	\N	\N	0
+408	2017-11-12 21:38:48+00	2017-11-20 23:50:02.129+00	jogos eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
+471	2017-11-12 21:38:48.949+00	2017-11-20 23:50:02.131+00	Dança	type/Integer	\N	t	\N	t	0	8	337	Dança	normal	\N	\N	\N	\N	\N	\N	0
+461	2017-11-12 21:38:48.824+00	2017-11-20 23:50:02.144+00	audiovisual	type/Integer	\N	t	\N	t	0	8	337	Audiovisual	normal	\N	\N	\N	\N	\N	\N	0
+470	2017-11-12 21:38:48.928+00	2017-11-20 23:50:02.134+00	Artes Visuais	type/Integer	\N	t	\N	t	0	8	337	Artes Vi Sua Is	normal	\N	\N	\N	\N	\N	\N	0
 497	2017-11-12 23:36:13.427+00	2017-11-14 06:14:07.926+00	_occupation_area	type/Text	type/Category	f	\N	t	0	12	\N	Occupation Area	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":59},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.5765}}}	1
 509	2017-11-13 23:50:00.888+00	2017-11-14 13:50:00.405+00	sim	type/Integer	\N	t	\N	t	0	13	506	Sim	normal	\N	\N	\N	\N	\N	\N	0
 502	2017-11-13 23:50:00.796+00	2017-11-14 13:50:00.449+00	_total_public_private_museums	type/Dictionary	\N	t	\N	t	0	13	\N	Total Public Private Museums	normal	\N	\N	\N	\N	\N	\N	0
@@ -2883,34 +2990,9 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 365	2017-11-12 21:38:47.208+00	2017-11-19 17:54:27.257+00	Opera	type/Integer	\N	f	\N	t	0	8	337	Opera	normal	\N	\N	\N	\N	\N	\N	0
 450	2017-11-12 21:38:48.692+00	2017-11-19 17:54:27.278+00	ponto de memória	type/Integer	\N	f	\N	t	0	8	337	Pon To De Memória	normal	\N	\N	\N	\N	\N	\N	0
 374	2017-11-12 21:38:47.319+00	2017-11-19 17:54:27.3+00	Biblioteca	type/Integer	\N	f	\N	t	0	8	337	Bib Li Otec A	normal	\N	\N	\N	\N	\N	\N	0
-382	2017-11-12 21:38:47.486+00	2017-11-19 17:54:27.525+00	Arte de Rua	type/Integer	\N	t	\N	t	0	8	337	Arte De Rua	normal	\N	\N	\N	\N	\N	\N	0
+446	2017-11-12 21:38:48.648+00	2017-11-20 23:50:02.245+00	educação	type/Integer	\N	t	\N	t	0	8	337	Educação	normal	\N	\N	\N	\N	\N	\N	0
 442	2017-11-12 21:38:48.594+00	2017-11-19 17:54:27.244+00	intercambio cultural	type/Integer	\N	f	\N	t	0	8	337	Inter Cambio Cultural	normal	\N	\N	\N	\N	\N	\N	0
-381	2017-11-12 21:38:47.463+00	2017-11-19 17:54:27.528+00	Gastronomia	type/Integer	\N	t	\N	t	0	8	337	Gas Trono Mia	normal	\N	\N	\N	\N	\N	\N	0
-379	2017-11-12 21:38:47.441+00	2017-11-19 17:54:27.531+00	Meio Ambiente	type/Integer	\N	t	\N	t	0	8	337	Mei O Am Bien Te	normal	\N	\N	\N	\N	\N	\N	0
-378	2017-11-12 21:38:47.431+00	2017-11-19 17:54:27.533+00	Arte Digital	type/Integer	\N	t	\N	t	0	8	337	Arte Digital	normal	\N	\N	\N	\N	\N	\N	0
-446	2017-11-12 21:38:48.648+00	2017-11-19 17:54:27.536+00	educação	type/Integer	\N	t	\N	t	0	8	337	Educação	normal	\N	\N	\N	\N	\N	\N	0
-444	2017-11-12 21:38:48.615+00	2017-11-19 17:54:27.538+00	Cultura Negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
-443	2017-11-12 21:38:48.604+00	2017-11-19 17:54:27.541+00	design	type/Integer	\N	t	\N	t	0	8	337	Design	normal	\N	\N	\N	\N	\N	\N	0
-376	2017-11-12 21:38:47.343+00	2017-11-19 17:54:27.544+00	Artesanato	type/Integer	\N	t	\N	t	0	8	337	Artes An A To	normal	\N	\N	\N	\N	\N	\N	0
-375	2017-11-12 21:38:47.33+00	2017-11-19 17:54:27.546+00	Televisão	type/Integer	\N	t	\N	t	0	8	337	Televisão	normal	\N	\N	\N	\N	\N	\N	0
-373	2017-11-12 21:38:47.308+00	2017-11-19 17:54:27.549+00	Educação	type/Integer	\N	t	\N	t	0	8	337	Educação	normal	\N	\N	\N	\N	\N	\N	0
-371	2017-11-12 21:38:47.285+00	2017-11-19 17:54:27.553+00	Produção Cultural	type/Integer	\N	t	\N	t	0	8	337	Produção Cultural	normal	\N	\N	\N	\N	\N	\N	0
-370	2017-11-12 21:38:47.275+00	2017-11-19 17:54:27.556+00	fotografia	type/Integer	\N	t	\N	t	0	8	337	Fotogr A Fia	normal	\N	\N	\N	\N	\N	\N	0
-369	2017-11-12 21:38:47.264+00	2017-11-19 17:54:27.558+00	Gestão Cultural	type/Integer	\N	t	\N	t	0	8	337	Gestão Cultural	normal	\N	\N	\N	\N	\N	\N	0
-368	2017-11-12 21:38:47.252+00	2017-11-19 17:54:27.561+00	teatro	type/Integer	\N	t	\N	t	0	8	337	Teatro	normal	\N	\N	\N	\N	\N	\N	0
-355	2017-11-12 21:38:47.065+00	2017-11-19 17:54:27.563+00	Arquivo	type/Integer	\N	t	\N	t	0	8	337	Ar Qui Vo	normal	\N	\N	\N	\N	\N	\N	0
-364	2017-11-12 21:38:47.197+00	2017-11-19 17:54:27.566+00	Cultura Indígena	type/Integer	\N	t	\N	t	0	8	337	Cultura Indígena	normal	\N	\N	\N	\N	\N	\N	0
-363	2017-11-12 21:38:47.186+00	2017-11-19 17:54:27.569+00	antropologia	type/Integer	\N	t	\N	t	0	8	337	An Tro Polo Gia	normal	\N	\N	\N	\N	\N	\N	0
-451	2017-11-12 21:38:48.702+00	2017-11-19 17:54:27.571+00	cinema	type/Integer	\N	t	\N	t	0	8	337	Cinema	normal	\N	\N	\N	\N	\N	\N	0
-449	2017-11-12 21:38:48.682+00	2017-11-19 17:54:27.574+00	arte de rua	type/Integer	\N	t	\N	t	0	8	337	Arte De Rua	normal	\N	\N	\N	\N	\N	\N	0
-448	2017-11-12 21:38:48.669+00	2017-11-19 17:54:27.577+00	arquitetura-urbanismo	type/Integer	\N	t	\N	t	0	8	337	Ar Quite Tura Urbanism O	normal	\N	\N	\N	\N	\N	\N	0
-366	2017-11-12 21:38:47.219+00	2017-11-19 17:54:27.579+00	Cultura Estrangeira (imigrantes)	type/Integer	\N	t	\N	t	0	8	337	Cultura Estrange Ira (imigrantes)	normal	\N	\N	\N	\N	\N	\N	0
-359	2017-11-12 21:38:47.133+00	2017-11-19 17:54:27.582+00	Mídias Sociais	type/Integer	\N	t	\N	t	0	8	337	Mídias Soci A Is	normal	\N	\N	\N	\N	\N	\N	0
-456	2017-11-12 21:38:48.759+00	2017-11-19 17:54:27.585+00	saúde	type/Integer	\N	t	\N	t	0	8	337	Saúde	normal	\N	\N	\N	\N	\N	\N	0
-455	2017-11-12 21:38:48.748+00	2017-11-19 17:54:27.59+00	sociologia	type/Integer	\N	t	\N	t	0	8	337	Socio Logia	normal	\N	\N	\N	\N	\N	\N	0
-454	2017-11-12 21:38:48.736+00	2017-11-19 17:54:27.593+00	história	type/Integer	\N	t	\N	t	0	8	337	História	normal	\N	\N	\N	\N	\N	\N	0
-453	2017-11-12 21:38:48.724+00	2017-11-19 17:54:27.596+00	moda	type/Integer	\N	t	\N	t	0	8	337	Moda	normal	\N	\N	\N	\N	\N	\N	0
-384	2017-11-12 21:38:47.521+00	2017-11-19 17:54:27.598+00	pesquisa	type/Integer	\N	t	\N	t	0	8	337	Pes Quis A	normal	\N	\N	\N	\N	\N	\N	0
+444	2017-11-12 21:38:48.615+00	2017-11-20 23:50:02.249+00	Cultura Negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
 221	2017-11-12 21:38:39.891+00	2017-11-14 13:50:03.539+00	Conferência Pública Municipal	type/Integer	\N	t	\N	t	0	5	217	Conferência Pública Municipal	normal	\N	\N	\N	\N	\N	\N	0
 246	2017-11-12 21:38:40.208+00	2017-11-14 13:50:03.838+00	Conferência Pública Estadual	type/Integer	\N	t	\N	t	0	5	242	Conferência Pública Esta Dual	normal	\N	\N	\N	\N	\N	\N	0
 537	2017-11-13 23:50:12.115+00	2017-11-14 13:50:08.323+00	_total_museums_registered_year	type/Dictionary	\N	t	\N	t	0	14	\N	Total Museums Registered Year	normal	\N	\N	\N	\N	\N	\N	0
@@ -2919,6 +3001,29 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 572	2017-11-13 23:50:12.533+00	2017-11-14 13:50:08.376+00	05	type/Integer	\N	t	\N	t	0	14	567	05	normal	\N	\N	\N	\N	\N	\N	0
 508	2017-11-13 23:50:00.876+00	2017-11-14 13:50:00.431+00	None	type/Integer	\N	t	\N	t	0	13	506	None	normal	\N	\N	\N	\N	\N	\N	0
 536	2017-11-13 23:50:01.256+00	2017-11-14 13:50:00.505+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	13	\N	ID	normal	\N	\N	2017-11-13 23:50:15.449+00	\N	\N	{"global":{"distinct-count":2}}	1
+375	2017-11-12 21:38:47.33+00	2017-11-20 23:50:02.261+00	Televisão	type/Integer	\N	t	\N	t	0	8	337	Televisão	normal	\N	\N	\N	\N	\N	\N	0
+373	2017-11-12 21:38:47.308+00	2017-11-20 23:50:02.265+00	Educação	type/Integer	\N	t	\N	t	0	8	337	Educação	normal	\N	\N	\N	\N	\N	\N	0
+371	2017-11-12 21:38:47.285+00	2017-11-20 23:50:02.267+00	Produção Cultural	type/Integer	\N	t	\N	t	0	8	337	Produção Cultural	normal	\N	\N	\N	\N	\N	\N	0
+370	2017-11-12 21:38:47.275+00	2017-11-20 23:50:02.27+00	fotografia	type/Integer	\N	t	\N	t	0	8	337	Fotogr A Fia	normal	\N	\N	\N	\N	\N	\N	0
+369	2017-11-12 21:38:47.264+00	2017-11-20 23:50:02.273+00	Gestão Cultural	type/Integer	\N	t	\N	t	0	8	337	Gestão Cultural	normal	\N	\N	\N	\N	\N	\N	0
+368	2017-11-12 21:38:47.252+00	2017-11-20 23:50:02.276+00	teatro	type/Integer	\N	t	\N	t	0	8	337	Teatro	normal	\N	\N	\N	\N	\N	\N	0
+355	2017-11-12 21:38:47.065+00	2017-11-20 23:50:02.279+00	Arquivo	type/Integer	\N	t	\N	t	0	8	337	Ar Qui Vo	normal	\N	\N	\N	\N	\N	\N	0
+364	2017-11-12 21:38:47.197+00	2017-11-20 23:50:02.282+00	Cultura Indígena	type/Integer	\N	t	\N	t	0	8	337	Cultura Indígena	normal	\N	\N	\N	\N	\N	\N	0
+363	2017-11-12 21:38:47.186+00	2017-11-20 23:50:02.285+00	antropologia	type/Integer	\N	t	\N	t	0	8	337	An Tro Polo Gia	normal	\N	\N	\N	\N	\N	\N	0
+451	2017-11-12 21:38:48.702+00	2017-11-20 23:50:02.288+00	cinema	type/Integer	\N	t	\N	t	0	8	337	Cinema	normal	\N	\N	\N	\N	\N	\N	0
+449	2017-11-12 21:38:48.682+00	2017-11-20 23:50:02.291+00	arte de rua	type/Integer	\N	t	\N	t	0	8	337	Arte De Rua	normal	\N	\N	\N	\N	\N	\N	0
+448	2017-11-12 21:38:48.669+00	2017-11-20 23:50:02.294+00	arquitetura-urbanismo	type/Integer	\N	t	\N	t	0	8	337	Ar Quite Tura Urbanism O	normal	\N	\N	\N	\N	\N	\N	0
+359	2017-11-12 21:38:47.133+00	2017-11-20 23:50:02.297+00	Mídias Sociais	type/Integer	\N	t	\N	t	0	8	337	Mídias Soci A Is	normal	\N	\N	\N	\N	\N	\N	0
+456	2017-11-12 21:38:48.759+00	2017-11-20 23:50:02.301+00	saúde	type/Integer	\N	t	\N	t	0	8	337	Saúde	normal	\N	\N	\N	\N	\N	\N	0
+455	2017-11-12 21:38:48.748+00	2017-11-20 23:50:02.303+00	sociologia	type/Integer	\N	t	\N	t	0	8	337	Socio Logia	normal	\N	\N	\N	\N	\N	\N	0
+454	2017-11-12 21:38:48.736+00	2017-11-20 23:50:02.306+00	história	type/Integer	\N	t	\N	t	0	8	337	História	normal	\N	\N	\N	\N	\N	\N	0
+453	2017-11-12 21:38:48.724+00	2017-11-20 23:50:02.309+00	moda	type/Integer	\N	t	\N	t	0	8	337	Moda	normal	\N	\N	\N	\N	\N	\N	0
+384	2017-11-12 21:38:47.521+00	2017-11-20 23:50:02.312+00	pesquisa	type/Integer	\N	t	\N	t	0	8	337	Pes Quis A	normal	\N	\N	\N	\N	\N	\N	0
+381	2017-11-12 21:38:47.463+00	2017-11-20 23:50:02.232+00	Gastronomia	type/Integer	\N	t	\N	t	0	8	337	Gas Trono Mia	normal	\N	\N	\N	\N	\N	\N	0
+443	2017-11-12 21:38:48.604+00	2017-11-20 23:50:02.253+00	design	type/Integer	\N	t	\N	t	0	8	337	Design	normal	\N	\N	\N	\N	\N	\N	0
+376	2017-11-12 21:38:47.343+00	2017-11-20 23:50:02.258+00	Artesanato	type/Integer	\N	t	\N	t	0	8	337	Artes An A To	normal	\N	\N	\N	\N	\N	\N	0
+378	2017-11-12 21:38:47.431+00	2017-11-20 23:50:02.24+00	Arte Digital	type/Integer	\N	t	\N	t	0	8	337	Arte Digital	normal	\N	\N	\N	\N	\N	\N	0
+379	2017-11-12 21:38:47.441+00	2017-11-20 23:50:02.236+00	Meio Ambiente	type/Integer	\N	t	\N	t	0	8	337	Mei O Am Bien Te	normal	\N	\N	\N	\N	\N	\N	0
 510	2017-11-13 23:50:00.901+00	2017-11-14 13:50:00.515+00	_total_museums_promote_guide	type/Dictionary	\N	t	\N	t	0	13	\N	Total Museums Promote Guide	normal	\N	\N	2017-11-13 23:50:15.449+00	\N	\N	{"global":{"distinct-count":2}}	1
 120	2017-11-12 21:38:38.584+00	2017-11-14 13:50:01.235+00	06	type/Integer	\N	t	\N	t	0	5	118	06	normal	\N	\N	\N	\N	\N	\N	0
 161	2017-11-12 21:38:39.128+00	2017-11-14 13:50:01.534+00	04	type/Integer	\N	t	\N	t	0	5	152	04	normal	\N	\N	\N	\N	\N	\N	0
@@ -2944,11 +3049,7 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 358	2017-11-12 21:38:47.111+00	2017-11-19 17:54:27.297+00	culturas urbanas	type/Integer	\N	f	\N	t	0	8	337	Cult Ur As Urban As	normal	\N	\N	\N	\N	\N	\N	0
 460	2017-11-12 21:38:48.814+00	2017-11-19 17:54:27.307+00	demais atividades correlatas a cultura popular	type/Integer	\N	f	\N	t	0	8	337	Dem A Is At I Vida Des Corre Lat As A Cultura Popular	normal	\N	\N	\N	\N	\N	\N	0
 469	2017-11-12 21:38:48.914+00	2017-11-19 17:54:27.311+00	artistas agentes culturais	type/Integer	\N	f	\N	t	0	8	337	Artist As Agent Es Cultura Is	normal	\N	\N	\N	\N	\N	\N	0
-338	2017-11-12 21:38:46.645+00	2017-11-19 17:54:27.601+00	gastronomia	type/Integer	\N	t	\N	t	0	8	337	Gas Trono Mia	normal	\N	\N	\N	\N	\N	\N	0
 452	2017-11-12 21:38:48.715+00	2017-11-19 17:54:27.264+00	Coral	type/Integer	\N	f	\N	t	0	8	337	Coral	normal	\N	\N	\N	\N	\N	\N	0
-341	2017-11-12 21:38:46.68+00	2017-11-19 17:54:27.603+00	novas mídias	type/Integer	\N	t	\N	t	0	8	337	Novas Mídias	normal	\N	\N	\N	\N	\N	\N	0
-421	2017-11-12 21:38:48.283+00	2017-11-19 17:54:27.606+00	Economia Criativa	type/Integer	\N	t	\N	t	0	8	337	Eco No Mia Cri At Iva	normal	\N	\N	\N	\N	\N	\N	0
-478	2017-11-12 21:38:50.778+00	2017-11-19 17:54:27.663+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	9	\N	ID	normal	\N	\N	2017-11-12 21:39:00.716+00	\N	\N	{"global":{"distinct-count":2}}	1
 489	2017-11-12 21:38:50.941+00	2017-11-19 17:54:28.03+00	_libraries_registered_monthly	type/Dictionary	\N	t	\N	t	0	10	\N	Libraries Registered Monthly	normal	\N	\N	2017-11-12 21:39:01.856+00	\N	\N	{"global":{"distinct-count":4}}	1
 490	2017-11-12 21:38:50.951+00	2017-11-19 17:54:28.033+00	julho	type/Integer	type/Category	t	\N	t	0	10	489	Jul Ho	normal	\N	\N	2017-11-13 23:50:18.67+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Number":{"min":0,"max":0,"avg":0.0}}}	1
 485	2017-11-12 21:38:50.896+00	2017-11-19 17:54:28.036+00	_total_libraries	type/Integer	type/Category	t	\N	t	0	10	\N	Total Libraries	normal	\N	\N	2017-11-12 21:39:01.856+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Number":{"min":0,"max":0,"avg":0.0}}}	1
@@ -2973,6 +3074,9 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 543	2017-11-13 23:50:12.194+00	2017-11-14 13:50:08.609+00	05	type/Integer	\N	t	\N	t	0	14	538	05	normal	\N	\N	\N	\N	\N	\N	0
 542	2017-11-13 23:50:12.183+00	2017-11-14 13:50:08.62+00	11	type/Integer	\N	t	\N	t	0	14	538	11	normal	\N	\N	\N	\N	\N	\N	0
 541	2017-11-13 23:50:12.166+00	2017-11-14 13:50:08.631+00	03	type/Integer	\N	t	\N	t	0	14	538	03	normal	\N	\N	\N	\N	\N	\N	0
+341	2017-11-12 21:38:46.68+00	2017-11-20 23:50:02.315+00	novas mídias	type/Integer	\N	t	\N	t	0	8	337	Novas Mídias	normal	\N	\N	\N	\N	\N	\N	0
+421	2017-11-12 21:38:48.283+00	2017-11-20 23:50:02.318+00	Economia Criativa	type/Integer	\N	t	\N	t	0	8	337	Eco No Mia Cri At Iva	normal	\N	\N	\N	\N	\N	\N	0
+478	2017-11-12 21:38:50.778+00	2017-11-20 23:50:02.433+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	9	\N	ID	normal	\N	\N	2017-11-12 21:39:00.716+00	\N	\N	{"global":{"distinct-count":2}}	1
 539	2017-11-13 23:50:12.138+00	2017-11-14 13:50:08.653+00	09	type/Integer	\N	t	\N	t	0	14	538	09	normal	\N	\N	\N	\N	\N	\N	0
 580	2017-11-13 23:50:12.641+00	2017-11-14 13:50:08.676+00	2015	type/Dictionary	\N	t	\N	t	0	14	537	2015	normal	\N	\N	\N	\N	\N	\N	0
 589	2017-11-13 23:50:12.894+00	2017-11-14 13:50:08.691+00	01	type/Integer	\N	t	\N	t	0	14	580	01	normal	\N	\N	\N	\N	\N	\N	0
@@ -2999,19 +3103,10 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 118	2017-11-12 21:38:38.539+00	2017-11-14 13:50:01.114+00	2015	type/Dictionary	\N	t	\N	t	0	5	117	2015	normal	\N	\N	\N	\N	\N	\N	0
 126	2017-11-12 21:38:38.673+00	2017-11-14 13:50:01.146+00	10	type/Integer	\N	t	\N	t	0	5	118	10	normal	\N	\N	\N	\N	\N	\N	0
 122	2017-11-12 21:38:38.617+00	2017-11-14 13:50:01.224+00	11	type/Integer	type/Category	t	\N	t	0	5	118	11	normal	\N	\N	2017-11-12 22:50:09.997+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":39,"avg":19.5}}}	1
-473	2017-11-12 21:38:48.991+00	2017-11-19 17:54:27.336+00	_cls	type/Text	type/Category	t	\N	t	0	8	\N	Cls	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
+357	2017-11-12 21:38:47.098+00	2017-11-20 23:50:02.331+00	museu	type/Integer	type/Category	t	\N	t	0	8	337	Muse U	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27718,"avg":18478.666666666668}}}	1
 428	2017-11-12 21:38:48.403+00	2017-11-19 17:54:27.322+00	dança e canto coral	type/Integer	\N	f	\N	t	0	8	337	Dança E Can To Coral	normal	\N	\N	\N	\N	\N	\N	0
-422	2017-11-12 21:38:48.295+00	2017-11-19 17:54:27.609+00	meio ambiente	type/Integer	\N	t	\N	t	0	8	337	Mei O Am Bien Te	normal	\N	\N	\N	\N	\N	\N	0
-360	2017-11-12 21:38:47.155+00	2017-11-19 17:54:27.611+00	música	type/Integer	type/Category	t	\N	t	0	8	337	Música	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27718,"avg":18478.666666666668}}}	1
-438	2017-11-12 21:38:48.549+00	2017-11-19 17:54:27.614+00	Design	type/Integer	type/Category	t	\N	t	0	8	337	Design	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27717,"avg":18478.0}}}	1
-357	2017-11-12 21:38:47.098+00	2017-11-19 17:54:27.617+00	museu	type/Integer	type/Category	t	\N	t	0	8	337	Muse U	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27718,"avg":18478.666666666668}}}	1
-405	2017-11-12 21:38:47.95+00	2017-11-19 17:54:27.619+00	Audiovisual	type/Integer	\N	t	\N	t	0	8	337	Audiovisual	normal	\N	\N	\N	\N	\N	\N	0
 481	2017-11-12 21:38:50.841+00	2017-11-19 17:54:28.043+00	Municipal	type/Integer	type/Category	t	\N	t	0	10	480	Municipal	normal	\N	\N	2017-11-12 23:50:09.857+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Number":{"min":0,"max":0,"avg":0.0}}}	1
 479	2017-11-12 21:38:50.824+00	2017-11-19 17:54:28.065+00	_create_date	type/DateTime	\N	t	\N	t	0	10	\N	Create Date	normal	\N	\N	2017-11-12 22:50:12.544+00	\N	\N	{"global":{"distinct-count":1}}	1
-501	2017-11-12 23:36:13.529+00	2017-11-19 17:54:28.548+00	_date	type/DateTime	\N	t	\N	t	0	12	\N	Date	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":327}}	1
-500	2017-11-12 23:36:13.515+00	2017-11-19 17:54:28.551+00	_instance	type/Text	type/Category	t	\N	t	0	12	\N	Instance	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
-499	2017-11-12 23:36:13.485+00	2017-11-19 17:54:28.556+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	12	\N	ID	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":10000}}	1
-496	2017-11-12 23:36:13.344+00	2017-11-19 17:54:28.559+00	_name	type/Text	\N	t	\N	t	0	12	\N	Name	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":4825},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":32.5611}}}	1
 141	2017-11-12 21:38:38.873+00	2017-11-14 13:50:01.357+00	01	type/Integer	\N	t	\N	t	0	5	130	01	normal	\N	\N	\N	\N	\N	\N	0
 164	2017-11-12 21:38:39.159+00	2017-11-14 13:50:01.545+00	2016	type/Dictionary	\N	t	\N	t	0	5	117	2016	normal	\N	\N	\N	\N	\N	\N	0
 51	2017-11-12 21:38:37.554+00	2017-11-14 13:50:02.11+00	09	type/Integer	\N	t	\N	t	0	5	50	09	normal	\N	\N	\N	\N	\N	\N	0
@@ -3030,6 +3125,14 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 573	2017-11-13 23:50:12.553+00	2017-11-14 13:50:08.465+00	08	type/Integer	\N	t	\N	t	0	14	567	08	normal	\N	\N	\N	\N	\N	\N	0
 548	2017-11-13 23:50:12.252+00	2017-11-14 13:50:08.665+00	04	type/Integer	\N	t	\N	t	0	14	538	04	normal	\N	\N	\N	\N	\N	\N	0
 549	2017-11-13 23:50:12.261+00	2017-11-14 13:50:08.798+00	2017	type/Dictionary	\N	t	\N	t	0	14	537	2017	normal	\N	\N	\N	\N	\N	\N	0
+499	2017-11-12 23:36:13.485+00	2017-11-20 23:50:03.16+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	12	\N	ID	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":10000}}	1
+496	2017-11-12 23:36:13.344+00	2017-11-20 23:50:03.162+00	_name	type/Text	\N	t	\N	t	0	12	\N	Name	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":4825},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":32.5611}}}	1
+422	2017-11-12 21:38:48.295+00	2017-11-20 23:50:02.322+00	meio ambiente	type/Integer	\N	t	\N	t	0	8	337	Mei O Am Bien Te	normal	\N	\N	\N	\N	\N	\N	0
+360	2017-11-12 21:38:47.155+00	2017-11-20 23:50:02.325+00	música	type/Integer	type/Category	t	\N	t	0	8	337	Música	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27718,"avg":18478.666666666668}}}	1
+438	2017-11-12 21:38:48.549+00	2017-11-20 23:50:02.328+00	Design	type/Integer	type/Category	t	\N	t	0	8	337	Design	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27717,"avg":18478.0}}}	1
+405	2017-11-12 21:38:47.95+00	2017-11-20 23:50:02.334+00	Audiovisual	type/Integer	\N	t	\N	t	0	8	337	Audiovisual	normal	\N	\N	\N	\N	\N	\N	0
+501	2017-11-12 23:36:13.529+00	2017-11-20 23:50:03.151+00	_date	type/DateTime	\N	t	\N	t	0	12	\N	Date	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":327}}	1
+500	2017-11-12 23:36:13.515+00	2017-11-20 23:50:03.154+00	_instance	type/Text	type/Category	t	\N	t	0	12	\N	Instance	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
 556	2017-11-13 23:50:12.337+00	2017-11-14 13:50:08.864+00	07	type/Integer	\N	t	\N	t	0	14	549	07	normal	\N	\N	\N	\N	\N	\N	0
 555	2017-11-13 23:50:12.327+00	2017-11-14 13:50:08.886+00	08	type/Integer	\N	t	\N	t	0	14	549	08	normal	\N	\N	\N	\N	\N	\N	0
 554	2017-11-13 23:50:12.316+00	2017-11-14 13:50:08.898+00	05	type/Integer	\N	t	\N	t	0	14	549	05	normal	\N	\N	\N	\N	\N	\N	0
@@ -3043,84 +3146,116 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 530	2017-11-13 23:50:01.19+00	2017-11-14 13:50:10.294+00	Jardim zoológico, botânico, herbário, oceanário ou planetário	type/Integer	type/Category	t	\N	t	0	13	528	Jardim Zoológico, Botânico, Herbário, Oceanário Ou Planetário	normal	\N	\N	2017-11-14 13:50:10.316+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":3796,"avg":1898.0}}}	1
 46	2017-11-12 21:38:37.49+00	2017-11-14 13:50:11.533+00	12	type/Integer	type/Category	t	\N	t	0	5	37	12	normal	\N	\N	2017-11-14 13:50:11.553+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":3266,"avg":1633.0}}}	1
 205	2017-11-12 21:38:39.713+00	2017-11-14 13:50:11.543+00	Intercâmbio Cultural	type/Integer	type/Category	t	\N	t	0	5	192	Intercâmbio Cultural	normal	\N	\N	2017-11-14 13:50:11.553+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":39,"avg":19.5}}}	1
-597	2017-11-18 01:13:58.401+00	2017-11-19 17:54:25.65+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	16	\N	ID	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3273}}	1
-596	2017-11-18 01:13:58.395+00	2017-11-19 17:54:25.662+00	_project_type	type/Text	type/Category	t	\N	t	0	16	\N	Project Type	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":31},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":7.45096241979835}}}	1
-601	2017-11-18 01:13:58.461+00	2017-11-19 17:54:25.71+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	17	\N	ID	normal	\N	\N	2017-11-18 01:50:03.118+00	\N	\N	{"global":{"distinct-count":2}}	1
-600	2017-11-18 01:13:58.453+00	2017-11-19 17:54:25.713+00	_create_date	type/Text	type/Category	t	\N	t	0	17	\N	Create Date	normal	\N	\N	2017-11-18 01:50:03.118+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-273	2017-11-12 21:38:44.789+00	2017-11-19 17:54:25.978+00	_create_date	type/Text	\N	t	\N	t	0	7	\N	Create Date	normal	\N	\N	\N	\N	\N	\N	0
+599	2017-11-18 01:13:58.413+00	2017-11-20 23:50:01.303+00	_date	type/DateTime	\N	t	\N	t	0	16	\N	Date	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":974}}	1
 289	2017-11-12 21:38:44.994+00	2017-11-19 17:54:25.957+00	09	type/Integer	\N	f	\N	t	0	7	288	09	normal	\N	\N	\N	\N	\N	\N	0
-335	2017-11-12 21:38:45.77+00	2017-11-19 17:54:25.982+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	7	\N	ID	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":3}}	1
-274	2017-11-12 21:38:44.808+00	2017-11-19 17:54:25.989+00	_total_agents_registered_month	type/Dictionary	\N	t	\N	t	0	7	\N	Total Agents Registered Month	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":2}}	1
-291	2017-11-12 21:38:45.017+00	2017-11-19 17:54:26+00	11	type/Integer	\N	t	\N	t	0	7	288	11	normal	\N	\N	\N	\N	\N	\N	0
-322	2017-11-12 21:38:45.539+00	2017-11-19 17:54:26.003+00	2016	type/Dictionary	\N	t	\N	t	0	7	274	2016	normal	\N	\N	\N	\N	\N	\N	0
-329	2017-11-12 21:38:45.67+00	2017-11-19 17:54:26.045+00	07	type/Integer	\N	t	\N	t	0	7	322	07	normal	\N	\N	\N	\N	\N	\N	0
-323	2017-11-12 21:38:45.581+00	2017-11-19 17:54:26.048+00	09	type/Integer	\N	t	\N	t	0	7	322	09	normal	\N	\N	\N	\N	\N	\N	0
-275	2017-11-12 21:38:44.828+00	2017-11-19 17:54:26.05+00	2014	type/Dictionary	\N	t	\N	t	0	7	274	2014	normal	\N	\N	2017-11-12 23:50:09.134+00	\N	\N	{"global":{"distinct-count":3}}	1
 367	2017-11-12 21:38:47.233+00	2017-11-19 17:54:27.293+00	acervos museológicos	type/Integer	\N	f	\N	t	0	8	337	Acer Vos Museológicos	normal	\N	\N	\N	\N	\N	\N	0
 441	2017-11-12 21:38:48.582+00	2017-11-19 17:54:27.319+00	fabricação de obras de arte	type/Integer	\N	f	\N	t	0	8	337	Fabricação De Obras De Arte	normal	\N	\N	\N	\N	\N	\N	0
-418	2017-11-12 21:38:48.217+00	2017-11-19 17:54:27.622+00	Jornalismo	type/Integer	\N	t	\N	t	0	8	337	Jorn Al Is Mo	normal	\N	\N	\N	\N	\N	\N	0
 415	2017-11-12 21:38:48.184+00	2017-11-19 17:54:27.284+00	fortalecimento de cultura de rede local	type/Integer	\N	f	\N	t	0	8	337	For Tale Ci Men To De Cultura De Rede Local	normal	\N	\N	\N	\N	\N	\N	0
-434	2017-11-12 21:38:48.481+00	2017-11-19 17:54:27.625+00	História	type/Integer	type/Category	t	\N	t	0	8	337	História	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38745,"avg":25830.0}}}	1
-605	2017-11-19 17:54:25.328+00	2017-11-19 17:54:25.336+00	_date	type/DateTime	\N	t	\N	t	0	18	\N	Date	normal	\N	\N	\N	\N	\N	\N	0
-604	2017-11-19 17:54:25.322+00	2017-11-19 17:54:25.342+00	_instance	type/Text	\N	t	\N	t	0	18	\N	Instance	normal	\N	\N	\N	\N	\N	\N	0
-603	2017-11-19 17:54:25.313+00	2017-11-19 17:54:25.345+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	18	\N	ID	normal	\N	\N	\N	\N	\N	\N	0
-602	2017-11-19 17:54:25.306+00	2017-11-19 17:54:25.348+00	_age_rage	type/Text	\N	t	\N	t	0	18	\N	Age Rage	normal	\N	\N	\N	\N	\N	\N	0
-599	2017-11-18 01:13:58.413+00	2017-11-19 17:54:25.643+00	_date	type/DateTime	\N	t	\N	t	0	16	\N	Date	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":974}}	1
-598	2017-11-18 01:13:58.407+00	2017-11-19 17:54:25.657+00	_instance	type/Text	type/Category	t	\N	t	0	16	\N	Instance	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":22.80446073938283}}}	1
-595	2017-11-18 01:13:58.383+00	2017-11-19 17:54:25.667+00	_online_subscribe	type/Text	type/Category	t	\N	t	0	16	\N	Online Subscribe	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.801405438435686}}}	1
-607	2017-11-19 17:54:25.682+00	2017-11-19 17:54:25.688+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	19	\N	ID	normal	\N	\N	\N	\N	\N	\N	0
-606	2017-11-19 17:54:25.675+00	2017-11-19 17:54:25.698+00	_create_date	type/Text	\N	t	\N	t	0	19	\N	Create Date	normal	\N	\N	\N	\N	\N	\N	0
-327	2017-11-12 21:38:45.636+00	2017-11-19 17:54:26.018+00	05	type/Integer	\N	t	\N	t	0	7	322	05	normal	\N	\N	\N	\N	\N	\N	0
-287	2017-11-12 21:38:44.966+00	2017-11-19 17:54:26.107+00	02	type/Integer	\N	t	\N	t	0	7	275	02	normal	\N	\N	\N	\N	\N	\N	0
-310	2017-11-12 21:38:45.327+00	2017-11-19 17:54:26.111+00	2017	type/Dictionary	\N	t	\N	t	0	7	274	2017	normal	\N	\N	\N	\N	\N	\N	0
-297	2017-11-12 21:38:45.094+00	2017-11-19 17:54:26.16+00	2015	type/Dictionary	\N	t	\N	t	0	7	274	2015	normal	\N	\N	2017-11-13 23:50:17.808+00	\N	\N	{"global":{"distinct-count":2}}	1
-309	2017-11-12 21:38:45.315+00	2017-11-19 17:54:26.203+00	02	type/Integer	\N	t	\N	t	0	7	297	02	normal	\N	\N	\N	\N	\N	\N	0
-592	2017-11-14 06:14:08.657+00	2017-11-19 17:54:26.777+00	_occupation_area	type/Text	type/Category	t	\N	t	0	15	\N	Occupation Area	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":59},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.5765}}}	1
-593	2017-11-14 06:14:08.663+00	2017-11-19 17:54:26.78+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	15	\N	ID	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":10000}}	1
-594	2017-11-14 06:14:08.668+00	2017-11-19 17:54:26.783+00	_instance	type/Text	type/Category	t	\N	t	0	15	\N	Instance	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
+595	2017-11-18 01:13:58.383+00	2017-11-20 23:50:01.305+00	_online_subscribe	type/Text	type/Category	t	\N	t	0	16	\N	Online Subscribe	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.801405438435686}}}	1
+601	2017-11-18 01:13:58.461+00	2017-11-20 23:50:01.317+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	17	\N	ID	normal	\N	\N	2017-11-18 01:50:03.118+00	\N	\N	{"global":{"distinct-count":2}}	1
+600	2017-11-18 01:13:58.453+00	2017-11-20 23:50:01.319+00	_create_date	type/Text	type/Category	t	\N	t	0	17	\N	Create Date	normal	\N	\N	2017-11-18 01:50:03.118+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+273	2017-11-12 21:38:44.789+00	2017-11-20 23:50:01.368+00	_create_date	type/Text	\N	t	\N	t	0	7	\N	Create Date	normal	\N	\N	\N	\N	\N	\N	0
+335	2017-11-12 21:38:45.77+00	2017-11-20 23:50:01.37+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	7	\N	ID	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":3}}	1
+274	2017-11-12 21:38:44.808+00	2017-11-20 23:50:01.373+00	_total_agents_registered_month	type/Dictionary	\N	t	\N	t	0	7	\N	Total Agents Registered Month	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":2}}	1
+322	2017-11-12 21:38:45.539+00	2017-11-20 23:50:01.376+00	2016	type/Dictionary	\N	t	\N	t	0	7	274	2016	normal	\N	\N	\N	\N	\N	\N	0
+329	2017-11-12 21:38:45.67+00	2017-11-20 23:50:01.398+00	07	type/Integer	\N	t	\N	t	0	7	322	07	normal	\N	\N	\N	\N	\N	\N	0
+323	2017-11-12 21:38:45.581+00	2017-11-20 23:50:01.4+00	09	type/Integer	\N	t	\N	t	0	7	322	09	normal	\N	\N	\N	\N	\N	\N	0
+327	2017-11-12 21:38:45.636+00	2017-11-20 23:50:01.402+00	05	type/Integer	\N	t	\N	t	0	7	322	05	normal	\N	\N	\N	\N	\N	\N	0
+275	2017-11-12 21:38:44.828+00	2017-11-20 23:50:01.41+00	2014	type/Dictionary	\N	t	\N	t	0	7	274	2014	normal	\N	\N	2017-11-12 23:50:09.134+00	\N	\N	{"global":{"distinct-count":3}}	1
+287	2017-11-12 21:38:44.966+00	2017-11-20 23:50:01.434+00	02	type/Integer	\N	t	\N	t	0	7	275	02	normal	\N	\N	\N	\N	\N	\N	0
+310	2017-11-12 21:38:45.327+00	2017-11-20 23:50:01.452+00	2017	type/Dictionary	\N	t	\N	t	0	7	274	2017	normal	\N	\N	\N	\N	\N	\N	0
+297	2017-11-12 21:38:45.094+00	2017-11-20 23:50:01.511+00	2015	type/Dictionary	\N	t	\N	t	0	7	274	2015	normal	\N	\N	2017-11-13 23:50:17.808+00	\N	\N	{"global":{"distinct-count":2}}	1
+309	2017-11-12 21:38:45.315+00	2017-11-20 23:50:01.549+00	02	type/Integer	\N	t	\N	t	0	7	297	02	normal	\N	\N	\N	\N	\N	\N	0
+291	2017-11-12 21:38:45.017+00	2017-11-20 23:50:01.574+00	11	type/Integer	\N	t	\N	t	0	7	288	11	normal	\N	\N	\N	\N	\N	\N	0
+592	2017-11-14 06:14:08.657+00	2017-11-20 23:50:01.936+00	_occupation_area	type/Text	type/Category	t	\N	t	0	15	\N	Occupation Area	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":59},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.5765}}}	1
+593	2017-11-14 06:14:08.663+00	2017-11-20 23:50:01.938+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	15	\N	ID	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":10000}}	1
+594	2017-11-14 06:14:08.668+00	2017-11-20 23:50:01.941+00	_instance	type/Text	type/Category	t	\N	t	0	15	\N	Instance	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
+418	2017-11-12 21:38:48.217+00	2017-11-20 23:50:02.339+00	Jornalismo	type/Integer	\N	t	\N	t	0	8	337	Jorn Al Is Mo	normal	\N	\N	\N	\N	\N	\N	0
+434	2017-11-12 21:38:48.481+00	2017-11-20 23:50:02.348+00	História	type/Integer	type/Category	t	\N	t	0	8	337	História	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38745,"avg":25830.0}}}	1
+614	2017-11-20 23:00:05.809+00	2017-11-20 23:50:04.241+00	_sphere	type/Text	type/Category	t	\N	t	0	22	\N	Sphere	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":6.521074815595363}}}	1
+607	2017-11-19 17:54:25.682+00	2017-11-20 23:50:06.27+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	19	\N	ID	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2}}	1
+603	2017-11-19 17:54:25.313+00	2017-11-20 23:50:06.021+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	18	\N	ID	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":10000}}	1
+606	2017-11-19 17:54:25.675+00	2017-11-20 23:50:06.277+00	_create_date	type/Text	type/Category	t	\N	t	0	19	\N	Create Date	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
 372	2017-11-12 21:38:47.298+00	2017-11-19 17:54:27.228+00	turismo de base comunitária	type/Integer	\N	f	\N	t	0	8	337	Turismo De Base Comunitária	normal	\N	\N	\N	\N	\N	\N	0
 435	2017-11-12 21:38:48.493+00	2017-11-19 17:54:27.232+00	mostras culturais	type/Integer	type/Category	f	\N	t	0	8	337	Most Ras Cultura Is	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":11028,"avg":7352.0}}}	1
 440	2017-11-12 21:38:48.57+00	2017-11-19 17:54:27.315+00	permacultura e cultura hacker	type/Integer	\N	f	\N	t	0	8	337	Perm A Cultura E Cultura Hacker	normal	\N	\N	\N	\N	\N	\N	0
 404	2017-11-12 21:38:47.939+00	2017-11-19 17:54:27.331+00	intercâmbio cultural	type/Integer	\N	f	\N	t	0	8	337	Intercâmbio Cultural	normal	\N	\N	\N	\N	\N	\N	0
-476	2017-11-12 21:38:49.023+00	2017-11-19 17:54:27.339+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	8	\N	ID	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":3}}	1
 383	2017-11-12 21:38:47.498+00	2017-11-19 17:54:27.21+00	Banda	type/Integer	\N	f	\N	t	0	8	337	Band A	normal	\N	\N	\N	\N	\N	\N	0
-336	2017-11-12 21:38:46.613+00	2017-11-19 17:54:27.341+00	_total_agents	type/Integer	type/Category	t	\N	t	0	8	\N	Total Agents	normal	\N	\N	2017-11-14 13:50:12.196+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38756,"avg":25837.333333333332}}}	1
-472	2017-11-12 21:38:48.973+00	2017-11-19 17:54:27.346+00	_total_collective_agent	type/Integer	type/Category	t	\N	t	0	8	\N	Total Collective Agent	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38754,"avg":19377.0}}}	1
-475	2017-11-12 21:38:49.015+00	2017-11-19 17:54:27.35+00	_total_individual_agent	type/Integer	type/Category	t	\N	t	0	8	\N	Total Individual Agent	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":11030,"avg":5515.0}}}	1
-337	2017-11-12 21:38:46.635+00	2017-11-19 17:54:27.353+00	_total_agents_area_oreration	type/Dictionary	\N	t	\N	t	0	8	\N	Total Agents Area Ore Ration	normal	\N	\N	2017-11-18 02:50:03.313+00	\N	\N	{"global":{"distinct-count":2}}	1
-410	2017-11-12 21:38:48.085+00	2017-11-19 17:54:27.627+00	cultura negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
-403	2017-11-12 21:38:47.928+00	2017-11-19 17:54:27.63+00	Jogos Eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
-390	2017-11-12 21:38:47.622+00	2017-11-19 17:54:27.632+00	mídias sociais	type/Integer	\N	t	\N	t	0	8	337	Mídias Soci A Is	normal	\N	\N	\N	\N	\N	\N	0
-411	2017-11-12 21:38:48.11+00	2017-11-19 17:54:27.635+00	Comunicação	type/Integer	\N	t	\N	t	0	8	337	Comunicação	normal	\N	\N	\N	\N	\N	\N	0
-401	2017-11-12 21:38:47.806+00	2017-11-19 17:54:27.638+00	economia criativa	type/Integer	\N	t	\N	t	0	8	337	Eco No Mia Cri At Iva	normal	\N	\N	\N	\N	\N	\N	0
-385	2017-11-12 21:38:47.533+00	2017-11-19 17:54:27.641+00	Leitura	type/Integer	\N	t	\N	t	0	8	337	Lei Tura	normal	\N	\N	\N	\N	\N	\N	0
-380	2017-11-12 21:38:47.453+00	2017-11-19 17:54:27.644+00	cultura estrangeira (imigrantes)	type/Integer	\N	t	\N	t	0	8	337	Cultura Estrange Ira (imigrantes)	normal	\N	\N	\N	\N	\N	\N	0
-361	2017-11-12 21:38:47.165+00	2017-11-19 17:54:27.646+00	Circo	type/Integer	type/Category	t	\N	t	0	8	337	Circo	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27724,"avg":13862.0}}}	1
-356	2017-11-12 21:38:47.08+00	2017-11-19 17:54:27.649+00	Patrimônio Imaterial	type/Integer	type/Category	t	\N	t	0	8	337	Patrimônio I Material	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":11028,"avg":7352.0}}}	1
-419	2017-11-12 21:38:48.241+00	2017-11-19 17:54:27.651+00	televisão	type/Integer	\N	t	\N	t	0	8	337	Televisão	normal	\N	\N	\N	\N	\N	\N	0
-353	2017-11-12 21:38:47.022+00	2017-11-19 17:54:27.654+00	produção cultural	type/Integer	type/Category	t	\N	t	0	8	337	Produção Cultural	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38746,"avg":25830.666666666668}}}	1
-474	2017-11-12 21:38:49.002+00	2017-11-19 17:54:27.657+00	_create_date	type/Text	type/Category	t	\N	t	0	8	\N	Create Date	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
 491	2017-11-12 21:38:50.963+00	2017-11-19 17:54:28.067+00	_amount_areas	type/Integer	type/Category	t	\N	t	0	10	\N	Amount Areas	normal	\N	\N	2017-11-14 13:50:12.362+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Number":{"min":0,"max":0,"avg":0.0}}}	1
 484	2017-11-12 21:38:50.885+00	2017-11-19 17:54:28.07+00	_cls	type/Text	type/Category	t	\N	t	0	10	\N	Cls	normal	\N	\N	2017-11-12 21:39:01.856+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":14.0}}}	1
-498	2017-11-12 23:36:13.463+00	2017-11-19 17:54:28.561+00	_space_type	type/Text	type/Category	t	\N	t	0	12	\N	Space Type	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":70},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.4366}}}	1
+307	2017-11-12 21:38:45.26+00	2017-11-20 23:50:01.553+00	04	type/Integer	\N	t	\N	t	0	7	297	04	normal	\N	\N	\N	\N	\N	\N	0
 290	2017-11-12 21:38:45.006+00	2017-11-19 17:54:25.948+00	06	type/Integer	\N	f	\N	t	0	7	288	06	normal	\N	\N	\N	\N	\N	\N	0
-288	2017-11-12 21:38:44.983+00	2017-11-19 17:54:25.994+00	2013	type/Dictionary	\N	t	\N	t	0	7	274	2013	normal	\N	\N	\N	\N	\N	\N	0
-284	2017-11-12 21:38:44.928+00	2017-11-19 17:54:26.055+00	12	type/Integer	\N	t	\N	t	0	7	275	12	normal	\N	\N	\N	\N	\N	\N	0
-285	2017-11-12 21:38:44.941+00	2017-11-19 17:54:26.104+00	04	type/Integer	\N	t	\N	t	0	7	275	04	normal	\N	\N	\N	\N	\N	\N	0
-307	2017-11-12 21:38:45.26+00	2017-11-19 17:54:26.165+00	04	type/Integer	\N	t	\N	t	0	7	297	04	normal	\N	\N	\N	\N	\N	\N	0
-308	2017-11-12 21:38:45.271+00	2017-11-19 17:54:26.206+00	01	type/Integer	type/Category	t	\N	t	0	7	297	01	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":315,"avg":210.0}}}	1
+288	2017-11-12 21:38:44.983+00	2017-11-20 23:50:01.565+00	2013	type/Dictionary	\N	t	\N	t	0	7	274	2013	normal	\N	\N	\N	\N	\N	\N	0
+476	2017-11-12 21:38:49.023+00	2017-11-20 23:50:02.036+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	8	\N	ID	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":3}}	1
 397	2017-11-12 21:38:47.739+00	2017-11-19 17:54:27.214+00	marchetaria	type/Integer	\N	f	\N	t	0	8	337	March Et Aria	normal	\N	\N	\N	\N	\N	\N	0
 457	2017-11-12 21:38:48.77+00	2017-11-19 17:54:27.221+00	festas calendarizadas populares	type/Integer	\N	f	\N	t	0	8	337	Fest As Calendar Iz Adas Popular Es	normal	\N	\N	\N	\N	\N	\N	0
 445	2017-11-12 21:38:48.636+00	2017-11-19 17:54:27.225+00	arte terapia	type/Integer	\N	f	\N	t	0	8	337	Arte Ter Apia	normal	\N	\N	\N	\N	\N	\N	0
 377	2017-11-12 21:38:47.364+00	2017-11-19 17:54:27.26+00	Ciência Política	type/Integer	\N	f	\N	t	0	8	337	Ciência Política	normal	\N	\N	\N	\N	\N	\N	0
 426	2017-11-12 21:38:48.382+00	2017-11-19 17:54:27.271+00	Gestor Publico de Cultura	type/Integer	\N	f	\N	t	0	8	337	Ge Stor Public O De Cultura	normal	\N	\N	\N	\N	\N	\N	0
 432	2017-11-12 21:38:48.448+00	2017-11-19 17:54:27.327+00	agroecologia	type/Integer	\N	f	\N	t	0	8	337	A Gro Eco Logia	normal	\N	\N	\N	\N	\N	\N	0
-462	2017-11-12 21:38:48.835+00	2017-11-19 17:54:27.452+00	patrimônio material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
-477	2017-11-12 21:38:50.763+00	2017-11-19 17:54:27.665+00	_create_date	type/Text	type/Category	t	\N	t	0	9	\N	Create Date	normal	\N	\N	2017-11-12 21:39:00.716+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-610	2017-11-19 17:54:28.001+00	2017-11-19 17:54:28.006+00	_instance	type/Text	\N	t	\N	t	0	20	\N	Instance	normal	\N	\N	\N	\N	\N	\N	0
-609	2017-11-19 17:54:27.996+00	2017-11-19 17:54:28.008+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	20	\N	ID	normal	\N	\N	\N	\N	\N	\N	0
-608	2017-11-19 17:54:27.978+00	2017-11-19 17:54:28.011+00	_language	type/Text	\N	t	\N	t	0	20	\N	Language	normal	\N	\N	\N	\N	\N	\N	0
 482	2017-11-12 21:38:50.852+00	2017-11-19 17:54:28.027+00	_total_public_libraries	type/Integer	type/Category	t	\N	t	0	10	\N	Total Public Libraries	normal	\N	\N	2017-11-12 22:50:12.544+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Number":{"min":0,"max":0,"avg":0.0}}}	1
+337	2017-11-12 21:38:46.635+00	2017-11-20 23:50:02.046+00	_total_agents_area_oreration	type/Dictionary	\N	t	\N	t	0	8	\N	Total Agents Area Ore Ration	normal	\N	\N	2017-11-18 02:50:03.313+00	\N	\N	{"global":{"distinct-count":2}}	1
+410	2017-11-12 21:38:48.085+00	2017-11-20 23:50:02.353+00	cultura negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
+403	2017-11-12 21:38:47.928+00	2017-11-20 23:50:02.361+00	Jogos Eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
+390	2017-11-12 21:38:47.622+00	2017-11-20 23:50:02.365+00	mídias sociais	type/Integer	\N	t	\N	t	0	8	337	Mídias Soci A Is	normal	\N	\N	\N	\N	\N	\N	0
+411	2017-11-12 21:38:48.11+00	2017-11-20 23:50:02.368+00	Comunicação	type/Integer	\N	t	\N	t	0	8	337	Comunicação	normal	\N	\N	\N	\N	\N	\N	0
+401	2017-11-12 21:38:47.806+00	2017-11-20 23:50:02.373+00	economia criativa	type/Integer	\N	t	\N	t	0	8	337	Eco No Mia Cri At Iva	normal	\N	\N	\N	\N	\N	\N	0
+385	2017-11-12 21:38:47.533+00	2017-11-20 23:50:02.377+00	Leitura	type/Integer	\N	t	\N	t	0	8	337	Lei Tura	normal	\N	\N	\N	\N	\N	\N	0
+380	2017-11-12 21:38:47.453+00	2017-11-20 23:50:02.381+00	cultura estrangeira (imigrantes)	type/Integer	\N	t	\N	t	0	8	337	Cultura Estrange Ira (imigrantes)	normal	\N	\N	\N	\N	\N	\N	0
+361	2017-11-12 21:38:47.165+00	2017-11-20 23:50:02.385+00	Circo	type/Integer	type/Category	t	\N	t	0	8	337	Circo	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":27724,"avg":13862.0}}}	1
+356	2017-11-12 21:38:47.08+00	2017-11-20 23:50:02.388+00	Patrimônio Imaterial	type/Integer	type/Category	t	\N	t	0	8	337	Patrimônio I Material	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":11028,"avg":7352.0}}}	1
+419	2017-11-12 21:38:48.241+00	2017-11-20 23:50:02.391+00	televisão	type/Integer	\N	t	\N	t	0	8	337	Televisão	normal	\N	\N	\N	\N	\N	\N	0
+353	2017-11-12 21:38:47.022+00	2017-11-20 23:50:02.395+00	produção cultural	type/Integer	type/Category	t	\N	t	0	8	337	Produção Cultural	normal	\N	\N	2017-11-12 22:50:12.266+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38746,"avg":25830.666666666668}}}	1
+462	2017-11-12 21:38:48.835+00	2017-11-20 23:50:02.399+00	patrimônio material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
+474	2017-11-12 21:38:49.002+00	2017-11-20 23:50:02.425+00	_create_date	type/Text	type/Category	t	\N	t	0	8	\N	Create Date	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
+477	2017-11-12 21:38:50.763+00	2017-11-20 23:50:02.436+00	_create_date	type/Text	type/Category	t	\N	t	0	9	\N	Create Date	normal	\N	\N	2017-11-12 21:39:00.716+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+610	2017-11-19 17:54:28.001+00	2017-11-20 23:50:07.336+00	_instance	type/Text	type/Category	t	\N	t	0	20	\N	Instance	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.9246}}}	1
+605	2017-11-19 17:54:25.328+00	2017-11-20 23:50:05.719+00	_date	type/DateTime	\N	t	\N	t	0	18	\N	Date	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":757}}	1
+617	2017-11-20 23:00:05.826+00	2017-11-20 23:50:03.895+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	22	\N	ID	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3796}}	1
+336	2017-11-12 21:38:46.613+00	2017-11-20 23:50:02.039+00	_total_agents	type/Integer	type/Category	t	\N	t	0	8	\N	Total Agents	normal	\N	\N	2017-11-14 13:50:12.196+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38756,"avg":25837.333333333332}}}	1
+472	2017-11-12 21:38:48.973+00	2017-11-20 23:50:02.041+00	_total_collective_agent	type/Integer	type/Category	t	\N	t	0	8	\N	Total Collective Agent	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38754,"avg":19377.0}}}	1
+475	2017-11-12 21:38:49.015+00	2017-11-20 23:50:02.044+00	_total_individual_agent	type/Integer	type/Category	t	\N	t	0	8	\N	Total Individual Agent	normal	\N	\N	2017-11-13 23:50:18.503+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":11030,"avg":5515.0}}}	1
+331	2017-11-12 21:38:45.708+00	2017-11-20 23:50:01.405+00	12	type/Integer	\N	t	\N	t	0	7	322	12	normal	\N	\N	\N	\N	\N	\N	0
+285	2017-11-12 21:38:44.941+00	2017-11-20 23:50:01.436+00	04	type/Integer	\N	t	\N	t	0	7	275	04	normal	\N	\N	\N	\N	\N	\N	0
+623	2017-11-20 23:41:06.518+00	2017-11-20 23:50:04.584+00	_instance	type/Text	type/Category	t	\N	t	0	23	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
+625	2017-11-20 23:41:06.536+00	2017-11-20 23:50:04.617+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	24	\N	ID	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2}}	1
+624	2017-11-20 23:41:06.532+00	2017-11-20 23:50:04.624+00	_create_date	type/Text	type/Category	t	\N	t	0	24	\N	Create Date	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+630	2017-11-20 23:41:06.814+00	2017-11-20 23:50:04.898+00	_date	type/DateTime	\N	t	\N	t	0	25	\N	Date	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":312}}	1
+366	2017-11-12 21:38:47.219+00	2017-11-20 23:50:02.417+00	Cultura Estrangeira (imigrantes)	type/Integer	\N	t	\N	t	0	8	337	Cultura Estrange Ira (imigrantes)	normal	\N	\N	\N	\N	\N	\N	0
+338	2017-11-12 21:38:46.645+00	2017-11-20 23:50:02.42+00	gastronomia	type/Integer	\N	t	\N	t	0	8	337	Gas Trono Mia	normal	\N	\N	\N	\N	\N	\N	0
+433	2017-11-12 21:38:48.46+00	2017-11-20 23:50:02.423+00	Arquitetura-Urbanismo	type/Integer	\N	t	\N	t	0	8	337	Ar Quite Tura Urbanism O	normal	\N	\N	\N	\N	\N	\N	0
+473	2017-11-12 21:38:48.991+00	2017-11-20 23:50:02.428+00	_cls	type/Text	type/Category	t	\N	t	0	8	\N	Cls	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
+498	2017-11-12 23:36:13.463+00	2017-11-20 23:50:03.149+00	_space_type	type/Text	type/Category	t	\N	t	0	12	\N	Space Type	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":70},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.4366}}}	1
+622	2017-11-20 23:41:06.514+00	2017-11-20 23:50:04.472+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	23	\N	ID	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":5141}}	1
+611	2017-11-20 23:00:05.486+00	2017-11-20 23:50:03.241+00	_create_date	type/Text	type/Category	t	\N	t	0	21	\N	Create Date	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+612	2017-11-20 23:00:05.501+00	2017-11-20 23:50:03.224+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	21	\N	ID	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2}}	1
+621	2017-11-20 23:41:06.508+00	2017-11-20 23:50:04.588+00	_area	type/Text	type/Category	t	\N	t	0	23	\N	Area	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":61},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":9.78603384555534}}}	1
+598	2017-11-18 01:13:58.407+00	2017-11-20 23:50:01.295+00	_instance	type/Text	type/Category	t	\N	t	0	16	\N	Instance	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":22.80446073938283}}}	1
+597	2017-11-18 01:13:58.401+00	2017-11-20 23:50:01.297+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	16	\N	ID	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3273}}	1
+596	2017-11-18 01:13:58.395+00	2017-11-20 23:50:01.3+00	_project_type	type/Text	type/Category	t	\N	t	0	16	\N	Project Type	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":31},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":7.45096241979835}}}	1
+324	2017-11-12 21:38:45.603+00	2017-11-20 23:50:01.407+00	06	type/Integer	\N	t	\N	t	0	7	322	06	normal	\N	\N	\N	\N	\N	\N	0
+283	2017-11-12 21:38:44.918+00	2017-11-20 23:50:01.442+00	10	type/Integer	\N	t	\N	t	0	7	275	10	normal	\N	\N	\N	\N	\N	\N	0
+284	2017-11-12 21:38:44.928+00	2017-11-20 23:50:01.448+00	12	type/Integer	\N	t	\N	t	0	7	275	12	normal	\N	\N	\N	\N	\N	\N	0
+306	2017-11-12 21:38:45.249+00	2017-11-20 23:50:01.557+00	12	type/Integer	\N	t	\N	t	0	7	297	12	normal	\N	\N	\N	\N	\N	\N	0
+308	2017-11-12 21:38:45.271+00	2017-11-20 23:50:01.561+00	01	type/Integer	type/Category	t	\N	t	0	7	297	01	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":315,"avg":210.0}}}	1
+350	2017-11-12 21:38:46.878+00	2017-11-20 23:50:02.403+00	patrimônio imaterial	type/Integer	\N	t	\N	t	0	8	337	Patrimônio I Material	normal	\N	\N	\N	\N	\N	\N	0
+409	2017-11-12 21:38:48.055+00	2017-11-20 23:50:02.405+00	Patrimônio Material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
+468	2017-11-12 21:38:48.902+00	2017-11-20 23:50:02.408+00	cultura cigana	type/Integer	\N	t	\N	t	0	8	337	Cultura Cig An A	normal	\N	\N	\N	\N	\N	\N	0
+629	2017-11-20 23:41:06.81+00	2017-11-20 23:50:05.404+00	_instance	type/Text	type/Category	t	\N	t	0	25	\N	Instance	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
+615	2017-11-20 23:00:05.816+00	2017-11-20 23:50:04.238+00	_public_archive	type/Text	type/Category	t	\N	t	0	22	\N	Public Archive	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.05927291886196}}}	1
+618	2017-11-20 23:00:05.831+00	2017-11-20 23:50:04.231+00	_museum_type	type/Text	type/Category	t	\N	t	0	22	\N	Museum Type	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":10.303477344573235}}}	1
+613	2017-11-20 23:00:05.804+00	2017-11-20 23:50:04.223+00	_thematic	type/Text	type/Category	t	\N	t	0	22	\N	Thematic	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":10},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.754741833508957}}}	1
+619	2017-11-20 23:00:05.837+00	2017-11-20 23:50:04.227+00	_instance	type/Text	type/Category	t	\N	t	0	22	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":18.0}}}	1
+620	2017-11-20 23:00:05.841+00	2017-11-20 23:50:03.787+00	_date	type/DateTime	\N	t	\N	t	0	22	\N	Date	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":194}}	1
+616	2017-11-20 23:00:05.821+00	2017-11-20 23:50:04.234+00	_guided_tuor	type/Text	type/Category	t	\N	t	0	22	\N	Guided Tu Or	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.0508429926238145}}}	1
+628	2017-11-20 23:41:06.806+00	2017-11-20 23:50:05.078+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	25	\N	ID	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":7178}}	1
+382	2017-11-12 21:38:47.486+00	2017-11-20 23:50:02.412+00	Arte de Rua	type/Integer	\N	t	\N	t	0	8	337	Arte De Rua	normal	\N	\N	\N	\N	\N	\N	0
+627	2017-11-20 23:41:06.802+00	2017-11-20 23:50:05.408+00	_sphere_type	type/Text	type/Category	t	\N	t	0	25	\N	Sphere Type	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":13},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.354137642797436}}}	1
+626	2017-11-20 23:41:06.797+00	2017-11-20 23:50:05.412+00	_sphere	type/Text	type/Category	t	\N	t	0	25	\N	Sphere	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.201030927835052}}}	1
+604	2017-11-19 17:54:25.322+00	2017-11-20 23:50:06.234+00	_instance	type/Text	type/Category	t	\N	t	0	18	\N	Instance	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":24.7148}}}	1
+602	2017-11-19 17:54:25.306+00	2017-11-20 23:50:06.238+00	_age_rage	type/Text	type/Category	t	\N	t	0	18	\N	Age Rage	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":5.3429}}}	1
+609	2017-11-19 17:54:27.996+00	2017-11-20 23:50:07.126+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	20	\N	ID	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":10000}}	1
+608	2017-11-19 17:54:27.978+00	2017-11-20 23:50:07.34+00	_language	type/Text	type/Category	t	\N	t	0	20	\N	Language	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":19},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":12.9404}}}	1
 \.
 
 
@@ -3149,20 +3284,7 @@ COPY metabase_fieldvalues (id, created_at, updated_at, "values", human_readable_
 50	2017-11-14 06:14:05.458+00	2017-11-14 06:14:05.458+00	[null,null]	\N	42
 51	2017-11-14 06:14:05.499+00	2017-11-14 06:14:05.499+00	[null,null]	\N	90
 60	2017-11-14 06:14:06.499+00	2017-11-14 06:14:06.499+00	[null]	\N	497
-34	2017-11-12 23:37:27.002+00	2017-11-19 17:54:25.887+00	[0,318]	\N	308
-35	2017-11-12 23:37:27.044+00	2017-11-19 17:54:26.275+00	[null]	\N	360
-36	2017-11-12 23:37:27.116+00	2017-11-19 17:54:26.354+00	[null,null]	\N	438
-55	2017-11-14 06:14:06.085+00	2017-11-19 17:54:26.404+00	[null]	\N	357
-54	2017-11-14 06:14:06.059+00	2017-11-19 17:54:26.434+00	["PercentAgents.PercentAgentsPerAreaOperation","PercentAgents.PercentIndividualAndCollectiveAgent"]	\N	473
-37	2017-11-12 23:37:27.298+00	2017-11-19 17:54:26.47+00	[null,null]	\N	434
-56	2017-11-14 06:14:06.148+00	2017-11-19 17:54:26.517+00	[null,null]	\N	361
-57	2017-11-14 06:14:06.175+00	2017-11-19 17:54:26.579+00	[null,0,4606]	\N	472
-52	2017-11-14 06:14:05.668+00	2017-11-19 17:54:26.6+00	[null,0,24487]	\N	475
-39	2017-11-12 23:37:27.45+00	2017-11-19 17:54:26.628+00	[null,null]	\N	356
 38	2017-11-12 23:37:27.383+00	2017-11-19 17:54:26.658+00	[null]	\N	435
-40	2017-11-12 23:37:27.527+00	2017-11-19 17:54:26.742+00	[null]	\N	353
-53	2017-11-14 06:14:06.039+00	2017-11-19 17:54:26.767+00	["2012-01-01 00:00:00.000000","2017-11-19 17:52:08.260763","2017-11-19 17:52:31.702171"]	\N	474
-41	2017-11-12 23:37:27.559+00	2017-11-19 17:54:26.803+00	["2012-01-01 00:00:00.000000","2017-11-19 17:52:42.583103"]	\N	477
 42	2017-11-12 23:37:27.594+00	2017-11-19 17:54:26.829+00	[null,0]	\N	482
 58	2017-11-14 06:14:06.415+00	2017-11-19 17:54:26.86+00	[null,null]	\N	490
 44	2017-11-12 23:37:27.653+00	2017-11-19 17:54:26.888+00	[0]	\N	485
@@ -3170,18 +3292,31 @@ COPY metabase_fieldvalues (id, created_at, updated_at, "values", human_readable_
 46	2017-11-12 23:37:27.73+00	2017-11-19 17:54:26.949+00	[null,0]	\N	483
 59	2017-11-14 06:14:06.439+00	2017-11-19 17:54:26.986+00	[null,null]	\N	481
 43	2017-11-12 23:37:27.629+00	2017-11-19 17:54:27.027+00	["PercentLibraries.PercentLibrariesTypeSphere","PercentLibraries.PercentLibraryPerAreaOfActivity","PercentLibraries.PercentPublicOrPrivateLibrary","PercentLibraries.QuantityOfRegisteredlibraries"]	\N	484
-61	2017-11-14 06:14:06.568+00	2017-11-19 17:54:27.109+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	500
 63	2017-11-14 06:14:06.727+00	2017-11-14 06:14:06.727+00	[null,null]	\N	569
 64	2017-11-14 06:14:06.766+00	2017-11-14 06:14:06.766+00	["2012-01-01 15:47:38.337553","2017-11-14 06:12:01.892804"]	\N	590
-65	2017-11-19 17:54:25.571+00	2017-11-19 17:54:25.571+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	598
-66	2017-11-19 17:54:25.649+00	2017-11-19 17:54:25.649+00	["Ciclo","Concurso","Conferência Pública Estadual","Conferência Pública Municipal","Conferência Pública Nacional","Convenção","Curso","Edital","Encontro","Exibição","Exposição","Feira","Festa Popular","Festa Religiosa","Festival","Fórum","Inscrições","Intercâmbio Cultural","Jornada","Mostra","Oficina","Palestra","Parada e Desfile Cívico","Parada e Desfile Festivo","Parada e Desfile de Ações Afirmativas","Pesquisa","Programa","Reunião","Sarau","Seminário","Simpósio"]	\N	596
-67	2017-11-19 17:54:25.693+00	2017-11-19 17:54:25.693+00	["False","True"]	\N	595
-68	2017-11-19 17:54:25.735+00	2017-11-19 17:54:25.735+00	["2012-01-01 15:47:38.337553","2017-11-19 17:52:02.050184"]	\N	600
-69	2017-11-19 17:54:26.009+00	2017-11-19 17:54:26.009+00	["Antropologia","Arqueologia","Arquitetura-Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Banda","Biblioteca","Capoeira","Carnaval","Cinema","Circo","Ciência Política","Comunicação","Coral","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Indígena","Cultura LGBT","Cultura Negra","Cultura Popular","Dança","Design","Direito Autoral","Economia Criativa","Educação","Esporte","Filosofia","Fotografia","Gastronomia","Gestor Publico de Cultura","Gestão Cultural","História","Humor","Jogos Eletrônicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","Mídias Sociais","Música","Novas Mídias","Opera","Orquestra","Outros","Patrimônio Imaterial","Patrimônio Material","Pesquisa","Produção Cultural","Rádio","Saúde","Sociologia","Teatro","Televisão","Turismo","acervos museológicos","agente cultura viva","arquivo","arte de rua","artes visuais","artistas agentes culturais","cultura popular"]	\N	592
-70	2017-11-19 17:54:26.119+00	2017-11-19 17:54:26.119+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	594
-71	2017-11-19 17:54:26.55+00	2017-11-19 17:54:26.55+00	[0,29093]	\N	336
+57	2017-11-14 06:14:06.175+00	2017-11-20 23:41:05.732+00	[null,0,4655]	\N	472
+52	2017-11-14 06:14:05.668+00	2017-11-20 23:41:05.749+00	[null,0,24537]	\N	475
+56	2017-11-14 06:14:06.148+00	2017-11-20 23:41:05.779+00	[null,null]	\N	361
+39	2017-11-12 23:37:27.45+00	2017-11-20 23:41:05.795+00	[null,null]	\N	356
+40	2017-11-12 23:37:27.527+00	2017-11-20 23:41:05.822+00	[null]	\N	353
+54	2017-11-14 06:14:06.059+00	2017-11-20 23:41:05.85+00	["PercentAgents.PercentAgentsPerAreaOperation","PercentAgents.PercentIndividualAndCollectiveAgent"]	\N	473
+41	2017-11-12 23:37:27.559+00	2017-11-20 23:41:05.871+00	["2012-01-01 00:00:00.000000","2017-11-20 22:50:50.034824"]	\N	477
+61	2017-11-14 06:14:06.568+00	2017-11-20 23:41:05.995+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	500
+34	2017-11-12 23:37:27.002+00	2017-11-20 23:41:05.444+00	[0,318]	\N	308
+35	2017-11-12 23:37:27.044+00	2017-11-20 23:41:05.65+00	[null]	\N	360
+36	2017-11-12 23:37:27.116+00	2017-11-20 23:41:05.669+00	[null,null]	\N	438
+55	2017-11-14 06:14:06.085+00	2017-11-20 23:41:05.687+00	[null]	\N	357
+37	2017-11-12 23:37:27.298+00	2017-11-20 23:41:05.707+00	[null,null]	\N	434
 72	2017-11-19 17:54:27.008+00	2017-11-19 17:54:27.008+00	[null,0]	\N	491
-62	2017-11-14 06:14:06.664+00	2017-11-19 17:54:27.191+00	["Antiquário","Arquivo Privado","Arquivo Público","Ateliê","Audioteca","Banca de jornal","Bem Arqueológico","Bem Imóvel","Bem Móvel ou Integrado","Bem Paisagístico","Bens culturais de natureza imaterial","Bens culturais de natureza material","Biblioteca Comunitária (incluí­dos os pontos de leitura)","Biblioteca Escolar","Biblioteca Especializada","Biblioteca Nacional","Biblioteca Privada","Biblioteca Pública","Biblioteca Universitária","Casa de espetáculo","Casa do Patrimônio","Centro Comunitário","Centro Cultural Privado","Centro Cultural Público","Centro Espírita","Centro cultural itinerante","Centro de Artes e Esportes Unificados - CEUs","Centro de Documentação Privado","Centro de Documentação Público","Centro de artesanato","Centro de tradições","Cine itinerante","Cineclube","Circo Fixo","Circo Itinerante","Circo Tradicional","Clube social","Coleções","Concha acústica","Coreto","Creative Bureau","Danceteria","Documentação","Escola livre de Artes Cênicas","Escola livre de Artes Visuais","Escola livre de Audiovisual","Escola livre de Cultura Digital","Escola livre de Cultura Popular","Escola livre de Design","Escola livre de Gestão Cultural","Escola livre de Hip Hop","Escola livre de Música","Escola livre de Patrimônio","Escola livre de Pontinhos de cultura","Espaço Mais Cultura","Espaço Público Para Projeção de Filmes","Espaço para Eventos","Espaço para apresentação de dança","Estúdio","Galeria de arte","Ginásio Poliesportivo","Igreja","Instituição Privada Comunitária","Instituição Privada Comunitária exclusivamente voltada para formação artistica e cultural","Instituição Privada Confessional","Instituição Privada Confessional exclusivamente voltada para formação artistica e cultural","Instituição Privada Filantrópica","Instituição Privada Filantrópica exclusivamente voltada para formação artistica e cultural","Instituição Privada Particular","Instituição Privada Particular exclusivamente voltada para formação artistica e cultural","Instituição Pública Distrital exclusivamente voltada para formação artistica e cultural","Instituição Pública Estadual exclusivamente voltada para formação artistica e cultural","Instituição Pública Federal exclusivamente voltada para formação artistica e cultural","Instituição Pública Municipal exclusivamente voltada para formação artistica e cultural","Instituição Pública de Ensino Regular Distrital","Instituição Pública de Ensino Regular Estadual","Instituição Pública de Ensino Regular Federal","Instituição Pública de Ensino Regular Municipal","Lan-house","Livraria","Mesquitas","Museu Privado","Museu Público","Outros","Outros Equipamentos Culturais","Palco de Rua","Ponto de Cultura","Ponto de Leitura Afro","Pontos de Memória","Praça dos esportes e da cultura","Rádio Comunitária","Sala Multiuso","Sala de Leitura","Sala de cinema","Sala de dança","Sebo","Sitio Histórico","Teatro Privado","Teatro Público","Templo","Terreiro","Terreno para Circo","Trio elétrico","Usina Cultural","Videolocadora"]	\N	498
+65	2017-11-19 17:54:25.571+00	2017-11-20 23:41:05.303+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	598
+66	2017-11-19 17:54:25.649+00	2017-11-20 23:41:05.335+00	["Ciclo","Concurso","Conferência Pública Estadual","Conferência Pública Municipal","Conferência Pública Nacional","Convenção","Curso","Edital","Encontro","Exibição","Exposição","Feira","Festa Popular","Festa Religiosa","Festival","Fórum","Inscrições","Intercâmbio Cultural","Jornada","Mostra","Oficina","Palestra","Parada e Desfile Cívico","Parada e Desfile Festivo","Parada e Desfile de Ações Afirmativas","Pesquisa","Programa","Reunião","Sarau","Seminário","Simpósio"]	\N	596
+67	2017-11-19 17:54:25.693+00	2017-11-20 23:41:05.363+00	["False","True"]	\N	595
+68	2017-11-19 17:54:25.735+00	2017-11-20 23:41:05.388+00	["2012-01-01 15:47:38.337553","2017-11-20 22:50:05.934185"]	\N	600
+69	2017-11-19 17:54:26.009+00	2017-11-20 23:41:05.516+00	["Antropologia","Arqueologia","Arquitetura-Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Banda","Biblioteca","Capoeira","Carnaval","Cinema","Circo","Ciência Política","Comunicação","Coral","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Indígena","Cultura LGBT","Cultura Negra","Cultura Popular","Dança","Design","Direito Autoral","Economia Criativa","Educação","Esporte","Filosofia","Fotografia","Gastronomia","Gestor Publico de Cultura","Gestão Cultural","História","Humor","Jogos Eletrônicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","Mídias Sociais","Música","Novas Mídias","Opera","Orquestra","Outros","Patrimônio Imaterial","Patrimônio Material","Pesquisa","Produção Cultural","Rádio","Saúde","Sociologia","Teatro","Televisão","Turismo","acervos museológicos","agente cultura viva","arquivo","arte de rua","artes visuais","artistas agentes culturais","cultura popular"]	\N	592
+70	2017-11-19 17:54:26.119+00	2017-11-20 23:41:05.614+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	594
+71	2017-11-19 17:54:26.55+00	2017-11-20 23:41:05.721+00	[0,29192]	\N	336
+53	2017-11-14 06:14:06.039+00	2017-11-20 23:41:05.835+00	["2012-01-01 00:00:00.000000","2017-11-20 22:50:41.884470","2017-11-20 22:50:53.226614"]	\N	474
+62	2017-11-14 06:14:06.664+00	2017-11-20 23:41:05.931+00	["Antiquário","Arquivo Privado","Arquivo Público","Ateliê","Audioteca","Banca de jornal","Bem Arqueológico","Bem Imóvel","Bem Móvel ou Integrado","Bem Paisagístico","Bens culturais de natureza imaterial","Bens culturais de natureza material","Biblioteca Comunitária (incluí­dos os pontos de leitura)","Biblioteca Escolar","Biblioteca Especializada","Biblioteca Nacional","Biblioteca Privada","Biblioteca Pública","Biblioteca Universitária","Casa de espetáculo","Casa do Patrimônio","Centro Comunitário","Centro Cultural Privado","Centro Cultural Público","Centro Espírita","Centro cultural itinerante","Centro de Artes e Esportes Unificados - CEUs","Centro de Documentação Privado","Centro de Documentação Público","Centro de artesanato","Centro de tradições","Cine itinerante","Cineclube","Circo Fixo","Circo Itinerante","Circo Tradicional","Clube social","Coleções","Concha acústica","Coreto","Creative Bureau","Danceteria","Documentação","Escola livre de Artes Cênicas","Escola livre de Artes Visuais","Escola livre de Audiovisual","Escola livre de Cultura Digital","Escola livre de Cultura Popular","Escola livre de Design","Escola livre de Gestão Cultural","Escola livre de Hip Hop","Escola livre de Música","Escola livre de Patrimônio","Escola livre de Pontinhos de cultura","Espaço Mais Cultura","Espaço Público Para Projeção de Filmes","Espaço para Eventos","Espaço para apresentação de dança","Estúdio","Galeria de arte","Ginásio Poliesportivo","Igreja","Instituição Privada Comunitária","Instituição Privada Comunitária exclusivamente voltada para formação artistica e cultural","Instituição Privada Confessional","Instituição Privada Confessional exclusivamente voltada para formação artistica e cultural","Instituição Privada Filantrópica","Instituição Privada Filantrópica exclusivamente voltada para formação artistica e cultural","Instituição Privada Particular","Instituição Privada Particular exclusivamente voltada para formação artistica e cultural","Instituição Pública Distrital exclusivamente voltada para formação artistica e cultural","Instituição Pública Estadual exclusivamente voltada para formação artistica e cultural","Instituição Pública Federal exclusivamente voltada para formação artistica e cultural","Instituição Pública Municipal exclusivamente voltada para formação artistica e cultural","Instituição Pública de Ensino Regular Distrital","Instituição Pública de Ensino Regular Estadual","Instituição Pública de Ensino Regular Federal","Instituição Pública de Ensino Regular Municipal","Lan-house","Livraria","Mesquitas","Museu Privado","Museu Público","Outros","Outros Equipamentos Culturais","Palco de Rua","Ponto de Cultura","Ponto de Leitura Afro","Pontos de Memória","Praça dos esportes e da cultura","Rádio Comunitária","Sala Multiuso","Sala de Leitura","Sala de cinema","Sala de dança","Sebo","Sitio Histórico","Teatro Privado","Teatro Público","Templo","Terreiro","Terreno para Circo","Trio elétrico","Usina Cultural","Videolocadora"]	\N	498
 \.
 
 
@@ -3199,17 +3334,22 @@ COPY metabase_table (id, created_at, updated_at, name, rows, description, entity
 5	2017-11-12 21:38:37.009+00	2017-11-14 13:50:10.355+00	percent_projects	6	\N	\N	\N	f	2	Percent Projects	\N	\N	\N	\N	\N	f
 14	2017-11-13 23:50:00.364+00	2017-11-14 13:50:12.489+00	amount_museums_registered_year	2	\N	\N	\N	f	2	Amount Museums Registered Year	\N	\N	\N	\N	\N	f
 11	2017-11-12 21:38:37.155+00	2017-11-18 02:50:03.396+00	percent_event	6	\N	\N	\N	f	2	Percent Event	\N	\N	\N	\N	\N	f
-18	2017-11-19 17:54:15.822+00	2017-11-19 17:54:24.53+00	event_data	\N	\N	\N	\N	t	2	Event Data	\N	\N	\N	\N	\N	f
-16	2017-11-18 01:13:49.852+00	2017-11-19 17:54:24.556+00	project_data	3273	\N	\N	\N	t	2	Project Data	\N	\N	\N	\N	\N	f
-19	2017-11-19 17:54:15.839+00	2017-11-19 17:54:24.561+00	last_update_event_date	\N	\N	\N	\N	t	2	Last Update Event Date	\N	\N	\N	\N	\N	f
-17	2017-11-18 01:13:49.861+00	2017-11-19 17:54:24.567+00	last_update_project_date	2	\N	\N	\N	t	2	Last Update Project Date	\N	\N	\N	\N	\N	f
-7	2017-11-12 21:38:37.093+00	2017-11-19 17:54:24.571+00	amount_agents_registered_per_month	3	\N	\N	\N	t	2	Amount Agents Registered Per Month	\N	\N	\N	\N	\N	f
-15	2017-11-14 06:14:04.121+00	2017-11-19 17:54:24.579+00	occupation_area	30112	\N	\N	\N	t	2	Occupation Area	\N	\N	\N	\N	\N	f
-8	2017-11-12 21:38:37.113+00	2017-11-19 17:54:24.584+00	percent_agents	6	\N	\N	\N	t	2	Percent Agents	\N	\N	\N	\N	\N	f
-9	2017-11-12 21:38:37.126+00	2017-11-19 17:54:24.589+00	last_update_date	2	\N	\N	\N	t	2	Last Update Date	\N	\N	\N	\N	\N	f
-20	2017-11-19 17:54:15.848+00	2017-11-19 17:54:24.594+00	event_language	\N	\N	\N	\N	t	2	Event Language	\N	\N	\N	\N	\N	f
-10	2017-11-12 21:38:37.145+00	2017-11-19 17:54:24.599+00	percent_libraries	4	\N	\N	\N	t	2	Percent Libraries	\N	\N	\N	\N	\N	f
-12	2017-11-12 23:34:53.741+00	2017-11-19 17:54:24.603+00	space_data	19967	\N	\N	\N	t	2	Space Data	\N	\N	\N	\N	\N	f
+21	2017-11-20 23:00:05.458+00	2017-11-20 23:50:03.187+00	last_update_museum_date	2	\N	\N	\N	t	2	Last Update Museum Date	\N	\N	\N	\N	\N	f
+22	2017-11-20 23:00:05.471+00	2017-11-20 23:50:03.259+00	museum_data	3796	\N	\N	\N	t	2	Museum Data	\N	\N	\N	\N	\N	f
+23	2017-11-20 23:41:06.025+00	2017-11-20 23:50:04.255+00	library_area	5141	\N	\N	\N	t	2	Library Area	\N	\N	\N	\N	\N	f
+24	2017-11-20 23:41:06.031+00	2017-11-20 23:50:04.604+00	last_update_library_date	2	\N	\N	\N	t	2	Last Update Library Date	\N	\N	\N	\N	\N	f
+10	2017-11-12 21:38:37.145+00	2017-11-19 17:54:24.599+00	percent_libraries	4	\N	\N	\N	f	2	Percent Libraries	\N	\N	\N	\N	\N	f
+25	2017-11-20 23:41:06.038+00	2017-11-20 23:50:04.638+00	library_data	7178	\N	\N	\N	t	2	Library Data	\N	\N	\N	\N	\N	f
+18	2017-11-19 17:54:15.822+00	2017-11-20 23:50:05.431+00	event_data	21573	\N	\N	\N	t	2	Event Data	\N	\N	\N	\N	\N	f
+16	2017-11-18 01:13:49.852+00	2017-11-20 23:50:06.25+00	project_data	3281	\N	\N	\N	t	2	Project Data	\N	\N	\N	\N	\N	f
+19	2017-11-19 17:54:15.839+00	2017-11-20 23:50:06.261+00	last_update_event_date	2	\N	\N	\N	t	2	Last Update Event Date	\N	\N	\N	\N	\N	f
+17	2017-11-18 01:13:49.861+00	2017-11-20 23:50:06.289+00	last_update_project_date	2	\N	\N	\N	t	2	Last Update Project Date	\N	\N	\N	\N	\N	f
+7	2017-11-12 21:38:37.093+00	2017-11-20 23:50:06.301+00	amount_agents_registered_per_month	3	\N	\N	\N	t	2	Amount Agents Registered Per Month	\N	\N	\N	\N	\N	f
+15	2017-11-14 06:14:04.121+00	2017-11-20 23:50:06.473+00	occupation_area	30115	\N	\N	\N	t	2	Occupation Area	\N	\N	\N	\N	\N	f
+8	2017-11-12 21:38:37.113+00	2017-11-20 23:50:06.498+00	percent_agents	6	\N	\N	\N	t	2	Percent Agents	\N	\N	\N	\N	\N	f
+9	2017-11-12 21:38:37.126+00	2017-11-20 23:50:06.657+00	last_update_date	2	\N	\N	\N	t	2	Last Update Date	\N	\N	\N	\N	\N	f
+20	2017-11-19 17:54:15.848+00	2017-11-20 23:50:06.678+00	event_language	27032	\N	\N	\N	t	2	Event Language	\N	\N	\N	\N	\N	f
+12	2017-11-12 23:34:53.741+00	2017-11-20 23:50:07.356+00	space_data	19967	\N	\N	\N	t	2	Space Data	\N	\N	\N	\N	\N	f
 \.
 
 
@@ -3382,10 +3522,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	81
 \\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	73
 \\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	60
-\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	374
-\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	370
-\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	326
-\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	303
 \\x9c0228d167203464c42d91efe815d6f17a8be95ddbe03adadcb8617b5a1c4a46	137
 \\x23e4321c147245a4d20fb56fd5e3a7c76ed29c2139ae859a90a9a2f04ab731bc	137
 \\x496390f2f0b50e2fbfc8c751ba6e74596619323710bdcbbeea173e6d7f0bd10b	90
@@ -3394,7 +3530,40 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	134
 \\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	109
 \\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	131
-\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	303
+\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	314
+\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	363
+\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	324
+\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	309
+\\x6b5039481ad1749520b96d2176d5bfbc2b6eba08495cf8054faed42d28658a53	63
+\\x1c446c3459dadecb44f60ee7c2138493eadb825ab7ed7d7461513f3d5bfd7185	83
+\\xe7a4740534679b9671915c65b50eadd2563f583450724d8b3b902061afa64279	106
+\\xb204f11185354b6c0ec52816fc20f7cc5bf1d6d243ec958396bca494fe96a3e6	130
+\\xc9c537fffd3a147ff3f39f6ce2e59b24d97bb2467c3818ac5495f6f9e07181d6	111
+\\xae104a6053fee2863008c26b825968d22fb42f575f9657358821ac862b87fd2b	115
+\\xd124d06e139130090a743e729d1bdf5e57997154ac5afa515a3de80a3a48f6ac	68
+\\xec6fcbd015478995fa62dad707519637458ee1b7b9d7dca35aa2784b39b7c518	91
+\\xf8ab73da628afbbd148c05f79cda69acc8b423606ecfc38614e2285f065b31c5	98
+\\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	66
+\\x9bec7843a5f94ab47eb40948622b1f8f78b7429885aff8c4e92e72ae5dfa105a	319
+\\x490d37dcbc61cde4cabda5f9801f4464045fb2834df78c9a9fb3488c2399b6f9	84
+\\xa6e43734a8b76c28bb3723d3475c2427ff139362a5a98c49cc96035ff3f1d29c	105
+\\xea15adb9ebf96bf593bb87a25e21c6a4976a7aef779aab72073e95005a5f83e8	100
+\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	63
+\\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	76
+\\x4fa64b3921a5345e56cafded326679d694ff759dc9c14a9c99a091b6ef7b026a	111
+\\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	92
+\\xbd3c80317764415cbb70c03f7e0e90dfc07a01e3e1333ce11ff44575c04a364e	80
+\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	50
+\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	94
+\\x792a044714c63be23038204865243264e18fb8501465b9b23451a2a84ebe4db3	111
+\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	59
+\\xe48a2eaa6c8d7695da35bdcaf46e865a3bc1a8d734088e03a888695e2524a0a0	43
+\\xa10b50b18a6553118701872a96318522684bf78ab319b585168ef6fb1a59f9c0	76
+\\x62e27e4990cc2b7ff87a3330d56cdd634cf8669d2fede6b98363dd360be4de0a	52
+\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	45
+\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	98
+\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	98
+\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	365
 \.
 
 
@@ -4082,6 +4251,80 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 669	\\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	2017-11-19 18:09:07.496	144	57	f	embedded-question	\N	\N	17	\N	\N
 670	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-11-19 18:09:07.522	151	44	f	embedded-question	\N	\N	15	\N	\N
 671	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-19 18:09:07.624	167	132	f	embedded-question	\N	\N	6	\N	\N
+672	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-20 22:51:40.577	530	173	f	embedded-question	\N	\N	2	\N	\N
+673	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-20 22:51:40.592	484	25	f	embedded-question	\N	\N	7	\N	\N
+674	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-20 22:51:40.573	550	55	f	embedded-question	\N	\N	4	\N	\N
+675	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-20 22:51:40.594	560	132	f	embedded-question	\N	\N	3	\N	\N
+676	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-20 22:51:40.574	599	132	f	embedded-question	\N	\N	6	\N	\N
+677	\\xb204f11185354b6c0ec52816fc20f7cc5bf1d6d243ec958396bca494fe96a3e6	2017-11-20 23:00:45.443	200	0	f	ad-hoc	ERROR: duplicate key value violates unique constraint "pk_query_execution"\n  Detail: Key (id)=(676) already exists.	1	\N	\N	\N
+678	\\xb204f11185354b6c0ec52816fc20f7cc5bf1d6d243ec958396bca494fe96a3e6	2017-11-20 23:00:53.692	116	2000	f	ad-hoc	\N	1	\N	\N	\N
+679	\\xb204f11185354b6c0ec52816fc20f7cc5bf1d6d243ec958396bca494fe96a3e6	2017-11-20 23:00:56.079	60	2000	f	ad-hoc	\N	1	\N	\N	\N
+680	\\xc9c537fffd3a147ff3f39f6ce2e59b24d97bb2467c3818ac5495f6f9e07181d6	2017-11-20 23:02:00.668	112	7	f	ad-hoc	\N	1	\N	\N	\N
+681	\\xc9c537fffd3a147ff3f39f6ce2e59b24d97bb2467c3818ac5495f6f9e07181d6	2017-11-20 23:02:19.486	99	7	f	ad-hoc	\N	1	\N	\N	\N
+682	\\xae104a6053fee2863008c26b825968d22fb42f575f9657358821ac862b87fd2b	2017-11-20 23:02:35.846	117	7	f	ad-hoc	\N	1	\N	\N	\N
+683	\\xae104a6053fee2863008c26b825968d22fb42f575f9657358821ac862b87fd2b	2017-11-20 23:02:36.919	101	7	f	ad-hoc	\N	1	\N	\N	\N
+684	\\xd124d06e139130090a743e729d1bdf5e57997154ac5afa515a3de80a3a48f6ac	2017-11-20 23:02:52.179	68	7	f	ad-hoc	\N	1	\N	\N	\N
+685	\\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	2017-11-20 23:02:59.092	67	7	f	ad-hoc	\N	1	\N	\N	\N
+686	\\xec6fcbd015478995fa62dad707519637458ee1b7b9d7dca35aa2784b39b7c518	2017-11-20 23:03:05.361	91	7	f	ad-hoc	\N	1	\N	\N	\N
+687	\\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	2017-11-20 23:03:09.519	98	7	f	ad-hoc	\N	1	\N	\N	\N
+688	\\xbd3c80317764415cbb70c03f7e0e90dfc07a01e3e1333ce11ff44575c04a364e	2017-11-20 23:04:27.462	89	10	f	ad-hoc	\N	1	\N	\N	\N
+689	\\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	2017-11-20 23:05:57.95	90	3	f	ad-hoc	\N	1	\N	\N	\N
+690	\\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	2017-11-20 23:06:06.269	57	3	f	ad-hoc	\N	1	\N	\N	\N
+691	\\x6b5039481ad1749520b96d2176d5bfbc2b6eba08495cf8054faed42d28658a53	2017-11-20 23:06:49.667	71	3	f	ad-hoc	\N	1	\N	\N	\N
+692	\\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	2017-11-20 23:07:29.42	110	3	f	ad-hoc	\N	1	\N	\N	\N
+693	\\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	2017-11-20 23:07:35.379	38	3	f	ad-hoc	\N	1	\N	\N	\N
+694	\\x4fa64b3921a5345e56cafded326679d694ff759dc9c14a9c99a091b6ef7b026a	2017-11-20 23:08:23.699	118	47	f	ad-hoc	\N	1	\N	\N	\N
+695	\\xe7a4740534679b9671915c65b50eadd2563f583450724d8b3b902061afa64279	2017-11-20 23:09:14.958	107	47	f	ad-hoc	\N	1	\N	\N	\N
+697	\\xe7a4740534679b9671915c65b50eadd2563f583450724d8b3b902061afa64279	2017-11-20 23:09:28.296	105	47	f	ad-hoc	\N	1	\N	\N	\N
+698	\\x9bec7843a5f94ab47eb40948622b1f8f78b7429885aff8c4e92e72ae5dfa105a	2017-11-20 23:09:34.817	325	0	f	ad-hoc	BSON field name can not be null	1	\N	\N	\N
+702	\\xa6e43734a8b76c28bb3723d3475c2427ff139362a5a98c49cc96035ff3f1d29c	2017-11-20 23:10:03.741	105	47	f	ad-hoc	\N	1	\N	\N	\N
+708	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-20 23:10:40.093	104	47	f	ad-hoc	\N	1	\N	\N	\N
+720	\\xf8ab73da628afbbd148c05f79cda69acc8b423606ecfc38614e2285f065b31c5	2017-11-20 23:41:50.163	99	2000	f	ad-hoc	\N	1	\N	\N	\N
+721	\\xf8ab73da628afbbd148c05f79cda69acc8b423606ecfc38614e2285f065b31c5	2017-11-20 23:42:01.904	93	2000	f	ad-hoc	\N	1	\N	\N	\N
+722	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-20 23:43:47.824	50	1	f	ad-hoc	\N	1	\N	\N	\N
+723	\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	2017-11-20 23:44:37.417	62	3	f	ad-hoc	\N	1	\N	\N	\N
+735	\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	2017-11-20 23:51:21.515	46	54	f	question	\N	1	28	\N	\N
+737	\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	2017-11-20 23:51:52.26	35	13	f	question	\N	1	26	\N	\N
+738	\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	2017-11-20 23:52:04.413	37	25	f	question	\N	1	29	\N	\N
+696	\\xe7a4740534679b9671915c65b50eadd2563f583450724d8b3b902061afa64279	2017-11-20 23:09:17.638	92	47	f	ad-hoc	\N	1	\N	\N	\N
+699	\\x9bec7843a5f94ab47eb40948622b1f8f78b7429885aff8c4e92e72ae5dfa105a	2017-11-20 23:09:36.265	286	0	f	ad-hoc	BSON field name can not be null	1	\N	\N	\N
+700	\\x9bec7843a5f94ab47eb40948622b1f8f78b7429885aff8c4e92e72ae5dfa105a	2017-11-20 23:09:38.198	301	0	f	ad-hoc	BSON field name can not be null	1	\N	\N	\N
+701	\\x490d37dcbc61cde4cabda5f9801f4464045fb2834df78c9a9fb3488c2399b6f9	2017-11-20 23:09:44.373	84	47	f	ad-hoc	\N	1	\N	\N	\N
+703	\\xea15adb9ebf96bf593bb87a25e21c6a4976a7aef779aab72073e95005a5f83e8	2017-11-20 23:10:13.619	100	47	f	ad-hoc	\N	1	\N	\N	\N
+704	\\x1c446c3459dadecb44f60ee7c2138493eadb825ab7ed7d7461513f3d5bfd7185	2017-11-20 23:10:26.302	83	47	f	ad-hoc	\N	1	\N	\N	\N
+705	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-20 23:10:29.403	51	47	f	ad-hoc	\N	1	\N	\N	\N
+706	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-20 23:10:30.363	120	47	f	ad-hoc	\N	1	\N	\N	\N
+707	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-20 23:10:31.115	88	47	f	ad-hoc	\N	1	\N	\N	\N
+715	\\x6b5039481ad1749520b96d2176d5bfbc2b6eba08495cf8054faed42d28658a53	2017-11-20 23:17:45.541	27	3	f	question	\N	1	21	\N	\N
+716	\\xbd3c80317764415cbb70c03f7e0e90dfc07a01e3e1333ce11ff44575c04a364e	2017-11-20 23:17:51.13	34	10	f	question	\N	1	19	\N	\N
+724	\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	2017-11-20 23:46:15.165	105	13	f	ad-hoc	\N	1	\N	\N	\N
+709	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-20 23:16:35.26	49	47	f	question	\N	1	24	\N	\N
+710	\\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	2017-11-20 23:16:58.034	50	3	f	question	\N	1	22	\N	\N
+711	\\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	2017-11-20 23:17:08.07	34	3	f	question	\N	1	22	\N	\N
+712	\\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	2017-11-20 23:17:13.511	24	3	f	question	\N	1	20	\N	\N
+713	\\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	2017-11-20 23:17:27.83	32	3	f	question	\N	1	20	\N	\N
+718	\\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	2017-11-20 23:18:07.876	33	7	f	question	\N	1	18	\N	\N
+739	\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	2017-11-20 23:52:15.77	52	54	f	question	\N	1	27	\N	\N
+742	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-21 00:02:36.523	103	55	f	embedded-question	\N	\N	4	\N	\N
+743	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-21 00:02:36.8	132	132	f	embedded-question	\N	\N	3	\N	\N
+745	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-21 00:02:36.975	147	132	f	embedded-question	\N	\N	6	\N	\N
+714	\\x6b5039481ad1749520b96d2176d5bfbc2b6eba08495cf8054faed42d28658a53	2017-11-20 23:17:35.022	32	3	f	question	\N	1	21	\N	\N
+717	\\xbd3c80317764415cbb70c03f7e0e90dfc07a01e3e1333ce11ff44575c04a364e	2017-11-20 23:18:02.482	42	10	f	question	\N	1	19	\N	\N
+719	\\x4fa64b3921a5345e56cafded326679d694ff759dc9c14a9c99a091b6ef7b026a	2017-11-20 23:18:24.865	44	47	f	question	\N	1	23	\N	\N
+725	\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	2017-11-20 23:47:19.474	101	54	f	ad-hoc	\N	1	\N	\N	\N
+726	\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	2017-11-20 23:47:23.767	106	54	f	ad-hoc	\N	1	\N	\N	\N
+727	\\x792a044714c63be23038204865243264e18fb8501465b9b23451a2a84ebe4db3	2017-11-20 23:47:53.991	111	54	f	ad-hoc	\N	1	\N	\N	\N
+728	\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	2017-11-20 23:47:58.429	43	54	f	ad-hoc	\N	1	\N	\N	\N
+729	\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	2017-11-20 23:48:04.873	58	54	f	ad-hoc	\N	1	\N	\N	\N
+730	\\xe48a2eaa6c8d7695da35bdcaf46e865a3bc1a8d734088e03a888695e2524a0a0	2017-11-20 23:48:51.624	39	61	f	ad-hoc	\N	1	\N	\N	\N
+731	\\xe48a2eaa6c8d7695da35bdcaf46e865a3bc1a8d734088e03a888695e2524a0a0	2017-11-20 23:48:57.453	78	61	f	ad-hoc	\N	1	\N	\N	\N
+732	\\xa10b50b18a6553118701872a96318522684bf78ab319b585168ef6fb1a59f9c0	2017-11-20 23:49:10.409	76	61	f	ad-hoc	\N	1	\N	\N	\N
+733	\\x62e27e4990cc2b7ff87a3330d56cdd634cf8669d2fede6b98363dd360be4de0a	2017-11-20 23:49:27.731	52	10	f	ad-hoc	\N	1	\N	\N	\N
+734	\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	2017-11-20 23:49:32.774	105	25	f	ad-hoc	\N	1	\N	\N	\N
+736	\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	2017-11-20 23:51:39.359	36	3	f	question	\N	1	25	\N	\N
+740	\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	2017-11-20 23:52:27.258	66	54	f	question	\N	1	27	\N	\N
+741	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-21 00:02:36.251	140	173	f	embedded-question	\N	\N	2	\N	\N
+744	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-21 00:02:36.809	196	25	f	embedded-question	\N	\N	7	\N	\N
 \.
 
 
@@ -4123,6 +4366,18 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 15	2017-11-19 17:59:28.594+00	2017-11-19 18:07:36.646+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",605],"month"]]}}	{"stackable.stack_type":"stacked"}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 17	2017-11-19 18:03:50.473+00	2017-11-19 18:07:47.727+00	Linguagens por Instância	\N	bar	{"database":2,"type":"query","query":{"source_table":20,"aggregation":[["count"]],"breakout":[["field-id",610],["field-id",608]]}}	{"stackable.stack_type":"normalized"}	1	2	20	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Language","name":"_language"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 14	2017-11-19 17:58:14.276+00	2017-11-19 18:08:12.217+00	Quantidade de Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":18,"breakout":[["field-id",604],["datetime-field",["field-id",605],"month"]],"aggregation":[["count"]]}}	{"stackable.stack_type":"stacked"}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+19	2017-11-20 23:05:38.349+00	2017-11-20 23:17:57.119+00	Quantidade de Registros por Temática	\N	bar	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",613]],"order_by":[[["aggregation",0],"descending"]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Thematic","name":"_thematic"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+18	2017-11-20 23:04:08.622+00	2017-11-20 23:18:15.213+00	Quantidade de Registros por Tipo	\N	bar	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",618]],"order_by":[[["aggregation",0],"descending"]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Museum Type","name":"_museum_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+28	2017-11-20 23:48:24.569+00	2017-11-20 23:51:33.95+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",630],"month"]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+22	2017-11-20 23:08:03.853+00	2017-11-20 23:17:02.558+00	Porcentagem por Arquivo com Acesso Público	\N	pie	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",615]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Public Archive","name":"_public_archive"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+20	2017-11-20 23:06:35.749+00	2017-11-20 23:17:21.35+00	Porcentagem por Esfera	\N	pie	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",614]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+21	2017-11-20 23:07:18.266+00	2017-11-20 23:17:41.046+00	Porcentagem por Visita Guiada	\N	pie	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",616]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Guided Tu Or","name":"_guided_tuor"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+24	2017-11-20 23:10:58.259+00	2017-11-20 23:16:43.778+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+25	2017-11-20 23:46:06.796+00	2017-11-20 23:51:43.728+00	Porcentagem por Esfera	\N	pie	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",626]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+23	2017-11-20 23:09:02.8+00	2017-11-20 23:18:33.09+00	Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",619],["datetime-field",["field-id",620],"month"]]}}	{}	1	2	22	query	f	3	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+26	2017-11-20 23:47:00.348+00	2017-11-20 23:51:58.626+00	Porcentagem por Tipo de Esfera	\N	pie	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",627]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Sphere Type","name":"_sphere_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+29	2017-11-20 23:50:00.67+00	2017-11-20 23:52:08.823+00	Quantidade de Registros por Área	\N	bar	{"database":2,"type":"query","query":{"source_table":23,"aggregation":[["count"]],"breakout":[["field-id",623],["field-id",621]],"order_by":[[["aggregation",0],"descending"]],"limit":25}}	{}	1	2	23	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+27	2017-11-20 23:47:48.605+00	2017-11-20 23:52:23.277+00	Quantidade de Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",629],["datetime-field",["field-id",630],"month"]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -4244,10 +4499,59 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 106	Card	15	1	2017-11-19 18:07:36.578+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",605],"month"]]}},"id":15,"display":"line","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 107	Card	15	1	2017-11-19 18:07:36.66+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",605],"month"]]}},"id":15,"display":"line","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 108	Card	17	1	2017-11-19 18:07:47.644+00	{"description":null,"archived":false,"table_id":20,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Language","name":"_language"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Linguagens por Instância","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":20,"aggregation":[["count"]],"breakout":[["field-id",610],["field-id",608]]}},"id":17,"display":"bar","visualization_settings":{"stackable.stack_type":"normalized"},"public_uuid":null}	f	f	\N
+116	Card	20	1	2017-11-20 23:06:35.779+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",614]]}},"id":20,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
 109	Card	17	1	2017-11-19 18:07:47.743+00	{"description":null,"archived":false,"table_id":20,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Language","name":"_language"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Linguagens por Instância","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":20,"aggregation":[["count"]],"breakout":[["field-id",610],["field-id",608]]}},"id":17,"display":"bar","visualization_settings":{"stackable.stack_type":"normalized"},"public_uuid":null}	f	f	\N
 110	Card	16	1	2017-11-19 18:08:01.706+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Porcentagem de Eventos por Faixa Etária","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":16,"display":"pie","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 111	Card	16	1	2017-11-19 18:08:01.801+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Porcentagem de Eventos por Faixa Etária","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":16,"display":"pie","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 113	Card	14	1	2017-11-19 18:08:12.238+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"breakout":[["field-id",604],["datetime-field",["field-id",605],"month"]],"aggregation":[["count"]]}},"id":14,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
+114	Card	18	1	2017-11-20 23:04:08.671+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Museum Type","name":"_museum_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de Registros por Tipo","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",618]],"order_by":[[["aggregation",0],"descending"]]}},"id":18,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+115	Card	19	1	2017-11-20 23:05:38.372+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Thematic","name":"_thematic"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de Registros por Temática","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",613]],"order_by":[[["aggregation",0],"descending"]]}},"id":19,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+117	Card	21	1	2017-11-20 23:07:18.297+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Guided Tu Or","name":"_guided_tuor"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Porcentagem por Visita Guiada","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",616]]}},"id":21,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
+118	Card	22	1	2017-11-20 23:08:03.869+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Public Archive","name":"_public_archive"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Porcentagem por Arquivo com Acesso Público","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",615]]}},"id":22,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
+119	Card	23	1	2017-11-20 23:09:02.829+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",619],["datetime-field",["field-id",620],"month"]]}},"id":23,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+120	Card	24	1	2017-11-20 23:10:58.289+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Crscimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}},"id":24,"display":"line","visualization_settings":{},"public_uuid":null}	f	t	\N
+121	Card	24	1	2017-11-20 23:11:14.565+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}},"id":24,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+122	Card	24	1	2017-11-20 23:11:47.148+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}},"id":24,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+124	Card	20	1	2017-11-20 23:11:59.63+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",614]]}},"id":20,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+132	Card	22	1	2017-11-20 23:17:02.569+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Public Archive","name":"_public_archive"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Arquivo com Acesso Público","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",615]]}},"id":22,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+162	Card	27	1	2017-11-20 23:52:23.289+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",629],["datetime-field",["field-id",630],"month"]]}},"id":27,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+123	Card	22	1	2017-11-20 23:11:53.696+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Public Archive","name":"_public_archive"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Porcentagem por Arquivo com Acesso Público","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",615]]}},"id":22,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+125	Card	21	1	2017-11-20 23:12:09.689+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Guided Tu Or","name":"_guided_tuor"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Porcentagem por Visita Guiada","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",616]]}},"id":21,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+126	Card	19	1	2017-11-20 23:12:21.435+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Thematic","name":"_thematic"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Temática","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",613]],"order_by":[[["aggregation",0],"descending"]]}},"id":19,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+129	Card	24	1	2017-11-20 23:16:43.734+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}},"id":24,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+130	Card	24	1	2017-11-20 23:16:43.79+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"breakout":[["datetime-field",["field-id",620],"month"]],"aggregation":[["cum_count"]]}},"id":24,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+133	Card	20	1	2017-11-20 23:17:21.252+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",614]]}},"id":20,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+134	Card	20	1	2017-11-20 23:17:21.359+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",614]]}},"id":20,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+135	Card	21	1	2017-11-20 23:17:40.967+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Guided Tu Or","name":"_guided_tuor"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Visita Guiada","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",616]]}},"id":21,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+137	Card	19	1	2017-11-20 23:17:57.03+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Thematic","name":"_thematic"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Temática","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",613]],"order_by":[[["aggregation",0],"descending"]]}},"id":19,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+138	Card	19	1	2017-11-20 23:17:57.125+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Thematic","name":"_thematic"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Temática","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",613]],"order_by":[[["aggregation",0],"descending"]]}},"id":19,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+127	Card	18	1	2017-11-20 23:12:26.673+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Museum Type","name":"_museum_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Tipo","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",618]],"order_by":[[["aggregation",0],"descending"]]}},"id":18,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+131	Card	22	1	2017-11-20 23:17:02.491+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Public Archive","name":"_public_archive"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Arquivo com Acesso Público","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",615]]}},"id":22,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+146	Card	28	1	2017-11-20 23:48:24.581+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",630],"month"]]}},"id":28,"display":"line","visualization_settings":{},"public_uuid":null}	f	t	\N
+149	Card	25	1	2017-11-20 23:50:49.098+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",626]]}},"id":25,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+152	Card	27	1	2017-11-20 23:51:10.709+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",629],["datetime-field",["field-id",630],"month"]]}},"id":27,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+158	Card	26	1	2017-11-20 23:51:58.637+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere Type","name":"_sphere_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Porcentagem por Tipo de Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",627]]}},"id":26,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+128	Card	23	1	2017-11-20 23:12:32.963+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":3,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",619],["datetime-field",["field-id",620],"month"]]}},"id":23,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+136	Card	21	1	2017-11-20 23:17:41.056+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Guided Tu Or","name":"_guided_tuor"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Porcentagem por Visita Guiada","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",616]]}},"id":21,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+139	Card	18	1	2017-11-20 23:18:15.131+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Museum Type","name":"_museum_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Tipo","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",618]],"order_by":[[["aggregation",0],"descending"]]}},"id":18,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+141	Card	23	1	2017-11-20 23:18:33.006+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",619],["datetime-field",["field-id",620],"month"]]}},"id":23,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+145	Card	27	1	2017-11-20 23:47:48.637+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",629],["datetime-field",["field-id",630],"month"]]}},"id":27,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+150	Card	26	1	2017-11-20 23:50:54.637+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere Type","name":"_sphere_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Porcentagem por Tipo de Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",627]]}},"id":26,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+151	Card	29	1	2017-11-20 23:51:04.676+00	{"description":null,"archived":false,"table_id":23,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Área","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":23,"aggregation":[["count"]],"breakout":[["field-id",623],["field-id",621]],"order_by":[[["aggregation",0],"descending"]],"limit":25}},"id":29,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+153	Card	28	1	2017-11-20 23:51:33.894+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",630],"month"]]}},"id":28,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+157	Card	26	1	2017-11-20 23:51:58.565+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere Type","name":"_sphere_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Porcentagem por Tipo de Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",627]]}},"id":26,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+159	Card	29	1	2017-11-20 23:52:08.748+00	{"description":null,"archived":false,"table_id":23,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Área","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":23,"aggregation":[["count"]],"breakout":[["field-id",623],["field-id",621]],"order_by":[[["aggregation",0],"descending"]],"limit":25}},"id":29,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+140	Card	18	1	2017-11-20 23:18:15.224+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Museum Type","name":"_museum_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Quantidade de Registros por Tipo","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"breakout":[["field-id",619],["field-id",618]],"order_by":[[["aggregation",0],"descending"]]}},"id":18,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+148	Card	28	1	2017-11-20 23:50:36.295+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",630],"month"]]}},"id":28,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+155	Card	25	1	2017-11-20 23:51:43.669+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",626]]}},"id":25,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+142	Card	23	1	2017-11-20 23:18:33.102+00	{"description":null,"archived":false,"table_id":22,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":3,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":22,"aggregation":[["count"]],"order_by":[[["aggregation",0],"descending"]],"breakout":[["field-id",619],["datetime-field",["field-id",620],"month"]]}},"id":23,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+156	Card	25	1	2017-11-20 23:51:43.736+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",626]]}},"id":25,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+143	Card	25	1	2017-11-20 23:46:06.812+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere","name":"_sphere"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Porcentagem por Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",626]]}},"id":25,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
+144	Card	26	1	2017-11-20 23:47:00.376+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Sphere Type","name":"_sphere_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Porcentagem por Tipo de Esfera","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",627]]}},"id":26,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
+147	Card	29	1	2017-11-20 23:50:00.688+00	{"description":null,"archived":false,"table_id":23,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de Registros por Área","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":23,"aggregation":[["count"]],"breakout":[["field-id",623],["field-id",621]],"order_by":[[["aggregation",0],"descending"]],"limit":25}},"id":29,"display":"bar","visualization_settings":{},"public_uuid":null}	f	t	\N
+154	Card	28	1	2017-11-20 23:51:33.983+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Crescimento Cumulativo Mensal","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",630],"month"]]}},"id":28,"display":"line","visualization_settings":{},"public_uuid":null}	f	f	\N
+160	Card	29	1	2017-11-20 23:52:08.836+00	{"description":null,"archived":false,"table_id":23,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Área","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":23,"aggregation":[["count"]],"breakout":[["field-id",623],["field-id",621]],"order_by":[[["aggregation",0],"descending"]],"limit":25}},"id":29,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
+161	Card	27	1	2017-11-20 23:52:23.185+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"breakout":[["field-id",629],["datetime-field",["field-id",630],"month"]]}},"id":27,"display":"bar","visualization_settings":{},"public_uuid":null}	f	f	\N
 \.
 
 
@@ -4442,6 +4746,35 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 161	1	card	17	2017-11-19 18:07:43.663+00
 162	1	card	16	2017-11-19 18:07:57.014+00
 163	1	card	14	2017-11-19 18:08:07.561+00
+164	1	card	18	2017-11-20 23:04:08.64+00
+165	1	card	19	2017-11-20 23:05:38.364+00
+166	1	card	20	2017-11-20 23:06:35.764+00
+167	1	card	21	2017-11-20 23:07:18.286+00
+168	1	card	22	2017-11-20 23:08:03.866+00
+169	1	card	23	2017-11-20 23:09:02.818+00
+170	1	card	24	2017-11-20 23:10:58.272+00
+171	1	card	24	2017-11-20 23:16:35.206+00
+172	1	card	22	2017-11-20 23:16:57.984+00
+173	1	card	22	2017-11-20 23:17:07.964+00
+174	1	card	20	2017-11-20 23:17:13.466+00
+175	1	card	20	2017-11-20 23:17:27.73+00
+176	1	card	21	2017-11-20 23:17:34.96+00
+177	1	card	21	2017-11-20 23:17:45.441+00
+178	1	card	19	2017-11-20 23:17:51.071+00
+179	1	card	19	2017-11-20 23:18:02.386+00
+180	1	card	18	2017-11-20 23:18:07.833+00
+181	1	card	23	2017-11-20 23:18:24.799+00
+182	1	card	25	2017-11-20 23:46:06.806+00
+183	1	card	26	2017-11-20 23:47:00.356+00
+184	1	card	27	2017-11-20 23:47:48.618+00
+185	1	card	28	2017-11-20 23:48:24.577+00
+186	1	card	29	2017-11-20 23:50:00.684+00
+187	1	card	28	2017-11-20 23:51:21.469+00
+188	1	card	25	2017-11-20 23:51:39.299+00
+189	1	card	26	2017-11-20 23:51:52.22+00
+190	1	card	29	2017-11-20 23:52:04.377+00
+191	1	card	27	2017-11-20 23:52:15.719+00
+192	1	card	27	2017-11-20 23:52:27.158+00
 \.
 
 
@@ -4449,7 +4782,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 82, true);
+SELECT pg_catalog.setval('activity_id_seq', 131, true);
 
 
 --
@@ -4463,7 +4796,7 @@ SELECT pg_catalog.setval('card_label_id_seq', 1, false);
 -- Name: collection_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('collection_id_seq', 2, true);
+SELECT pg_catalog.setval('collection_id_seq', 4, true);
 
 
 --
@@ -4526,7 +4859,7 @@ SELECT pg_catalog.setval('metabase_database_id_seq', 2, true);
 -- Name: metabase_field_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('metabase_field_id_seq', 610, true);
+SELECT pg_catalog.setval('metabase_field_id_seq', 630, true);
 
 
 --
@@ -4540,7 +4873,7 @@ SELECT pg_catalog.setval('metabase_fieldvalues_id_seq', 72, true);
 -- Name: metabase_table_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('metabase_table_id_seq', 20, true);
+SELECT pg_catalog.setval('metabase_table_id_seq', 25, true);
 
 
 --
@@ -4617,7 +4950,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 671, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 745, true);
 
 
 --
@@ -4638,7 +4971,7 @@ SELECT pg_catalog.setval('raw_table_id_seq', 1, false);
 -- Name: report_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_card_id_seq', 17, true);
+SELECT pg_catalog.setval('report_card_id_seq', 29, true);
 
 
 --
@@ -4666,7 +4999,7 @@ SELECT pg_catalog.setval('report_dashboardcard_id_seq', 8, true);
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 113, true);
+SELECT pg_catalog.setval('revision_id_seq', 162, true);
 
 
 --
@@ -4680,7 +5013,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 163, true);
+SELECT pg_catalog.setval('view_log_id_seq', 192, true);
 
 
 --
