@@ -58,3 +58,14 @@ iframe{
 #mia{
 	background-color: green;
 }
+
+#graphicLink{
+  position:absolute;
+  top:0;
+  left:0;
+  height:400px;
+  width: 400px;
+  z-index:5;
+  color: gray;
+  font-weight: bold;
+}
