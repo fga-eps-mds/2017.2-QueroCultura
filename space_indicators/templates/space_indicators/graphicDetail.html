@@ -2,48 +2,17 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-content.css' %}"/>
 
+<div class="col-md-12">
+    <div class="chart-container">
+        <iframe src={{metabase_url.url|safe}}></iframe>
+    </div>
+    <div class="text-chart-init">
+      <p>Adicionar descrição.</p>
+    </div>
+</div>
 
-<div class="chart-container" id="graphic"></div>
-
-<script>
-
-number = sessionStorage.getItem("num");
-createGraphic(number)
-
-function createGraphic (number) {
-  console.log(number)
-  switch(number) {
-    case "1":
-      createFrame("{{graphic1|safe}}", "#graphic")
-      break;
-    case "2":
-      createFrame("{{graphic2|safe}}", "#graphic")
-      break;
-    case "3":
-      createFrame("{{graphic3|safe}}", "#graphic")
-      break;
-    case "4":
-      createFrame("{{graphic4|safe}}", "#graphic")
-      break;
-    case "5":
-      createFrame("{{graphic5|safe}}", "#graphic")
-      break;
-}
-}
-
-
-function createFrame(graphicURL, locationId){
-    var frame = '<iframe \
-      src="' + graphicURL + '" \
-      frameborder="0" \
-      width="100%" \
-      height="800" \
-      allowtransparency \
-    ></iframe>'
-    $(locationId).append(frame)
-  }
-
-
-</script>
 {% endblock %}

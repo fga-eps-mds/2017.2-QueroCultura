@@ -22,6 +22,9 @@ metabase_urls = [{'id':1, 'url':get_metabase_url(view_type, 2)},
 def index(request):
     return render(request, 'space_indicators/space-indicators.html', {'metabase_urls':metabase_urls})
 
+def graphicDetail(request, metabase_url_id):
+    metabase_url = metabase_urls[int(metabase_url_id) - 1]
+    return render(request,'space_indicators/graphicDetail.html',{'metabase_url': metabase_url}) 
 
 @task(name="populate_space_data")
 def populate_space_data():
