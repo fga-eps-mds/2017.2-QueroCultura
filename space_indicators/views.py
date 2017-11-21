@@ -11,26 +11,17 @@ from .models import OccupationArea
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
+view_type = "question"
+# Get graphics urls from metabase
+metabase_urls = [{'id':1, 'url':get_metabase_url(view_type, 2)},
+                 {'id':2, 'url':get_metabase_url(view_type, 4)},
+                 {'id':3, 'url':get_metabase_url(view_type, 3)},
+                 {'id':4, 'url':get_metabase_url(view_type, 7)},
+                 {'id':5, 'url':get_metabase_url(view_type, 6)}]
 
 def index(request):
-    view_type = "question"
+    return render(request, 'space_indicators/space-indicators.html', {'metabase_urls':metabase_urls})
 
-    url = {"graphic1": get_metabase_url(view_type, 2),
-           "graphic2": get_metabase_url(view_type, 4),
-           "graphic3": get_metabase_url(view_type, 3),
-           "graphic4": get_metabase_url(view_type, 7),
-           "graphic5": get_metabase_url(view_type, 6)}
-    return render(request, 'space_indicators/space-indicators.html', url)
-
-def graphicDetail(request): 
-    view_type = "question" 
-    url = {"graphic1": get_metabase_url(view_type, 2), 
-           "graphic2": get_metabase_url(view_type, 4), 
-           "graphic3": get_metabase_url(view_type, 3), 
-           "graphic4": get_metabase_url(view_type, 7), 
-           "graphic5": get_metabase_url(view_type, 6)} 
- 
-    return render(request,'space_indicators/graphicDetail.html',url) 
 
 @task(name="populate_space_data")
 def populate_space_data():

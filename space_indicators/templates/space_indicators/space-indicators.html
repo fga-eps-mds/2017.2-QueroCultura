@@ -1,6 +1,7 @@
 {% extends 'quero_cultura/base.html' %}
 {% load static %}
 
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
@@ -16,87 +17,27 @@
 <div class="col-md-12 container-indicators">
     <div class="row">
 
+        {% for metabase_url in metabase_urls %}
         <div class="col-md-4">
             <div id="area" class="chart-group">
-                <div class="chart-container" id="graphic1"></div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(1)">
-                    <div class="text-chart-init">
-                        <p>Espaços por área de atuação separados por instância.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div id="crescimento" class="chart-group">
-                <div class="chart-container" id="graphic2">
+                <div class="chart-container">
+                    <iframe src={{metabase_url.url|safe}}></iframe>
                 </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(2)">
+                <a href="{%url 'graphicDetail' metabase_url.id %}"">
                     <div class="text-chart-init">
-                        <p>Cadastros de espaços por mês.</p>
+                        <p>Adicionar descrição.</p>
                     </div>
                 </a>
             </div>
         </div>
+        {% endfor %}
 
-        <div class="col-md-4">
-            <div id="registro-mes" class="chart-group">
-                <div class="chart-container" id="graphic3">
-                </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(3)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por mês.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div id="mes-instancias" class="chart-group">
-                <div class="chart-container" id="graphic5">
-                </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(4)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por ano.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div id="tipo" class="chart-group">
-                <div class="chart-container" id="graphic4">
-                </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(5)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por ano.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
     </div>
 </div>
 
 <script>
     function graphicPicker(num) {
         sessionStorage.setItem('num',num);
-    }
-    
-    createFrame("{{graphic1|safe}}", "#graphic1")
-    createFrame("{{graphic2|safe}}", "#graphic2")
-    createFrame("{{graphic3|safe}}", "#graphic3")
-    createFrame("{{graphic4|safe}}", "#graphic4")
-    createFrame("{{graphic5|safe}}", "#graphic5")
-
-    function createFrame(graphicURL, locationId){
-        var frame = '<iframe \
-          src="' + graphicURL + '" \
-          frameborder="0" \
-          width="100%" \
-          height="400px" \
-          allowtransparency \
-        ></iframe>'
-        $(locationId).append(frame)
     }
 </script>
 
