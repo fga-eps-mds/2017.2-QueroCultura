@@ -46,11 +46,11 @@ def populate_agent_data():
                 single_request = RequestAgentsInPeriod(year, url)
                 request.data += single_request.data
             request = request.data
-            new_url = clean_url(url)
         else:
             request = RequestAgentsRawData(last_update, url).data
-            new_url = clean_url(url)
 
+        new_url = clean_url(url)
+        
         for agent in request:
             date = agent["createTimestamp"]['date']
             AgentsData(new_url, str(agent['type']['name']), date).save()
