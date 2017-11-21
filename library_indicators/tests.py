@@ -3,6 +3,7 @@ from .api_connections import RequestLibraryRawData
 from .models import LastUpdateLibraryDate
 from .models import LibraryArea
 from .models import LibraryData
+from .views import populate_library_data
 import requests_mock
 import json
 
@@ -58,3 +59,25 @@ class TestRequestLibraryRawData(object):
         assert raw_data.response.status_code == 200
         assert raw_data.data == result
         assert raw_data.data_length == 1
+
+
+class TestPopulateLibraryData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_library_data(self, **kwargs):
+        url = "http://bibliotecas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "esfera": "Publica", "esfera_tipo": 'None',
+                   "terms": {"area": ["Cinema", "Teatro"]}}]
+
+        kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
+
+        LastUpdateLibraryDate.drop_collection()
+        LibraryData.drop_collection()
+        LibraryArea.drop_collection()
+
+        populate_library_data()
+
+        assert LastUpdateLibraryDate.objects.count() != 0
+        assert LibraryData.objects.count() != 0
+        assert LibraryArea.objects.count() != 0 
