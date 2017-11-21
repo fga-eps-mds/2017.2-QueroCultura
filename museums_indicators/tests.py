@@ -43,7 +43,6 @@ class TestMuseumData(object):
 
 
 class TestRequestMuseumRawData(object):
-
     @requests_mock.Mocker(kw='mock')
     def test_request_museum_raw_data(self, **kwargs):
         url = "http://museus.cultura.gov.br/api/"
