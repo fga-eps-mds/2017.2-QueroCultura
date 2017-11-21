@@ -1,75 +1,69 @@
 from datetime import datetime
 from .api_connections import RequestEventsRawData
-from .models import QuantityOfRegisteredEvents
-from .models import PercentEventsPerLanguage
-from .models import PercentEventsPerAgeRange
-from .views import update_event_indicator
+from .models import EventData
+from .models import EventLanguage
+from .models import LastUpdateEventDate
+from .views import populate_event_data
 from quero_cultura.views import ParserYAML
 import requests_mock
-import requests
 import json
-import yaml
 
 
-class TestQuantityOfRegisteredEvents(object):
-
-    @staticmethod
-    def test_total_events_registered_per_mouth_per_year():
-        QuantityOfRegisteredEvents.drop_collection()
-        total_events_mouth = {"01": 10}
-        event_indicator = QuantityOfRegisteredEvents(50,
-                                                     datetime.now(),
-                                                     total_events_mouth)
-        event_indicator.save()
-        query = QuantityOfRegisteredEvents.objects.first()
-        assert query._total_events_registered_per_mounth_per_year == total_events_mouth
-
-    @staticmethod
-    def test_total_events():
-        QuantityOfRegisteredEvents.drop_collection()
-        total_events = 20
-        event_indicator = QuantityOfRegisteredEvents(total_events,
-                                                     datetime.now(),
-                                                     {"01": 10})
-        event_indicator.save()
-        query = QuantityOfRegisteredEvents.objects.first()
-        assert query._total_events == 20
+class TestLastUpdateEventDate(object):
+    def test_last_update_event_date(self):
+        LastUpdateEventDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateEventDate(create_date).save()
+        query = LastUpdateEventDate.objects.first()
+        assert query.create_date == create_date
 
 
-class TestPercentEventsPerLanguage(object):
-
-    @staticmethod
-    def test_percent_events_per_language():
-        PercentEventsPerLanguage.drop_collection()
-        total_events_per_language = {"01": 10}
-        indicator = PercentEventsPerLanguage(10,
-                                             datetime.now(), total_events_per_language)
-        indicator.save()
-        query = PercentEventsPerLanguage.objects.first()
-        assert query._total_events_per_language == total_events_per_language
-
-    @staticmethod
-    def test_total_events():
-        PercentEventsPerLanguage.drop_collection()
-        total_events = 20
-        indicator = PercentEventsPerLanguage(
-            total_events, datetime.now(), {"01": 10})
-        indicator.save()
-        query = PercentEventsPerLanguage.objects.first()
-        assert query._total_events == total_events
+class TestEventLanguage(object):
+    def test_event_language(self):
+        EventLanguage.drop_collection()
+        instance = "SP"
+        language = "Cinema"
+        EventLanguage(instance, language).save()
+        query = EventLanguage.objects.first()
+        assert query.instance == instance
+        assert query.language == language
 
 
-class TestPercentEventsPerAgeRange(object):
+class TestEventData(object):
+    def test_event_data(self):
+        EventData.drop_collection()
+        instance = "SP"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        age_range = "Livre"
+        EventData(instance, age_range, date).save()
+        query = EventData.objects.first()
+        assert query.instance == instance
+        assert query.date == date
+        assert query.age_range == age_range
 
-    @staticmethod
-    def test_percent_events_per_language():
-        PercentEventsPerAgeRange.drop_collection()
-        total_events_range = {"01": 10}
-        indicator = PercentEventsPerAgeRange(
-            20, datetime.now(), total_events_range)
-        indicator.save()
-        query = PercentEventsPerAgeRange.objects.first()
-        assert query._total_events_per_age_range == total_events_range
+
+class TestPopulateEventData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_event_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        LastUpdateEventDate.drop_collection()
+        EventLanguage.drop_collection()
+        EventData.drop_collection()
+
+        populate_event_data()
+
+        assert LastUpdateEventDate.objects.count() != 0
+        assert EventData.objects.count() != 0
+        assert EventLanguage.objects.count() != 0
 
 
 class TestClassRequestEventsRawData(object):
@@ -99,30 +93,3 @@ class TestClassRequestEventsRawData(object):
         type_events_raw_data = type(events_raw_data)
         intenger = 1
         assert type_events_raw_data == type(intenger)
-
-
-class TestUpdateEventIndicator(object):
-
-    @requests_mock.Mocker(kw='mock')
-    def test_update_event_indicator(self, **kwargs):
-        parser_yaml = ParserYAML()
-
-        urls = parser_yaml.get_multi_instances_urls
-
-        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "classificacaoEtaria": "Livre", "terms": {"linguagem": ["Cinema", "Teatro"]}}]
-
-        for url in urls:
-            kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
-
-        PercentEventsPerLanguage.drop_collection()
-        PercentEventsPerAgeRange.drop_collection()
-        QuantityOfRegisteredEvents.drop_collection()
-
-        update_event_indicator()
-
-        total = len(PercentEventsPerLanguage.objects)
-        total += len(PercentEventsPerAgeRange.objects)
-        total += len(QuantityOfRegisteredEvents.objects)
-
-        assert total == 6

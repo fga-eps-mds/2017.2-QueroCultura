@@ -3,6 +3,9 @@ from .api_connection import RequestAgentsRawData
 from .models import PercentIndividualAndCollectiveAgent
 from .models import AmountAgentsRegisteredPerMonth
 from .models import PercentAgentsPerAreaOperation
+from .models import LastUpdateAgentsDate
+from .models import AgentsArea
+from .models import AgentsData
 from .views import update_agent_indicator
 import requests_mock
 import requests
@@ -117,25 +120,58 @@ class TestPercentAgentsPerAreaOperation(object):
         assert query.total_agents_area_oreration == {"area": 10}
 
 
-class TestUpdateAgentIndicator(object):
+#========== New testes =============
+
+class TestLastUpdateAgentsDate(object):
+
+    def test_last_agents_date(self):
+        LastUpdateAgentsDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateAgentsDate(create_date).save()
+        query = LastUpdateAgentsDate.objects.first()
+        assert query.create_date == create_date
+
+
+class TestAgentsArea(object):
+
+    def test_agents_area(self):
+        AgentsArea.drop_collection()
+        instance = "SP"
+        area = "Cinema"
+        AgentsArea(instance, area).save()
+        query = AgentsArea.objects.first()
+        assert query.instance == instance
+        assert query.area == area
+
+
+class TestAgentsData(object):
+
+    def test_agents_data(self):
+        AgentsData.drop_collection()
+        instance = "SP"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        agents_type = "Individual"
+        AgentsData(instance, agents_type, date).save()
+        query = AgentsData.objects.first()
+        assert query.instance == instance
+        assert query.date == date
+        assert query.agents_type == agents_type
+
+
+class TestRequestAgentsRawData(object):
 
     @requests_mock.Mocker(kw='mock')
-    def test_update_agent_indicator(self, **kwargs):
+    def test_request_agents_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"
 
-        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "type": {"name": "Coletivo"}, "terms": {"area": ["Cinema", "Teatro"]}}]
+        result = {
+            'None': 1
+        }
 
         kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
 
-        PercentAgentsPerAreaOperation.drop_collection()
-        PercentIndividualAndCollectiveAgent.drop_collection()
-        AmountAgentsRegisteredPerMonth.drop_collection()
-
-        update_agent_indicator()
-
-        total = len(PercentIndividualAndCollectiveAgent.objects)
-        total += len(AmountAgentsRegisteredPerMonth.objects)
-        total += len(PercentAgentsPerAreaOperation.objects)
-
-        assert total == 6
+        current_time = datetime.now().__str__()
+        raw_data = RequestAgentsRawData(current_time, url)
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1

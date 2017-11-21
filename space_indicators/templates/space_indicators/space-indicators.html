@@ -82,24 +82,14 @@
         </div>
     </div>
 </div>
+<script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
 
-<script>
+<script type="text/javascript">
     createFrame("{{graphic1|safe}}", "#graphic1")
     createFrame("{{graphic2|safe}}", "#graphic2")
     createFrame("{{graphic3|safe}}", "#graphic3")
     createFrame("{{graphic4|safe}}", "#graphic4")
     createFrame("{{graphic5|safe}}", "#graphic5")
-
-    function createFrame(graphicURL, locationId){
-        var frame = '<iframe \
-          src="' + graphicURL + '" \
-          frameborder="0" \
-          width="90%" \
-          height="600px" \
-          allowtransparency \
-        ></iframe>'
-        $(locationId).append(frame)
-    }
 </script>
 
 <script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
