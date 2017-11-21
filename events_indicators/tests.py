@@ -10,6 +10,7 @@ import json
 
 
 class TestLastUpdateEventDate(object):
+
     def test_last_update_event_date(self):
         LastUpdateEventDate.drop_collection()
         create_date = datetime.now().__str__()
@@ -19,6 +20,7 @@ class TestLastUpdateEventDate(object):
 
 
 class TestEventLanguage(object):
+
     def test_event_language(self):
         EventLanguage.drop_collection()
         instance = "SP"
@@ -30,6 +32,7 @@ class TestEventLanguage(object):
 
 
 class TestEventData(object):
+
     def test_event_data(self):
         EventData.drop_collection()
         instance = "SP"
@@ -43,6 +46,7 @@ class TestEventData(object):
 
 
 class TestPopulateEventData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_populate_event_data(self, **kwargs):
         parser_yaml = ParserYAML()
@@ -68,27 +72,51 @@ class TestPopulateEventData(object):
 
 class TestClassRequestEventsRawData(object):
 
-    def test_success_request(self):
+    @requests_mock.Mocker(kw='mock')
+    def test_success_request(self, **kwargs):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        request_events_raw_data = RequestEventsRawData(current_time, url)
         response_events_raw_data = request_events_raw_data.response
         response_status_code = response_events_raw_data.status_code
         assert response_status_code == 200
 
-    def test_data_content(self):
+    @requests_mock.Mocker(kw='mock')
+    def test_data_content(self, **kwargs):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
+
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        request_events_raw_data = RequestEventsRawData(current_time, url)
         events_raw_data = request_events_raw_data.data
         type_events_raw_data = type(events_raw_data)
         empty_list = []
         assert type_events_raw_data == type(empty_list)
 
-    def test_data_lenght(self):
+    @requests_mock.Mocker(kw='mock')
+    def test_data_lenght(self, **kwargs):
         current_time = datetime.now().__str__()
-        request_events_raw_data = RequestEventsRawData(
-            current_time, "http://mapas.cultura.gov.br/api/")
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+        request_events_raw_data = RequestEventsRawData(current_time, url)
         events_raw_data = request_events_raw_data.data_length
         type_events_raw_data = type(events_raw_data)
         intenger = 1
