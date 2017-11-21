@@ -38,19 +38,19 @@ app.conf.beat_schedule = {
             'expires': datetime.now() + timedelta(seconds=15.0),
         },
     },
-    # 'update_libray_indicator': {
-    #     'task': 'update_library_indicator',
-    #     'schedule': crontab(minute=5,
-    #                         hour=3,
-    #                         day_of_week='sunday'),
-    # },
-    # 'update_libray_indicator_now': {
-    #     'task': 'update_library_indicator',
-    #     'schedule': 20.0,
-    #     'options': {
-    #         'expires': datetime.now() + timedelta(seconds=30.0),
-    #     },
-    # },
+    'populate_library_data': {
+        'task': 'populate_library_data',
+        'schedule': crontab(minute=5,
+                            hour=3,
+                            day_of_week='sunday'),
+    },
+    'populate_library_data_now': {
+        'task': 'populate_library_data',
+        'schedule': 20.0,
+        'options': {
+            'expires': datetime.now() + timedelta(seconds=30.0),
+        },
+    },
     'populate_event_data': {
         'task': 'populate_event_data',
         'schedule': crontab(minute=10,
@@ -61,7 +61,7 @@ app.conf.beat_schedule = {
         'task': 'populate_event_data',
         'schedule': 15.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=20.0),
+            'expires': datetime.now() + timedelta(seconds=25.0),
         },
     },
     'populate_project_data': {
@@ -100,7 +100,7 @@ app.conf.beat_schedule = {
         'task': 'populate_museum_data',
         'schedule': 40.0,
         'options': {
-            'expires': datetime.now() + timedelta(seconds=50.0),
+            'expires': datetime.now() + timedelta(seconds=60.0),
         },
     },
 }
