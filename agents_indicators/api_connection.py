@@ -3,32 +3,13 @@ import datetime
 import requests
 
 
-class RequestAgentsInPeriod(object):
+class RequestAgentsRawData(object):
 
-    def __init__(self, year, url):
-        self._filters = ''
-        self._data = []
-        for i in range(1, 13):
-            if i < 12:
-                initial_date = datetime.date(year, i, 1)
-                final_date = datetime.date(year, i+1, 1)
-            else:
-                initial_date = datetime.date(year, i, 1)
-                final_date = datetime.date(year+1, 1, 1)
-
-            print("\nINITIALDATE = " + str(initial_date))
-            print("\nFINALDATE = " + str(final_date))
-            data = self.request_data(initial_date, final_date, url)
-
-            self._data += json.loads(data.text)
-
-    def request_data(self, initial_date, final_date, url):
-        self._filters = {'@select': 'terms,type, createTimestamp, updateTimestamp',
-                         'createTimestamp': "BET("+str(initial_date)+","+str(final_date)+")",
-                        }
-        self._response = requests.get(url + "agent/find/", self._filters)
-        print(self._response.url)
-        return self._response
+    def __init__(self, last_update_time, url):
+        self._filters = {'@select': 'terms, type, createTimestamp',
+                         'createTimestamp': "GT("+last_update_time+")"}
+        self._response = requests.get(url+"agent/find/", self._filters)
+        self._data = json.loads(self._response.text)
 
     @property
     def response(self):
@@ -43,13 +24,29 @@ class RequestAgentsInPeriod(object):
         return len(self._data)
 
 
-class RequestAgentsRawData(object):
+class RequestAgentsInPeriod(object):
 
-    def __init__(self, last_update_time, url):
+    def __init__(self, year, url):
+        self._filters = ''
+        self._data = []
+        for i in range(1, 13):
+            if i < 12:
+                initial_date = datetime.date(year, i, 1)
+                final_date = datetime.date(year, i+1, 1)
+            else:
+                initial_date = datetime.date(year, i, 1)
+                final_date = datetime.date(year+1, 1, 1)
+
+            data = self.request_data(initial_date, final_date, url)
+
+            self._data += json.loads(data.text)
+
+    def request_data(self, initial_date, final_date, url):
         self._filters = {'@select': 'terms, type, createTimestamp',
-                         'createTimestamp': "GT("+last_update_time+")"}
-        self._response = requests.get(url+"agent/find/", self._filters)
-        self._data = json.loads(self._response.text)
+                         'createTimestamp': "BET(" + str(initial_date) + ","
+                         + str(final_date) + ")"}
+        self._response = requests.get(url + "agent/find/", self._filters)
+        return self._response
 
     @property
     def response(self):
