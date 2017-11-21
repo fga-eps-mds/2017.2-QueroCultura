@@ -36,6 +36,8 @@
 		<!-- Área onde os graficos são printados -->
 		<div class="container-indicators">
 			<div id="quantitativo-mensal">
+					<div class="chart-container" id="graphic1">
+        	</div>
 
 					<div class="text-chart-init">
 						<p>Este gráfico refere-se à quantidade de Eventos cadastrados por mês na plataforma "Mapas Culturais" ao longo de sua existência.</p>
@@ -43,6 +45,8 @@
 			</div>
 
 			<div id="events-type">
+					<div class="chart-container" id="graphic3">
+					</div>
 
 					<div class="text-chart-init">
 					<p>Este gráfico refere-se à quantidade de eventos que se encaixam em determinada faixa etária.</p>
@@ -50,6 +54,8 @@
 			</div>
 
 			<div id="events-language">
+				<div class="chart-container" id="graphic4">
+        </div>
 
 				<div class="text-chart-init">
 					<p>Este gráfico refere-se à quantidade de eventos cadastrados que declaram ter afinidade ou efetivamente atuar em determinada linguagem cultural."</p>
@@ -57,6 +63,8 @@
 			</div>
 
 			<div id="crescimento">
+				<div class="chart-container" id="graphic2">
+        </div>
 
 				<div class="text-chart-init">
 					<p>Este gráfico ilustra o crescimento da plataforma "Mapas culturais" em relação ao total de registros de eventos ao longo de sua existência.</p>
@@ -67,8 +75,10 @@
 	<!-- Imports necessários para funcionalidade da navbar e gráficos-->
 	<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
 	<script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
-	<script src="{% static 'js/graphics.js' %}" type="text/javascript"></script>
-	<script src="static/js/events_graphics.js"></script>
 	<script type="text/javascript">
+		createFrame("{{graphic1|safe}}", "#graphic1")
+		createFrame("{{graphic2|safe}}", "#graphic2")
+		createFrame("{{graphic3|safe}}", "#graphic3")
+		createFrame("{{graphic4|safe}}", "#graphic4")
 	</script>
 {% endblock %}
