@@ -25,19 +25,19 @@ def debug_task(self):
 
 
 app.conf.beat_schedule = {
-    'update_agent_indicator': {
-        'task': 'update_agent_indicator',
-        'schedule': crontab(minute=0,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'update_agent_indicator_now': {
-        'task': 'update_agent_indicator',
-        'schedule': 10.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=15.0),
-        },
-    },
+    # 'update_agent_indicator': {
+    #     'task': 'update_agent_indicator',
+    #     'schedule': crontab(minute=0,
+    #                         hour=3,
+    #                         day_of_week='sunday'),
+    # },
+    # 'update_agent_indicator_now': {
+    #     'task': 'update_agent_indicator',
+    #     'schedule': 10.0,
+    #     'options': {
+    #         'expires': datetime.now() + timedelta(seconds=15.0),
+    #     },
+    # },
     'populate_library_data': {
         'task': 'populate_library_data',
         'schedule': crontab(minute=5,
