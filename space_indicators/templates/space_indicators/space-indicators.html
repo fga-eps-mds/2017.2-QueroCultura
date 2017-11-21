@@ -17,62 +17,59 @@
     <div class="row">
 
         <div class="col-md-4">
-            <div id="area" class="chart-group">
-                <div class="chart-container" id="graphic1"></div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(1)">
-                    <div class="text-chart-init">
-                        <p>Espaços por área de atuação separados por instância.</p>
-                    </div>
-                </a>
+          <div class="chart-container" id="graphic1"></div>
+            <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(1)"id="graphicLink" >
+              <div id="area" class="chart-group">
+                <div class="text-chart-init">
+                  <p>Áreas de Atuação por Instância.</p>
+                </div>
             </div>
+          </a>
         </div>
 
         <div class="col-md-4">
-            <div id="crescimento" class="chart-group">
-                <div class="chart-container" id="graphic2">
+          <div class="chart-container" id="graphic2"></div>
+            <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(2)"id="graphicLink" >
+              <div id="crescimento" class="chart-group">
+                <div class="text-chart-init">
+                  <p>Crescimento Cumulativo Mensal</p>
                 </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(2)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por mês.</p>
-                    </div>
-                </a>
-            </div>
+              </div>
+            </a>
         </div>
 
         <div class="col-md-4">
-            <div id="registro-mes" class="chart-group">
-                <div class="chart-container" id="graphic3">
+          <div class="chart-container" id="graphic3"></div>
+            <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(3)"id="graphicLink" >
+              <div id="registro-mes" class="chart-group">
+                <div class="text-chart-init">
+                  <p>Quantidade de Registros por Mês.</p>
                 </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(3)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por mês.</p>
-                    </div>
-                </a>
-            </div>
+              </div>
+            </a>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="chart-container" id="graphic4"></div>
+            <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(4)"id="graphicLink" >
+              <div id="tipo" class="chart-group">
+                <div class="text-chart-init">
+                  <p>Tipos por Instância.</p>
+                </div>
+              </div>
+            </a>
         </div>
 
         <div class="col-md-4">
-            <div id="mes-instancias" class="chart-group">
-                <div class="chart-container" id="graphic5">
+          <div class="chart-container" id="graphic5"></div>
+            <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(5)"id="graphicLink" >
+              <div id="crescimento" class="chart-group">
+                <div class="text-chart-init">
+                  <p>Crescimento Cumulativo Mensal por Instância</p>
                 </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(4)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por ano.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div id="tipo" class="chart-group">
-                <div class="chart-container" id="graphic4">
-                </div>
-                <a href="{%url 'graphicDetail' %}" onclick="graphicPicker(5)">
-                    <div class="text-chart-init">
-                        <p>Cadastros de espaços por ano.</p>
-                    </div>
-                </a>
-            </div>
+              </div>
+            </a>
         </div>
     </div>
 </div>
@@ -81,7 +78,7 @@
     function graphicPicker(num) {
         sessionStorage.setItem('num',num);
     }
-    
+
     createFrame("{{graphic1|safe}}", "#graphic1")
     createFrame("{{graphic2|safe}}", "#graphic2")
     createFrame("{{graphic3|safe}}", "#graphic3")

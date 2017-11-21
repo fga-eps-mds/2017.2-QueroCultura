@@ -2,8 +2,6 @@
 {% load static %}
 
 {% block content %}
-
-
 <div class="chart-container" id="graphic"></div>
 
 <script>
@@ -29,9 +27,8 @@ function createGraphic (number) {
     case "5":
       createFrame("{{graphic5|safe}}", "#graphic")
       break;
+  }
 }
-}
-
 
 function createFrame(graphicURL, locationId){
     var frame = '<iframe \
@@ -43,7 +40,5 @@ function createFrame(graphicURL, locationId){
     ></iframe>'
     $(locationId).append(frame)
   }
-
-
 </script>
 {% endblock %}
