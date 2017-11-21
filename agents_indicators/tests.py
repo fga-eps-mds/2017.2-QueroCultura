@@ -3,8 +3,34 @@ from .api_connection import RequestAgentsRawData
 from .models import LastUpdateAgentsDate
 from .models import AgentsArea
 from .models import AgentsData
+from .views import populate_agent_data
+from quero_cultura.views import ParserYAML
 import requests_mock
 import json
+
+
+class TestPopulateAgentData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_agent_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Publico"},
+                   "terms": {"area": ["Cinema", "Teatro"]}}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+
+        LastUpdateAgentsDate.drop_collection()
+        AgentsData.drop_collection()
+        AgentsArea.drop_collection()
+
+        populate_agent_data()
+
+        assert LastUpdateAgentsDate.objects.count() != 0
+        assert AgentsData.objects.count() != 0
+        assert AgentsArea.objects.count() != 0
 
 
 class TestLastUpdateAgentsDate(object):
