@@ -48,7 +48,6 @@ class TestPopulateSpaceData(object):
     @requests_mock.Mocker(kw='mock')
     def test_populate_space_data(self, **kwargs):
         parser_yaml = ParserYAML()
-
         urls = parser_yaml.get_multi_instances_urls
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
@@ -69,26 +68,20 @@ class TestPopulateSpaceData(object):
         assert SpaceData.objects.count() != 0
 
 
-class TestClassRequestSpacesRawData(object):
-    def test_success_request(self):
-        current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
-        response_space_raw_data = request_space_raw_data.response
-        response_status_code = response_space_raw_data.status_code
-        assert response_status_code == 200
+class TestRequestSpacesRawData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_request_spaces_raw_data(self, **kwargs):
+        url = "http://mapas.cultura.gov.br/api/"
 
-    def test_data_content(self):
-        current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
-        space_raw_data = request_space_raw_data.data
-        type_space_raw_data = type(space_raw_data)
-        empty_list = []
-        assert type_space_raw_data == type(empty_list)
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Livre"}, "name": "FGA",
+                   "terms": {"area": ["Cinema", "Teatro"]}}]
 
-    def test_data_lenght(self):
+        kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
+
         current_time = datetime.now().__str__()
-        request_space_raw_data = RequestSpacesRawData(current_time, "http://mapas.cultura.gov.br/api/")
-        space_raw_data = request_space_raw_data.data_length
-        type_space_raw_data = type(space_raw_data)
-        integer = 1
-        assert type_space_raw_data == type(integer)
+        raw_data = RequestSpacesRawData(current_time,
+                                        "http://mapas.cultura.gov.br/api/")
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1

@@ -2,11 +2,9 @@
 {% load static %}
 
 	{% block content %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
 		<!-- Import necessário para seguir o padrão de implementação visual -->
 	  <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/museums-indicators.css' %}"/>
 
 		<!-- Div responsável por imprimir a navbar dos indicadores de agentes -->
 
@@ -48,54 +46,54 @@
 		<!-- Área onde os graficos são printados -->
     <div class="container-indicators">
       <div id="museus-tipo">
-        <div class="chart-container">
-            <canvas id="bar-chart-type"></canvas>
-        </div>
+				<div class="chart-container" id="graphic1">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico refere-se à quantidade de musueus dividos por tipo.</p>
         </div>
       </div>
 
       <div id="musueus-tematica">
-        <div class="chart-container">
-            <canvas id="bar-chart-thematic"></canvas>
-        </div>
+				<div class="chart-container" id="graphic2">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico refere-se à quantidade de museus dividos por temática.</p>
         </div>
       </div>
 
       <div id="museus-esfera">
-        <div class="chart-container">
-            <canvas id="pie-chart-sphere"></canvas>
-        </div>
+				<div class="chart-container" id="graphic3">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico refere-se à quantidade de museus de acordo com a sua esfera.</p>
         </div>
       </div>
 
       <div id="visita-guiada">
-        <div class="chart-container">
-            <canvas id="pie-chart-guided"></canvas>
-        </div>
+				<div class="chart-container" id="graphic4">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico refere-se à classificação dos museus baseados no serviço de visita guiada.</p>
         </div>
       </div>
 
       <div id="arquivo-publico">
-        <div class="chart-container">
-            <canvas id="pie-chart-archive"></canvas>
-        </div>
+				<div class="chart-container" id="graphic5">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico refere-se à classificação dos museus baseados no arquivo com acesso ao público.</p>
         </div>
       </div>
 
       <div id="crescimento">
-        <div class="chart-container">
-            <canvas id="line-chart-growth"></canvas>
-        </div>
+				<div class="chart-container" id="graphic6">
+				</div>
+
         <div class="text-chart-init">
             <p>Este gráfico ilustra o crescimento da plataforma em relação ao total de registros de museus ao longo de sua existência.</p>
         </div>
@@ -105,13 +103,12 @@
 		<!-- Imports necessários para funcionalidade da navbar e gráficos-->
 		<script src="{% static 'js/indicators/indicators-nav-jquery.js' %}"></script>
     <script src="{% static 'js/chart_manager.js' %}" type="text/javascript"></script>
-    <script type="text/javascript" src="static/js/chart_museum.js"></script>
 		<script type="text/javascript">
-		      type_bar_graphic('{{keys_per_type|safe}}', '{{values_per_type|safe}}')
-		      thematic_bar_graphic('{{keys_total_per_thematic|safe}}', '{{values_total_per_thematic|safe}}')
-		      sphere_pie_graphic('{{keys_total_per_sphere|safe}}', '{{values_total_per_sphere|safe}}')
-          guided_pie_graphic('{{keys_total_guided_tour|safe}}', '{{values_total_guided_tour|safe}}')
-          archive_pie_graphic('{{keys_total_archive|safe}}', '{{values_total_archive|safe}}')
-		      growth_line_graphic('{{keys_total_temporal|safe}}','{{growth_total_temporal|safe}}');
+			createFrame("{{graphic1|safe}}", "#graphic1")
+			createFrame("{{graphic2|safe}}", "#graphic2")
+			createFrame("{{graphic3|safe}}", "#graphic3")
+			createFrame("{{graphic4|safe}}", "#graphic4")
+			createFrame("{{graphic5|safe}}", "#graphic5")
+			createFrame("{{graphic7|safe}}", "#graphic6")
 		</script>
 {% endblock %}

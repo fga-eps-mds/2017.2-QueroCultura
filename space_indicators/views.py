@@ -43,8 +43,8 @@ def populate_space_data():
         new_url = clean_url(url)
         for space in request:
             date = space["createTimestamp"]['date']
-            SpaceData(new_url, space['name'], date,
-                      space['type']['name']).save()
+            SpaceData(new_url, str(space['name']), date,
+                      str(space['type']['name'])).save()
             for area in space["terms"]["area"]:
                 OccupationArea(new_url, area).save()
 
