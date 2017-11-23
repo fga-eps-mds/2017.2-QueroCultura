@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^/graphic/(?P<metabase_url_id>[0-9]+)/$',views.graphicDetail, name='graphicDetail'),
+    url(r'^/graphic/(?P<graphic_id>[0-9]+)/$',views.graphic_detail, name='graphic_detail'),
 ]

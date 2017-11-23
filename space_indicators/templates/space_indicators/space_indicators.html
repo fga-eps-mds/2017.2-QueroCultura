@@ -17,13 +17,13 @@
 <div class="col-md-12 container-indicators">
     <div class="row">
 
-        {% for metabase_url in metabase_urls %}
+        {% for graphic in metabase_graphics %}
         <div class="col-md-4">
             <div id="area" class="chart-group">
                 <div class="chart-container">
-                    <iframe src={{metabase_url.url|safe}}></iframe>
+                    <iframe src={{graphic.url|safe}}></iframe>
                 </div>
-                <a href="{%url 'graphicDetail' metabase_url.id %}"">
+                <a href="{%url 'graphic_detail' graphic.id %}"">
                     <div class="text-chart-init">
                         <p>Adicionar descrição.</p>
                     </div>

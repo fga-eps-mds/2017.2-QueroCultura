@@ -9,23 +9,24 @@ from quero_cultura.views import get_metabase_url
 from celery.decorators import task
 from .models import OccupationArea
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 # Get graphics urls from metabase
-# To add new graphis, just add in the metabase_urls variable
+# To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_urls = [{'id':1, 'url':get_metabase_url(view_type, 2)},
-                 {'id':2, 'url':get_metabase_url(view_type, 4)},
-                 {'id':3, 'url':get_metabase_url(view_type, 3)},
-                 {'id':4, 'url':get_metabase_url(view_type, 7)},
-                 {'id':5, 'url':get_metabase_url(view_type, 6)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2)},
+                    {'id':2, 'url':get_metabase_url(view_type, 4)},
+                    {'id':3, 'url':get_metabase_url(view_type, 3)},
+                    {'id':4, 'url':get_metabase_url(view_type, 7)},
+                    {'id':5, 'url':get_metabase_url(view_type, 6)}]
 
 def index(request):
-    return render(request, 'space_indicators/space-indicators.html', {'metabase_urls':metabase_urls})
+    return render(request, 'space_indicators/space_indicators.html', {'metabase_graphics':metabase_graphics})
 
-def graphicDetail(request, metabase_url_id):
-    metabase_url = metabase_urls[int(metabase_url_id) - 1]
-    return render(request,'space_indicators/graphicDetail.html',{'metabase_url': metabase_url}) 
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'space_indicators/graphic_detail.html',{'graphic': graphic}) 
 
 @task(name="populate_space_data")
 def populate_space_data():
