@@ -11,17 +11,20 @@ from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
+# Get graphics urls from metabase
+# To add new graphis, just add in the metabase_graphics variable
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 14)},
+                    {'id':2, 'url':get_metabase_url(view_type, 15)},
+                    {'id':3, 'url':get_metabase_url(view_type, 16)},
+                    {'id':4, 'url':get_metabase_url(view_type, 17)}]
 
 def index(request):
-    view_type = "question"
+    return render(request, 'events_indicators/events_indicators.html', {'metabase_graphics':metabase_graphics})
 
-    url = {"graphic1": get_metabase_url(view_type, 14),
-           "graphic2": get_metabase_url(view_type, 15),
-           "graphic3": get_metabase_url(view_type, 16),
-           "graphic4": get_metabase_url(view_type, 17)}
-
-    return render(request, 'events_indicators/events_indicators.html', url)
-
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'events_indicators/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_event_data")
 def populate_event_data():
