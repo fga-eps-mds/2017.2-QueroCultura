@@ -12,20 +12,21 @@ import json
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 urls = ["http://museus.cultura.gov.br/api/"]
 
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 18)},
+                    {'id':2, 'url':get_metabase_url(view_type, 19)},
+                    {'id':3, 'url':get_metabase_url(view_type, 20)},
+                    {'id':4, 'url':get_metabase_url(view_type, 21)},
+                    {'id':5, 'url':get_metabase_url(view_type, 22)},
+                    {'id':6, 'url':get_metabase_url(view_type, 23)},
+                    {'id':7, 'url':get_metabase_url(view_type, 24)}]
 
 def index(request):
-    view_type = "question"
+    return render(request, 'museums_indicators/museums_indicators.html', {'metabase_graphics':metabase_graphics})
 
-    url = {"graphic1": get_metabase_url(view_type, 18),
-           "graphic2": get_metabase_url(view_type, 19),
-           "graphic3": get_metabase_url(view_type, 20),
-           "graphic4": get_metabase_url(view_type, 21),
-           "graphic5": get_metabase_url(view_type, 22),
-           "graphic6": get_metabase_url(view_type, 23),
-           "graphic7": get_metabase_url(view_type, 24)}
-
-    return render(request, 'museums_indicators/museums-indicators.html', url)
-
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'museums_indicators/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_museum_data")
 def populate_museum_data():
