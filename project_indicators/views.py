@@ -9,17 +9,18 @@ from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 10)},
+                    {'id':2, 'url':get_metabase_url(view_type, 11)},
+                    {'id':3, 'url':get_metabase_url(view_type, 12)},
+                    {'id':4, 'url':get_metabase_url(view_type, 13)}]
 
 def index(request):
-    view_type = "question"
+    return render(request, 'project_indicators/project_indicators.html', {'metabase_graphics':metabase_graphics})
 
-    url = {"graphic1": get_metabase_url(view_type, 10),
-           "graphic2": get_metabase_url(view_type, 11),
-           "graphic3": get_metabase_url(view_type, 12),
-           "graphic4": get_metabase_url(view_type, 13)}
-
-    return render(request, 'project_indicators/project-indicators.html', url)
-
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'project_indicators/graphic_detail.html',{'graphic': graphic}) 
 
 @task(name="populate_project_data")
 def populate_project_data():
