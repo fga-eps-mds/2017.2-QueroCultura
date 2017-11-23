@@ -16,17 +16,20 @@ SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
+# Get graphics urls from metabase
+# To add new graphis, just add in the metabase_graphics variable
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 30)},
+                    {'id':2, 'url':get_metabase_url(view_type, 31)},
+                    {'id':3, 'url':get_metabase_url(view_type, 32)},
+                    {'id':4, 'url':get_metabase_url(view_type, 33)}]
 
 def index(request):
-    view_type = "question"
+    return render(request, 'agents_indicators/agents_indicators.html', {'metabase_graphics':metabase_graphics})
 
-    url = {"graphic1": get_metabase_url(view_type, 30),
-           "graphic2": get_metabase_url(view_type, 31),
-           "graphic3": get_metabase_url(view_type, 32),
-           "graphic4": get_metabase_url(view_type, 33)}
-
-    return render(request, 'agents_indicators/agents-indicators.html', url)
-
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'agents_indicators/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_agent_data")
 def populate_agent_data():
