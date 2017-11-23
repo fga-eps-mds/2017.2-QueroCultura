@@ -8,7 +8,12 @@ METABASE_SITE_URL = "http://localhost:3000"
 
 
 def index(request):
-    return render(request, 'quero_cultura/index.html', {})
+    parseYaml = ParserYAML()
+    urls = parseYaml.get_multi_instances_urls
+    context = {
+        "urls": urls,
+    }
+    return render(request, 'quero_cultura/index.html', context)
 
 
 class ParserYAML(object):
