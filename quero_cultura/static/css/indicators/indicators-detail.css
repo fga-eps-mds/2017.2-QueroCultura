@@ -13,6 +13,13 @@
 
 }
 
+
+.right-col{
+  border-left: 2px solid #e2e2e2;
+
+}
+
+
 .flex{
    margin: auto;
 }
@@ -22,4 +29,11 @@
   position: relative;
   min-height: 1px;
 
+}
+
+
+.detailed_data{
+
+  height: 200px;
+  overflow: hidden;
 }

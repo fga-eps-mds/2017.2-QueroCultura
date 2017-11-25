@@ -20,23 +20,22 @@
 <div class="row detailedData flex">
   <div class="col-md-4 center left-col flex">
     <h3>Quantidade total de registros de agentes</h3>
-    <span class="f-48">10000</span>
     <br>
-    <span class="footerText">Texto blá blá blá</span>
-  </div>
-
-  <div class="col-md-4 center left-col flex">
-    <h3>Número de instancias usadas nos registros</h3>
-      <span class="f-48"> 9</span>
-      <br>
-      <span class="footerText">Texto blá blá blá</span>
+    <iframe class="detailed_data" scrolling="no" src="{{detailed_data.url|safe}}"></iframe>
   </div>
 
   <div class="col-md-4 center flex">
-    <h3>Quantidade de registros nos últimos 30 dias</h3>
-      <span class="f-48"> 9</span>
+    <h3>Número de instancias usadas nos registros</h3>
+      <span class="f-48">{{instances_number}}</span>
       <br>
       <span class="footerText">Texto blá blá blá</span>
+  </div>
+
+  <div class="col-md-4 right-col center flex">
+    <h3>Quantidade de registros nos últimos 30 dias</h3>
+    <br>
+    <iframe class="detailed_data" scrolling="no" src="{{detailed_data2.url|safe}}"></iframe>
+
   </div>
 </div>
 
@@ -49,7 +48,7 @@
                 <div class="chart-container">
                     <iframe scrolling="no" src={{graphic.url|safe}}></iframe>
                 </div>
-                <a href="{%url 'agents_graphic_detail' graphic.id %}"">
+                <a href="{%url 'agents_graphic_detail' graphic.id %}">
                     <div class="text-chart-init">
                         <p>Adicionar descrição.</p>
                     </div>

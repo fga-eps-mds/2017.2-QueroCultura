@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.0
--- Dumped by pg_dump version 10.0
+-- Dumped from database version 10.1
+-- Dumped by pg_dump version 10.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2367,6 +2367,14 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 146	card-update	2017-11-21 03:46:52.955+00	1	card	33	2	26	\N	{"name":"Registros por Área","description":null}
 147	card-update	2017-11-21 03:47:04.754+00	1	card	32	2	27	\N	{"name":"Registros por Mês","description":null}
 148	card-update	2017-11-21 03:47:04.841+00	1	card	32	2	27	\N	{"name":"Registros por Mês","description":null}
+149	card-create	2017-11-25 19:04:26.365+00	1	card	34	2	27	\N	{"name":"Quantidade total de registros de agentes","description":null}
+150	card-update	2017-11-25 19:04:44.038+00	1	card	34	2	27	\N	{"name":"Quantidade total de registros de agentes","description":null}
+151	card-update	2017-11-25 19:05:02.953+00	1	card	34	2	27	\N	{"name":"Quantidade total de registros de agentes","description":null}
+152	card-update	2017-11-25 19:05:03.016+00	1	card	34	2	27	\N	{"name":"Quantidade total de registros de agentes","description":null}
+153	card-create	2017-11-25 19:06:12.447+00	1	card	35	2	27	\N	{"name":"Quantidade de registros de agentes nos últimos 30 dias","description":null}
+154	card-update	2017-11-25 19:06:27.154+00	1	card	35	2	27	\N	{"name":"Quantidade de registros de agentes nos últimos 30 dias","description":null}
+155	card-update	2017-11-25 19:06:44.352+00	1	card	35	2	27	\N	{"name":"Quantidade de registros de agentes nos últimos 30 dias","description":null}
+156	card-update	2017-11-25 19:06:44.406+00	1	card	35	2	27	\N	{"name":"Quantidade de registros de agentes nos últimos 30 dias","description":null}
 \.
 
 
@@ -2408,6 +2416,7 @@ COPY core_session (id, user_id, created_at) FROM stdin;
 16fb091b-8f9d-4823-b9e7-d1ee7a33da28	1	2017-11-12 03:19:55.526+00
 1b788770-feae-4aed-8959-7a30b61edb7a	1	2017-11-13 23:18:11.831+00
 1c05e8ee-4a4d-4d80-9c7d-35c7605bc526	1	2017-11-18 01:13:21.639+00
+e8c138a3-35cc-4363-9520-29a35615cd81	1	2017-11-25 19:00:43.81+00
 \.
 
 
@@ -2416,7 +2425,7 @@ COPY core_session (id, user_id, created_at) FROM stdin;
 --
 
 COPY core_user (id, email, first_name, last_name, password, password_salt, date_joined, last_login, is_superuser, is_active, reset_token, reset_triggered, is_qbnewb, google_auth, ldap_auth) FROM stdin;
-1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-11-18 01:13:21.658+00	t	t	\N	\N	f	f	f
+1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-11-25 19:00:43.845+00	t	t	\N	\N	f	f	f
 \.
 
 
@@ -2540,6 +2549,7 @@ COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exect
 30	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	29	EXECUTED	7:7b5245de5d964eedb5cd6fdf5afdb6fd	addColumn tableName=metabase_field; addNotNullConstraint columnName=visibility_type, tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
 31	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	30	EXECUTED	7:347281cdb65a285b03aeaf77cb28e618	addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
 59	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	58	EXECUTED	7:583e67af40cae19cab645bbd703558ef	addColumn tableName=metabase_field	Added 0.26.0	\N	3.5.3	\N	\N	0441238708
+39	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	38	EXECUTED	7:a63ada256c44684d2649b8f3c28a3023	addColumn tableName=core_user		\N	3.5.3	\N	\N	0441238708
 32	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	31	EXECUTED	7:ff40b5fbe06dc5221d0b9223992ece25	createTable tableName=label; createIndex indexName=idx_label_slug, tableName=label; createTable tableName=card_label; addUniqueConstraint constraintName=unique_card_label_card_id_label_id, tableName=card_label; createIndex indexName=idx_card_label...		\N	3.5.3	\N	\N	0441238708
 32	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	32	EXECUTED	7:af1dea42abdc7cd058b5f744602d7a22	createTable tableName=raw_table; createIndex indexName=idx_rawtable_database_id, tableName=raw_table; addUniqueConstraint constraintName=uniq_raw_table_db_schema_name, tableName=raw_table; createTable tableName=raw_column; createIndex indexName=id...		\N	3.5.3	\N	\N	0441238708
 34	tlrobinson	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	33	EXECUTED	7:e65d70b4c914cfdf5b3ef9927565e899	addColumn tableName=pulse_channel		\N	3.5.3	\N	\N	0441238708
@@ -2565,7 +2575,6 @@ COPY databasechangelog (id, author, filename, dateexecuted, orderexecuted, exect
 5	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	4	EXECUTED	7:593149128c8f3a7e1f37a483bc67a924	addColumn tableName=core_organization		\N	3.5.3	\N	\N	0441238708
 6	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	5	EXECUTED	7:d24f2f950306f150d87c4208520661d5	dropNotNullConstraint columnName=organization_id, tableName=metabase_database; dropForeignKeyConstraint baseTableName=metabase_database, constraintName=fk_database_ref_organization_id; dropNotNullConstraint columnName=organization_id, tableName=re...		\N	3.5.3	\N	\N	0441238708
 7	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	6	EXECUTED	7:baec0ec600ccc9bdadc176c1c4b29b77	addColumn tableName=metabase_field		\N	3.5.3	\N	\N	0441238708
-39	camsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	38	EXECUTED	7:a63ada256c44684d2649b8f3c28a3023	addColumn tableName=core_user		\N	3.5.3	\N	\N	0441238708
 4	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	3	EXECUTED	7:1ed887e91a846f4d6cbe84d1efd126c4	createTable tableName=setting		\N	3.5.3	\N	\N	0441238708
 10	cammsaul	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	9	EXECUTED	7:ec4f8eecc37fdc8c22440490de3a13f0	createTable tableName=revision; createIndex indexName=idx_revision_model_model_id, tableName=revision		\N	3.5.3	\N	\N	0441238708
 12	agilliland	migrations/000_migrations.yaml	2017-11-11 23:01:22.192703	11	EXECUTED	7:f78e18f669d7c9e6d06c63ea9929391f	addColumn tableName=report_card		\N	3.5.3	\N	\N	0441238708
@@ -2635,7 +2644,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-11-20 22:55:02.44+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-11-25 18:56:36.594+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -3161,6 +3170,7 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 591	2017-11-13 23:50:12.917+00	2017-11-14 13:50:08.952+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	14	\N	ID	normal	\N	\N	2017-11-13 23:50:19.325+00	\N	\N	{"global":{"distinct-count":2}}	1
 534	2017-11-13 23:50:01.233+00	2017-11-14 13:50:10.304+00	Unidade de conservação da natureza	type/Integer	type/Category	t	\N	t	0	13	528	Uni Dade De Conservação Da Nature Za	normal	\N	\N	2017-11-14 13:50:10.316+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":2573,"avg":1286.5}}}	1
 590	2017-11-13 23:50:12.907+00	2017-11-14 13:50:08.964+00	_create_date	type/Text	type/Category	t	\N	t	0	14	\N	Create Date	normal	\N	\N	2017-11-13 23:50:19.325+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+457	2017-11-12 21:38:48.77+00	2017-11-19 17:54:27.221+00	festas calendarizadas populares	type/Integer	\N	f	\N	t	0	8	337	Fest As Calendar Iz Adas Popular Es	normal	\N	\N	\N	\N	\N	\N	0
 530	2017-11-13 23:50:01.19+00	2017-11-14 13:50:10.294+00	Jardim zoológico, botânico, herbário, oceanário ou planetário	type/Integer	type/Category	t	\N	t	0	13	528	Jardim Zoológico, Botânico, Herbário, Oceanário Ou Planetário	normal	\N	\N	2017-11-14 13:50:10.316+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":3796,"avg":1898.0}}}	1
 46	2017-11-12 21:38:37.49+00	2017-11-14 13:50:11.533+00	12	type/Integer	type/Category	t	\N	t	0	5	37	12	normal	\N	\N	2017-11-14 13:50:11.553+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":3266,"avg":1633.0}}}	1
 205	2017-11-12 21:38:39.713+00	2017-11-14 13:50:11.543+00	Intercâmbio Cultural	type/Integer	type/Category	t	\N	t	0	5	192	Intercâmbio Cultural	normal	\N	\N	2017-11-14 13:50:11.553+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":39,"avg":19.5}}}	1
@@ -3206,7 +3216,6 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 410	2017-11-12 21:38:48.085+00	2017-11-21 03:50:01.917+00	cultura negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
 403	2017-11-12 21:38:47.928+00	2017-11-21 03:50:01.919+00	Jogos Eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
 397	2017-11-12 21:38:47.739+00	2017-11-19 17:54:27.214+00	marchetaria	type/Integer	\N	f	\N	t	0	8	337	March Et Aria	normal	\N	\N	\N	\N	\N	\N	0
-457	2017-11-12 21:38:48.77+00	2017-11-19 17:54:27.221+00	festas calendarizadas populares	type/Integer	\N	f	\N	t	0	8	337	Fest As Calendar Iz Adas Popular Es	normal	\N	\N	\N	\N	\N	\N	0
 445	2017-11-12 21:38:48.636+00	2017-11-19 17:54:27.225+00	arte terapia	type/Integer	\N	f	\N	t	0	8	337	Arte Ter Apia	normal	\N	\N	\N	\N	\N	\N	0
 377	2017-11-12 21:38:47.364+00	2017-11-19 17:54:27.26+00	Ciência Política	type/Integer	\N	f	\N	t	0	8	337	Ciência Política	normal	\N	\N	\N	\N	\N	\N	0
 426	2017-11-12 21:38:48.382+00	2017-11-19 17:54:27.271+00	Gestor Publico de Cultura	type/Integer	\N	f	\N	t	0	8	337	Ge Stor Public O De Cultura	normal	\N	\N	\N	\N	\N	\N	0
@@ -3613,15 +3622,17 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	56
 \\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	143
 \\x4cf43208abb0f3ca767b1cc53b293df5d4af5019eaee0dc8b42c854871b2926d	48
-\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	63
 \\x12f7e73cd2296f266a4e4e2b809490588e85e1dcce9e40d66b830a1b90453530	315
 \\x40e11f555ac44ba39d996c77cadb1581fa3a07d058f57bc9b2b57fec9c964f8f	703
 \\x89cafcce7cfcb2a59fb6d92c927424b393176508506ba184e532d93903a04cfc	691
 \\xa0b6ed88d7a11c2ffc8d31672ff10e18c3bbcb88bc64bf0f63f185931b1b8667	672
-\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	222
-\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	661
-\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	327
-\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	405
+\\xe2670f46217a0dfc8dcab2ed6364b07504ff883c5f1e8e47c7ef760a5f69f8ac	526
+\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	128
+\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	672
+\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	761
+\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	937
+\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	1418
+\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	997
 \.
 
 
@@ -4616,6 +4627,73 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 976	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-21 03:46:58.929	379	92	f	question	\N	1	32	\N	\N
 977	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-21 03:51:20.027	209	55	f	question	\N	1	31	\N	\N
 978	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-21 03:51:33.609	275	141	f	question	\N	1	32	\N	\N
+979	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 18:57:40.06	2604	2	f	embedded-question	\N	\N	30	\N	\N
+980	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 18:57:40.988	1817	100	f	embedded-question	\N	\N	33	\N	\N
+981	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 18:57:39.312	3593	32	f	embedded-question	\N	\N	31	\N	\N
+982	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 18:57:40.603	2381	32	f	embedded-question	\N	\N	32	\N	\N
+983	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:01:01.736	1026	2	f	embedded-question	\N	\N	30	\N	\N
+984	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:01:01.112	1790	123	f	embedded-question	\N	\N	32	\N	\N
+989	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:04:56.252	201	1	f	question	\N	1	34	\N	\N
+985	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:01:02.984	1247	55	f	embedded-question	\N	\N	31	\N	\N
+986	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:01:02.416	2237	100	f	embedded-question	\N	\N	33	\N	\N
+987	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:04:03.989	186	1	f	ad-hoc	\N	1	\N	\N	\N
+988	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:04:48.696	117	1	f	question	\N	1	34	\N	\N
+990	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:05:13.41	136	1	f	question	\N	1	34	\N	\N
+991	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:05:20.056	125	1	f	embedded-question	\N	\N	34	\N	\N
+992	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:05:20.316	519	2	f	embedded-question	\N	\N	30	\N	\N
+993	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:05:20.557	989	141	f	embedded-question	\N	\N	32	\N	\N
+994	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:05:20.875	955	55	f	embedded-question	\N	\N	31	\N	\N
+995	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:05:21.253	1426	100	f	embedded-question	\N	\N	33	\N	\N
+996	\\xe2670f46217a0dfc8dcab2ed6364b07504ff883c5f1e8e47c7ef760a5f69f8ac	2017-11-25 19:05:44.1	526	1	f	ad-hoc	\N	1	\N	\N	\N
+997	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:06:38.31	526	1	f	question	\N	1	35	\N	\N
+998	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:07:00.302	232	1	f	embedded-question	\N	\N	34	\N	\N
+999	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:07:00.483	1181	2	f	embedded-question	\N	\N	30	\N	\N
+1000	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:07:00.336	1824	1	f	embedded-question	\N	\N	35	\N	\N
+1001	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:07:00.38	1910	55	f	embedded-question	\N	\N	31	\N	\N
+1002	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:07:00.446	2113	141	f	embedded-question	\N	\N	32	\N	\N
+1003	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:07:00.627	2221	100	f	embedded-question	\N	\N	33	\N	\N
+1004	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:08:45.531	134	1	f	embedded-question	\N	\N	34	\N	\N
+1005	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:08:46.043	1574	141	f	embedded-question	\N	\N	32	\N	\N
+1006	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:08:46.333	1450	55	f	embedded-question	\N	\N	31	\N	\N
+1007	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:08:46.675	1589	1	f	embedded-question	\N	\N	35	\N	\N
+1008	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:08:47.634	860	2	f	embedded-question	\N	\N	30	\N	\N
+1009	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:08:47.102	1836	100	f	embedded-question	\N	\N	33	\N	\N
+1010	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:09:00.947	617	1	f	embedded-question	\N	\N	35	\N	\N
+1011	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:09:01.241	715	2	f	embedded-question	\N	\N	30	\N	\N
+1012	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:09:01.635	874	55	f	embedded-question	\N	\N	31	\N	\N
+1013	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:09:02.049	1200	141	f	embedded-question	\N	\N	32	\N	\N
+1014	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:09:03.579	183	1	f	embedded-question	\N	\N	34	\N	\N
+1015	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:09:02.6	1861	100	f	embedded-question	\N	\N	33	\N	\N
+1016	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:09:20.037	157	1	f	embedded-question	\N	\N	34	\N	\N
+1017	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:09:19.706	523	2	f	embedded-question	\N	\N	30	\N	\N
+1018	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:09:20.387	591	1	f	embedded-question	\N	\N	35	\N	\N
+1019	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:09:21.394	671	55	f	embedded-question	\N	\N	31	\N	\N
+1020	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:09:21.058	1172	141	f	embedded-question	\N	\N	32	\N	\N
+1021	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:09:20.786	1694	100	f	embedded-question	\N	\N	33	\N	\N
+1022	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:11:33.824	141	1	f	embedded-question	\N	\N	34	\N	\N
+1023	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:11:34.196	834	1	f	embedded-question	\N	\N	35	\N	\N
+1024	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:11:34.496	939	2	f	embedded-question	\N	\N	30	\N	\N
+1025	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:11:34.85	958	55	f	embedded-question	\N	\N	31	\N	\N
+1026	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:11:35.672	694	141	f	embedded-question	\N	\N	32	\N	\N
+1027	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:11:35.277	1410	100	f	embedded-question	\N	\N	33	\N	\N
+1028	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:12:13.963	584	1	f	embedded-question	\N	\N	35	\N	\N
+1029	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:12:14.271	599	2	f	embedded-question	\N	\N	30	\N	\N
+1030	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:12:14.607	766	55	f	embedded-question	\N	\N	31	\N	\N
+1031	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:12:15.039	1155	141	f	embedded-question	\N	\N	32	\N	\N
+1032	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:12:16.129	152	1	f	embedded-question	\N	\N	34	\N	\N
+1033	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:12:15.769	1340	100	f	embedded-question	\N	\N	33	\N	\N
+1034	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:12:21.135	144	1	f	embedded-question	\N	\N	34	\N	\N
+1035	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:12:21.168	691	1	f	embedded-question	\N	\N	35	\N	\N
+1036	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:12:21.481	693	2	f	embedded-question	\N	\N	30	\N	\N
+1037	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:12:22.341	1090	55	f	embedded-question	\N	\N	31	\N	\N
+1038	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:12:22.645	1202	141	f	embedded-question	\N	\N	32	\N	\N
+1039	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:12:22.435	1886	100	f	embedded-question	\N	\N	33	\N	\N
+1040	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-11-25 19:12:45.563	105	1	f	embedded-question	\N	\N	34	\N	\N
+1041	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-11-25 19:12:45.783	918	2	f	embedded-question	\N	\N	30	\N	\N
+1042	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-11-25 19:12:45.752	1172	1	f	embedded-question	\N	\N	35	\N	\N
+1043	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-11-25 19:12:45.805	1261	55	f	embedded-question	\N	\N	31	\N	\N
+1044	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-11-25 19:12:46.223	1944	100	f	embedded-question	\N	\N	33	\N	\N
+1045	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-11-25 19:12:47.504	884	141	f	embedded-question	\N	\N	32	\N	\N
 \.
 
 
@@ -4673,6 +4751,8 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 31	2017-11-21 03:41:35.708+00	2017-11-21 03:46:20.15+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["cum_count"]],"breakout":[["datetime-field",["field-id",637],"month"]]}}	{"stackable.stack_type":"stacked"}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 30	2017-11-21 03:37:10.675+00	2017-11-21 03:46:40.438+00	Porcentagem por Tipo	\N	pie	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"breakout":[["field-id",635]]}}	{}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Agents Type","name":"_agents_type"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 32	2017-11-21 03:42:30.518+00	2017-11-21 03:47:04.817+00	Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"breakout":[["field-id",636],["datetime-field",["field-id",637],"month"]]}}	{"stackable.stack_type":"stacked"}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+34	2017-11-25 19:04:26.294+00	2017-11-25 19:05:02.992+00	Quantidade total de registros de agentes	\N	scalar	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]]}}	{}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+35	2017-11-25 19:06:12.384+00	2017-11-25 19:06:44.376+00	Quantidade de registros de agentes nos últimos 30 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}}	{}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -4864,6 +4944,14 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 177	Card	33	1	2017-11-21 03:46:52.946+00	{"description":null,"archived":false,"table_id":26,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Text","display_name":"Area","name":"_area"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Registros por Área","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":26,"aggregation":[["count"]],"breakout":[["field-id",633],["field-id",631]],"limit":100,"order_by":[[["aggregation",0],"descending"]]}},"id":33,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 178	Card	32	1	2017-11-21 03:47:04.739+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"breakout":[["field-id",636],["datetime-field",["field-id",637],"month"]]}},"id":32,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
 179	Card	32	1	2017-11-21 03:47:04.832+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Registros por Mês","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"breakout":[["field-id",636],["datetime-field",["field-id",637],"month"]]}},"id":32,"display":"bar","visualization_settings":{"stackable.stack_type":"stacked"},"public_uuid":null}	f	f	\N
+180	Card	34	1	2017-11-25 19:04:26.353+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade total de registros de agentes","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]]}},"id":34,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+181	Card	34	1	2017-11-25 19:04:44.036+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":5,"query_type":"query","name":"Quantidade total de registros de agentes","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]]}},"id":34,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+182	Card	34	1	2017-11-25 19:05:02.952+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Quantidade total de registros de agentes","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]]}},"id":34,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+183	Card	34	1	2017-11-25 19:05:03.012+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Quantidade total de registros de agentes","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]]}},"id":34,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+184	Card	35	1	2017-11-25 19:06:12.427+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de registros de agentes nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}},"id":35,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+185	Card	35	1	2017-11-25 19:06:27.141+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":5,"query_type":"query","name":"Quantidade de registros de agentes nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}},"id":35,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+186	Card	35	1	2017-11-25 19:06:44.333+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Quantidade de registros de agentes nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}},"id":35,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+187	Card	35	1	2017-11-25 19:06:44.391+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":5,"query_type":"query","name":"Quantidade de registros de agentes nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}},"id":35,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
 \.
 
 
@@ -5097,6 +5185,12 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 200	1	card	32	2017-11-21 03:46:58.884+00
 201	1	card	31	2017-11-21 03:51:19.93+00
 202	1	card	32	2017-11-21 03:51:33.568+00
+203	1	card	34	2017-11-25 19:04:26.344+00
+204	1	card	34	2017-11-25 19:04:48.586+00
+205	1	card	34	2017-11-25 19:04:56.091+00
+206	1	card	34	2017-11-25 19:05:13.262+00
+207	1	card	35	2017-11-25 19:06:12.419+00
+208	1	card	35	2017-11-25 19:06:38.187+00
 \.
 
 
@@ -5104,7 +5198,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 148, true);
+SELECT pg_catalog.setval('activity_id_seq', 156, true);
 
 
 --
@@ -5272,7 +5366,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 978, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 1045, true);
 
 
 --
@@ -5293,7 +5387,7 @@ SELECT pg_catalog.setval('raw_table_id_seq', 1, false);
 -- Name: report_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_card_id_seq', 33, true);
+SELECT pg_catalog.setval('report_card_id_seq', 35, true);
 
 
 --
@@ -5321,7 +5415,7 @@ SELECT pg_catalog.setval('report_dashboardcard_id_seq', 8, true);
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 179, true);
+SELECT pg_catalog.setval('revision_id_seq', 187, true);
 
 
 --
@@ -5335,7 +5429,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 202, true);
+SELECT pg_catalog.setval('view_log_id_seq', 208, true);
 
 
 --

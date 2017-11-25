@@ -24,8 +24,12 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 30)},
                     {'id':3, 'url':get_metabase_url(view_type, 32)},
                     {'id':4, 'url':get_metabase_url(view_type, 33)}]
 
+detailed_data = {'url':get_metabase_url(view_type, 34)}
+detailed_data2 = {'url':get_metabase_url(view_type, 35)}
+instances_number = 0
+
 def index(request):
-    return render(request, 'agents_indicators/agents_indicators.html', {'metabase_graphics':metabase_graphics})
+    return render(request, 'agents_indicators/agents_indicators.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data, 'detailed_data2':detailed_data2})
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
@@ -53,7 +57,7 @@ def populate_agent_data():
             request = RequestAgentsRawData(last_update, url).data
 
         new_url = clean_url(url)
-        
+
         for agent in request:
             date = agent["createTimestamp"]['date']
             AgentsData(new_url, str(agent['type']['name']), date).save()
