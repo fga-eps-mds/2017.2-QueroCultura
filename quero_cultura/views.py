@@ -21,7 +21,7 @@ INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 
-@task(name="load_new_markers")
+#@task(name="load_new_markers")
 def load_new_markers():
 
     if Marker.objects.count() == 0:
@@ -162,15 +162,29 @@ def remove_expired_markers():
             marker.delete()
 
 def get_last_day_markers():
-    all_markers = Marker.objects.all()
+
+    day_in_minutes = 1440
+    minute_in_seconds = 60
+
+    cur_date = datetime.datetime.now()
+    two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
+    one_day_behind_date = cur_date - datetime.timedelta(days=1)
+
     last_day_markers = []
 
-    for marker in all_markers:
-        # Markers of last day that are not in last hour
-        if marker.action_time <= (datetime.datetime.now() - datetime.timedelta(hours=1)):
-            last_day_markers.append(marker)
+    if Marker.objects.count() == 0:
+        load_markers(day_in_minutes)
+    else:
+        most_recent_marker = Marker.objects.all().order_by('-action_time')[:1][0]
+        if most_recent_marker.action_time < two_hours_behind_date:
+            request_date_in_minutes = ((cur_date - most_recent_marker.action_time).total_seconds()/minute_in_seconds)
+            load_markers(request_date_in_minutes)
+    
+    behind_two_hours_markers = Marker.objects.alll.filter(action_time__lte=two_hours_behind_date)
+    last_day_markers = behind_two_hours_markers.filter(action_time__gte=one_day_behind_date)
 
     return last_day_markers
+
 
 def get_last_hour_markers():
     all_markers = Marker.objects.all()
