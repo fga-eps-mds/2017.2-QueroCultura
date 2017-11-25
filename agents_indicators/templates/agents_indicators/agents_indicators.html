@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-content.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/indicators/indicators-detail.css' %}"/>
+
 
 <div class="title">
     <center>
@@ -15,6 +17,29 @@
     </center>
 </div>
 
+<div class="row detailedData flex">
+  <div class="col-md-4 center left-col flex">
+    <h3>Quantidade total de registros de agentes</h3>
+    <span class="f-48">10000</span>
+    <br>
+    <span class="footerText">Texto blá blá blá</span>
+  </div>
+
+  <div class="col-md-4 center left-col flex">
+    <h3>Número de instancias usadas nos registros</h3>
+      <span class="f-48"> 9</span>
+      <br>
+      <span class="footerText">Texto blá blá blá</span>
+  </div>
+
+  <div class="col-md-4 center flex">
+    <h3>Quantidade de registros nos últimos 30 dias</h3>
+      <span class="f-48"> 9</span>
+      <br>
+      <span class="footerText">Texto blá blá blá</span>
+  </div>
+</div>
+
 <div class="col-md-12 container-indicators">
     <div class="row">
 
@@ -22,7 +47,7 @@
         <div class="col-md-4">
             <div id="area" class="chart-group">
                 <div class="chart-container">
-                    <iframe src={{graphic.url|safe}}></iframe>
+                    <iframe scrolling="no" src={{graphic.url|safe}}></iframe>
                 </div>
                 <a href="{%url 'agents_graphic_detail' graphic.id %}"">
                     <div class="text-chart-init">

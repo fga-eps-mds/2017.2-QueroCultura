@@ -1,0 +1,25 @@
+.f-48{
+  font-size: 48px;
+  color: #969696;
+}
+
+.detailedData{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.left-col{
+  border-right: 2px solid #e2e2e2;
+
+}
+
+.flex{
+   margin: auto;
+}
+
+.center{
+  text-align: center;
+  position: relative;
+  min-height: 1px;
+
+}
