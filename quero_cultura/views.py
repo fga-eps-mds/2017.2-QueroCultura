@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from collections import OrderedDict
 from .api_connections import RequestMarkersRawData
-from .models import Marker
+from .models import Marker, LastRequest
 from celery.decorators import task
 import requests
 import json
@@ -161,27 +161,32 @@ def remove_expired_markers():
         if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
             marker.delete()
 
+def update_last_request_date(new_date):
+    print('AUPDATING LAST REQUEST TABLE')
+    LastRequest.objects.all().delete()
+    last_request_date = LastRequest(new_date)
+    last_request_date.save()
+    
+
 def get_last_day_markers():
 
     day_in_minutes = 1440
-    minute_in_seconds = 60
 
     cur_date = datetime.datetime.now()
     two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
+    one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
     one_day_behind_date = cur_date - datetime.timedelta(days=1)
-
-    last_day_markers = []
 
     if Marker.objects.count() == 0:
         load_markers(day_in_minutes)
+        update_last_request_date(cur_date)
     else:
-        most_recent_marker = Marker.objects.all().order_by('-action_time')[:1][0]
-        if most_recent_marker.action_time < two_hours_behind_date:
-            request_date_in_minutes = ((cur_date - most_recent_marker.action_time).total_seconds()/minute_in_seconds)
-            load_markers(request_date_in_minutes)
+        last_request_date = LastRequest.objects.all().order_by('-date')[:1][0].date
+        if last_request_date < two_hours_behind_date:
+            load_markers(day_in_minutes)
     
-    behind_two_hours_markers = Marker.objects.alll.filter(action_time__lte=two_hours_behind_date)
-    last_day_markers = behind_two_hours_markers.filter(action_time__gte=one_day_behind_date)
+    behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
+    last_day_markers= behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
 
     return last_day_markers
 

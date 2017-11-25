@@ -19,3 +19,7 @@ class Marker(Document):
     update_time_stamp = DateTimeField(default=None)
     location = DictField(required=True)
 
+
+class LastRequest(Document):
+    date = DateTimeField(required=True)
+
