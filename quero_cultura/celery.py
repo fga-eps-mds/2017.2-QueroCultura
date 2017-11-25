@@ -61,5 +61,5 @@ APP.conf.beat_schedule = {
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
 
-    'load_new_markers': create_task('load_new_markers', crontab(minute='*/3'))
+    #'load_new_markers': create_task('load_new_markers', crontab(minute='*/3'))
 }

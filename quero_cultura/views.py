@@ -167,23 +167,29 @@ def update_last_request_date(new_date):
     last_request_date = LastRequest(new_date)
     last_request_date.save()
     
+def verify_database_state(query_time, oldest_valid_request_date):
+
+    cur_date = datetime.datetime.now()
+
+    update_last_request_date(cur_date)
+    
+    if Marker.objects.count() == 0:
+        load_markers(query_time)
+    else:
+        last_request_date = LastRequest.objects.all().order_by('-date')[:1][0].date
+        if last_request_date < oldest_valid_request_date:
+            load_markers(query_time)
 
 def get_last_day_markers():
 
     day_in_minutes = 1440
 
     cur_date = datetime.datetime.now()
-    two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
     one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
+    two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
     one_day_behind_date = cur_date - datetime.timedelta(days=1)
 
-    if Marker.objects.count() == 0:
-        load_markers(day_in_minutes)
-        update_last_request_date(cur_date)
-    else:
-        last_request_date = LastRequest.objects.all().order_by('-date')[:1][0].date
-        if last_request_date < two_hours_behind_date:
-            load_markers(day_in_minutes)
+    verify_database_state(day_in_minutes, two_hours_behind_date)
     
     behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
     last_day_markers= behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
@@ -192,14 +198,18 @@ def get_last_day_markers():
 
 
 def get_last_hour_markers():
-    all_markers = Marker.objects.all()
-    last_hour_markers = []
 
-    for marker in all_markers:
-        if marker.action_time > (datetime.datetime.now() - datetime.timedelta(hours=1)):
-            last_hour_markers.append(marker)
+    hour_in_minutes = 60
+
+    cur_date = datetime.datetime.now()
+    one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
+
+    verify_database_state(hour_in_minutes, one_hour_behind_date)
+
+    last_hour_markers = Marker.objects.filter(action_time__gte=one_hour_behind_date)
 
     return last_hour_markers
+
 
 def get_most_recent_markers():
     ordered_markers = Marker.objects.order_by('action_time')
