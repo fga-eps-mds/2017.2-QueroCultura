@@ -21,17 +21,6 @@ INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 
-#@task(name="load_new_markers")
-def load_new_markers():
-
-    if Marker.objects.count() == 0:
-        day_in_minutes = 1440
-        load_markers(day_in_minutes)
-    else:
-        query_interval = 3
-        load_markers(query_interval)
-
-
 def load_markers(requested_time):
 
     requested_time_difference = datetime.timedelta(minutes=requested_time)
@@ -172,7 +161,7 @@ def verify_database_state(query_time, oldest_valid_request_date):
     cur_date = datetime.datetime.now()
 
     update_last_request_date(cur_date)
-    
+
     if Marker.objects.count() == 0:
         load_markers(query_time)
     else:
@@ -191,6 +180,7 @@ def get_last_day_markers():
 
     verify_database_state(day_in_minutes, two_hours_behind_date)
     
+    # this line is needed to not get markers that are in last hour
     behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
     last_day_markers= behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
 
@@ -209,6 +199,20 @@ def get_last_hour_markers():
     last_hour_markers = Marker.objects.filter(action_time__gte=one_hour_behind_date)
 
     return last_hour_markers
+
+
+def get_last_three_minutes_markers():
+
+    three_minutes = 3
+
+    cur_date = datetime.datetime.now()
+    three_minutes_behind_date = cur_date - datetime.timedelta(minutes=3)
+
+    verify_database_state(three_minutes, three_minutes_behind_date)
+
+    last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
+
+    return last_three_minutes_markers
 
 
 def get_most_recent_markers():
