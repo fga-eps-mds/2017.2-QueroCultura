@@ -10,6 +10,7 @@ from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from datetime import datetime
 from celery.decorators import task
+from quero_cultura.views import instaces_counter
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
@@ -24,12 +25,13 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 30)},
                     {'id':3, 'url':get_metabase_url(view_type, 32)},
                     {'id':4, 'url':get_metabase_url(view_type, 33)}]
 
-detailed_data = {'url':get_metabase_url(view_type, 34)}
-detailed_data2 = {'url':get_metabase_url(view_type, 35)}
-instances_number = 0
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 34)},
+                {'id':2, 'url':get_metabase_url(view_type, 35)}]
+
+instances_number = instaces_counter()
 
 def index(request):
-    return render(request, 'agents_indicators/agents_indicators.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data, 'detailed_data2':detailed_data2})
+    return render(request, 'agents_indicators/agents_indicators.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data})
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
