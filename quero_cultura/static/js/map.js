@@ -67,31 +67,14 @@ var groupedOverlays = {
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
 
+function loadAndUpdateMarkers(data, imageExtension){
 
-function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
-    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
-    promise.then(function(data){
-        loadMarkers(markerType, markerImageExtension, data)
-
-        saveArray[markerType].push.apply(saveArray[markerType], data)
-
-        if(saveArray === lastMinuteData){
-            AddInfoToFeed(saveArray[markerType])
-            saveArray[markerType] = new Array()
-        }
+    data.forEach(function(value){
+        console.log(value)
+        loadMarkers(value.marker_type, imageExtension, value)
 
     })
 
-}
-
-function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
-    for(i in instanceList){
-        for (j in typeList){
-            instanceURL = instanceList[i]
-            markerType = typeList[j]
-            saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
-        }
-    }
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -100,15 +83,15 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
 }
 
 
-function loadMarkers(markerType, imageExtension, markersData) {
+function loadMarkers(markerType, imageExtension, markerData) {
     switch (markerType) {
-        case 'project': createProjectMarker(markersData, imageExtension)
+        case 'project': createProjectMarker(markerData, imageExtension)
         break
-        case 'event': createEventMarker(markersData, imageExtension)
+        case 'event': createEventMarker(markerData, imageExtension)
         break
-        case 'agent': createAgentMarker(markersData, imageExtension)
+        case 'agent': createAgentMarker(markerData, imageExtension)
         break
-        case 'space': createSpaceMarker(markersData, imageExtension)
+        case 'space': createSpaceMarker(markerData, imageExtension)
         break
     }
 }
