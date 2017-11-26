@@ -3,6 +3,7 @@ from collections import OrderedDict
 from .api_connections import RequestMarkersRawData
 from .models import Marker, LastRequest
 from celery.decorators import task
+from pprint import pprint
 import requests
 import json
 import datetime
@@ -155,7 +156,7 @@ def update_last_request_date(new_date):
     LastRequest.objects.all().delete()
     last_request_date = LastRequest(new_date)
     last_request_date.save()
-    
+
 def verify_database_state(query_time, oldest_valid_request_date):
 
     cur_date = datetime.datetime.now()
@@ -171,21 +172,43 @@ def verify_database_state(query_time, oldest_valid_request_date):
 
 def get_last_day_markers():
 
-    day_in_minutes = 1440
 
     cur_date = datetime.datetime.now()
     one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
     two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
     one_day_behind_date = cur_date - datetime.timedelta(days=1)
 
+    day_in_minutes = 1440
     verify_database_state(day_in_minutes, two_hours_behind_date)
-    
+
     # this line is needed to not get markers that are in last hour
     behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
-    last_day_markers= behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
+    last_day_markers = behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
 
-    return last_day_markers
+    return convert_mongo_to_dict(last_day_markers)
 
+
+def convert_mongo_to_dict(mongo_objects):
+    result = []
+    for marker in mongo_objects:
+        # convert mongo object to dict
+        new_marker = marker.to_mongo()
+
+        # Destroy objectid object, so that javascript understands
+        new_marker['_id'] = ''
+
+        # Convert datetime fields to str, so that JavaScript understands
+        try:
+            new_marker['update_time_stamp'] = str(new_marker['update_time_stamp'])
+        except Exception as e:
+            new_marker['update_time_stamp'] = ''
+
+        new_marker['create_time_stamp'] = str(new_marker['create_time_stamp'])
+        new_marker['action_time'] = str(new_marker['action_time'])
+
+        result.append(dict(new_marker))
+
+    return result
 
 def get_last_hour_markers():
 
@@ -198,7 +221,7 @@ def get_last_hour_markers():
 
     last_hour_markers = Marker.objects.filter(action_time__gte=one_hour_behind_date)
 
-    return last_hour_markers
+    return convert_mongo_to_dict(last_hour_markers)
 
 
 def get_last_three_minutes_markers():
@@ -212,7 +235,7 @@ def get_last_three_minutes_markers():
 
     last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
 
-    return last_three_minutes_markers
+    return convert_mongo_to_dict(last_three_minutes_markers)
 
 
 def get_most_recent_markers():
@@ -227,11 +250,16 @@ def get_most_recent_markers():
     else:
         last_minute_markers += ordered_markers
 
-    return last_minute_markers
+    return convert_mongo_to_dict(last_minute_markers)
 
 
 def index(request):
-    return render(request, 'quero_cultura/index.html', {})
+    markers_context = {"get_most_recent_markers": get_most_recent_markers,
+                       "get_last_three_minutes_markers": get_last_three_minutes_markers,
+                       "get_last_hour_markers": get_last_hour_markers,
+                       "get_last_day_markers": get_last_day_markers,
+                      }
+    return render(request, 'quero_cultura/index.html', markers_context)
 
 
 def build_operation_area_indicator(new_data, old_data):
