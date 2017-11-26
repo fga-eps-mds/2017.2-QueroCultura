@@ -40,11 +40,11 @@ crossorigin=""></script>
 	lastHourData = {{get_last_hour_markers|safe}}
 	lastMinuteData = {{get_last_three_minutes_markers|safe}}
 	console.log(lastDayData)
-	//console.log(lastHourData)
-	//console.log(lastMinuteData)
+	console.log(lastHourData)
+	console.log(lastMinuteData)
 	loadAndUpdateMarkers(lastDayData, 'png')
-	//loadAndUpdateMarkers(lastHourData, 'gif')
-	//loadAndUpdateMarkers(lastMinuteData, 'gif')
+	loadAndUpdateMarkers(lastHourData, 'gif')
+	loadAndUpdateMarkers(lastMinuteData, 'gif')
 	setInterval(function(){loadAndUpdateMarkers({{get_last_three_minutes_markers|safe}}, 'gif')}, 3*60*1000)
 
 
