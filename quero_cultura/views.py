@@ -31,3 +31,11 @@ def get_metabase_url(view_type, number):
     token = token.replace("'", "")
 
     return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled=true"
+
+
+
+def instaces_counter():
+    parser_yaml = ParserYAML()
+    count = len(parser_yaml.get_multi_instances_urls)
+
+    return count
