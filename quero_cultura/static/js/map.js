@@ -66,46 +66,7 @@ var groupedOverlays = {
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
-/* Defines the date used by the query
-   based in the last minutes passed by parameter.
-   If we pass 60 as parameter this function returns
-   the current date time minus 60 minutes and so on. */
-function getQueryDateTime(lastMinutes){
-    var currentDateTime = new Date()
-    var queryDateTime = new Date()
-    var timezone = 2
-    queryDateTime.setHours(currentDateTime.getHours() - timezone,
-                           currentDateTime.getMinutes() - lastMinutes)
 
-	return queryDateTime.toJSON()
-}
-
-function createQueryPromise(instanceURL, markerType, lastMinutes){
-    var queryDateTime = getQueryDateTime(lastMinutes);
-    instanceURL = instanceURL+markerType+'/find'
-    switch(markerType){
-        case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        case 'project':
-            select = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        case 'space':
-        case 'agent':
-            select = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        default:
-            select = ''
-    }
-
-    var promise = $.getJSON(instanceURL, {'@select' : select,
-                                          '@or' : 1,
-                                          'createTimestamp' : "GT("+queryDateTime+")",
-                                          'updateTimestamp' : "GT("+queryDateTime+")"
-                                         });
-
-    return promise
-}
 
 function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
     var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
@@ -152,23 +113,6 @@ function loadMarkers(markerType, imageExtension, markersData) {
     }
 }
 
-function get_marker_location(value){
-    console.log(value)
-
-    switch (value.type) {
-        case "evento":
-            var occurrences = value['occurrences'].pop()
-            if(occurrences === undefined){
-                return {latitude:0, longitude:0}
-            }else{
-                return occurrences.space.location
-            }
-        case "projeto":
-            return value.owner.location
-        default:
-            return value.location
-    }
-}
 
 function create_url_to_feed(value){
     return new Promise((resolve, reject) =>{
@@ -188,50 +132,6 @@ function create_url_to_feed(value){
     })
 }
 
-function get_action(createTimestamp, updateTimestamp){
-    var update = {}
-    if(updateTimestamp === null){
-        update.time = createTimestamp
-        update.name = 'Criação'
-    }else{
-        update.time = updateTimestamp
-        update.name = 'Atualização'
-    }
-    return update
-}
-
-function create_location_promise(markerLocation){
-    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+"&lon="+markerLocation.longitude+"&format=json"
-    return $.getJSON(openstreetURL)
-}
-
-function get_location_data(markerLocation){
-    return new Promise((resolved, reject)=>{
-        if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
-            promise = create_location_promise(markerLocation)
-            promise.then(function(data){
-                if(data["error"] !== undefined){
-                    console.log("unable to locate Geocode")
-                    data.address = {"state": '', 'city': ''}
-                }
-
-                if(data.address.city == undefined){
-                    data.address.city = data.address.town
-                }
-                if(data.address.city == undefined){
-                    data.address.city = ''
-                }
-                if(data.address.state == undefined){
-                    data.address.state = ''
-                }
-                console.log(data.address.city)
-                resolved(data)
-            })
-        }else{
-            reject({})
-        }
-    })
-}
 function AddInfoToFeed(diffFeed) {
 
     diffFeed.forEach(async function(value, key){
