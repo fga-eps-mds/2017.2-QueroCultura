@@ -8,7 +8,7 @@ from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from celery.decorators import task
 from .models import OccupationArea
-
+from quero_cultura.views import instaces_counter
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
@@ -21,12 +21,18 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2)},
                     {'id':4, 'url':get_metabase_url(view_type, 7)},
                     {'id':5, 'url':get_metabase_url(view_type, 6)}]
 
-def index(request):
-    return render(request, 'space_indicators/space_indicators.html', {'metabase_graphics':metabase_graphics})
 
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
+                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+
+instances_number = instaces_counter()
+page_type = "Dados Projetos"
+
+def index(request):
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type})
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'space_indicators/graphic_detail.html',{'graphic': graphic}) 
+    return render(request,'space_indicators/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_space_data")
 def populate_space_data():
