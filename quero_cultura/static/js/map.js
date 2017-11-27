@@ -68,11 +68,11 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
 
 function loadAndUpdateMarkers(data, imageExtension){
-
     data.forEach(function(value){
-        console.log(value)
+        if(value['subsite'] == "null"){
+            value.subsite = null
+        }
         loadMarkers(value.marker_type, imageExtension, value)
-
     })
 
     map.addLayer(markersEvent)
@@ -96,17 +96,18 @@ function loadMarkers(markerType, imageExtension, markerData) {
     }
 }
 
-
+/*
 function create_url_to_feed(value){
     return new Promise((resolve, reject) =>{
         if(value["subsite"] === null){
-            resolve(value['singleUrl'])
+            resolve(value['single_url'])
         }else{
-            var splitUrl = value["singleUrl"].split("/")
+            var splitUrl = value["single_url"].split("/")
             instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
             var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
             promise.then(function(subsiteData) {
+                console.log(subsiteData)
                 var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
                 console.log(url)
                 resolve(url)
@@ -114,18 +115,21 @@ function create_url_to_feed(value){
         }
     })
 }
+*/
 
-function AddInfoToFeed(diffFeed) {
-
-    diffFeed.forEach(async function(value, key){
-        var markerLocation = get_marker_location(value)
-        var url = await create_url_to_feed(value)
-        var data = await get_location_data(markerLocation)
-        var action = get_action(value.createTimestamp, value.updateTimestamp)
-
-        var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
+function updateFeed(recent_markers) {
+    console.log("update")
+    recent_markers.forEach(async function(value){
+        var url = 'http://mapas.cultura.gov.br'//await create_url_to_feed(value)
+        if(value.city == undefined){
+            value.city = ''
+        }
+        if(value.state == undefined){
+            value.state = ''
+        }
+        var html = AddHTMLToFeed(value, url)
         create_feed_block(html)
-    },diffFeed)
+    },recent_markers)
 
 }
 
@@ -135,7 +139,7 @@ function create_feed_block(html){
     $(".block" ).scrollTop(height);
 }
 
-function AddHTMLToFeed(action, name, type, address, url){
+function AddHTMLToFeed(marker, url){
     color = GetColorByType(type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
@@ -145,10 +149,10 @@ function AddHTMLToFeed(action, name, type, address, url){
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+url+"' target='_blank'>"+name+"</a>"+
-                       "<p>"+action.name+""+ "<br>"
-                            +action.time.date.substring(0, 19)+"<br>"
-                            +address.city+ ' - ' + address.state+
+                       "<a href='"+url+"' target='_blank'>"+marker.name+"</a>"+
+                       "<p>"+marker.action_type+""+ "<br>"
+                            +marker.action_time.substring(0, 19)+"<br>"
+                            +marker.city+ ' - ' + marker.state+
                        "</p>"+
                    "</div>"+
                "</div>"
