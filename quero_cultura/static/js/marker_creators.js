@@ -70,7 +70,7 @@ function createPopup(data,marker){
     if(data.subsite === null){
         //In normal flux, doesn't exist subsite and we use "singleUrl"
         var popup = '<h6><b>Nome:</b></h6>'+data.name+
-                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
+                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.single_url+'>Clique aqui</a>'
         marker.bindPopup(popup);
     }else{
         // remove a marker type to url

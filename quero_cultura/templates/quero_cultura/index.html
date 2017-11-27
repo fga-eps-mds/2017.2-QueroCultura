@@ -39,13 +39,18 @@ crossorigin=""></script>
 	lastDayData = {{get_last_day_markers|safe}}
 	lastHourData = {{get_last_hour_markers|safe}}
 	lastMinuteData = {{get_last_three_minutes_markers|safe}}
+	most_recent_markers = {{get_most_recent_markers|safe}}
 	console.log(lastDayData)
 	console.log(lastHourData)
 	console.log(lastMinuteData)
+	console.log(most_recent_markers)
 	loadAndUpdateMarkers(lastDayData, 'png')
 	loadAndUpdateMarkers(lastHourData, 'gif')
 	loadAndUpdateMarkers(lastMinuteData, 'gif')
-	setInterval(function(){loadAndUpdateMarkers({{get_last_three_minutes_markers|safe}}, 'gif')}, 3*60*1000)
+	updateFeed(most_recent_markers)
+
+	setInterval(function(){	updateFeed({{get_last_three_minutes_markers|safe}})
+							loadAndUpdateMarkers({{get_last_three_minutes_markers|safe}}, 'gif')}, 20000)
 
 
 
