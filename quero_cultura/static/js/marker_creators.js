@@ -68,7 +68,7 @@ function requestSubsite(url, subsiteID){
 function createPopup(data,marker){
 
     // Check if exist an subsite link, if exist, change url to subsite.
-    if(data.subsite === null){
+    if(data['subsite'] === "null"){
         //In normal flux, doesn't exist subsite and we use "singleUrl"
         var popup = '<h6><b>Nome:</b></h6>'+data.name+
                     '<h6><b>Link:</b></h6><a target="_blank" href='+data.single_url+'>Clique aqui</a>'
@@ -136,10 +136,9 @@ function createEventMarker(data, imageExtension){
     var icon = createMarkerIcon('evento', imageExtension)
 
     data["type"] = "evento"
-	if((data["occurrences"]).length){
-        var latitude = data["occurrences"][0]["space"]["location"]["latitude"]
-        var longitude = data["occurrences"][0]["space"]["location"]["longitude"]
-        addMarkerToMap(data, icon, imageExtension, markersEvent, latitude, longitude)
+    if(data["location"]){
+	   addMarkerToMap(data, icon, imageExtension, markersEvent,
+                      data['location'].latitude, data['location'].longitude)
     }
 }
 
@@ -149,10 +148,9 @@ function createEventMarker(data, imageExtension){
 function createProjectMarker(data, imageExtension){
     var icon = createMarkerIcon('projeto', imageExtension)
 
-    if(data["owner"]){
-        data["type"] = "projeto"
-        var latitude = data["owner"]["location"]["latitude"]
-        var longitude = data["owner"]["location"]["longitude"]
-        addMarkerToMap(data, icon, imageExtension, markersProject, latitude, longitude)
+    data["type"] = "projeto"
+    if(data["location"]){
+        addMarkerToMap(data, icon, imageExtension, markersProject,
+                       data['location'].latitude, data['location'].longitude)
     }
 }
