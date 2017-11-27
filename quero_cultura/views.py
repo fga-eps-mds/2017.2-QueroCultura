@@ -76,10 +76,10 @@ def get_marker_action(create_timestamp, update_timestamp):
     action = {}
 
     if update_timestamp is None or update_timestamp == '':
-        action['type'] = 'creation'
+        action['type'] = 'Criação'
         action['time'] = create_timestamp
     else:
-        action['type'] = 'update'
+        action['type'] = 'Atualização'
         action['time'] = update_timestamp
 
     return action
@@ -207,7 +207,10 @@ def convert_mongo_to_dict(mongo_objects):
             new_marker['update_time_stamp'] = str(new_marker['update_time_stamp'])
         except Exception as e:
             new_marker['update_time_stamp'] = ''
-
+        try:
+            new_marker['subsite']
+        except Exception as e:
+            new_marker['subsite'] = 'null'
         new_marker['create_time_stamp'] = str(new_marker['create_time_stamp'])
         new_marker['action_time'] = str(new_marker['action_time'])
 
@@ -247,10 +250,10 @@ def get_most_recent_markers():
     ordered_markers = Marker.objects.order_by('action_time')
     last_minute_markers = []
 
-    n_of_markers = 10
+    n_of_markers = 5
 
     if len(ordered_markers) >= n_of_markers:
-        for i in range(0, n_of_markers-1):
+        for i in range(0, n_of_markers):
             last_minute_markers.append(ordered_markers[i])
     else:
         last_minute_markers += ordered_markers
