@@ -15,10 +15,6 @@ import jwt
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
 METABASE_SITE_URL = "http://0.0.0.0:3000"
 
-INSTANCE_URLS = ['http://mapas.cultura.gov.br/api/',
-                 'http://spcultura.prefeitura.sp.gov.br/api/',
-                 'http://mapa.cultura.ce.gov.br/api/']
-
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 
@@ -30,7 +26,10 @@ def load_markers(requested_time):
 
     query_date_time = now - requested_time_difference
 
-    for url in INSTANCE_URLS:
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
+
+    for url in urls:
         for marker_type in MARKER_TYPES:
             request = RequestMarkersRawData(query_date_time,
                                             url, marker_type)
