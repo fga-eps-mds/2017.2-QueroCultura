@@ -156,29 +156,35 @@ def update_last_request_date(new_date):
     last_request_date = LastRequest(new_date)
     last_request_date.save()
 
-def verify_database_state(query_time, oldest_valid_request_date):
 
-    cur_date = datetime.datetime.now()
+def get_time_now():
+    cur_date = datetime.datetime.now() - datetime.timedelta(hours=2)
+    return cur_date
 
-    update_last_request_date(cur_date)
+
+def verify_database_state(query_time, valid_request_date):
+
+    cur_date = get_time_now()
+
 
     if Marker.objects.count() == 0:
+        update_last_request_date(cur_date)
         load_markers(query_time)
     else:
         last_request_date = LastRequest.objects.all().order_by('-date')[:1][0].date
-        if last_request_date < oldest_valid_request_date:
+        if cur_date > last_request_date + valid_request_date:
+            update_last_request_date(cur_date)
             load_markers(query_time)
 
 def get_last_day_markers():
 
-
-    cur_date = datetime.datetime.now()
+    cur_date = get_time_now()
     one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
-    two_hours_behind_date = cur_date - datetime.timedelta(hours=2)
     one_day_behind_date = cur_date - datetime.timedelta(days=1)
 
     day_in_minutes = 1440
-    verify_database_state(day_in_minutes, two_hours_behind_date)
+    validate_time = datetime.timedelta(hours=2)
+    verify_database_state(day_in_minutes, validate_time)
 
     # this line is needed to not get markers that are in last hour
     behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
@@ -213,10 +219,10 @@ def get_last_hour_markers():
 
     hour_in_minutes = 60
 
-    cur_date = datetime.datetime.now()
+    cur_date = get_time_now()
     one_hour_behind_date = cur_date - datetime.timedelta(hours=1)
 
-    verify_database_state(hour_in_minutes, one_hour_behind_date)
+    verify_database_state(hour_in_minutes, datetime.timedelta(hours=1))
 
     last_hour_markers = Marker.objects.filter(action_time__gte=one_hour_behind_date)
 
@@ -227,10 +233,10 @@ def get_last_three_minutes_markers():
 
     three_minutes = 3
 
-    cur_date = datetime.datetime.now()
+    cur_date = get_time_now()
     three_minutes_behind_date = cur_date - datetime.timedelta(minutes=3)
 
-    verify_database_state(three_minutes, three_minutes_behind_date)
+    verify_database_state(three_minutes, datetime.timedelta(minutes=3))
 
     last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
 
@@ -254,9 +260,9 @@ def get_most_recent_markers():
 
 def index(request):
     markers_context = {"get_most_recent_markers": get_most_recent_markers,
+                       "get_last_day_markers": get_last_day_markers,
                        "get_last_three_minutes_markers": get_last_three_minutes_markers,
                        "get_last_hour_markers": get_last_hour_markers,
-                       "get_last_day_markers": get_last_day_markers,
                       }
     return render(request, 'quero_cultura/index.html', markers_context)
 
