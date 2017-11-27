@@ -7,6 +7,7 @@ from mongoengine import IntField
 
 
 class Marker(Document):
+    platform_id = IntField(required=True)
     name = StringField(required=True)
     marker_type = StringField(required=True)
     action_type = StringField(required=True)
@@ -22,4 +23,3 @@ class Marker(Document):
 
 class LastRequest(Document):
     date = DateTimeField(required=True)
-

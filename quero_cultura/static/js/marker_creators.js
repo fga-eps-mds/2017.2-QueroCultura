@@ -52,13 +52,14 @@ function setZIndex(imageExtension){
 remember that mapas br and ceara instances have subsites
 */
 function requestSubsite(url, subsiteID){
-
+    if (subsiteID == null || subsiteID == "null"){
+        subsiteID = 0
+    }
     response = $.getJSON(url,
     {
         '@select' : 'url',
         'id': 'eq('+subsiteID+')'
     })
-
     return response
 }
 

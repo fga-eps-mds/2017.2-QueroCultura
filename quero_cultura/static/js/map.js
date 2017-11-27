@@ -69,9 +69,6 @@ L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
 function loadAndUpdateMarkers(data, imageExtension){
     data.forEach(function(value){
-        if(value['subsite'] == "null"){
-            value.subsite = null
-        }
         loadMarkers(value.marker_type, imageExtension, value)
     })
 
@@ -96,31 +93,31 @@ function loadMarkers(markerType, imageExtension, markerData) {
     }
 }
 
-/*
+
 function create_url_to_feed(value){
     return new Promise((resolve, reject) =>{
-        if(value["subsite"] === null){
+        console.log(value)
+        if(value['subsite'] === "null" || value['subsite'] === null){
             resolve(value['single_url'])
         }else{
             var splitUrl = value["single_url"].split("/")
             instanceUrl = splitUrl[0]+"//"+splitUrl[2]
 
-            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
+            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value['subsite'])
             promise.then(function(subsiteData) {
-                console.log(subsiteData)
-                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
+                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["platform_id"]
                 console.log(url)
                 resolve(url)
             });
         }
     })
 }
-*/
+
 
 function updateFeed(recent_markers) {
-    console.log("update")
     recent_markers.forEach(async function(value){
-        var url = 'http://mapas.cultura.gov.br'//await create_url_to_feed(value)
+
+        var url = await create_url_to_feed(value)
         if(value.city == undefined){
             value.city = ''
         }

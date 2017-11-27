@@ -42,17 +42,18 @@ def save_markers_data(data, marker_type):
 
         marker = filter_data(j_object, marker_type)
 
-        Marker(marker['name'], marker_type, marker['action_type'],
-               marker['action_time'], marker['city'], marker['state'],
-               marker['single_url'], marker['subsite'],
-               marker['create_timestamp'],
-               marker['update_timestamp'], marker['location']).save()
+        Marker(marker['platform_id'], marker['name'], marker_type,
+               marker['action_type'], marker['action_time'], marker['city'],
+               marker['state'], marker['single_url'], marker['subsite'],
+               marker['create_timestamp'], marker['update_timestamp'],
+               marker['location']).save()
 
 
 def filter_data(j_object, marker_type):
     marker = {}
     marker['name'] = get_attribute(j_object, 'name')
     marker['single_url'] = get_attribute(j_object, 'singleUrl')
+    marker['platform_id'] = get_attribute(j_object, 'id')
 
     marker['subsite'] = get_attribute(j_object, 'subsite')
     marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
@@ -201,7 +202,6 @@ def convert_mongo_to_dict(mongo_objects):
 
         # Destroy objectid object, so that javascript understands
         new_marker['_id'] = ''
-
         # Convert datetime fields to str, so that JavaScript understands
         try:
             new_marker['update_time_stamp'] = str(new_marker['update_time_stamp'])
@@ -210,7 +210,7 @@ def convert_mongo_to_dict(mongo_objects):
         try:
             new_marker['subsite']
         except Exception as e:
-            new_marker['subsite'] = 'null'
+            new_marker['subsite'] = "null"
         new_marker['create_time_stamp'] = str(new_marker['create_time_stamp'])
         new_marker['action_time'] = str(new_marker['action_time'])
 

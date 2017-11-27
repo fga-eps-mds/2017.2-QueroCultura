@@ -2,10 +2,10 @@ import json
 import requests
 
 
-SPACE_SELECT = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
-EVENT_SELECT = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
-AGENT_SELECT = 'name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
-PROJECT_SELECT = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
+SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
+EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
+AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
+PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
 
 class RequestMarkersRawData(object):
 
