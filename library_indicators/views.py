@@ -24,8 +24,8 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25)},
 
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38)},
+                {'id':2, 'url':get_metabase_url(view_type, 39)}]
 
 instances_number = instaces_counter()
 page_type = "Dados Bibliotecas"

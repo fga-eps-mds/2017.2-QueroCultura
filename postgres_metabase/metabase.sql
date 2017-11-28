@@ -2383,6 +2383,14 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 162	card-update	2017-11-26 18:12:35.416+00	1	card	37	2	18	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
 163	card-update	2017-11-26 18:12:49+00	1	card	37	2	18	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
 164	card-update	2017-11-26 18:12:49.084+00	1	card	37	2	18	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
+165	card-create	2017-11-28 12:45:09.097+00	1	card	38	2	25	\N	{"name":"Quantidade total de registros de biblioteca","description":null}
+166	card-update	2017-11-28 12:45:18.95+00	1	card	38	2	25	\N	{"name":"Quantidade total de registros de biblioteca","description":null}
+167	card-update	2017-11-28 12:47:02.416+00	1	card	38	2	25	\N	{"name":"Quantidade total de registros de biblioteca","description":null}
+168	card-update	2017-11-28 12:47:02.469+00	1	card	38	2	25	\N	{"name":"Quantidade total de registros de biblioteca","description":null}
+169	card-create	2017-11-28 12:48:07.175+00	1	card	39	2	25	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
+170	card-update	2017-11-28 12:48:30.2+00	1	card	39	2	25	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
+171	card-update	2017-11-28 12:49:41.994+00	1	card	39	2	25	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
+172	card-update	2017-11-28 12:49:42.06+00	1	card	39	2	25	\N	{"name":"Quantidade de registros nos últimos 30 dias","description":null}
 \.
 
 
@@ -2426,6 +2434,7 @@ COPY core_session (id, user_id, created_at) FROM stdin;
 1c05e8ee-4a4d-4d80-9c7d-35c7605bc526	1	2017-11-18 01:13:21.639+00
 e8c138a3-35cc-4363-9520-29a35615cd81	1	2017-11-25 19:00:43.81+00
 56c9edc7-b6ca-4ac4-9cef-33aa936e613f	1	2017-11-26 17:57:06.555+00
+9be27cf3-92ac-44ab-9be3-f3fae38605fe	1	2017-11-28 12:44:04.969+00
 \.
 
 
@@ -2434,7 +2443,7 @@ e8c138a3-35cc-4363-9520-29a35615cd81	1	2017-11-25 19:00:43.81+00
 --
 
 COPY core_user (id, email, first_name, last_name, password, password_salt, date_joined, last_login, is_superuser, is_active, reset_token, reset_triggered, is_qbnewb, google_auth, ldap_auth) FROM stdin;
-1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-11-26 17:57:06.623+00	t	t	\N	\N	f	f	f
+1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-11-28 12:44:05.007+00	t	t	\N	\N	f	f	f
 \.
 
 
@@ -2653,7 +2662,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-11-26 17:54:28.649+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-11-28 12:32:20.403+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -3203,7 +3212,6 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 594	2017-11-14 06:14:08.668+00	2017-11-21 03:50:01.512+00	_instance	type/Text	type/Category	t	\N	t	0	15	\N	Instance	normal	\N	\N	2017-11-14 13:50:13.669+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
 418	2017-11-12 21:38:48.217+00	2017-11-21 03:50:01.912+00	Jornalismo	type/Integer	\N	t	\N	t	0	8	337	Jorn Al Is Mo	normal	\N	\N	\N	\N	\N	\N	0
 434	2017-11-12 21:38:48.481+00	2017-11-21 03:50:01.914+00	História	type/Integer	type/Category	t	\N	t	0	8	337	História	normal	\N	\N	2017-11-12 21:39:00.594+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":38745,"avg":25830.0}}}	1
-614	2017-11-20 23:00:05.809+00	2017-11-21 03:50:03.226+00	_sphere	type/Text	type/Category	t	\N	t	0	22	\N	Sphere	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":6.521074815595363}}}	1
 599	2017-11-18 01:13:58.413+00	2017-11-21 03:50:00.916+00	_date	type/DateTime	\N	t	\N	t	0	16	\N	Date	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":974}}	1
 595	2017-11-18 01:13:58.383+00	2017-11-21 03:50:00.918+00	_online_subscribe	type/Text	type/Category	t	\N	t	0	16	\N	Online Subscribe	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.801405438435686}}}	1
 601	2017-11-18 01:13:58.461+00	2017-11-21 03:50:00.933+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	17	\N	ID	normal	\N	\N	2017-11-18 01:50:03.118+00	\N	\N	{"global":{"distinct-count":2}}	1
@@ -3222,7 +3230,6 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 410	2017-11-12 21:38:48.085+00	2017-11-21 03:50:01.917+00	cultura negra	type/Integer	\N	t	\N	t	0	8	337	Cultura Negra	normal	\N	\N	\N	\N	\N	\N	0
 403	2017-11-12 21:38:47.928+00	2017-11-21 03:50:01.919+00	Jogos Eletrônicos	type/Integer	\N	t	\N	t	0	8	337	Jog Os Eletrônicos	normal	\N	\N	\N	\N	\N	\N	0
 397	2017-11-12 21:38:47.739+00	2017-11-19 17:54:27.214+00	marchetaria	type/Integer	\N	f	\N	t	0	8	337	March Et Aria	normal	\N	\N	\N	\N	\N	\N	0
-607	2017-11-19 17:54:25.682+00	2017-11-26 20:50:01.911+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	19	\N	ID	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2}}	1
 445	2017-11-12 21:38:48.636+00	2017-11-19 17:54:27.225+00	arte terapia	type/Integer	\N	f	\N	t	0	8	337	Arte Ter Apia	normal	\N	\N	\N	\N	\N	\N	0
 377	2017-11-12 21:38:47.364+00	2017-11-19 17:54:27.26+00	Ciência Política	type/Integer	\N	f	\N	t	0	8	337	Ciência Política	normal	\N	\N	\N	\N	\N	\N	0
 426	2017-11-12 21:38:48.382+00	2017-11-19 17:54:27.271+00	Gestor Publico de Cultura	type/Integer	\N	f	\N	t	0	8	337	Ge Stor Public O De Cultura	normal	\N	\N	\N	\N	\N	\N	0
@@ -3237,7 +3244,6 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 462	2017-11-12 21:38:48.835+00	2017-11-21 03:50:01.948+00	patrimônio material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
 474	2017-11-12 21:38:49.002+00	2017-11-21 03:50:01.968+00	_create_date	type/Text	type/Category	t	\N	t	0	8	\N	Create Date	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
 477	2017-11-12 21:38:50.763+00	2017-11-21 03:50:01.978+00	_create_date	type/Text	type/Category	t	\N	t	0	9	\N	Create Date	normal	\N	\N	2017-11-12 21:39:00.716+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-617	2017-11-20 23:00:05.826+00	2017-11-21 03:50:03.224+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	22	\N	ID	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3796}}	1
 331	2017-11-12 21:38:45.708+00	2017-11-21 03:50:01.027+00	12	type/Integer	\N	t	\N	t	0	7	322	12	normal	\N	\N	\N	\N	\N	\N	0
 307	2017-11-12 21:38:45.26+00	2017-11-21 03:50:01.129+00	04	type/Integer	\N	t	\N	t	0	7	297	04	normal	\N	\N	\N	\N	\N	\N	0
 288	2017-11-12 21:38:44.983+00	2017-11-21 03:50:01.14+00	2013	type/Dictionary	\N	t	\N	t	0	7	274	2013	normal	\N	\N	\N	\N	\N	\N	0
@@ -3251,56 +3257,59 @@ COPY metabase_field (id, created_at, updated_at, name, base_type, special_type, 
 401	2017-11-12 21:38:47.806+00	2017-11-21 03:50:01.929+00	economia criativa	type/Integer	\N	t	\N	t	0	8	337	Eco No Mia Cri At Iva	normal	\N	\N	\N	\N	\N	\N	0
 596	2017-11-18 01:13:58.395+00	2017-11-21 03:50:00.913+00	_project_type	type/Text	type/Category	t	\N	t	0	16	\N	Project Type	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":31},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":7.45096241979835}}}	1
 283	2017-11-12 21:38:44.918+00	2017-11-21 03:50:01.064+00	10	type/Integer	\N	t	\N	t	0	7	275	10	normal	\N	\N	\N	\N	\N	\N	0
-613	2017-11-20 23:00:05.804+00	2017-11-21 03:50:03.216+00	_thematic	type/Text	type/Category	t	\N	t	0	22	\N	Thematic	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":10},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.754741833508957}}}	1
-620	2017-11-20 23:00:05.841+00	2017-11-21 03:50:03.221+00	_date	type/DateTime	\N	t	\N	t	0	22	\N	Date	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":194}}	1
 350	2017-11-12 21:38:46.878+00	2017-11-21 03:50:01.95+00	patrimônio imaterial	type/Integer	\N	t	\N	t	0	8	337	Patrimônio I Material	normal	\N	\N	\N	\N	\N	\N	0
-615	2017-11-20 23:00:05.816+00	2017-11-21 03:50:03.211+00	_public_archive	type/Text	type/Category	t	\N	t	0	22	\N	Public Archive	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.05927291886196}}}	1
 598	2017-11-18 01:13:58.407+00	2017-11-21 03:50:00.902+00	_instance	type/Text	type/Category	t	\N	t	0	16	\N	Instance	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":22.80446073938283}}}	1
 409	2017-11-12 21:38:48.055+00	2017-11-21 03:50:01.953+00	Patrimônio Material	type/Integer	\N	t	\N	t	0	8	337	Patrimônio Material	normal	\N	\N	\N	\N	\N	\N	0
 382	2017-11-12 21:38:47.486+00	2017-11-21 03:50:01.958+00	Arte de Rua	type/Integer	\N	t	\N	t	0	8	337	Arte De Rua	normal	\N	\N	\N	\N	\N	\N	0
 366	2017-11-12 21:38:47.219+00	2017-11-21 03:50:01.96+00	Cultura Estrangeira (imigrantes)	type/Integer	\N	t	\N	t	0	8	337	Cultura Estrange Ira (imigrantes)	normal	\N	\N	\N	\N	\N	\N	0
-610	2017-11-19 17:54:28.001+00	2017-11-26 20:50:03.67+00	_instance	type/Text	type/Category	t	\N	t	0	20	\N	Instance	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.9246}}}	1
-629	2017-11-20 23:41:06.81+00	2017-11-26 20:50:01.356+00	_instance	type/Text	type/Category	t	\N	t	0	25	\N	Instance	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
-622	2017-11-20 23:41:06.514+00	2017-11-26 20:50:02.053+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	23	\N	ID	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":5141}}	1
-625	2017-11-20 23:41:06.536+00	2017-11-26 20:50:00.052+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	24	\N	ID	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2}}	1
 338	2017-11-12 21:38:46.645+00	2017-11-21 03:50:01.963+00	gastronomia	type/Integer	\N	t	\N	t	0	8	337	Gas Trono Mia	normal	\N	\N	\N	\N	\N	\N	0
 433	2017-11-12 21:38:48.46+00	2017-11-21 03:50:01.965+00	Arquitetura-Urbanismo	type/Integer	\N	t	\N	t	0	8	337	Ar Quite Tura Urbanism O	normal	\N	\N	\N	\N	\N	\N	0
 498	2017-11-12 23:36:13.463+00	2017-11-21 03:50:02.848+00	_space_type	type/Text	type/Category	t	\N	t	0	12	\N	Space Type	normal	\N	\N	2017-11-12 23:50:11.918+00	\N	\N	{"global":{"distinct-count":70},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.4366}}}	1
-611	2017-11-20 23:00:05.486+00	2017-11-21 03:50:02.881+00	_create_date	type/Text	type/Category	t	\N	t	0	21	\N	Create Date	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-616	2017-11-20 23:00:05.821+00	2017-11-21 03:50:03.206+00	_guided_tuor	type/Text	type/Category	t	\N	t	0	22	\N	Guided Tu Or	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.0508429926238145}}}	1
-619	2017-11-20 23:00:05.837+00	2017-11-21 03:50:03.219+00	_instance	type/Text	type/Category	t	\N	t	0	22	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":18.0}}}	1
+622	2017-11-20 23:41:06.514+00	2017-11-28 12:54:26.192+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	23	\N	ID	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":5141}}	1
+610	2017-11-19 17:54:28.001+00	2017-11-28 12:54:28.377+00	_instance	type/Text	type/Category	t	\N	t	0	20	\N	Instance	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.9246}}}	1
+611	2017-11-20 23:00:05.486+00	2017-11-28 12:54:28.465+00	_create_date	type/Text	type/Category	t	\N	t	0	21	\N	Create Date	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+617	2017-11-20 23:00:05.826+00	2017-11-28 12:54:29.12+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	22	\N	ID	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3796}}	1
+620	2017-11-20 23:00:05.841+00	2017-11-28 12:54:29.131+00	_date	type/DateTime	\N	t	\N	t	0	22	\N	Date	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":194}}	1
+615	2017-11-20 23:00:05.816+00	2017-11-28 12:54:29.142+00	_public_archive	type/Text	type/Category	t	\N	t	0	22	\N	Public Archive	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.05927291886196}}}	1
+629	2017-11-20 23:41:06.81+00	2017-11-28 12:54:25.522+00	_instance	type/Text	type/Category	t	\N	t	0	25	\N	Instance	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
 473	2017-11-12 21:38:48.991+00	2017-11-21 03:50:01.97+00	_cls	type/Text	type/Category	t	\N	t	0	8	\N	Cls	normal	\N	\N	2017-11-12 23:50:09.691+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.6666666666666665}}}	1
 597	2017-11-18 01:13:58.401+00	2017-11-21 03:50:00.91+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	16	\N	ID	normal	\N	\N	2017-11-18 01:50:03.075+00	\N	\N	{"global":{"distinct-count":3273}}	1
-612	2017-11-20 23:00:05.501+00	2017-11-21 03:50:02.878+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	21	\N	ID	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2}}	1
 324	2017-11-12 21:38:45.603+00	2017-11-21 03:50:01.029+00	06	type/Integer	\N	t	\N	t	0	7	322	06	normal	\N	\N	\N	\N	\N	\N	0
 284	2017-11-12 21:38:44.928+00	2017-11-21 03:50:01.067+00	12	type/Integer	\N	t	\N	t	0	7	275	12	normal	\N	\N	\N	\N	\N	\N	0
-618	2017-11-20 23:00:05.831+00	2017-11-21 03:50:03.214+00	_museum_type	type/Text	type/Category	t	\N	t	0	22	\N	Museum Type	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":10.303477344573235}}}	1
 306	2017-11-12 21:38:45.249+00	2017-11-21 03:50:01.133+00	12	type/Integer	\N	t	\N	t	0	7	297	12	normal	\N	\N	\N	\N	\N	\N	0
 468	2017-11-12 21:38:48.902+00	2017-11-21 03:50:01.955+00	cultura cigana	type/Integer	\N	t	\N	t	0	8	337	Cultura Cig An A	normal	\N	\N	\N	\N	\N	\N	0
 308	2017-11-12 21:38:45.271+00	2017-11-21 03:50:01.137+00	01	type/Integer	type/Category	t	\N	t	0	7	297	01	normal	\N	\N	2017-11-12 21:38:59.409+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Number":{"min":0,"max":315,"avg":210.0}}}	1
-604	2017-11-19 17:54:25.322+00	2017-11-26 20:50:01.889+00	_instance	type/Text	type/Category	t	\N	t	0	18	\N	Instance	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":24.7148}}}	1
-623	2017-11-20 23:41:06.518+00	2017-11-26 20:50:02.066+00	_instance	type/Text	type/Category	t	\N	t	0	23	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
-621	2017-11-20 23:41:06.508+00	2017-11-26 20:50:02.077+00	_area	type/Text	type/Category	t	\N	t	0	23	\N	Area	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":61},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":9.78603384555534}}}	1
-633	2017-11-21 03:35:33.592+00	2017-11-26 20:50:03.062+00	_instance	type/Text	type/Category	t	\N	t	0	26	\N	Instance	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
-632	2017-11-21 03:35:33.588+00	2017-11-26 20:50:03.107+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	26	\N	ID	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":10000}}	1
-631	2017-11-21 03:35:33.578+00	2017-11-26 20:50:03.118+00	_area	type/Text	type/Category	t	\N	t	0	26	\N	Area	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":103},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":10.8197}}}	1
-608	2017-11-19 17:54:27.978+00	2017-11-26 20:50:03.682+00	_language	type/Text	type/Category	t	\N	t	0	20	\N	Language	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":19},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":12.9404}}}	1
-609	2017-11-19 17:54:27.996+00	2017-11-26 20:50:03.693+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	20	\N	ID	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":10000}}	1
-635	2017-11-21 03:35:34.465+00	2017-11-26 20:50:01.025+00	_agents_type	type/Text	type/Category	t	\N	t	0	27	\N	Agents Type	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":9.5416}}}	1
-634	2017-11-21 03:35:34.461+00	2017-11-26 20:50:01.036+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	27	\N	ID	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":10000}}	1
-630	2017-11-20 23:41:06.814+00	2017-11-26 20:50:01.424+00	_date	type/DateTime	\N	t	\N	t	0	25	\N	Date	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":312}}	1
-628	2017-11-20 23:41:06.806+00	2017-11-26 20:50:01.435+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	25	\N	ID	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":7178}}	1
-627	2017-11-20 23:41:06.802+00	2017-11-26 20:50:01.446+00	_sphere_type	type/Text	type/Category	t	\N	t	0	25	\N	Sphere Type	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":13},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.354137642797436}}}	1
-626	2017-11-20 23:41:06.797+00	2017-11-26 20:50:01.457+00	_sphere	type/Text	type/Category	t	\N	t	0	25	\N	Sphere	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.201030927835052}}}	1
-639	2017-11-21 03:35:34.495+00	2017-11-26 20:50:01.472+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	28	\N	ID	normal	\N	\N	2017-11-21 03:50:07.204+00	\N	\N	{"global":{"distinct-count":1}}	1
-638	2017-11-21 03:35:34.492+00	2017-11-26 20:50:01.479+00	_create_date	type/Text	type/Category	t	\N	t	0	28	\N	Create Date	normal	\N	\N	2017-11-21 03:50:07.204+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-605	2017-11-19 17:54:25.328+00	2017-11-26 20:50:01.829+00	_date	type/DateTime	\N	t	\N	t	0	18	\N	Date	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":757}}	1
-637	2017-11-21 03:35:34.473+00	2017-11-26 20:50:01.014+00	_date	type/DateTime	\N	t	\N	t	0	27	\N	Date	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":30}}	1
-603	2017-11-19 17:54:25.313+00	2017-11-26 20:50:01.867+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	18	\N	ID	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":10000}}	1
-602	2017-11-19 17:54:25.306+00	2017-11-26 20:50:01.878+00	_age_rage	type/Text	type/Category	t	\N	t	0	18	\N	Age Rage	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":5.3429}}}	1
-624	2017-11-20 23:41:06.532+00	2017-11-26 20:50:00.016+00	_create_date	type/Text	type/Category	t	\N	t	0	24	\N	Create Date	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
-636	2017-11-21 03:35:34.469+00	2017-11-26 20:50:00.972+00	_instance	type/Text	type/Category	t	\N	t	0	27	\N	Instance	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
-606	2017-11-19 17:54:25.675+00	2017-11-26 20:50:01.903+00	_create_date	type/Text	type/Category	t	\N	t	0	19	\N	Create Date	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+635	2017-11-21 03:35:34.465+00	2017-11-28 12:54:25.174+00	_agents_type	type/Text	type/Category	t	\N	t	0	27	\N	Agents Type	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":9.5416}}}	1
+634	2017-11-21 03:35:34.461+00	2017-11-28 12:54:25.19+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	27	\N	ID	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":10000}}	1
+637	2017-11-21 03:35:34.473+00	2017-11-28 12:54:25.201+00	_date	type/DateTime	\N	t	\N	t	0	27	\N	Date	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":30}}	1
+636	2017-11-21 03:35:34.469+00	2017-11-28 12:54:25.212+00	_instance	type/Text	type/Category	t	\N	t	0	27	\N	Instance	normal	\N	\N	2017-11-21 03:50:07.172+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
+630	2017-11-20 23:41:06.814+00	2017-11-28 12:54:25.544+00	_date	type/DateTime	\N	t	\N	t	0	25	\N	Date	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":312}}	1
+628	2017-11-20 23:41:06.806+00	2017-11-28 12:54:25.555+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	25	\N	ID	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":7178}}	1
+627	2017-11-20 23:41:06.802+00	2017-11-28 12:54:25.566+00	_sphere_type	type/Text	type/Category	t	\N	t	0	25	\N	Sphere Type	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":13},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.354137642797436}}}	1
+626	2017-11-20 23:41:06.797+00	2017-11-28 12:54:25.577+00	_sphere	type/Text	type/Category	t	\N	t	0	25	\N	Sphere	normal	\N	\N	2017-11-20 23:50:05.415+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":4.201030927835052}}}	1
+639	2017-11-21 03:35:34.495+00	2017-11-28 12:54:25.592+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	28	\N	ID	normal	\N	\N	2017-11-21 03:50:07.204+00	\N	\N	{"global":{"distinct-count":1}}	1
+638	2017-11-21 03:35:34.492+00	2017-11-28 12:54:25.6+00	_create_date	type/Text	type/Category	t	\N	t	0	28	\N	Create Date	normal	\N	\N	2017-11-21 03:50:07.204+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+604	2017-11-19 17:54:25.322+00	2017-11-28 12:54:25.956+00	_instance	type/Text	type/Category	t	\N	t	0	18	\N	Instance	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":24.7148}}}	1
+605	2017-11-19 17:54:25.328+00	2017-11-28 12:54:25.976+00	_date	type/DateTime	\N	t	\N	t	0	18	\N	Date	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":757}}	1
+603	2017-11-19 17:54:25.313+00	2017-11-28 12:54:25.998+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	18	\N	ID	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":10000}}	1
+602	2017-11-19 17:54:25.306+00	2017-11-28 12:54:26.009+00	_age_rage	type/Text	type/Category	t	\N	t	0	18	\N	Age Rage	normal	\N	\N	2017-11-20 23:50:06.24+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":5.3429}}}	1
+607	2017-11-19 17:54:25.682+00	2017-11-28 12:54:26.031+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	19	\N	ID	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2}}	1
+621	2017-11-20 23:41:06.508+00	2017-11-28 12:54:26.221+00	_area	type/Text	type/Category	t	\N	t	0	23	\N	Area	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":61},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":9.78603384555534}}}	1
+633	2017-11-21 03:35:33.592+00	2017-11-28 12:54:27.826+00	_instance	type/Text	type/Category	t	\N	t	0	26	\N	Instance	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":17.0}}}	1
+632	2017-11-21 03:35:33.588+00	2017-11-28 12:54:27.836+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	26	\N	ID	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":10000}}	1
+631	2017-11-21 03:35:33.578+00	2017-11-28 12:54:27.85+00	_area	type/Text	type/Category	t	\N	t	0	26	\N	Area	normal	\N	\N	2017-11-21 03:50:06.271+00	\N	\N	{"global":{"distinct-count":103},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":10.8197}}}	1
+608	2017-11-19 17:54:27.978+00	2017-11-28 12:54:28.412+00	_language	type/Text	type/Category	t	\N	t	0	20	\N	Language	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":19},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":12.9404}}}	1
+609	2017-11-19 17:54:27.996+00	2017-11-28 12:54:28.447+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	20	\N	ID	normal	\N	\N	2017-11-20 23:50:07.342+00	\N	\N	{"global":{"distinct-count":10000}}	1
+612	2017-11-20 23:00:05.501+00	2017-11-28 12:54:28.479+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	21	\N	ID	normal	\N	\N	2017-11-20 23:50:03.245+00	\N	\N	{"global":{"distinct-count":2}}	1
+614	2017-11-20 23:00:05.809+00	2017-11-28 12:54:29.109+00	_sphere	type/Text	type/Category	t	\N	t	0	22	\N	Sphere	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":6.521074815595363}}}	1
+618	2017-11-20 23:00:05.831+00	2017-11-28 12:54:29.164+00	_museum_type	type/Text	type/Category	t	\N	t	0	22	\N	Museum Type	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":7},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":10.303477344573235}}}	1
+625	2017-11-20 23:41:06.536+00	2017-11-28 12:54:24.179+00	_id	type/MongoBSONID	type/PK	t	\N	t	0	24	\N	ID	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2}}	1
+624	2017-11-20 23:41:06.532+00	2017-11-28 12:54:24.194+00	_create_date	type/Text	type/Category	t	\N	t	0	24	\N	Create Date	normal	\N	\N	2017-11-20 23:50:04.627+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+623	2017-11-20 23:41:06.518+00	2017-11-28 12:54:26.21+00	_instance	type/Text	type/Category	t	\N	t	0	23	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.591+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":23.0}}}	1
+619	2017-11-20 23:00:05.837+00	2017-11-28 12:54:29.153+00	_instance	type/Text	type/Category	t	\N	t	0	22	\N	Instance	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":1},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":18.0}}}	1
+606	2017-11-19 17:54:25.675+00	2017-11-28 12:54:26.023+00	_create_date	type/Text	type/Category	t	\N	t	0	19	\N	Create Date	normal	\N	\N	2017-11-20 23:50:06.28+00	\N	\N	{"global":{"distinct-count":2},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":26.0}}}	1
+616	2017-11-20 23:00:05.821+00	2017-11-28 12:54:29.077+00	_guided_tuor	type/Text	type/Category	t	\N	t	0	22	\N	Guided Tu Or	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":3},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":3.0508429926238145}}}	1
+613	2017-11-20 23:00:05.804+00	2017-11-28 12:54:29.098+00	_thematic	type/Text	type/Category	t	\N	t	0	22	\N	Thematic	normal	\N	\N	2017-11-20 23:50:04.244+00	\N	\N	{"global":{"distinct-count":10},"type":{"type/Text":{"percent-json":0.0,"percent-url":0.0,"percent-email":0.0,"average-length":8.754741833508957}}}	1
 \.
 
 
@@ -3362,24 +3371,29 @@ COPY metabase_fieldvalues (id, created_at, updated_at, "values", human_readable_
 71	2017-11-19 17:54:26.55+00	2017-11-21 03:35:37.023+00	[0,29192]	\N	336
 53	2017-11-14 06:14:06.039+00	2017-11-21 03:35:37.105+00	["2012-01-01 00:00:00.000000","2017-11-20 22:50:41.884470","2017-11-20 22:50:53.226614"]	\N	474
 62	2017-11-14 06:14:06.664+00	2017-11-21 03:35:37.438+00	["Antiquário","Arquivo Privado","Arquivo Público","Ateliê","Audioteca","Banca de jornal","Bem Arqueológico","Bem Imóvel","Bem Móvel ou Integrado","Bem Paisagístico","Bens culturais de natureza imaterial","Bens culturais de natureza material","Biblioteca Comunitária (incluí­dos os pontos de leitura)","Biblioteca Escolar","Biblioteca Especializada","Biblioteca Nacional","Biblioteca Privada","Biblioteca Pública","Biblioteca Universitária","Casa de espetáculo","Casa do Patrimônio","Centro Comunitário","Centro Cultural Privado","Centro Cultural Público","Centro Espírita","Centro cultural itinerante","Centro de Artes e Esportes Unificados - CEUs","Centro de Documentação Privado","Centro de Documentação Público","Centro de artesanato","Centro de tradições","Cine itinerante","Cineclube","Circo Fixo","Circo Itinerante","Circo Tradicional","Clube social","Coleções","Concha acústica","Coreto","Creative Bureau","Danceteria","Documentação","Escola livre de Artes Cênicas","Escola livre de Artes Visuais","Escola livre de Audiovisual","Escola livre de Cultura Digital","Escola livre de Cultura Popular","Escola livre de Design","Escola livre de Gestão Cultural","Escola livre de Hip Hop","Escola livre de Música","Escola livre de Patrimônio","Escola livre de Pontinhos de cultura","Espaço Mais Cultura","Espaço Público Para Projeção de Filmes","Espaço para Eventos","Espaço para apresentação de dança","Estúdio","Galeria de arte","Ginásio Poliesportivo","Igreja","Instituição Privada Comunitária","Instituição Privada Comunitária exclusivamente voltada para formação artistica e cultural","Instituição Privada Confessional","Instituição Privada Confessional exclusivamente voltada para formação artistica e cultural","Instituição Privada Filantrópica","Instituição Privada Filantrópica exclusivamente voltada para formação artistica e cultural","Instituição Privada Particular","Instituição Privada Particular exclusivamente voltada para formação artistica e cultural","Instituição Pública Distrital exclusivamente voltada para formação artistica e cultural","Instituição Pública Estadual exclusivamente voltada para formação artistica e cultural","Instituição Pública Federal exclusivamente voltada para formação artistica e cultural","Instituição Pública Municipal exclusivamente voltada para formação artistica e cultural","Instituição Pública de Ensino Regular Distrital","Instituição Pública de Ensino Regular Estadual","Instituição Pública de Ensino Regular Federal","Instituição Pública de Ensino Regular Municipal","Lan-house","Livraria","Mesquitas","Museu Privado","Museu Público","Outros","Outros Equipamentos Culturais","Palco de Rua","Ponto de Cultura","Ponto de Leitura Afro","Pontos de Memória","Praça dos esportes e da cultura","Rádio Comunitária","Sala Multiuso","Sala de Leitura","Sala de cinema","Sala de dança","Sebo","Sitio Histórico","Teatro Privado","Teatro Público","Templo","Terreiro","Terreno para Circo","Trio elétrico","Usina Cultural","Videolocadora"]	\N	498
-76	2017-11-21 00:50:00.169+00	2017-11-21 03:35:37.662+00	["Jardim zoológico, botânico, herbário, oceanário ou planetário","Jardim zoológico, jardim botânico herbário, oceanário ou planetário","Museu de território/Ecomuseu","None","Tradicional/Clássico","Unidade de conservação da natureza","Virtual"]	\N	618
-77	2017-11-21 00:50:00.208+00	2017-11-21 03:35:37.72+00	["Antropologia e Arqueologia","Antropologia e arqueologia","Artes, arquitetura e linguística","Ciências exatas, da terra, biológicas e da saúde","Defesa e segurança pública","Educação, esporte e lazer","História","Meios de comunicação e transporte","None","Produção de bens e serviços"]	\N	613
-78	2017-11-21 00:50:00.225+00	2017-11-21 03:35:37.747+00	["museusculturagovbr"]	\N	619
-79	2017-11-21 00:50:00.242+00	2017-11-21 03:35:37.773+00	["None","Privada","Pública"]	\N	614
-80	2017-11-21 00:50:00.262+00	2017-11-21 03:35:37.796+00	["bibliotecasculturagovbr"]	\N	623
-81	2017-11-21 00:50:00.283+00	2017-11-21 03:35:37.821+00	["Antropologia","Arqueologia","Arquitetura-Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Banda","Biblioteca","Capoeira","Carnaval","Cinema","Circo","Ciência Política","Comunicação","Coral","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Indígena","Cultura LGBT","Cultura Negra","Cultura Popular","Dança","Design","Direito Autoral","Economia Criativa","Educação","Esporte","Filosofia","Fotografia","Gastronomia","Gestor Publico de Cultura","Gestão Cultural","História","Jogos Eletrônicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","Mídias Sociais","Música","Novas Mídias","Opera","Orquestra","Outros","Patrimônio Imaterial","Patrimônio Material","Pesquisa","Produção Cultural","Rádio","Saúde","Sociologia","Teatro","Televisão","Turismo"]	\N	621
-82	2017-11-21 00:50:00.298+00	2017-11-21 03:35:37.834+00	["2012-01-01 15:47:38.337553","2017-11-20 23:40:10.387224"]	\N	624
-83	2017-11-21 00:50:00.332+00	2017-11-21 03:35:36.322+00	["None","Privada","Pública"]	\N	626
-84	2017-11-21 00:50:00.355+00	2017-11-21 03:35:36.378+00	["","Associação","Distrital","Empresa","Estadual","Federal","Fundação","Mista","Municipal","None","Outra","Particular","Religiosa"]	\N	627
-85	2017-11-21 00:50:00.38+00	2017-11-21 03:35:36.41+00	["bibliotecasculturagovbr"]	\N	629
-86	2017-11-21 00:50:00.428+00	2017-11-21 03:35:36.481+00	["","10 anos","12 anos","14 anos","16 anos","18 anos","Livre"]	\N	602
-87	2017-11-21 00:50:00.484+00	2017-11-21 03:35:36.532+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	604
-88	2017-11-21 00:50:00.599+00	2017-11-21 03:35:36.724+00	["2012-01-01 15:47:38.337553","2017-11-20 22:50:31.092299"]	\N	606
-89	2017-11-21 00:50:01.422+00	2017-11-21 03:35:37.226+00	["Artes Circenses","Artes Integradas","Artes Visuais","Audiovisual","Cinema","Cultura Digital","Cultura Indígena","Cultura Tradicional","Curso ou Oficina","Dança","Exposição","Hip Hop","Livro e Literatura","Música Erudita","Música Popular","Outros","Palestra, Debate ou Encontro","Rádio","Teatro"]	\N	608
-90	2017-11-21 00:50:01.485+00	2017-11-21 03:35:37.332+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	610
-73	2017-11-21 00:50:00.068+00	2017-11-21 03:35:37.533+00	["2012-01-01 00:00:00.000000","2017-11-20 22:59:17.139799"]	\N	611
-74	2017-11-21 00:50:00.109+00	2017-11-21 03:35:37.557+00	["None","não","sim"]	\N	616
-75	2017-11-21 00:50:00.144+00	2017-11-21 03:35:37.637+00	["None","não","sim"]	\N	615
+82	2017-11-21 00:50:00.298+00	2017-11-28 12:54:26.254+00	["2012-01-01 15:47:38.337553","2017-11-28 12:32:15.593263"]	\N	624
+91	2017-11-28 12:54:26.92+00	2017-11-28 12:54:26.92+00	["Coletivo","Individual"]	\N	635
+92	2017-11-28 12:54:27.503+00	2017-11-28 12:54:27.503+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	636
+85	2017-11-21 00:50:00.38+00	2017-11-28 12:54:27.568+00	["bibliotecasculturagovbr"]	\N	629
+84	2017-11-21 00:50:00.355+00	2017-11-28 12:54:27.636+00	["","Associação","Distrital","Empresa","Estadual","Federal","Fundação","Mista","Municipal","None","Outra","Particular","Religiosa"]	\N	627
+83	2017-11-21 00:50:00.332+00	2017-11-28 12:54:27.695+00	["None","Privada","Pública"]	\N	626
+93	2017-11-28 12:54:27.742+00	2017-11-28 12:54:27.742+00	["2012-01-01 00:00:00.000000","2017-11-28 12:35:37.452018","2017-11-28 12:35:38.760259"]	\N	638
+87	2017-11-21 00:50:00.484+00	2017-11-28 12:54:27.885+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	604
+86	2017-11-21 00:50:00.428+00	2017-11-28 12:54:28.001+00	["","10 anos","12 anos","14 anos","16 anos","18 anos","Livre"]	\N	602
+88	2017-11-21 00:50:00.599+00	2017-11-28 12:54:28.046+00	["2012-01-01 15:47:38.337553","2017-11-28 12:32:55.163721"]	\N	606
+80	2017-11-21 00:50:00.262+00	2017-11-28 12:54:28.106+00	["bibliotecasculturagovbr"]	\N	623
+90	2017-11-21 00:50:01.485+00	2017-11-28 12:54:30.047+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	610
+89	2017-11-21 00:50:01.422+00	2017-11-28 12:54:30.148+00	["Artes Circenses","Artes Integradas","Artes Visuais","Audiovisual","Cinema","Cultura Digital","Cultura Indígena","Cultura Tradicional","Curso ou Oficina","Dança","Exposição","Hip Hop","Livro e Literatura","Música Erudita","Música Popular","Outros","Palestra, Debate ou Encontro","Rádio","Teatro"]	\N	608
+73	2017-11-21 00:50:00.068+00	2017-11-28 12:54:30.175+00	["2012-01-01 00:00:00.000000","2017-11-28 12:32:25.489109"]	\N	611
+74	2017-11-21 00:50:00.109+00	2017-11-28 12:54:30.215+00	["None","não","sim"]	\N	616
+77	2017-11-21 00:50:00.208+00	2017-11-28 12:54:30.251+00	["Antropologia e Arqueologia","Antropologia e arqueologia","Artes, arquitetura e linguística","Ciências exatas, da terra, biológicas e da saúde","Defesa e segurança pública","Educação, esporte e lazer","História","Meios de comunicação e transporte","None","Produção de bens e serviços"]	\N	613
+79	2017-11-21 00:50:00.242+00	2017-11-28 12:54:30.283+00	["None","Privada","Pública"]	\N	614
+75	2017-11-21 00:50:00.144+00	2017-11-28 12:54:30.322+00	["None","não","sim"]	\N	615
+78	2017-11-21 00:50:00.225+00	2017-11-28 12:54:30.351+00	["museusculturagovbr"]	\N	619
+76	2017-11-21 00:50:00.169+00	2017-11-28 12:54:30.383+00	["Jardim zoológico, botânico, herbário, oceanário ou planetário","Jardim zoológico, jardim botânico herbário, oceanário ou planetário","Museu de território/Ecomuseu","None","Tradicional/Clássico","Unidade de conservação da natureza","Virtual"]	\N	618
+81	2017-11-21 00:50:00.283+00	2017-11-28 12:54:28.175+00	["Antropologia","Arqueologia","Arquitetura-Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Banda","Biblioteca","Capoeira","Carnaval","Cinema","Circo","Ciência Política","Comunicação","Coral","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Indígena","Cultura LGBT","Cultura Negra","Cultura Popular","Dança","Design","Direito Autoral","Economia Criativa","Educação","Esporte","Filosofia","Fotografia","Gastronomia","Gestor Publico de Cultura","Gestão Cultural","História","Jogos Eletrônicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","Mídias Sociais","Música","Novas Mídias","Opera","Orquestra","Outros","Patrimônio Imaterial","Patrimônio Material","Pesquisa","Produção Cultural","Rádio","Saúde","Sociologia","Teatro","Televisão","Turismo"]	\N	621
+94	2017-11-28 12:54:29.189+00	2017-11-28 12:54:29.189+00	["mapaculturacegovbr","mapasculturagovbr","spculturaprefeituraspgovbr"]	\N	633
+95	2017-11-28 12:54:29.955+00	2017-11-28 12:54:29.955+00	["Antropologia","Arqueologia","Arquitetura-Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Banda","Biblioteca","Capoeira","Carnaval","Cinema","Circo","Ciência Política","Comunicação","Coral","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Indígena","Cultura LGBT","Cultura Negra","Cultura Popular","Dança","Design","Direito Autoral","Economia Criativa","Educação","Esporte","Filosofia","Fotografia","Gastronomia","Gestor Publico de Cultura","Gestão Cultural","História","Humor","Jogos Eletrônicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","Mídias Sociais","Música","Novas Mídias","Opera","Orquestra","Outros","Patrimônio Imaterial","Patrimônio Material","Pesquisa","Produção Cultural","Rádio","Saúde","Sociologia","Teatro","Televisão","Turismo","acervos museológicos","agentes","agroecologia","antropologia","arqueologia","arquitetura-urbanismo","arquivo","arte de rua","arte digital","arte terapia","artes visuais","artesanato","artistas agentes culturais","audiovisual","cinema","circo","comunicação","cultura cigana","cultura de redes","cultura digital","cultura estrangeira (imigrantes)","cultura indígena","cultura lgbt","cultura negra","cultura popular","culturas urbanas","danca","dança","dança e canto coral","demais atividades correlatas a cultura popular","design","direito autoral","economia criativa","educação","esporte","exposições","fabricação de obras de arte","festas calendarizadas populares","filosofia","fortalecimento de cultura de rede local","fotografia","gastronomia","gestão cultural","história","intercambio cultural","intercâmbio cultural","jogos eletrônicos","jornalismo","leitura","literatura","literatura infantil","livro","marchetaria","meio ambiente","moda","mostras culturais","museu","mídias sociais","música","novas mídias","patrimônio imaterial","patrimônio material","permacultura e cultura hacker","pesquisa","ponto de memória","produção cultural","rádio","saúde","sociologia","teatro","teatro estudantil","televisão","turismo","turismo de base comunitária"]	\N	631
 \.
 
 
@@ -3404,18 +3418,18 @@ COPY metabase_table (id, created_at, updated_at, name, rows, description, entity
 8	2017-11-12 21:38:37.113+00	2017-11-21 03:50:05.162+00	percent_agents	6	\N	\N	\N	f	2	Percent Agents	\N	\N	\N	\N	\N	f
 9	2017-11-12 21:38:37.126+00	2017-11-21 03:50:05.373+00	last_update_date	2	\N	\N	\N	f	2	Last Update Date	\N	\N	\N	\N	\N	f
 12	2017-11-12 23:34:53.741+00	2017-11-21 03:50:05.458+00	space_data	19967	\N	\N	\N	f	2	Space Data	\N	\N	\N	\N	\N	f
-21	2017-11-20 23:00:05.458+00	2017-11-21 03:50:05.472+00	last_update_museum_date	2	\N	\N	\N	f	2	Last Update Museum Date	\N	\N	\N	\N	\N	f
-22	2017-11-20 23:00:05.471+00	2017-11-21 03:50:05.49+00	museum_data	3796	\N	\N	\N	f	2	Museum Data	\N	\N	\N	\N	\N	f
-24	2017-11-20 23:41:06.031+00	2017-11-26 20:50:03.722+00	last_update_library_date	2	\N	\N	\N	t	2	Last Update Library Date	\N	\N	\N	\N	\N	f
-27	2017-11-21 03:35:29.73+00	2017-11-26 20:50:03.804+00	agents_data	161094	\N	\N	\N	t	2	Agents Data	\N	\N	\N	\N	\N	f
-25	2017-11-20 23:41:06.038+00	2017-11-26 20:50:03.894+00	library_data	7179	\N	\N	\N	t	2	Library Data	\N	\N	\N	\N	\N	f
-28	2017-11-21 03:35:29.738+00	2017-11-26 20:50:03.914+00	last_update_agents_date	3	\N	\N	\N	t	2	Last Update Agents Date	\N	\N	\N	\N	\N	f
 16	2017-11-18 01:13:49.852+00	2017-11-21 03:50:04.815+00	project_data	3281	\N	\N	\N	f	2	Project Data	\N	\N	\N	\N	\N	f
-18	2017-11-19 17:54:15.822+00	2017-11-26 20:50:03.954+00	event_data	21643	\N	\N	\N	t	2	Event Data	\N	\N	\N	\N	\N	f
-19	2017-11-19 17:54:15.839+00	2017-11-26 20:50:03.991+00	last_update_event_date	2	\N	\N	\N	t	2	Last Update Event Date	\N	\N	\N	\N	\N	f
-23	2017-11-20 23:41:06.025+00	2017-11-26 20:50:04.023+00	library_area	5143	\N	\N	\N	t	2	Library Area	\N	\N	\N	\N	\N	f
-26	2017-11-21 03:35:29.707+00	2017-11-26 20:50:04.198+00	agents_area	355578	\N	\N	\N	t	2	Agents Area	\N	\N	\N	\N	\N	f
-20	2017-11-19 17:54:15.848+00	2017-11-26 20:50:04.235+00	event_language	27135	\N	\N	\N	t	2	Event Language	\N	\N	\N	\N	\N	f
+24	2017-11-20 23:41:06.031+00	2017-11-28 12:50:09.195+00	last_update_library_date	2	\N	\N	\N	t	2	Last Update Library Date	\N	\N	\N	\N	\N	f
+27	2017-11-21 03:35:29.73+00	2017-11-28 12:50:09.333+00	agents_data	161182	\N	\N	\N	t	2	Agents Data	\N	\N	\N	\N	\N	f
+25	2017-11-20 23:41:06.038+00	2017-11-28 12:50:09.372+00	library_data	7179	\N	\N	\N	t	2	Library Data	\N	\N	\N	\N	\N	f
+28	2017-11-21 03:35:29.738+00	2017-11-28 12:50:09.434+00	last_update_agents_date	3	\N	\N	\N	t	2	Last Update Agents Date	\N	\N	\N	\N	\N	f
+18	2017-11-19 17:54:15.822+00	2017-11-28 12:50:09.508+00	event_data	21671	\N	\N	\N	t	2	Event Data	\N	\N	\N	\N	\N	f
+19	2017-11-19 17:54:15.839+00	2017-11-28 12:50:09.552+00	last_update_event_date	2	\N	\N	\N	t	2	Last Update Event Date	\N	\N	\N	\N	\N	f
+23	2017-11-20 23:41:06.025+00	2017-11-28 12:50:09.58+00	library_area	5143	\N	\N	\N	t	2	Library Area	\N	\N	\N	\N	\N	f
+26	2017-11-21 03:35:29.707+00	2017-11-28 12:50:09.728+00	agents_area	355742	\N	\N	\N	t	2	Agents Area	\N	\N	\N	\N	\N	f
+20	2017-11-19 17:54:15.848+00	2017-11-28 12:50:09.77+00	event_language	27166	\N	\N	\N	t	2	Event Language	\N	\N	\N	\N	\N	f
+21	2017-11-20 23:00:05.458+00	2017-11-28 12:50:09.797+00	last_update_museum_date	2	\N	\N	\N	t	2	Last Update Museum Date	\N	\N	\N	\N	\N	f
+22	2017-11-20 23:00:05.471+00	2017-11-28 12:50:09.817+00	museum_data	3797	\N	\N	\N	t	2	Museum Data	\N	\N	\N	\N	\N	f
 \.
 
 
@@ -3601,7 +3615,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x490d37dcbc61cde4cabda5f9801f4464045fb2834df78c9a9fb3488c2399b6f9	84
 \\xa6e43734a8b76c28bb3723d3475c2427ff139362a5a98c49cc96035ff3f1d29c	105
 \\xea15adb9ebf96bf593bb87a25e21c6a4976a7aef779aab72073e95005a5f83e8	100
-\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	50
 \\x792a044714c63be23038204865243264e18fb8501465b9b23451a2a84ebe4db3	111
 \\xe48a2eaa6c8d7695da35bdcaf46e865a3bc1a8d734088e03a888695e2524a0a0	43
 \\xa10b50b18a6553118701872a96318522684bf78ab319b585168ef6fb1a59f9c0	76
@@ -3610,43 +3623,46 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x12f7e73cd2296f266a4e4e2b809490588e85e1dcce9e40d66b830a1b90453530	315
 \\x40e11f555ac44ba39d996c77cadb1581fa3a07d058f57bc9b2b57fec9c964f8f	703
 \\x89cafcce7cfcb2a59fb6d92c927424b393176508506ba184e532d93903a04cfc	691
-\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	154
-\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	141
-\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	60
-\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	52
-\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	49
-\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	73
 \\x619ba579cc2cba9995d467f0c1b5eeceb63896b971c47ee34e6ed4b154eaefa3	70
-\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	156
 \\x6b5039481ad1749520b96d2176d5bfbc2b6eba08495cf8054faed42d28658a53	50
 \\x4fa64b3921a5345e56cafded326679d694ff759dc9c14a9c99a091b6ef7b026a	96
 \\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	58
-\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	55
 \\xbd3c80317764415cbb70c03f7e0e90dfc07a01e3e1333ce11ff44575c04a364e	57
 \\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	63
 \\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	47
 \\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	55
 \\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	51
-\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	172
-\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	173
-\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	60
 \\xa0b6ed88d7a11c2ffc8d31672ff10e18c3bbcb88bc64bf0f63f185931b1b8667	672
 \\xe2670f46217a0dfc8dcab2ed6364b07504ff883c5f1e8e47c7ef760a5f69f8ac	526
-\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	165
 \\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	33
+\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	172
+\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	144
+\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	140
+\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	66
+\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	65
+\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	184
+\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	53
+\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	77
+\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	63
+\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	59
 \\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	945
 \\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	1012
 \\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	1365
 \\x1b2c5b875d8182fec9db84e655c89d8a3048a62bc21e7fcdc9fac6c4fb5cf048	125
 \\x4378f8e359fd2cef7a7968e05f2c7b5aa6155e537a799688097eb1a1844b079c	50
-\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	337
-\\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	172
-\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	180
-\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	172
 \\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	151
 \\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	645
 \\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	787
-\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	85
+\\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	300
+\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	331
+\\xcd5d9bbf219397f5d48c792905989514725c1481176446dd62b66b353892d5d5	68
+\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	285
+\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	106
+\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	175
+\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	160
+\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	170
+\\xb01ab430a97f00647f2ea6776c5224260a950c9bdd337897bfbf26a5ee89aa9b	95
+\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	60
 \.
 
 
@@ -4856,6 +4872,45 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 1191	\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	2017-11-26 19:33:59.551	35	0	f	ad-hoc	\N	1	\N	\N	\N
 1192	\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	2017-11-26 19:34:08.544	26	0	f	ad-hoc	\N	1	\N	\N	\N
 1193	\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	2017-11-26 19:34:09.662	26	0	f	ad-hoc	\N	1	\N	\N	\N
+1194	\\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	2017-11-28 12:43:15.05	1448	57	f	embedded-question	\N	\N	17	\N	\N
+1196	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-11-28 12:43:17.1	290	44	f	embedded-question	\N	\N	15	\N	\N
+1197	\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	2017-11-28 12:43:17.555	174	7	f	embedded-question	\N	\N	16	\N	\N
+1199	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-11-28 12:43:19.183	274	107	f	embedded-question	\N	\N	14	\N	\N
+1200	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-11-28 12:43:26.881	181	1	f	embedded-question	\N	\N	36	\N	\N
+1203	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-28 12:43:29.146	118	0	f	embedded-question	\N	\N	4	\N	\N
+1206	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-28 12:43:31.296	71	0	f	embedded-question	\N	\N	7	\N	\N
+1220	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-28 12:49:56.261	221	0	f	embedded-question	\N	\N	6	\N	\N
+1222	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-11-28 12:49:56.434	86	0	f	embedded-question	\N	\N	7	\N	\N
+1223	\\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	2017-11-28 12:49:59.348	121	25	f	embedded-question	\N	\N	29	\N	\N
+1225	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:50:01.973	41	1	f	embedded-question	\N	\N	38	\N	\N
+1226	\\xb01ab430a97f00647f2ea6776c5224260a950c9bdd337897bfbf26a5ee89aa9b	2017-11-28 12:50:02.128	132	1	f	embedded-question	\N	\N	39	\N	\N
+1227	\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	2017-11-28 12:50:05.39	146	3	f	embedded-question	\N	\N	25	\N	\N
+1228	\\xf19ab079b9f266aa766b47ddf4b37c76acd4aff757e3e118d5ca627fa49566ee	2017-11-28 12:50:05.48	116	54	f	embedded-question	\N	\N	27	\N	\N
+1229	\\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	2017-11-28 12:50:07.2	94	13	f	embedded-question	\N	\N	26	\N	\N
+1230	\\xb01ab430a97f00647f2ea6776c5224260a950c9bdd337897bfbf26a5ee89aa9b	2017-11-28 12:50:08.841	100	1	f	question	\N	1	39	\N	\N
+1201	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-11-28 12:43:26.878	260	1	f	embedded-question	\N	\N	37	\N	\N
+1202	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-28 12:43:29.05	111	0	f	embedded-question	\N	\N	2	\N	\N
+1204	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-11-28 12:43:30.238	125	0	f	embedded-question	\N	\N	6	\N	\N
+1205	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-28 12:43:31.223	82	0	f	embedded-question	\N	\N	3	\N	\N
+1210	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:46:49.655	56	1	f	question	\N	1	38	\N	\N
+1215	\\xb01ab430a97f00647f2ea6776c5224260a950c9bdd337897bfbf26a5ee89aa9b	2017-11-28 12:49:34.413	90	1	f	question	\N	1	39	\N	\N
+1207	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:44:38.115	113	1	f	ad-hoc	\N	1	\N	\N	\N
+1209	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-11-28 12:45:43.389	174	44	f	question	\N	1	15	\N	\N
+1213	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:47:44.813	61	1	f	ad-hoc	\N	1	\N	\N	\N
+1219	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-11-28 12:49:56.204	233	0	f	embedded-question	\N	\N	4	\N	\N
+1221	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-11-28 12:49:56.271	232	0	f	embedded-question	\N	\N	3	\N	\N
+1224	\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	2017-11-28 12:49:59.363	115	54	f	embedded-question	\N	\N	28	\N	\N
+1217	\\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	2017-11-28 12:49:56.172	197	0	f	embedded-question	\N	\N	2	\N	\N
+1195	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-11-28 12:43:15.05	1441	1	f	embedded-question	\N	\N	37	\N	\N
+1198	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-11-28 12:43:19.209	103	1	f	embedded-question	\N	\N	36	\N	\N
+1208	\\xfcc219a6d0c42d377ae36187ba641c3df2cb391dd5c55990b17176754a7d3dd3	2017-11-28 12:45:32.518	155	47	f	question	\N	1	24	\N	\N
+1211	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:46:56.945	47	1	f	question	\N	1	38	\N	\N
+1212	\\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	2017-11-28 12:47:30.879	31	1	f	question	\N	1	38	\N	\N
+1214	\\xcd5d9bbf219397f5d48c792905989514725c1481176446dd62b66b353892d5d5	2017-11-28 12:47:53.428	68	1	f	ad-hoc	\N	1	\N	\N	\N
+1216	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-11-28 12:49:56.105	236	1	f	embedded-question	\N	\N	37	\N	\N
+1218	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-11-28 12:49:56.168	197	1	f	embedded-question	\N	\N	36	\N	\N
+1231	\\x566e90512ee73e32578ce66b23e55fab635802c412c0afa0be0bcf6f95f87500	2017-11-28 12:52:18.638	77	54	f	embedded-question	\N	\N	28	\N	\N
+1232	\\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	2017-11-28 12:52:28.479	62	3	f	embedded-question	\N	\N	25	\N	\N
 \.
 
 
@@ -4917,6 +4972,8 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 35	2017-11-25 19:06:12.384+00	2017-11-25 19:06:44.376+00	Quantidade de registros de agentes nos últimos 30 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-30,"day"]]}}	{}	1	2	27	query	f	5	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 36	2017-11-26 17:58:11.658+00	2017-11-26 18:11:32.369+00	Quantidade total de registros de eventos	\N	scalar	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]]}}	{}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 37	2017-11-26 18:12:18.112+00	2017-11-26 18:12:49.042+00	Quantidade de registros nos últimos 30 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-30,"day"]]}}	{}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+38	2017-11-28 12:45:09.058+00	2017-11-28 12:47:02.448+00	Quantidade total de registros de biblioteca	\N	scalar	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+39	2017-11-28 12:48:07.11+00	2017-11-28 12:49:42.019+00	Quantidade de registros nos últimos 30 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",630],-30,"day"]]}}	{}	1	2	25	query	f	4	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -5124,6 +5181,14 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 190	Card	36	1	2017-11-26 18:11:32.333+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Quantidade total de registros de eventos","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]]}},"id":36,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
 194	Card	37	1	2017-11-26 18:12:48.991+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-30,"day"]]}},"id":37,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
 195	Card	37	1	2017-11-26 18:12:49.063+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-30,"day"]]}},"id":37,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+196	Card	38	1	2017-11-28 12:45:09.112+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade total de registros de biblioteca","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]]}},"id":38,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+197	Card	38	1	2017-11-28 12:45:18.947+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Quantidade total de registros de biblioteca","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]]}},"id":38,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+198	Card	38	1	2017-11-28 12:47:02.418+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade total de registros de biblioteca","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]]}},"id":38,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+199	Card	38	1	2017-11-28 12:47:02.466+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade total de registros de biblioteca","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]]}},"id":38,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+200	Card	39	1	2017-11-28 12:48:07.145+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",630],-30,"day"]]}},"id":39,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+201	Card	39	1	2017-11-28 12:48:30.19+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":4,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",630],-30,"day"]]}},"id":39,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+202	Card	39	1	2017-11-28 12:49:41.979+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",630],-30,"day"]]}},"id":39,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+203	Card	39	1	2017-11-28 12:49:42.036+00	{"description":null,"archived":false,"table_id":25,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":4,"query_type":"query","name":"Quantidade de registros nos últimos 30 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":25,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",630],-30,"day"]]}},"id":39,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
 \.
 
 
@@ -5370,6 +5435,15 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 213	1	card	37	2017-11-26 18:12:18.454+00
 214	1	card	37	2017-11-26 18:12:43.002+00
 215	1	card	37	2017-11-26 19:03:50.412+00
+216	1	card	38	2017-11-28 12:45:09.094+00
+217	1	card	24	2017-11-28 12:45:32.411+00
+218	1	card	15	2017-11-28 12:45:43.301+00
+219	1	card	38	2017-11-28 12:46:49.581+00
+220	1	card	38	2017-11-28 12:46:56.803+00
+221	1	card	38	2017-11-28 12:47:30.769+00
+222	1	card	39	2017-11-28 12:48:07.137+00
+223	1	card	39	2017-11-28 12:49:34.321+00
+224	1	card	39	2017-11-28 12:50:08.696+00
 \.
 
 
@@ -5377,7 +5451,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 164, true);
+SELECT pg_catalog.setval('activity_id_seq', 172, true);
 
 
 --
@@ -5461,7 +5535,7 @@ SELECT pg_catalog.setval('metabase_field_id_seq', 639, true);
 -- Name: metabase_fieldvalues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('metabase_fieldvalues_id_seq', 90, true);
+SELECT pg_catalog.setval('metabase_fieldvalues_id_seq', 95, true);
 
 
 --
@@ -5545,7 +5619,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 1193, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 1232, true);
 
 
 --
@@ -5566,7 +5640,7 @@ SELECT pg_catalog.setval('raw_table_id_seq', 1, false);
 -- Name: report_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_card_id_seq', 37, true);
+SELECT pg_catalog.setval('report_card_id_seq', 39, true);
 
 
 --
@@ -5594,7 +5668,7 @@ SELECT pg_catalog.setval('report_dashboardcard_id_seq', 8, true);
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 195, true);
+SELECT pg_catalog.setval('revision_id_seq', 203, true);
 
 
 --
@@ -5608,7 +5682,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 215, true);
+SELECT pg_catalog.setval('view_log_id_seq', 224, true);
 
 
 --
