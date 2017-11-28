@@ -32,7 +32,7 @@ def index(request):
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'events_indicators/graphic_detail.html',{'graphic': graphic})
+    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_event_data")
 def populate_event_data():

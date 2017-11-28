@@ -35,7 +35,7 @@ def index(request):
     return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'library_indicators/graphic_detail.html',{'graphic': graphic})
+    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_library_data")
 def populate_library_data():
