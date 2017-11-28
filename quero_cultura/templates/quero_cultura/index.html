@@ -49,8 +49,7 @@ crossorigin=""></script>
 	loadAndUpdateMarkers(lastMinuteData, 'gif')
 	updateFeed(most_recent_markers)
 
-	setInterval(function(){	updateFeed({{get_last_three_minutes_markers|safe}})
-							loadAndUpdateMarkers({{get_last_three_minutes_markers|safe}}, 'gif')}, 20000)
+	setInterval(function(){new_markers()}, 20000)
 
 
 

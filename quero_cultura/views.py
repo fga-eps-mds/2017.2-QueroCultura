@@ -4,6 +4,7 @@ from .api_connections import RequestMarkersRawData
 from .models import Marker, LastRequest
 from celery.decorators import task
 from pprint import pprint
+from django.http import JsonResponse
 import requests
 import json
 import datetime
@@ -244,6 +245,19 @@ def get_last_three_minutes_markers():
     last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
 
     return convert_mongo_to_dict(last_three_minutes_markers)
+
+def get_last_three_minutes_test(request):
+
+    three_minutes = 3
+
+    cur_date = get_time_now()
+    three_minutes_behind_date = cur_date - datetime.timedelta(minutes=3)
+
+    verify_database_state(three_minutes, datetime.timedelta(minutes=3))
+
+    last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
+
+    return JsonResponse({'markers': convert_mongo_to_dict(last_three_minutes_markers)})
 
 
 def get_most_recent_markers():

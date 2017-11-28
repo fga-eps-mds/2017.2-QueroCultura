@@ -181,3 +181,15 @@ function GetColorByType(type) {
 
   return color
 }
+
+function new_markers() {
+    $.ajax({
+      method: "POST",
+      url: "/new_markers",
+      data: {},
+      success: function(data) {
+        loadAndUpdateMarkers(data['markers'], 'gif')
+        updateFeed(data['markers'])
+      }
+    })
+  }
