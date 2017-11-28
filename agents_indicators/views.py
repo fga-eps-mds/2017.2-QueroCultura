@@ -30,9 +30,10 @@ detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 34)},
 
 instances_number = instaces_counter()
 page_type = "Dados Agentes"
+graphic_type = 'agents_graphic_detail'
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type})
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
