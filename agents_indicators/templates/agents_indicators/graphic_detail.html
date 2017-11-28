@@ -2,17 +2,13 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/indicators/indicators-navbar.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
-<link rel="stylesheet" href="{% static 'css/indicators/indicators-content.css' %}"/>
 
 <div class="col-md-12">
     <div>
         <iframe src={{graphic.url|safe}}></iframe>
     </div>
-    <div class="text-chart-init">
-      <p>Adicionar descrição.</p>
-    </div>
+    
 </div>
 
 {% endblock %}
