@@ -15,13 +15,51 @@ class LastUpdateMuseumDate(Document):
         self._create_date = create_date
 
 
+class MuseumArea(Document):
+    _instance = StringField(required=True)
+    _area = StringField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def area(self):
+        return self._area
+
+    @area.setter
+    def area(self, area):
+        self._area = area
+
+class MuseumTags(Document):
+    _instance = StringField(required=True)
+    _tag = StringField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def tag(self):
+        return self._tag
+
+    @tag.setter
+    def tag(self, tag):
+        self._tag = tag
+
+
 class MuseumData(Document):
     _instance = StringField(required=True)
     _museum_type = StringField(required=True)
-    _thematic = StringField(required=True)
-    _sphere = StringField(required=True)
-    _guided_tuor = StringField(required=True)
-    _public_archive = StringField(required=True)
+    _accessibility = StringField(default='Não definido')
     _date = DateTimeField(required=True)
 
     @property
@@ -33,6 +71,14 @@ class MuseumData(Document):
         self._instance = instance
 
     @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
+    @property
     def museum_type(self):
         return self._museum_type
 
@@ -41,41 +87,17 @@ class MuseumData(Document):
         self._museum_type = museum_type
 
     @property
+    def accessibility(self):
+        return self._accessibility
+
+    @accessibility.setter
+    def accessibility(self, accessibility):
+        self._accessibility = accessibility
+
+    @property
     def date(self):
         return self._date
 
     @date.setter
     def date(self, date):
         self._date = date
-
-    @property
-    def thematic(self):
-        return self._thematic
-
-    @thematic.setter
-    def thematic(self, thematic):
-        self._thematic = thematic
-
-    @property
-    def sphere(self):
-        return self._sphere
-
-    @sphere.setter
-    def sphere(self, sphere):
-        self._sphere = sphere
-
-    @property
-    def guided_tuor(self):
-        return self._guided_tuor
-
-    @guided_tuor.setter
-    def guided_tuor(self, guided_tuor):
-        self._guided_tuor = guided_tuor
-
-    @property
-    def public_archive(self):
-        return self._public_archive
-
-    @public_archive.setter
-    def public_archive(self, public_archive):
-        self._public_archive = public_archive
