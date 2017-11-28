@@ -186,6 +186,7 @@ function new_markers() {
     $.ajax({
       method: "POST",
       url: "/new_markers",
+      headers: {'X-CSRFToken': generated_csrf_token},
       data: {},
       success: function(data) {
         loadAndUpdateMarkers(data['markers'], 'gif')

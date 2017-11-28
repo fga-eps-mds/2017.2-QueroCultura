@@ -35,6 +35,7 @@ crossorigin=""></script>
 
      	$('html').addClass('noscroll').css('top',-scrollTop);
   	}
+	var generated_csrf_token = "{{ csrf_token }}"
 
 	lastDayData = {{get_last_day_markers|safe}}
 	lastHourData = {{get_last_hour_markers|safe}}
