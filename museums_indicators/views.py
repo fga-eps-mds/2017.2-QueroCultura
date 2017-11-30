@@ -16,16 +16,14 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 urls = ["http://museus.cultura.gov.br/api/"]
 
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 18)},
-                    {'id':2, 'url':get_metabase_url(view_type, 19)},
-                    {'id':3, 'url':get_metabase_url(view_type, 20)},
-                    {'id':4, 'url':get_metabase_url(view_type, 21)},
-                    {'id':5, 'url':get_metabase_url(view_type, 22)},
-                    {'id':6, 'url':get_metabase_url(view_type, 23)},
-                    {'id':7, 'url':get_metabase_url(view_type, 24)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 20)},
+                    {'id':2, 'url':get_metabase_url(view_type, 22)},
+                    {'id':3, 'url':get_metabase_url(view_type, 24)},
+                    {'id':4, 'url':get_metabase_url(view_type, 41)},
+                    {'id':5, 'url':get_metabase_url(view_type, 42)}]
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 40)},
+                {'id':2, 'url':get_metabase_url(view_type, 23)}]
 
 instances_number = instaces_counter()
 page_type = "Dados Museus"

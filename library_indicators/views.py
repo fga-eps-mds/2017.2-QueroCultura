@@ -18,14 +18,14 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 view_type = "question"
 metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25)},
                     {'id':2, 'url':get_metabase_url(view_type, 26)},
-                    {'id':3, 'url':get_metabase_url(view_type, 27)},
-                    {'id':4, 'url':get_metabase_url(view_type, 28)},
-                    {'id':5, 'url':get_metabase_url(view_type, 29)}]
+                    {'id':3, 'url':get_metabase_url(view_type, 28)},
+                    {'id':4, 'url':get_metabase_url(view_type, 29)},
+                    {'id':5, 'url':get_metabase_url(view_type, 27)}]
 
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38)},
+                {'id':2, 'url':get_metabase_url(view_type, 39)}]
 
 instances_number = instaces_counter()
 page_type = "Dados Bibliotecas"
