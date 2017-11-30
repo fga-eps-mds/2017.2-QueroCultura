@@ -24,7 +24,7 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2,"true")},
 
 detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
                 {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 40,"false")}]
+                {'id':3, 'url':get_metabase_url(view_type, 43,"false")}]
 
 page_type = "Espaços"
 graphic_type = 'space_graphic_detail'

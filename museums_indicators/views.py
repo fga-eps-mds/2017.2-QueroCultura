@@ -23,7 +23,8 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 20,"true")},
                     {'id':5, 'url':get_metabase_url(view_type, 42,"true")}]
 
 detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 40,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 23,"false")}]
+                {'id':2, 'url':get_metabase_url(view_type, 23,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 43,"false")}]
 
 
 page_type = "Museus"
