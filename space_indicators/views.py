@@ -15,22 +15,22 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2)},
-                    {'id':2, 'url':get_metabase_url(view_type, 4)},
-                    {'id':3, 'url':get_metabase_url(view_type, 3)},
-                    {'id':4, 'url':get_metabase_url(view_type, 7)},
-                    {'id':5, 'url':get_metabase_url(view_type, 6)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 4,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 3,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 7,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 6,"true")}]
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 40,"false")}]
 
-instances_number = instaces_counter()
-page_type = "Dados Projetos"
+page_type = "Espaços"
 graphic_type = 'space_graphic_detail'
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})

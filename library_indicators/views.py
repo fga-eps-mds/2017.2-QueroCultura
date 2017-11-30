@@ -16,23 +16,24 @@ urls = ["http://bibliotecas.cultura.gov.br/api/"]
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25)},
-                    {'id':2, 'url':get_metabase_url(view_type, 26)},
-                    {'id':3, 'url':get_metabase_url(view_type, 27)},
-                    {'id':4, 'url':get_metabase_url(view_type, 28)},
-                    {'id':5, 'url':get_metabase_url(view_type, 29)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 26,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 27,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 28,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 29,"true")}]
 
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38)},
-                {'id':2, 'url':get_metabase_url(view_type, 39)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 39,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 40,"false")}]
 
-instances_number = instaces_counter()
-page_type = "Dados Bibliotecas"
+
+page_type = "Bibliotecas"
 graphic_type = 'library_graphic_detail'
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})

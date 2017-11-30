@@ -11,21 +11,22 @@ from quero_cultura.views import instaces_counter
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 10)},
-                    {'id':2, 'url':get_metabase_url(view_type, 11)},
-                    {'id':3, 'url':get_metabase_url(view_type, 12)},
-                    {'id':4, 'url':get_metabase_url(view_type, 13)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 10,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 11,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 12,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 13,"true")}]
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 40,"false")}]
 
-instances_number = instaces_counter()
-page_type = "Dados Projetos"
+
+page_type = "Projetos"
 graphic_type = 'project_graphic_detail'
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]

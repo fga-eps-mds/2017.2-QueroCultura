@@ -14,23 +14,23 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 urls = ["http://museus.cultura.gov.br/api/"]
 
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 18)},
-                    {'id':2, 'url':get_metabase_url(view_type, 19)},
-                    {'id':3, 'url':get_metabase_url(view_type, 20)},
-                    {'id':4, 'url':get_metabase_url(view_type, 21)},
-                    {'id':5, 'url':get_metabase_url(view_type, 22)},
-                    {'id':6, 'url':get_metabase_url(view_type, 23)},
-                    {'id':7, 'url':get_metabase_url(view_type, 24)}]
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 18,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 19,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 20,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 21,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 22,"true")},
+                    {'id':6, 'url':get_metabase_url(view_type, 23,"true")},
+                    {'id':7, 'url':get_metabase_url(view_type, 24,"true")}]
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36)},
-                {'id':2, 'url':get_metabase_url(view_type, 37)}]
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 40,"false")}]
 
-instances_number = instaces_counter()
-page_type = "Dados Museus"
+page_type = "Museus"
 graphic_type = 'museums_graphic_detail'
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'instances_number':instances_number, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
