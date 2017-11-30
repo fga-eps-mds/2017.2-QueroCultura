@@ -7,43 +7,45 @@
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-container.css' %}"/>
 <link rel="stylesheet" href="{% static 'css/indicators/indicators-detail.css' %}"/>
 
+<div class="col-md-12 container-indicators">
+  <div class="title">
+      <center>
+          <h1>
+            Dados de {{page_type}}
+          </h1>
+      </center>
+  </div>
+  <div class="row">
+{% for number_detail in detailed_data %}
 
-<div class="title">
-    <center>
-        <h1>
-            {{page_type}}
-        </h1>
-    </center>
+    <div class="col-md-4">
+      <iframe class="detailed_data" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
+    </div>
+
+{% endfor %}
+  </div>
 </div>
 
-<div class="row detailedData flex">
-  <div class="col-md-4 center left-col flex">
-    <iframe class="detailed_data" scrolling="no" src="{{detailed_data.0.url|safe}}"></iframe>
+<div class="col-md-12 container-indicators" style="background-color:#dbdbdb;">
+  <div class="title">
+      <center>
+          <h1>
+              Gráficos
+          </h1>
+      </center>
   </div>
 
-  <div class="col-md-4 center flex">
-    <h3 class="detailed-title">Número de instancias usadas nos registros</h3>
-    <span class="f-48">{{instances_number}}</span>
-    <br>
-  </div>
-
-  <div class="col-md-4 right-col center flex">
-    <br>
-    <iframe class="detailed_data" scrolling="no" src="{{detailed_data.1.url|safe}}"></iframe>
-  </div>
-
-<div class="col-md-12 container-indicators">
     <div class="row">
 
         {% for graphic in metabase_graphics %}
-        <div class="col-md-4">
+        <div class="col-md-4 ">
             <div id="area" class="chart-group">
                 <div class="chart-container">
                     <iframe scrolling="no" src={{graphic.url|safe}}></iframe>
                 </div>
-                <a id="graphicLink" href="{%url graphic_type graphic.id %}">
+                <a href="{%url graphic_type graphic.id %}">
                     <div class="text-chart-init">
-                        <p></p>
+                        <p>Link</p>
                     </div>
                 </a>
             </div>

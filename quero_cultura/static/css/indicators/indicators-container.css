@@ -71,3 +71,10 @@ iframe{
   color: gray;
   font-weight: bold;
 }
+
+.big-chart{
+
+	width: 100%;
+	height: 600px;
+
+}
