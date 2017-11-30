@@ -4,6 +4,7 @@ from quero_cultura.views import get_metabase_url
 from project_indicators.views import clean_url
 from .models import LibraryArea
 from .models import LibraryData
+from .models import LibraryTags
 from .models import LastUpdateLibraryDate
 from datetime import datetime
 from django.shortcuts import render
@@ -11,7 +12,6 @@ from celery.decorators import task
 from quero_cultura.views import instaces_counter
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
-urls = ["http://bibliotecas.cultura.gov.br/api/"]
 
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
@@ -46,17 +46,28 @@ def populate_library_data():
     size = LastUpdateLibraryDate.objects.count()
     last_update = LastUpdateLibraryDate.objects[size - 1].create_date
 
-    # parser_yaml = ParserYAML()
-    # urls = parser_yaml.get_multi_instances_urls
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
         request = RequestLibraryRawData(last_update, url).data
         new_url = clean_url(url)
         for library in request:
             date = library["createTimestamp"]['date']
-            LibraryData(new_url, str(library['esfera']),
-                        str(library['esfera_tipo']), date).save()
+
+            accessibility = library["acessibilidade"]
+            if accessibility == '':
+                accessibility = None
+
+            LibraryData(new_url,
+                       library["type"]['name'],
+                       accessibility,
+                       date).save()
+
             for area in library["terms"]["area"]:
                 LibraryArea(new_url, area).save()
+
+            for tag in library["terms"]["tag"]:
+                LibraryTags(new_url, tag).save()
 
     LastUpdateLibraryDate(str(datetime.now())).save()

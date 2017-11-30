@@ -4,11 +4,16 @@ import jwt
 
 
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
-METABASE_SITE_URL = "http://0.0.0.0:3000"
+METABASE_SITE_URL = "http://localhost:3000"
 
 
 def index(request):
-    return render(request, 'quero_cultura/index.html', {})
+    parseYaml = ParserYAML()
+    urls = parseYaml.get_multi_instances_urls
+    context = {
+        "urls": urls,
+    }
+    return render(request, 'quero_cultura/index.html', context)
 
 
 class ParserYAML(object):
