@@ -27,7 +27,7 @@ class ParserYAML(object):
         return self._multi_instances_urls
 
 
-def get_metabase_url(view_type, number):
+def get_metabase_url(view_type, number,has_title):
     payload = {"resource": {view_type: number},
                "params": {}}
 
@@ -35,4 +35,12 @@ def get_metabase_url(view_type, number):
     token = str(token).replace("b'", "")
     token = token.replace("'", "")
 
-    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled=true"
+    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled="+ has_title
+
+
+
+def instaces_counter():
+    parser_yaml = ParserYAML()
+    count = len(parser_yaml.get_multi_instances_urls)
+
+    return count

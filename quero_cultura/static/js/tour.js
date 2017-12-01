@@ -34,7 +34,7 @@ function startIntro(){
 
           {
 
-             intro: '<h2>Filtro</h2>Nos filtos você pode escolher quais marcadores gostarai de ver e escolher a cor do mapa',
+             intro: '<h2>Filtro</h2>Nos filtos você pode escolher quais marcadores gostaria de ver e escolher a cor do mapa',
              element: ".leaflet-control-layers-toggle"
           },
 
@@ -45,19 +45,19 @@ function startIntro(){
 
           {
 
-             intro: '<h2>Agentes</h2> Os marcadores de agentes: <img src="static/images/markerAgent.png" height="35" /><br> Marcadores de projetos: <img src="static/images/markerProject.png" height="35px" alt="" /><br> Marcadores de Espaço: <img src="static/images/markerSpace.png" height="35px" alt="" /><br> Marcadores de evento: <br><img src="static/images/markerEvent.png" height="35px" alt="" /> ',
+             intro: '<h2>Tipos de marcadores</h2> Os marcadores de agentes: <img src="static/images/markerAgent.png" height="35" /><br> Marcadores de projetos: <img src="static/images/markerProject.png" height="35px" alt="" /><br> Marcadores de Espaço: <img src="static/images/markerSpace.png" height="35px" alt="" /><br> Marcadores de evento: <br><img src="static/images/markerEvent.png" height="35px" alt="" /> ',
           },
 
 
           {
 
-             intro: '<h2>Feed de atualizações</h2>O feed exibe as ultimas atualizações do registros da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
+             intro: '<h2>Feed de atualizações</h2>O feed exibe as últimas atualizações do registros da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>.',
               element: ".block"
 
           },
 
           {
-            intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na caixa de dialogo ao lado ',
+            intro: '<h2>Indicadores</h2> Os indicadores são informações determinadas pelos os dados coletados da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>, você pode ver as opções de indicadores na barra de navegação.',
             element: '.navbar-nav'
 
           },

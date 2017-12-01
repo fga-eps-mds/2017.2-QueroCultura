@@ -8,20 +8,32 @@ from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from celery.decorators import task
 from .models import OccupationArea
+from quero_cultura.views import instaces_counter
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
+# Get graphics urls from metabase
+# To add new graphis, just add in the metabase_graphics variable
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 4,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 3,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 7,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 6,"true")}]
+
+
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 43,"false")}]
+
+page_type = "Espaços"
+graphic_type = 'space_graphic_detail'
 
 def index(request):
-    view_type = "question"
-
-    url = {"graphic1": get_metabase_url(view_type, 2),
-           "graphic2": get_metabase_url(view_type, 4),
-           "graphic3": get_metabase_url(view_type, 3),
-           "graphic4": get_metabase_url(view_type, 7),
-           "graphic5": get_metabase_url(view_type, 6)}
-    return render(request, 'space_indicators/space-indicators.html', url)
-
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_space_data")
 def populate_space_data():
