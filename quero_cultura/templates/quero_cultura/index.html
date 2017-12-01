@@ -17,19 +17,23 @@
 				</div>
 			</div>
   	</div>
+	</body>
 
-</body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
 integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
 crossorigin=""></script>
 <script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js"></script>
 
+
 <script type = "text/javascript" src="static/js/marker_creators.js"></script>
 <script type = "text/javascript" src="static/js/connections.js"></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
 	<script>
+
+		var instanceList = {{urls|safe}}
+
 		if ($(document).height() > $(window).height()) {
  			var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
 
@@ -40,16 +44,11 @@ crossorigin=""></script>
 		var hour = 60
 		var lastMinutes = 10
 		var minute = 1
-		console.log(lastDayData)
-		console.log(lastHourData)
-		console.log(lastMinuteData)
     	loadAndUpdateMarkers(day, lastDayData, 'png')
 		loadAndUpdateMarkers(hour, lastHourData, 'gif')
 		loadAndUpdateMarkers(lastMinutes, lastMinuteData, 'gif')
 		setInterval(function(){loadAndUpdateMarkers(minute, lastMinuteData, 'gif')}, 60000)
 
 
-
 	</script>
-
 	{% endblock %}

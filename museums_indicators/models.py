@@ -1,112 +1,103 @@
 from mongoengine import Document
-from mongoengine import DictField
-from mongoengine import IntField
 from mongoengine import StringField
+from mongoengine import DateTimeField
 
-# -------------------- state indicators --------------------------------
 
-
-class PercentMuseums(Document):
-
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_museums = IntField(required=True)
+class LastUpdateMuseumDate(Document):
     _create_date = StringField(required=True)
-
-    @property
-    def total_museums(self):
-        return self._total_museums
-
-    @total_museums.setter
-    def total_museums(self, number):
-        self._total_museums = number
 
     @property
     def create_date(self):
         return self._create_date
 
     @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
+    def create_date(self, create_date):
+        self._create_date = create_date
 
 
-class PercentThematicsMuseums(PercentMuseums):
-    _thematics_museums = DictField(required=True)
-
-    @property
-    def thmeatics_museums(self):
-        return self._thematics_museums
-
-    @thmeatics_museums.setter
-    def thmeatics_museums(self, number):
-        self._thematics_museums = number
-
-
-class PercentTypeMuseums(PercentMuseums):
-    _type_museums = DictField(required=True)
+class MuseumArea(Document):
+    _instance = StringField(required=True)
+    _area = StringField(required=True)
 
     @property
-    def type_museums(self):
-        return self._type_museums
+    def instance(self):
+        return self._instance
 
-    @type_museums.setter
-    def type_museums(self, number):
-        self._type_museums = number
-
-
-class PercentPublicOrPrivateMuseums(PercentMuseums):
-    _total_public_private_museums = DictField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_public_private_museums(self):
-        return self._total_public_private_museums
+    def area(self):
+        return self._area
 
-    @total_public_private_museums.setter
-    def total_public_private_museums(self, number):
-        self._total_public_private_museums = number
+    @area.setter
+    def area(self, area):
+        self._area = area
 
-
-class AmountMuseumsRegisteredYear(Document):
-    _total_museums_registered_year = DictField(required=True)
-    _create_date = StringField(required=True)
-
-    @property
-    def total_museums_registered_year(self):
-        return self._total_museums_registered_year
-
-    @total_museums_registered_year.setter
-    def total_museums_registered_year(self, number):
-        self._total_museums_registered_year = number
+class MuseumTags(Document):
+    _instance = StringField(required=True)
+    _tag = StringField(required=True)
 
     @property
-    def create_date(self):
-        return self._create_date
+    def instance(self):
+        return self._instance
 
-    @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
-
-
-class PercentMuseumsPromoteGuidedTour(PercentMuseums):
-    _total_museums_promote_guide = DictField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_museums_promote_guide(self):
-        return self._total_museums_promote_guide
+    def tag(self):
+        return self._tag
 
-    @total_museums_promote_guide.setter
-    def total_museums_promote_guide(self, number):
-        self._total_museums_promote_guide = number
+    @tag.setter
+    def tag(self, tag):
+        self._tag = tag
 
 
-class PercentMuseumsHistoricalArchivePublicAccess(PercentMuseums):
-    _total_museums_historical = DictField(required=True)
+class MuseumData(Document):
+    _instance = StringField(required=True)
+    _museum_type = StringField(required=True)
+    _accessibility = StringField(default='Não definido')
+    _date = DateTimeField(required=True)
 
     @property
-    def total_museums_historical(self):
-        return self._total_museums_historical
+    def instance(self):
+        return self._instance
 
-    @total_museums_historical.setter
-    def total_museums_historical(self, number):
-        self._total_museums_historical = number
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
+    @property
+    def museum_type(self):
+        return self._museum_type
+
+    @museum_type.setter
+    def museum_type(self, museum_type):
+        self._museum_type = museum_type
+
+    @property
+    def accessibility(self):
+        return self._accessibility
+
+    @accessibility.setter
+    def accessibility(self, accessibility):
+        self._accessibility = accessibility
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, date):
+        self._date = date
