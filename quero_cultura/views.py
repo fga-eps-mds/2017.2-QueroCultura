@@ -21,18 +21,11 @@ MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
 def load_markers(requested_time):
 
-    requested_time_difference = datetime.timedelta(minutes=requested_time)
-
-    now = datetime.datetime.now()
-
-    query_date_time = now - requested_time_difference
-
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
-
     for url in urls:
         for marker_type in MARKER_TYPES:
-            request = RequestMarkersRawData(query_date_time,
+            request = RequestMarkersRawData(requested_time,
                                             url, marker_type)
             save_markers_data(request.data, marker_type)
 
@@ -124,6 +117,7 @@ def get_date(j_object, which_timestamp):
 
     return date
 
+
 def get_location(j_object, marker_type):
     if marker_type == 'project':
         if j_object['owner'] is not None:
@@ -152,6 +146,7 @@ def remove_expired_markers():
         if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
             marker.delete()
 
+
 def update_last_request_date(new_date):
     print('AUPDATING LAST REQUEST TABLE')
     LastRequest.objects.all().delete()
@@ -159,7 +154,15 @@ def update_last_request_date(new_date):
     last_request_date.save()
 
 
+def get_last_request_date():
+    try:
+        return LastRequest.objects.all().order_by('-date')[:1][0].date
+    except IndexError as e:
+        return get_time_now() - datetime.timedelta(days=1)
+
+
 def get_time_now():
+    # 2 hours Timezone GMT-3
     cur_date = datetime.datetime.now() - datetime.timedelta(hours=2)
     return cur_date
 
@@ -169,14 +172,13 @@ def verify_database_state(query_time, valid_request_date):
     cur_date = get_time_now()
 
 
-    if Marker.objects.count() == 0:
+    last_request_date = get_last_request_date()
+
+
+    if (Marker.objects.count() == 0 or cur_date > last_request_date + valid_request_date):
         update_last_request_date(cur_date)
-        load_markers(query_time)
-    else:
-        last_request_date = LastRequest.objects.all().order_by('-date')[:1][0].date
-        if cur_date > last_request_date + valid_request_date:
-            update_last_request_date(cur_date)
-            load_markers(query_time)
+        load_markers(last_request_date)
+
 
 def get_last_day_markers():
 
@@ -218,6 +220,7 @@ def convert_mongo_to_dict(mongo_objects):
         result.append(dict(new_marker))
 
     return result
+
 
 def get_last_hour_markers():
 
@@ -261,7 +264,7 @@ def get_last_three_minutes_test(request):
 
 
 def get_most_recent_markers():
-    ordered_markers = Marker.objects.order_by('action_time')
+    ordered_markers = Marker.objects.order_by('-action_time')
     last_minute_markers = []
 
     n_of_markers = 5

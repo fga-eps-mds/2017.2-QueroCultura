@@ -50,7 +50,8 @@ crossorigin=""></script>
 	loadAndUpdateMarkers(lastMinuteData, 'gif')
 	updateFeed(most_recent_markers)
 
-	setInterval(function(){new_markers()}, 20000)
+	// 3 Minutes in seconds in milliseconds
+	setInterval(function(){new_markers()}, 3*60*1000)
 
 
 
