@@ -137,7 +137,7 @@ function create_feed_block(html){
 }
 
 function AddHTMLToFeed(marker, url){
-    color = GetColorByType(type)
+    color = GetColorByType(marker.marker_type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
                        "<svg>"+
@@ -157,29 +157,31 @@ function AddHTMLToFeed(marker, url){
 }
 
 function GetColorByType(type) {
-  var color = "red";
-  switch (type) {
-    case 'projeto':
-      color = "#28a745"
-      break
 
-    case 'espaco':
-      color = "#dc3545"
-      break
+    console.log(type)
+    var color = "red";
+    switch (type) {
+        case 'project':
+            color = "#28a745"
+            break
 
-    case 'agente':
-      color = "#17a2b8"
-      break
+        case 'space':
+            color = "#dc3545"
+            break
 
-    case 'evento':
-      color = "#ffc107"
-      break
+        case 'agent':
+            color = "#17a2b8"
+            break
 
-    default:
-      color = "black"
-  }
+        case 'event':
+            color = "#ffc107"
+            break
 
-  return color
+        default:
+            color = "black"
+    }
+
+    return color
 }
 
 function new_markers() {
