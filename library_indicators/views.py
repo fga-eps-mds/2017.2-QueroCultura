@@ -9,7 +9,6 @@ from .models import LastUpdateLibraryDate
 from datetime import datetime
 from django.shortcuts import render
 from celery.decorators import task
-from quero_cultura.views import instaces_counter
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
@@ -26,7 +25,7 @@ metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25,"true")},
 
 detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38,"false")},
                 {'id':2, 'url':get_metabase_url(view_type, 39,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 43,"false")}]
+                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
 
 
 page_type = "Bibliotecas"
