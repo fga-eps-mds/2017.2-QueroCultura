@@ -46,3 +46,112 @@ def choose_select(marker_type):
         raise ValueError('Invalid marker type')
 
     return select
+
+
+def filter_data(j_object, marker_type):
+    marker = {}
+    marker['name'] = get_attribute(j_object, 'name')
+    marker['single_url'] = get_attribute(j_object, 'singleUrl')
+    marker['platform_id'] = get_attribute(j_object, 'id')
+
+    marker['subsite'] = get_attribute(j_object, 'subsite')
+    marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
+
+    create_timestamp = get_date(j_object, 'createTimestamp')
+    update_timestamp = get_date(j_object, 'updateTimestamp')
+    action = get_marker_action(create_timestamp, update_timestamp)
+
+    marker['create_timestamp'] = create_timestamp
+    marker['update_timestamp'] = update_timestamp
+    marker['action_time'] = action['time']
+    marker['action_type'] = action['type']
+
+    marker['location'] = get_location(j_object, marker_type)
+    marker['city'], marker['state'] = get_marker_address(marker['location'])
+
+    return marker
+
+
+# We need this method because some API data are
+# inconsistent then we use this method to avoid
+# unexpected errors
+def get_attribute(j_object, key):
+    try:
+        attribute = j_object[key]
+    except:
+        attribute = ''
+
+    return attribute
+
+
+# To know which action was executed (create or update)
+# at the mapas platform we use this method
+def get_marker_action(create_timestamp, update_timestamp):
+    action = {}
+
+    if update_timestamp is None or update_timestamp == '':
+        action['type'] = 'Criação'
+        action['time'] = create_timestamp
+    else:
+        action['type'] = 'Atualização'
+        action['time'] = update_timestamp
+
+    return action
+
+
+# The API's used by this project doesn't give the
+# specific address information like city or state
+# but only latitude and longitude so to get this
+# information we request from a third party service
+def get_marker_address(location):
+    if location is not None:
+        if location['latitude'] != '0' or location['longitude'] != '0':
+
+            latitude = "lat="+location['latitude']
+            longitude = "lon="+location['longitude']
+            base_url = "http://nominatim.openstreetmap.org/reverse?"
+
+            open_street_url = base_url+latitude+"&"+longitude+"&format=json"
+
+            data = json.loads(requests.get(open_street_url).text)
+            try:
+                return (data['address']['city_district'],
+                        data['address']['state'])
+            except:
+                return('', '')
+
+    return (None, None)
+
+
+def get_date(j_object, which_timestamp):
+    timestamp = get_attribute(j_object, which_timestamp)
+    if timestamp is not None and timestamp != '':
+        date = timestamp['date']
+    else:
+        date = None
+
+    return date
+
+
+# Each type of marker has your own way
+# to storage the location information
+# so we have a specific logic for each type
+def get_location(j_object, marker_type):
+    if marker_type == 'project':
+        if j_object['owner'] is not None:
+            location = j_object['owner']['location']
+        else:
+            location = {'latitude': '0', 'longitude': '0'}
+
+    elif marker_type == 'event':
+        try:
+            location = j_object['occurrences'].pop()['space']['location']
+        except:
+            location = {'latitude': '0', 'longitude': '0'}
+    else:
+        try:
+            location = j_object['location']
+        except:
+            location = {'latitude': '0', 'longitude': '0'}
+
+    return location
