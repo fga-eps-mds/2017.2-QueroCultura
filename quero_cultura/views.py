@@ -155,10 +155,15 @@ def update_last_request_date(new_date):
 
 
 def get_last_request_date():
+    default_oldest_date = get_time_now() - datetime.timedelta(days=1)
     try:
-        return LastRequest.objects.all().order_by('-date')[:1][0].date
+        last_date = LastRequest.objects.all().order_by('-date')[:1][0].date
+        if(last_date < default_oldest_date):
+            return default_oldest_date
+        else:
+            return last_date
     except IndexError as e:
-        return get_time_now() - datetime.timedelta(days=1)
+        return default_oldest_date
 
 
 def get_time_now():
