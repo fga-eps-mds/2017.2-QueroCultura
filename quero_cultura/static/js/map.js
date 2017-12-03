@@ -94,26 +94,6 @@ function loadMarkers(markerType, imageExtension, markerData) {
 }
 
 
-function create_url_to_feed(value){
-    return new Promise((resolve, reject) =>{
-        console.log(value)
-        if(value['subsite'] === "null" || value['subsite'] === null){
-            resolve(value['single_url'])
-        }else{
-            var splitUrl = value["single_url"].split("/")
-            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
-
-            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value['subsite'])
-            promise.then(function(subsiteData) {
-                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["platform_id"]
-                console.log(url)
-                resolve(url)
-            });
-        }
-    })
-}
-
-
 function updateFeed(recent_markers) {
     recent_markers.forEach(async function(value){
 
@@ -146,7 +126,7 @@ function AddHTMLToFeed(marker, url){
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+url+"' target='_blank'>"+marker.name+"</a>"+
+                       "<a href='"+marker.instance_url+"' target='_blank'>"+marker.name+"</a>"+
                        "<p>"+marker.action_type+""+ "<br>"
                             +marker.action_time.substring(0, 19)+"<br>"
                             +marker.city+ ' - ' + marker.state+

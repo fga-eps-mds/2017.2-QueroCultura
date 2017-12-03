@@ -66,28 +66,9 @@ function requestSubsite(url, subsiteID){
 /* Create a popup to marker
 */
 function createPopup(data,marker){
-
-    // Check if exist an subsite link, if exist, change url to subsite.
-    if(data['subsite'] === "null"){
-        //In normal flux, doesn't exist subsite and we use "singleUrl"
-        var popup = '<h6><b>Nome:</b></h6>'+data.name+
-                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.single_url+'>Clique aqui</a>'
-        marker.bindPopup(popup);
-    }else{
-        // remove a marker type to url
-        var splitUrl = data.single_url.split("/")
-        type = splitUrl[3]
-
-        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
-
-        var promise = requestSubsite(instanceUrl+'/api/subsite/find', data.subsite)
-        promise.then(function(subsiteData) {
-            linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
-            var popup = '<h6><b>Nome:</b></h6>'+data.name+
-                        '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
-            marker.bindPopup(popup);
-        });
-    }
+    var popup = '<h6><b>Nome:</b></h6>'+data.name+
+                '<h6><b>Link:</b></h6><a target="_blank" href='+data.instance_url+'>Clique aqui</a>'
+    marker.bindPopup(popup);
 }
 
 function addMarkerToMap(data, icon, imageExtension, featureGroup, latitude, longitude){
