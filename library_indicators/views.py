@@ -4,26 +4,38 @@ from quero_cultura.views import get_metabase_url
 from project_indicators.views import clean_url
 from .models import LibraryArea
 from .models import LibraryData
+from .models import LibraryTags
 from .models import LastUpdateLibraryDate
 from datetime import datetime
 from django.shortcuts import render
 from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
-urls = ["http://bibliotecas.cultura.gov.br/api/"]
 
+# Get graphics urls from metabase
+# To add new graphis, just add in the metabase_graphics variable
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 26,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 27,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 28,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 29,"true")}]
+
+
+
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 39,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+
+
+page_type = "Bibliotecas"
+graphic_type = 'library_graphic_detail'
 
 def index(request):
-    view_type = "question"
-
-    url = {"graphic1": get_metabase_url(view_type, 25),
-           "graphic2": get_metabase_url(view_type, 26),
-           "graphic3": get_metabase_url(view_type, 27),
-           "graphic4": get_metabase_url(view_type, 28),
-           "graphic5": get_metabase_url(view_type, 29)}
-
-    return render(request, 'library_indicators/library.html', url)
-
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 @task(name="populate_library_data")
 def populate_library_data():
@@ -33,17 +45,28 @@ def populate_library_data():
     size = LastUpdateLibraryDate.objects.count()
     last_update = LastUpdateLibraryDate.objects[size - 1].create_date
 
-    # parser_yaml = ParserYAML()
-    # urls = parser_yaml.get_multi_instances_urls
+    parser_yaml = ParserYAML()
+    urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
         request = RequestLibraryRawData(last_update, url).data
         new_url = clean_url(url)
         for library in request:
             date = library["createTimestamp"]['date']
-            LibraryData(new_url, str(library['esfera']),
-                        str(library['esfera_tipo']), date).save()
+
+            accessibility = library["acessibilidade"]
+            if accessibility == '':
+                accessibility = None
+
+            LibraryData(new_url,
+                       library["type"]['name'],
+                       accessibility,
+                       date).save()
+
             for area in library["terms"]["area"]:
                 LibraryArea(new_url, area).save()
+
+            for tag in library["terms"]["tag"]:
+                LibraryTags(new_url, tag).save()
 
     LastUpdateLibraryDate(str(datetime.now())).save()
