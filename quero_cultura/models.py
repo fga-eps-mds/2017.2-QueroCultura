@@ -16,6 +16,7 @@ class Marker(Document):
     state = StringField(default=None)
     single_url = URLField(default='')
     subsite = IntField(default=None)
+    instance_url = StringField(required=True)
     create_time_stamp = DateTimeField(default=None)
     update_time_stamp = DateTimeField(default=None)
     location = DictField(required=True)
@@ -23,3 +24,8 @@ class Marker(Document):
 
 class LastRequest(Document):
     date = DateTimeField(required=True)
+
+
+class Subsite(Document):
+    subsite_id = IntField(required=True)
+    url = StringField(required=True)
