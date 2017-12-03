@@ -174,6 +174,8 @@ def get_location(j_object, marker_type):
     return location
 
 
+# This method reduce the number of requests
+# by saving the visited subsites on the database
 def get_instance_url(j_object):
     
     subsite_id = j_object['subsite']
@@ -195,6 +197,8 @@ def get_instance_url(j_object):
         return j_object['singleUrl']
 
 
+# We need this method to show the specific
+# instance of a marker
 def request_subsite_url(subsite_id, instance_url):
     
     filters = { '@select' : 'url',
