@@ -184,6 +184,8 @@ function GetColorByType(type) {
     return color
 }
 
+// This method is used to receive new markers
+// from django without reload the page
 function new_markers() {
     $.ajax({
       method: "POST",

@@ -1,5 +1,6 @@
 import json
 import requests
+from .models import Marker
 
 
 SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
@@ -33,6 +34,7 @@ class RequestMarkersRawData(object):
         return len(self._data)
 
 
+
 def choose_select(marker_type):
     if marker_type == 'event':
         select = EVENT_SELECT
@@ -46,6 +48,19 @@ def choose_select(marker_type):
         raise ValueError('Invalid marker type')
 
     return select
+
+
+def save_markers_data(data, marker_type):
+    for j_object in data:
+        print(j_object)
+
+        marker = filter_data(j_object, marker_type)
+
+        Marker(marker['platform_id'], marker['name'], marker_type,
+            marker['action_type'], marker['action_time'], marker['city'],
+            marker['state'], marker['single_url'], marker['subsite'],
+            marker['create_timestamp'], marker['update_timestamp'],
+            marker['location']).save()
 
 
 def filter_data(j_object, marker_type):

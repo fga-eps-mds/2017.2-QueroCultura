@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from collections import OrderedDict
-from .api_connections import RequestMarkersRawData
+from .api_connections import RequestMarkersRawData, save_markers_data
 from .models import Marker, LastRequest
 from celery.decorators import task
 from pprint import pprint
@@ -28,19 +28,6 @@ def load_markers(requested_time):
             request = RequestMarkersRawData(requested_time,
                                             url, marker_type)
             save_markers_data(request.data, marker_type)
-
-
-def save_markers_data(data, marker_type):
-    for j_object in data:
-        print(j_object)
-
-        marker = filter_data(j_object, marker_type)
-
-        Marker(marker['platform_id'], marker['name'], marker_type,
-               marker['action_type'], marker['action_time'], marker['city'],
-               marker['state'], marker['single_url'], marker['subsite'],
-               marker['create_timestamp'], marker['update_timestamp'],
-               marker['location']).save()
 
 
 def remove_expired_markers():
@@ -158,7 +145,7 @@ def get_last_three_minutes_markers():
 
     return convert_mongo_to_dict(last_three_minutes_markers)
 
-def get_last_three_minutes_test(request):
+def get_last_minutes_markers_json(request):
 
     three_minutes = 3
 
