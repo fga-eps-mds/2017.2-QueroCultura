@@ -3,3 +3,35 @@ pg_dump -d metabase -U quero_cultura > metabase.sql
 
 psql metabase quero_cultura -f /postgres_metabase/metabase.sql
 psql metabase quero_cultura -f metabase.sql
+
+
+## Query commands in metabase
+
+# Apenas conta:
+[{"$group":{"_id":null,"count":{"$sum":1}}},
+            {"$sort":{"_id":1}},
+            {"$project":{"_id":false,"count":true}}]
+
+# Conta e separa por mes:
+[{"$project":{"_date~~~month":{"$let":{"vars":{"field":"$_date"},"in":{"___date":{"$dateToString":{"format":"%Y-%m","date":"$$field"}}}}}}},
+{"$project":{"_id":"$_id","___group":{"_date~~~month":"$_date~~~month"}}},
+{"$group":{"_id":"$___group","count":{"$sum":1}}},
+{"$sort":{"_id":1}},
+{"$project":{"_id":false,"count":true,"_date~~~month":"$_id._date~~~month"}},
+{"$sort":{"_date~~~month":1}}]
+
+# Conta e separa por instancia:
+[{"$project":{"_instance":"$_instance"}},
+{"$project":{"_id":"$_id","___group":{"_instance":"$_instance"}}},
+{"$group":{"_id":"$___group","count":{"$sum":1}}},
+{"$sort":{"_id":1}},
+{"$project":{"_id":false,"count":true,"_instance":"$_id._instance"}},
+{"$sort":{"_instance":1}}]
+
+# Conta e separa por instancia e por data:
+[{"$project":{"_instance":"$_instance","_date~~~month":{"$let":{"vars":{"field":"$_date"},"in":{"___date":{"$dateToString":{"format":"%Y-%m","date":"$$field"}}}}}}},
+{"$project":{"_id":"$_id","___group":{"_instance":"$_instance","_date~~~month":"$_date~~~month"}}},
+{"$group":{"_id":"$___group","count":{"$sum":1}}},
+{"$sort":{"_id":1}},
+{"$project":{"_id":false,"count":true,"_instance":"$_id._instance","_date~~~month":"$_id._date~~~month"}},
+{"$sort":{"_instance":1,"_date~~~month":1}}]
