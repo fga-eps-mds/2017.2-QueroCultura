@@ -1,6 +1,6 @@
 import json
 import requests
-from .models import Marker
+from .models import Marker, Subsite
 
 
 SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
@@ -59,8 +59,8 @@ def save_markers_data(data, marker_type):
         Marker(marker['platform_id'], marker['name'], marker_type,
             marker['action_type'], marker['action_time'], marker['city'],
             marker['state'], marker['single_url'], marker['subsite'],
-            marker['create_timestamp'], marker['update_timestamp'],
-            marker['location']).save()
+            marker['instance_url'], marker['create_timestamp'],
+            marker['update_timestamp'], marker['location']).save()
 
 
 def filter_data(j_object, marker_type):
@@ -71,6 +71,8 @@ def filter_data(j_object, marker_type):
 
     marker['subsite'] = get_attribute(j_object, 'subsite')
     marker['subsite'] = 0 if marker['subsite'] == '' else marker['subsite']
+
+    marker['instance_url'] = get_instance_url(j_object)
 
     create_timestamp = get_date(j_object, 'createTimestamp')
     update_timestamp = get_date(j_object, 'updateTimestamp')
@@ -170,3 +172,39 @@ def get_location(j_object, marker_type):
             location = {'latitude': '0', 'longitude': '0'}
 
     return location
+
+
+def get_instance_url(j_object):
+    
+    subsite_id = j_object['subsite']
+    splitted_url = j_object['singleUrl'].split('/')
+
+    if subsite_id != 'null' and subsite_id is not None:
+        try:
+            subsite = Subsite.objects.filter(subsite_id=int(subsite_id))[:1].get()
+
+            specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
+
+            return subsite.url + specific_url_info 
+        except Subsite.DoesNotExist:
+            specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
+            instance_url = splitted_url[0] + '//' + splitted_url[2] 
+
+            return  request_subsite_url(subsite_id, instance_url) + specific_url_info
+    else:
+        return j_object['singleUrl']
+
+
+def request_subsite_url(subsite_id, instance_url):
+    
+    filters = { '@select' : 'url',
+                'id': 'eq('+str(subsite_id)+')'
+                }
+    response = requests.get(instance_url + '/api/subsite/find', filters)
+    data = json.loads(response.text)
+
+    subsite_url = 'http://' + data[0]['url']
+    subsite = Subsite(subsite_id, subsite_url)
+    subsite.save()
+
+    return subsite_url
