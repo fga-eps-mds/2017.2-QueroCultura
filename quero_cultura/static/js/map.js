@@ -97,14 +97,13 @@ function loadMarkers(markerType, imageExtension, markerData) {
 function updateFeed(recent_markers) {
     recent_markers.forEach(async function(value){
 
-        var url = await create_url_to_feed(value)
         if(value.city == undefined){
             value.city = ''
         }
         if(value.state == undefined){
             value.state = ''
         }
-        var html = AddHTMLToFeed(value, url)
+        var html = AddHTMLToFeed(value)
         create_feed_block(html)
     },recent_markers)
 
@@ -116,7 +115,7 @@ function create_feed_block(html){
     $(".block" ).scrollTop(height);
 }
 
-function AddHTMLToFeed(marker, url){
+function AddHTMLToFeed(marker){
     color = GetColorByType(marker.marker_type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
@@ -173,8 +172,12 @@ function new_markers() {
       headers: {'X-CSRFToken': generated_csrf_token},
       data: {},
       success: function(data) {
+        console.log(data)
         loadAndUpdateMarkers(data['markers'], 'gif')
         updateFeed(data['markers'])
+      },
+      error: function(error){
+          console.log(error)
       }
     })
   }

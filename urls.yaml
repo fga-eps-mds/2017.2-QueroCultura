@@ -2,7 +2,13 @@ multi-instancias:
   - http://mapas.cultura.gov.br/api/
   - http://spcultura.prefeitura.sp.gov.br/api/
   - http://mapa.cultura.ce.gov.br/api/
-
+  - http://culturaz.santoandre.sp.gov.br/api/
+  - http://estadodacultura.sp.gov.br/api/
+  - http://lugaresdacultura.org.br/api/
+  - http://blumenaumaiscultura.com.br/api/
+  - http://www.mapacultural.pe.gov.br/api/
+  - http://jpcultura.joaopessoa.pb.gov.br/api/
+  
 museus:
   - http://museus.cultura.gov.br/api/space/find
 

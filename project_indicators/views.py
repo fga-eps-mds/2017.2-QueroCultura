@@ -98,6 +98,7 @@ def update_project_indicator():
     new_per_online = {}
 
     for url in urls:
+        print('\n\n\n\n\n\n' + url + '\n\n\n\n\n\n\n')
         request = RequestProjectsRawData(last_update_date, url)
         new_total += request.data_length
 

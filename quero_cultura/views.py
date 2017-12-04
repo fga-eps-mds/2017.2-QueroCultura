@@ -39,7 +39,7 @@ def remove_expired_markers():
 
 
 def update_last_request_date(new_date):
-    print('AUPDATING LAST REQUEST TABLE')
+    print('UPDATING LAST REQUEST TABLE')
     LastRequest.objects.all().delete()
     last_request_date = LastRequest(new_date)
     last_request_date.save()
@@ -132,31 +132,24 @@ def get_last_hour_markers():
     return convert_mongo_to_dict(last_hour_markers)
 
 
-def get_last_three_minutes_markers():
+def get_last_minutes_markers():
 
-    three_minutes = 3
+    minutes = 1
 
     cur_date = get_time_now()
-    three_minutes_behind_date = cur_date - datetime.timedelta(minutes=3)
+    minutes_behind_date = cur_date - datetime.timedelta(minutes=1)
 
-    verify_database_state(three_minutes, datetime.timedelta(minutes=3))
+    verify_database_state(minutes, datetime.timedelta(minutes=1))
 
-    last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
+    last_minutes_markers = Marker.objects.filter(action_time__gte=minutes_behind_date)
 
-    return convert_mongo_to_dict(last_three_minutes_markers)
+    return convert_mongo_to_dict(last_minutes_markers)
+
 
 def get_last_minutes_markers_json(request):
-
-    three_minutes = 3
-
-    cur_date = get_time_now()
-    three_minutes_behind_date = cur_date - datetime.timedelta(minutes=3)
-
-    verify_database_state(three_minutes, datetime.timedelta(minutes=3))
-
-    last_three_minutes_markers = Marker.objects.filter(action_time__gte=three_minutes_behind_date)
-
-    return JsonResponse({'markers': convert_mongo_to_dict(last_three_minutes_markers)})
+    
+    last_minutes_markers = get_last_minutes_markers()
+    return JsonResponse({'markers': last_minutes_markers})
 
 
 def get_most_recent_markers():
@@ -171,13 +164,13 @@ def get_most_recent_markers():
     else:
         last_minute_markers += ordered_markers
 
-    return convert_mongo_to_dict(last_minute_markers)
+    return convert_mongo_to_dict(last_minute_markers[::-1])
 
 
 def index(request):
     markers_context = {"get_most_recent_markers": get_most_recent_markers,
                        "get_last_day_markers": get_last_day_markers,
-                       "get_last_three_minutes_markers": get_last_three_minutes_markers,
+                       "get_last_minutes_markers": get_last_minutes_markers,
                        "get_last_hour_markers": get_last_hour_markers,
                       }
     return render(request, 'quero_cultura/index.html', markers_context)

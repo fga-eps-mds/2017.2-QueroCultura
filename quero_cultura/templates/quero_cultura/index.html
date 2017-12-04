@@ -39,7 +39,7 @@ crossorigin=""></script>
 
 	lastDayData = {{get_last_day_markers|safe}}
 	lastHourData = {{get_last_hour_markers|safe}}
-	lastMinuteData = {{get_last_three_minutes_markers|safe}}
+	lastMinuteData = {{get_last_minutes_markers|safe}}
 	most_recent_markers = {{get_most_recent_markers|safe}}
 	console.log(lastDayData)
 	console.log(lastHourData)
@@ -50,8 +50,8 @@ crossorigin=""></script>
 	loadAndUpdateMarkers(lastMinuteData, 'gif')
 	updateFeed(most_recent_markers)
 
-	// 3 Minutes in seconds in milliseconds
-	setInterval(function(){new_markers()}, 3*60*1000)
+	// 1 minute in milliseconds
+	setInterval(function(){new_markers()}, 60*1000)
 
 
 

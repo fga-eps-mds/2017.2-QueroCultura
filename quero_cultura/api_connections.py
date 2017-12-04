@@ -131,11 +131,20 @@ def get_marker_address(location):
             open_street_url = base_url+latitude+"&"+longitude+"&format=json"
 
             data = json.loads(requests.get(open_street_url).text)
+
             try:
-                return (data['address']['city_district'],
-                        data['address']['state'])
+                city = data['address']['city']
             except:
-                return('', '')
+                try:
+                    city = data['address']['town'] 
+                except:              
+                    city = ''
+            try:
+                state = data['address']['state']
+            except:
+                state = ''
+
+            return(city, state)
 
     return (None, None)
 
