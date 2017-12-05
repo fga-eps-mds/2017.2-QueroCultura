@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^project_indicators', include('project_indicators.urls')),
     url(r'^museums_indicators', include('museums_indicators.urls')),
     url(r'^space_indicators', include('space_indicators.urls')),
+    url(r'^mixed_indicators', include('mixed_indicators.urls')),
     url(r'^new_markers', views.get_last_minutes_markers_json),
 ]
