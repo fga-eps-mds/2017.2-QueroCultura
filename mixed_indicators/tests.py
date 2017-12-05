@@ -18,7 +18,7 @@ class TestLastUpdateMixedDate(object):
         assert query.create_date == create_date
 
 
-class TestSpaceData(object):
+class TestEventAndSpaceData(object):
 
     def test_event_space_data(self):
         EventAndSpaceData.drop_collection()
