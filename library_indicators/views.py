@@ -22,7 +22,6 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 25, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 29, "true")}]
 
 
-
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 38, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 39, "false")},
                  {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
@@ -30,9 +29,21 @@ detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 38, "false")},
 
 page_type = "Bibliotecas"
 graphic_type = 'library_graphic_detail'
+page_descripition = "Biblioteca é todo espaço, seja ele concreto ou virtual "\
+                    + "que reúne coleção de informações de qualquer tipo,"\
+                    + "sejam livros, enciclopédias, dicionário, monografias,"\
+                    + " revista, entre outros. Os gráficos abaixo representam"\
+                    + " indicadores culturais extraidos das Bibliotecas"\
+                    + " cadastradas na plataforma"
+
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+        return render(request, 'quero_cultura/indicators_page.html',
+                      {'metabase_graphics': metabase_graphics,
+                       'detailed_data': detailed_data,
+                       'page_type': page_type,
+                       'graphic_type': graphic_type,
+                       'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):
