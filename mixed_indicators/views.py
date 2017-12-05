@@ -11,7 +11,7 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 # Create your views here.
 def index(request):
-
+    populate_mixed_data()
     return render(request, 'mixed_indicators/mixed-indicators.html')
 
 
