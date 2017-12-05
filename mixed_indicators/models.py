@@ -2,6 +2,7 @@ from mongoengine import Document
 from mongoengine import StringField
 from mongoengine import DateTimeField
 
+
 class LastUpdateMixedDate(Document):
     _create_date = StringField(required=True)
 
@@ -17,17 +18,8 @@ class LastUpdateMixedDate(Document):
 class EventAndSpaceData(Document):
     _instance = StringField(required=True)
     _name = StringField(required=True)
-    _event_id = StringField(required=True)
-    _date = DateTimeField(required=True)
     _accessible_space = StringField(required=True)
-
-    @property
-    def event_id(self):
-        return self._event_id
-
-    @event_id.setter
-    def event_id(self, event_id):
-        self._event_id = event_id
+    _date = DateTimeField(required=True)
 
     @property
     def accessible_space(self):
