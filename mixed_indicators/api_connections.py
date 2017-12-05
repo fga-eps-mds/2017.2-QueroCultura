@@ -46,7 +46,7 @@ class RequestMixedInPeriod(object):
                          'createTimestamp': "BET(" + str(initial_date) + ","
                          + str(final_date) + ")"}
         self._response = requests.get(url+"event/find/", self._filters)
-        self._data = json.loads(self._response.text)
+        return self._response
 
     @property
     def response(self):

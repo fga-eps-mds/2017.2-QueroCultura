@@ -9,14 +9,11 @@ from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from project_indicators.views import clean_url
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
-
-
-# Create your views here.
-
 
 def index(request):
     EventAndSpaceData.drop_collection()
