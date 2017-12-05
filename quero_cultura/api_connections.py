@@ -52,15 +52,14 @@ def choose_select(marker_type):
 
 def save_markers_data(data, marker_type):
     for j_object in data:
-        print(j_object)
 
         marker = filter_data(j_object, marker_type)
 
         Marker(marker['platform_id'], marker['name'], marker_type,
-            marker['action_type'], marker['action_time'], marker['city'],
-            marker['state'], marker['single_url'], marker['subsite'],
-            marker['instance_url'], marker['create_timestamp'],
-            marker['update_timestamp'], marker['location']).save()
+               marker['action_type'], marker['action_time'], marker['city'],
+               marker['state'], marker['single_url'], marker['subsite'],
+               marker['instance_url'], marker['create_timestamp'],
+               marker['update_timestamp'], marker['location']).save()
 
 
 def filter_data(j_object, marker_type):
@@ -136,8 +135,8 @@ def get_marker_address(location):
                 city = data['address']['city']
             except:
                 try:
-                    city = data['address']['town'] 
-                except:              
+                    city = data['address']['town']
+                except:
                     city = ''
             try:
                 state = data['address']['state']
@@ -186,7 +185,7 @@ def get_location(j_object, marker_type):
 # This method reduce the number of requests
 # by saving the visited subsites on the database
 def get_instance_url(j_object):
-    
+
     subsite_id = j_object['subsite']
     splitted_url = j_object['singleUrl'].split('/')
 
@@ -196,10 +195,10 @@ def get_instance_url(j_object):
 
             specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
 
-            return subsite.url + specific_url_info 
+            return subsite.url + specific_url_info
         except Subsite.DoesNotExist:
             specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
-            instance_url = splitted_url[0] + '//' + splitted_url[2] 
+            instance_url = splitted_url[0] + '//' + splitted_url[2]
 
             return  request_subsite_url(subsite_id, instance_url) + specific_url_info
     else:
@@ -209,7 +208,7 @@ def get_instance_url(j_object):
 # We need this method to show the specific
 # instance of a marker
 def request_subsite_url(subsite_id, instance_url):
-    
+
     filters = { '@select' : 'url',
                 'id': 'eq('+str(subsite_id)+')'
                 }

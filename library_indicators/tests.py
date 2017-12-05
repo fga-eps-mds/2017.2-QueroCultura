@@ -1,292 +1,102 @@
 from datetime import datetime
-import unittest
 from .api_connections import RequestLibraryRawData
-from .models import PercentLibraryPerAreaOfActivity
-from .models import PercentPublicOrPrivateLibrary
-from .models import PercentLibraryPerAreaOfActivityPerState
-from .models import PercentPublicOrPrivateLibraryPerState
-from .models import QuantityOfRegisteredlibraries
-from .models import PercentLibrariesTypeSphere
-from .models import PercentLibraryForState
-from .views import update_indicators
-from .views import set_libraries_amount
-from .views import format_date_year
-from .views import format_date_month
-from .views import get_libraries_per_month
-from .views import get_public_libraries
-from .views import get_private_libraries
-from .views import get_all_libraries
-from .views import get_undefined_library
-from .views import get_all_occupation_area
-from .views import get_all_type_sphere
-
-class TestUpdateIndicator(unittest.TestCase):
-
-    @staticmethod
-    def test_get_all_type_sphere():
-        values = {}
-        values = get_all_type_sphere()
-        assert values
-
-    @staticmethod
-    def test_get_public_libraries():
-        value = get_public_libraries()
-        assert value
-
-    @staticmethod
-    def test_get_undefined_libraries():
-        value = get_undefined_library()
-        assert value
-
-    @staticmethod
-    def test_get_all_occupation_area():
-        value = {}
-        value = get_all_occupation_area()
-        assert value
-
-    @staticmethod
-    def test_get_private_libraries():
-        value = get_private_libraries()
-        assert value
-
-    @staticmethod
-    def test_get_all_libraries():
-        value = get_all_libraries()
-        assert value
-
-    @staticmethod
-    def test_get_libraries_per_month():
-        month = {}
-        get_libraries_per_month(month)
-        assert month
-
-    @staticmethod
-    def test_format_date_mouth():
-        date = format_date_month("2012-01-01 15:47:38.337553")
-        assert date == "01"
-
-    @staticmethod
-    def test_format_date_year():
-        date = format_date_year("2012-01-01 15:47:38.337553")
-        assert date == "2012"
-
-    @staticmethod
-    def test_update_indicators():
-        count_percent = 0
-        count_public = 0
-        count_sphere = 0
-        count_activity = 0
-        PercentPublicOrPrivateLibrary.drop_collection()
-        QuantityOfRegisteredlibraries.drop_collection()
-        PercentLibrariesTypeSphere.drop_collection()
-        PercentLibraryPerAreaOfActivity.drop_collection()
-        update_indicators()
-        count_percent += PercentPublicOrPrivateLibrary.objects.count()
-        count_public += QuantityOfRegisteredlibraries.objects.count()
-        count_sphere += PercentLibrariesTypeSphere.objects.count()
-        count_activity += PercentLibraryPerAreaOfActivity.objects.count()
-        result = count_percent + count_public + count_sphere + count_activity
-        assert result == 4
-
-    @staticmethod
-    def test_set_amount_libraries_undefined():
-        undefined_library = 0
-        public_libraries = 0
-        private_libraries = 0
-        total_libraries = 0
-        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
-                                                                                                   public_libraries, private_libraries, total_libraries)
-        assert undefined_library
-
-    @staticmethod
-    def test_set_amount_libraries_total():
-        undefined_library = 0
-        public_libraries = 0
-        private_libraries = 0
-        total_libraries = 0
-        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
-                                                                                                   public_libraries, private_libraries, total_libraries)
-        assert total_libraries
-
-    @staticmethod
-    def test_set_amount_libraries_public():
-        undefined_library = 0
-        public_libraries = 0
-        private_libraries = 0
-        total_libraries = 0
-        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
-                                                                                                   public_libraries, private_libraries, total_libraries)
-        assert public_libraries
-
-    @staticmethod
-    def test_set_amount_libraries_private():
-        undefined_library = 0
-        public_libraries = 0
-        private_libraries = 0
-        total_libraries = 0
-        undefined_library, public_libraries, private_libraries, total_libraries = set_libraries_amount(undefined_library,
-                                                                                                   public_libraries, private_libraries, total_libraries)
-        assert private_libraries
-
-class TestPercentLibraryPerAreaOfActivity(object):
-
-    @staticmethod
-    def test_libraries_per_activity():
-        PercentLibraryPerAreaOfActivity.drop_collection()
-        libraries_per_activity = {'activity area': 20}
-        library_indicator = PercentLibraryPerAreaOfActivity(
-            20, datetime.now(), libraries_per_activity,0)
-        library_indicator.save()
-        query = PercentLibraryPerAreaOfActivity.objects.first()
-        assert query._libraries_per_activity == libraries_per_activity
-
-    @staticmethod
-    def test_total_library():
-        PercentLibraryPerAreaOfActivity.drop_collection()
-        total_libraries = 50
-        library_indicator = PercentLibraryPerAreaOfActivity(
-            total_libraries, datetime.now(), {'activity area': 20},0)
-        library_indicator.save()
-        query = PercentLibraryPerAreaOfActivity.objects.first()
-        assert query._total_libraries == total_libraries
-
-class TestPercentPublicOrPrivateLibrary(object):
-
-    @staticmethod
-    def test_total_public_libraries():
-        PercentPublicOrPrivateLibrary.drop_collection()
-        total_public_library = 50
-        library_indicator = PercentPublicOrPrivateLibrary(
-            20, datetime.now(), total_public_library, 100)
-        library_indicator.save()
-        query = PercentPublicOrPrivateLibrary.objects.first()
-        assert query._total_public_libraries == total_public_library
-
-    @staticmethod
-    def test_total_private_libraries():
-        PercentPublicOrPrivateLibrary.drop_collection()
-        total_private_libraries = 50
-        library_indicator = PercentPublicOrPrivateLibrary(
-            20, datetime.now(), 100, total_private_libraries)
-        library_indicator.save()
-        query = PercentPublicOrPrivateLibrary.objects.first()
-        assert query._total_private_libraries == total_private_libraries
-
-    @staticmethod
-    def test_total_library():
-        PercentPublicOrPrivateLibrary.drop_collection()
-        total_libraries = 50
-        library_indicator = PercentPublicOrPrivateLibrary(
-            total_libraries, datetime.now(), 100, 100)
-        library_indicator.save()
-        query = PercentPublicOrPrivateLibrary.objects.first()
-        assert query._total_libraries == total_libraries
+from .models import LastUpdateLibraryDate
+from .models import LibraryData
+from .models import LibraryArea
+from .models import LibraryTags
+from .views import populate_library_data
+from quero_cultura.views import ParserYAML
+import requests_mock
+import json
 
 
-class TestPercentLibraryPerAreaOfActivityPerState(object):
-
-    @staticmethod
-    def test_total_library_per_area_of_activity_per_state():
-        PercentLibraryPerAreaOfActivityPerState.drop_collection()
-        total_library_per_area_of_activity = {'teste': 20}
-        library_indicator = PercentLibraryPerAreaOfActivityPerState(
-            {'teste': 20}, datetime.now(), total_library_per_area_of_activity)
-        library_indicator.save()
-        query = PercentLibraryPerAreaOfActivityPerState.objects.first()
-        assert query._libraries_per_area_per_state == total_library_per_area_of_activity
+class TestLastUpdateLibraryDate(object):
+    def test_last_library_date(self):
+        LastUpdateLibraryDate.drop_collection()
+        create_date = datetime.now().__str__()
+        LastUpdateLibraryDate(create_date).save()
+        query = LastUpdateLibraryDate.objects.first()
+        assert query.create_date == create_date
 
 
-class TestPercentPublicOrPrivateLibraryPerState(object):
-
-    @staticmethod
-    def test_total_public_libraries():
-        PercentPublicOrPrivateLibraryPerState.drop_collection()
-        total_public_library = {'df': 20}
-        library_indicator = PercentPublicOrPrivateLibraryPerState(
-            {'teste': 20}, datetime.now(), total_public_library, {'df': 20})
-        library_indicator.save()
-        query = PercentPublicOrPrivateLibraryPerState.objects.first()
-        assert query._public_libraries_per_state == total_public_library
-
-    @staticmethod
-    def test_total_private_libraries():
-        PercentPublicOrPrivateLibraryPerState.drop_collection()
-        total_private_libraries = {'df': 20}
-        library_indicator = PercentPublicOrPrivateLibraryPerState(
-            {'teste': 20}, datetime.now(), {'df': 20}, total_private_libraries)
-        library_indicator.save()
-        query = PercentPublicOrPrivateLibraryPerState.objects.first()
-        assert query._private_libraries_per_state == total_private_libraries
-
-class TestQuantityOfRegisteredLibraries(object):
-
-    @staticmethod
-    def test_libraries_registered_monthly():
-        QuantityOfRegisteredlibraries.drop_collection()
-        libraries_monthly = {'julho': 20}
-        library_indicator = QuantityOfRegisteredlibraries(
-            20, datetime.now(), libraries_monthly, {'2015': 20})
-        library_indicator.save()
-        query = QuantityOfRegisteredlibraries.objects.first()
-        assert query._libraries_registered_monthly == libraries_monthly
-
-    @staticmethod
-    def test_libraries_registered_yearly():
-        QuantityOfRegisteredlibraries.drop_collection()
-        libraries_yearly = {'2015': 20}
-        library_indicator = QuantityOfRegisteredlibraries(
-            20, datetime.now(), {'julho': 50}, libraries_yearly)
-        library_indicator.save()
-        query = QuantityOfRegisteredlibraries.objects.first()
-        assert query._libraries_registered_yearly == libraries_yearly
+class TestLibraryArea(object):
+    def test_library_area(self):
+        LibraryArea.drop_collection()
+        instance = "SP"
+        area = "Cinema"
+        LibraryArea(instance, area).save()
+        query = LibraryArea.objects.first()
+        assert query.instance == instance
+        assert query.area == area
 
 
-class TestPercentLibraryTypeSphere(object):
-
-    @staticmethod
-    def test_libraries_registered_monthly():
-        PercentLibrariesTypeSphere.drop_collection()
-        total_libraries_type_sphere = {'type sphere': 20}
-        library_indicator = PercentLibrariesTypeSphere(
-            20, datetime.now(), total_libraries_type_sphere)
-        library_indicator.save()
-        query = PercentLibrariesTypeSphere.objects.first()
-        assert query._total_libraries_type_sphere == total_libraries_type_sphere
+class TestLibraryTags(object):
+    def test_library_area(self):
+        LibraryTags.drop_collection()
+        instance = "SP"
+        tag = "OlavoBilac"
+        LibraryTags(instance, tag).save()
+        query = LibraryTags.objects.first()
+        assert query.instance == instance
+        assert query.tag == tag
 
 
-class TestPercentLibraryForState(object):
+class TestLibraryData(object):
+    def test_library_data(self):
+        LibraryData.drop_collection()
+        instance = "SP"
+        library_type = "Biblioteca Publica"
+        accessibility = "Sim"
+        date = datetime(2017, 11, 14, 3, 5, 55, 88000)
 
-    @staticmethod
-    def test_libraries_for_state():
-        PercentLibraryForState.drop_collection()
-        libraries_for_state = {'df': 20}
-        library_indicator = PercentLibraryForState(
-            20, datetime.now(), libraries_for_state)
-        library_indicator.save()
-        query = PercentLibraryForState.objects.first()
-        assert query._total_libraries_in_state == libraries_for_state
-
-def test_success_request():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    response_library_raw_data = request_library_raw_data.response
-    response_status_code = response_library_raw_data.status_code
-    assert response_status_code == 200
+        LibraryData(instance, library_type, accessibility, date).save()
+        query = LibraryData.objects.first()
+        assert query.instance == instance
+        assert query.library_type == library_type
+        assert query.accessibility == accessibility
+        assert query.date == date
 
 
-def test_data_content():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    library_raw_data = request_library_raw_data.data
-    type_library_raw_data = type(library_raw_data)
-    empty_list = []
-    assert type_library_raw_data == type(empty_list)
+class TestRequestLibraryRawData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_request_library_raw_data(self, **kwargs):
+        url = "http://mapas.cultura.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "acessibilidade": "Sim",
+                   "type": {"id":"20", "name":"Biblioteca Publica"},
+                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+
+        kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
+
+        current_time = datetime.now().__str__()
+        raw_data = RequestLibraryRawData(current_time, url)
+        assert raw_data.response.status_code == 200
+        assert raw_data.data == result
+        assert raw_data.data_length == 1
 
 
-def test_data_lenght():
-    current_time = datetime.now().__str__()
-    request_library_raw_data = RequestLibraryRawData(current_time)
-    library_raw_data = request_library_raw_data.data_length
-    type_library_raw_data = type(library_raw_data)
-    integer = 1
-    assert type_library_raw_data == type(integer)
+class TestPopulateLibraryData(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_library_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "acessibilidade": "Sim",
+                   "type": {"id":"20", "name":"Biblioteca Publica"},
+                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
+
+        LastUpdateLibraryDate.drop_collection()
+        LibraryData.drop_collection()
+        LibraryArea.drop_collection()
+        LibraryTags.drop_collection()
+
+        populate_library_data()
+
+        assert LastUpdateLibraryDate.objects.count() != 0
+        assert LibraryData.objects.count() != 0
+        assert LibraryArea.objects.count() != 0

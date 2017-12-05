@@ -1,12 +1,9 @@
 from mongoengine import Document
-from mongoengine import IntField
 from mongoengine import StringField
 from mongoengine import DateTimeField
 
-# -------------------- musuem indicators --------------------------------
 
-
-class LastUpdateDate(Document):
+class LastUpdateMuseumDate(Document):
     _create_date = StringField(required=True)
 
     @property
@@ -18,9 +15,9 @@ class LastUpdateDate(Document):
         self._create_date = create_date
 
 
-class OccupationArea(Document):
+class MuseumArea(Document):
     _instance = StringField(required=True)
-    _occupation_area = StringField(required=True)
+    _area = StringField(required=True)
 
     @property
     def instance(self):
@@ -31,22 +28,39 @@ class OccupationArea(Document):
         self._instance = instance
 
     @property
-    def occupation_area(self):
-        return self._occupation_area
+    def area(self):
+        return self._area
 
-    @occupation_area.setter
-    def occupation_area(self, occupation_area):
-        self._occupation_area = occupation_area
+    @area.setter
+    def area(self, area):
+        self._area = area
+
+class MuseumTags(Document):
+    _instance = StringField(required=True)
+    _tag = StringField(required=True)
+
+    @property
+    def instance(self):
+        return self._instance
+
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
+
+    @property
+    def tag(self):
+        return self._tag
+
+    @tag.setter
+    def tag(self, tag):
+        self._tag = tag
+
 
 class MuseumData(Document):
-    abstract = True
-    meta = {'allow_inheritance': True}
-
     _instance = StringField(required=True)
-    _name = StringField(required=True)
-    _date = DateTimeField(required=True)
     _museum_type = StringField(required=True)
-    _accessibility = StringField(required=True)
+    _accessibility = StringField(default='Não definido')
+    _date = DateTimeField(required=True)
 
     @property
     def instance(self):
@@ -65,14 +79,6 @@ class MuseumData(Document):
         self._name = name
 
     @property
-    def date(self):
-        return self._date
-
-    @date.setter
-    def date(self, date):
-        self._date = date
-
-    @property
     def museum_type(self):
         return self._museum_type
 
@@ -87,3 +93,11 @@ class MuseumData(Document):
     @accessibility.setter
     def accessibility(self, accessibility):
         self._accessibility = accessibility
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, date):
+        self._date = date

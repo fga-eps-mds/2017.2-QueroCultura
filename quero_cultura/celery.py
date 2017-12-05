@@ -41,10 +41,15 @@ APP.conf.beat_schedule = {
                                  crontab(minute=0, hour=3,
                                          day_of_week='sunday')),
 
-    # 'load_libraries': create_task('load_libraries', 30, 50),
-    # 'update_libraries': create_task('load_libraries',
-    #                                crontab(minute=5, hour=3,
-    #                                        day_of_week='sunday')),
+    'load_libraries': create_task('load_libraries', 30, 50),
+    'update_libraries': create_task('load_libraries',
+                                    crontab(minute=5, hour=3,
+                                            day_of_week='sunday')),
+
+    'load_museums': create_task('load_museums', 30, 50),
+    'update_museums': create_task('load_museums',
+                                  crontab(minute=5, hour=3,
+                                          day_of_week='sunday')),
 
     'load_events': create_task('load_events', 30, 50),
     'update_events': create_task('load_events',
@@ -60,6 +65,4 @@ APP.conf.beat_schedule = {
     'update_spaces': create_task('load_spaces',
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
-
-    #'load_new_markers': create_task('load_new_markers', crontab(minute='*/3'))
-}
+    }

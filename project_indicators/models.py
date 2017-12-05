@@ -1,14 +1,9 @@
 from mongoengine import Document
-from mongoengine import IntField
 from mongoengine import StringField
-from mongoengine import DictField
+from mongoengine import DateTimeField
 
 
-class PercentProjects(Document):
-    class Meta:
-        abstract = True
-    meta = {'allow_inheritance': True}
-    _total_project = IntField(required=True)
+class LastUpdateProjectDate(Document):
     _create_date = StringField(required=True)
 
     @property
@@ -16,49 +11,44 @@ class PercentProjects(Document):
         return self._create_date
 
     @create_date.setter
-    def create_date(self, number):
-        self._create_date = number
+    def create_date(self, create_date):
+        self._create_date = create_date
+
+
+class ProjectData(Document):
+    _instance = StringField(required=True)
+    _project_type = StringField(required=True)
+    _online_subscribe = StringField(required=True)
+    _date = DateTimeField(required=True)
 
     @property
-    def total_project(self):
-        return self._total_project
+    def instance(self):
+        return self._instance
 
-    @total_project.setter
-    def total_project(self, number):
-        self._total_project = number
-
-
-class PercentProjectPerType(PercentProjects):
-    _total_project_per_type = DictField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_project_per_type(self):
-        return self._total_project_per_type
+    def date(self):
+        return self._date
 
-    @total_project_per_type.setter
-    def total_project_per_type(self, number):
-        self._total_project_per_type = number
-
-
-class PercentProjectThatAcceptOnlineTransitions(PercentProjects):
-    _total_project_that_accept_online_transitions = DictField(required=True)
+    @date.setter
+    def date(self, date):
+        self._date = date
 
     @property
-    def total_project_that_accept_online_transitions(self):
-        return self._total_project_that_accept_online_transitions
+    def online_subscribe(self):
+        return self._online_subscribe
 
-    @total_project_that_accept_online_transitions.setter
-    def total_project_that_accept_online_transitions(self, number):
-        self._total_project_that_accept_online_transitions = number
-
-
-class QuantityOfRegisteredProject(PercentProjects):
-    _total_project_registered_per_mounth_per_year = DictField(required=True)
+    @online_subscribe.setter
+    def create_date(self, online_subscribe):
+        self._online_subscribe = online_subscribe
 
     @property
-    def total_project_registered_per_mounth_per_year(self):
-        return self._total_project_registered_per_mounth_per_year
+    def project_type(self):
+        return self._project_type
 
-    @total_project_registered_per_mounth_per_year.setter
-    def total_project_registered_per_mounth_per_year(self, number):
-        self._total_project_registered_per_mounth_per_year = number
+    @project_type.setter
+    def project_type(self, project_type):
+        self._project_type = project_type

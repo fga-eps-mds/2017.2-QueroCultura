@@ -11,17 +11,28 @@ from .models import OccupationArea
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
+# Get graphics urls from metabase
+# To add new graphis, just add in the metabase_graphics variable
+view_type = "question"
+metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2,"true")},
+                    {'id':2, 'url':get_metabase_url(view_type, 4,"true")},
+                    {'id':3, 'url':get_metabase_url(view_type, 3,"true")},
+                    {'id':4, 'url':get_metabase_url(view_type, 7,"true")},
+                    {'id':5, 'url':get_metabase_url(view_type, 6,"true")}]
+
+
+detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 45,"false")},
+                {'id':2, 'url':get_metabase_url(view_type, 46,"false")},
+                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+
+page_type = "Espaços"
+graphic_type = 'space_graphic_detail'
 
 def index(request):
-    view_type = "question"
-
-    url = {"graphic1": get_metabase_url(view_type, 2),
-           "graphic2": get_metabase_url(view_type, 4),
-           "graphic3": get_metabase_url(view_type, 3),
-           "graphic4": get_metabase_url(view_type, 7),
-           "graphic5": get_metabase_url(view_type, 6)}
-    return render(request, 'space_indicators/space-indicators.html', url)
-
+    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+def graphic_detail(request, graphic_id):
+    graphic = metabase_graphics[int(graphic_id) - 1]
+    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 @task(name="load_spaces")
 def populate_space_data():
@@ -39,8 +50,8 @@ def populate_space_data():
         new_url = clean_url(url)
         for space in request:
             date = space["createTimestamp"]['date']
-            SpaceData(new_url, space['name'], date,
-                      space['type']['name']).save()
+            SpaceData(new_url, str(space['name']), date,
+                      str(space['type']['name'])).save()
             for area in space["terms"]["area"]:
                 OccupationArea(new_url, area).save()
 
