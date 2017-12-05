@@ -17,16 +17,17 @@ class LastUpdateMixedDate(Document):
 class EventAndSpaceData(Document):
     _instance = StringField(required=True)
     _name = StringField(required=True)
-    _accessible_space = StringField(required=True)
+    _event_id = StringField(required=True)
     _date = DateTimeField(required=True)
+    _accessible_space = StringField(required=True)
 
     @property
-    def name(self):
-        return self._name
+    def event_id(self):
+        return self._event_id
 
-    @name.setter
-    def name(sel, name):
-        self._name = name
+    @event_id.setter
+    def event_id(self, event_id):
+        self._event_id = event_id
 
     @property
     def accessible_space(self):
@@ -35,6 +36,14 @@ class EventAndSpaceData(Document):
     @accessible_space.setter
     def accessible_space(self, accessible_space):
         self._accessible_space = accessible_space
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(sel, name):
+        self._name = name
 
     @property
     def instance(self):
