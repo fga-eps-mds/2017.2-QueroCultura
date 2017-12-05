@@ -12,6 +12,7 @@ from project_indicators.views import clean_url
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
+ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
@@ -35,7 +36,7 @@ def populate_mixed_data():
 
     for url in urls:
 
-        if url == SP_URL:
+        if url == SP_URL or url == ESTADO_SP_URL:
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestMixedInPeriod(year, url)
@@ -52,7 +53,7 @@ def populate_mixed_data():
 
             for occurrences in mixed['occurrences']:
 
-                if occurrences['space'] != None: 
+                if occurrences['space'] != None:
                     if occurrences['space']['acessibilidade'] != '':
                         accessible_space = occurrences['space']['acessibilidade']
 
