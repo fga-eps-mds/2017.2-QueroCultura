@@ -1,6 +1,6 @@
 multi-instancias:
   - http://mapas.cultura.gov.br/api/
-  - http://spcultura.prefeitura.sp.gov.br/api/
+  #- http://spcultura.prefeitura.sp.gov.br/api/
   - http://mapa.cultura.ce.gov.br/api/
   # - http://londrinacultura.londrina.pr.gov.br/api/
   # - http://culturaz.santoandre.sp.gov.br/api/

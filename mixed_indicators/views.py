@@ -10,7 +10,12 @@ from project_indicators.views import clean_url
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 # Create your views here.
+
+
 def index(request):
+    EventAndSpaceData.drop_collection()
+    LastUpdateMixedDate.drop_collection()
+
     populate_mixed_data()
     return render(request, 'mixed_indicators/mixed-indicators.html')
 
@@ -30,8 +35,14 @@ def populate_mixed_data():
         new_url = clean_url(url)
         for mixed in request:
             date = mixed["createTimestamp"]['date']
-            EventAndSpaceData(new_url, str(mixed['name']),
-                              str(mixed['occurrences']['acessibilidade']),
-                              date).save()
+            name = mixed['name']
+
+            for occurrences in mixed['occurrences']:
+
+                if occurrences['space'] != None:
+                    accessible_space = occurrences['space']['acessibilidade']
+
+                EventAndSpaceData(new_url, str(name), str(
+                    accessible_space), date).save()
 
     LastUpdateMixedDate(str(datetime.now())).save()
