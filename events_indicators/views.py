@@ -14,22 +14,32 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 14,"true")},
-                    {'id':2, 'url':get_metabase_url(view_type, 15,"true")},
-                    {'id':3, 'url':get_metabase_url(view_type, 16,"true")},
-                    {'id':4, 'url':get_metabase_url(view_type, 17,"true")}]
+metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
+                     {'id': 2, 'url': get_metabase_url(view_type, 15, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 16, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 17, "true")}]
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 37,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 36, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 37, "false")},
+                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
 
 
 page_type = "Eventos"
 graphic_type = 'events_graphic_detail'
+page_descripition = "Evento cultural é a parte mínima de um projeto cultural,"\
+                    + " continuado ou não, multidisciplinar ou setorial, "\
+                    + "que tenha objetivo definido e impacto imediato, os "\
+                    + "gráficos abaixo geram indicadores baseados nos dados "\
+                    + "de Eventos Culturais disponiveis na plataforma"
 
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data,
+                   'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):

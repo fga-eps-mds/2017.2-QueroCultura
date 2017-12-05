@@ -27,15 +27,27 @@ detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 47, "false")},
 
 page_type = "Museus"
 graphic_type = 'museums_graphic_detail'
+page_descripition = "Museus são lugares onde se guardam e exibem coleções de "\
+                    + "objetos de interesse artístico, cultural, científico, "\
+                    + "histórico, entre outros, que procuram difundir o "\
+                    + "conhecimento humano. Os gráficos abaixo representam "\
+                    + "indicadores que são gerados a partir dos dados de "\
+                    + "museus cadastrados na plataforma"
 
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data,
+                   'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    return render(request, 'quero_cultura/graphic_detail.html',
+                  {'graphic': graphic})
 
 
 @task(name="load_museums")
