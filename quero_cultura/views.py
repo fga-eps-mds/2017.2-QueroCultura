@@ -36,11 +36,3 @@ def get_metabase_url(view_type, number,has_title):
     token = token.replace("'", "")
 
     return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled="+ has_title
-
-
-
-def instaces_counter():
-    parser_yaml = ParserYAML()
-    count = len(parser_yaml.get_multi_instances_urls)
-
-    return count
