@@ -32,3 +32,27 @@ class TestEventAndSpaceData(object):
         assert query.name == name
         assert query.accessible_space == accessible_space
         assert query.date == date
+
+
+class TestPopulateMixedData(object):
+
+    @requests_mock.Mocker(kw='mock')
+    def test_populate_mixed_data(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   'name': 'FGA',
+                   'occurrences': {
+            'acessibilidade': 'Sim', 'id': 13242}}]
+
+        for url in urls:
+            kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        LastUpdateMixedDate.drop_collection()
+        EventAndSpaceData.drop_collection()
+
+        populate_mixed_data()
+
+        assert LastUpdateMixedDate.objects.count() != 0
+        assert EventAndSpaceData.objects.count() != 0
