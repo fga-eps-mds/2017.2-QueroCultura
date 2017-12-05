@@ -5,7 +5,7 @@ import requests
 class RequestMixedIndicatorsRawData(object):
 
     def __init__(self, last_update_time, url):
-        self._filters = {'@select': 'occurrences.{space.{acessibilidade}}, name',
+        self._filters = {'@select': 'occurrences.{space.{acessibilidade}}, name, createTimestamp',
                          'createTimestamp': "GT("+last_update_time+")"}
         self._response = requests.get(url+"event/find/", self._filters)
         self._data = json.loads(self._response.text)

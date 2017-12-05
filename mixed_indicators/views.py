@@ -29,9 +29,9 @@ def populate_mixed_data():
         request = RequestMixedIndicatorsRawData(las_update, url).data
         new_url = clean_url(url)
         for mixed in request:
-            date = mixed["createTimestamp"]["date"]
+            date = mixed["createTimestamp"]['date']
             EventAndSpaceData(new_url, str(mixed['name']),
-                              str(mixed['ocurrences']['acessibilidade']),
+                              str(mixed['occurrences']['acessibilidade']),
                               date).save()
 
     LastUpdateMixedDate(str(datetime.now())).save()
