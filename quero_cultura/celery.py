@@ -35,33 +35,36 @@ def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
 
+schedule_time = 30
+expire_time = 180
+
 APP.conf.beat_schedule = {
-    'load_agents': create_task('load_agents', 30, 50),
+    'load_agents': create_task('load_agents', schedule_time, expire_time),
     'update_agents': create_task('load_agents',
                                  crontab(minute=0, hour=3,
                                          day_of_week='sunday')),
 
-    'load_libraries': create_task('load_libraries', 30, 50),
+    'load_libraries': create_task('load_libraries', schedule_time, expire_time),
     'update_libraries': create_task('load_libraries',
                                     crontab(minute=5, hour=3,
                                             day_of_week='sunday')),
 
-    'load_museums': create_task('load_museums', 30, 50),
+    'load_museums': create_task('load_museums', schedule_time, expire_time),
     'update_museums': create_task('load_museums',
                                   crontab(minute=5, hour=3,
                                           day_of_week='sunday')),
 
-    'load_events': create_task('load_events', 30, 50),
+    'load_events': create_task('load_events', schedule_time, expire_time),
     'update_events': create_task('load_events',
                                  crontab(minute=10, hour=3,
                                          day_of_week='sunday')),
 
-    'load_projects': create_task('load_projects', 30, 50),
+    'load_projects': create_task('load_projects', schedule_time, expire_time),
     'update_projects': create_task('load_projects',
                                    crontab(minute=15, hour=3,
                                            day_of_week='sunday')),
 
-    'load_spaces': create_task('load_spaces', 30, 50),
+    'load_spaces': create_task('load_spaces', schedule_time, expire_time),
     'update_spaces': create_task('load_spaces',
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
