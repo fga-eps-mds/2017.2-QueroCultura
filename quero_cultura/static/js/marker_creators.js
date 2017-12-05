@@ -52,41 +52,23 @@ function setZIndex(imageExtension){
 remember that mapas br and ceara instances have subsites
 */
 function requestSubsite(url, subsiteID){
-
+    if (subsiteID == null || subsiteID == "null"){
+        subsiteID = 0
+    }
     response = $.getJSON(url,
     {
         '@select' : 'url',
         'id': 'eq('+subsiteID+')'
     })
-
     return response
 }
 
 /* Create a popup to marker
 */
 function createPopup(data,marker){
-
-    // Check if exist an subsite link, if exist, change url to subsite.
-    if(data.subsite == null){
-        //In normal flux, doesn't exist subsite and we use "singleUrl"
-        var popup = '<h6><b>Nome:</b></h6>'+data.name+
-                    '<h6><b>Link:</b></h6><a target="_blank" href='+data.singleUrl+'>Clique aqui</a>'
-        marker.bindPopup(popup);
-    }else{
-        // remove a marker type to url
-        var splitUrl = data.singleUrl.split("/")
-        type = splitUrl[3]
-
-        instanceUrl = splitUrl[0]+"//"+splitUrl[2]
-
-        var promise = requestSubsite(instanceUrl+'/api/subsite/find', data.subsite)
-        promise.then(function(subsiteData) {
-            linkSubsite = "http://"+subsiteData[0]["url"] + "/"+type+"/" + data.id
-            var popup = '<h6><b>Nome:</b></h6>'+data.name+
-                        '<h6><b>Link:</b></h6><a target="_blank" href='+linkSubsite+'>Clique aqui</a>'
-            marker.bindPopup(popup);
-        });
-    }
+    var popup = '<h6><b>Nome:</b></h6>'+data.name+
+                '<h6><b>Link:</b></h6><a target="_blank" href='+data.instance_url+'>Clique aqui</a>'
+    marker.bindPopup(popup);
 }
 
 function addMarkerToMap(data, icon, imageExtension, featureGroup, latitude, longitude){
@@ -106,13 +88,11 @@ function addMarkerToMap(data, icon, imageExtension, featureGroup, latitude, long
 function createSpaceMarker(data, imageExtension){
     var icon = createMarkerIcon('espaco', imageExtension)
 
-    for(var i=0; i < data.length; i++){
-        if(data[i]["location"]){
-            data[i]["type"] = "espaco"
-            var latitude = data[i]["location"]["latitude"]
-            var longitude = data[i]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, markersSpace, latitude, longitude)
-        }
+    if(data["location"]){
+        data["type"] = "espaco"
+        var latitude = data["location"]["latitude"]
+        var longitude = data["location"]["longitude"]
+        addMarkerToMap(data, icon, imageExtension, markersSpace, latitude, longitude)
     }
 }
 
@@ -122,13 +102,11 @@ function createSpaceMarker(data, imageExtension){
 function createAgentMarker(data, imageExtension){
     var icon = createMarkerIcon('agente', imageExtension)
 
-    for(var i=0; i < data.length; i++){
-        if(data[i]["location"]){
-            data[i]["type"] = "agente"
-            var latitude = data[i]["location"]["latitude"]
-            var longitude = data[i]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, markersAgent, latitude, longitude)
-        }
+    if(data["location"]){
+        data["type"] = "agente"
+        var latitude = data["location"]["latitude"]
+        var longitude = data["location"]["longitude"]
+        addMarkerToMap(data, icon, imageExtension, markersAgent, latitude, longitude)
     }
 }
 
@@ -138,13 +116,10 @@ function createAgentMarker(data, imageExtension){
 function createEventMarker(data, imageExtension){
     var icon = createMarkerIcon('evento', imageExtension)
 
-    for(var i=0; i < data.length; i++){
-        data[i]["type"] = "evento"
-    	if((data[i]["occurrences"]).length){
-            var latitude = data[i]["occurrences"][0]["space"]["location"]["latitude"]
-            var longitude = data[i]["occurrences"][0]["space"]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, markersEvent, latitude, longitude)
-	    }
+    data["type"] = "evento"
+    if(data["location"]){
+	   addMarkerToMap(data, icon, imageExtension, markersEvent,
+                      data['location'].latitude, data['location'].longitude)
     }
 }
 
@@ -154,12 +129,9 @@ function createEventMarker(data, imageExtension){
 function createProjectMarker(data, imageExtension){
     var icon = createMarkerIcon('projeto', imageExtension)
 
-    for(var i=0; i < data.length; i++){
-        if(data[i]["owner"]){
-            data[i]["type"] = "projeto"
-            var latitude = data[i]["owner"]["location"]["latitude"]
-            var longitude = data[i]["owner"]["location"]["longitude"]
-            addMarkerToMap(data[i], icon, imageExtension, markersProject, latitude, longitude)
-        }
+    data["type"] = "projeto"
+    if(data["location"]){
+        addMarkerToMap(data, icon, imageExtension, markersProject,
+                       data['location'].latitude, data['location'].longitude)
     }
 }

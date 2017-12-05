@@ -92,7 +92,6 @@ class LibraryData(Document):
 
     @accessibility.setter
     def accessibility(self, accessibility):
-        print("asd")
         self._accessibility = accessibility
 
     @property

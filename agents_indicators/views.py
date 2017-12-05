@@ -20,27 +20,41 @@ CURRENT_YEAR = datetime.today().year + 1
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 30,"true")},
-                    {'id':2, 'url':get_metabase_url(view_type, 31,"true")},
-                    {'id':3, 'url':get_metabase_url(view_type, 32,"true")},
-                    {'id':4, 'url':get_metabase_url(view_type, 33,"true")}]
+metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 30, "true")},
+                     {'id': 2, 'url': get_metabase_url(view_type, 31, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 32, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 33, "true")}]
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 34,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 35,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 34, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 35, "false")},
+                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
 
 
 page_type = "Agentes"
 graphic_type = 'agents_graphic_detail'
+page_descripition = 'Agentes são artistas, gestores, produtores e'\
+                   + 'instituições juntos eles formam uma rede de atores '\
+                   + 'envolvidos na cena cultural brasileira, nos gráficos '\
+                   + 'abaixo geramos indicadores visando extrair informações'\
+                   + ' úteis ao MinC e a população em geral sobre os Agentes '\
+                   + 'culturais da plataforma'
+
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data, 'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
+
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    return render(request,
+                  'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
-@task(name="populate_agent_data")
+
+@task(name="load_agents")
 def populate_agent_data():
     if len(LastUpdateAgentsDate.objects) == 0:
         LastUpdateAgentsDate(DEFAULT_INITIAL_DATE).save()
@@ -68,5 +82,4 @@ def populate_agent_data():
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
                 AgentsArea(new_url, area).save()
-
     LastUpdateAgentsDate(str(datetime.now())).save()

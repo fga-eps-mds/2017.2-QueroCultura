@@ -78,3 +78,12 @@ iframe{
 	height: 600px;
 
 }
+
+.graphic-thumbnail{
+	height: 350px;
+	width: 350px;
+}
+
+.subtitle-box{
+	width: 800px;
+}

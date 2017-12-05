@@ -14,27 +14,42 @@ DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 2,"true")},
-                    {'id':2, 'url':get_metabase_url(view_type, 4,"true")},
-                    {'id':3, 'url':get_metabase_url(view_type, 3,"true")},
-                    {'id':4, 'url':get_metabase_url(view_type, 7,"true")},
-                    {'id':5, 'url':get_metabase_url(view_type, 6,"true")}]
+metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 2, "true")},
+                     {'id': 2, 'url': get_metabase_url(view_type, 4, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 3, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 7, "true")},
+                     {'id': 5, 'url': get_metabase_url(view_type, 6, "true")}]
 
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 45,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 46,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 45, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 46, "false")},
+                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
 
 page_type = "Espaços"
 graphic_type = 'space_graphic_detail'
+page_descripition = "Espaço cultural é qualquer lugar que possa ser "\
+                    + "identificado como um ponto referenciado para a criação"\
+                    + " formação e a fruição cultural, os gráficos abaixo "\
+                    + "mostram indicadores gerados a partir dos dados"\
+                    + " de Espaços Culturais contidos na plataforma"
+
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data,
+                   'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
+
+
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    return render(request, 'quero_cultura/graphic_detail.html',
+                  {'graphic': graphic})
 
-@task(name="populate_space_data")
+
+@task(name="load_spaces")
 def populate_space_data():
     if len(LastUpdateDate.objects) == 0:
         LastUpdateDate(DEFAULT_INITIAL_DATE).save()
