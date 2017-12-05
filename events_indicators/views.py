@@ -27,14 +27,18 @@ detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 36,"false")},
 page_type = "Eventos"
 graphic_type = 'events_graphic_detail'
 
+
 def index(request):
     return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
 
+
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    return render(request, 'quero_cultura/graphic_detail.html',
+                  {'graphic': graphic})
 
-@task(name="populate_event_data")
+
+@task(name="load_events")
 def populate_event_data():
     if len(LastUpdateEventDate.objects) == 0:
         LastUpdateEventDate(DEFAULT_INITIAL_DATE).save()

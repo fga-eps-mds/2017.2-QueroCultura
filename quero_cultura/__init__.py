@@ -1,2 +1,2 @@
 # Certifica a chamada do celery
-from .celery import app as celery_app
+from .celery import APP as celery_app

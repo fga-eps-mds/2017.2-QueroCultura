@@ -34,7 +34,7 @@ def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
-@task(name="populate_space_data")
+@task(name="load_spaces")
 def populate_space_data():
     if len(LastUpdateDate.objects) == 0:
         LastUpdateDate(DEFAULT_INITIAL_DATE).save()

@@ -1,106 +1,68 @@
 import os
+from datetime import datetime
+from datetime import timedelta
 from celery import Celery
 from celery.schedules import crontab
-from datetime import timedelta
-from datetime import datetime
+
+
+def create_task(task_name, schedule, expire=0):
+    now = datetime.now()
+    task = {'task': task_name,
+            'schedule': schedule}
+    if expire != 0:
+        options = {'expires': now + timedelta(seconds=expire)}
+        task['options'] = options
+    return task
+
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quero_cultura.settings')
 
-app = Celery('quero_cultura')
+APP = Celery('quero_cultura')
 
 # Using a string here means the worker don't have to serialize
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
-app.config_from_object('django.conf:settings', namespace='CELERY')
+APP.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django app configs.
-app.autodiscover_tasks()
+APP.autodiscover_tasks()
 
 
-@app.task(bind=True)
+@APP.task(bind=True)
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
 
-app.conf.beat_schedule = {
-    'populate_agent_data': {
-        'task': 'populate_agent_data',
-        'schedule': crontab(minute=0,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_agent_data_now': {
-        'task': 'populate_agent_data',
-        'schedule': 10.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=15.0),
-        },
-    },
-    'populate_library_data': {
-        'task': 'populate_library_data',
-        'schedule': crontab(minute=5,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_library_data_now': {
-        'task': 'populate_library_data',
-        'schedule': 20.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=30.0),
-        },
-    },
-    'populate_event_data': {
-        'task': 'populate_event_data',
-        'schedule': crontab(minute=10,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_event_data_now': {
-        'task': 'populate_event_data',
-        'schedule': 15.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=25.0),
-        },
-    },
-    'populate_project_data': {
-        'task': 'populate_project_data',
-        'schedule': crontab(minute=15,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_project_data_now': {
-        'task': 'populate_project_data',
-        'schedule': 25.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=35.0),
-        },
-    },
-    'populate_space_data': {
-        'task': 'populate_space_data',
-        'schedule': crontab(minute=20,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_space_data_now': {
-        'task': 'populate_space_data',
-        'schedule': 30.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=45.0),
-        },
-    },
-    'populate_museum_data': {
-        'task': 'populate_museum_data',
-        'schedule': crontab(minute=25,
-                            hour=3,
-                            day_of_week='sunday'),
-    },
-    'populate_museum_data_now': {
-        'task': 'populate_museum_data',
-        'schedule': 40.0,
-        'options': {
-            'expires': datetime.now() + timedelta(seconds=60.0),
-        },
-    },
-}
+APP.conf.beat_schedule = {
+    'load_agents': create_task('load_agents', 30, 50),
+    'update_agents': create_task('load_agents',
+                                 crontab(minute=0, hour=3,
+                                         day_of_week='sunday')),
+
+    'load_libraries': create_task('load_libraries', 30, 50),
+    'update_libraries': create_task('load_libraries',
+                                    crontab(minute=5, hour=3,
+                                            day_of_week='sunday')),
+
+    'load_museums': create_task('load_museums', 30, 50),
+    'update_museums': create_task('load_museums',
+                                  crontab(minute=5, hour=3,
+                                          day_of_week='sunday')),
+
+    'load_events': create_task('load_events', 30, 50),
+    'update_events': create_task('load_events',
+                                 crontab(minute=10, hour=3,
+                                         day_of_week='sunday')),
+
+    'load_projects': create_task('load_projects', 30, 50),
+    'update_projects': create_task('load_projects',
+                                   crontab(minute=15, hour=3,
+                                           day_of_week='sunday')),
+
+    'load_spaces': create_task('load_spaces', 30, 50),
+    'update_spaces': create_task('load_spaces',
+                                 crontab(minute=20, hour=3,
+                                         day_of_week='sunday')),
+    }

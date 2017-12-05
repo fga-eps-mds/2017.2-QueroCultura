@@ -12,31 +12,33 @@ from celery.decorators import task
 import json
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
-urls = ["http://museus.cultura.gov.br/api/"]
 
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 20,"true")},
-                    {'id':2, 'url':get_metabase_url(view_type, 22,"true")},
-                    {'id':3, 'url':get_metabase_url(view_type, 24,"true")},
-                    {'id':4, 'url':get_metabase_url(view_type, 41,"true")},
-                    {'id':5, 'url':get_metabase_url(view_type, 42,"true")}]
+metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 20, "true")},
+                     {'id': 2, 'url': get_metabase_url(view_type, 22, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 24, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 41, "true")},
+                     {'id': 5, 'url': get_metabase_url(view_type, 42, "true")}]
 
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 47,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 23,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 44,"false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 47, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 23, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 44, "false")}]
 
 
 page_type = "Museus"
 graphic_type = 'museums_graphic_detail'
 
+
 def index(request):
     return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics, 'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+
 
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
-@task(name="populate_museum_data")
+
+@task(name="load_museums")
 def populate_museum_data():
     if len(LastUpdateMuseumDate.objects) == 0:
         LastUpdateMuseumDate(DEFAULT_INITIAL_DATE).save()
@@ -57,7 +59,6 @@ def populate_museum_data():
             if accessibility == '':
                 accessibility = None
 
-
             MuseumData(new_url,
                        museum["type"]['name'],
                        accessibility,
@@ -68,6 +69,4 @@ def populate_museum_data():
 
             for tag in museum["terms"]["tag"]:
                 MuseumTags(new_url, tag).save()
-
-
     LastUpdateMuseumDate(str(datetime.now())).save()

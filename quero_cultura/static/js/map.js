@@ -63,71 +63,12 @@ var groupedOverlays = {
 
 L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
 
-/* Defines the date used by the query
-   based in the last minutes passed by parameter.
-   If we pass 60 as parameter this function returns
-   the current date time minus 60 minutes and so on. */
-function getQueryDateTime(lastMinutes){
-    var currentDateTime = new Date()
-    var queryDateTime = new Date()
-    var timezone = 2
-    queryDateTime.setHours(currentDateTime.getHours() - timezone,
-                           currentDateTime.getMinutes() - lastMinutes)
 
-	return queryDateTime.toJSON()
-}
-
-function createQueryPromise(instanceURL, markerType, lastMinutes){
-    var queryDateTime = getQueryDateTime(lastMinutes);
-    instanceURL = instanceURL+markerType+'/find'
-    switch(markerType){
-        case 'event':
-            select = 'name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        case 'project':
-            select = 'name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        case 'space':
-        case 'agent':
-            select = 'id ,name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
-            break
-        default:
-            select = ''
-    }
-
-    var promise = $.getJSON(instanceURL, {'@select' : select,
-                                          '@or' : 1,
-                                          'createTimestamp' : "GT("+queryDateTime+")",
-                                          'updateTimestamp' : "GT("+queryDateTime+")"
-                                         });
-
-    return promise
-}
-
-function saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, markerImageExtension) {
-    var promise = createQueryPromise(instanceURL, markerType, lastMinutes)
-    promise.then(function(data){
-        loadMarkers(markerType, markerImageExtension, data)
-
-        saveArray[markerType].push.apply(saveArray[markerType], data)
-
-        if(saveArray === lastMinuteData){
-            AddInfoToFeed(saveArray[markerType])
-            saveArray[markerType] = new Array()
-        }
-
+function loadAndUpdateMarkers(data, imageExtension){
+    data.forEach(function(value){
+        loadMarkers(value.marker_type, imageExtension, value)
     })
 
-}
-
-function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
-    for(i in instanceList){
-        for (j in typeList){
-            instanceURL = instanceList[i]
-            markerType = typeList[j]
-            saveAndLoadData(instanceURL, markerType, lastMinutes, saveArray, imageExtension)
-        }
-    }
     map.addLayer(markersEvent)
     map.addLayer(markersProject)
     map.addLayer(markersAgent)
@@ -136,110 +77,32 @@ function loadAndUpdateMarkers(lastMinutes, saveArray, imageExtension){
 }
 
 
-function loadMarkers(markerType, imageExtension, markersData) {
+function loadMarkers(markerType, imageExtension, markerData) {
     switch (markerType) {
-        case 'project': createProjectMarker(markersData, imageExtension)
+        case 'project': createProjectMarker(markerData, imageExtension)
         break
-        case 'event': createEventMarker(markersData, imageExtension)
+        case 'event': createEventMarker(markerData, imageExtension)
         break
-        case 'agent': createAgentMarker(markersData, imageExtension)
+        case 'agent': createAgentMarker(markerData, imageExtension)
         break
-        case 'space': createSpaceMarker(markersData, imageExtension)
+        case 'space': createSpaceMarker(markerData, imageExtension)
         break
     }
 }
 
-function get_marker_location(value){
-    console.log(value)
 
-    switch (value.type) {
-        case "evento":
-            var occurrences = value['occurrences'].pop()
-            if(occurrences === undefined){
-                return {latitude:0, longitude:0}
-            }else{
-                return occurrences.space.location
-            }
-        case "projeto":
-            return value.owner.location
-        default:
-            return value.location
-    }
-}
+function updateFeed(recent_markers) {
+    recent_markers.forEach(async function(value){
 
-function create_url_to_feed(value){
-    return new Promise((resolve, reject) =>{
-        if(value["subsite"] === null){
-            resolve(value['singleUrl'])
-        }else{
-            var splitUrl = value["singleUrl"].split("/")
-            instanceUrl = splitUrl[0]+"//"+splitUrl[2]
-
-            var promise = requestSubsite(instanceUrl+'/api/subsite/find', value.subsite)
-            promise.then(function(subsiteData) {
-                var url = "http://"+subsiteData[0]["url"] + "/"+type+"/" + value["id"]
-                console.log(url)
-                resolve(url)
-            });
+        if(value.city == undefined){
+            value.city = ''
         }
-    })
-}
-
-function get_action(createTimestamp, updateTimestamp){
-    var update = {}
-    if(updateTimestamp === null){
-        update.time = createTimestamp
-        update.name = 'Criação'
-    }else{
-        update.time = updateTimestamp
-        update.name = 'Atualização'
-    }
-    return update
-}
-
-function create_location_promise(markerLocation){
-    openstreetURL = "http://nominatim.openstreetmap.org/reverse?lat="+markerLocation.latitude+"&lon="+markerLocation.longitude+"&format=json"
-    return $.getJSON(openstreetURL)
-}
-
-function get_location_data(markerLocation){
-    return new Promise((resolved, reject)=>{
-        if(markerLocation.latitude !== 0 && markerLocation.longitude !== 0){
-            promise = create_location_promise(markerLocation)
-            promise.then(function(data){
-                if(data["error"] !== undefined){
-                    console.log("unable to locate Geocode")
-                    data.address = {"state": '', 'city': ''}
-                }
-
-                if(data.address.city == undefined){
-                    data.address.city = data.address.town
-                }
-                if(data.address.city == undefined){
-                    data.address.city = ''
-                }
-                if(data.address.state == undefined){
-                    data.address.state = ''
-                }
-                console.log(data.address.city)
-                resolved(data)
-            })
-        }else{
-            reject({})
+        if(value.state == undefined){
+            value.state = ''
         }
-    })
-}
-function AddInfoToFeed(diffFeed) {
-
-    diffFeed.forEach(async function(value, key){
-        var markerLocation = get_marker_location(value)
-        var url = await create_url_to_feed(value)
-        var data = await get_location_data(markerLocation)
-        var action = get_action(value.createTimestamp, value.updateTimestamp)
-
-        var html = AddHTMLToFeed(action, value.name, value.type, data.address, url)
+        var html = AddHTMLToFeed(value)
         create_feed_block(html)
-    },diffFeed)
+    },recent_markers)
 
 }
 
@@ -249,8 +112,8 @@ function create_feed_block(html){
     $(".block" ).scrollTop(height);
 }
 
-function AddHTMLToFeed(action, name, type, address, url){
-    color = GetColorByType(type)
+function AddHTMLToFeed(marker){
+    color = GetColorByType(marker.marker_type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
                        "<svg>"+
@@ -259,10 +122,10 @@ function AddHTMLToFeed(action, name, type, address, url){
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+url+"' target='_blank'>"+name+"</a>"+
-                       "<p>"+action.name+""+ "<br>"
-                            +action.time.date.substring(0, 19)+"<br>"
-                            +address.city+ ' - ' + address.state+
+                       "<a href='"+marker.instance_url+"' target='_blank'>"+marker.name+"</a>"+
+                       "<p>"+marker.action_type+""+ "<br>"
+                            +marker.action_time.substring(0, 19)+"<br>"
+                            +marker.city+ ' - ' + marker.state+
                        "</p>"+
                    "</div>"+
                "</div>"
@@ -270,27 +133,48 @@ function AddHTMLToFeed(action, name, type, address, url){
 }
 
 function GetColorByType(type) {
-  var color = "red";
-  switch (type) {
-    case 'projeto':
-      color = "#28a745"
-      break
 
-    case 'espaco':
-      color = "#dc3545"
-      break
+    console.log(type)
+    var color = "red";
+    switch (type) {
+        case 'project':
+            color = "#28a745"
+            break
 
-    case 'agente':
-      color = "#17a2b8"
-      break
+        case 'space':
+            color = "#dc3545"
+            break
 
-    case 'evento':
-      color = "#ffc107"
-      break
+        case 'agent':
+            color = "#17a2b8"
+            break
 
-    default:
-      color = "black"
-  }
+        case 'event':
+            color = "#ffc107"
+            break
 
-  return color
+        default:
+            color = "black"
+    }
+
+    return color
 }
+
+// This method is used to receive new markers
+// from django without reload the page
+function new_markers() {
+    $.ajax({
+      method: "POST",
+      url: "/new_markers",
+      headers: {'X-CSRFToken': generated_csrf_token},
+      data: {},
+      success: function(data) {
+        console.log(data)
+        loadAndUpdateMarkers(data['markers'], 'gif')
+        updateFeed(data['markers'])
+      },
+      error: function(error){
+          console.log(error)
+      }
+    })
+  }

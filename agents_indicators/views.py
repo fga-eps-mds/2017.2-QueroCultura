@@ -40,7 +40,7 @@ def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
-@task(name="populate_agent_data")
+@task(name="load_agents")
 def populate_agent_data():
     if len(LastUpdateAgentsDate.objects) == 0:
         LastUpdateAgentsDate(DEFAULT_INITIAL_DATE).save()
@@ -68,5 +68,4 @@ def populate_agent_data():
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
                 AgentsArea(new_url, area).save()
-
     LastUpdateAgentsDate(str(datetime.now())).save()
