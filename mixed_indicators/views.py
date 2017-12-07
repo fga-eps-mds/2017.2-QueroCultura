@@ -8,6 +8,7 @@ from .models import EventAndSpaceData
 from quero_cultura.views import ParserYAML
 from quero_cultura.views import get_metabase_url
 from project_indicators.views import clean_url
+from celery.decorators import task
 
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
@@ -17,13 +18,14 @@ DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
 def index(request):
-    EventAndSpaceData.drop_collection()
-    LastUpdateMixedDate.drop_collection()
+    #EventAndSpaceData.drop_collection()
+    #LastUpdateMixedDate.drop_collection()
 
-    populate_mixed_data()
+    #populate_mixed_data()
     return render(request, 'mixed_indicators/mixed-indicators.html')
 
 
+@task(name="load_mixed")
 def populate_mixed_data():
     if len(LastUpdateMixedDate.objects) == 0:
         LastUpdateMixedDate(DEFAULT_INITIAL_DATE).save()
