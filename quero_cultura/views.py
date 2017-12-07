@@ -12,9 +12,8 @@ import yaml
 import jwt
 
 
-
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
-METABASE_SITE_URL = "http://querocultura.lab.cultura.gov.br/metabase"
+METABASE_SITE_URL = "http://localhost/metabase"
 
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
