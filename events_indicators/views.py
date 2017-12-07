@@ -17,7 +17,8 @@ view_type = "question"
 metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
                      {'id': 2, 'url': get_metabase_url(view_type, 15, "true")},
                      {'id': 3, 'url': get_metabase_url(view_type, 16, "true")},
-                     {'id': 4, 'url': get_metabase_url(view_type, 17, "true")}]
+                     {'id': 4, 'url': get_metabase_url(view_type, 17, "true")},
+                     {'id': 5, 'url': get_metabase_url(view_type, 51, "true")}]
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 36, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 37, "false")},

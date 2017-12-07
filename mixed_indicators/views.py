@@ -57,7 +57,7 @@ def populate_mixed_data():
 
                 if occurrences['space'] != None:
                     if occurrences['space']['acessibilidade'] != '':
-                        accessible_space = occurrences['space']['acessibilidade']
+                        accessible_space = str(occurrences['space']['acessibilidade']).capitalize()
 
                 EventAndSpaceData(new_url, str(name), str(
                     accessible_space), date).save()
