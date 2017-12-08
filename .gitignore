@@ -1,8 +1,5 @@
-
 __pycache__/
-
 *.pyc
-
 *.sqlite3
 
 \.cache/v/cache/
@@ -25,3 +22,8 @@ package-lock\.json
 celerybeat-schedule
 
 celerybeat\.pid
+
+# karma files
+
+coverage/
+npm-debug.log
