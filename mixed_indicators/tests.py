@@ -43,8 +43,8 @@ class TestPopulateMixedData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    'name': 'FGA',
-                   'occurrences': {
-            'acessibilidade': 'Sim', 'id': 13242}}]
+                   'occurrences': [{'space':
+                                    {'acessibilidade': 'Sim', 'id': 13242}}]}]
 
         for url in urls:
             kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
