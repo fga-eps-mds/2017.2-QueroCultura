@@ -17,7 +17,7 @@ var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/
 });
 
 
-var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
+var bounds = L.latLngBounds([40, -170.1222], [-70, 60]);
 
 var map = L.map('map', {maxBounds: bounds})
 	.addLayer(mapboxTiles)
