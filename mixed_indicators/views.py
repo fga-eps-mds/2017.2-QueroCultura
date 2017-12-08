@@ -17,13 +17,6 @@ ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
-def index(request):
-    #EventAndSpaceData.drop_collection()
-    #LastUpdateMixedDate.drop_collection()
-
-    #populate_mixed_data()
-    return render(request, 'mixed_indicators/mixed-indicators.html')
-
 
 @task(name="load_mixed")
 def populate_mixed_data():
