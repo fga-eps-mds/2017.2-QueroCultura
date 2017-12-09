@@ -54,12 +54,11 @@ def populate_mixed_data():
             for occurrences in mixed['occurrences']:
 
                 if occurrences['space'] != None:
-                    if str(occurrences['space']['acessibilidade']).capitalize() == 'None':
-                        accessible_space = 'Não Definido'
-                    elif occurrences['space']['acessibilidade'] != '':
+                    if occurrences['space']['acessibilidade'] != '':
                         accessible_space = str(occurrences['space']['acessibilidade']).capitalize()
 
-                EventAndSpaceData(new_url, str(name), str(
-                    accessible_space), date).save()
+                if accessible_space != 'None':
+                    EventAndSpaceData(new_url, str(name), str(
+                        accessible_space), date).save()
 
     LastUpdateMixedDate(str(datetime.now())).save()
