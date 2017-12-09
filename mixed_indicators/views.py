@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.shortcuts import render        
 from .api_connections import RequestMixedIndicatorsRawData
 from .api_connections import RequestMixedInPeriod
 from .api_connections import EmptyRequest
@@ -15,6 +16,11 @@ SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
 ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
+
+
+def index(request):
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {})
 
 
 @task(name="load_mixed")
