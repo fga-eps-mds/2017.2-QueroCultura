@@ -18,6 +18,11 @@ DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
 
+def index(request):
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {})
+
+
 @task(name="load_mixed")
 def populate_mixed_data():
     if len(LastUpdateMixedDate.objects) == 0:
