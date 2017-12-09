@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from datetime import datetime
 from .api_connections import RequestMixedIndicatorsRawData
 from .api_connections import RequestMixedInPeriod
@@ -16,11 +15,6 @@ SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
 ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
-
-
-def index(request):
-    return render(request, 'quero_cultura/indicators_page.html',
-                  {})
 
 
 @task(name="load_mixed")
@@ -57,7 +51,8 @@ def populate_mixed_data():
                     if str(occurrences['space']['acessibilidade']).capitalize() == 'None':
                         accessible_space = 'Não Definido'
                     elif occurrences['space']['acessibilidade'] != '':
-                        accessible_space = str(occurrences['space']['acessibilidade']).capitalize()
+                        accessible_space = str(occurrences['space'][
+                                               'acessibilidade']).capitalize()
 
                 EventAndSpaceData(new_url, str(name), str(
                     accessible_space), date).save()

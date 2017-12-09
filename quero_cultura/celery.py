@@ -71,6 +71,6 @@ APP.conf.beat_schedule = {
 
     'load_mixed': create_task('load_mixed', schedule_time, expire_time),
     'update_mixed': create_task('load_mixed',
-                                 crontab(minute=20, hour=3,
-                                         day_of_week='sunday')),
-    }
+                                crontab(minute=20, hour=3,
+                                        day_of_week='sunday')),
+}
