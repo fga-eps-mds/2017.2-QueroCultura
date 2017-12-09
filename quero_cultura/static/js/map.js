@@ -125,7 +125,9 @@ function AddHTMLToFeed(marker){
                             +marker.action_time.substring(0, 19)+"<br>"
                             +marker.city+ ' - ' + marker.state+
                        "</p>"+
-                       "<a href='javascript:void(0);' onclick='focusOnMarker("+marker+","+map+")'>Ola</a>"+
+                       '<a href="javascript:void(0);" onclick="javascript:focusOnMarker('+
+                       marker.location.latitude +','+ marker.location.longitude +');">'+
+                       '<i class="fa fa-fw fa fa-info-circle text-dark" id="tourButton"></i></a>'+
                    "</div>"+
                "</div>"
     return html
@@ -178,10 +180,11 @@ function new_markers() {
   }
 
 
-  function focusOnMarker(marker,map){
-
-    var position = [marker.getLatLng()];
-    var markerBounds = L.latLngBounds(latLngs);
-    map.fitBounds(markerBounds);
-
-  }
+function focusOnMarker(latitude, longitude){
+    
+    map.fitBounds([
+        [latitude, longitude],
+        [latitude, longitude]
+    ]);
+    map.setZoom(11);
+}
