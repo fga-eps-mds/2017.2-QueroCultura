@@ -113,12 +113,10 @@ function create_feed_block(html){
 }
 
 function AddHTMLToFeed(marker){
-    color = GetColorByType(marker.marker_type)
+    imageType = GetImageByType(marker.marker_type)
     var html = "<div id='content'>"+
                    "<div id='point'>"+
-                       "<svg>"+
-                           "<circle cx='15' cy='25' r='7' fill='"+color+"' />"+
-                       "</svg>"+
+                       "<img src='"+imageType+"' height='30px' width='30px'  style=' padding-top: 3px'>"+
                    "</div> "+
 
                    "<div id='text'>  "+
@@ -127,37 +125,37 @@ function AddHTMLToFeed(marker){
                             +marker.action_time.substring(0, 19)+"<br>"
                             +marker.city+ ' - ' + marker.state+
                        "</p>"+
+                       "<a href='javascript:void(0);' onclick='focusOnMarker("+marker+","+map+")'>Ola</a>"+
                    "</div>"+
                "</div>"
     return html
 }
 
-function GetColorByType(type) {
+function GetImageByType(type) {
 
     console.log(type)
-    var color = "red";
+    var image
     switch (type) {
         case 'project':
-            color = "#28a745"
+            image = "static/images/markerProject.png"
             break
 
         case 'space':
-            color = "#dc3545"
+            image = "static/images/markerSpace.png"
             break
 
         case 'agent':
-            color = "#17a2b8"
+            image = "static/images/markerAgent.png"
             break
 
         case 'event':
-            color = "#ffc107"
+            image = "static/images/markerEvent.png"
             break
 
-        default:
-            color = "black"
+
     }
 
-    return color
+    return image
 }
 
 // This method is used to receive new markers
@@ -177,4 +175,13 @@ function new_markers() {
           console.log(error)
       }
     })
+  }
+
+
+  function focusOnMarker(marker,map){
+
+    var position = [marker.getLatLng()];
+    var markerBounds = L.latLngBounds(latLngs);
+    map.fitBounds(markerBounds);
+
   }
