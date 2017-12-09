@@ -59,8 +59,12 @@ def populate_project_data():
         new_url = clean_url(url)
         for project in request:
             date = project["createTimestamp"]['date']
+            if project["useRegistrations"] == True:
+                project_use = 'Sim'
+            elif project["useRegistrations"] == False:
+                project_use = 'Não'
             ProjectData(new_url, str(project['type']['name']),
-                        str(project["useRegistrations"]), date).save()
+                        project_use, date).save()
 
     LastUpdateProjectDate(str(datetime.now())).save()
 
