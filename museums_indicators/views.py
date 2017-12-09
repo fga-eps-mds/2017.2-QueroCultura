@@ -67,9 +67,9 @@ def populate_museum_data():
         for museum in request:
             date = museum["createTimestamp"]['date']
 
-            accessibility = museum["acessibilidade"]
-            if accessibility == '':
-                accessibility = None
+            accessibility = str(museum["acessibilidade"]).capitalize()
+            if accessibility == '' or accessibility == 'None':
+                accessibility = 'Não definido'
 
             MuseumData(new_url,
                        museum["type"]['name'],
@@ -77,8 +77,8 @@ def populate_museum_data():
                        date).save()
 
             for area in museum["terms"]["area"]:
-                MuseumArea(new_url, area).save()
+                MuseumArea(new_url, str(area).title()).save()
 
             for tag in museum["terms"]["tag"]:
-                MuseumTags(new_url, tag).save()
+                MuseumTags(new_url, str(tag).title()).save()
     LastUpdateMuseumDate(str(datetime.now())).save()

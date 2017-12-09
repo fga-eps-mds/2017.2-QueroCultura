@@ -68,9 +68,9 @@ def populate_library_data():
         for library in request:
             date = library["createTimestamp"]['date']
 
-            accessibility = library["acessibilidade"]
-            if accessibility == '':
-                accessibility = None
+            accessibility = str(library["acessibilidade"]).capitalize()
+            if accessibility == '' or accessibility == 'None':
+                accessibility = 'Não definido'
 
             LibraryData(new_url,
                        library["type"]['name'],
@@ -78,9 +78,9 @@ def populate_library_data():
                        date).save()
 
             for area in library["terms"]["area"]:
-                LibraryArea(new_url, area).save()
+                LibraryArea(new_url, str(area).title()).save()
 
             for tag in library["terms"]["tag"]:
-                LibraryTags(new_url, tag).save()
+                LibraryTags(new_url, str(tag).title()).save()
 
     LastUpdateLibraryDate(str(datetime.now())).save()
