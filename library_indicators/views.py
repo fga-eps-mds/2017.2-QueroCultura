@@ -10,6 +10,7 @@ from datetime import datetime
 from django.shortcuts import render
 from celery.decorators import task
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 # Get graphics urls from metabase
@@ -47,7 +48,10 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
 
