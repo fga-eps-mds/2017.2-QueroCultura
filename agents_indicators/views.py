@@ -39,7 +39,6 @@ page_descripition = 'Agentes são artistas, gestores, produtores e'\
                    + ' úteis ao MinC e a população em geral sobre os Agentes '\
                    + 'culturais da plataforma'
 
-
 def index(request):
     return render(request, 'quero_cultura/indicators_page.html',
                   {'metabase_graphics': metabase_graphics,
@@ -47,9 +46,12 @@ def index(request):
                    'graphic_type': graphic_type,
                    'page_descripition': page_descripition})
 
-
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+      graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+      return render(request,
+                  'quero_cultura/not_found.html')
     return render(request,
                   'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
