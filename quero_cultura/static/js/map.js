@@ -114,6 +114,8 @@ function create_feed_block(html){
 
 function AddHTMLToFeed(marker){
     imageType = GetImageByType(marker.marker_type)
+    latitude = marker.location.latitude
+    longitude = marker.location.longitude
     var html = "<div id='content'>"+
                    "<div id='point'>"+
                        "<img src='"+imageType+"' height='30px' width='30px'  style=' padding-top: 3px'>"+
@@ -125,8 +127,7 @@ function AddHTMLToFeed(marker){
                             +marker.action_time.substring(0, 19)+"<br>"
                             +marker.city+ ' - ' + marker.state+
                        "</p>"+
-                       '<a href="javascript:void(0);" onclick="javascript:focusOnMarker('+
-                       marker.location.latitude +','+ marker.location.longitude +');">'+
+                       '<a href="javascript:void(0);" onclick="javascript:focusOnMarker('+ latitude +','+ longitude +');">'+
                        '<i class="fa fa-fw fa fa-info-circle text-dark" id="tourButton"></i></a>'+
                    "</div>"+
                "</div>"
@@ -180,11 +181,10 @@ function new_markers() {
   }
 
 
-function focusOnMarker(latitude, longitude){
-    
+function focusOnMarker(latitude, longitude){ 
     map.fitBounds([
         [latitude, longitude],
         [latitude, longitude]
     ]);
-    map.setZoom(11);
+    map.setZoom(16);
 }
