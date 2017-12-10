@@ -139,7 +139,7 @@ describe('createQueryPromise',function(){
 	        '@or' : 1,
 	        'createTimestamp' : "GT("+dateTime+")",
 	        'updateTimestamp' : "GT("+dateTime+")"
-	      },);
+	      })
 		  var equal = createQueryPromise('instanceURL','event',5)
 		  expect(equal).toEqual(promise)
 	});
@@ -152,7 +152,7 @@ describe('createQueryPromise',function(){
 // 		expect(window.createQueryPromise).toHaveBeenCalled()
 // 	});
 // });
-// 
+//
 // describe('loadAndUpdateMarkers', function(){
 // 	it('Should call saveAndLoadData', function(){
 // 		spyOn(window, 'saveAndLoadData')
