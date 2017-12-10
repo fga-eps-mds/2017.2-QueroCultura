@@ -36,7 +36,7 @@ def debug_task(self):
 
 
 schedule_time = 30
-expire_time = 360
+expire_time = 180
 
 APP.conf.beat_schedule = {
     'load_agents': create_task('load_agents', schedule_time, expire_time),

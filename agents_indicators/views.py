@@ -81,5 +81,5 @@ def populate_agent_data():
             date = agent["createTimestamp"]['date']
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
-                AgentsArea(new_url, area).save()
+                AgentsArea(new_url, str(area).title()).save()
     LastUpdateAgentsDate(str(datetime.now())).save()

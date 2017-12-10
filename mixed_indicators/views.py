@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.shortcuts import render        
+from django.shortcuts import render
 from .api_connections import RequestMixedIndicatorsRawData
 from .api_connections import RequestMixedInPeriod
 from .api_connections import EmptyRequest
@@ -54,13 +54,12 @@ def populate_mixed_data():
             for occurrences in mixed['occurrences']:
 
                 if occurrences['space'] != None:
-                    if str(occurrences['space']['acessibilidade']).capitalize() == 'None':
-                        accessible_space = 'Não Definido'
-                    elif occurrences['space']['acessibilidade'] != '':
-                        accessible_space = str(occurrences['space'][
-                                               'acessibilidade']).capitalize()
+                    if str(occurrences['space']['acessibilidade']).capitalize() != 'None':
+                        if occurrences['space']['acessibilidade'] != '':
+                            accessible_space = str(occurrences['space'][
+                                'acessibilidade']).capitalize()
 
-                EventAndSpaceData(new_url, str(name), str(
-                    accessible_space), date).save()
+                        EventAndSpaceData(new_url, str(name), str(
+                            accessible_space), date).save()
 
     LastUpdateMixedDate(str(datetime.now())).save()
