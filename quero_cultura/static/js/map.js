@@ -118,7 +118,8 @@ function AddHTMLToFeed(marker){
     longitude = marker.location.longitude
     var html = "<div id='content'>"+
                    "<div id='point'>"+
-                       "<img src='"+imageType+"' height='30px' width='30px'  style=' padding-top: 3px'>"+
+                       "<a href='javascript:void(0);' onclick='javascript:focusOnMarker("+ latitude +","+ longitude +");'>"+
+                       "<img src='"+imageType+"' height='30px' width='30px'  style=' padding-top: 3px'></a>"+
                    "</div> "+
 
                    "<div id='text'>  "+
@@ -127,8 +128,6 @@ function AddHTMLToFeed(marker){
                             +marker.action_time.substring(0, 19)+"<br>"
                             +marker.city+ ' - ' + marker.state+
                        "</p>"+
-                       '<a href="javascript:void(0);" onclick="javascript:focusOnMarker('+ latitude +','+ longitude +');">'+
-                       '<i class="fa fa-fw fa fa-info-circle text-dark" id="tourButton"></i></a>'+
                    "</div>"+
                "</div>"
     return html
@@ -186,5 +185,5 @@ function focusOnMarker(latitude, longitude){
         [latitude, longitude],
         [latitude, longitude]
     ]);
-    map.setZoom(16);
+    map.setZoom(10);
 }
