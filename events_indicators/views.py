@@ -17,7 +17,7 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 view_type = "question"
 metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
                      {'id': 2, 'url': get_metabase_url(view_type, 15, "true")},
-                     {'id': 3, 'url': get_metabase_url(view_type, 16, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 52, "true")},
                      {'id': 4, 'url': get_metabase_url(view_type, 17, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 51, "true")}]
 
@@ -68,7 +68,8 @@ def populate_event_data():
         new_url = clean_url(url)
         for event in request:
             date = event["createTimestamp"]['date']
-            EventData(new_url, str(event['classificacaoEtaria']), date).save()
+            if str(event['classificacaoEtaria']) != '':
+                EventData(new_url, str(event['classificacaoEtaria']).title(), date).save()
             for language in event["terms"]["linguagem"]:
                 EventLanguage(new_url, language).save()
 
