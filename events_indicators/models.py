@@ -1,10 +1,11 @@
 from mongoengine import Document
 from mongoengine import StringField
 from mongoengine import DateTimeField
+from mongoengine import ListField
 
 
 class LastUpdateEventDate(Document):
-    _create_date = StringField(required=True)
+    _create_date = DateTimeField(required=True)
 
     @property
     def create_date(self):
@@ -39,6 +40,7 @@ class EventLanguage(Document):
 class EventData(Document):
     _instance = StringField(required=True)
     _age_rage = StringField(required=True)
+    _occurrences = ListField(required=False)
     _date = DateTimeField(required=True)
 
     @property
@@ -64,3 +66,11 @@ class EventData(Document):
     @age_range.setter
     def age_range(self, age_range):
         self._age_rage = age_range
+
+    @property
+    def occurrences(self):
+        return self._occurrences
+
+    @occurrences.setter
+    def occurrences(self, occurrences):
+        self._occurrences = occurrences
