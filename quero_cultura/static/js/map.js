@@ -92,12 +92,12 @@ function loadMarkers(markerType, imageExtension, markerData) {
 
 
 function updateFeed(recent_markers) {
-    recent_markers.forEach(async function(value){
+    recent_markers.forEach(function(value){
 
-        if(value.city == undefined){
+        if(value.city === undefined){
             value.city = ''
         }
-        if(value.state == undefined){
+        if(value.state === undefined){
             value.state = ''
         }
         var html = AddHTMLToFeed(value)
