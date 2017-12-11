@@ -2482,6 +2482,7 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 261	card-create	2017-12-10 12:02:39.51+00	1	card	52	2	18	\N	{"name":"Porcentagem de eventos por faixa etária","description":null}
 262	card-update	2017-12-10 12:02:53.368+00	1	card	52	2	18	\N	{"name":"Porcentagem de eventos por faixa etária","description":null}
 263	card-update	2017-12-10 12:02:53.435+00	1	card	52	2	18	\N	{"name":"Porcentagem de eventos por faixa etária","description":null}
+264	card-update	2017-12-11 20:18:21.324+00	1	card	52	2	18	\N	{"name":"Classificação indicativa","description":null}
 \.
 
 
@@ -2765,7 +2766,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-12-10 11:57:26.368+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-12-11 20:14:58.797+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -3762,7 +3763,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x5c7f8a7da7a185bcb6d36485e5ced07d14db9a872f29b08bb9c969ce0a59205b	90
 \\x79b9821f976e9b44dcefe483b0b0aac3aeeae51ad963ad7a420c1d2af4258a11	69
 \\x6266766110761ffd546a5658d01aa2416f0dfe685509a41988e80dfbff701be4	112
-\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	60
 \\x9c0228d167203464c42d91efe815d6f17a8be95ddbe03adadcb8617b5a1c4a46	137
 \\x23e4321c147245a4d20fb56fd5e3a7c76ed29c2139ae859a90a9a2f04ab731bc	137
 \\x496390f2f0b50e2fbfc8c751ba6e74596619323710bdcbbeea173e6d7f0bd10b	90
@@ -3864,7 +3864,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	527
 \\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	884
 \\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	1199
-\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	743
 \\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	424
 \\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	359
 \\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	326
@@ -3872,14 +3871,17 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	456
 \\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	425
 \\x37cf77f673095db6a1e2cfd7f043a2a64f05eb17c9d788e89bd75de8d5f6645a	371
-\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	693
-\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	465
-\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	947
-\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	528
-\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	571
-\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	468
-\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	780
-\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	319
+\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	147
+\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	525
+\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	813
+\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	697
+\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	937
+\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	453
+\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	569
+\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	352
+\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	731
+\\x82b87d1d4b956fada0b7913fd3d8233cc2d0a10f255c584e09464b7f18d06521	254
+\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	158
 \.
 
 
@@ -6038,6 +6040,39 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 2140	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-10 12:03:04.369	157	1	f	embedded-question	\N	1	36	\N	\N
 2141	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-12-10 12:03:04.253	717	267	f	embedded-question	\N	1	14	\N	\N
 2142	\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	2017-12-10 12:03:04.802	352	6	f	embedded-question	\N	1	52	\N	\N
+2143	\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	2017-12-11 20:15:50.657	932	1521	f	ad-hoc	\N	1	\N	\N	\N
+2144	\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	2017-12-11 20:17:29.731	495	1	f	embedded-question	\N	1	44	\N	\N
+2145	\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	2017-12-11 20:17:29.556	778	6	f	embedded-question	\N	1	52	\N	\N
+2146	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-12-11 20:17:29.583	1113	56	f	embedded-question	\N	1	14	\N	\N
+2147	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-12-11 20:17:30.162	729	45	f	embedded-question	\N	1	15	\N	\N
+2148	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-12-11 20:17:30.442	844	1	f	embedded-question	\N	1	37	\N	\N
+2149	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:17:32.376	337	1	f	embedded-question	\N	1	36	\N	\N
+2150	\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	2017-12-11 20:17:32.388	342	0	f	embedded-question	\N	1	51	\N	\N
+2151	\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	2017-12-11 20:17:32.356	549	38	f	embedded-question	\N	1	17	\N	\N
+2152	\\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	2017-12-11 20:17:56.363	235	6	f	question	\N	1	52	\N	\N
+2153	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-12-11 20:18:40.132	621	56	f	question	\N	1	31	\N	\N
+2154	\\x82b87d1d4b956fada0b7913fd3d8233cc2d0a10f255c584e09464b7f18d06521	2017-12-11 20:18:48.417	258	6	f	ad-hoc	\N	1	\N	\N	\N
+2155	\\x82b87d1d4b956fada0b7913fd3d8233cc2d0a10f255c584e09464b7f18d06521	2017-12-11 20:18:57.297	214	6	f	ad-hoc	\N	1	\N	\N	\N
+2156	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:01.02	76	1	f	ad-hoc	\N	1	\N	\N	\N
+2157	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:02.227	89	1	f	ad-hoc	\N	1	\N	\N	\N
+2158	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:02.814	107	1	f	ad-hoc	\N	1	\N	\N	\N
+2159	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:03.58	69	1	f	ad-hoc	\N	1	\N	\N	\N
+2160	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:04.205	124	1	f	ad-hoc	\N	1	\N	\N	\N
+2161	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:04.88	161	1	f	ad-hoc	\N	1	\N	\N	\N
+2162	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:05.523	111	1	f	ad-hoc	\N	1	\N	\N	\N
+2163	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:06.217	93	1	f	ad-hoc	\N	1	\N	\N	\N
+2164	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:06.851	97	1	f	ad-hoc	\N	1	\N	\N	\N
+2165	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:07.471	113	1	f	ad-hoc	\N	1	\N	\N	\N
+2166	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:08.104	81	1	f	ad-hoc	\N	1	\N	\N	\N
+2167	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:09.058	150	1	f	ad-hoc	\N	1	\N	\N	\N
+2168	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:22.152	85	1	f	ad-hoc	\N	1	\N	\N	\N
+2169	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:22.901	125	1	f	ad-hoc	\N	1	\N	\N	\N
+2170	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:23.515	83	1	f	ad-hoc	\N	1	\N	\N	\N
+2171	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:24.102	109	1	f	ad-hoc	\N	1	\N	\N	\N
+2172	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:19:24.693	128	1	f	ad-hoc	\N	1	\N	\N	\N
+2173	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:20:03.75	141	1	f	ad-hoc	\N	1	\N	\N	\N
+2174	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:20:04.84	111	1	f	ad-hoc	\N	1	\N	\N	\N
+2175	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-11 20:20:05.606	148	1	f	ad-hoc	\N	1	\N	\N	\N
 \.
 
 
@@ -6112,7 +6147,7 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 2	2017-11-12 21:42:36.767+00	2017-12-10 10:47:49.253+00	Áreas de Atuação por Instância	\N	bar	{"database":2,"type":"query","query":{"source_table":15,"aggregation":[["count"]],"breakout":[["field-id",594],["field-id",592]],"order_by":[[["aggregation",0],"descending"]]}}	{"stackable.stack_type":"stacked","graph.y_axis.title_text":"Quantidade","graph.x_axis.title_text":"Área de atuação"}	1	2	15	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Instance","name":"_instance","special_type":"type/Category"},{"base_type":"type/Text","display_name":"Occupation Area","name":"_occupation_area","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 4	2017-11-12 23:05:39.061+00	2017-12-10 10:48:25.969+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"month"]],"aggregation":[["cum_count"]]}}	{"line.interpolate":"cardinal","line.marker_enabled":true,"graph.x_axis.title_text":"Data","graph.y_axis.title_text":"Quantidade"}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 3	2017-11-12 23:01:23.161+00	2017-12-10 10:49:25.436+00	Quantidade de Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}}	{"stackable.stack_type":"stacked","graph.y_axis.title_text":"Quantidade","graph.x_axis.title_text":"Data"}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
-52	2017-12-10 12:02:39.26+00	2017-12-10 12:02:53.366+00	Porcentagem de eventos por faixa etária	\N	pie	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}}	{}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+52	2017-12-10 12:02:39.26+00	2017-12-11 20:18:21.168+00	Classificação indicativa	\N	pie	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}}	{}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -6427,6 +6462,7 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 296	Card	52	1	2017-12-10 12:02:39.487+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":2,"query_type":"query","name":"Porcentagem de eventos por faixa etária","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	t	\N
 297	Card	52	1	2017-12-10 12:02:53.32+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Porcentagem de eventos por faixa etária","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
 298	Card	52	1	2017-12-10 12:02:53.4+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Porcentagem de eventos por faixa etária","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+299	Card	52	1	2017-12-11 20:18:21.228+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Classificação indicativa","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
 \.
 
 
@@ -6848,6 +6884,8 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 388	1	card	15	2017-12-10 12:00:27.246+00
 389	1	card	15	2017-12-10 12:00:52.175+00
 390	1	card	52	2017-12-10 12:02:39.471+00
+391	1	card	52	2017-12-11 20:17:56.203+00
+392	1	card	31	2017-12-11 20:18:39.952+00
 \.
 
 
@@ -6855,7 +6893,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 263, true);
+SELECT pg_catalog.setval('activity_id_seq', 264, true);
 
 
 --
@@ -7023,7 +7061,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 2142, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 2175, true);
 
 
 --
@@ -7072,7 +7110,7 @@ SELECT pg_catalog.setval('report_dashboardcard_id_seq', 11, true);
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 298, true);
+SELECT pg_catalog.setval('revision_id_seq', 299, true);
 
 
 --
@@ -7086,7 +7124,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 390, true);
+SELECT pg_catalog.setval('view_log_id_seq', 392, true);
 
 
 --

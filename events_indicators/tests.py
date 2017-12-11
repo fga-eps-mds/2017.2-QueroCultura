@@ -46,13 +46,13 @@ class TestEventData(object):
             }
         ]
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
-        age_range = "Livre"
-        EventData(instance, age_range, occurrences, date).save()
+        age_rage = "Livre"
+        EventData(instance, age_rage, occurrences, date).save()
         query = EventData.objects.first()
         assert query.instance == instance
         assert query.occurrences == occurrences
         assert query.date == date
-        assert query.age_range == age_range
+        assert query.age_range == age_rage
 
 
 class TestPopulateEventData(object):
