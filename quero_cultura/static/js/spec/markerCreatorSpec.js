@@ -1,3 +1,4 @@
+
 describe('requestSubsite', function(){
 	it('should be crete request a subsite and return a promise', function(){
 
@@ -10,15 +11,14 @@ describe('requestSubsite', function(){
 });
 
 describe('createPopup', function(){
-	it('should be create a popup to marker without subsite', function(){
-		var data = [{"id": 1},{"subsite": null}, {"name": "Jeferson"}, {"singleUrl": "http://mapas.cultura.gov.br/agente/1"}]
-		var valueZindex = setZIndex('png')
+	it('should be create a popup to marker', function(){
+		var data = [{"name": "Jeferson"}, {"instance_url": "http://mapas.cultura.gov.br/agente/1"}]
 		var markerAgent = new L.FeatureGroup();
-        var marker = L.marker([0, 0]).setZIndexOffset(valueZindex).addTo(markerAgent)
+        var marker = L.marker([0, 0])
 
         spyOn(marker, 'bindPopup')
-		createPopup(data,marker)
-		expect(marker.bindPopup()).toHaveBeenCalled()
+		createPopup(data, marker)
+		expect(marker.bindPopup).toHaveBeenCalled()
 	});
 });
 
