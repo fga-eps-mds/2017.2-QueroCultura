@@ -76,47 +76,6 @@ describe('loadMarkers', function(){
 	});
 });
 
-describe('eraseCookie', function(){
-
-	it('should erase cookie', function(){
-
-		spyOn(window, 'writeCookie')
-
-		eraseCookie('nome')
-
-		expect(window.writeCookie).toHaveBeenCalledWith('nome', '', -1)
-	});
-});
-
-describe('readCookie', function(){
-	it('should read cookie', function(){
-		var test = readCookie('dontExist01020304')
-
-		expect(test).toEqual(null)
-	});
-});
-
-// describe('saveAndLoadData', function(){
-// 	xit('Should call createQueryPromise', function(){
-// 		spyOn(window, 'createQueryPromise')
-// 		saveAndLoadData('instanceURL', 'event', 5, [], 'gif')
-// 		expect(window.createQueryPromise).toHaveBeenCalled()
-// 	});
-// });
-//
-// describe('loadAndUpdateMarkers', function(){
-// 	it('Should call saveAndLoadData', function(){
-// 		spyOn(window, 'saveAndLoadData')
-// 		loadAndUpdateMarkers(5,[],'gif')
-// 		expect(window.saveAndLoadData).toHaveBeenCalled()
-// 	});
-// 	it('Should call addLayer', function(){
-// 		spyOn(map,'addLayer')
-// 		loadAndUpdateMarkers(5,[],'gif')
-// 		expect(map.addLayer).toHaveBeenCalledTimes(4)
-// 	});
-// });
-
 describe('initialize_data_map', function() {
 	it('Should initialize map data', function(){
 		var test = {}
