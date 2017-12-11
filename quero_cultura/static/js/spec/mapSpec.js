@@ -1,22 +1,23 @@
+
 describe('GetColorByType', function () {
 	it('should return a blue for agent', function () {
 		colorRGB = "#17a2b8";
-		type = "agente";
+		type = "agent";
     });
 
 	it('should return a red for spaces', function () {
 		colorRGB = "#dc3545";
-		type = "espaco";
+		type = "space";
     });
 
 	it('should return a green for project', function () {
 		colorRGB = "#28a745";
-		type = "projeto";
+		type = "project";
     });
 
 	it('should return a yellow for event', function () {
 		colorRGB = "#ffc107";
-		type = "evento";
+		type = "event";
 	});
 
 	it('should return a black for anything wrong and not classified', function(){

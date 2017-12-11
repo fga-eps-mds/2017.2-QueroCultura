@@ -92,7 +92,7 @@ function loadMarkers(markerType, imageExtension, markerData) {
 
 
 function updateFeed(recent_markers) {
-    recent_markers.forEach(async function(value){
+    recent_markers.forEach(function(value){
 
         if(value.city == undefined){
             value.city = ''
