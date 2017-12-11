@@ -19,6 +19,7 @@ module.exports = function(config) {
 			'http://code.jquery.com/ui/1.9.2/jquery-ui.js',				
 			'https://unpkg.com/leaflet@1.2.0/dist/leaflet.js',
 			'https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js',
+            'https://rawgit.com/usablica/intro.js/master/intro.js',
 			'quero_cultura/static/js/*.js',
 			'quero_cultura/static/js/spec/*.js'
     ],
