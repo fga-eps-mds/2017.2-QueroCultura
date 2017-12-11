@@ -30,21 +30,6 @@ describe('GetColorByType', function () {
 	});
 });
 
-describe("AddInfoToFeed", function(){
-
-	it("should get all data", function(){
-		diffFeed2 = new Map()
-		diffFeed2.set(123,{"name":"Pablo","type":"Agente","singleUrl":"teste"})
-		diffFeed2.set(1234,{"name":"Pablo2","type":"Agente2","singleUrl":"teste2"})
-
-		spyOn(diffFeed2,'forEach')
-
-		AddInfoToFeed(diffFeed2);
-
-		expect(diffFeed2.forEach).toHaveBeenCalled()
-	})
-})
-
 describe('AddHTMLToFeed', function () {
 
 	xit('should get color by type', function () {
@@ -107,41 +92,6 @@ describe('readCookie', function(){
 		var test = readCookie('dontExist01020304')
 
 		expect(test).toEqual(null)
-	});
-});
-
-describe('getQueryDateTime', function() {
-	it('should create a new date time', function () {
-		delay = -5;
-		var now = getQueryDateTime(delay);
-		var timeTest = new Date();
-
-		timeTest.setHours(timeTest.getHours() - 2, timeTest.getMinutes() - delay);
-		timeTest = timeTest.toJSON();
-
-		expect(now).toEqual(timeTest);
-
-    });
-});
-
-describe('createQueryPromise',function(){
-	it('Should call getQueryDateTime', function(){
-		spyOn(window, 'getQueryDateTime')
-		createQueryPromise('instanceURL','event',5)
-		expect(window.getQueryDateTime).toHaveBeenCalledWith(5)
-	});
-	xit('Should return promise',function(){
-		var dateTime = getQueryDateTime(5)
-		var select = 'name, occurrences.{space.{location}}, singleUrl'
-		var promise = $.getJSON("instanceURLevent/find",
-	      {
-	        '@select' : select,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+dateTime+")",
-	        'updateTimestamp' : "GT("+dateTime+")"
-	      })
-		  var equal = createQueryPromise('instanceURL','event',5)
-		  expect(equal).toEqual(promise)
 	});
 });
 
