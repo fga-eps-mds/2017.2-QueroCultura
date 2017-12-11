@@ -1,5 +1,5 @@
 from datetime import datetime
-from .api_connections import RequestMixedIndicatorsRawData
+from .db_connections import RequestMixedIndicatorsRawData
 from .models import EventAndSpaceData
 from .views import populate_mixed_data
 from events_indicators.models import EventData

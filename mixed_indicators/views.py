@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
-from .api_connections import RequestMixedIndicatorsRawData
+from .db_connections import RequestMixedIndicatorsRawData
 from .models import EventAndSpaceData
 from events_indicators.models import EventData
 
