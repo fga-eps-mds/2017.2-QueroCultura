@@ -23,13 +23,18 @@ detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 49, "false")},
 
 page_type = "Projetos"
 graphic_type = 'project_graphic_detail'
+page_descripition = "Projetos são leis de fomento, mostras, convocatórias e "\
+                    + "editais criados pelas Secretarias de Cultura, além de "\
+                    + "diversas iniciativas cadastradas pelos usuários da "\
+                    + "plataforma"
 
 
 def index(request):
     return render(request, 'quero_cultura/indicators_page.html',
                   {'metabase_graphics': metabase_graphics,
                    'detailed_data': detailed_data, 'page_type': page_type,
-                   'graphic_type': graphic_type})
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):
@@ -38,7 +43,7 @@ def graphic_detail(request, graphic_id):
                   {'graphic': graphic})
 
 
-@task(name="populate_project_data")
+@task(name="load_projects")
 def populate_project_data():
     if len(LastUpdateProjectDate.objects) == 0:
         LastUpdateProjectDate(DEFAULT_INITIAL_DATE).save()

@@ -15,29 +15,43 @@ DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
-metabase_graphics = [{'id':1, 'url':get_metabase_url(view_type, 25,"true")},
-                    {'id':2, 'url':get_metabase_url(view_type, 26,"true")},
-                    {'id':3, 'url':get_metabase_url(view_type, 27,"true")},
-                    {'id':4, 'url':get_metabase_url(view_type, 28,"true")},
-                    {'id':5, 'url':get_metabase_url(view_type, 29,"true")}]
+metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 25, "true")},
+                     {'id': 2, 'url': get_metabase_url(view_type, 26, "true")},
+                     {'id': 3, 'url': get_metabase_url(view_type, 27, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 28, "true")},
+                     {'id': 5, 'url': get_metabase_url(view_type, 29, "true")}]
 
 
-
-detailed_data = [{'id':1, 'url':get_metabase_url(view_type, 38,"false")},
-                {'id':2, 'url':get_metabase_url(view_type, 39,"false")},
-                {'id':3, 'url':get_metabase_url(view_type, 44,"false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 38, "false")},
+                 {'id': 2, 'url': get_metabase_url(view_type, 39, "false")},
+                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
 
 
 page_type = "Bibliotecas"
 graphic_type = 'library_graphic_detail'
+page_descripition = "Biblioteca é todo espaço, seja ele concreto ou virtual "\
+                    + "que reúne coleção de informações de qualquer tipo,"\
+                    + "sejam livros, enciclopédias, dicionário, monografias,"\
+                    + " revista, entre outros. Os gráficos abaixo representam"\
+                    + " indicadores culturais extraidos das Bibliotecas"\
+                    + " cadastradas na plataforma"
+
 
 def index(request):
-    return render(request, 'quero_cultura/indicators_page.html', {'metabase_graphics':metabase_graphics,'detailed_data':detailed_data,'page_type':page_type, 'graphic_type':graphic_type})
+        return render(request, 'quero_cultura/indicators_page.html',
+                      {'metabase_graphics': metabase_graphics,
+                       'detailed_data': detailed_data,
+                       'page_type': page_type,
+                       'graphic_type': graphic_type,
+                       'page_descripition': page_descripition})
+
+
 def graphic_detail(request, graphic_id):
     graphic = metabase_graphics[int(graphic_id) - 1]
     return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
 
-@task(name="populate_library_data")
+
+@task(name="load_libraries")
 def populate_library_data():
     if len(LastUpdateLibraryDate.objects) == 0:
         LastUpdateLibraryDate(DEFAULT_INITIAL_DATE).save()

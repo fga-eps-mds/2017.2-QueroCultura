@@ -13,21 +13,25 @@
           <h1>
             Dados de {{page_type}}
           </h1>
+          <div class="subtitle-box">
+            <br>
+            <p>{{page_descripition}} <a href="http://mapas.cultura.gov.br/" target="_blank">Mapas Culturais</a> e suas instâncias.</p>
+          </div>
       </center>
   </div>
   <div class="row">
 {% for number_detail in detailed_data %}
 
     <div class="col-md-4">
-      <iframe class="detailed_data" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
+      <iframe class="detailed_data" style="width:350px;" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
     </div>
 
 {% endfor %}
   </div>
 </div>
 
-<div class="col-md-12 container-indicators" style="background-color:#dbdbdb;">
-  <div class="title">
+<div class="col-md-12 container-indicators" id="graphic-space">
+  <div class="title" id="graphics-title">
       <center>
           <h1>
               Gráficos
@@ -38,19 +42,19 @@
     <div class="row">
 
         {% for graphic in metabase_graphics %}
-        <div class="col-md-4 ">
+        <div class="col-md-4 top">
             <div id="area" class="chart-group">
                 <div class="chart-container">
-                    <iframe scrolling="no" src={{graphic.url|safe}}></iframe>
+                  <iframe class="graphic-thumbnail" scrolling="no" src={{graphic.url|safe}}></iframe>
                 </div>
-                <a href="{%url graphic_type graphic.id %}">
+                  <a href="{%url graphic_type graphic.id %}">
                     <div class="text-chart-init">
-                        <p>Detalhar gráfico</p>
+                      <p>Detalhar gráfico</p>
                     </div>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
+                  </a>
+              </div>
+          </div>
+          {% endfor %}
 
     </div>
 </div>

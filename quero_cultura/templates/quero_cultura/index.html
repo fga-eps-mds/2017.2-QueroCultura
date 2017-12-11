@@ -30,25 +30,32 @@ crossorigin=""></script>
 <script type = "text/javascript" src="static/js/connections.js"></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
-	<script>
+<script>
+	if ($(document).height() > $(window).height()) {
+		var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
 
-		var instanceList = {{urls|safe}}
+     	$('html').addClass('noscroll').css('top',-scrollTop);
+  	}
+	var generated_csrf_token = "{{ csrf_token }}"
 
-		if ($(document).height() > $(window).height()) {
- 			var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+	lastDayData = {{get_last_day_markers|safe}}
+	lastHourData = {{get_last_hour_markers|safe}}
+	lastMinuteData = {{get_last_minutes_markers|safe}}
+	most_recent_markers = {{get_most_recent_markers|safe}}
+	console.log(lastDayData)
+	console.log(lastHourData)
+	console.log(lastMinuteData)
+	console.log(most_recent_markers)
+	loadAndUpdateMarkers(lastDayData, 'png')
+	loadAndUpdateMarkers(lastHourData, 'gif')
+	loadAndUpdateMarkers(lastMinuteData, 'gif')
+	updateFeed(most_recent_markers)
 
-         	$('html').addClass('noscroll').css('top',-scrollTop);
-      	}
-
-    	var day = 1440 // A day has 1440 minutes
-		var hour = 60
-		var lastMinutes = 10
-		var minute = 1
-    	loadAndUpdateMarkers(day, lastDayData, 'png')
-		loadAndUpdateMarkers(hour, lastHourData, 'gif')
-		loadAndUpdateMarkers(lastMinutes, lastMinuteData, 'gif')
-		setInterval(function(){loadAndUpdateMarkers(minute, lastMinuteData, 'gif')}, 60000)
+	// 1 minute in milliseconds
+	setInterval(function(){new_markers()}, 60*1000)
 
 
-	</script>
+
+</script>
+
 	{% endblock %}
