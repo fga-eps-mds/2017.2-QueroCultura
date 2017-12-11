@@ -8,6 +8,14 @@ describe('requestSubsite', function(){
 		promise = requestSubsite(url, subsiteID)
 		expect(promise).toBeDefined()
 	});
+
+	it('shold be modified null subsiteID to 0', function(){
+		var url = "http://mapas.cultura.gov.br/api/subsite/api/subsite/find"
+		subsiteID = null
+
+		promise = requestSubsite(url, subsiteID)
+		expect(promise).toBeDefined()
+	});
 });
 
 describe('createPopup', function(){
@@ -41,10 +49,19 @@ describe('createSpaceMarker', function(){
 
 	it('should create space marker icon', function(){
 		spyOn(window,'createMarkerIcon')
-		data1 = {}
-		createSpaceMarker(data1, 'gif');
+		data = {}
+		createSpaceMarker(data, 'gif');
 
 		expect(window.createMarkerIcon).toHaveBeenCalledWith('espaco', 'gif')
+	});
+
+	it('should be add marker to map', function(){
+		var data = {"location": {"latitude": 0, "longitude": 0}}
+
+		spyOn(window,'addMarkerToMap')
+		createSpaceMarker(data, 'gif');
+
+		expect(window.addMarkerToMap).toHaveBeenCalled()
 	});
 
 });
@@ -57,6 +74,15 @@ describe('createAgentMarker', function(){
 
 		expect(window.createMarkerIcon).toHaveBeenCalledWith('agente', 'png')
 	});
+
+	it('should be add marker to map', function(){
+		var data = {"location": {"latitude": 0, "longitude": 0}}
+
+		spyOn(window,'addMarkerToMap')
+		createAgentMarker(data, 'gif');
+
+		expect(window.addMarkerToMap).toHaveBeenCalled()
+	});
 });
 
 describe('createEventMarker', function(){
@@ -66,6 +92,34 @@ describe('createEventMarker', function(){
 		createEventMarker(data1, 'gif')
 
 		expect(window.createMarkerIcon).toHaveBeenCalledWith('evento', 'gif')
+	});
+
+	it('should be add marker to map', function(){
+		var data = {"location": {"latitude": 0, "longitude": 0}}
+
+		spyOn(window,'addMarkerToMap')
+		createEventMarker(data, 'gif');
+
+		expect(window.addMarkerToMap).toHaveBeenCalled()
+	});
+});
+
+describe('createProjectMarker', function(){
+	it('should create event marker icon', function(){
+		spyOn(window, 'createMarkerIcon')
+		data1 = {}
+		createProjectMarker(data1, 'gif')
+
+		expect(window.createMarkerIcon).toHaveBeenCalledWith('projeto', 'gif')
+	});
+
+	it('should be add marker to map', function(){
+		var data = {"location": {"latitude": 0, "longitude": 0}}
+
+		spyOn(window,'addMarkerToMap')
+		createProjectMarker(data, 'gif');
+
+		expect(window.addMarkerToMap).toHaveBeenCalled()
 	});
 });
 
