@@ -17,7 +17,7 @@ function startIntro(pageDef){
        steps: [
 
            {
-                intro: "<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados. Vamos começar o tour !",
+                intro: '<h2>Bem vindo</h2>O QueroCultura é uma plataforma Web de visualização de dados, que processa dados já existentes na plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a>. gerando indicadores culturais',
 
            },
 
@@ -47,7 +47,7 @@ function startIntro(pageDef){
 
             {
 
-               intro: '<h2>Tipos de marcadores</h2> Os marcadores de agentes: <img src="static/images/markerAgent.png" height="35" /><br> Marcadores de projetos: <img src="static/images/markerProject.png" height="35px" alt="" /><br> Marcadores de Espaço: <img src="static/images/markerSpace.png" height="35px" alt="" /><br> Marcadores de evento: <br><img src="static/images/markerEvent.png" height="35px" alt="" /> ',
+               intro: '<h2>Tipos de marcadores</h2> Os marcadores de agentes:<img src="static/images/markerAgent.png" height="30"/><br> Marcadores de projetos:<br><img src="static/images/markerProject.png" height="30px"/><br> Marcadores de Espaço:<br><img src="static/images/markerSpace.png" height="30px" alt="" /><br> Marcadores de evento: <br><img src="static/images/markerEvent.png" height="30px" alt="" /> ',
             },
 
 
@@ -73,7 +73,7 @@ function startIntro(pageDef){
       })
 
         break;
-      default:
+      case 2:
       intro.setOptions({
        steps: [
 
@@ -97,13 +97,14 @@ function startIntro(pageDef){
 
            {
                 intro: '<h2>Gráficos.</h2> Nessa área é possível ver os gráficos das informações coletadas da plataforma <a target="_blank" href="http://mapas.cultura.gov.br">Mapas Culturais</a> .',
-                element:"#graphics-title"
+                element:"#area"
 
            }
 
         ]
       })
 
+      break;
     }
 
     intro.start();
