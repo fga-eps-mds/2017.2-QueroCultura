@@ -1,18 +1,13 @@
 import json
+import datetime
 import requests
+from events_indicators.models import EventData
 
 
 class RequestMixedIndicatorsRawData(object):
 
-    def __init__(self, last_update_time, url):
-        self._filters = {'@select': 'occurrences.{space.{acessibilidade}}',
-                         'createTimestamp': "GT("+last_update_time+")"}
-        self._response = requests.get(url+"event/find/", self._filters)
-        self._data = json.loads(self._response.text)
-
-    @property
-    def response(self):
-        return self._response
+    def __init__(self, last_update_time):
+        self._data = EventData.objects(_date__gt=last_update_time)
 
     @property
     def data(self):
