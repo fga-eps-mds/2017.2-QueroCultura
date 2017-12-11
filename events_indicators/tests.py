@@ -13,10 +13,10 @@ class TestLastUpdateEventDate(object):
 
     def test_last_update_event_date(self):
         LastUpdateEventDate.drop_collection()
-        create_date = datetime.now().__str__()
+        create_date = datetime.now()
         LastUpdateEventDate(create_date).save()
         query = LastUpdateEventDate.objects.first()
-        assert query.create_date == create_date
+        assert query.create_date.date() == create_date.date()
 
 
 class TestEventLanguage(object):
@@ -36,11 +36,21 @@ class TestEventData(object):
     def test_event_data(self):
         EventData.drop_collection()
         instance = "SP"
+        occurrences = [
+            {
+                "id": 1147,
+                "space": {
+                    "id": 14191,
+                    "acessibilidade": "Sim"
+                }
+            }
+        ]
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
         age_range = "Livre"
-        EventData(instance, age_range, date).save()
+        EventData(instance, age_range, occurrences, date).save()
         query = EventData.objects.first()
         assert query.instance == instance
+        assert query.occurrences == occurrences
         assert query.date == date
         assert query.age_range == age_range
 
@@ -54,7 +64,8 @@ class TestPopulateEventData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "terms": {"linguagem": "Cinema"},
-                   "classificacaoEtaria": "livre"}]
+                   "classificacaoEtaria": "livre",
+                   "occurrences": [{"id": 1147, "space": {"id": 14191, "acessibilidade": "Sim"}}]}]
 
         for url in urls:
             kwargs['mock'].get(url + "event/find/", text=json.dumps(result))

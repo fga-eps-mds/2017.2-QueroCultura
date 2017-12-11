@@ -92,5 +92,4 @@ def populate_event_data():
                 EventLanguage(new_url, language).save()
 
     populate_mixed_data(last_update)
-    LastUpdateEventDate(datetime.now()).save() 
-
+    LastUpdateEventDate(datetime.now()).save()

@@ -68,7 +68,6 @@ class TestRequestMixedRawData(object):
         date = datetime(2017, 11, 13, 3, 5, 55, 88000)
 
         raw_data = RequestMixedIndicatorsRawData(date)
-        
+
         assert raw_data.data[0].age_range == 'Livre'
         assert raw_data.data_length == 1
-        
