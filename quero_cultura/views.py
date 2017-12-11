@@ -12,9 +12,8 @@ import yaml
 import jwt
 
 
-
 METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc690bbcd9"
-METABASE_SITE_URL = "http://querocultura.lab.cultura.gov.br/metabase"
+METABASE_SITE_URL = "http://localhost/metabase"
 
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
 
@@ -67,9 +66,7 @@ def verify_database_state(query_time, valid_request_date):
 
     cur_date = get_time_now()
 
-
     last_request_date = get_last_request_date()
-
 
     if (Marker.objects.count() == 0 or cur_date > last_request_date + valid_request_date):
         update_last_request_date(cur_date)
@@ -87,8 +84,10 @@ def get_last_day_markers():
     verify_database_state(day_in_minutes, validate_time)
 
     # this line is needed to not get markers that are in last hour
-    behind_one_hour_markers = Marker.objects.filter(action_time__lte=one_hour_behind_date)
-    last_day_markers = behind_one_hour_markers.filter(action_time__gte=one_day_behind_date)
+    behind_one_hour_markers = Marker.objects.filter(
+        action_time__lte=one_hour_behind_date)
+    last_day_markers = behind_one_hour_markers.filter(
+        action_time__gte=one_day_behind_date)
 
     return convert_mongo_to_dict(last_day_markers)
 
@@ -103,7 +102,8 @@ def convert_mongo_to_dict(mongo_objects):
         new_marker['_id'] = ''
         # Convert datetime fields to str, so that JavaScript understands
         try:
-            new_marker['update_time_stamp'] = str(new_marker['update_time_stamp'])
+            new_marker['update_time_stamp'] = str(
+                new_marker['update_time_stamp'])
         except Exception as e:
             new_marker['update_time_stamp'] = ''
         try:
@@ -127,7 +127,8 @@ def get_last_hour_markers():
 
     verify_database_state(hour_in_minutes, datetime.timedelta(hours=1))
 
-    last_hour_markers = Marker.objects.filter(action_time__gte=one_hour_behind_date)
+    last_hour_markers = Marker.objects.filter(
+        action_time__gte=one_hour_behind_date)
 
     return convert_mongo_to_dict(last_hour_markers)
 
@@ -141,7 +142,8 @@ def get_last_minutes_markers():
 
     verify_database_state(minutes, datetime.timedelta(minutes=1))
 
-    last_minutes_markers = Marker.objects.filter(action_time__gte=minutes_behind_date)
+    last_minutes_markers = Marker.objects.filter(
+        action_time__gte=minutes_behind_date)
 
     return convert_mongo_to_dict(last_minutes_markers)
 
@@ -172,11 +174,12 @@ def index(request):
                        "get_last_day_markers": get_last_day_markers,
                        "get_last_minutes_markers": get_last_minutes_markers,
                        "get_last_hour_markers": get_last_hour_markers,
-                      }
+                       }
     return render(request, 'quero_cultura/index.html', markers_context)
 
 
 class ParserYAML(object):
+
     def __init__(self):
         self._urls_files = open("./urls.yaml", 'r')
         self._urls = yaml.load(self._urls_files)
@@ -195,4 +198,4 @@ def get_metabase_url(view_type, number, has_title):
     token = str(token).replace("b'", "")
     token = token.replace("'", "")
 
-    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled="+ has_title
+    return METABASE_SITE_URL + "/embed/" + view_type + "/" + token + "#bordered=true&titled=" + has_title
