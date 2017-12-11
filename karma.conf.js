@@ -33,7 +33,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
 		'quero_cultura/static/js/*.js':['coverage']
-		},
+	},
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

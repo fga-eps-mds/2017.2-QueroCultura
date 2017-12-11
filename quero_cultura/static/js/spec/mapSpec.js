@@ -32,18 +32,21 @@ describe('GetColorByType', function () {
 });
 
 describe('AddHTMLToFeed', function () {
+	it('should return html', function () {
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "test",
+        			"action_time": "testagain",
+        			"city": "Brasilia",
+        			"state": "DF"}
+		
+		var htmlTest = AddHTMLToFeed(marker)
 
-	xit('should get color by type', function () {
-
-		spyOn(window,'GetColorByType')
-
-		AddHTMLToFeed('James Bond', 'agent', '007');
-
-		expect(window.GetColorByType).toHaveBeenCalledWith('agent')
-
+		expect(htmlTest).toBeDefined();
 	});
-
 });
+
 
 describe('loadMarkers', function(){
 	it('should load markers in instance', function(){
@@ -76,10 +79,21 @@ describe('loadMarkers', function(){
 	});
 });
 
+describe('loadAndUpdateMarkers', function(){
+	it('shold blalba', function(){
+		var data = [{"name": "Jeferson"}, {"instance_url": "http://mapas.cultura.gov.br/agente/1"}]
+		var imageExtension = 'gif'
+
+		spyOn(map, 'addLayer')
+		loadAndUpdateMarkers(data, imageExtension)
+		expect(map.addLayer).toHaveBeenCalled()
+	});
+});
+
 describe('initialize_data_map', function() {
 	it('Should initialize map data', function(){
 		var test = {}
 		var equal = initialize_data_map()
 		expect(typeof test).toEqual(typeof equal)
 	});
-})
+});
