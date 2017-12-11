@@ -115,5 +115,5 @@ function startIntro(pageDef){
 var nome = readCookie("nome");
 if(nome == null){
     writeCookie("nome", "nome", 30);
-    startIntro();
+    startIntro(pageDef);
 }
