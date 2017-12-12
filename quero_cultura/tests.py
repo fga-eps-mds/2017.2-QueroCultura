@@ -5,6 +5,7 @@ from .api_connections import get_marker_action
 from .api_connections import get_attribute
 from .api_connections import get_date
 from .api_connections import request_subsite_url
+from .views import get_time_now
 import requests_mock
 import json
 
@@ -87,3 +88,9 @@ class TestRequestSubSite(object):
 		kwargs['mock'].get(url + "/api/subsite/find", text=json.dumps(result))
 		resp = request_subsite_url(inst_id, url)
 		assert resp == url
+
+
+class TestGetTimeNow(object):
+    def test_get_time_now(self):
+        time_now = get_time_now()
+        assert time_now.date() == datetime.now().date()
