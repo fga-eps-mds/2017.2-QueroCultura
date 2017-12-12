@@ -38,7 +38,9 @@ class TestLastUpdateAgentsDate(object):
     def test_last_agents_date(self):
         LastUpdateAgentsDate.drop_collection()
         create_date = datetime.now().__str__()
-        LastUpdateAgentsDate(create_date).save()
+        update_date = LastUpdateAgentsDate()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateAgentsDate.objects.first()
         assert query.create_date == create_date
 
@@ -47,9 +49,12 @@ class TestAgentsArea(object):
 
     def test_agents_area(self):
         AgentsArea.drop_collection()
+        agent_area = AgentsArea()
         instance = "SP"
+        agent_area.instance = instance
         area = "Cinema"
-        AgentsArea(instance, area).save()
+        agent_area.area = area
+        agent_area.save()
         query = AgentsArea.objects.first()
         assert query.instance == instance
         assert query.area == area
@@ -59,10 +64,14 @@ class TestAgentsData(object):
 
     def test_agents_data(self):
         AgentsData.drop_collection()
+        agent_data = AgentsData()
         instance = "SP"
+        agent_data.instance = instance
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        agent_data.date = date
         agents_type = "Individual"
-        AgentsData(instance, agents_type, date).save()
+        agent_data.agents_type = agents_type
+        agent_data.save()
         query = AgentsData.objects.first()
         assert query.instance == instance
         assert query.date == date

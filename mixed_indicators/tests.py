@@ -3,9 +3,6 @@ from .api_connections import RequestMixedIndicatorsRawData
 from .models import EventAndSpaceData
 from .views import populate_mixed_data
 from events_indicators.models import EventData
-from quero_cultura.views import ParserYAML
-import requests_mock
-import json
 
 
 class TestEventAndSpaceData(object):
