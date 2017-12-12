@@ -127,3 +127,22 @@ describe('updateFeed', function(){
         expect(recent_markers[0]["state"]).toEqual('')
 	});
 });
+
+describe('fitBounds', function(){
+	it('should focus on marker selected', function(){
+		var latitude = 0
+		var longitude = 0
+
+		spyOn(map, 'fitBounds')
+		focusOnMarker(latitude, longitude)
+		expect(map.fitBounds).toHaveBeenCalled()
+	})
+});
+
+describe('formatName', function(){
+	it('should format name blank', function(){
+		var name = ''
+		teste = formatName(name)
+		expect(teste).toEqual('--------')
+	});
+});
