@@ -7,6 +7,7 @@ from .api_connections import get_date
 from .api_connections import request_subsite_url
 from .api_connections import filter_data
 from .views import get_time_now
+from .views import get_last_hour_markers
 from .api_connections import get_marker_address
 from .api_connections import get_location
 import requests_mock
@@ -17,6 +18,12 @@ SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateT
 EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
 AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
+
+
+class TestGetLastHourMarkers(object):
+    def test_get_last_hour_markers(self):
+        last = get_last_hour_markers()
+        assert last == []
 
 
 class TestRequestMarkerRawData(object):
