@@ -39,12 +39,12 @@ page_descripition = "Biblioteca é todo espaço, seja ele concreto ou virtual "\
 
 
 def index(request):
-        return render(request, 'quero_cultura/indicators_page.html',
-                      {'metabase_graphics': metabase_graphics,
-                       'detailed_data': detailed_data,
-                       'page_type': page_type,
-                       'graphic_type': graphic_type,
-                       'page_descripition': page_descripition})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data,
+                   'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):
@@ -52,7 +52,7 @@ def graphic_detail(request, graphic_id):
         graphic = metabase_graphics[int(graphic_id) - 1]
     except IndexError:
         return render(request, 'quero_cultura/not_found.html')
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    return render(request, 'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
 
 @task(name="load_libraries")
@@ -77,9 +77,9 @@ def populate_library_data():
                 accessibility = 'Não definido'
 
             LibraryData(new_url,
-                       library["type"]['name'],
-                       accessibility,
-                       date).save()
+                        library["type"]['name'],
+                        accessibility,
+                        date).save()
 
             for area in library["terms"]["area"]:
                 LibraryArea(new_url, str(area).title()).save()

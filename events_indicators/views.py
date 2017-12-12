@@ -31,7 +31,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 36, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 37, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+                 {'id': 3, 'url': get_metabase_url(view_type, 54, "false")}]
 
 
 page_type = "Eventos"
@@ -73,7 +73,7 @@ def populate_event_data():
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if url == SP_URL or url == ESTADO_SP_URL:
+        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestEventsInPeriod(year, url)
