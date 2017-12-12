@@ -72,13 +72,14 @@ class TestRequestProjectsRawData(object):
         url = "http://mapas.cultura.gov.br/api/"
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "type": {"name": "Livre"}, "useRegistrations": "FGA"}]
+                   "type": {"name": "Livre"}, "useRegistrations": True},
+                  {"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "type": {"name": "Livre"}, "useRegistrations": False}]
 
         kwargs['mock'].get(url + "project/find/", text=json.dumps(result))
 
         current_time = datetime.now().__str__()
-        raw_data = RequestProjectsRawData(current_time,
-                                          "http://mapas.cultura.gov.br/api/")
+        raw_data = RequestProjectsRawData(current_time, url)
         assert raw_data.response.status_code == 200
         assert raw_data.data == result
-        assert raw_data.data_length == 1
+        assert raw_data.data_length == 2
