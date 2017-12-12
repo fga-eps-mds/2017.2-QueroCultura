@@ -22,9 +22,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 25, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 29, "true")}]
 
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 38, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 39, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 8, "false")}]
 
 
 page_type = "Bibliotecas"

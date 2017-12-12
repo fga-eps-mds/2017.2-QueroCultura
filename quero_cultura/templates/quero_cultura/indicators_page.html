@@ -22,8 +22,8 @@
   <div class="row">
 {% for number_detail in detailed_data %}
 
-    <div class="col-md-4">
-      <iframe class="detailed_data" style="width:350px;" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
+    <div class="col-12">
+      <iframe class="detailed_data" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
     </div>
 
 {% endfor %}
