@@ -35,6 +35,7 @@ class LibraryArea(Document):
     def area(self, area):
         self._area = area
 
+
 class LibraryTags(Document):
     _instance = StringField(required=True)
     _tag = StringField(required=True)
@@ -69,14 +70,6 @@ class LibraryData(Document):
     @instance.setter
     def instance(self, instance):
         self._instance = instance
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        self._name = name
 
     @property
     def library_type(self):

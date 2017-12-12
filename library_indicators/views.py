@@ -10,6 +10,7 @@ from datetime import datetime
 from django.shortcuts import render
 from celery.decorators import task
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 # Get graphics urls from metabase
@@ -22,9 +23,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 25, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 29, "true")}]
 
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 38, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 39, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 8, "false")}]
 
 
 page_type = "Bibliotecas"
@@ -38,17 +37,20 @@ page_descripition = "Biblioteca é todo espaço, seja ele concreto ou virtual "\
 
 
 def index(request):
-        return render(request, 'quero_cultura/indicators_page.html',
-                      {'metabase_graphics': metabase_graphics,
-                       'detailed_data': detailed_data,
-                       'page_type': page_type,
-                       'graphic_type': graphic_type,
-                       'page_descripition': page_descripition})
+    return render(request, 'quero_cultura/indicators_page.html',
+                  {'metabase_graphics': metabase_graphics,
+                   'detailed_data': detailed_data,
+                   'page_type': page_type,
+                   'graphic_type': graphic_type,
+                   'page_descripition': page_descripition})
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
-    return render(request,'quero_cultura/graphic_detail.html',{'graphic': graphic})
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
+    return render(request, 'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
 
 @task(name="load_libraries")
@@ -68,19 +70,19 @@ def populate_library_data():
         for library in request:
             date = library["createTimestamp"]['date']
 
-            accessibility = library["acessibilidade"]
-            if accessibility == '':
-                accessibility = None
+            accessibility = str(library["acessibilidade"]).capitalize()
+            if accessibility == '' or accessibility == 'None':
+                accessibility = 'Não definido'
 
             LibraryData(new_url,
-                       library["type"]['name'],
-                       accessibility,
-                       date).save()
+                        library["type"]['name'],
+                        accessibility,
+                        date).save()
 
             for area in library["terms"]["area"]:
-                LibraryArea(new_url, area).save()
+                LibraryArea(new_url, str(area).title()).save()
 
             for tag in library["terms"]["tag"]:
-                LibraryTags(new_url, tag).save()
+                LibraryTags(new_url, str(tag).title()).save()
 
     LastUpdateLibraryDate(str(datetime.now())).save()

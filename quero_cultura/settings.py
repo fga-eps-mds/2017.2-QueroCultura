@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'events_indicators',
     'project_indicators',
     'museums_indicators',
+    'mixed_indicators',
     'space_indicators',
     'mongoengine',
     'requests',

@@ -9,6 +9,7 @@ from quero_cultura.views import get_metabase_url
 from celery.decorators import task
 from .models import OccupationArea
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 # Get graphics urls from metabase
@@ -21,9 +22,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 2, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 6, "true")}]
 
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 45, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 46, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 5, "false")}]
 
 page_type = "Espaços"
 graphic_type = 'space_graphic_detail'
@@ -44,7 +43,10 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
     return render(request, 'quero_cultura/graphic_detail.html',
                   {'graphic': graphic})
 

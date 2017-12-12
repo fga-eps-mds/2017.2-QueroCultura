@@ -11,6 +11,7 @@ from project_indicators.views import clean_url
 from celery.decorators import task
 import json
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 
 view_type = "question"
@@ -20,9 +21,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 20, "true")},
                      {'id': 4, 'url': get_metabase_url(view_type, 41, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 42, "true")}]
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 47, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 23, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 7, "false")}]
 
 
 page_type = "Museus"
@@ -45,7 +44,10 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
     return render(request, 'quero_cultura/graphic_detail.html',
                   {'graphic': graphic})
 
@@ -67,9 +69,9 @@ def populate_museum_data():
         for museum in request:
             date = museum["createTimestamp"]['date']
 
-            accessibility = museum["acessibilidade"]
-            if accessibility == '':
-                accessibility = None
+            accessibility = str(museum["acessibilidade"]).capitalize()
+            if accessibility == '' or accessibility == 'None':
+                accessibility = 'Não definido'
 
             MuseumData(new_url,
                        museum["type"]['name'],
@@ -77,8 +79,8 @@ def populate_museum_data():
                        date).save()
 
             for area in museum["terms"]["area"]:
-                MuseumArea(new_url, area).save()
+                MuseumArea(new_url, str(area).title()).save()
 
             for tag in museum["terms"]["tag"]:
-                MuseumTags(new_url, tag).save()
+                MuseumTags(new_url, str(tag).title()).save()
     LastUpdateMuseumDate(str(datetime.now())).save()

@@ -1,27 +1,35 @@
 from django.shortcuts import render
+from datetime import datetime
 from .api_connections import RequestEventsRawData
+from .api_connections import RequestEventsInPeriod
+from .api_connections import EmptyRequest
 from .models import EventData
 from .models import EventLanguage
 from .models import LastUpdateEventDate
 from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
+from mixed_indicators.views import populate_mixed_data
 from quero_cultura.views import get_metabase_url
 from datetime import datetime
 from celery.decorators import task
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
+ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
+DEFAULT_YEAR = 2013
+CURRENT_YEAR = datetime.today().year + 1
 
 # Get graphics urls from metabase
 # To add new graphis, just add in the metabase_graphics variable
 view_type = "question"
 metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
                      {'id': 2, 'url': get_metabase_url(view_type, 15, "true")},
-                     {'id': 3, 'url': get_metabase_url(view_type, 16, "true")},
-                     {'id': 4, 'url': get_metabase_url(view_type, 17, "true")}]
+                     {'id': 3, 'url': get_metabase_url(view_type, 52, "true")},
+                     {'id': 4, 'url': get_metabase_url(view_type, 17, "true")},
+                     {'id': 5, 'url': get_metabase_url(view_type, 51, "true")}]
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 36, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 37, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 4, "false")}]
 
 
 page_type = "Eventos"
@@ -43,7 +51,10 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
     return render(request, 'quero_cultura/graphic_detail.html',
                   {'graphic': graphic})
 
@@ -60,12 +71,23 @@ def populate_event_data():
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        request = RequestEventsRawData(last_update, url).data
+        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
+            request = EmptyRequest()
+            for year in range(DEFAULT_YEAR, CURRENT_YEAR):
+                single_request = RequestEventsInPeriod(year, url)
+                request.data += single_request.data
+            request = request.data
+        else:
+            request = RequestEventsRawData(str(last_update), url).data
+
         new_url = clean_url(url)
         for event in request:
             date = event["createTimestamp"]['date']
-            EventData(new_url, str(event['classificacaoEtaria']), date).save()
+            if str(event['classificacaoEtaria']) != '':
+                EventData(new_url, str(
+                    event['classificacaoEtaria']).title(), event['occurrences'], date).save()
             for language in event["terms"]["linguagem"]:
                 EventLanguage(new_url, language).save()
 
-    LastUpdateEventDate(str(datetime.now())).save()
+    populate_mixed_data(last_update)
+    LastUpdateEventDate(datetime.now()).save()
