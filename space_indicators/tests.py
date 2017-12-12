@@ -12,8 +12,10 @@ import json
 class TestLastUpdateDate(object):
     def test_last_update_date(self):
         LastUpdateDate.drop_collection()
+        update_date = LastUpdateDate()
         create_date = datetime.now().__str__()
-        LastUpdateDate(create_date).save()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateDate.objects.first()
         assert query.create_date == create_date
 
@@ -21,9 +23,12 @@ class TestLastUpdateDate(object):
 class TestOccupationArea(object):
     def test_occupation_area(self):
         OccupationArea.drop_collection()
+        occupation_area = OccupationArea()
         instance = "SP"
+        occupation_area.instance = instance
         area = "Cinema"
-        OccupationArea(instance, area).save()
+        occupation_area.occupation_area = area
+        occupation_area.save()
         query = OccupationArea.objects.first()
         assert query.instance == instance
         assert query.occupation_area == area
@@ -32,11 +37,16 @@ class TestOccupationArea(object):
 class TestSpaceData(object):
     def test_space_data(self):
         SpaceData.drop_collection()
+        space_data = SpaceData()
         instance = "SP"
+        space_data.instance = instance
         name = "Cia"
+        space_data.name = name
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        space_data.date = date
         space_type = "Teatro"
-        SpaceData(instance, name, date, space_type).save()
+        space_data.space_type = space_type
+        space_data.save()
         query = SpaceData.objects.first()
         assert query.instance == instance
         assert query.name == name
