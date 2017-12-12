@@ -70,10 +70,3 @@ services:
     depends_on:
       - postgres
 
-  karma:
-    image: hochzehn/karma-jasmine-phantomjs
-    command: start
-    volumes:
-      - .:/opt/karma
-    ports:
-      - "9876:9876"

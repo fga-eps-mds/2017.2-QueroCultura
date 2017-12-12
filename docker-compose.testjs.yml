@@ -1,0 +1,8 @@
+  # karma get a javascript coverage and execute javascript tests
+  karma:
+    image: hochzehn/karma-jasmine-phantomjs
+    command: start
+    volumes:
+      - .:/opt/karma
+    ports:
+      - "9876:9876"

@@ -10,7 +10,7 @@ down:
 	docker-compose down --volume
 
 test-js:
-	docker-compose up karma
+	docker-compose -f docker-compose.testjs.yml up
 
 test-py:
 	docker-compose up -d web
