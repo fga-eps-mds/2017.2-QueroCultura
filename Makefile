@@ -1,20 +1,20 @@
 up:
-	docker-compose up -d web
-	docker-compose up -d postgres
+	sudo docker-compose up -d web
+	sudo docker-compose up -d postgres
 	sleep 30
-	docker-compose exec postgres psql metabase quero_cultura -f /postgres_metabase/metabase.sql
-	docker-compose up -d metabase
-	docker-compose up -d nginx
+	sudo docker-compose exec postgres psql metabase quero_cultura -f /postgres_metabase/metabase.sql
+	sudo docker-compose up -d metabase
+	sudo docker-compose up -d nginx
 
-down: 
-	docker-compose down --volume
+down:
+	sudo docker-compose down --volume
 
 test-js:
-	docker-compose -f docker-compose.testjs.yml up
+	sudo docker-compose -f docker-compose.testjs.yml up
 
 test-py:
-	docker-compose up -d web
-	docker-compose exec web py.test
+	sudo docker-compose up -d web
+	sudo docker-compose exec web py.test
 
 logs:
-	docker-compose logs -f
+	sudo docker-compose logs -f
