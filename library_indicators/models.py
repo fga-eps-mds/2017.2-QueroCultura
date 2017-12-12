@@ -35,6 +35,7 @@ class LibraryArea(Document):
     def area(self, area):
         self._area = area
 
+
 class LibraryTags(Document):
     _instance = StringField(required=True)
     _tag = StringField(required=True)

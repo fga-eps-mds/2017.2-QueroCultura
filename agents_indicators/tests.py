@@ -12,6 +12,7 @@ import json
 
 
 class TestIndex(object):
+
     def test_index(self, client):
         response = client.get('agentes/')
         response.status_code == 200

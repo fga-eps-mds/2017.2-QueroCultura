@@ -11,6 +11,7 @@ import json
 
 
 class TestLastUpdateLibraryDate(object):
+
     def test_last_library_date(self):
         LastUpdateLibraryDate.drop_collection()
         update_date = LastUpdateLibraryDate()
@@ -22,6 +23,7 @@ class TestLastUpdateLibraryDate(object):
 
 
 class TestLibraryArea(object):
+
     def test_library_area(self):
         LibraryArea.drop_collection()
         library_area = LibraryArea()
@@ -36,6 +38,7 @@ class TestLibraryArea(object):
 
 
 class TestLibraryTags(object):
+
     def test_library_area(self):
         LibraryTags.drop_collection()
         library_tag = LibraryTags()
@@ -50,6 +53,7 @@ class TestLibraryTags(object):
 
 
 class TestLibraryData(object):
+
     def test_library_data(self):
         LibraryData.drop_collection()
         library_data = LibraryData()
@@ -70,6 +74,7 @@ class TestLibraryData(object):
 
 
 class TestRequestLibraryRawData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_request_library_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"
@@ -80,7 +85,7 @@ class TestRequestLibraryRawData(object):
                    "terms": {"area": ["Cinema", "Teatro"],
                              "tag": ["Olavo Bilac"]}}]
 
-        kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
+        kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
 
         current_time = datetime.now().__str__()
         raw_data = RequestLibraryRawData(current_time, url)
@@ -90,6 +95,7 @@ class TestRequestLibraryRawData(object):
 
 
 class TestPopulateLibraryData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_populate_library_data(self, **kwargs):
         parser_yaml = ParserYAML()

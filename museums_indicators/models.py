@@ -35,6 +35,7 @@ class MuseumArea(Document):
     def area(self, area):
         self._area = area
 
+
 class MuseumTags(Document):
     _instance = StringField(required=True)
     _tag = StringField(required=True)

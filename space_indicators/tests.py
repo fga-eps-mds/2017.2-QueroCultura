@@ -10,6 +10,7 @@ import json
 
 
 class TestLastUpdateDate(object):
+
     def test_last_update_date(self):
         LastUpdateDate.drop_collection()
         update_date = LastUpdateDate()
@@ -21,6 +22,7 @@ class TestLastUpdateDate(object):
 
 
 class TestOccupationArea(object):
+
     def test_occupation_area(self):
         OccupationArea.drop_collection()
         occupation_area = OccupationArea()
@@ -35,6 +37,7 @@ class TestOccupationArea(object):
 
 
 class TestSpaceData(object):
+
     def test_space_data(self):
         SpaceData.drop_collection()
         space_data = SpaceData()
@@ -55,6 +58,7 @@ class TestSpaceData(object):
 
 
 class TestPopulateSpaceData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_populate_space_data(self, **kwargs):
         parser_yaml = ParserYAML()
@@ -79,6 +83,7 @@ class TestPopulateSpaceData(object):
 
 
 class TestRequestSpacesRawData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_request_spaces_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"

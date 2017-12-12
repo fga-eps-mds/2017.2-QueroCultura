@@ -34,11 +34,12 @@ detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 34, "false")},
 page_type = "Agentes"
 graphic_type = 'agents_graphic_detail'
 page_descripition = 'Agentes são artistas, gestores, produtores e'\
-                   + 'instituições juntos eles formam uma rede de atores '\
-                   + 'envolvidos na cena cultural brasileira, nos gráficos '\
-                   + 'abaixo geramos indicadores visando extrair informações'\
-                   + ' úteis ao MinC e a população em geral sobre os Agentes '\
-                   + 'culturais da plataforma'
+    + 'instituições juntos eles formam uma rede de atores '\
+    + 'envolvidos na cena cultural brasileira, nos gráficos '\
+    + 'abaixo geramos indicadores visando extrair informações'\
+    + ' úteis ao MinC e a população em geral sobre os Agentes '\
+    + 'culturais da plataforma'
+
 
 def index(request):
     return render(request, 'quero_cultura/indicators_page.html',
@@ -47,12 +48,13 @@ def index(request):
                    'graphic_type': graphic_type,
                    'page_descripition': page_descripition})
 
+
 def graphic_detail(request, graphic_id):
     try:
-      graphic = metabase_graphics[int(graphic_id) - 1]
+        graphic = metabase_graphics[int(graphic_id) - 1]
     except IndexError:
-      return render(request,
-                  'quero_cultura/not_found.html')
+        return render(request,
+                      'quero_cultura/not_found.html')
     return render(request,
                   'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
@@ -85,4 +87,5 @@ def populate_agent_data():
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
                 AgentsArea(new_url, str(area).title()).save()
+
     LastUpdateAgentsDate(str(datetime.now())).save()

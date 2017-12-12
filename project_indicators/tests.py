@@ -9,6 +9,7 @@ import json
 
 
 class TestLastUpdateProjectDate(object):
+
     def test_last_update_project_date(self):
         LastUpdateProjectDate.drop_collection()
         update_date = LastUpdateProjectDate()
@@ -20,6 +21,7 @@ class TestLastUpdateProjectDate(object):
 
 
 class TestProjectData(object):
+
     def test_project_data(self):
         ProjectData.drop_collection()
         project_data = ProjectData()
@@ -40,6 +42,7 @@ class TestProjectData(object):
 
 
 class TestPopulateProjectData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_populate_project_data(self, **kwargs):
         parser_yaml = ParserYAML()
@@ -61,6 +64,7 @@ class TestPopulateProjectData(object):
 
 
 class TestRequestProjectsRawData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_request_projects_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"

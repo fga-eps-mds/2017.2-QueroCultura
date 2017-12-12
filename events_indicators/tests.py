@@ -79,7 +79,7 @@ class TestPopulateEventData(object):
                    "classificacaoEtaria": "livre",
                    "occurrences":
                    [{"id": 1147, "space": {"id": 14191,
-                     "acessibilidade": "Sim"}}]}]
+                                           "acessibilidade": "Sim"}}]}]
 
         for url in urls:
             kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
@@ -216,4 +216,3 @@ class TestEmptyRequest(object):
         type_request = type(events_request)
         intenger = 1
         assert type_request == type(intenger)
-

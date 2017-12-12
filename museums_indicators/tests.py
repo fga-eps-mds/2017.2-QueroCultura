@@ -11,6 +11,7 @@ import json
 
 
 class TestLastUpdateMuseumDate(object):
+
     def test_last_update_museum_date(self):
         LastUpdateMuseumDate.drop_collection()
         update_date = LastUpdateMuseumDate()
@@ -22,6 +23,7 @@ class TestLastUpdateMuseumDate(object):
 
 
 class TestMuseumArea(object):
+
     def test_museum_area(self):
         MuseumArea.drop_collection()
         museum_area = MuseumArea()
@@ -36,6 +38,7 @@ class TestMuseumArea(object):
 
 
 class TestMuseumTags(object):
+
     def test_museum_area(self):
         MuseumTags.drop_collection()
         museum_tag = MuseumTags()
@@ -50,6 +53,7 @@ class TestMuseumTags(object):
 
 
 class TestMuseumData(object):
+
     def test_museum_data(self):
         MuseumData.drop_collection()
         museum_data = MuseumData()
@@ -70,6 +74,7 @@ class TestMuseumData(object):
 
 
 class TestRequestMuseumRawData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_request_museum_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"
@@ -80,7 +85,7 @@ class TestRequestMuseumRawData(object):
                    "terms": {"area": ["Cinema", "Teatro"],
                              "tag": ["Olavo Bilac"]}}]
 
-        kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
+        kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
 
         current_time = datetime.now().__str__()
         raw_data = RequestMuseumRawData(current_time, url)
@@ -90,6 +95,7 @@ class TestRequestMuseumRawData(object):
 
 
 class TestPopulateMuseumData(object):
+
     @requests_mock.Mocker(kw='mock')
     def test_populate_museum_data(self, **kwargs):
         parser_yaml = ParserYAML()
