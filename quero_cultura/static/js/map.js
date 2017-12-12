@@ -119,18 +119,39 @@ function AddHTMLToFeed(marker){
     var html = "<div id='content'>"+
                    "<div id='point'>"+
                        "<a href='javascript:void(0);' onclick='javascript:focusOnMarker("+ latitude +","+ longitude +");'>"+
-                       "<img src='"+imageType+"' height='30px' width='30px'  style=' padding-top: 3px'></a>"+
+                       "<img src='"+imageType+"' height='35px' width='30px'  style=' padding-top: 3px'></a>"+
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+marker.instance_url+"' target='_blank'>"+marker.name+"</a>"+
-                       "<p>"+marker.action_type+""+ "<br>"
-                            +marker.action_time.substring(0, 19)+"<br>"
-                            +marker.city+ ' - ' + marker.state+
+                       "<a href='"+marker.instance_url+"' target='_blank'>"+formatName(marker.name)+"</a>"+
+                       "<p>"+marker.action_type+" - "
+                            +formatTime(marker.action_time)+"<br>"
+                            +formatLocation(marker.city, marker.state)+
                        "</p>"+
                    "</div>"+
                "</div>"
     return html
+}
+
+function formatName(name){
+    if(name === ''){
+        return '--------'
+    }else{
+        return name
+    }
+}
+function formatLocation(city, state){
+    result = ''
+    if(state !== ''){
+        result = state
+    }
+    if(city !== ''){
+        result = city + " - " + result
+    }
+    return result
+}
+function formatTime(timeString){
+    return timeString.substring(11, 19)
 }
 
 function GetImageByType(type) {
@@ -180,10 +201,10 @@ function new_markers() {
   }
 
 
-function focusOnMarker(latitude, longitude){ 
+function focusOnMarker(latitude, longitude){
     map.fitBounds([
         [latitude, longitude],
         [latitude, longitude]
     ]);
-    map.setZoom(10);
+    map.setZoom(12);
 }
