@@ -35,7 +35,6 @@ class MuseumArea(Document):
     def area(self, area):
         self._area = area
 
-
 class MuseumTags(Document):
     _instance = StringField(required=True)
     _tag = StringField(required=True)
@@ -70,6 +69,14 @@ class MuseumData(Document):
     @instance.setter
     def instance(self, instance):
         self._instance = instance
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
     def museum_type(self):

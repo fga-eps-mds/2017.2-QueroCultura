@@ -29,4 +29,3 @@ ratings:
   - "**.rb"
 exclude_paths: 
   - /quero_cultura/static/*
-  - /jasmine/*

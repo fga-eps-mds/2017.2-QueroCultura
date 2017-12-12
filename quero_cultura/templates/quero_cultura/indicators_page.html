@@ -10,7 +10,7 @@
 <div class="col-md-12 container-indicators">
   <div class="title">
       <center>
-          <h1 id="titulo">
+          <h1>
             Dados de {{page_type}}
           </h1>
           <div class="subtitle-box">
@@ -19,11 +19,11 @@
           </div>
       </center>
   </div>
-  <div class="row" id="indicator-data">
+  <div class="row">
 {% for number_detail in detailed_data %}
 
     <div class="col-md-4">
-      <iframe class="detailed_data" style="width:80%;" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
+      <iframe class="detailed_data" style="width:350px;" scrolling="no" src="{{number_detail.url|safe}}"></iframe>
     </div>
 
 {% endfor %}
@@ -58,7 +58,5 @@
 
     </div>
 </div>
-<script>
-var pageDef = 2;
-</script>
+
 {% endblock %}

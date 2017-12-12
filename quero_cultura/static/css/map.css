@@ -56,10 +56,9 @@ html.noscroll {
 }
 
 .block #content{
-  margin-top: 1%;
+  margin-top: 2%;
   background-color: #c3bfbf;
   overflow: hidden;
-  text-align:left;
 }
 
 
@@ -69,12 +68,6 @@ html.noscroll {
   text-align: center;
   background-color: #c3bfbf;
   float: left;
-  vertical-align: middle;
-}
-
-.block #content p {
-  font-size: smaller;
-  text-align:center;
 }
 
 .block #text{

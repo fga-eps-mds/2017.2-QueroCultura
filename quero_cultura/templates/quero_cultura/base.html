@@ -5,7 +5,6 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.png' %}" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -42,41 +41,41 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Eventos">
-          <a class="nav-link" href="{%url 'eventos'%}">
+          <a class="nav-link" href="{%url 'events_indicators'%}">
             <span class="nav-link-text text-light">Eventos</span>
           </a>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Espaços">
-          <a class="nav-link" href="{%url 'espacos'%}">
+          <a class="nav-link" href="{%url 'spaces_indicators'%}">
             <span class="nav-link-text text-light">Espaços</span>
           </a>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
-          <a class="nav-link" href="{%url 'agentes'%}">
+          <a class="nav-link" href="{%url 'agents_indicators'%}">
             <span class="nav-link-text text-light">Agentes</span>
           </a>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
-          <a class="nav-link" href="{%url 'projetos'%}">
+          <a class="nav-link" href="{%url 'projects_indicators'%}">
             <span class="nav-link-text text-light">Projetos</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Museus">
-          <a class="nav-link" href="{%url 'museus'%}">
+          <a class="nav-link" href="{%url 'museums_indicators'%}">
             <span class="nav-link-text text-light">Museus</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bibliotecas">
-          <a class="nav-link" href="{%url 'bibliotecas'%}">
+          <a class="nav-link" href="{%url 'librarys_indicators'%}">
             <span class="nav-link-text text-light">Bibliotecas</span>
           </a>
         </li>
-        
+
         <li class="nav-item" title="Web site Tour">
-          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:startIntro(pageDef);">
+          <a class="nav-link"  href="javascript:void(0);" onclick="javascript:startIntro();">
             <i class="fa fa-fw fa fa-question-circle text-light" id="tourButton"></i>
           </a>
         </li>

@@ -36,8 +36,7 @@ def debug_task(self):
 
 
 schedule_time = 30
-expire_time = 1800
-
+expire_time = 180
 
 APP.conf.beat_schedule = {
     'load_agents': create_task('load_agents', schedule_time, expire_time),
@@ -69,9 +68,4 @@ APP.conf.beat_schedule = {
     'update_spaces': create_task('load_spaces',
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
-
-  #  'load_mixed': create_task('load_mixed', schedule_time, expire_time),
-   # 'update_mixed': create_task('load_mixed',
-    #                            crontab(minute=20, hour=3,
-     #                                   day_of_week='sunday')),
-}
+    }
