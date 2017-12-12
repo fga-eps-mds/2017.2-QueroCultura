@@ -129,7 +129,7 @@ def get_marker_address(location):
             base_url = "http://nominatim.openstreetmap.org/reverse?"
 
             open_street_url = base_url + latitude + "&" + longitude + "&format=json"
-
+            
             data = json.loads(requests.get(open_street_url).text)
 
             try:
