@@ -19,7 +19,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 10, "true")},
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 49, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 50, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+                 {'id': 3, 'url': get_metabase_url(view_type, 56, "false")}]
 
 
 page_type = "Projetos"
