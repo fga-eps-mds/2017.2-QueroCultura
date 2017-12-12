@@ -6,7 +6,8 @@
 
 .detailed_data{
 
-  height: 200px;
+  height: 300px;
+  width: 100%;
   overflow: hidden;
 }
 
