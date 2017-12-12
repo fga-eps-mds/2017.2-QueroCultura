@@ -9,6 +9,12 @@ import requests_mock
 import json
 
 
+class TestIndex(object):
+    def test_index(self, client):
+        response = client.get('agentes/')
+        response.status_code == 200
+
+
 class TestPopulateAgentData(object):
     @requests_mock.Mocker(kw='mock')
     def test_populate_agent_data(self, **kwargs):
