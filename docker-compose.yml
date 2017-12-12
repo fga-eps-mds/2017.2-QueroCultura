@@ -67,6 +67,6 @@ services:
       - ".:/dkr"
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: docker exec 20172querocultura_postgres_1 bash -c "sleep 15 && psql metabase quero_cultura -f /postgres_metabase/metabase.sql"
-
     depends_on:
       - postgres
+

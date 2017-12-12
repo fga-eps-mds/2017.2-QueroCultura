@@ -1,13 +1,9 @@
+import datetime
 from django.shortcuts import render
-from collections import OrderedDict
 from .api_connections import RequestMarkersRawData, save_markers_data
 from .models import Marker, LastRequest
 from celery.decorators import task
-from pprint import pprint
 from django.http import JsonResponse
-import requests
-import json
-import datetime
 import yaml
 import jwt
 
@@ -16,6 +12,11 @@ METABASE_SECRET_KEY = "1798c3ba25f5799bd75538a7fe2896b79e24f3ec1df9d921558899dc6
 METABASE_SITE_URL = "http://querocultura.lab.cultura.gov.br/metabase"
 
 MARKER_TYPES = ['event', 'agent', 'project', 'space']
+
+
+@task(name='update_markers')
+def scheduled_update_markers():
+    load_markers(get_time_now())
 
 
 def load_markers(requested_time):
@@ -33,7 +34,7 @@ def remove_expired_markers():
     all_markers = Marker.objects.all()
 
     for marker in all_markers:
-        if marker.action_time < (datetime.datetime.now() - datetime.timedelta(days=1)):
+        if marker.action_time < (get_time_now() - datetime.timedelta(days=1)):
             marker.delete()
 
 

@@ -69,9 +69,6 @@ APP.conf.beat_schedule = {
     'update_spaces': create_task('load_spaces',
                                  crontab(minute=20, hour=3,
                                          day_of_week='sunday')),
-
-  #  'load_mixed': create_task('load_mixed', schedule_time, expire_time),
-   # 'update_mixed': create_task('load_mixed',
-    #                            crontab(minute=20, hour=3,
-     #                                   day_of_week='sunday')),
+    'load_markers': create_task('update_markers', schedule_time, expire_time),
+    'update_markers': create_task('update_markers', crontab(minute=15))
 }

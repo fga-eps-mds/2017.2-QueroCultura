@@ -1,63 +1,47 @@
-describe('GetColorByType', function () {
-	it('should return a blue for agent', function () {
-		colorRGB = "#17a2b8";
-		type = "agente";
+describe('GetImageByType', function () {
+	it('should return a markerAgent image', function () {
+		image = "static/images/markerAgent.png";
+		type = "agent";
     });
 
-	it('should return a red for spaces', function () {
-		colorRGB = "#dc3545";
-		type = "espaco";
+	it('should return a markerSpace image', function () {
+		image = "static/images/markerSpace.png"
+		type = "space";
     });
 
-	it('should return a green for project', function () {
-		colorRGB = "#28a745";
-		type = "projeto";
+	it('should return a markerProject image', function () {
+		image = "static/images/markerProject.png";
+		type = "project";
     });
 
-	it('should return a yellow for event', function () {
-		colorRGB = "#ffc107";
-		type = "evento";
-	});
-
-	it('should return a black for anything wrong and not classified', function(){
-		colorRGB = "black";
-		type = "EscreviErradoOType";
+	it('should return a markerEvent image', function () {
+		image = "static/images/markerEvent.png";
+		type = "event";
 	});
 
 	afterEach(function(){
-		color = GetColorByType(type);
-		expect(color).toEqual(colorRGB);
+		imageTest = GetImageByType(type);
+		expect(imageTest).toEqual(image);
 	});
 });
-
-describe("AddInfoToFeed", function(){
-
-	it("should get all data", function(){
-		diffFeed2 = new Map()
-		diffFeed2.set(123,{"name":"Pablo","type":"Agente","singleUrl":"teste"})
-		diffFeed2.set(1234,{"name":"Pablo2","type":"Agente2","singleUrl":"teste2"})
-
-		spyOn(diffFeed2,'forEach')
-
-		AddInfoToFeed(diffFeed2);
-
-		expect(diffFeed2.forEach).toHaveBeenCalled()
-	})
-})
 
 describe('AddHTMLToFeed', function () {
+	it('should return html', function () {
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "criação",
+        			"action_time": "2017-12-11 21:32:01.289113",
+        			"city": "Brasilia",
+        			"state": "DF",
+        			"location": {"latitude": 0, "longitude": 0}}
+		
+		var htmlTest = AddHTMLToFeed(marker)
 
-	xit('should get color by type', function () {
-
-		spyOn(window,'GetColorByType')
-
-		AddHTMLToFeed('James Bond', 'agent', '007');
-
-		expect(window.GetColorByType).toHaveBeenCalledWith('agent')
-
+		expect(htmlTest).toBeDefined();
 	});
-
 });
+
 
 describe('loadMarkers', function(){
 	it('should load markers in instance', function(){
@@ -90,81 +74,16 @@ describe('loadMarkers', function(){
 	});
 });
 
-describe('eraseCookie', function(){
+describe('loadAndUpdateMarkers', function(){
+	it('shold blalba', function(){
+		var data = [{"name": "Jeferson"}, {"instance_url": "http://mapas.cultura.gov.br/agente/1"}]
+		var imageExtension = 'gif'
 
-	it('should erase cookie', function(){
-
-		spyOn(window, 'writeCookie')
-
-		eraseCookie('nome')
-
-		expect(window.writeCookie).toHaveBeenCalledWith('nome', '', -1)
+		spyOn(map, 'addLayer')
+		loadAndUpdateMarkers(data, imageExtension)
+		expect(map.addLayer).toHaveBeenCalled()
 	});
 });
-
-describe('readCookie', function(){
-	it('should read cookie', function(){
-		var test = readCookie('dontExist01020304')
-
-		expect(test).toEqual(null)
-	});
-});
-
-describe('getQueryDateTime', function() {
-	it('should create a new date time', function () {
-		delay = -5;
-		var now = getQueryDateTime(delay);
-		var timeTest = new Date();
-
-		timeTest.setHours(timeTest.getHours() - 2, timeTest.getMinutes() - delay);
-		timeTest = timeTest.toJSON();
-
-		expect(now).toEqual(timeTest);
-
-    });
-});
-
-describe('createQueryPromise',function(){
-	it('Should call getQueryDateTime', function(){
-		spyOn(window, 'getQueryDateTime')
-		createQueryPromise('instanceURL','event',5)
-		expect(window.getQueryDateTime).toHaveBeenCalledWith(5)
-	});
-	xit('Should return promise',function(){
-		var dateTime = getQueryDateTime(5)
-		var select = 'name, occurrences.{space.{location}}, singleUrl'
-		var promise = $.getJSON("instanceURLevent/find",
-	      {
-	        '@select' : select,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+dateTime+")",
-	        'updateTimestamp' : "GT("+dateTime+")"
-	      },);
-		  var equal = createQueryPromise('instanceURL','event',5)
-		  expect(equal).toEqual(promise)
-	});
-});
-
-// describe('saveAndLoadData', function(){
-// 	xit('Should call createQueryPromise', function(){
-// 		spyOn(window, 'createQueryPromise')
-// 		saveAndLoadData('instanceURL', 'event', 5, [], 'gif')
-// 		expect(window.createQueryPromise).toHaveBeenCalled()
-// 	});
-// });
-// 
-// describe('loadAndUpdateMarkers', function(){
-// 	it('Should call saveAndLoadData', function(){
-// 		spyOn(window, 'saveAndLoadData')
-// 		loadAndUpdateMarkers(5,[],'gif')
-// 		expect(window.saveAndLoadData).toHaveBeenCalled()
-// 	});
-// 	it('Should call addLayer', function(){
-// 		spyOn(map,'addLayer')
-// 		loadAndUpdateMarkers(5,[],'gif')
-// 		expect(map.addLayer).toHaveBeenCalledTimes(4)
-// 	});
-// });
 
 describe('initialize_data_map', function() {
 	it('Should initialize map data', function(){
@@ -172,4 +91,58 @@ describe('initialize_data_map', function() {
 		var equal = initialize_data_map()
 		expect(typeof test).toEqual(typeof equal)
 	});
-})
+});
+
+describe('updateFeed', function(){
+	it('should update feed with every markers ', function(){
+		var recent_markers = []
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "test",
+        			"action_time": "testagainagainagainagain",
+        			"city": "Brasilia",
+        			"state": "DF",
+        			"location": {"latitude": 0, "longitude": 0}}
+        recent_markers.push(marker)
+
+        spyOn(window, 'create_feed_block')
+        updateFeed(recent_markers)
+        expect(window.create_feed_block).toHaveBeenCalled()
+	});
+	
+	it('should change city and state to blank', function(){
+		var recent_markers = []
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "test",
+        			"action_time": "testagainagainagainagain",
+        			"location": {"latitude": 0, "longitude": 0}}
+        recent_markers.push(marker)
+
+        spyOn(window, 'create_feed_block')
+        updateFeed(recent_markers)
+        expect(recent_markers[0]["city"]).toEqual('')
+        expect(recent_markers[0]["state"]).toEqual('')
+	});
+});
+
+describe('fitBounds', function(){
+	it('should focus on marker selected', function(){
+		var latitude = 0
+		var longitude = 0
+
+		spyOn(map, 'fitBounds')
+		focusOnMarker(latitude, longitude)
+		expect(map.fitBounds).toHaveBeenCalled()
+	})
+});
+
+describe('formatName', function(){
+	it('should format name blank', function(){
+		var name = ''
+		teste = formatName(name)
+		expect(teste).toEqual('--------')
+	});
+});
