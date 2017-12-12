@@ -1,6 +1,7 @@
 from datetime import datetime
 from .api_connections import RequestMarkersRawData
 from .api_connections import choose_select
+from .api_connections import get_marker_action
 import requests_mock
 import json
 
@@ -40,3 +41,13 @@ class TestChooseSelect(object):
         assert select == PROJECT_SELECT
         select = choose_select('space')
         assert select == SPACE_SELECT
+
+class TestMarkerAction(object):
+
+    def test_get_marker_action(self):
+        action = get_marker_action('2010',None)
+        assert action['type'] == 'Criação'
+        assert action['time'] == '2010'
+        action = get_marker_action(None,'2010')
+        assert action['type'] == 'Atualização'
+        assert action['time'] == '2010'
