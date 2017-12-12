@@ -3,6 +3,7 @@ from .api_connections import RequestMarkersRawData
 from .api_connections import choose_select
 from .api_connections import get_marker_action
 from .api_connections import get_attribute
+from .api_connections import get_date
 import requests_mock
 import json
 
@@ -61,3 +62,10 @@ class TestGetAtributte(object):
         assert atributte == 'Caio'
         atributte = get_attribute({'Name': 'Caio'}, 'Idade')
         assert atributte == ''
+class TestGetDate(object):
+
+    def test_get_date(self):
+        date = get_date({'createTimestamp': {'date':'2010'}},'createTimestamp')
+        assert date == '2010'
+        date = get_date({'createTimestamp': None},'createTimestamp')
+        assert date == None
