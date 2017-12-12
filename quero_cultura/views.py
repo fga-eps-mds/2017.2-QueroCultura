@@ -158,7 +158,7 @@ def get_most_recent_markers():
     ordered_markers = Marker.objects.order_by('-action_time')
     last_minute_markers = []
 
-    n_of_markers = 5
+    n_of_markers = 10
 
     if len(ordered_markers) >= n_of_markers:
         for i in range(0, n_of_markers):
