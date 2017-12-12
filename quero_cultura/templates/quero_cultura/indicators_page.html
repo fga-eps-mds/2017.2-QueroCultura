@@ -10,7 +10,7 @@
 <div class="col-md-12 container-indicators">
   <div class="title">
       <center>
-          <h1>
+          <h1 id="titulo">
             Dados de {{page_type}}
           </h1>
           <div class="subtitle-box">
@@ -19,7 +19,7 @@
           </div>
       </center>
   </div>
-  <div class="row">
+  <div class="row" id="indicator-data">
 {% for number_detail in detailed_data %}
 
     <div class="col-12">
@@ -58,5 +58,7 @@
 
     </div>
 </div>
-
+<script>
+var pageDef = 2;
+</script>
 {% endblock %}

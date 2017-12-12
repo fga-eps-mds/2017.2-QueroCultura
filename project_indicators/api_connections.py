@@ -6,8 +6,8 @@ class RequestProjectsRawData(object):
 
     def __init__(self, last_update_time, url):
         self._filters = {'@select': 'type, createTimestamp, useRegistrations',
-                         'createTimestamp': "GT("+last_update_time+")"}
-        self._response = requests.get(url+"project/find/", self._filters)
+                         'createTimestamp': "GT(" + last_update_time + ")"}
+        self._response = requests.get(url + "project/find/", self._filters)
         self._data = json.loads(self._response.text)
 
     @property

@@ -7,6 +7,7 @@ from .models import ProjectData
 from datetime import datetime
 from celery.decorators import task
 
+
 DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
 
 view_type = "question"
@@ -36,7 +37,10 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request, 'quero_cultura/not_found.html')
     return render(request, 'quero_cultura/graphic_detail.html',
                   {'graphic': graphic})
 
@@ -57,8 +61,12 @@ def populate_project_data():
         new_url = clean_url(url)
         for project in request:
             date = project["createTimestamp"]['date']
+            if project["useRegistrations"] == True:
+                project_use = 'Sim'
+            elif project["useRegistrations"] == False:
+                project_use = 'Não'
             ProjectData(new_url, str(project['type']['name']),
-                        str(project["useRegistrations"]), date).save()
+                        project_use, date).save()
 
     LastUpdateProjectDate(str(datetime.now())).save()
 
