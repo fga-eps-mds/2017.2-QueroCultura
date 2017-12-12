@@ -10,8 +10,8 @@ class TestRequestMarkerRawData(object):
     def test_request_marker_raw_data(self, **kwargs):
         url = "http://mapas.cultura.gov.br/api/"
         marker = 'agent'
-        result = [{"id": 1}, {"date": "2012-01-01 00:00:00.000000"},
-                  {"name": "larissa", "useRegistrations": "FGA"}]
+        result = [{"id": 1, "date": "2012-01-01 00:00:00.000000",
+                  "name": "larissa", "useRegistrations": "FGA"}]
 
         kwargs['mock'].get(url + marker + "/find/", text=json.dumps(result))
 
