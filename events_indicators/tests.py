@@ -1,6 +1,7 @@
 from datetime import datetime
 from .api_connections import RequestEventsRawData
 from .api_connections import RequestEventsInPeriod
+from .api_connections import EmptyRequest
 from .models import EventData
 from .models import EventLanguage
 from .models import LastUpdateEventDate
@@ -197,3 +198,22 @@ class TestClassRequestEventsInPeriod(object):
         type_events_in_period = type(events_in_period)
         intenger = 1
         assert type_events_in_period == type(intenger)
+
+
+class TestEmptyRequest(object):
+
+    def test_request_data(self):
+        request = EmptyRequest()
+
+        event_request = request.data
+        type_event_request = type(event_request)
+        empty_list = []
+        assert type_event_request == type(empty_list)
+
+    def test_request_lenght(self):
+        request = EmptyRequest()
+        events_request = request.data_length
+        type_request = type(events_request)
+        intenger = 1
+        assert type_request == type(intenger)
+
