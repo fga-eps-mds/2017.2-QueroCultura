@@ -6,6 +6,7 @@ from .api_connections import get_attribute
 from .api_connections import get_date
 from .api_connections import request_subsite_url
 from .api_connections import get_marker_address
+from .api_connections import get_location
 import requests_mock
 import json
 
@@ -108,3 +109,79 @@ class TestMarkerAddress(object):
 
         assert marker['city'] == 'brasilia'
         assert marker['state'] == 'Distrito'
+
+    @requests_mock.Mocker(kw='mock')
+    def test_get_marker(self, **kwargs):
+        marker = {}
+        url = "http://nominatim.openstreetmap.org/reverse?"
+        location = {'latitude': '10', 'longitude': '10'}
+        result = {'address': {'state': 'Distrito', 'town': 'other'}}
+
+        kwargs['mock'].get(url + "lat=10&lon=10&format=json",
+                           text=json.dumps(result))
+        marker['city'], marker['state'] = get_marker_address(location)
+
+        assert marker['city'] == 'other'
+        assert marker['state'] == 'Distrito'
+
+    @requests_mock.Mocker(kw='mock')
+    def test_get_marker_empty(self, **kwargs):
+        marker = {}
+        url = "http://nominatim.openstreetmap.org/reverse?"
+        location = {'latitude': '10', 'longitude': '10'}
+        result = {'address': {}}
+
+        kwargs['mock'].get(url + "lat=10&lon=10&format=json",
+                           text=json.dumps(result))
+        marker['city'], marker['state'] = get_marker_address(location)
+
+        assert marker['city'] == ''
+        assert marker['state'] == ''
+
+    def test_get_marker_none(self):
+        location = None
+        marker = {}
+        marker['city'], marker['state'] = get_marker_address(location)
+
+        assert marker['city'] == None
+        assert marker['state'] == None
+
+
+class TestMarkerLocation(object):
+
+    @requests_mock.Mocker(kw='mock')
+    def test_get_marker(self, **kwargs):
+        marker = 'project'
+        result = {'owner': {'location': {'latitude': '10', 'longitude': '10'}}}
+
+        resp = get_location(result, marker)
+
+        assert resp == {'latitude': '10', 'longitude': '10'}
+
+        marker = 'project'
+        result = {'owner': None}
+
+        resp = get_location(result, marker)
+
+        assert resp == {'latitude': '0', 'longitude': '0'}
+
+        marker = 'event'
+        result = {'occurrences': {}}
+
+        resp = get_location(result, marker)
+
+        assert resp == {'latitude': '0', 'longitude': '0'}
+
+        marker = 'agent'
+        result = {'location': {'latitude': '10', 'longitude': '10'}}
+
+        resp = get_location(result, marker)
+
+        assert resp == {'latitude': '10', 'longitude': '10'}
+
+        marker = 'agent'
+        result = {}
+
+        resp = get_location(result, marker)
+
+        assert resp == {'latitude': '0', 'longitude': '0'}
