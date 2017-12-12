@@ -1,6 +1,9 @@
 from datetime import datetime
 from .api_connections import RequestMarkersRawData
 from .api_connections import choose_select
+from .api_connections import get_marker_action
+from .api_connections import get_attribute
+from .api_connections import get_date
 from .api_connections import request_subsite_url
 from .api_connections import get_marker_address
 import requests_mock
@@ -42,6 +45,36 @@ class TestChooseSelect(object):
         assert select == PROJECT_SELECT
         select = choose_select('space')
         assert select == SPACE_SELECT
+
+
+class TestMarkerAction(object):
+
+    def test_get_marker_action(self):
+        action = get_marker_action('2010', None)
+        assert action['type'] == 'Criação'
+        assert action['time'] == '2010'
+        action = get_marker_action(None, '2010')
+        assert action['type'] == 'Atualização'
+        assert action['time'] == '2010'
+
+
+class TestGetAtributte(object):
+
+    def test_get_atributte(self):
+        atributte = get_attribute({'Name': 'Caio'}, 'Name')
+        assert atributte == 'Caio'
+        atributte = get_attribute({'Name': 'Caio'}, 'Idade')
+        assert atributte == ''
+
+
+class TestGetDate(object):
+
+    def test_get_date(self):
+        date = get_date({'createTimestamp': {'date': '2010'}},
+                        'createTimestamp')
+        assert date == '2010'
+        date = get_date({'createTimestamp': None}, 'createTimestamp')
+        assert date == None
 
 
 class TestRequestSubSite(object):
