@@ -14,6 +14,7 @@ from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
+ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
@@ -68,7 +69,7 @@ def populate_agent_data():
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if url == SP_URL:
+        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestAgentsInPeriod(year, url)

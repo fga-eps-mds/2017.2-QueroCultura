@@ -73,7 +73,7 @@ def populate_event_data():
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if url == SP_URL or url == ESTADO_SP_URL:
+        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestEventsInPeriod(year, url)
