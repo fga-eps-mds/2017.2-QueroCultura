@@ -21,9 +21,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 20, "true")},
                      {'id': 4, 'url': get_metabase_url(view_type, 41, "true")},
                      {'id': 5, 'url': get_metabase_url(view_type, 42, "true")}]
 
-detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 47, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 23, "false")},
-                 {'id': 2, 'url': get_metabase_url(view_type, 44, "false")}]
+detailed_data = [{'id': 1, 'url': get_metabase_url("dashboard", 7, "false")}]
 
 
 page_type = "Museus"
