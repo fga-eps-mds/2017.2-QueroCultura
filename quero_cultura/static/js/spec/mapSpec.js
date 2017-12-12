@@ -1,4 +1,3 @@
-
 describe('GetColorByType', function () {
 	it('should return a blue for agent', function () {
 		colorRGB = "#17a2b8";
@@ -95,5 +94,23 @@ describe('initialize_data_map', function() {
 		var test = {}
 		var equal = initialize_data_map()
 		expect(typeof test).toEqual(typeof equal)
+	});
+});
+
+describe('updateFeed', function(){
+	it('update feed with every markers ', function(){
+		var recent_markers = []
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "test",
+        			"action_time": "testagain",
+        			"city": "Brasilia",
+        			"state": "DF"}
+        recent_markers.push(recent_markers)
+
+        spyOn(window, 'create_feed_block')
+        updateFeed(recent_markers)
+        expect(window.create_feed_block).toHaveBeenCalled()
 	});
 });
