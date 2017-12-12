@@ -17,7 +17,7 @@ var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/
 });
 
 
-var bounds = L.latLngBounds([20.2222, -100.1222], [-60, -20]);
+var bounds = L.latLngBounds([40, -170.1222], [-70, 60]);
 
 var map = L.map('map', {maxBounds: bounds})
 	.addLayer(mapboxTiles)
@@ -94,10 +94,10 @@ function loadMarkers(markerType, imageExtension, markerData) {
 function updateFeed(recent_markers) {
     recent_markers.forEach(function(value){
 
-        if(value.city == undefined){
+        if(value.city === undefined){
             value.city = ''
         }
-        if(value.state == undefined){
+        if(value.state === undefined){
             value.state = ''
         }
         var html = AddHTMLToFeed(value)
@@ -113,51 +113,72 @@ function create_feed_block(html){
 }
 
 function AddHTMLToFeed(marker){
-    color = GetColorByType(marker.marker_type)
+    imageType = GetImageByType(marker.marker_type)
+    latitude = marker.location.latitude
+    longitude = marker.location.longitude
     var html = "<div id='content'>"+
                    "<div id='point'>"+
-                       "<svg>"+
-                           "<circle cx='15' cy='25' r='7' fill='"+color+"' />"+
-                       "</svg>"+
+                       "<a href='javascript:void(0);' onclick='javascript:focusOnMarker("+ latitude +","+ longitude +");'>"+
+                       "<img src='"+imageType+"' height='35px' width='30px'  style=' padding-top: 3px'></a>"+
                    "</div> "+
 
                    "<div id='text'>  "+
-                       "<a href='"+marker.instance_url+"' target='_blank'>"+marker.name+"</a>"+
-                       "<p>"+marker.action_type+""+ "<br>"
-                            +marker.action_time.substring(0, 19)+"<br>"
-                            +marker.city+ ' - ' + marker.state+
+                       "<a href='"+marker.instance_url+"' target='_blank'>"+formatName(marker.name)+"</a>"+
+                       "<p>"+marker.action_type+" - "
+                            +formatTime(marker.action_time)+"<br>"
+                            +formatLocation(marker.city, marker.state)+
                        "</p>"+
                    "</div>"+
                "</div>"
     return html
 }
 
-function GetColorByType(type) {
+function formatName(name){
+    if(name === ''){
+        return '--------'
+    }else{
+        return name
+    }
+}
+function formatLocation(city, state){
+    result = ''
+    if(state !== ''){
+        result = state
+    }
+    if(city !== ''){
+        result = city + " - " + result
+    }
+    return result
+}
+function formatTime(timeString){
+    return timeString.substring(11, 19)
+}
+
+function GetImageByType(type) {
 
     console.log(type)
-    var color = "red";
+    var image
     switch (type) {
         case 'project':
-            color = "#28a745"
+            image = "static/images/markerProject.png"
             break
 
         case 'space':
-            color = "#dc3545"
+            image = "static/images/markerSpace.png"
             break
 
         case 'agent':
-            color = "#17a2b8"
+            image = "static/images/markerAgent.png"
             break
 
         case 'event':
-            color = "#ffc107"
+            image = "static/images/markerEvent.png"
             break
 
-        default:
-            color = "black"
+
     }
 
-    return color
+    return image
 }
 
 // This method is used to receive new markers
@@ -178,3 +199,12 @@ function new_markers() {
       }
     })
   }
+
+
+function focusOnMarker(latitude, longitude){
+    map.fitBounds([
+        [latitude, longitude],
+        [latitude, longitude]
+    ]);
+    map.setZoom(12);
+}

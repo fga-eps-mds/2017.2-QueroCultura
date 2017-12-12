@@ -14,6 +14,7 @@ from celery.decorators import task
 
 DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
+ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
 CURRENT_YEAR = datetime.today().year + 1
 
@@ -27,17 +28,17 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 30, "true")},
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 34, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 35, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+                 {'id': 3, 'url': get_metabase_url(view_type, 53, "false")}]
 
 
 page_type = "Agentes"
 graphic_type = 'agents_graphic_detail'
 page_descripition = 'Agentes são artistas, gestores, produtores e'\
-                   + 'instituições juntos eles formam uma rede de atores '\
-                   + 'envolvidos na cena cultural brasileira, nos gráficos '\
-                   + 'abaixo geramos indicadores visando extrair informações'\
-                   + ' úteis ao MinC e a população em geral sobre os Agentes '\
-                   + 'culturais da plataforma'
+    + 'instituições juntos eles formam uma rede de atores '\
+    + 'envolvidos na cena cultural brasileira, nos gráficos '\
+    + 'abaixo geramos indicadores visando extrair informações'\
+    + ' úteis ao MinC e a população em geral sobre os Agentes '\
+    + 'culturais da plataforma'
 
 
 def index(request):
@@ -49,7 +50,11 @@ def index(request):
 
 
 def graphic_detail(request, graphic_id):
-    graphic = metabase_graphics[int(graphic_id) - 1]
+    try:
+        graphic = metabase_graphics[int(graphic_id) - 1]
+    except IndexError:
+        return render(request,
+                      'quero_cultura/not_found.html')
     return render(request,
                   'quero_cultura/graphic_detail.html', {'graphic': graphic})
 
@@ -66,7 +71,7 @@ def populate_agent_data():
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if url == SP_URL:
+        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestAgentsInPeriod(year, url)
@@ -81,5 +86,6 @@ def populate_agent_data():
             date = agent["createTimestamp"]['date']
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
-                AgentsArea(new_url, area).save()
+                AgentsArea(new_url, str(area).title()).save()
+
     LastUpdateAgentsDate(str(datetime.now())).save()
