@@ -39,7 +39,7 @@ class TestPopulateProjectData(object):
         urls = parser_yaml.get_multi_instances_urls
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
-                   "type": {"name": "Livre"}, "useRegistrations": "FGA"}]
+                   "type": {"name": "Livre"}, "useRegistrations": True}]
 
         for url in urls:
             kwargs['mock'].get(url + "project/find/", text=json.dumps(result))

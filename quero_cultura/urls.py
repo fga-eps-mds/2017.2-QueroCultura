@@ -21,11 +21,12 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
-    url(r'^agents_indicators', include('agents_indicators.urls')),
-    url(r'^library_indicators', include('library_indicators.urls')),
-    url(r'^events_indicators', include('events_indicators.urls')),
-    url(r'^project_indicators', include('project_indicators.urls')),
-    url(r'^museums_indicators', include('museums_indicators.urls')),
-    url(r'^space_indicators', include('space_indicators.urls')),
+    url(r'^agentes', include('agents_indicators.urls')),
+    url(r'^bibliotecas', include('library_indicators.urls')),
+    url(r'^eventos', include('events_indicators.urls')),
+    url(r'^projetos', include('project_indicators.urls')),
+    url(r'^museus', include('museums_indicators.urls')),
+    url(r'^espacos', include('space_indicators.urls')),
+    url(r'^mistos', include('mixed_indicators.urls')),
     url(r'^new_markers', views.get_last_minutes_markers_json),
 ]
