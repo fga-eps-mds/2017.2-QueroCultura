@@ -9,6 +9,7 @@ from .api_connections import filter_data
 from .views import get_time_now
 from .views import get_last_hour_markers
 from .views import get_last_day_markers
+from .views import get_last_minutes_markers
 from .api_connections import get_marker_address
 from .api_connections import get_location
 from quero_cultura.views import ParserYAML
@@ -20,6 +21,24 @@ SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateT
 EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
 AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
+
+
+class TestGetLastMinutesMarkers(object):
+    @requests_mock.Mocker(kw='mock')
+    def test_get_last_minutes_markers(self, **kwargs):
+        parser_yaml = ParserYAML()
+        urls = parser_yaml.get_multi_instances_urls
+
+        result = []
+
+        for url in urls:
+            kwargs['mock'].get(url + "agent/find/", text=json.dumps(result))
+            kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+            kwargs['mock'].get(url + "project/find/", text=json.dumps(result))
+            kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
+            
+        last = get_last_minutes_markers()
+        assert last == []
 
 
 class TestGetLastDayMarkers(object):
