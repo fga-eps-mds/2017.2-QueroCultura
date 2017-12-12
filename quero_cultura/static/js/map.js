@@ -139,6 +139,7 @@ function formatName(name){
         return name
     }
 }
+
 function formatLocation(city, state){
     result = ''
     if(state !== ''){

@@ -1,32 +1,27 @@
-describe('GetColorByType', function () {
-	it('should return a blue for agent', function () {
-		colorRGB = "#17a2b8";
+describe('GetImageByType', function () {
+	it('should return a markerAgent image', function () {
+		image = "static/images/markerAgent.png";
 		type = "agent";
     });
 
-	it('should return a red for spaces', function () {
-		colorRGB = "#dc3545";
+	it('should return a markerSpace image', function () {
+		image = "static/images/markerSpace.png"
 		type = "space";
     });
 
-	it('should return a green for project', function () {
-		colorRGB = "#28a745";
+	it('should return a markerProject image', function () {
+		image = "static/images/markerProject.png";
 		type = "project";
     });
 
-	it('should return a yellow for event', function () {
-		colorRGB = "#ffc107";
+	it('should return a markerEvent image', function () {
+		image = "static/images/markerEvent.png";
 		type = "event";
 	});
 
-	it('should return a black for anything wrong and not classified', function(){
-		colorRGB = "black";
-		type = "EscreviErradoOType";
-	});
-
 	afterEach(function(){
-		color = GetColorByType(type);
-		expect(color).toEqual(colorRGB);
+		imageTest = GetImageByType(type);
+		expect(imageTest).toEqual(image);
 	});
 });
 
@@ -35,10 +30,11 @@ describe('AddHTMLToFeed', function () {
         var marker = {"name": "Jeferson",
         			"marker_type": "agent",
         			"instance_url": "http://mapas.cultura.gov.br/agente/1",
-        			"action_type": "test",
-        			"action_time": "testagain",
+        			"action_type": "criação",
+        			"action_time": "2017-12-11 21:32:01.289113",
         			"city": "Brasilia",
-        			"state": "DF"}
+        			"state": "DF",
+        			"location": {"latitude": 0, "longitude": 0}}
 		
 		var htmlTest = AddHTMLToFeed(marker)
 
@@ -106,7 +102,8 @@ describe('updateFeed', function(){
         			"action_type": "test",
         			"action_time": "testagainagainagainagain",
         			"city": "Brasilia",
-        			"state": "DF"}
+        			"state": "DF",
+        			"location": {"latitude": 0, "longitude": 0}}
         recent_markers.push(marker)
 
         spyOn(window, 'create_feed_block')
@@ -120,7 +117,8 @@ describe('updateFeed', function(){
         			"marker_type": "agent",
         			"instance_url": "http://mapas.cultura.gov.br/agente/1",
         			"action_type": "test",
-        			"action_time": "testagainagainagainagain"}
+        			"action_time": "testagainagainagainagain",
+        			"location": {"latitude": 0, "longitude": 0}}
         recent_markers.push(marker)
 
         spyOn(window, 'create_feed_block')
