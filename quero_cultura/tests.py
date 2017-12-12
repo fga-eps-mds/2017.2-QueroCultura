@@ -10,6 +10,7 @@ from .views import get_time_now
 from .views import get_last_hour_markers
 from .views import get_last_day_markers
 from .views import get_last_minutes_markers
+from .views import get_most_recent_markers
 from .api_connections import get_marker_address
 from .api_connections import get_location
 from quero_cultura.views import ParserYAML
@@ -22,6 +23,12 @@ EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, cr
 AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
 
+
+class TestGetMostRecentMarkers(object):
+    def test_get_most_recent_markers(self):
+        last = get_most_recent_markers()
+        assert last == []
+        
 
 class TestGetLastMinutesMarkers(object):
     @requests_mock.Mocker(kw='mock')
