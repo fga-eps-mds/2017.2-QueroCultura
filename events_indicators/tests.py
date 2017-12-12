@@ -1,5 +1,6 @@
 from datetime import datetime
 from .api_connections import RequestEventsRawData
+from .api_connections import RequestEventsInPeriod
 from .models import EventData
 from .models import EventLanguage
 from .models import LastUpdateEventDate
@@ -132,3 +133,55 @@ class TestClassRequestEventsRawData(object):
         type_events_raw_data = type(events_raw_data)
         intenger = 1
         assert type_events_raw_data == type(intenger)
+
+
+class TestClassRequestEventsInPeriod(object):
+
+    @requests_mock.Mocker(kw='mock')
+    def test_success_request_in_period(self, **kwargs):
+        year = 2013
+        url = "http://spcultura.prefeitura.sp.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        request_events_in_period = RequestEventsInPeriod(year, url)
+        response_events_in_period = request_events_in_period.response
+        response_status_code = response_events_in_period.status_code
+        assert response_status_code == 200
+
+    @requests_mock.Mocker(kw='mock')
+    def test_data_content(self, **kwargs):
+        year = 2013
+        url = "http://spcultura.prefeitura.sp.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+
+        request_events_in_period = RequestEventsInPeriod(year, url)
+        events_in_period = request_events_in_period.data
+        type_events_in_period = type(events_in_period)
+        empty_list = []
+        assert type_events_in_period == type(empty_list)
+
+    @requests_mock.Mocker(kw='mock')
+    def test_data_lenght(self, **kwargs):
+        year = 2013
+        url = "http://spcultura.prefeitura.sp.gov.br/api/"
+
+        result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
+                   "terms": {"linguagem": "Cinema"},
+                   "classificacaoEtaria": "livre"}]
+
+        kwargs['mock'].get(url + "event/find/", text=json.dumps(result))
+        request_events_in_period = RequestEventsInPeriod(year, url)
+        events_in_period = request_events_in_period.data_length
+        type_events_in_period = type(events_in_period)
+        intenger = 1
+        assert type_events_in_period == type(intenger)
