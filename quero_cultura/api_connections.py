@@ -8,6 +8,7 @@ EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, cr
 AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
 
+
 class RequestMarkersRawData(object):
 
     def __init__(self, query_date_time, url, marker_type):
@@ -15,10 +16,11 @@ class RequestMarkersRawData(object):
         select = choose_select(marker_type)
         self._filters = {'@select': select,
                          '@or': 1,
-                         'createTimestamp': "GT("+str(query_date_time)+")",
-                         'updateTimestamp': "GT("+str(query_date_time)+")"
-                        }
-        self._response = requests.get(url+marker_type+"/find/", self._filters)
+                         'createTimestamp': "GT(" + str(query_date_time) + ")",
+                         'updateTimestamp': "GT(" + str(query_date_time) + ")"
+                         }
+        self._response = requests.get(
+            url + marker_type + "/find/", self._filters)
         self._data = json.loads(self._response.text)
 
     @property
@@ -32,7 +34,6 @@ class RequestMarkersRawData(object):
     @property
     def data_length(self):
         return len(self._data)
-
 
 
 def choose_select(marker_type):
@@ -123,11 +124,11 @@ def get_marker_address(location):
     if location is not None:
         if location['latitude'] != '0' or location['longitude'] != '0':
 
-            latitude = "lat="+location['latitude']
-            longitude = "lon="+location['longitude']
+            latitude = "lat=" + location['latitude']
+            longitude = "lon=" + location['longitude']
             base_url = "http://nominatim.openstreetmap.org/reverse?"
 
-            open_street_url = base_url+latitude+"&"+longitude+"&format=json"
+            open_street_url = base_url + latitude + "&" + longitude + "&format=json"
 
             data = json.loads(requests.get(open_street_url).text)
 
@@ -191,16 +192,19 @@ def get_instance_url(j_object):
 
     if subsite_id != 'null' and subsite_id is not None:
         try:
-            subsite = Subsite.objects.filter(subsite_id=int(subsite_id))[:1].get()
+            subsite = Subsite.objects.filter(
+                subsite_id=int(subsite_id))[:1].get()
 
-            specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
+            specific_url_info = '/' + \
+                splitted_url[3] + '/' + str(j_object['id'])
 
             return subsite.url + specific_url_info
         except Subsite.DoesNotExist:
-            specific_url_info = '/' + splitted_url[3] + '/' + str(j_object['id'])
+            specific_url_info = '/' + \
+                splitted_url[3] + '/' + str(j_object['id'])
             instance_url = splitted_url[0] + '//' + splitted_url[2]
 
-            return  request_subsite_url(subsite_id, instance_url) + specific_url_info
+            return request_subsite_url(subsite_id, instance_url) + specific_url_info
     else:
         return j_object['singleUrl']
 
@@ -209,9 +213,9 @@ def get_instance_url(j_object):
 # instance of a marker
 def request_subsite_url(subsite_id, instance_url):
 
-    filters = { '@select' : 'url',
-                'id': 'eq('+str(subsite_id)+')'
-                }
+    filters = {'@select': 'url',
+               'id': 'eq(' + str(subsite_id) + ')'
+               }
     response = requests.get(instance_url + '/api/subsite/find', filters)
     data = json.loads(response.text)
 
