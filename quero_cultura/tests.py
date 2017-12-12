@@ -1,8 +1,15 @@
 from datetime import datetime
 from .api_connections import RequestMarkersRawData
+from .api_connections import choose_select
 import requests_mock
 import json
 
+
+
+SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
+EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
+AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
+PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
 
 class TestRequestMarkerRawData(object):
 
@@ -20,3 +27,16 @@ class TestRequestMarkerRawData(object):
         assert raw_data.response.status_code == 200
         assert raw_data.data == result
         assert raw_data.data_length == 1
+
+
+class TestChooseSelect(object):
+
+    def test_choose_select(self):
+        select = choose_select('event')
+        assert select == EVENT_SELECT
+        select = choose_select('agent')
+        assert select == AGENT_SELECT
+        select = choose_select('project')
+        assert select == PROJECT_SELECT
+        select = choose_select('space')
+        assert select == SPACE_SELECT
