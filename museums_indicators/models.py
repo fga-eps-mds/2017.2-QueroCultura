@@ -72,14 +72,6 @@ class MuseumData(Document):
         self._instance = instance
 
     @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        self._name = name
-
-    @property
     def museum_type(self):
         return self._museum_type
 

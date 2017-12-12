@@ -72,14 +72,6 @@ class LibraryData(Document):
         self._instance = instance
 
     @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        self._name = name
-
-    @property
     def library_type(self):
         return self._library_type
 
