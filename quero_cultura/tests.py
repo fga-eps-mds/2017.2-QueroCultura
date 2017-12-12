@@ -2,6 +2,7 @@ from datetime import datetime
 from .api_connections import RequestMarkersRawData
 from .api_connections import choose_select
 from .api_connections import get_marker_action
+from .api_connections import get_attribute
 import requests_mock
 import json
 
@@ -51,3 +52,12 @@ class TestMarkerAction(object):
         action = get_marker_action(None,'2010')
         assert action['type'] == 'Atualização'
         assert action['time'] == '2010'
+
+
+class TestGetAtributte(object):
+
+    def test_get_atributte(self):
+        atributte = get_attribute({'Name': 'Caio'}, 'Name')
+        assert atributte == 'Caio'
+        atributte = get_attribute({'Name': 'Caio'}, 'Idade')
+        assert atributte == ''
