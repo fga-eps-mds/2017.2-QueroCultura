@@ -2484,6 +2484,18 @@ COPY activity (id, topic, "timestamp", user_id, model, model_id, database_id, ta
 263	card-update	2017-12-10 12:02:53.435+00	1	card	52	2	18	\N	{"name":"Porcentagem de eventos por faixa etária","description":null}
 264	card-update	2017-12-11 20:18:21.324+00	1	card	52	2	18	\N	{"name":"Classificação indicativa","description":null}
 265	card-update	2017-12-12 02:13:15.622+00	1	card	52	2	18	\N	{"name":"Classificação indicativa","description":null}
+266	card-create	2017-12-12 15:57:47.824+00	1	card	53	2	27	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+267	card-update	2017-12-12 15:59:00.206+00	1	card	53	2	27	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+268	card-update	2017-12-12 15:59:00.409+00	1	card	53	2	27	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+269	card-create	2017-12-12 16:03:34.994+00	1	card	54	2	18	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+270	card-update	2017-12-12 16:03:59.774+00	1	card	54	2	18	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+271	card-update	2017-12-12 16:03:59.998+00	1	card	54	2	18	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+272	card-create	2017-12-12 16:06:43.715+00	1	card	55	2	12	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+273	card-update	2017-12-12 16:07:02.76+00	1	card	55	2	12	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+274	card-update	2017-12-12 16:07:02.879+00	1	card	55	2	12	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+275	card-create	2017-12-12 16:08:01.775+00	1	card	56	2	16	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+276	card-update	2017-12-12 16:08:11.875+00	1	card	56	2	16	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
+277	card-update	2017-12-12 16:08:12.077+00	1	card	56	2	16	\N	{"name":"Quantidade de registros nos últimos 7 dias","description":null}
 \.
 
 
@@ -2540,6 +2552,7 @@ b230466c-a2d2-4d7a-afbe-ab0150142e07	1	2017-12-05 03:00:15.231+00
 3bfdcc3c-642a-4d11-8b88-3c8047d69c66	1	2017-12-05 03:01:27.094+00
 c303ed7d-c3fa-4a39-a773-f9669f8671ed	1	2017-12-05 03:02:12.752+00
 d22b0d70-9b0b-48d5-9c64-a5e8d994346c	1	2017-12-07 23:31:23.427+00
+8f9ddf15-c9b2-4a86-a5e2-d98da0ad0789	1	2017-12-12 15:56:45.933+00
 \.
 
 
@@ -2548,7 +2561,7 @@ d22b0d70-9b0b-48d5-9c64-a5e8d994346c	1	2017-12-07 23:31:23.427+00
 --
 
 COPY core_user (id, email, first_name, last_name, password, password_salt, date_joined, last_login, is_superuser, is_active, reset_token, reset_triggered, is_qbnewb, google_auth, ldap_auth) FROM stdin;
-1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-12-07 23:31:23.477+00	t	t	\N	\N	f	f	f
+1	querocultura61@gmail.com	Quero	Cultura	$2a$10$mucdErrPR1pnf39krDT6Zu6TcEbtqE3SLNMEUsVJoHOxWJBzeXf9m	8c9df11c-9bd9-49fd-b830-8b8e90b802cb	2017-11-11 23:03:21.9+00	2017-12-12 15:56:46.007+00	t	t	\N	\N	f	f	f
 \.
 
 
@@ -2767,7 +2780,7 @@ COPY label (id, name, slug, icon) FROM stdin;
 
 COPY metabase_database (id, created_at, updated_at, name, description, details, engine, is_sample, is_full_sync, points_of_interest, caveats, metadata_sync_schedule, cache_field_values_schedule, timezone, is_on_demand) FROM stdin;
 2	2017-11-12 21:38:36.634+00	2017-11-12 21:38:36.634+00	quero-cultura	\N	{"host":"mongo","port":27017,"dbname":"quero-cultura","tunnel-port":22,"ssl":false}	mongo	f	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	\N	f
-1	2017-11-11 23:01:35.379+00	2017-12-12 02:08:33.984+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
+1	2017-11-11 23:01:35.379+00	2017-12-12 15:54:44.266+00	Sample Dataset	\N	{"db":"zip:/app/metabase.jar!/sample-dataset.db;USER=GUEST;PASSWORD=guest"}	h2	t	t	\N	\N	0 50 * * * ? *	0 50 0 * * ? *	UTC	f
 \.
 
 
@@ -3785,7 +3798,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xe48a2eaa6c8d7695da35bdcaf46e865a3bc1a8d734088e03a888695e2524a0a0	43
 \\xa10b50b18a6553118701872a96318522684bf78ab319b585168ef6fb1a59f9c0	76
 \\x62e27e4990cc2b7ff87a3330d56cdd634cf8669d2fede6b98363dd360be4de0a	52
-\\x4cf43208abb0f3ca767b1cc53b293df5d4af5019eaee0dc8b42c854871b2926d	48
 \\x12f7e73cd2296f266a4e4e2b809490588e85e1dcce9e40d66b830a1b90453530	315
 \\x40e11f555ac44ba39d996c77cadb1581fa3a07d058f57bc9b2b57fec9c964f8f	703
 \\x3d4b7ca05f18b2de0927bd10138aba99a571e980b545ad1e4ba4e57151a9d8c7	49
@@ -3802,7 +3814,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\xb204f11185354b6c0ec52816fc20f7cc5bf1d6d243ec958396bca494fe96a3e6	139
 \\xf429d0082adac3811e2b09eae4f56e1fd5b00b94e25974cd3300caf8fbf69bc5	63
 \\x1b2c5b875d8182fec9db84e655c89d8a3048a62bc21e7fcdc9fac6c4fb5cf048	125
-\\x6211b1138bac14e5fa2bcfee231d2ef771cfbaf3c6f887897328190dd8ff31cb	162
 \\xf8ab73da628afbbd148c05f79cda69acc8b423606ecfc38614e2285f065b31c5	243
 \\x439520b880e95500549b7ebcda358e9b5c6a2f3c005991646856e318da1a604a	71
 \\x12a53ccb1cb8a3080959a9ce2fd1092c70830f3c85f6bf6486852cca4ef89101	73
@@ -3816,13 +3827,13 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x1913b6e388cb6d697ec47a12fcd29ae9abd4a71069f6bfc4c18fc97575ca0a27	48
 \\xed2a4829b7a6c6923808014390693d5567723fb8ad2a1cfe6973fb74f1398c6c	72
 \\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	147
-\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	73
 \\x29b0c260982c378cf8a1c056056e713de28c007cc341c89cd0fb1dca40fd5cf8	36
 \\x2d92775ca5136dd0fcfd1d1bcd3fb6a8ac2a509ee66e18f7dc4abfb5a4a954e1	360
 \\xcf5fa65ff623d108eb46e643a888d5cb7a593a64af7314b44379bbe7a510e574	178
 \\xbc462fc1376ef84c69934f95a21232cf42adf867eaea01c64d05fd4215667f9b	168
 \\x21678b2295982c88e9789dfcb7287c8fd16779962af06fd27243776617554f13	51
 \\xff28920483cc37246197c20a937a686b4dc5a0f2eb23876726db7e099d175cb3	41
+\\x6211b1138bac14e5fa2bcfee231d2ef771cfbaf3c6f887897328190dd8ff31cb	226
 \\x8c2f81f74f2358b3c15d63bb859c858cce011ebd9fd88c86ccebdab8bd5a2ddb	86
 \\x2cf3c6a70291d2eedbfc531b84979a306c14f7311a0f69aeed88991221f441a8	46
 \\x828ec0cdaf94cfd3779e38089101f74b8032442aba4864a808d4201ec75718e4	47
@@ -3836,14 +3847,6 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	386
 \\x7981e69bbe36912091d0b85d70c16be271b08b8532026d6f212a77019b7c9e70	350
 \\xe00847a8c515f0e3284beaca82f35119b30336a83bb25d1adc390f4799cbad43	407
-\\x3673ca69aa1bccfd54ec76b12ad8eaa823899b44f9b755114635baba929aeb6d	74
-\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	79
-\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	70
-\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	73
-\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	97
-\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	100
-\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	93
-\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	103
 \\x8f34e1a8509769dd9f759c926a8a7e9492491ac784b1e7218e221ae8707522b5	110
 \\xbcffe78744ab2241567e650bea687f68c7215ac8fd15891bc444ec2e4284317a	144
 \\x09ec3782572f315a26db4edbfeeb5929449aa44c1ee7632972ec3e9c66d651df	128
@@ -3860,34 +3863,52 @@ COPY query (query_hash, average_execution_time) FROM stdin;
 \\x1d26c377ff1c1798baba15f83c64b34b44430e388d1de4899e7c9f975b4adb01	189
 \\x2df1c1b99dab5d6c0df61c40a4bc206c6dfad0aa9bb3abebb778075cb7301608	144
 \\xfe08604a45b1dba23d6706c683efeaee01bbbb6f5fa92960dbdf191a185c3e42	124
-\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	46
-\\xbfe33a7ca0e67223f7beaaa024ef5541245f1300bd107966ac0107edfc031f7d	259
-\\xcfc7d56b6fc02c4d76b9401676edec767aeedb90997bfe025bb92fc7bd0014b0	529
-\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	574
-\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	133
-\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	527
-\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	884
-\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	1199
-\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	424
-\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	359
-\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	326
-\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	352
-\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	456
-\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	425
-\\x37cf77f673095db6a1e2cfd7f043a2a64f05eb17c9d788e89bd75de8d5f6645a	371
-\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	731
 \\x82b87d1d4b956fada0b7913fd3d8233cc2d0a10f255c584e09464b7f18d06521	254
-\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	297
-\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	680
-\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	1065
-\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	809
-\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	974
-\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	559
-\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	405
 \\x25342193c4c0ecf68992b9c9735b8d02ae76530489f6e47ccb88a8ac29b18e75	515
-\\x717d5eb3ecbcf66e03cfdf86a5ed4c2f3d9782c07dc5d19da226844f18d8b124	287
 \\xb7a8a7beee1d9d7f6b94ff0a6319ee2fdd3d4b016068d7a98f02223da31d565f	239
-\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	141
+\\x4cf43208abb0f3ca767b1cc53b293df5d4af5019eaee0dc8b42c854871b2926d	190
+\\x925d0cc3c4d3349e205f4f3566c16eda0d16d0a24d9e13c8a136cee8d5e6d5e6	861
+\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	115
+\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	123
+\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	140
+\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	299
+\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	1739
+\\xc346abd9fcf85f7d1e8a8c4fdb8708e47a185aa472f4fdf9f62814de5af77288	2191
+\\x717d5eb3ecbcf66e03cfdf86a5ed4c2f3d9782c07dc5d19da226844f18d8b124	870
+\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	853
+\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	181
+\\x4137eca275677512e40c4067440bbda54abfe13438b361d223e8a468857534e0	1331
+\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	1674
+\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	142
+\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	1915
+\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2051
+\\xbfe33a7ca0e67223f7beaaa024ef5541245f1300bd107966ac0107edfc031f7d	257
+\\xcfc7d56b6fc02c4d76b9401676edec767aeedb90997bfe025bb92fc7bd0014b0	536
+\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	961
+\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	392
+\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	181
+\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	1308
+\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	829
+\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	1327
+\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	1265
+\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	1028
+\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	1920
+\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	362
+\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	374
+\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	490
+\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	462
+\\x37cf77f673095db6a1e2cfd7f043a2a64f05eb17c9d788e89bd75de8d5f6645a	409
+\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	442
+\\x11e68b9a037ede3e1ad055c2177f5b6a91586af0720cdd9498eed3113be16777	298
+\\x7ed7a6af6a4f9fb06f599568fa7525c4e43cda3accec24b1fcf07f9781e1a3a1	379
+\\x1f5d7e115aa4704cb62d8b71c6d68d190a42ae068e86aca244ce85a8891f7f99	179
+\\x3673ca69aa1bccfd54ec76b12ad8eaa823899b44f9b755114635baba929aeb6d	136
+\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	47
+\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	106
+\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	108
+\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	125
+\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	129
+\\xabf202a64060a604c55904bba5c66eac4490ceebb207a3c8910a5daa9108d1d3	111
 \.
 
 
@@ -6094,6 +6115,89 @@ COPY query_execution (id, hash, started_at, running_time, result_rows, native, c
 2188	\\xb7a8a7beee1d9d7f6b94ff0a6319ee2fdd3d4b016068d7a98f02223da31d565f	2017-12-12 02:13:26.727	239	6	f	ad-hoc	\N	1	\N	\N	\N
 2189	\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	2017-12-12 02:13:29.519	82	2000	f	ad-hoc	\N	1	\N	\N	\N
 2190	\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	2017-12-12 02:13:31.888	138	2000	f	ad-hoc	\N	1	\N	\N	\N
+2191	\\x4cf43208abb0f3ca767b1cc53b293df5d4af5019eaee0dc8b42c854871b2926d	2017-12-12 15:57:04.318	1172	2000	f	ad-hoc	\N	1	\N	\N	\N
+2192	\\x4cf43208abb0f3ca767b1cc53b293df5d4af5019eaee0dc8b42c854871b2926d	2017-12-12 15:57:06.642	464	2000	f	ad-hoc	\N	1	\N	\N	\N
+2193	\\x925d0cc3c4d3349e205f4f3566c16eda0d16d0a24d9e13c8a136cee8d5e6d5e6	2017-12-12 15:57:25.755	861	1	f	ad-hoc	\N	1	\N	\N	\N
+2194	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 15:58:29.006	751	1	f	question	\N	1	53	\N	\N
+2195	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 15:58:31.697	753	1	f	question	\N	1	53	\N	\N
+2196	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 15:58:48.043	805	1	f	question	\N	1	53	\N	\N
+2197	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-12-12 16:00:59.787	1157	2	f	embedded-question	\N	1	30	\N	\N
+2198	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-12-12 16:00:59.291	1902	1	f	embedded-question	\N	1	35	\N	\N
+2199	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-12-12 16:00:59.286	2228	56	f	embedded-question	\N	1	31	\N	\N
+2200	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-12-12 16:01:01.235	398	1	f	embedded-question	\N	1	34	\N	\N
+2201	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 16:00:59.719	1949	1	f	embedded-question	\N	1	53	\N	\N
+2202	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-12-12 16:00:59.9	1922	56	f	embedded-question	\N	1	32	\N	\N
+2203	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-12-12 16:00:59.94	2528	84	f	embedded-question	\N	1	33	\N	\N
+2204	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 16:01:11.529	761	1	f	question	\N	1	53	\N	\N
+2205	\\xd4ed4ac21fda71a4b2231eff9a755b9dead0d0bf27404a27a5dbc10010653ffc	2017-12-12 16:01:17.888	542	2000	f	ad-hoc	\N	1	\N	\N	\N
+2206	\\x4137eca275677512e40c4067440bbda54abfe13438b361d223e8a468857534e0	2017-12-12 16:02:29.366	1331	1	f	ad-hoc	\N	1	\N	\N	\N
+2207	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-12 16:02:55.395	428	1	f	embedded-question	\N	1	36	\N	\N
+2208	\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	2017-12-12 16:02:55.697	2378	1	f	embedded-question	\N	1	44	\N	\N
+2209	\\x717d5eb3ecbcf66e03cfdf86a5ed4c2f3d9782c07dc5d19da226844f18d8b124	2017-12-12 16:02:55.974	2565	6	f	embedded-question	\N	1	52	\N	\N
+2210	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-12-12 16:02:55.676	3944	1	f	embedded-question	\N	1	37	\N	\N
+2211	\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	2017-12-12 16:02:58.757	1511	2	f	embedded-question	\N	1	51	\N	\N
+2215	\\xc346abd9fcf85f7d1e8a8c4fdb8708e47a185aa472f4fdf9f62814de5af77288	2017-12-12 16:03:40.702	1719	1	f	question	\N	1	54	\N	\N
+2219	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-12-12 16:04:33.849	5724	267	f	embedded-question	\N	1	14	\N	\N
+2220	\\x717d5eb3ecbcf66e03cfdf86a5ed4c2f3d9782c07dc5d19da226844f18d8b124	2017-12-12 16:04:37.4	2622	6	f	embedded-question	\N	1	52	\N	\N
+2226	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-12-12 16:04:50.937	1696	2	f	embedded-question	\N	1	30	\N	\N
+2227	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-12-12 16:04:50.624	2800	56	f	embedded-question	\N	1	31	\N	\N
+2228	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 16:04:50.483	3323	1	f	embedded-question	\N	1	53	\N	\N
+2229	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-12-12 16:04:50.698	3407	56	f	embedded-question	\N	1	32	\N	\N
+2230	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-12-12 16:04:50.225	4315	84	f	embedded-question	\N	1	33	\N	\N
+2239	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-12-12 16:05:05.107	2488	45	f	embedded-question	\N	1	15	\N	\N
+2240	\\xc346abd9fcf85f7d1e8a8c4fdb8708e47a185aa472f4fdf9f62814de5af77288	2017-12-12 16:05:05.024	2783	1	f	embedded-question	\N	1	54	\N	\N
+2244	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-12-12 16:05:09.165	3550	1	f	embedded-question	\N	1	37	\N	\N
+2248	\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	2017-12-12 16:05:14.348	1544	1	f	embedded-question	\N	1	44	\N	\N
+2251	\\xddac82b8edf7a3ecc158e33fc5675fd7a7191897d046e10d79efb07a74319e88	2017-12-12 16:05:15.917	798	263	f	embedded-question	\N	1	6	\N	\N
+2252	\\x37cf77f673095db6a1e2cfd7f043a2a64f05eb17c9d788e89bd75de8d5f6645a	2017-12-12 16:05:16.587	751	434	f	embedded-question	\N	1	2	\N	\N
+2254	\\x6211b1138bac14e5fa2bcfee231d2ef771cfbaf3c6f887897328190dd8ff31cb	2017-12-12 16:05:41.036	801	2000	f	ad-hoc	\N	1	\N	\N	\N
+2255	\\x11e68b9a037ede3e1ad055c2177f5b6a91586af0720cdd9498eed3113be16777	2017-12-12 16:05:49.79	297	1	f	ad-hoc	\N	1	\N	\N	\N
+2257	\\x7ed7a6af6a4f9fb06f599568fa7525c4e43cda3accec24b1fcf07f9781e1a3a1	2017-12-12 16:06:46.86	379	1	f	question	\N	1	55	\N	\N
+2259	\\xabf202a64060a604c55904bba5c66eac4490ceebb207a3c8910a5daa9108d1d3	2017-12-12 16:08:05.502	108	1	f	question	\N	1	56	\N	\N
+2267	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-12-12 16:09:12.863	215	1	f	embedded-question	\N	1	34	\N	\N
+2212	\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	2017-12-12 16:02:55.75	4649	166	f	embedded-question	\N	1	17	\N	\N
+2213	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-12-12 16:02:55.851	4647	45	f	embedded-question	\N	1	15	\N	\N
+2214	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-12-12 16:02:56.32	4689	267	f	embedded-question	\N	1	14	\N	\N
+2216	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-12 16:04:33.438	245	1	f	embedded-question	\N	1	36	\N	\N
+2221	\\xc346abd9fcf85f7d1e8a8c4fdb8708e47a185aa472f4fdf9f62814de5af77288	2017-12-12 16:04:34.309	5775	1	f	embedded-question	\N	1	54	\N	\N
+2223	\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	2017-12-12 16:04:34.432	5681	166	f	embedded-question	\N	1	17	\N	\N
+2224	\\x827190b604dc95c8b13586f78f1058bd10f7039a971419065c4901533e547af6	2017-12-12 16:04:48.205	332	1	f	embedded-question	\N	1	34	\N	\N
+2225	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-12-12 16:04:48.232	1212	1	f	embedded-question	\N	1	35	\N	\N
+2231	\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	2017-12-12 16:05:00.707	56	1	f	embedded-question	\N	1	49	\N	\N
+2245	\\x93fbeea1e8a7c96c5511a2fc3217f776ba748a9b3fa08913f5f55d4490b92758	2017-12-12 16:05:08.366	4452	267	f	embedded-question	\N	1	14	\N	\N
+2258	\\x1f5d7e115aa4704cb62d8b71c6d68d190a42ae068e86aca244ce85a8891f7f99	2017-12-12 16:07:38.796	179	1	f	ad-hoc	\N	1	\N	\N	\N
+2269	\\xc616341ce03d97f0e16ea98266381eb95de70597be7e0cfcb58e2eb3e2264ba8	2017-12-12 16:09:15.308	1977	2	f	embedded-question	\N	1	30	\N	\N
+2273	\\x560b9e1382970bf3749c151ace92279caecd7522dc40935e3828a7b587df470d	2017-12-12 16:09:15.341	4525	84	f	embedded-question	\N	1	33	\N	\N
+2217	\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	2017-12-12 16:04:34.61	2637	2	f	embedded-question	\N	1	51	\N	\N
+2218	\\xfd4ebaffa5e24892e606e4d2afacd730afc8f976ad2c37bf4eea7997e3709336	2017-12-12 16:04:33.809	5152	1	f	embedded-question	\N	1	37	\N	\N
+2222	\\x462cd990606ddbb416dd61ee4870769ad25fb73709e8a56c80aba92e4d4f3cd9	2017-12-12 16:04:34.354	5821	45	f	embedded-question	\N	1	15	\N	\N
+2234	\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	2017-12-12 16:05:03.392	455	2	f	embedded-question	\N	1	12	\N	\N
+2241	\\x717d5eb3ecbcf66e03cfdf86a5ed4c2f3d9782c07dc5d19da226844f18d8b124	2017-12-12 16:05:08.591	2165	6	f	embedded-question	\N	1	52	\N	\N
+2242	\\xb0c4e7f82ddfa522ab443e8039c97010c4911170ff3761100abbc7d1200ee858	2017-12-12 16:05:08.852	1976	2	f	embedded-question	\N	1	51	\N	\N
+2243	\\x22857619da3be9a5770e9568affe76f0cd06255f213e2987407e4041c7b81978	2017-12-12 16:05:07.578	3789	166	f	embedded-question	\N	1	17	\N	\N
+2246	\\xbfe33a7ca0e67223f7beaaa024ef5541245f1300bd107966ac0107edfc031f7d	2017-12-12 16:05:15.16	243	1	f	embedded-question	\N	1	45	\N	\N
+2268	\\x02b34ab6008ed80c585c93a66a103907901a6c9c688d3830dc65416cfc07d8da	2017-12-12 16:09:12.972	2006	56	f	embedded-question	\N	1	32	\N	\N
+2232	\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	2017-12-12 16:05:03.083	297	163	f	embedded-question	\N	1	13	\N	\N
+2233	\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	2017-12-12 16:05:03.198	623	56	f	embedded-question	\N	1	11	\N	\N
+2235	\\x3673ca69aa1bccfd54ec76b12ad8eaa823899b44f9b755114635baba929aeb6d	2017-12-12 16:05:03.278	762	1	f	embedded-question	\N	1	50	\N	\N
+2249	\\x30d5cd2ae52aa932dd01cf0a8b144ca6469c1714b168f1ab868b6246fd095160	2017-12-12 16:05:15.219	690	25	f	embedded-question	\N	1	7	\N	\N
+2250	\\x4cfc0f3aba83879afa3fb20ba5aabca28ec7ba35b2bc8fe6e8ff0e2582f3f573	2017-12-12 16:05:15.829	571	56	f	embedded-question	\N	1	4	\N	\N
+2253	\\x65fe9cf1da7aaf90a3dd358297d79c556be7156c7ac0174657ef700ea21da541	2017-12-12 16:05:17.017	605	263	f	embedded-question	\N	1	3	\N	\N
+2256	\\x11e68b9a037ede3e1ad055c2177f5b6a91586af0720cdd9498eed3113be16777	2017-12-12 16:05:54.179	306	1	f	ad-hoc	\N	1	\N	\N	\N
+2260	\\x3673ca69aa1bccfd54ec76b12ad8eaa823899b44f9b755114635baba929aeb6d	2017-12-12 16:09:06.824	74	1	f	embedded-question	\N	1	50	\N	\N
+2261	\\x03ab7b55cad996e98ecdf6097c61c13ef3cb0189c01cc2e66b58a07fcff4fd2c	2017-12-12 16:09:07.093	51	1	f	embedded-question	\N	1	49	\N	\N
+2262	\\xb0df0f3242598982a2775840afaade9293af5137aced4d204b00cbf25db7c5fb	2017-12-12 16:09:07.483	83	2	f	embedded-question	\N	1	12	\N	\N
+2263	\\x1ad74b7dab76724abdf6aa334aebb1c63719b1b1859e689ff8ec5373ab000a74	2017-12-12 16:09:08.022	96	56	f	embedded-question	\N	1	11	\N	\N
+2265	\\x358152939dc5d6414047c3dd1ab7d51fbe2d5369f7100369ece7ea8ec975fa84	2017-12-12 16:09:09.259	135	163	f	embedded-question	\N	1	13	\N	\N
+2270	\\x6278edbf55c85a421dfa4291f733bcdc78060a2d6727d2369628b239189b5a0e	2017-12-12 16:09:14.01	3284	1	f	embedded-question	\N	1	53	\N	\N
+2271	\\x67c998d4fe35418d7b06d8bad7f654bdb468d172eef3f64d5d594c6a52899bf9	2017-12-12 16:09:15.232	2995	56	f	embedded-question	\N	1	31	\N	\N
+2272	\\xd93fcc390be5ce0cb05bd30c60c9f95564b14c18276ca2895e36fbbf88f2029c	2017-12-12 16:09:15.073	3457	1	f	embedded-question	\N	1	35	\N	\N
+2236	\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	2017-12-12 16:05:03.553	574	256	f	embedded-question	\N	1	10	\N	\N
+2237	\\xb2616cb13705e3bdd1cd4df7823e4cf2e4d62782e11280dfbb8432e612c9a7b8	2017-12-12 16:05:03.403	1309	1	f	embedded-question	\N	1	44	\N	\N
+2238	\\xca3df4c31d7d188a68482087b12819cf1511e5b41671aff86642afa9163ae7eb	2017-12-12 16:05:06.908	251	1	f	embedded-question	\N	1	36	\N	\N
+2247	\\xcfc7d56b6fc02c4d76b9401676edec767aeedb90997bfe025bb92fc7bd0014b0	2017-12-12 16:05:14.822	600	1	f	embedded-question	\N	1	46	\N	\N
+2264	\\xabf202a64060a604c55904bba5c66eac4490ceebb207a3c8910a5daa9108d1d3	2017-12-12 16:09:08.72	137	1	f	embedded-question	\N	1	56	\N	\N
+2266	\\x8a1dcf913cda4cb2f21665257a78abbd1f52e229ef053d55244f420e0488c323	2017-12-12 16:09:11.37	95	256	f	embedded-question	\N	1	10	\N	\N
 \.
 
 
@@ -6169,6 +6273,10 @@ COPY report_card (id, created_at, updated_at, name, description, display, datase
 4	2017-11-12 23:05:39.061+00	2017-12-10 10:48:25.969+00	Crescimento Cumulativo Mensal	\N	line	{"database":2,"type":"query","query":{"source_table":12,"breakout":[["datetime-field",["field-id",501],"month"]],"aggregation":[["cum_count"]]}}	{"line.interpolate":"cardinal","line.marker_enabled":true,"graph.x_axis.title_text":"Data","graph.y_axis.title_text":"Quantidade"}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 3	2017-11-12 23:01:23.161+00	2017-12-10 10:49:25.436+00	Quantidade de Registros por Mês	\N	bar	{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"breakout":[["datetime-field",["field-id",501],"month"],["field-id",500]]}}	{"stackable.stack_type":"stacked","graph.y_axis.title_text":"Quantidade","graph.x_axis.title_text":"Data"}	1	2	12	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/DateTime","display_name":"Date","name":"_date","unit":"month"},{"base_type":"type/Text","display_name":"Instance","name":"_instance"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 52	2017-12-10 12:02:39.26+00	2017-12-12 02:13:15.562+00	Classificação indicativa	\N	pie	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",680]]}}	{}	1	2	18	query	f	2	\N	\N	t	{}	\N	[{"base_type":"type/Text","display_name":"Age Range","name":"_age_range"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+56	2017-12-12 16:08:01.727+00	2017-12-12 16:08:11.959+00	Quantidade de registros nos últimos 7 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":16,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",599],-7,"day"]]}}	{}	1	2	16	query	f	1	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+53	2017-12-12 15:57:47.668+00	2017-12-12 15:59:00.276+00	Quantidade de registros nos últimos 7 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-7,"day"]]}}	{}	1	2	27	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+54	2017-12-12 16:03:34.901+00	2017-12-12 16:03:59.866+00	Quantidade de registros nos últimos 7 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-7,"day"]]}}	{}	1	2	18	query	f	\N	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
+55	2017-12-12 16:06:43.531+00	2017-12-12 16:07:02.787+00	Quantidade de registros nos últimos 7 dias	\N	scalar	{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",501],-7,"day"]]}}	{}	1	2	12	query	f	6	\N	\N	t	{}	\N	[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}]
 \.
 
 
@@ -6485,6 +6593,18 @@ COPY revision (id, model, model_id, user_id, "timestamp", object, is_reversion, 
 298	Card	52	1	2017-12-10 12:02:53.4+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Porcentagem de eventos por faixa etária","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
 299	Card	52	1	2017-12-11 20:18:21.228+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Rage","name":"_age_rage","special_type":"type/Category"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Classificação indicativa","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",602]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
 300	Card	52	1	2017-12-12 02:13:15.595+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Text","display_name":"Age Range","name":"_age_range"},{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":2,"query_type":"query","name":"Classificação indicativa","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"breakout":[["field-id",680]]}},"id":52,"display":"pie","visualization_settings":{},"public_uuid":null}	f	f	\N
+301	Card	53	1	2017-12-12 15:57:47.715+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-7,"day"]]}},"id":53,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+302	Card	53	1	2017-12-12 15:59:00.142+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-7,"day"]]}},"id":53,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+303	Card	53	1	2017-12-12 15:59:00.337+00	{"description":null,"archived":false,"table_id":27,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":27,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",637],-7,"day"]]}},"id":53,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+304	Card	54	1	2017-12-12 16:03:34.957+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-7,"day"]]}},"id":54,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+305	Card	54	1	2017-12-12 16:03:59.747+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-7,"day"]]}},"id":54,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+306	Card	54	1	2017-12-12 16:03:59.934+00	{"description":null,"archived":false,"table_id":18,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":null,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":18,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",605],-7,"day"]]}},"id":54,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+307	Card	55	1	2017-12-12 16:06:43.702+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":6,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",501],-7,"day"]]}},"id":55,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+308	Card	55	1	2017-12-12 16:07:02.708+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":6,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",501],-7,"day"]]}},"id":55,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+309	Card	55	1	2017-12-12 16:07:02.814+00	{"description":null,"archived":false,"table_id":12,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":6,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":12,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",501],-7,"day"]]}},"id":55,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+310	Card	56	1	2017-12-12 16:08:01.758+00	{"description":null,"archived":false,"table_id":16,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":false,"collection_id":1,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":16,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",599],-7,"day"]]}},"id":56,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	t	\N
+311	Card	56	1	2017-12-12 16:08:11.839+00	{"description":null,"archived":false,"table_id":16,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":1,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":null,"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":16,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",599],-7,"day"]]}},"id":56,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
+312	Card	56	1	2017-12-12 16:08:12.063+00	{"description":null,"archived":false,"table_id":16,"result_metadata":[{"base_type":"type/Integer","display_name":"count","name":"count","special_type":"type/Number"}],"database_id":2,"enable_embedding":true,"collection_id":1,"query_type":"query","name":"Quantidade de registros nos últimos 7 dias","creator_id":1,"made_public_by_id":null,"embedding_params":{},"cache_ttl":null,"dataset_query":{"database":2,"type":"query","query":{"source_table":16,"aggregation":[["count"]],"filter":["AND",["time-interval",["field-id",599],-7,"day"]]}},"id":56,"display":"scalar","visualization_settings":{},"public_uuid":null}	f	f	\N
 \.
 
 
@@ -6910,6 +7030,12 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 392	1	card	31	2017-12-11 20:18:39.952+00
 393	1	card	51	2017-12-12 02:12:53.143+00
 394	1	card	52	2017-12-12 02:13:03.095+00
+395	1	card	53	2017-12-12 15:57:47.702+00
+396	1	card	53	2017-12-12 15:58:28.611+00
+397	1	card	53	2017-12-12 16:01:11.359+00
+398	1	card	54	2017-12-12 16:03:34.952+00
+399	1	card	55	2017-12-12 16:06:43.696+00
+400	1	card	56	2017-12-12 16:08:01.753+00
 \.
 
 
@@ -6917,7 +7043,7 @@ COPY view_log (id, user_id, model, model_id, "timestamp") FROM stdin;
 -- Name: activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('activity_id_seq', 265, true);
+SELECT pg_catalog.setval('activity_id_seq', 277, true);
 
 
 --
@@ -7085,7 +7211,7 @@ SELECT pg_catalog.setval('pulse_id_seq', 1, false);
 -- Name: query_execution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('query_execution_id_seq', 2190, true);
+SELECT pg_catalog.setval('query_execution_id_seq', 2273, true);
 
 
 --
@@ -7106,7 +7232,7 @@ SELECT pg_catalog.setval('raw_table_id_seq', 1, false);
 -- Name: report_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('report_card_id_seq', 52, true);
+SELECT pg_catalog.setval('report_card_id_seq', 56, true);
 
 
 --
@@ -7134,7 +7260,7 @@ SELECT pg_catalog.setval('report_dashboardcard_id_seq', 11, true);
 -- Name: revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('revision_id_seq', 300, true);
+SELECT pg_catalog.setval('revision_id_seq', 312, true);
 
 
 --
@@ -7148,7 +7274,7 @@ SELECT pg_catalog.setval('segment_id_seq', 1, false);
 -- Name: view_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: quero_cultura
 --
 
-SELECT pg_catalog.setval('view_log_id_seq', 394, true);
+SELECT pg_catalog.setval('view_log_id_seq', 400, true);
 
 
 --
