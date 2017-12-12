@@ -5,6 +5,8 @@ from .api_connections import get_marker_action
 from .api_connections import get_attribute
 from .api_connections import get_date
 from .api_connections import request_subsite_url
+from .api_connections import filter_data
+from .views import get_time_now
 from .api_connections import get_marker_address
 from .api_connections import get_location
 import requests_mock
@@ -106,7 +108,6 @@ class TestMarkerAddress(object):
         kwargs['mock'].get(url + "lat=10&lon=10&format=json",
                            text=json.dumps(result))
         marker['city'], marker['state'] = get_marker_address(location)
-
         assert marker['city'] == 'brasilia'
         assert marker['state'] == 'Distrito'
 
@@ -185,3 +186,19 @@ class TestMarkerLocation(object):
         resp = get_location(result, marker)
 
         assert resp == {'latitude': '0', 'longitude': '0'}
+
+
+class TestGetTimeNow(object):
+
+    def test_get_time_now(self):
+        time_now = get_time_now()
+        assert time_now.date() == datetime.now().date()
+
+
+class TestFilterData(object):
+
+    def test_filter_data(self):
+        marker = {'id': 123, 'name': 'Caio', 'location': {'latitude': '0', 'longitude': '0'},
+                  'singleUrl': '', 'subsite': None, 'createTimestamp': None, 'updateTimestamp': None}
+        test_marker = filter_data(marker, 'agent')
+        assert test_marker['name'] == 'Caio'
