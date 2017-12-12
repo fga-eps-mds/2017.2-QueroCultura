@@ -28,7 +28,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 30, "true")},
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 34, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 35, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+                 {'id': 3, 'url': get_metabase_url(view_type, 53, "false")}]
 
 
 page_type = "Agentes"

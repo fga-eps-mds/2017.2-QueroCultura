@@ -31,7 +31,7 @@ metabase_graphics = [{'id': 1, 'url': get_metabase_url(view_type, 14, "true")},
 
 detailed_data = [{'id': 1, 'url': get_metabase_url(view_type, 36, "false")},
                  {'id': 2, 'url': get_metabase_url(view_type, 37, "false")},
-                 {'id': 3, 'url': get_metabase_url(view_type, 44, "false")}]
+                 {'id': 3, 'url': get_metabase_url(view_type, 54, "false")}]
 
 
 page_type = "Eventos"
