@@ -9,10 +9,14 @@ class TestEventAndSpaceData(object):
 
     def test_event_space_data(self):
         EventAndSpaceData.drop_collection()
+        event_space_data = EventAndSpaceData()
         instance = "SP"
+        event_space_data.instance = instance
         accessible_space = "sim"
+        event_space_data.accessible_space = accessible_space
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
-        EventAndSpaceData(instance, accessible_space, date).save()
+        event_space_data.date = date
+        event_space_data.save()
         query = EventAndSpaceData.objects.first()
         assert query.instance == instance
         assert query.accessible_space == accessible_space

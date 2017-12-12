@@ -4,7 +4,6 @@ from .models import LastUpdateMuseumDate
 from .models import MuseumData
 from .models import MuseumArea
 from .models import MuseumTags
-from .models import LastUpdateMuseumDate
 from .views import populate_museum_data
 from quero_cultura.views import ParserYAML
 import requests_mock
@@ -14,8 +13,10 @@ import json
 class TestLastUpdateMuseumDate(object):
     def test_last_update_museum_date(self):
         LastUpdateMuseumDate.drop_collection()
+        update_date = LastUpdateMuseumDate()
         create_date = datetime.now().__str__()
-        LastUpdateMuseumDate(create_date).save()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateMuseumDate.objects.first()
         assert query.create_date == create_date
 
@@ -23,9 +24,12 @@ class TestLastUpdateMuseumDate(object):
 class TestMuseumArea(object):
     def test_museum_area(self):
         MuseumArea.drop_collection()
+        museum_area = MuseumArea()
         instance = "SP"
+        museum_area.instance = instance
         area = "Cinema"
-        MuseumArea(instance, area).save()
+        museum_area.area = area
+        museum_area.save()
         query = MuseumArea.objects.first()
         assert query.instance == instance
         assert query.area == area
@@ -34,9 +38,12 @@ class TestMuseumArea(object):
 class TestMuseumTags(object):
     def test_museum_area(self):
         MuseumTags.drop_collection()
+        museum_tag = MuseumTags()
         instance = "SP"
+        museum_tag.instance = instance
         tag = "OlavoBilac"
-        MuseumTags(instance, tag).save()
+        museum_tag.tag = tag
+        museum_tag.save()
         query = MuseumTags.objects.first()
         assert query.instance == instance
         assert query.tag == tag
@@ -45,12 +52,16 @@ class TestMuseumTags(object):
 class TestMuseumData(object):
     def test_museum_data(self):
         MuseumData.drop_collection()
+        museum_data = MuseumData()
         instance = "SP"
+        museum_data.instance = instance
         museum_type = "Cia"
+        museum_data.museum_type = museum_type
         accessibility = "Sim"
+        museum_data.accessibility = accessibility
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
-
-        MuseumData(instance, museum_type, accessibility, date).save()
+        museum_data.date = date
+        museum_data.save()
         query = MuseumData.objects.first()
         assert query.instance == instance
         assert query.museum_type == museum_type
@@ -65,8 +76,9 @@ class TestRequestMuseumRawData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "acessibilidade": "Sim",
-                   "type": {"id":"60", "name":"Museum Publico"},
-                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+                   "type": {"id": "60", "name": "Museum Publico"},
+                   "terms": {"area": ["Cinema", "Teatro"],
+                             "tag": ["Olavo Bilac"]}}]
 
         kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
 
@@ -85,8 +97,9 @@ class TestPopulateMuseumData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "acessibilidade": "Sim",
-                   "type": {"id":"60", "name":"Museum Publico"},
-                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+                   "type": {"id": "60", "name": "Museum Publico"},
+                   "terms": {"area": ["Cinema", "Teatro"],
+                             "tag": ["Olavo Bilac"]}}]
 
         for url in urls:
             kwargs['mock'].get(url + "space/find/", text=json.dumps(result))

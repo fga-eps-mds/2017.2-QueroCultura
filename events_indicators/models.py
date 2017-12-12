@@ -39,7 +39,7 @@ class EventLanguage(Document):
 
 class EventData(Document):
     _instance = StringField(required=True)
-    _age_rage = StringField(required=True)
+    _age_range = StringField(required=True)
     _occurrences = ListField(required=False)
     _date = DateTimeField(required=True)
 
@@ -60,12 +60,12 @@ class EventData(Document):
         self._date = date
 
     @property
-    def age_rage(self):
-        return self._age_rage
+    def age_range(self):
+        return self._age_range
 
-    @age_rage.setter
-    def age_range(self, age_rage):
-        self._age_rage = age_rage
+    @age_range.setter
+    def age_range(self, age_range):
+        self._age_range = age_range
 
     @property
     def occurrences(self):
