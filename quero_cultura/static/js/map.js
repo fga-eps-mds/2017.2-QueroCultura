@@ -103,7 +103,6 @@ function updateFeed(recent_markers) {
         var html = AddHTMLToFeed(value)
         create_feed_block(html)
     },recent_markers)
-
 }
 
 function create_feed_block(html){

@@ -98,19 +98,34 @@ describe('initialize_data_map', function() {
 });
 
 describe('updateFeed', function(){
-	it('update feed with every markers ', function(){
+	it('should update feed with every markers ', function(){
 		var recent_markers = []
         var marker = {"name": "Jeferson",
         			"marker_type": "agent",
         			"instance_url": "http://mapas.cultura.gov.br/agente/1",
         			"action_type": "test",
-        			"action_time": "testagain",
+        			"action_time": "testagainagainagainagain",
         			"city": "Brasilia",
         			"state": "DF"}
-        recent_markers.push(recent_markers)
+        recent_markers.push(marker)
 
         spyOn(window, 'create_feed_block')
         updateFeed(recent_markers)
         expect(window.create_feed_block).toHaveBeenCalled()
+	});
+	
+	it('should change city and state to blank', function(){
+		var recent_markers = []
+        var marker = {"name": "Jeferson",
+        			"marker_type": "agent",
+        			"instance_url": "http://mapas.cultura.gov.br/agente/1",
+        			"action_type": "test",
+        			"action_time": "testagainagainagainagain"}
+        recent_markers.push(marker)
+
+        spyOn(window, 'create_feed_block')
+        updateFeed(recent_markers)
+        expect(recent_markers[0]["city"]).toEqual('')
+        expect(recent_markers[0]["state"]).toEqual('')
 	});
 });
