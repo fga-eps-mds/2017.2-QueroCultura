@@ -1,15 +1,16 @@
 from datetime import datetime
 from .api_connections import RequestMarkersRawData
 from .api_connections import choose_select
+from .api_connections import request_subsite_url
 import requests_mock
 import json
-
 
 
 SPACE_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 EVENT_SELECT = 'id, name, occurrences.{space.{location}}, singleUrl, subsite, createTimestamp, updateTimestamp'
 AGENT_SELECT = 'id, name, location, singleUrl, subsite, createTimestamp, updateTimestamp'
 PROJECT_SELECT = 'id, name, owner.location, singleUrl, subsite, createTimestamp, updateTimestamp'
+
 
 class TestRequestMarkerRawData(object):
 
@@ -18,7 +19,7 @@ class TestRequestMarkerRawData(object):
         url = "http://mapas.cultura.gov.br/api/"
         marker = 'agent'
         result = [{"id": 1, "date": "2012-01-01 00:00:00.000000",
-                  "name": "larissa", "useRegistrations": "FGA"}]
+                   "name": "larissa", "useRegistrations": "FGA"}]
 
         kwargs['mock'].get(url + marker + "/find/", text=json.dumps(result))
 
@@ -40,3 +41,17 @@ class TestChooseSelect(object):
         assert select == PROJECT_SELECT
         select = choose_select('space')
         assert select == SPACE_SELECT
+
+
+class TestRequestSubSite(object):
+	@requests_mock.Mocker(kw='mock')
+	def test_request_subsite(self, **kwargs):
+    	
+		url = "http://mapas.cultura.gov.br/"
+		inst_id = 1
+
+		result = [{'url': 'mapas.cultura.gov.br/'}]
+
+		kwargs['mock'].get(url + "/api/subsite/find", text=json.dumps(result))
+		resp = request_subsite_url(inst_id, url)
+		assert resp == url
