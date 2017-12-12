@@ -7,6 +7,7 @@ from .api_connections import get_date
 from .api_connections import request_subsite_url
 from .api_connections import filter_data
 from .views import get_time_now
+from .api_connections import get_marker_address
 import requests_mock
 import json
 
@@ -71,25 +72,43 @@ class TestGetAtributte(object):
 class TestGetDate(object):
 
     def test_get_date(self):
-        date = get_date({'createTimestamp': {'date': '2010'}}, 'createTimestamp')
+        date = get_date({'createTimestamp': {'date': '2010'}},
+                        'createTimestamp')
         assert date == '2010'
         date = get_date({'createTimestamp': None}, 'createTimestamp')
         assert date == None
 
 
 class TestRequestSubSite(object):
-	@requests_mock.Mocker(kw='mock')
-	def test_request_subsite(self, **kwargs):
 
-		url = "http://mapas.cultura.gov.br/"
-		inst_id = 1
+    @requests_mock.Mocker(kw='mock')
+    def test_request_subsite(self, **kwargs):
 
-		result = [{'url': 'mapas.cultura.gov.br/'}]
+        url = "http://mapas.cultura.gov.br/"
+        inst_id = 1
 
-		kwargs['mock'].get(url + "/api/subsite/find", text=json.dumps(result))
-		resp = request_subsite_url(inst_id, url)
-		assert resp == url
+        result = [{'url': 'mapas.cultura.gov.br/'}]
 
+        kwargs['mock'].get(url + "/api/subsite/find", text=json.dumps(result))
+        resp = request_subsite_url(inst_id, url)
+        assert resp == url
+
+
+class TestMarkerAddress(object):
+
+    @requests_mock.Mocker(kw='mock')
+    def test_get_marker_address(self, **kwargs):
+        marker = {}
+        url = "http://nominatim.openstreetmap.org/reverse?"
+        location = {'latitude': '10', 'longitude': '10'}
+
+        result = {'address': {'city': 'brasilia', 'state': 'Distrito'}}
+
+        kwargs['mock'].get(url + "lat=10&lon=10&format=json",
+                            text=json.dumps(result))
+        marker['city'], marker['state'] = get_marker_address(location)
+        assert marker['city'] == 'brasilia'
+        assert marker['state'] == 'Distrito'
 
 class TestGetTimeNow(object):
     def test_get_time_now(self):
