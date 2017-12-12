@@ -11,8 +11,10 @@ import json
 class TestLastUpdateProjectDate(object):
     def test_last_update_project_date(self):
         LastUpdateProjectDate.drop_collection()
+        update_date = LastUpdateProjectDate()
         create_date = datetime.now().__str__()
-        LastUpdateProjectDate(create_date).save()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateProjectDate.objects.first()
         assert query.create_date == create_date
 
@@ -20,11 +22,16 @@ class TestLastUpdateProjectDate(object):
 class TestProjectData(object):
     def test_project_data(self):
         ProjectData.drop_collection()
+        project_data = ProjectData()
         instance = "SP"
+        project_data.instance = instance
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
+        project_data.date = date
         project_type = "Teatro"
+        project_data.project_type = project_type
         online = "True"
-        ProjectData(instance, project_type, online, date).save()
+        project_data.online_subscribe = online
+        project_data.save()
         query = ProjectData.objects.first()
         assert query.instance == instance
         assert query.online_subscribe == online

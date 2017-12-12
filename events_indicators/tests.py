@@ -15,8 +15,10 @@ class TestLastUpdateEventDate(object):
 
     def test_last_update_event_date(self):
         LastUpdateEventDate.drop_collection()
+        update_date = LastUpdateEventDate()
         create_date = datetime.now()
-        LastUpdateEventDate(create_date).save()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateEventDate.objects.first()
         assert query.create_date.date() == create_date.date()
 
@@ -25,9 +27,12 @@ class TestEventLanguage(object):
 
     def test_event_language(self):
         EventLanguage.drop_collection()
+        event_language = EventLanguage()
         instance = "SP"
+        event_language.instance = instance
         language = "Cinema"
-        EventLanguage(instance, language).save()
+        event_language.language = language
+        event_language.save()
         query = EventLanguage.objects.first()
         assert query.instance == instance
         assert query.language == language
@@ -37,7 +42,9 @@ class TestEventData(object):
 
     def test_event_data(self):
         EventData.drop_collection()
+        event_data = EventData()
         instance = "SP"
+        event_data.instance = instance
         occurrences = [
             {
                 "id": 1147,
@@ -47,14 +54,17 @@ class TestEventData(object):
                 }
             }
         ]
+        event_data.occurrences = occurrences
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
-        age_rage = "Livre"
-        EventData(instance, age_rage, occurrences, date).save()
+        event_data.date = date
+        age_range = "Livre"
+        event_data.age_range = age_range
+        event_data.save()
         query = EventData.objects.first()
         assert query.instance == instance
         assert query.occurrences == occurrences
         assert query.date == date
-        assert query.age_range == age_rage
+        assert query.age_range == age_range
 
 
 class TestPopulateEventData(object):
@@ -67,7 +77,9 @@ class TestPopulateEventData(object):
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "terms": {"linguagem": "Cinema"},
                    "classificacaoEtaria": "livre",
-                   "occurrences": [{"id": 1147, "space": {"id": 14191, "acessibilidade": "Sim"}}]}]
+                   "occurrences":
+                   [{"id": 1147, "space": {"id": 14191,
+                     "acessibilidade": "Sim"}}]}]
 
         for url in urls:
             kwargs['mock'].get(url + "event/find/", text=json.dumps(result))

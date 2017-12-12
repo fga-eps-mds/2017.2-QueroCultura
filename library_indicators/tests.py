@@ -13,8 +13,10 @@ import json
 class TestLastUpdateLibraryDate(object):
     def test_last_library_date(self):
         LastUpdateLibraryDate.drop_collection()
+        update_date = LastUpdateLibraryDate()
         create_date = datetime.now().__str__()
-        LastUpdateLibraryDate(create_date).save()
+        update_date.create_date = create_date
+        update_date.save()
         query = LastUpdateLibraryDate.objects.first()
         assert query.create_date == create_date
 
@@ -22,9 +24,12 @@ class TestLastUpdateLibraryDate(object):
 class TestLibraryArea(object):
     def test_library_area(self):
         LibraryArea.drop_collection()
+        library_area = LibraryArea()
         instance = "SP"
+        library_area.instance = instance
         area = "Cinema"
-        LibraryArea(instance, area).save()
+        library_area.area = area
+        library_area.save()
         query = LibraryArea.objects.first()
         assert query.instance == instance
         assert query.area == area
@@ -33,9 +38,12 @@ class TestLibraryArea(object):
 class TestLibraryTags(object):
     def test_library_area(self):
         LibraryTags.drop_collection()
+        library_tag = LibraryTags()
         instance = "SP"
+        library_tag.instance = instance
         tag = "OlavoBilac"
-        LibraryTags(instance, tag).save()
+        library_tag.tag = tag
+        library_tag.save()
         query = LibraryTags.objects.first()
         assert query.instance == instance
         assert query.tag == tag
@@ -44,12 +52,16 @@ class TestLibraryTags(object):
 class TestLibraryData(object):
     def test_library_data(self):
         LibraryData.drop_collection()
+        library_data = LibraryData()
         instance = "SP"
+        library_data.instance = instance
         library_type = "Biblioteca Publica"
+        library_data.library_type = library_type
         accessibility = "Sim"
+        library_data.accessibility = accessibility
         date = datetime(2017, 11, 14, 3, 5, 55, 88000)
-
-        LibraryData(instance, library_type, accessibility, date).save()
+        library_data.date = date
+        library_data.save()
         query = LibraryData.objects.first()
         assert query.instance == instance
         assert query.library_type == library_type
@@ -64,8 +76,9 @@ class TestRequestLibraryRawData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "acessibilidade": "Sim",
-                   "type": {"id":"20", "name":"Biblioteca Publica"},
-                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+                   "type": {"id": "20", "name": "Biblioteca Publica"},
+                   "terms": {"area": ["Cinema", "Teatro"],
+                             "tag": ["Olavo Bilac"]}}]
 
         kwargs['mock'].get(url+"space/find/", text=json.dumps(result))
 
@@ -84,8 +97,9 @@ class TestPopulateLibraryData(object):
 
         result = [{"createTimestamp": {"date": "2012-01-01 00:00:00.000000"},
                    "acessibilidade": "Sim",
-                   "type": {"id":"20", "name":"Biblioteca Publica"},
-                   "terms": {"area": ["Cinema", "Teatro"], "tag":["Olavo Bilac"]}}]
+                   "type": {"id": "20", "name": "Biblioteca Publica"},
+                   "terms": {"area": ["Cinema", "Teatro"],
+                             "tag": ["Olavo Bilac"]}}]
 
         for url in urls:
             kwargs['mock'].get(url + "space/find/", text=json.dumps(result))
