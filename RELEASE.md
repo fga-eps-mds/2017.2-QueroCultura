@@ -1,3 +1,14 @@
+># Release 0.22.0
+
+### Principais recursos e melhorias
+- Ajustes na interface visando melhorar a usabilidade 
+- Ambiente de testes JavaScript estabelecido
+- Maior segurança das informações geradas
+
+### Correções de erros e outras alterações
+- Correção das informações apresentadas nos gráficos
+
+
 ># Release 0.21.0
 
 ### Principais recursos e melhorias
