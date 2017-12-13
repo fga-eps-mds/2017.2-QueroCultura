@@ -52,6 +52,7 @@ def populate_project_data():
 
     size = LastUpdateProjectDate.objects.count()
     last_update = LastUpdateProjectDate.objects[size - 1].create_date
+    LastUpdateProjectDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
@@ -67,8 +68,6 @@ def populate_project_data():
                 project_use = 'Não'
             ProjectData(new_url, str(project['type']['name']),
                         project_use, date).save()
-
-    LastUpdateProjectDate(str(datetime.now())).save()
 
 
 def clean_url(url):

@@ -64,12 +64,13 @@ def populate_agent_data():
 
     size = LastUpdateAgentsDate.objects.count()
     last_update = LastUpdateAgentsDate.objects[size - 1].create_date
+    LastUpdateAgentsDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
+        if (last_update == DEFAULT_INITIAL_DATE) and (url == SP_URL or url == ESTADO_SP_URL):
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestAgentsInPeriod(year, url)
@@ -85,5 +86,3 @@ def populate_agent_data():
             AgentsData(new_url, str(agent['type']['name']), date).save()
             for area in agent["terms"]["area"]:
                 AgentsArea(new_url, str(area).title()).save()
-
-    LastUpdateAgentsDate(str(datetime.now())).save()

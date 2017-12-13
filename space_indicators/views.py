@@ -58,6 +58,7 @@ def populate_space_data():
 
     size = LastUpdateDate.objects.count()
     last_update = LastUpdateDate.objects[size - 1].create_date
+    LastUpdateDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
@@ -71,5 +72,3 @@ def populate_space_data():
                       str(space['type']['name'])).save()
             for area in space["terms"]["area"]:
                 OccupationArea(new_url, area).save()
-
-    LastUpdateDate(str(datetime.now())).save()

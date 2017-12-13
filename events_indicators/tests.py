@@ -16,11 +16,11 @@ class TestLastUpdateEventDate(object):
     def test_last_update_event_date(self):
         LastUpdateEventDate.drop_collection()
         update_date = LastUpdateEventDate()
-        create_date = datetime.now()
+        create_date = datetime.now().__str__()
         update_date.create_date = create_date
         update_date.save()
         query = LastUpdateEventDate.objects.first()
-        assert query.create_date.date() == create_date.date()
+        assert query.create_date == create_date
 
 
 class TestEventLanguage(object):
