@@ -59,6 +59,7 @@ def populate_museum_data():
 
     size = LastUpdateMuseumDate.objects.count()
     last_update = LastUpdateMuseumDate.objects[size - 1].create_date
+    LastUpdateMuseumDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
@@ -83,4 +84,3 @@ def populate_museum_data():
 
             for tag in museum["terms"]["tag"]:
                 MuseumTags(new_url, str(tag).title()).save()
-    LastUpdateMuseumDate(str(datetime.now())).save()

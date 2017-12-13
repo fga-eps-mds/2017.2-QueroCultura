@@ -1,6 +1,3 @@
-import json
-import datetime
-import requests
 from events_indicators.models import EventData
 
 

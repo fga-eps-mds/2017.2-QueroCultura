@@ -10,11 +10,10 @@ from project_indicators.views import clean_url
 from quero_cultura.views import ParserYAML
 from mixed_indicators.views import populate_mixed_data
 from quero_cultura.views import get_metabase_url
-from datetime import datetime
 from celery.decorators import task
 
 
-DEFAULT_INITIAL_DATE = "2012-01-01 15:47:38.337553"
+DEFAULT_INITIAL_DATE = "2012-01-01 00:00:00.000000"
 SP_URL = "http://spcultura.prefeitura.sp.gov.br/api/"
 ESTADO_SP_URL = "http://estadodacultura.sp.gov.br/api/"
 DEFAULT_YEAR = 2013
@@ -66,19 +65,20 @@ def populate_event_data():
 
     size = LastUpdateEventDate.objects.count()
     last_update = LastUpdateEventDate.objects[size - 1].create_date
+    LastUpdateEventDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
 
     for url in urls:
-        if last_update != DEFAULT_INITIAL_DATE and url == SP_URL or url == ESTADO_SP_URL:
+        if (last_update == DEFAULT_INITIAL_DATE) and (url == SP_URL or url == ESTADO_SP_URL):
             request = EmptyRequest()
             for year in range(DEFAULT_YEAR, CURRENT_YEAR):
                 single_request = RequestEventsInPeriod(year, url)
                 request.data += single_request.data
             request = request.data
         else:
-            request = RequestEventsRawData(str(last_update), url).data
+            request = RequestEventsRawData(last_update, url).data
 
         new_url = clean_url(url)
         for event in request:
@@ -90,4 +90,3 @@ def populate_event_data():
                 EventLanguage(new_url, language).save()
 
     populate_mixed_data(last_update)
-    LastUpdateEventDate(datetime.now()).save()

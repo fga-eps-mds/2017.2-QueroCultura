@@ -5,7 +5,7 @@ from mongoengine import ListField
 
 
 class LastUpdateEventDate(Document):
-    _create_date = DateTimeField(required=True)
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):

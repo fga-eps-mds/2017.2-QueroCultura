@@ -60,6 +60,7 @@ def populate_library_data():
 
     size = LastUpdateLibraryDate.objects.count()
     last_update = LastUpdateLibraryDate.objects[size - 1].create_date
+    LastUpdateLibraryDate(str(datetime.now())).save()
 
     parser_yaml = ParserYAML()
     urls = parser_yaml.get_multi_instances_urls
@@ -84,5 +85,3 @@ def populate_library_data():
 
             for tag in library["terms"]["tag"]:
                 LibraryTags(new_url, str(tag).title()).save()
-
-    LastUpdateLibraryDate(str(datetime.now())).save()
