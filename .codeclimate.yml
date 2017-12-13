@@ -15,7 +15,7 @@ engines:
   radon:
     enabled: true
     config:
-      treshold: "c"
+      threshold: "C"
 ratings:
   paths:
   - "**.css"
@@ -28,3 +28,4 @@ ratings:
   - "**.rb"
 exclude_paths: 
   - /quero_cultura/static/*
+  - /jasmine/*

@@ -1,201 +1,75 @@
-# from django.db import models
 from mongoengine import Document
-from mongoengine import DictField
-from mongoengine import IntField
+from mongoengine import StringField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
 
-
-class PercentSpacePerType(Document):
-    _totalSpace = IntField(required=True)
-    _totalSpacePerType = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_space(self):
-        return self._totalSpace
-
-    @total_space.setter
-    def total_space(self, number):
-        self._totalSpace = number
-
-    @property
-    def total_space_per_type(self):
-        return self._totalSpacePerType
-
-    @total_space_per_type.setter
-    def total_space_per_type(self, number):
-        self._totalSpacePerType = number
+class LastUpdateDate(Document):
+    _create_date = StringField(required=True)
 
     @property
     def create_date(self):
-        return self._createDate
+        return self._create_date
 
     @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    def create_date(self, create_date):
+        self._create_date = create_date
 
 
-class PercentSpacePerOccupationArea(Document):
-    _totalSpacePerOccupationArea = DictField(required=True)
-    _totalSpace = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_space(self):
-        return self._totalSpace
-
-    @total_space.setter
-    def total_space(self, number):
-        self._totalSpace = number
+class OccupationArea(Document):
+    _instance = StringField(required=True)
+    _occupation_area = StringField(required=True)
 
     @property
-    def total_space_per_occupation_area(self):
-        return self._totalSpacePerOccupationArea
+    def instance(self):
+        return self._instance
 
-    @total_space_per_occupation_area.setter
-    def total_space_per_occupation_area(self, number):
-        self._totalSpacePerOccupationArea = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-# -------------------- state indicators --------------------------------------
-
-
-class PercentSpacePerTypePerState(Document):
-    _totalSpacePerState = DictField(required=True)
-    _totaSpacePerTypePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_space_per_state(self):
-        return self._totalSpacePerState
+    def occupation_area(self):
+        return self._occupation_area
 
-    @total_space_per_state.setter
-    def total_space_per_state(self, number):
-        self._totalSpacPerStatee = number
-
-    @property
-    def total_space_per_type_per_state(self):
-        return self._totalSpacePerTypePerState
-
-    @total_space_per_type_per_state.setter
-    def total_space_per_type_per_state(self, number):
-        self._totalSpacePerTypePerState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    @occupation_area.setter
+    def occupation_area(self, occupation_area):
+        self._occupation_area = occupation_area
 
 
-class PercentSpacePerOccupationAreaPerState(Document):
-    _totalSpacePerOccupationAreaPerState = DictField(required=True)
-    _totalSpacePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+class SpaceData(Document):
+    _instance = StringField(required=True)
+    _name = StringField(required=True)
+    _date = DateTimeField(required=True)
+    _space_type = StringField(required=True)
 
     @property
-    def total_space_per_state(self):
-        return self._totalSpacePerState
+    def instance(self):
+        return self._instance
 
-    @total_space_per_state.setter
-    def total_space_per_state(self, number):
-        self._totalSpacePerState = number
-
-    @property
-    def total_space_per_occupation_area_per_state(self):
-        return self._totalSpacePerOccupationAreaPerState
-
-    @total_space_per_occupation_area_per_state.setter
-    def total_space_per_occupation_area_per_state(self, number):
-        self._totalSpacePerOccupationArea = number
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def create_date(self):
-        return self._createDate
+    def name(self):
+        return self._name
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentSpaceForState(Document):
-    _totalSpaces = IntField(required=True)
-    _totalSpacePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
-    def total_spaces(self):
-        return self._totalSpaces
+    def date(self):
+        return self._date
 
-    @total_spaces.setter
-    def total_spaces(self, number):
-        self._totalSpaces = number
-
-    @property
-    def total_space_per_state(self):
-        return self._totalSpacePerState
-
-    @total_space_per_state.setter
-    def total_space_per_state(self, number):
-        self._totalSpacePerState = number
+    @date.setter
+    def date(self, date):
+        self._date = date
 
     @property
-    def create_date(self):
-        return self._createDate
+    def space_type(self):
+        return self._space_type
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-# -------------------- Space Registered --------------------------------------
-
-
-class QuantityOfRegisteredSpace(Document):
-    _totalSpaceRegisteredPerMounthPerYear = DictField(required=True)
-    _totalSpaceRegisteredPerYear = DictField(required=True)
-    _totalSpace = IntField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_space_registered_per_mounth_per_year(self):
-        return self._totalSpaceRegisteredPerMounthPerYear
-
-    @total_space_registered_per_mounth_per_year.setter
-    def total_space_registered_per_mounth_per_year(self, number):
-        self._totalSpaceRegisteredPerMounthPerYear = number
-
-    @property
-    def total_space_registered_per_year(self):
-        return self._totalSpaceRegisteredPerYear
-
-    @total_space_registered_per_year.setter
-    def total_space_registered_per_year(self, number):
-        self._totalSpaceRegisteredPerYear = number
-
-    @property
-    def total_space(self):
-        return self._totalSpace
-
-    @total_space.setter
-    def total_space(self, number):
-        self._totalSpace = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    @space_type.setter
+    def space_type(self, space_type):
+        self._space_type = space_type

@@ -1,0 +1,19 @@
+
+.detailedData{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.detailed_data{
+  width: 100%;
+  overflow: hidden;
+}
+
+#graphics-title{
+
+  padding-top: 25px;
+}
+
+#graphic-space{
+  background-color: #dbdbdb;
+}

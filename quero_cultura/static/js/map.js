@@ -1,14 +1,28 @@
+
 var mapboxTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2pqY2FzdHJvIiwiYSI6ImNqN21vYXpiMDFib3UzMnQ2OG1uM205NWEifQ.8sFAUtZu22lf_o3kmEVlMg',{
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 20,
     minZoom: 3,
+    noWrap: true,
+    id: 'mapbox.light',
+    accessToken: 'your.mapbox.access.token'
+});
+var mapboxTilesDark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2pqY2FzdHJvIiwiYSI6ImNqN21vYXpiMDFib3UzMnQ2OG1uM205NWEifQ.8sFAUtZu22lf_o3kmEVlMg',{
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 20,
+    minZoom: 3,
+    noWrap: true,
     id: 'mapbox.dark',
     accessToken: 'your.mapbox.access.token'
 });
 
-var map = L.map('map')
-    .addLayer(mapboxTiles)
-    .setView([-15.2222, -50.1222], 4);
+
+var bounds = L.latLngBounds([40, -170.1222], [-70, 60]);
+
+var map = L.map('map', {maxBounds: bounds})
+	.addLayer(mapboxTiles)
+	.setView([-15.2222, -50.1222], 4);
+
 
 map.zoomControl.setPosition('topright');
 
@@ -17,174 +31,180 @@ var markersEvent = new L.FeatureGroup();
 var markersProject = new L.FeatureGroup();
 var markersSpace = new L.FeatureGroup();
 
-// function returns hour now with 5 minutes delay
+//
 
-function InitTime(){
+var typeList = ['project', 'event', 'agent', 'space']
 
-	var getTimeNow = new Date();
-    getTimeNow.setHours(getTimeNow.getHours() - 100, getTimeNow.getMinutes() - 5);
-    getTimeNow = getTimeNow.toJSON();
+var lastDayData = initialize_data_map()
+var lastHourData = initialize_data_map()
+var lastMinuteData = initialize_data_map()
 
-	return getTimeNow;
+function initialize_data_map(){
+    var map = {}
+    for (var i =0; i < typeList.length; i++){
+        map[typeList[i]] = new Array()
+    }
+    return map
 }
 
-function MarkersPoints(){
+var baseLayers = {
+  "Light": mapboxTiles,
+  "Dark": mapboxTilesDark
+};
 
-	SpaceMarkers();
-	EventMarkers();
-	AgentMarkers();
-	ProjectMarkers();
+// Overlay layers are grouped
+var groupedOverlays = {
+    "": {"Agentes": markersAgent,
+         "Eventos": markersEvent,
+         "Espaços": markersSpace,
+         "Projetos": markersProject
+        }
+};
+
+L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+
+
+function loadAndUpdateMarkers(data, imageExtension){
+    data.forEach(function(value){
+        loadMarkers(value.marker_type, imageExtension, value)
+    })
+
+    map.addLayer(markersEvent)
+    map.addLayer(markersProject)
+    map.addLayer(markersAgent)
+    map.addLayer(markersSpace)
 
 }
 
-// creating space markers
 
-function SpaceMarkers(){
-
-		var getTimeNow = InitTime();
-	    markersSpace.clearLayers();;
-
-	    var redMarker = L.icon({
-	    	iconUrl: "static/images/markerSpace.gif",
-	    	iconSize: [20,20],
-	    });
-
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/space/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
-            for(var i=0; i < data.length; i++){
-            	if(data[i]["location"] != null){
-	            	var marker = L.marker([data[i]["location"]["latitude"],
-	            							data[i]["location"]["longitude"]],
-	            							{icon: redMarker}).addTo(markersSpace);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
-
-            map.addLayer(markersSpace);
-	    });
+function loadMarkers(markerType, imageExtension, markerData) {
+    switch (markerType) {
+        case 'project': createProjectMarker(markerData, imageExtension)
+        break
+        case 'event': createEventMarker(markerData, imageExtension)
+        break
+        case 'agent': createAgentMarker(markerData, imageExtension)
+        break
+        case 'space': createSpaceMarker(markerData, imageExtension)
+        break
+    }
 }
 
-// creating Agents markers
 
-function AgentMarkers(){
+function updateFeed(recent_markers) {
+    recent_markers.forEach(function(value){
 
-		var getTimeNow = InitTime();
-
-	    markersAgent.clearLayers();;
-
-	    var blueMarker = L.icon({
-	    	iconUrl: "static/images/markerAgent.gif",
-	    	iconSize: [20,20],
-	    });
-
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/agent/find',
-
-	      {
-	        '@select' : 'name, location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
-            for(var i=0; i < data.length; i++){
-            	if(data[i]["location"] != null){
-	            	var marker = L.marker([data[i]["location"]["latitude"],
-	            							data[i]["location"]["longitude"]],
-	            							{icon: blueMarker}).addTo(markersAgent);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
-
-            map.addLayer(markersAgent);
-	    });
+        if(value.city === undefined){
+            value.city = ''
+        }
+        if(value.state === undefined){
+            value.state = ''
+        }
+        var html = AddHTMLToFeed(value)
+        create_feed_block(html)
+    },recent_markers)
 }
 
-// creating events markers
-
-function EventMarkers(){
-
-		var getTimeNow = InitTime();
-	    markersEvent.clearLayers();
-
-	    var yellowMarker = L.icon({
-	    	iconUrl: "static/images/markerEvent.gif",
-	    	iconSize: [20,20],
-	    });
-
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/event/find',
-
-	      {
-	        '@select' : 'name, occurrences.{space.{location}}, singleUrl' ,
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
-
-	    promise.then(function(data) {
-
-            for(var i=0; i < data.length; i++){
-            	if((data[i]["occurrences"]).length != 0){
-	            	var marker = L.marker([data[i]["occurrences"][0]["space"]["location"]["latitude"],
-	            							data[i]["occurrences"][0]["space"]["location"]["longitude"]],
-	            							{icon: yellowMarker}).addTo(markersEvent);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
-
-            map.addLayer(markersEvent);
-
-	    });
+function create_feed_block(html){
+    $('#cards').append(html)
+    var height = $('#cards')[0].scrollHeight;
+    $(".block" ).scrollTop(height);
 }
 
-// creating projects markers
+function AddHTMLToFeed(marker){
+    imageType = GetImageByType(marker.marker_type)
+    latitude = marker.location.latitude
+    longitude = marker.location.longitude
+    var html = "<div id='content'>"+
+                   "<div id='point'>"+
+                       "<a href='javascript:void(0);' onclick='javascript:focusOnMarker("+ latitude +","+ longitude +");'>"+
+                       "<img src='"+imageType+"' height='35px' width='30px'  style=' padding-top: 3px'></a>"+
+                   "</div> "+
 
-function ProjectMarkers(){
+                   "<div id='text'>  "+
+                       "<a href='"+marker.instance_url+"' target='_blank'>"+formatName(marker.name)+"</a>"+
+                       "<p>"+marker.action_type+" - "
+                            +formatTime(marker.action_time)+"<br>"
+                            +formatLocation(marker.city, marker.state)+
+                       "</p>"+
+                   "</div>"+
+               "</div>"
+    return html
+}
 
-		var getTimeNow = InitTime();
-	    markersProject.clearLayers();
+function formatName(name){
+    if(name === ''){
+        return '--------'
+    }else{
+        return name
+    }
+}
 
-	    var greenMarker = L.icon({
-	    	iconUrl: "static/images/markerProject.gif",
-	    	iconSize: [20,20],
-	    });
+function formatLocation(city, state){
+    result = ''
+    if(state !== ''){
+        result = state
+    }
+    if(city !== ''){
+        result = city + " - " + result
+    }
+    return result
+}
+function formatTime(timeString){
+    return timeString.substring(11, 19)
+}
 
-	    var promise = $.getJSON(
-	      'http://mapas.cultura.gov.br/api/project/find',
+function GetImageByType(type) {
 
-	      {
-	        '@select' : 'name, owner.location, singleUrl ',
-	        '@or' : 1,
-	        'createTimestamp' : "GT("+getTimeNow+")",
-	        'updateTimestamp' : "GT("+getTimeNow+")"
-	      },);
+    console.log(type)
+    var image
+    switch (type) {
+        case 'project':
+            image = "static/images/markerProject.png"
+            break
 
-	    promise.then(function(data) {
+        case 'space':
+            image = "static/images/markerSpace.png"
+            break
+
+        case 'agent':
+            image = "static/images/markerAgent.png"
+            break
+
+        case 'event':
+            image = "static/images/markerEvent.png"
+            break
 
 
-            for(var i=0; i < data.length; i++){
-            	if(data[i]["owner"] != null){
-	            	var marker = L.marker([data[i]["owner"]["location"]["latitude"],
-	            							data[i]["owner"]["location"]["longitude"]],
-	            							{icon: greenMarker}).addTo(markersProject);
-	            	marker.bindPopup('<h6><b>Nome:</b></h6>'+data[i]["name"]+'<h6><b>Link:</b></h6><a target="_blank" href='+data[i]["singleUrl"]+'>Clique aqui</a>');
-            	}
-            }
+    }
 
-			map.addLayer(markersProject);
+    return image
+}
 
-	    });
+// This method is used to receive new markers
+// from django without reload the page
+function new_markers() {
+    $.ajax({
+      method: "POST",
+      url: "/new_markers",
+      headers: {'X-CSRFToken': generated_csrf_token},
+      data: {},
+      success: function(data) {
+        console.log(data)
+        loadAndUpdateMarkers(data['markers'], 'gif')
+        updateFeed(data['markers'])
+      },
+      error: function(error){
+          console.log(error)
+      }
+    })
+  }
+
+
+function focusOnMarker(latitude, longitude){
+    map.fitBounds([
+        [latitude, longitude],
+        [latitude, longitude]
+    ]);
+    map.setZoom(12);
 }

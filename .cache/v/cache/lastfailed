@@ -1,5 +1,7 @@
 {
-  "libery_indicators/tests.py::TestPercentLibraryPerAreaOfActivity::()::test_create_date": true,
-  "libery_indicators/tests.py::Teste::()::teste": true,
-  "libery_indicators/tests.py::teste": true
+  "events_indicators/tests.py::TestPercentEventsPerAgeRange::()::test_total_library": true,
+  "mixed_indicators/tests.py::TestPercentEventsInAccessibleSpacesPerState::()::test_total_events_per_state": true,
+  "mixed_indicators/tests.py::TestPercentEventsInMoreThenOneSpace::()::test_total_events": true,
+  "museums_indicators/tests.py::TestPercentMuseumsHistoricalArchivePublicAccess::()::test_total_private_museums": true,
+  "project_indicators/tests.py::TestUpdateProjectIndicator::()::test_update_event_indicator": true
 }

@@ -1,24 +1,5 @@
 {% extends 'quero_cultura/base.html' %}
 
-<!-- <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-	   crossorigin=""/>
-	<link rel="stylesheet" href="static/css/map.css"/>
-	<title></title>
-	<link rel="stylesheet" href="">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-
-</head>
-
-<body>
-	<header></header> -->
 	{% block content %}
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
 	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
@@ -29,25 +10,55 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-    <div  class = "map-container" >
-  		<div  id = "map"></div >
+    <div class="map-container">
+  		<div id="map"></div>
+			<div class='block'>
+				<div id="cards">
+				</div>
+			</div>
   	</div>
+	</body>
 
-</body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
 integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
 crossorigin=""></script>
+<script src="https://rawgithub.com/ismyrnow/Leaflet.groupedlayercontrol/master/src/leaflet.groupedlayercontrol.js"></script>
 
+
+<script type = "text/javascript" src="static/js/marker_creators.js"></script>
 <script type = "text/javascript" src="static/js/map.js"></script>
 
-	<script>
+<script>
+	if ($(document).height() > $(window).height()) {
+		var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
 
-		MarkersPoints();
-		//setInterval(function(){MarkersPoints()}, 10000);
-		
-	</script>
+     	$('html').addClass('noscroll').css('top',-scrollTop);
+  	}
+	var generated_csrf_token = "{{ csrf_token }}"
 
+	lastDayData = {{get_last_day_markers|safe}}
+	lastHourData = {{get_last_hour_markers|safe}}
+	lastMinuteData = {{get_last_minutes_markers|safe}}
+	most_recent_markers = {{get_most_recent_markers|safe}}
+	console.log(lastDayData)
+	console.log(lastHourData)
+	console.log(lastMinuteData)
+	console.log(most_recent_markers)
+	loadAndUpdateMarkers(lastDayData, 'png')
+	loadAndUpdateMarkers(lastHourData, 'gif')
+	loadAndUpdateMarkers(lastMinuteData, 'gif')
+	updateFeed(most_recent_markers)
+
+	// 1 minute in milliseconds
+	setInterval(function(){new_markers()}, 60*1000)
+
+
+
+</script>
+<script>
+
+ var pageDef = 1;
+
+</script>
 	{% endblock %}
-
-<!--</html>-->

@@ -1,129 +1,33 @@
-# from django.db import models
 from mongoengine import Document
-from mongoengine import DictField
-from mongoengine import IntField
+from mongoengine import StringField
 from mongoengine import DateTimeField
 
-# --------------------- national indicators ----------------------------------
 
-
-class PercentEventsInAccessibleSpaces(Document):
-    _totalEvents = IntField(required=True)
-    _totalEventsInAccessibleSpaces = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+class EventAndSpaceData(Document):
+    _instance = StringField(required=True)
+    _accessible_space = StringField(required=True)
+    _date = DateTimeField(required=True)
 
     @property
-    def total_events(self):
-        return self._totalEvents
+    def accessible_space(self):
+        return self._accessible_space
 
-    @total_events.setter
-    def total_events(self, number):
-        self._totalEvents = number
-
-    @property
-    def total_events_in_accessible_spaces(self):
-        return self._totalEventsInAccessibleSpaces
-
-    @total_events_in_accessible_spaces.setter
-    def total_events_in_accessible_spaces(self, number):
-        self._totalEventsInAccessibleSpaces = number
+    @accessible_space.setter
+    def accessible_space(self, accessible_space):
+        self._accessible_space = accessible_space
 
     @property
-    def create_date(self):
-        return self._createDate
+    def instance(self):
+        return self._instance
 
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentEventsInMoreThenOneSpace(Document):
-    _totalEvents = IntField(required=True)
-    _totalEventsInMoreThenOneSpace = DictField(required=True)
-    _createDate = DateTimeField(required=True)
+    @instance.setter
+    def instance(self, instance):
+        self._instance = instance
 
     @property
-    def total_events(self):
-        return self._totalEvents
+    def date(self):
+        return self._date
 
-    @total_events.setter
-    def total_events(self, number):
-        self._totalEvents = number
-
-    @property
-    def total_events_in_more_then_one_space(self):
-        return self._totalEventsInMoreThenOneSpace
-
-    @total_events_in_more_then_one_space.setter
-    def total_events_in_more_then_one_space(self, number):
-        self._totalEventsInMoreThenOneSpace = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-# -------------------- state indicators --------------------------------------
-
-
-class PercentEventsInAccessibleSpacesPerState(Document):
-    _totalEventsPerState = DictField(required=True)
-    _totalEventsInAccessibleSpacesPerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_events_per_state(self):
-        return self._totalEventsPerState
-
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEventsPerState = number
-
-    @property
-    def total_events_in_accessible_spaces(self):
-        return self._totalEventsInAccessibleSpacesPerState
-
-    @total_events_in_accessible_spaces.setter
-    def total_events_in_accessible_spaces(self, number):
-        self._totalEventsInAccessibleSpacesPerState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
-
-
-class PercentEventsInMoreThenOneSpacePerState(Document):
-    _totalEventsPerState = DictField(required=True)
-    _totalEventsInMoreThenOneSpacePerState = DictField(required=True)
-    _createDate = DateTimeField(required=True)
-
-    @property
-    def total_events_per_state(self):
-        return self._totalSpace
-
-    @total_events_per_state.setter
-    def total_events_per_state(self, number):
-        self._totalEventsPerState = number
-
-    @property
-    def total_events_in_more_then_one_space(self):
-        return self._totalEventsInMoreThenOneSpacePerState
-
-    @total_events_in_more_then_one_space.setter
-    def total_events_in_more_then_one_space(self, number):
-        self._totalEventsInMoreThenOneSpacePerState = number
-
-    @property
-    def create_date(self):
-        return self._createDate
-
-    @create_date.setter
-    def create_date(self, number):
-        self._createDate = number
+    @date.setter
+    def date(self, date):
+        self._date = date

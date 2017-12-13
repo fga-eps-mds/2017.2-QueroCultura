@@ -1,22 +1,125 @@
 #map {
   height: 96%;
   width: 100%;
-  z-index: 0;
-  top: 43px;
-  left: 0px;
-  position: fixed;
+  z-index: none;
+  position: absolute;
+
 }
 
 .map-container{
+  display: flex;
+  flex-flow: row wrap;
+  overflow: scroll;
+}
 
+html.noscroll {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
 }
 
 .sticky-footer .container{
   background-color:'red';
 }
 
+#idQuero{
+  font-family: 'Anton';
+}
 
-  #idQuero{
+#title-block {
+    z-index: 9999999 !important;
+    background-color: transparent;
+    margin-top: 5%;
+    margin-left: 10%;
+    position: relative;
+    font-family: 'Anton';
+    text-align: center;
+}
 
-      font-family: 'Anton';
+.block{
+    z-index: 9999999 !important;
+    height: 550px;
+    width: 280px;
+    max-height: 570px;
+    max-width: 280px;
+    background-color: transparent;
+    border-color: #333;
+    margin-left: 1%;
+    margin-top: 1%;
+    position: relative;
+    overflow: auto;
+}
+
+.block #cards{
+  font-family: 'sans-serif';
+  text-align: center;
+}
+
+.block #content{
+  margin-top: 1%;
+  background-color: #c3bfbf;
+  overflow: hidden;
+  text-align:left;
+}
+
+
+.block #point{
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  background-color: #c3bfbf;
+  float: left;
+  vertical-align: middle;
+}
+
+.block #content p {
+  font-size: smaller;
+  text-align:center;
+}
+
+.block #text{
+  margin-right: 2%;
+  vertical-align: middle;
+}
+
+.block a{
+  font-weight: bold;
+  color: black;
+  margin-top: 100%;
+}
+
+.block svg{
+  height: 40px;
+  width: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+@media (max-width: 991px) {
+  .map-container{
+    max-height: 100vh;
   }
+
+  #map {
+    height: 500px;
+    position: relative;
+
+  }
+
+  .block{
+    margin-top: 5%;
+    margin-bottom: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40vh;
+    background-color: transparent;
+    position: relative;
+  }
+}
