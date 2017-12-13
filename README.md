@@ -25,7 +25,7 @@ O Quero Cultura utiliza a plataforma [Docker](https://www.docker.com/what-docker
   ```
   docker-compose up
   ```
-5. Acesse a aplicação na porta `80` do seu `localhost`: [http://localhost](http://localhost:8000)
+5. Acesse a aplicação na porta `80` do seu `localhost`: [http://localhost](http://localhost)
 6. Obs: Modifique as chaves e senhas dos bancos de dados ao iniciar o sistema em produção. A chave do Django está localizada em quero_cultura/settings.py, a chave do Metabase está localizada em quero_cultura/views.py e as senhas dos bancos estão localizdas no arquivo docker-compose.yml
 
 >## Mais informações
