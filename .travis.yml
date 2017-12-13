@@ -21,4 +21,4 @@ after_success:
 
 notifications:
   email: false
-  slack: unb-jarbas:0mbq2yedH96vS4dyKSP6Xx4S
+  slack: unb-jarbas:IhK7IAWdDr6FDIihBfcFFmzd
